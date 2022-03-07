@@ -1,6 +1,5 @@
 {
   "extends": [
-    "eslint:recommended",
     "next/core-web-vitals"
   ],
   "rules": {
@@ -11,8 +10,7 @@
     "quotes": [
       "error",
       "double"
-    ],
-    "no-unused-vars": "off"
+    ]
   },
   "env": {
     "jest": true

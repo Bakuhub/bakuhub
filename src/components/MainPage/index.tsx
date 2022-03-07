@@ -5,5 +5,5 @@ export const MainPage = () => {
         <Typography variant={"h6"}>
             Bakuhub
         </Typography>
-    </Grid>
-}
+    </Grid>;
+};
