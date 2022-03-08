@@ -6,8 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
+    "test": "jest",
     "commit": "git-cz",
-    "lint": "next lint"
+    "kill": "npx kill-port 3000",
+    "restart": "rm -r .next && npm run kill && npm run dev"
   },
   "dependencies": {
     "next": "12.1.0",
