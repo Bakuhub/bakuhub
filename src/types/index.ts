@@ -1,3 +1,5 @@
+import {ReferenceType} from "../constants/ReferenceType";
+
 export interface Premise {
     id: number;
     status: string;
@@ -29,6 +31,6 @@ interface UserDetail {
 }
 
 interface Reference {
-    type: "image" | "video" | "string";
+    type: ReferenceType;
     value: string;
 }
