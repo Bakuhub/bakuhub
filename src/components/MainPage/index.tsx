@@ -1,7 +1,6 @@
 import {Button, Grid, TextField, Typography} from "@mui/material";
 import PremiseOverview from "../Premise";
 import CustomizedTimeline from "../Timeline";
-import {CreatePremise} from "../Premise/CreatePremise";
 import {useRouter} from "next/router";
 
 export const MainPage = () => {
@@ -15,11 +14,17 @@ export const MainPage = () => {
                 Create Premise
             </Button>
         </Grid>
+        <Grid>
+
+            <Typography>
+                reduce misinformation
+            </Typography>
+            <Typography>
+                when you talk to another person, communication, interface or a area where both of us have to
+                understand a common vocabulary </Typography>
+        </Grid>
         <Grid item container justifyContent={"center"} xs={12}>
             <TextField id="outlined-basic" label="Search" variant="outlined"/>
-        </Grid>
-        <Grid>
-            <CreatePremise/>
         </Grid>
         <Grid item xs={4}>
             <CustomizedTimeline/>
