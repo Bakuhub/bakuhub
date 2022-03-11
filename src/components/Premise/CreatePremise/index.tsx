@@ -28,6 +28,8 @@ export const CreatePremise = () => {
             <FormControl required fullWidth>
                 <InputLabel>Reference Type</InputLabel>
                 <Select
+                        label={"Reference Type"}
+                        variant={"outlined"}
                         value={referenceType}
                         onChange={(e) => {
                             console.info(e.target.value);
