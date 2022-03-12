@@ -8,22 +8,45 @@ generator client {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
+  id        String       @id @default(uuid())
+  createdAt DateTime  @default(now())
+  email     String    @unique
   name      String?
-  role      Role     @default(USER)
-  posts     Post[]
+  role      Role      @default(USER)
+  posts     Premise[]
+  Vision    Vision[]
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean  @default(false)
-  title     String   @db.VarChar(255)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+model Premise {
+  id          String   @id @default(uuid())
+  title        String        @db.VarChar(255)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  status       PremiseStatus
+  tags         String[]
+  activityDate DateTime
+  author       User         @relation(fields: [authorId], references: [id])
+  authorId     String
+}
+
+model Vision {
+  id          String   @id @default(uuid())
+  title       String   @db.VarChar(255)
+  description String
+  createdAt   DateTime @default(now())
+  reference   String
+  author      User    @relation(fields: [authorId], references: [id])
+  authorId    String
+}
+
+model Timeline {
+  id String @id @default(uuid())
+  title String @db.VarChar(255)
+  description String
+}
+
+enum PremiseStatus {
+  UNVERIFIED
 }
 
 enum Role {
