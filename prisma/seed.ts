@@ -4,7 +4,6 @@ const prisma = new PrismaClient({});
 
 // A `main` function so that you can use async/await
 async function seed() {
-
     // Create user, posts, and categories
     // const user = await prisma.premise.create({
     //     data: {
@@ -30,22 +29,42 @@ async function seed() {
     //         },
     //     },
     // });
+    const returnUser = await prisma.user.create({
+        data: {
+            email: `${Math.random()}@gmail.com`,
+            name: "test1user",
+        }
+    });
     const premise = await prisma.premise.create({
         data: {
             title: "More than half of UK voters still think Boris Johnson should resign",
             status: "UNVERIFIED",
             tags: ["UK"],
-            authorId: "dde6d01b-cc10-46cf-9c4a-e7ca7f3268e3",
-            activityDate: new Date()
+            authorId: returnUser.id,
+            activityDate: new Date(),
         }
     });
-    // Return user, and posts, and categories
-    const returnUser = await prisma.user.create({
+    const timeline = await prisma.timeline.create({
         data: {
-            email: "test@gmail.com",
-            name: "test1user",
+            title: "Boris Johnson",
+            status: "mostly truth",
+            authorId: returnUser.id,
+            description: "this is timeline about Boris Johnson"
         }
     });
+    const premisesOnTimelines = await prisma.premisesOnTimelines.create({
+        data: {
+            timelineId: timeline.id,
+            premiseId: premise.id,
+        }
+    });
+    const data = await prisma.premisesOnTimelines.findMany({
+                where: {}
+            }
+    );
+    console.info(data);
+    // Return user, and posts, and categories
+
 
 }
 

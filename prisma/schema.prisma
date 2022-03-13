@@ -53,9 +53,9 @@ model Timeline {
   id          String @id @default(uuid())
   title       String @db.VarChar(255)
   description String
-
-  author   User   @relation(fields: [authorId], references: [id])
-  authorId String
+  status      String
+  author      User   @relation(fields: [authorId], references: [id])
+  authorId    String
 
   premises PremisesOnTimelines[]
 
