@@ -8,25 +8,30 @@ generator client {
 }
 
 model User {
-  id        String       @id @default(uuid())
-  createdAt DateTime  @default(now())
-  email     String    @unique
+  id        String     @id @default(uuid())
+  createdAt DateTime   @default(now())
+  email     String     @unique
   name      String?
-  role      Role      @default(USER)
+  role      Role       @default(USER)
   posts     Premise[]
   Vision    Vision[]
+  Timeline  Timeline[]
 }
 
 model Premise {
-  id          String   @id @default(uuid())
+  id           String        @id @default(uuid())
   title        String        @db.VarChar(255)
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   status       PremiseStatus
   tags         String[]
   activityDate DateTime
-  author       User         @relation(fields: [authorId], references: [id])
-  authorId     String
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+
+  timelines PremisesOnTimelines[]
+  Vision    Vision[]
 }
 
 model Vision {
@@ -35,18 +40,40 @@ model Vision {
   description String
   createdAt   DateTime @default(now())
   reference   String
-  author      User    @relation(fields: [authorId], references: [id])
-  authorId    String
+
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  String
+  premise   Premise @relation(fields: [premiseId], references: [id])
+  premiseId String
+
+
 }
 
 model Timeline {
-  id String @id @default(uuid())
-  title String @db.VarChar(255)
+  id          String @id @default(uuid())
+  title       String @db.VarChar(255)
   description String
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+
+  premises PremisesOnTimelines[]
+
+}
+
+model PremisesOnTimelines {
+  timeline   Timeline @relation(fields: [timelineId], references: [id])
+  timelineId String
+  premise    Premise  @relation(fields: [premiseId], references: [id])
+  premiseId  String
+  assignedAt DateTime @default(now())
+
+  @@id([premiseId, timelineId])
 }
 
 enum PremiseStatus {
   UNVERIFIED
+
 }
 
 enum Role {
