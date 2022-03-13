@@ -35,25 +35,49 @@ async function seed() {
             name: "test1user",
         }
     });
-    // @ts-ignore
-    const premise = await prisma.premise.create({
-        data: {
+        const premise = await prisma.premise.create({
+            data: {
             title: "ifehwoifhowei fejwoifjweoi",
-            status: "UNVERIFIED",
+            status: "REFERENCE_PROVIDED",
             authorId: returnUser.id,
             activityDate: new Date(),
-            timelines: {
+            premisesOnTimelines: {
                 create: [{
                     timeline: {
                         connect: {
                             id: "6b253865-d87e-44d8-a86f-1d9af8c693b4"
                         },
                     },
+                }],
+                
+            },
+            tagsOnPremises:{
+                create:[{
+                    tag:{
+                        upsert:{
+                            label:'usa'
+                        }
+                    }
+                }]
+            }
+            
+        }
+    });
+
+    const tag = await prisma.tag.create({
+        data: {
+            label: "united kingdom",
+            tagsOnPremises: {
+                create: [{
+                    premise: {
+                        connect: {
+                            id: "dfe45ff8-0e34-4110-b33d-f252be6fe4c6"
+                        }
+                    }
                 }]
             }
         }
     });
-    const vision = [];
     // const timeline = await prisma.timeline.create({
     //     data: {
     //         title: "Boris Johnson",
@@ -69,14 +93,7 @@ async function seed() {
     //         timeline:{}
     //     }
     // });
-    const data = await prisma.premisesOnTimelines.findMany({
-                where: {}
-            }
-    );
-    console.info(data);
     // Return user, and posts, and categories
-
-
 }
 
 seed()

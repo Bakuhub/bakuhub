@@ -8,14 +8,15 @@ generator client {
 }
 
 model User {
-  id        String     @id @default(uuid())
-  createdAt DateTime   @default(now())
-  email     String     @unique
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  email     String   @unique
   name      String?
-  role      Role       @default(USER)
-  posts     Premise[]
-  Vision    Vision[]
-  Timeline  Timeline[]
+  role      Role     @default(USER)
+
+  premise  Premise[]
+  vision   Vision[]
+  timeline Timeline[]
 }
 
 model Premise {
@@ -24,27 +25,30 @@ model Premise {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   status       PremiseStatus
-  activityDate DateTime
 
-  author   User   @relation(fields: [authorId], references: [id])
+  author   User   @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId String
+  vision Vision[]
 
-  timelines      PremisesOnTimelines[]
-  Vision         Vision[]
-  TagsOnPremises TagsOnPremises[]
+  premisesOnTimelines PremisesOnTimelines[]
+  tagsOnPremises      TagsOnPremises[]
+  activeVisionOnPremise ActiveVisionOnPremise[]
 }
 
 model Vision {
   id          String   @id @default(uuid())
   title       String   @db.VarChar(255)
+  activityDate DateTime
   description String
   createdAt   DateTime @default(now())
   reference   String
 
-  author    User    @relation(fields: [authorId], references: [id])
+  author    User    @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId  String
-  premise   Premise @relation(fields: [premiseId], references: [id])
+  premise   Premise @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   premiseId String
+
+    activeVisionOnPremise ActiveVisionOnPremise[]
 
 }
 
@@ -53,26 +57,35 @@ model Timeline {
   title       String @db.VarChar(255)
   description String
   status      String
-  author      User   @relation(fields: [authorId], references: [id])
+  author      User   @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId    String
 
-  premises PremisesOnTimelines[]
-
-  TagsOnTimelines TagsOnTimelines[]
+  premisesOnTimelines PremisesOnTimelines[]
+  tagsOnTimelines     TagsOnTimelines[]
 }
 
 model Tag {
   id    Int    @id @default(autoincrement())
-  label String @db.VarChar(255)
+  label String @unique @db.VarChar(255)
 
-  TagsOnPremises  TagsOnPremises[]
-  TagsOnTimelines TagsOnTimelines[]
+  tagsOnPremises  TagsOnPremises[]
+  tagsOnTimelines TagsOnTimelines[]
+}
+
+model ActiveVisionOnPremise {
+
+    premise    Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premiseId  String @unique
+  vision Vision @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+ visionId String
+
+  @@id([visionId, premiseId])
 }
 
 model TagsOnPremises {
-  tag        Tag      @relation(fields: [tagId], references: [id])
+  tag        Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   tagId      Int
-  premise    Premise  @relation(fields: [premiseId], references: [id])
+  premise    Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   premiseId  String
   assignedAt DateTime @default(now())
 
@@ -80,19 +93,19 @@ model TagsOnPremises {
 }
 
 model TagsOnTimelines {
-  tag        Tag      @relation(fields: [tagId], references: [id])
+  tag        Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   tagId      Int
-  premise    Timeline @relation(fields: [premiseId], references: [id])
-  premiseId  String
+  timeline   Timeline @relation(fields: [timelineId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  timelineId String
   assignedAt DateTime @default(now())
 
-  @@id([tagId, premiseId])
+  @@id([tagId, timelineId])
 }
 
 model PremisesOnTimelines {
-  timeline   Timeline @relation(fields: [timelineId], references: [id])
+  timeline   Timeline @relation(fields: [timelineId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   timelineId String
-  premise    Premise  @relation(fields: [premiseId], references: [id])
+  premise    Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   premiseId  String
   assignedAt DateTime @default(now())
 
@@ -100,8 +113,11 @@ model PremisesOnTimelines {
 }
 
 enum PremiseStatus {
+  RUMOUR
   UNVERIFIED
-
+  REFERENCE_PROVIDED
+  VERIFIED
+  MISINFORMATION
 }
 
 enum Role {
