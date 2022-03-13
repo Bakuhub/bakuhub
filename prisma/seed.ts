@@ -35,29 +35,40 @@ async function seed() {
             name: "test1user",
         }
     });
+    // @ts-ignore
     const premise = await prisma.premise.create({
         data: {
-            title: "More than half of UK voters still think Boris Johnson should resign",
+            title: "ifehwoifhowei fejwoifjweoi",
             status: "UNVERIFIED",
             tags: ["UK"],
             authorId: returnUser.id,
             activityDate: new Date(),
+            timelines: {
+                create: [{
+                    timeline: {
+                        connect: {
+                            id: "6b253865-d87e-44d8-a86f-1d9af8c693b4"
+                        },
+                    },
+                }]
+            }
         }
     });
-    const timeline = await prisma.timeline.create({
-        data: {
-            title: "Boris Johnson",
-            status: "mostly truth",
-            authorId: returnUser.id,
-            description: "this is timeline about Boris Johnson"
-        }
-    });
-    const premisesOnTimelines = await prisma.premisesOnTimelines.create({
-        data: {
-            timelineId: timeline.id,
-            premiseId: premise.id,
-        }
-    });
+    // const timeline = await prisma.timeline.create({
+    //     data: {
+    //         title: "Boris Johnson",
+    //         status: "mostly truth",
+    //         authorId: returnUser.id,
+    //         description: "this is timeline about Boris Johnson"
+    //     }
+    // });
+    // const premisesOnTimelines = await prisma.premisesOnTimelines.create({
+    //     data: {
+    //         timelineId: timeline.id,
+    //         premiseId: premise.id,
+    //         timeline:{}
+    //     }
+    // });
     const data = await prisma.premisesOnTimelines.findMany({
                 where: {}
             }

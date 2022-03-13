@@ -24,14 +24,14 @@ model Premise {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   status       PremiseStatus
-  tags         String[]
   activityDate DateTime
 
   author   User   @relation(fields: [authorId], references: [id])
   authorId String
 
-  timelines PremisesOnTimelines[]
-  Vision    Vision[]
+  timelines      PremisesOnTimelines[]
+  Vision         Vision[]
+  TagsOnPremises TagsOnPremises[]
 }
 
 model Vision {
@@ -46,7 +46,6 @@ model Vision {
   premise   Premise @relation(fields: [premiseId], references: [id])
   premiseId String
 
-
 }
 
 model Timeline {
@@ -59,6 +58,35 @@ model Timeline {
 
   premises PremisesOnTimelines[]
 
+  TagsOnTimelines TagsOnTimelines[]
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  label String @db.VarChar(255)
+
+  TagsOnPremises  TagsOnPremises[]
+  TagsOnTimelines TagsOnTimelines[]
+}
+
+model TagsOnPremises {
+  tag        Tag      @relation(fields: [tagId], references: [id])
+  tagId      Int
+  premise    Premise  @relation(fields: [premiseId], references: [id])
+  premiseId  String
+  assignedAt DateTime @default(now())
+
+  @@id([tagId, premiseId])
+}
+
+model TagsOnTimelines {
+  tag        Tag      @relation(fields: [tagId], references: [id])
+  tagId      Int
+  premise    Timeline @relation(fields: [premiseId], references: [id])
+  premiseId  String
+  assignedAt DateTime @default(now())
+
+  @@id([tagId, premiseId])
 }
 
 model PremisesOnTimelines {
