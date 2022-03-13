@@ -57,7 +57,7 @@ const AppBar = styled(MuiAppBar, {
 
 export const Layout: React.FunctionComponent = ({children}) => {
     const router = useRouter();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
         setOpen(true);

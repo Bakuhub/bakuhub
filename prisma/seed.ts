@@ -40,7 +40,6 @@ async function seed() {
         data: {
             title: "ifehwoifhowei fejwoifjweoi",
             status: "UNVERIFIED",
-            tags: ["UK"],
             authorId: returnUser.id,
             activityDate: new Date(),
             timelines: {
@@ -54,6 +53,7 @@ async function seed() {
             }
         }
     });
+    const vision = [];
     // const timeline = await prisma.timeline.create({
     //     data: {
     //         title: "Boris Johnson",
