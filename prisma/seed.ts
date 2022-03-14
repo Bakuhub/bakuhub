@@ -35,8 +35,8 @@ async function seed() {
             name: "test1user",
         }
     });
-        const premise = await prisma.premise.create({
-            data: {
+    const premise = await prisma.premise.create({
+        data: {
             title: "ifehwoifhowei fejwoifjweoi",
             status: "REFERENCE_PROVIDED",
             authorId: returnUser.id,
@@ -49,18 +49,18 @@ async function seed() {
                         },
                     },
                 }],
-                
+
             },
-            tagsOnPremises:{
-                create:[{
-                    tag:{
-                        upsert:{
-                            label:'usa'
+            tagsOnPremises: {
+                create: [{
+                    tag: {
+                        upsert: {
+                            label: "usa"
                         }
                     }
                 }]
             }
-            
+
         }
     });
 

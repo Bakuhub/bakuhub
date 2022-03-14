@@ -112,6 +112,15 @@ model PremisesOnTimelines {
   @@id([premiseId, timelineId])
 }
 
+model Snapshot {
+  id        String   @id @unique @default(uuid())
+  createdAt DateTime @default(now())
+  versionId String
+  url String
+  sourceUrl String
+  caption String 
+}
+
 enum PremiseStatus {
   RUMOUR
   UNVERIFIED
