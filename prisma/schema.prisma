@@ -20,35 +20,36 @@ model User {
 }
 
 model Premise {
-  id           String        @id @default(uuid())
-  title        String        @db.VarChar(255)
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  status       PremiseStatus
+  id        String        @id @default(uuid())
+  title     String        @db.VarChar(255)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  status    PremiseStatus
 
-  author   User   @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  author   User     @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId String
-  vision Vision[]
+  vision   Vision[]
+  thread   Thread[]
 
-  premisesOnTimelines PremisesOnTimelines[]
-  tagsOnPremises      TagsOnPremises[]
+  premisesOnTimelines   PremisesOnTimelines[]
+  tagsOnPremises        TagsOnPremises[]
   activeVisionOnPremise ActiveVisionOnPremise[]
 }
 
 model Vision {
-  id          String   @id @default(uuid())
-  title       String   @db.VarChar(255)
+  id           String   @id @default(uuid())
+  title        String   @db.VarChar(255)
   activityDate DateTime
-  description String
-  createdAt   DateTime @default(now())
-  reference   String
+  description  String
+  createdAt    DateTime @default(now())
+  reference    String
 
   author    User    @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId  String
   premise   Premise @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   premiseId String
 
-    activeVisionOnPremise ActiveVisionOnPremise[]
+  activeVisionOnPremise ActiveVisionOnPremise[]
 
 }
 
@@ -74,10 +75,10 @@ model Tag {
 
 model ActiveVisionOnPremise {
 
-    premise    Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  premiseId  String @unique
-  vision Vision @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
- visionId String
+  premise   Premise @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premiseId String  @unique
+  vision    Vision  @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  visionId  String
 
   @@id([visionId, premiseId])
 }
@@ -116,9 +117,32 @@ model Snapshot {
   id        String   @id @unique @default(uuid())
   createdAt DateTime @default(now())
   versionId String
-  url String
+  url       String
   sourceUrl String
-  caption String 
+  caption   String
+}
+
+model Thread {
+  id           String   @id @default(uuid())
+  title        String   @db.VarChar(255)
+  activityDate DateTime
+  description  String
+  createdAt    DateTime @default(now())
+  reference    String
+  premise      Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premiseId    String
+
+
+  childThread  ThreadRelationship[] @relation("childThread")
+  parentThread ThreadRelationship[] @relation("parentThread")
+}
+
+model ThreadRelationship {
+  parentThread   Thread @relation("parentThread", fields: [parentThreadId], references: [id])
+  parentThreadId String @id @unique
+  childThread    Thread @relation("childThread", fields: [childThreadId], references: [id])
+  childThreadId  String
+
 }
 
 enum PremiseStatus {
