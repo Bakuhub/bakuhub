@@ -12,6 +12,5 @@ export default async function handler(
         res: NextApiResponse<Data>
 ) {
     const result = await uploadUrlToS3("");
-    res.status(200).json(result
-    );
+    res.status(200).json(result);
 }

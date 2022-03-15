@@ -122,6 +122,12 @@ model Snapshot {
   caption   String
 }
 
+model MainCode {
+  id String @id @unique @default(uuid())
+  mainThreadType MainThreadType
+  relatedId String
+}
+
 model Thread {
   id           String   @id @default(uuid())
   title        String   @db.VarChar(255)
@@ -131,18 +137,9 @@ model Thread {
   reference    String
   premise      Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   premiseId    String
-
-
-  childThread  ThreadRelationship[] @relation("childThread")
-  parentThread ThreadRelationship[] @relation("parentThread")
-}
-
-model ThreadRelationship {
-  parentThread   Thread @relation("parentThread", fields: [parentThreadId], references: [id])
-  parentThreadId String @id @unique
-  childThread    Thread @relation("childThread", fields: [childThreadId], references: [id])
-  childThreadId  String
-
+  parentThreadId String?
+  parentThread   Thread?  @relation("ParentThreadChildThreads", fields: [parentThreadId], references: [id])
+  childThreads   Thread[] @relation("ParentThreadChildThreads")
 }
 
 enum PremiseStatus {
@@ -151,6 +148,12 @@ enum PremiseStatus {
   REFERENCE_PROVIDED
   VERIFIED
   MISINFORMATION
+}
+
+enum MainThreadType{
+  Timeline
+  Premise
+  Vision
 }
 
 enum Role {

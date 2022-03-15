@@ -15,7 +15,6 @@ export const MainPage = () => {
             </Button>
         </Grid>
         <Grid>
-
             <Typography>
                 reduce misinformation
             </Typography>
