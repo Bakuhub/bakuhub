@@ -1,0 +1,12 @@
+export { AggregateTagsOnPremisesArgs } from "./AggregateTagsOnPremisesArgs";
+export { CreateManyTagsOnPremisesArgs } from "./CreateManyTagsOnPremisesArgs";
+export { CreateTagsOnPremisesArgs } from "./CreateTagsOnPremisesArgs";
+export { DeleteManyTagsOnPremisesArgs } from "./DeleteManyTagsOnPremisesArgs";
+export { DeleteTagsOnPremisesArgs } from "./DeleteTagsOnPremisesArgs";
+export { FindFirstTagsOnPremisesArgs } from "./FindFirstTagsOnPremisesArgs";
+export { FindManyTagsOnPremisesArgs } from "./FindManyTagsOnPremisesArgs";
+export { FindUniqueTagsOnPremisesArgs } from "./FindUniqueTagsOnPremisesArgs";
+export { GroupByTagsOnPremisesArgs } from "./GroupByTagsOnPremisesArgs";
+export { UpdateManyTagsOnPremisesArgs } from "./UpdateManyTagsOnPremisesArgs";
+export { UpdateTagsOnPremisesArgs } from "./UpdateTagsOnPremisesArgs";
+export { UpsertTagsOnPremisesArgs } from "./UpsertTagsOnPremisesArgs";

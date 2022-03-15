@@ -7,6 +7,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../prisma/generated/type-graphql"
+}
+
 model User {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
@@ -122,21 +127,22 @@ model Snapshot {
   caption   String
 }
 
-model MainCode {
-  id String @id @unique @default(uuid())
-  mainThreadType MainThreadType
-  relatedId String
-}
+//
+//model MainCode {
+//  id String @id @unique @default(uuid())
+//  mainThreadType MainThreadType
+//  relatedId String
+//}
 
 model Thread {
-  id           String   @id @default(uuid())
-  title        String   @db.VarChar(255)
-  activityDate DateTime
-  description  String
-  createdAt    DateTime @default(now())
-  reference    String
-  premise      Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  premiseId    String
+  id             String   @id @default(uuid())
+  title          String   @db.VarChar(255)
+  activityDate   DateTime
+  description    String
+  createdAt      DateTime @default(now())
+  reference      String
+  premise        Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premiseId      String
   parentThreadId String?
   parentThread   Thread?  @relation("ParentThreadChildThreads", fields: [parentThreadId], references: [id])
   childThreads   Thread[] @relation("ParentThreadChildThreads")
@@ -150,7 +156,7 @@ enum PremiseStatus {
   MISINFORMATION
 }
 
-enum MainThreadType{
+enum MainThreadType {
   Timeline
   Premise
   Vision

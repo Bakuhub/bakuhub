@@ -1,0 +1,12 @@
+export { AggregateTagsOnTimelinesArgs } from "./AggregateTagsOnTimelinesArgs";
+export { CreateManyTagsOnTimelinesArgs } from "./CreateManyTagsOnTimelinesArgs";
+export { CreateTagsOnTimelinesArgs } from "./CreateTagsOnTimelinesArgs";
+export { DeleteManyTagsOnTimelinesArgs } from "./DeleteManyTagsOnTimelinesArgs";
+export { DeleteTagsOnTimelinesArgs } from "./DeleteTagsOnTimelinesArgs";
+export { FindFirstTagsOnTimelinesArgs } from "./FindFirstTagsOnTimelinesArgs";
+export { FindManyTagsOnTimelinesArgs } from "./FindManyTagsOnTimelinesArgs";
+export { FindUniqueTagsOnTimelinesArgs } from "./FindUniqueTagsOnTimelinesArgs";
+export { GroupByTagsOnTimelinesArgs } from "./GroupByTagsOnTimelinesArgs";
+export { UpdateManyTagsOnTimelinesArgs } from "./UpdateManyTagsOnTimelinesArgs";
+export { UpdateTagsOnTimelinesArgs } from "./UpdateTagsOnTimelinesArgs";
+export { UpsertTagsOnTimelinesArgs } from "./UpsertTagsOnTimelinesArgs";
