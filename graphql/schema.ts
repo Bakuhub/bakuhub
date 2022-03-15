@@ -17,4 +17,11 @@ export const typeDefs = gql`
     type Query {
         users:[User]
     }
+    input Thread {
+        title:String
+        
+    }
+    type Mutation {
+        createThread(data:Thread): String
+    }
 `;
