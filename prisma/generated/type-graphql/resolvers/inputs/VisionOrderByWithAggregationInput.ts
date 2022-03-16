@@ -51,6 +51,11 @@ export class VisionOrderByWithAggregationInput {
   })
   premiseId?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  prevVisionId?: "asc" | "desc" | undefined;
+
   @TypeGraphQL.Field(_type => VisionCountOrderByAggregateInput, {
     nullable: true
   })

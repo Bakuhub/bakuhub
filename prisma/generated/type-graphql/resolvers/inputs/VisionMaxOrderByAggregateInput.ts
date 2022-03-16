@@ -47,4 +47,9 @@ export class VisionMaxOrderByAggregateInput {
     nullable: true
   })
   premiseId?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  prevVisionId?: "asc" | "desc" | undefined;
 }

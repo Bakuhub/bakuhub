@@ -50,5 +50,10 @@ export class VisionCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
+  prevVisionId!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
   _all!: number;
 }

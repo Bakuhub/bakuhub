@@ -34,7 +34,7 @@ export class PremiseCreateManyInput {
   status!: "RUMOUR" | "UNVERIFIED" | "REFERENCE_PROVIDED" | "VERIFIED" | "MISINFORMATION";
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  authorId!: string;
+  authorId?: string | undefined;
 }

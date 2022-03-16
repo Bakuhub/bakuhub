@@ -2,11 +2,11 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ActiveVisionOnPremiseListRelationFilter } from "../inputs/ActiveVisionOnPremiseListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { EnumPremiseStatusFilter } from "../inputs/EnumPremiseStatusFilter";
 import { PremisesOnTimelinesListRelationFilter } from "../inputs/PremisesOnTimelinesListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { TagsOnPremisesListRelationFilter } from "../inputs/TagsOnPremisesListRelationFilter";
 import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
@@ -61,10 +61,10 @@ export class PremiseWhereInput {
   })
   author?: UserRelationFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  authorId?: StringFilter | undefined;
+  authorId?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => VisionListRelationFilter, {
     nullable: true
@@ -85,9 +85,4 @@ export class PremiseWhereInput {
     nullable: true
   })
   tagsOnPremises?: TagsOnPremisesListRelationFilter | undefined;
-
-  @TypeGraphQL.Field(_type => ActiveVisionOnPremiseListRelationFilter, {
-    nullable: true
-  })
-  activeVisionOnPremise?: ActiveVisionOnPremiseListRelationFilter | undefined;
 }

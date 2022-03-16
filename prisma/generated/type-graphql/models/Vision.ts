@@ -2,7 +2,6 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
-import { ActiveVisionOnPremise } from "../models/ActiveVisionOnPremise";
 import { Premise } from "../models/Premise";
 import { User } from "../models/User";
 import { VisionCount } from "../resolvers/outputs/VisionCount";
@@ -41,12 +40,12 @@ export class Vision {
   })
   reference!: string;
 
-  author?: User;
+  author?: User | null;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  authorId!: string;
+  authorId?: string | null;
 
   premise?: Premise;
 
@@ -55,7 +54,14 @@ export class Vision {
   })
   premiseId!: string;
 
-  activeVisionOnPremise?: ActiveVisionOnPremise[];
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  prevVisionId?: string | null;
+
+  prevVision?: Vision | null;
+
+  nextVision?: Vision[];
 
   @TypeGraphQL.Field(_type => VisionCount, {
     nullable: true

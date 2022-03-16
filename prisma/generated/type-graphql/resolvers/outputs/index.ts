@@ -1,9 +1,4 @@
-export { ActiveVisionOnPremiseCountAggregate } from "./ActiveVisionOnPremiseCountAggregate";
-export { ActiveVisionOnPremiseGroupBy } from "./ActiveVisionOnPremiseGroupBy";
-export { ActiveVisionOnPremiseMaxAggregate } from "./ActiveVisionOnPremiseMaxAggregate";
-export { ActiveVisionOnPremiseMinAggregate } from "./ActiveVisionOnPremiseMinAggregate";
 export { AffectedRowsOutput } from "./AffectedRowsOutput";
-export { AggregateActiveVisionOnPremise } from "./AggregateActiveVisionOnPremise";
 export { AggregatePremise } from "./AggregatePremise";
 export { AggregatePremisesOnTimelines } from "./AggregatePremisesOnTimelines";
 export { AggregateSnapshot } from "./AggregateSnapshot";

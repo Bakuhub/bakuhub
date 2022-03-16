@@ -1,4 +1,3 @@
-export { ActiveVisionOnPremiseCrudResolver } from "./ActiveVisionOnPremise/ActiveVisionOnPremiseCrudResolver";
 export { PremiseCrudResolver } from "./Premise/PremiseCrudResolver";
 export { PremisesOnTimelinesCrudResolver } from "./PremisesOnTimelines/PremisesOnTimelinesCrudResolver";
 export { SnapshotCrudResolver } from "./Snapshot/SnapshotCrudResolver";

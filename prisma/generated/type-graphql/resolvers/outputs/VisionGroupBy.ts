@@ -41,14 +41,19 @@ export class VisionGroupBy {
   reference!: string;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  authorId!: string;
+  authorId!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
   premiseId!: string;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  prevVisionId!: string | null;
 
   @TypeGraphQL.Field(_type => VisionCountAggregate, {
     nullable: true

@@ -1,4 +1,3 @@
-export { ActiveVisionOnPremiseScalarFieldEnum } from "./ActiveVisionOnPremiseScalarFieldEnum";
 export { MainThreadType } from "./MainThreadType";
 export { PremiseScalarFieldEnum } from "./PremiseScalarFieldEnum";
 export { PremiseStatus } from "./PremiseStatus";

@@ -26,9 +26,4 @@ export class PremiseCount {
     nullable: false
   })
   tagsOnPremises!: number;
-
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-    nullable: false
-  })
-  activeVisionOnPremise!: number;
 }

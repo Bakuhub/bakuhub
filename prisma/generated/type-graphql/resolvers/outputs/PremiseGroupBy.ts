@@ -37,9 +37,9 @@ export class PremiseGroupBy {
   status!: "RUMOUR" | "UNVERIFIED" | "REFERENCE_PROVIDED" | "VERIFIED" | "MISINFORMATION";
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  authorId!: string;
+  authorId!: string | null;
 
   @TypeGraphQL.Field(_type => PremiseCountAggregate, {
     nullable: true

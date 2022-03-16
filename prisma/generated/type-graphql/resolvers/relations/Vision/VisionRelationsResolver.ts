@@ -1,17 +1,16 @@
 import * as TypeGraphQL from "type-graphql";
-import { ActiveVisionOnPremise } from "../../../models/ActiveVisionOnPremise";
 import { Premise } from "../../../models/Premise";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
-import { VisionActiveVisionOnPremiseArgs } from "./args/VisionActiveVisionOnPremiseArgs";
+import { VisionNextVisionArgs } from "./args/VisionNextVisionArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => Vision)
 export class VisionRelationsResolver {
   @TypeGraphQL.FieldResolver(_type => User, {
-    nullable: false
+    nullable: true
   })
-  async author(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any): Promise<User> {
+  async author(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any): Promise<User | null> {
     return getPrismaFromContext(ctx).vision.findUnique({
       where: {
         id: vision.id,
@@ -30,14 +29,25 @@ export class VisionRelationsResolver {
     }).premise({});
   }
 
-  @TypeGraphQL.FieldResolver(_type => [ActiveVisionOnPremise], {
-    nullable: false
+  @TypeGraphQL.FieldResolver(_type => Vision, {
+    nullable: true
   })
-  async activeVisionOnPremise(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: VisionActiveVisionOnPremiseArgs): Promise<ActiveVisionOnPremise[]> {
+  async prevVision(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any): Promise<Vision | null> {
     return getPrismaFromContext(ctx).vision.findUnique({
       where: {
         id: vision.id,
       },
-    }).activeVisionOnPremise(args);
+    }).prevVision({});
+  }
+
+  @TypeGraphQL.FieldResolver(_type => [Vision], {
+    nullable: false
+  })
+  async nextVision(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: VisionNextVisionArgs): Promise<Vision[]> {
+    return getPrismaFromContext(ctx).vision.findUnique({
+      where: {
+        id: vision.id,
+      },
+    }).nextVision(args);
   }
 }

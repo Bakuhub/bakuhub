@@ -2,10 +2,11 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ActiveVisionOnPremiseUpdateManyWithoutVisionInput } from "../inputs/ActiveVisionOnPremiseUpdateManyWithoutVisionInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { PremiseUpdateOneRequiredWithoutVisionInput } from "../inputs/PremiseUpdateOneRequiredWithoutVisionInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
+import { VisionUpdateManyWithoutPrevVisionInput } from "../inputs/VisionUpdateManyWithoutPrevVisionInput";
+import { VisionUpdateOneWithoutNextVisionInput } from "../inputs/VisionUpdateOneWithoutNextVisionInput";
 
 @TypeGraphQL.InputType("VisionUpdateWithoutAuthorInput", {
   isAbstract: true
@@ -46,8 +47,13 @@ export class VisionUpdateWithoutAuthorInput {
   })
   premise?: PremiseUpdateOneRequiredWithoutVisionInput | undefined;
 
-  @TypeGraphQL.Field(_type => ActiveVisionOnPremiseUpdateManyWithoutVisionInput, {
+  @TypeGraphQL.Field(_type => VisionUpdateOneWithoutNextVisionInput, {
     nullable: true
   })
-  activeVisionOnPremise?: ActiveVisionOnPremiseUpdateManyWithoutVisionInput | undefined;
+  prevVision?: VisionUpdateOneWithoutNextVisionInput | undefined;
+
+  @TypeGraphQL.Field(_type => VisionUpdateManyWithoutPrevVisionInput, {
+    nullable: true
+  })
+  nextVision?: VisionUpdateManyWithoutPrevVisionInput | undefined;
 }

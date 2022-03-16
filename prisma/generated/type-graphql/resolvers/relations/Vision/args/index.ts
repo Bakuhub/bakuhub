@@ -1,1 +1,1 @@
-export { VisionActiveVisionOnPremiseArgs } from "./VisionActiveVisionOnPremiseArgs";
+export { VisionNextVisionArgs } from "./VisionNextVisionArgs";

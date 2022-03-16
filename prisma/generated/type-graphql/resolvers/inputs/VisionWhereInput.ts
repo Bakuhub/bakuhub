@@ -2,11 +2,13 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ActiveVisionOnPremiseListRelationFilter } from "../inputs/ActiveVisionOnPremiseListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { PremiseRelationFilter } from "../inputs/PremiseRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
+import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
+import { VisionRelationFilter } from "../inputs/VisionRelationFilter";
 
 @TypeGraphQL.InputType("VisionWhereInput", {
   isAbstract: true
@@ -62,10 +64,10 @@ export class VisionWhereInput {
   })
   author?: UserRelationFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  authorId?: StringFilter | undefined;
+  authorId?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => PremiseRelationFilter, {
     nullable: true
@@ -77,8 +79,18 @@ export class VisionWhereInput {
   })
   premiseId?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => ActiveVisionOnPremiseListRelationFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  activeVisionOnPremise?: ActiveVisionOnPremiseListRelationFilter | undefined;
+  prevVisionId?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => VisionRelationFilter, {
+    nullable: true
+  })
+  prevVision?: VisionRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => VisionListRelationFilter, {
+    nullable: true
+  })
+  nextVision?: VisionListRelationFilter | undefined;
 }

@@ -1,4 +1,3 @@
-export { ActiveVisionOnPremise } from "./ActiveVisionOnPremise";
 export { Premise } from "./Premise";
 export { PremisesOnTimelines } from "./PremisesOnTimelines";
 export { Snapshot } from "./Snapshot";

@@ -2,14 +2,13 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ActiveVisionOnPremiseUpdateManyWithoutPremiseInput } from "../inputs/ActiveVisionOnPremiseUpdateManyWithoutPremiseInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EnumPremiseStatusFieldUpdateOperationsInput } from "../inputs/EnumPremiseStatusFieldUpdateOperationsInput";
 import { PremisesOnTimelinesUpdateManyWithoutPremiseInput } from "../inputs/PremisesOnTimelinesUpdateManyWithoutPremiseInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TagsOnPremisesUpdateManyWithoutPremiseInput } from "../inputs/TagsOnPremisesUpdateManyWithoutPremiseInput";
 import { ThreadUpdateManyWithoutPremiseInput } from "../inputs/ThreadUpdateManyWithoutPremiseInput";
-import { UserUpdateOneRequiredWithoutPremiseInput } from "../inputs/UserUpdateOneRequiredWithoutPremiseInput";
+import { UserUpdateOneWithoutPremiseInput } from "../inputs/UserUpdateOneWithoutPremiseInput";
 
 @TypeGraphQL.InputType("PremiseUpdateWithoutVisionInput", {
   isAbstract: true
@@ -40,10 +39,10 @@ export class PremiseUpdateWithoutVisionInput {
   })
   status?: EnumPremiseStatusFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => UserUpdateOneRequiredWithoutPremiseInput, {
+  @TypeGraphQL.Field(_type => UserUpdateOneWithoutPremiseInput, {
     nullable: true
   })
-  author?: UserUpdateOneRequiredWithoutPremiseInput | undefined;
+  author?: UserUpdateOneWithoutPremiseInput | undefined;
 
   @TypeGraphQL.Field(_type => ThreadUpdateManyWithoutPremiseInput, {
     nullable: true
@@ -59,9 +58,4 @@ export class PremiseUpdateWithoutVisionInput {
     nullable: true
   })
   tagsOnPremises?: TagsOnPremisesUpdateManyWithoutPremiseInput | undefined;
-
-  @TypeGraphQL.Field(_type => ActiveVisionOnPremiseUpdateManyWithoutPremiseInput, {
-    nullable: true
-  })
-  activeVisionOnPremise?: ActiveVisionOnPremiseUpdateManyWithoutPremiseInput | undefined;
 }

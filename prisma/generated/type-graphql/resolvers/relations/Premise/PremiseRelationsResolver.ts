@@ -1,12 +1,10 @@
 import * as TypeGraphQL from "type-graphql";
-import { ActiveVisionOnPremise } from "../../../models/ActiveVisionOnPremise";
 import { Premise } from "../../../models/Premise";
 import { PremisesOnTimelines } from "../../../models/PremisesOnTimelines";
 import { TagsOnPremises } from "../../../models/TagsOnPremises";
 import { Thread } from "../../../models/Thread";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
-import { PremiseActiveVisionOnPremiseArgs } from "./args/PremiseActiveVisionOnPremiseArgs";
 import { PremisePremisesOnTimelinesArgs } from "./args/PremisePremisesOnTimelinesArgs";
 import { PremiseTagsOnPremisesArgs } from "./args/PremiseTagsOnPremisesArgs";
 import { PremiseThreadArgs } from "./args/PremiseThreadArgs";
@@ -16,9 +14,9 @@ import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRel
 @TypeGraphQL.Resolver(_of => Premise)
 export class PremiseRelationsResolver {
   @TypeGraphQL.FieldResolver(_type => User, {
-    nullable: false
+    nullable: true
   })
-  async author(@TypeGraphQL.Root() premise: Premise, @TypeGraphQL.Ctx() ctx: any): Promise<User> {
+  async author(@TypeGraphQL.Root() premise: Premise, @TypeGraphQL.Ctx() ctx: any): Promise<User | null> {
     return getPrismaFromContext(ctx).premise.findUnique({
       where: {
         id: premise.id,
@@ -68,16 +66,5 @@ export class PremiseRelationsResolver {
         id: premise.id,
       },
     }).tagsOnPremises(args);
-  }
-
-  @TypeGraphQL.FieldResolver(_type => [ActiveVisionOnPremise], {
-    nullable: false
-  })
-  async activeVisionOnPremise(@TypeGraphQL.Root() premise: Premise, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: PremiseActiveVisionOnPremiseArgs): Promise<ActiveVisionOnPremise[]> {
-    return getPrismaFromContext(ctx).premise.findUnique({
-      where: {
-        id: premise.id,
-      },
-    }).activeVisionOnPremise(args);
   }
 }

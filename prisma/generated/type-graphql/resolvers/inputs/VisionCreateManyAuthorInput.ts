@@ -41,4 +41,9 @@ export class VisionCreateManyAuthorInput {
     nullable: false
   })
   premiseId!: string;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  prevVisionId?: string | undefined;
 }

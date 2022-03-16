@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeWithAggregatesFilter } from "../inputs/DateTimeWithAggregatesFilter";
 import { EnumPremiseStatusWithAggregatesFilter } from "../inputs/EnumPremiseStatusWithAggregatesFilter";
+import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 
 @TypeGraphQL.InputType("PremiseScalarWhereWithAggregatesInput", {
@@ -50,8 +51,8 @@ export class PremiseScalarWhereWithAggregatesInput {
   })
   status?: EnumPremiseStatusWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
     nullable: true
   })
-  authorId?: StringWithAggregatesFilter | undefined;
+  authorId?: StringNullableWithAggregatesFilter | undefined;
 }

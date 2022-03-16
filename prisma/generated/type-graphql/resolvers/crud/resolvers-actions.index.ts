@@ -1,15 +1,3 @@
-export { FindUniqueActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/FindUniqueActiveVisionOnPremiseResolver";
-export { FindFirstActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/FindFirstActiveVisionOnPremiseResolver";
-export { FindManyActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/FindManyActiveVisionOnPremiseResolver";
-export { CreateActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/CreateActiveVisionOnPremiseResolver";
-export { CreateManyActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/CreateManyActiveVisionOnPremiseResolver";
-export { DeleteActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/DeleteActiveVisionOnPremiseResolver";
-export { UpdateActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/UpdateActiveVisionOnPremiseResolver";
-export { DeleteManyActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/DeleteManyActiveVisionOnPremiseResolver";
-export { UpdateManyActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/UpdateManyActiveVisionOnPremiseResolver";
-export { UpsertActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/UpsertActiveVisionOnPremiseResolver";
-export { AggregateActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/AggregateActiveVisionOnPremiseResolver";
-export { GroupByActiveVisionOnPremiseResolver } from "./ActiveVisionOnPremise/GroupByActiveVisionOnPremiseResolver";
 export { FindUniquePremiseResolver } from "./Premise/FindUniquePremiseResolver";
 export { FindFirstPremiseResolver } from "./Premise/FindFirstPremiseResolver";
 export { FindManyPremiseResolver } from "./Premise/FindManyPremiseResolver";

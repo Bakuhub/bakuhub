@@ -2,8 +2,9 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ActiveVisionOnPremiseCreateNestedManyWithoutVisionInput } from "../inputs/ActiveVisionOnPremiseCreateNestedManyWithoutVisionInput";
 import { UserCreateNestedOneWithoutVisionInput } from "../inputs/UserCreateNestedOneWithoutVisionInput";
+import { VisionCreateNestedManyWithoutPrevVisionInput } from "../inputs/VisionCreateNestedManyWithoutPrevVisionInput";
+import { VisionCreateNestedOneWithoutNextVisionInput } from "../inputs/VisionCreateNestedOneWithoutNextVisionInput";
 
 @TypeGraphQL.InputType("VisionCreateWithoutPremiseInput", {
   isAbstract: true
@@ -40,12 +41,17 @@ export class VisionCreateWithoutPremiseInput {
   reference!: string;
 
   @TypeGraphQL.Field(_type => UserCreateNestedOneWithoutVisionInput, {
-    nullable: false
-  })
-  author!: UserCreateNestedOneWithoutVisionInput;
-
-  @TypeGraphQL.Field(_type => ActiveVisionOnPremiseCreateNestedManyWithoutVisionInput, {
     nullable: true
   })
-  activeVisionOnPremise?: ActiveVisionOnPremiseCreateNestedManyWithoutVisionInput | undefined;
+  author?: UserCreateNestedOneWithoutVisionInput | undefined;
+
+  @TypeGraphQL.Field(_type => VisionCreateNestedOneWithoutNextVisionInput, {
+    nullable: true
+  })
+  prevVision?: VisionCreateNestedOneWithoutNextVisionInput | undefined;
+
+  @TypeGraphQL.Field(_type => VisionCreateNestedManyWithoutPrevVisionInput, {
+    nullable: true
+  })
+  nextVision?: VisionCreateNestedManyWithoutPrevVisionInput | undefined;
 }

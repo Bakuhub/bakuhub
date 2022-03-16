@@ -2,7 +2,6 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
-import { ActiveVisionOnPremise } from "../models/ActiveVisionOnPremise";
 import { PremisesOnTimelines } from "../models/PremisesOnTimelines";
 import { TagsOnPremises } from "../models/TagsOnPremises";
 import { Thread } from "../models/Thread";
@@ -40,12 +39,12 @@ export class Premise {
   })
   status!: "RUMOUR" | "UNVERIFIED" | "REFERENCE_PROVIDED" | "VERIFIED" | "MISINFORMATION";
 
-  author?: User;
+  author?: User | null;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  authorId!: string;
+  authorId?: string | null;
 
   vision?: Vision[];
 
@@ -54,8 +53,6 @@ export class Premise {
   premisesOnTimelines?: PremisesOnTimelines[];
 
   tagsOnPremises?: TagsOnPremises[];
-
-  activeVisionOnPremise?: ActiveVisionOnPremise[];
 
   @TypeGraphQL.Field(_type => PremiseCount, {
     nullable: true

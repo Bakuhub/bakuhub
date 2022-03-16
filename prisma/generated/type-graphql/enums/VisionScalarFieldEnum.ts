@@ -8,7 +8,8 @@ export enum VisionScalarFieldEnum {
   createdAt = "createdAt",
   reference = "reference",
   authorId = "authorId",
-  premiseId = "premiseId"
+  premiseId = "premiseId",
+  prevVisionId = "prevVisionId"
 }
 TypeGraphQL.registerEnumType(VisionScalarFieldEnum, {
   name: "VisionScalarFieldEnum",

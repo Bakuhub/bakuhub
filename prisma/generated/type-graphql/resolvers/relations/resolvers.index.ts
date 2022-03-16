@@ -1,4 +1,3 @@
-export { ActiveVisionOnPremiseRelationsResolver } from "./ActiveVisionOnPremise/ActiveVisionOnPremiseRelationsResolver";
 export { PremiseRelationsResolver } from "./Premise/PremiseRelationsResolver";
 export { PremisesOnTimelinesRelationsResolver } from "./PremisesOnTimelines/PremisesOnTimelinesRelationsResolver";
 export { TagRelationsResolver } from "./Tag/TagRelationsResolver";

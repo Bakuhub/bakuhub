@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 
 @TypeGraphQL.InputType("VisionScalarWhereInput", {
   isAbstract: true
@@ -54,13 +55,18 @@ export class VisionScalarWhereInput {
   })
   reference?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  authorId?: StringFilter | undefined;
+  authorId?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
   })
   premiseId?: StringFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  prevVisionId?: StringNullableFilter | undefined;
 }

@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { EnumPremiseStatusFilter } from "../inputs/EnumPremiseStatusFilter";
 import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 
 @TypeGraphQL.InputType("PremiseScalarWhereInput", {
   isAbstract: true
@@ -50,8 +51,8 @@ export class PremiseScalarWhereInput {
   })
   status?: EnumPremiseStatusFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  authorId?: StringFilter | undefined;
+  authorId?: StringNullableFilter | undefined;
 }

@@ -10,5 +10,5 @@ export class VisionCount {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  activeVisionOnPremise!: number;
+  nextVision!: number;
 }

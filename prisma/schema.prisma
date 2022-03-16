@@ -13,32 +13,29 @@ generator typegraphql {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  email     String   @unique
+  id        String     @id @default(uuid())
+  createdAt DateTime   @default(now())
+  email     String     @unique
   name      String?
-  role      Role     @default(USER)
-
-  premise  Premise[]
-  vision   Vision[]
-  timeline Timeline[]
+  role      Role       @default(USER)
+  premise   Premise[]
+  vision    Vision[]
+  timeline  Timeline[]
 }
 
 model Premise {
-  id        String        @id @default(uuid())
-  title     String        @db.VarChar(255)
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
-  status    PremiseStatus
+  id                  String                @id @default(uuid())
+  title               String                @db.VarChar(255)
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  status              PremiseStatus
+  author              User?                 @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId            String?
+  vision              Vision[]
+  thread              Thread[]
+  premisesOnTimelines PremisesOnTimelines[]
+  tagsOnPremises      TagsOnPremises[]
 
-  author   User     @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  authorId String
-  vision   Vision[]
-  thread   Thread[]
-
-  premisesOnTimelines   PremisesOnTimelines[]
-  tagsOnPremises        TagsOnPremises[]
-  activeVisionOnPremise ActiveVisionOnPremise[]
 }
 
 model Vision {
@@ -48,44 +45,32 @@ model Vision {
   description  String
   createdAt    DateTime @default(now())
   reference    String
+  author       User?    @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId     String?
+  premise      Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premiseId    String
 
-  author    User    @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  authorId  String
-  premise   Premise @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  premiseId String
-
-  activeVisionOnPremise ActiveVisionOnPremise[]
-
+  prevVisionId String?
+  prevVision   Vision?  @relation("VisionHistory", fields: [prevVisionId], references: [id])
+  nextVision   Vision[] @relation("VisionHistory")
 }
 
 model Timeline {
-  id          String @id @default(uuid())
-  title       String @db.VarChar(255)
-  description String
-  status      String
-  author      User   @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  authorId    String
-
+  id                  String                @id @default(uuid())
+  title               String                @db.VarChar(255)
+  description         String
+  status              String
+  author              User                  @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId            String
   premisesOnTimelines PremisesOnTimelines[]
   tagsOnTimelines     TagsOnTimelines[]
 }
 
 model Tag {
-  id    Int    @id @default(autoincrement())
-  label String @unique @db.VarChar(255)
-
+  id              Int               @id @default(autoincrement())
+  label           String            @unique @db.VarChar(255)
   tagsOnPremises  TagsOnPremises[]
   tagsOnTimelines TagsOnTimelines[]
-}
-
-model ActiveVisionOnPremise {
-
-  premise   Premise @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  premiseId String  @unique
-  vision    Vision  @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  visionId  String
-
-  @@id([visionId, premiseId])
 }
 
 model TagsOnPremises {

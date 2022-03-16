@@ -2,7 +2,6 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ActiveVisionOnPremiseOrderByRelationAggregateInput } from "../inputs/ActiveVisionOnPremiseOrderByRelationAggregateInput";
 import { PremisesOnTimelinesOrderByRelationAggregateInput } from "../inputs/PremisesOnTimelinesOrderByRelationAggregateInput";
 import { TagsOnPremisesOrderByRelationAggregateInput } from "../inputs/TagsOnPremisesOrderByRelationAggregateInput";
 import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
@@ -68,9 +67,4 @@ export class PremiseOrderByWithRelationInput {
     nullable: true
   })
   tagsOnPremises?: TagsOnPremisesOrderByRelationAggregateInput | undefined;
-
-  @TypeGraphQL.Field(_type => ActiveVisionOnPremiseOrderByRelationAggregateInput, {
-    nullable: true
-  })
-  activeVisionOnPremise?: ActiveVisionOnPremiseOrderByRelationAggregateInput | undefined;
 }

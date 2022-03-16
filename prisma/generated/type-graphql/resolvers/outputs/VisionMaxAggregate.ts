@@ -46,4 +46,9 @@ export class VisionMaxAggregate {
     nullable: true
   })
   premiseId!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  prevVisionId!: string | null;
 }

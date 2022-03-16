@@ -38,12 +38,17 @@ export class VisionCreateManyInput {
   reference!: string;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  authorId!: string;
+  authorId?: string | undefined;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
   premiseId!: string;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  prevVisionId?: string | undefined;
 }

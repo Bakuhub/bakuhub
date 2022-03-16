@@ -2,9 +2,9 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ActiveVisionOnPremiseOrderByRelationAggregateInput } from "../inputs/ActiveVisionOnPremiseOrderByRelationAggregateInput";
 import { PremiseOrderByWithRelationInput } from "../inputs/PremiseOrderByWithRelationInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
+import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("VisionOrderByWithRelationInput", {
@@ -61,8 +61,18 @@ export class VisionOrderByWithRelationInput {
   })
   premiseId?: "asc" | "desc" | undefined;
 
-  @TypeGraphQL.Field(_type => ActiveVisionOnPremiseOrderByRelationAggregateInput, {
+  @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  activeVisionOnPremise?: ActiveVisionOnPremiseOrderByRelationAggregateInput | undefined;
+  prevVisionId?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => VisionOrderByWithRelationInput, {
+    nullable: true
+  })
+  prevVision?: VisionOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => VisionOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  nextVision?: VisionOrderByRelationAggregateInput | undefined;
 }
