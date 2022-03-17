@@ -16,6 +16,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import {Premise} from "../../../prisma/generated/type-graphql";
 import {get} from "lodash";
+import {useRouter} from "next/router";
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -34,6 +35,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 
 function PremiseOverview({premise}: { premise: Premise }) {
+    const router = useRouter();
     const [expanded, setExpanded] = React.useState(false);
     console.info(premise);
     const handleExpandClick = () => {
@@ -44,7 +46,12 @@ function PremiseOverview({premise}: { premise: Premise }) {
             <Card sx={{maxWidth: 345}}>
                 <CardHeader
                         avatar={
-                            <Avatar sx={{bgcolor: red[500]}} aria-label="recipe">
+                            <Avatar
+                                    onClick={() => {
+                                        console.info("-30-2103=-012=-");
+                                        router.push(`/premises/${premise.id}`);
+                                    }}
+                                    sx={{bgcolor: red[500]}} aria-label="recipe">
                                 {get(premise, "author.name[0]", "")}
                             </Avatar>
                         }

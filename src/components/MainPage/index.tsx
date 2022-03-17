@@ -13,10 +13,10 @@ export const MainPage = () => {
         return <div>loading</div>;
     }
     if (error) {
-        return <div>{error}</div>;
+        console.info(error);
+        return <div>{error.toString()}</div>;
     }
     if (data) {
-        console.info(data);
         return <Grid container spacing={1} justifyContent={"center"}>
             <Grid item container justifyContent={"center"} xs={12}>
                 <Typography variant={"h6"}>
@@ -42,13 +42,14 @@ export const MainPage = () => {
             </Grid>
             {
                 data.premises.map(
-                        premise => <Grid key={premise.id} item xs={3}><PremiseOverview premise={premise}/></Grid>
+                        premise => <Grid key={premise.id} item xs={3}
+
+                        ><PremiseOverview premise={premise}/></Grid>
                 )
 
             }
         </Grid>;
     }
-    console.info("--------");
     console.info(data, error, loading);
     return <div>bug</div>;
 };

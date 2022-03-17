@@ -43,7 +43,6 @@ export const CreatePremise = () => {
                 referenceUrl, referenceType, title,
             })
         });
-        console.info(snapshot);
         console.info(snapshot.url);
         const variable = {
             variables:

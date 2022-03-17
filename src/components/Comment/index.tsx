@@ -13,7 +13,6 @@ export const CreateComment = () => {
             },
             body: JSON.stringify({})
         });
-        console.info(responseBody);
     };
     const handleCancel = () => {
         console.info("------------ggg-----------");

@@ -81,8 +81,8 @@ export const Layout: React.FunctionComponent = ({children}) => {
                         >
                             <MenuIcon/>
                         </IconButton>
-                        <Typography variant="h6" noWrap component="div">
-                            Persistent drawer
+                        <Typography variant="h6" onClick={() => router.push("/")} noWrap component="div">
+                            Main page
                         </Typography>
                         <Button onClick={() => router.push("/user/signin")}>
                             Sign in
