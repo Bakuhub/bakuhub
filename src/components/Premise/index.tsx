@@ -38,6 +38,7 @@ function PremiseOverview({premise}: { premise: Premise }) {
     const router = useRouter();
     const [expanded, setExpanded] = React.useState(false);
     console.info(premise);
+    console.info(get(premise, "vision[0].reference", ""));
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
