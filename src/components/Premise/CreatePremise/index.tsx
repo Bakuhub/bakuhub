@@ -33,7 +33,7 @@ export const CreatePremise = () => {
     };
     const submit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const snapshot = await fetchApi("/api/create/premise", {
+        const {snapshot} = await fetchApi("/api/create/premise", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -43,7 +43,8 @@ export const CreatePremise = () => {
                 referenceUrl, referenceType, title,
             })
         });
-
+        console.info(snapshot);
+        console.info(snapshot.url);
         const variable = {
             variables:
                     {

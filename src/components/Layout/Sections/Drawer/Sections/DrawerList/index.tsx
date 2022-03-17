@@ -16,7 +16,13 @@ export const DrawerList = () => {
         text: "create new comment",
         url: "/create/comment",
         icon: AddTaskIcon
-    }];
+    },
+        {
+            text: "create new comment",
+            url: "/overview/premise",
+            icon: AddTaskIcon
+        }
+    ];
     const router = useRouter();
     return <List>
         {DrawerListOptions.map((DrawerListOption, index) => (

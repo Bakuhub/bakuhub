@@ -1,35 +1,32 @@
 import {gql} from "@apollo/client";
 
-export const premisesQuery = gql`
-    query Premise($take: Int, $where: VisionWhereInput) {
-        premises(take: $take) {
-            id
+export const premiseQuery = gql`
+    query Query($where: PremiseWhereUniqueInput!, $visionWhere2: VisionWhereInput) {
+        premise(where: $where) {
             title
+            createdAt
             updatedAt
             status
             author {
                 name
+                role
             }
-            vision(where: $where) {
+            vision(where: $visionWhere2) {
+                title
+                activityDate
                 description
                 createdAt
                 reference
                 authorId
-                activityDate
-                title
-                id
                 nextVision {
                     title
                     activityDate
                     description
                     createdAt
                     reference
-                    authorId
-                    nextVision {
-                        title
-                    }
                 }
             }
         }
     }
+
 `;
