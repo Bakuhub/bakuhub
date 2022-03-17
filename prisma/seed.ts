@@ -12,6 +12,7 @@ async function seed() {
     //         name: "test1user",
     //     }
     // });
+
     const thread = await prisma.thread.create({
         data: {
             title: "I want to reply to Boris Johnson plans Saudi Arabia visit to seek oil supply increase",
@@ -19,9 +20,9 @@ async function seed() {
             description:
                     "MPs voice deep concerns over trip after mass execution by regime and its continuing role in Yemen war",
             reference: "",
-            premise:{
-                connect:{
-              id: "6930b9ec-4512-4e42-aa94-1c4aad3e36f3",
+            premise: {
+                connect: {
+                    id: "6930b9ec-4512-4e42-aa94-1c4aad3e36f3",
                 }
             },
             parentThread: {

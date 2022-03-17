@@ -1,15 +1,20 @@
 import {Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
-import {FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import {ReferenceType} from "../../../constants/ReferenceType";
 import {useRouter} from "next/router";
 import {fetchApi} from "../../../services/fetchApi";
+import {useMutation} from "@apollo/client";
+import {createPremiseMutation} from "../../../gql/mutation/createPremiseMutation";
+import {get} from "lodash";
 
 export const CreatePremise = () => {
     const router = useRouter();
+
+    const [activityDate, setActivityDate] = useState(new Date());
     const [referenceUrl, setReferenceUrl] = useState("");
     const [title, setTitle] = useState("");
     const [referenceType, setReferenceType] = useState("");
-
+    const [createNewPremise, {data}] = useMutation(createPremiseMutation);
     const getReferenceInput = () => {
         switch (referenceType) {
             case ReferenceType.VIDEO:
@@ -26,9 +31,9 @@ export const CreatePremise = () => {
         }
 
     };
-    const createPremise = async (e: FormEvent<HTMLFormElement>) => {
+    const submit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const responseBody = await fetchApi("/api/create/premise", {
+        const snapshot = await fetchApi("/api/create/premise", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -38,10 +43,49 @@ export const CreatePremise = () => {
                 referenceUrl, referenceType, title,
             })
         });
-        console.info(responseBody);
+
+        const variable = {
+            variables:
+                    {
+                        data: {
+                            title,
+                            status: "RUMOUR",
+                            tagsOnPremises: {
+                                create: [{
+                                    tag: {
+                                        connectOrCreate: {
+                                            create: {
+                                                label: "computing",
+                                            },
+                                            where: {
+                                                label: "computing",
+                                            },
+                                        },
+                                    }
+                                }
+                                ]
+                            },
+                            vision: {
+                                create: [{
+                                    title,
+                                    description: "this is cde",
+                                    activityDate,
+                                    reference: snapshot.url || "",
+                                }]
+                            }
+                        }
+                    }
+        };
+        const result = await createNewPremise(variable);
+        console.info(result);
         console.info("-0fe-w0f=-we0=-f0we=");
     };
-    return <Grid component={"form"} onSubmit={createPremise} container spacing={1}>
+    useEffect(
+            () => {
+                console.log(activityDate);
+            }, [activityDate]
+    );
+    return <Grid component={"form"} onSubmit={submit} container spacing={1}>
         <Grid item xs={12}>
             <TextField required fullWidth
                        onChange={({target: {value}}) => setTitle(value)}
@@ -69,7 +113,12 @@ export const CreatePremise = () => {
             </FormControl>
         </Grid>
         <Grid item xs={6}>
-            <TextField fullWidth type={"datetime-local"}/>
+            <TextField onChange={e => {
+                setActivityDate(new Date(get(e, "target.value", "")));
+            }}
+                    // value={activityDate}
+
+                       fullWidth type={"datetime-local"}/>
         </Grid>
         <Grid item xs={12}>
             {getReferenceInput()}

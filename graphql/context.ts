@@ -3,10 +3,12 @@ import prisma from "../src/lib/prisma";
 
 export type Context = {
     prisma: PrismaClient
+    callbackWaitsForEmptyEventLoop: boolean
 }
 
 export async function createContext(): Promise<Context> {
     return {
-        prisma
+        prisma,
+        callbackWaitsForEmptyEventLoop: false
     };
 }

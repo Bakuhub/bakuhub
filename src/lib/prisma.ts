@@ -8,9 +8,11 @@ if (process.env.NODE_ENV==="production") {
 } else {
     // @ts-ignore
     if (!global.prisma) {
+        console.log("renew");
         // @ts-ignore
         global.prisma = new PrismaClient();
     }
+    console.log("---------------------");
     // @ts-ignore
     prisma = global.prisma;
 }
