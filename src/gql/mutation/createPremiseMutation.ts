@@ -12,7 +12,6 @@ export const createPremiseMutation = gql`
             _count {
                 premisesOnTimelines
                 tagsOnPremises
-                thread
                 vision
             }
             vision {

@@ -18,14 +18,14 @@ export class ThreadCreateManyInput {
   title!: string;
 
   @TypeGraphQL.Field(_type => Date, {
-    nullable: false
+    nullable: true
   })
-  activityDate!: Date;
+  activityDate?: Date | undefined;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  description!: string;
+  description?: string | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
@@ -33,14 +33,9 @@ export class ThreadCreateManyInput {
   createdAt?: Date | undefined;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  reference!: string;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  premiseId!: string;
+  reference?: string | undefined;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

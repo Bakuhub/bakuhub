@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { PremisesOnTimelinesOrderByRelationAggregateInput } from "../inputs/PremisesOnTimelinesOrderByRelationAggregateInput";
 import { TagsOnTimelinesOrderByRelationAggregateInput } from "../inputs/TagsOnTimelinesOrderByRelationAggregateInput";
+import { ThreadsOnTimelineOrderByRelationAggregateInput } from "../inputs/ThreadsOnTimelineOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 import { SortOrder } from "../../enums/SortOrder";
 
@@ -50,4 +51,9 @@ export class TimelineOrderByWithRelationInput {
     nullable: true
   })
   tagsOnTimelines?: TagsOnTimelinesOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnTimelineOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  threadsOnTimeline?: ThreadsOnTimelineOrderByRelationAggregateInput | undefined;
 }

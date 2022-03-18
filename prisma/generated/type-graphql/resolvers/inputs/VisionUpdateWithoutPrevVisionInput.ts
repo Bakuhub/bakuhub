@@ -3,8 +3,11 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
+import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
+import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { PremiseUpdateOneRequiredWithoutVisionInput } from "../inputs/PremiseUpdateOneRequiredWithoutVisionInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
+import { ThreadsOnVisionUpdateManyWithoutVisionInput } from "../inputs/ThreadsOnVisionUpdateManyWithoutVisionInput";
 import { UserUpdateOneWithoutVisionInput } from "../inputs/UserUpdateOneWithoutVisionInput";
 import { VisionUpdateManyWithoutPrevVisionInput } from "../inputs/VisionUpdateManyWithoutPrevVisionInput";
 
@@ -22,25 +25,25 @@ export class VisionUpdateWithoutPrevVisionInput {
   })
   title?: StringFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableDateTimeFieldUpdateOperationsInput, {
     nullable: true
   })
-  activityDate?: DateTimeFieldUpdateOperationsInput | undefined;
+  activityDate?: NullableDateTimeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
   })
-  description?: StringFieldUpdateOperationsInput | undefined;
+  description?: NullableStringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
     nullable: true
   })
   createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
   })
-  reference?: StringFieldUpdateOperationsInput | undefined;
+  reference?: NullableStringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => UserUpdateOneWithoutVisionInput, {
     nullable: true
@@ -56,4 +59,9 @@ export class VisionUpdateWithoutPrevVisionInput {
     nullable: true
   })
   nextVision?: VisionUpdateManyWithoutPrevVisionInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnVisionUpdateManyWithoutVisionInput, {
+    nullable: true
+  })
+  threadsOnVision?: ThreadsOnVisionUpdateManyWithoutVisionInput | undefined;
 }

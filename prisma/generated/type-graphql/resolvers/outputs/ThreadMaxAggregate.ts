@@ -40,10 +40,5 @@ export class ThreadMaxAggregate {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  premiseId!: string | null;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: true
-  })
   parentThreadId!: string | null;
 }

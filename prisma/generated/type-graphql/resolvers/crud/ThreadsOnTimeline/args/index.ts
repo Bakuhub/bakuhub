@@ -1,0 +1,12 @@
+export { AggregateThreadsOnTimelineArgs } from "./AggregateThreadsOnTimelineArgs";
+export { CreateManyThreadsOnTimelineArgs } from "./CreateManyThreadsOnTimelineArgs";
+export { CreateThreadsOnTimelineArgs } from "./CreateThreadsOnTimelineArgs";
+export { DeleteManyThreadsOnTimelineArgs } from "./DeleteManyThreadsOnTimelineArgs";
+export { DeleteThreadsOnTimelineArgs } from "./DeleteThreadsOnTimelineArgs";
+export { FindFirstThreadsOnTimelineArgs } from "./FindFirstThreadsOnTimelineArgs";
+export { FindManyThreadsOnTimelineArgs } from "./FindManyThreadsOnTimelineArgs";
+export { FindUniqueThreadsOnTimelineArgs } from "./FindUniqueThreadsOnTimelineArgs";
+export { GroupByThreadsOnTimelineArgs } from "./GroupByThreadsOnTimelineArgs";
+export { UpdateManyThreadsOnTimelineArgs } from "./UpdateManyThreadsOnTimelineArgs";
+export { UpdateThreadsOnTimelineArgs } from "./UpdateThreadsOnTimelineArgs";
+export { UpsertThreadsOnTimelineArgs } from "./UpsertThreadsOnTimelineArgs";

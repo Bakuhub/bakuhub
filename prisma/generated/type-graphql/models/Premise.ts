@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { PremisesOnTimelines } from "../models/PremisesOnTimelines";
 import { TagsOnPremises } from "../models/TagsOnPremises";
-import { Thread } from "../models/Thread";
+import { ThreadsOnPremise } from "../models/ThreadsOnPremise";
 import { User } from "../models/User";
 import { Vision } from "../models/Vision";
 import { PremiseStatus } from "../enums/PremiseStatus";
@@ -48,11 +48,11 @@ export class Premise {
 
   vision?: Vision[];
 
-  thread?: Thread[];
-
   premisesOnTimelines?: PremisesOnTimelines[];
 
   tagsOnPremises?: TagsOnPremises[];
+
+  threadsOnPremise?: ThreadsOnPremise[];
 
   @TypeGraphQL.Field(_type => PremiseCount, {
     nullable: true

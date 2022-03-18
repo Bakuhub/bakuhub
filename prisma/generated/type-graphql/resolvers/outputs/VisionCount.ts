@@ -11,4 +11,9 @@ export class VisionCount {
     nullable: false
   })
   nextVision!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  threadsOnVision!: number;
 }

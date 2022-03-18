@@ -1,4 +1,6 @@
 datasource db {
+  // url      = "file:./dev.db"
+
   url      = env("DATABASE_URL")
   provider = "postgresql"
 }
@@ -32,27 +34,29 @@ model Premise {
   author              User?                 @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId            String?
   vision              Vision[]
-  thread              Thread[]
   premisesOnTimelines PremisesOnTimelines[]
   tagsOnPremises      TagsOnPremises[]
+  threadsOnPremise    ThreadsOnPremise[]
 
 }
 
 model Vision {
-  id           String   @id @default(uuid())
-  title        String   @db.VarChar(255)
-  activityDate DateTime
-  description  String
-  createdAt    DateTime @default(now())
-  reference    String
-  author       User?    @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  id           String    @id @default(uuid())
+  title        String    @db.VarChar(255)
+  activityDate DateTime?
+  description  String?
+  createdAt    DateTime  @default(now())
+  reference    String?
+  author       User?     @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId     String?
-  premise      Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premise      Premise   @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   premiseId    String
 
-  prevVisionId String?
-  prevVision   Vision?  @relation("VisionHistory", fields: [prevVisionId], references: [id])
-  nextVision   Vision[] @relation("VisionHistory")
+  prevVisionId    String?
+  prevVision      Vision?           @relation("VisionHistory", fields: [prevVisionId], references: [id])
+  nextVision      Vision[]          @relation("VisionHistory")
+  threadsOnVision ThreadsOnVision[]
+
 }
 
 model Timeline {
@@ -64,6 +68,8 @@ model Timeline {
   authorId            String
   premisesOnTimelines PremisesOnTimelines[]
   tagsOnTimelines     TagsOnTimelines[]
+  threadsOnTimeline   ThreadsOnTimeline[]
+
 }
 
 model Tag {
@@ -120,17 +126,49 @@ model Snapshot {
 //}
 
 model Thread {
-  id             String   @id @default(uuid())
-  title          String   @db.VarChar(255)
-  activityDate   DateTime
-  description    String
-  createdAt      DateTime @default(now())
-  reference      String
-  premise        Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  premiseId      String
+  id             String    @id @default(uuid())
+  title          String    @db.VarChar(255)
+  activityDate   DateTime?
+  description    String?
+  createdAt      DateTime  @default(now())
+  reference      String?
   parentThreadId String?
-  parentThread   Thread?  @relation("ParentThreadChildThreads", fields: [parentThreadId], references: [id])
-  childThreads   Thread[] @relation("ParentThreadChildThreads")
+  parentThread   Thread?   @relation("ParentThreadChildThreads", fields: [parentThreadId], references: [id])
+  childThreads   Thread[]  @relation("ParentThreadChildThreads")
+
+  threadsOnPremise  ThreadsOnPremise?
+  threadsOnTimeline ThreadsOnTimeline?
+  threadsOnVision   ThreadsOnVision?
+}
+
+model ThreadsOnPremise {
+  thread     Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  threadId   String   @unique
+  premise    Premise  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premiseId  String
+  assignedAt DateTime @default(now())
+
+  @@id([threadId, premiseId])
+}
+
+model ThreadsOnTimeline {
+  thread     Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  threadId   String   @unique
+  timeline   Timeline @relation(fields: [timelineId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  timelineId String
+  assignedAt DateTime @default(now())
+
+  @@id([threadId, timelineId])
+}
+
+model ThreadsOnVision {
+  thread     Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  threadId   String   @unique
+  vision     Vision   @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  visionId   String
+  assignedAt DateTime @default(now())
+
+  @@id([threadId, visionId])
 }
 
 enum PremiseStatus {

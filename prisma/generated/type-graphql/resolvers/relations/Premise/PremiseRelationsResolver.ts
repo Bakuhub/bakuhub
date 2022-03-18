@@ -2,12 +2,12 @@ import * as TypeGraphQL from "type-graphql";
 import { Premise } from "../../../models/Premise";
 import { PremisesOnTimelines } from "../../../models/PremisesOnTimelines";
 import { TagsOnPremises } from "../../../models/TagsOnPremises";
-import { Thread } from "../../../models/Thread";
+import { ThreadsOnPremise } from "../../../models/ThreadsOnPremise";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
 import { PremisePremisesOnTimelinesArgs } from "./args/PremisePremisesOnTimelinesArgs";
 import { PremiseTagsOnPremisesArgs } from "./args/PremiseTagsOnPremisesArgs";
-import { PremiseThreadArgs } from "./args/PremiseThreadArgs";
+import { PremiseThreadsOnPremiseArgs } from "./args/PremiseThreadsOnPremiseArgs";
 import { PremiseVisionArgs } from "./args/PremiseVisionArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
@@ -35,17 +35,6 @@ export class PremiseRelationsResolver {
     }).vision(args);
   }
 
-  @TypeGraphQL.FieldResolver(_type => [Thread], {
-    nullable: false
-  })
-  async thread(@TypeGraphQL.Root() premise: Premise, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: PremiseThreadArgs): Promise<Thread[]> {
-    return getPrismaFromContext(ctx).premise.findUnique({
-      where: {
-        id: premise.id,
-      },
-    }).thread(args);
-  }
-
   @TypeGraphQL.FieldResolver(_type => [PremisesOnTimelines], {
     nullable: false
   })
@@ -66,5 +55,16 @@ export class PremiseRelationsResolver {
         id: premise.id,
       },
     }).tagsOnPremises(args);
+  }
+
+  @TypeGraphQL.FieldResolver(_type => [ThreadsOnPremise], {
+    nullable: false
+  })
+  async threadsOnPremise(@TypeGraphQL.Root() premise: Premise, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: PremiseThreadsOnPremiseArgs): Promise<ThreadsOnPremise[]> {
+    return getPrismaFromContext(ctx).premise.findUnique({
+      where: {
+        id: premise.id,
+      },
+    }).threadsOnPremise(args);
   }
 }

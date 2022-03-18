@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { PremisesOnTimelinesOrderByRelationAggregateInput } from "../inputs/PremisesOnTimelinesOrderByRelationAggregateInput";
 import { TagsOnPremisesOrderByRelationAggregateInput } from "../inputs/TagsOnPremisesOrderByRelationAggregateInput";
-import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
+import { ThreadsOnPremiseOrderByRelationAggregateInput } from "../inputs/ThreadsOnPremiseOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
 import { SortOrder } from "../../enums/SortOrder";
@@ -53,11 +53,6 @@ export class PremiseOrderByWithRelationInput {
   })
   vision?: VisionOrderByRelationAggregateInput | undefined;
 
-  @TypeGraphQL.Field(_type => ThreadOrderByRelationAggregateInput, {
-    nullable: true
-  })
-  thread?: ThreadOrderByRelationAggregateInput | undefined;
-
   @TypeGraphQL.Field(_type => PremisesOnTimelinesOrderByRelationAggregateInput, {
     nullable: true
   })
@@ -67,4 +62,9 @@ export class PremiseOrderByWithRelationInput {
     nullable: true
   })
   tagsOnPremises?: TagsOnPremisesOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseOrderByRelationAggregateInput | undefined;
 }

@@ -20,7 +20,7 @@ export class GroupByThreadArgs {
   @TypeGraphQL.Field(_type => [ThreadScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "reference" | "premiseId" | "parentThreadId">;
+  by!: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "reference" | "parentThreadId">;
 
   @TypeGraphQL.Field(_type => ThreadScalarWhereWithAggregatesInput, {
     nullable: true

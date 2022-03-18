@@ -2,7 +2,9 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
-import { Premise } from "../models/Premise";
+import { ThreadsOnPremise } from "../models/ThreadsOnPremise";
+import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
+import { ThreadsOnVision } from "../models/ThreadsOnVision";
 import { ThreadCount } from "../resolvers/outputs/ThreadCount";
 
 @TypeGraphQL.ObjectType("Thread", {
@@ -20,14 +22,14 @@ export class Thread {
   title!: string;
 
   @TypeGraphQL.Field(_type => Date, {
-    nullable: false
+    nullable: true
   })
-  activityDate!: Date;
+  activityDate?: Date | null;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  description!: string;
+  description?: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -35,16 +37,9 @@ export class Thread {
   createdAt!: Date;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  reference!: string;
-
-  premise?: Premise;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  premiseId!: string;
+  reference?: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true
@@ -54,6 +49,12 @@ export class Thread {
   parentThread?: Thread | null;
 
   childThreads?: Thread[];
+
+  threadsOnPremise?: ThreadsOnPremise | null;
+
+  threadsOnTimeline?: ThreadsOnTimeline | null;
+
+  threadsOnVision?: ThreadsOnVision | null;
 
   @TypeGraphQL.Field(_type => ThreadCount, {
     nullable: true

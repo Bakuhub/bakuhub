@@ -21,14 +21,14 @@ export class VisionGroupBy {
   title!: string;
 
   @TypeGraphQL.Field(_type => Date, {
-    nullable: false
+    nullable: true
   })
-  activityDate!: Date;
+  activityDate!: Date | null;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  description!: string;
+  description!: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -36,9 +36,9 @@ export class VisionGroupBy {
   createdAt!: Date;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  reference!: string;
+  reference!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

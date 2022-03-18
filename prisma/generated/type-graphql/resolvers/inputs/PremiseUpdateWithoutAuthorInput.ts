@@ -7,7 +7,7 @@ import { EnumPremiseStatusFieldUpdateOperationsInput } from "../inputs/EnumPremi
 import { PremisesOnTimelinesUpdateManyWithoutPremiseInput } from "../inputs/PremisesOnTimelinesUpdateManyWithoutPremiseInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TagsOnPremisesUpdateManyWithoutPremiseInput } from "../inputs/TagsOnPremisesUpdateManyWithoutPremiseInput";
-import { ThreadUpdateManyWithoutPremiseInput } from "../inputs/ThreadUpdateManyWithoutPremiseInput";
+import { ThreadsOnPremiseUpdateManyWithoutPremiseInput } from "../inputs/ThreadsOnPremiseUpdateManyWithoutPremiseInput";
 import { VisionUpdateManyWithoutPremiseInput } from "../inputs/VisionUpdateManyWithoutPremiseInput";
 
 @TypeGraphQL.InputType("PremiseUpdateWithoutAuthorInput", {
@@ -44,11 +44,6 @@ export class PremiseUpdateWithoutAuthorInput {
   })
   vision?: VisionUpdateManyWithoutPremiseInput | undefined;
 
-  @TypeGraphQL.Field(_type => ThreadUpdateManyWithoutPremiseInput, {
-    nullable: true
-  })
-  thread?: ThreadUpdateManyWithoutPremiseInput | undefined;
-
   @TypeGraphQL.Field(_type => PremisesOnTimelinesUpdateManyWithoutPremiseInput, {
     nullable: true
   })
@@ -58,4 +53,9 @@ export class PremiseUpdateWithoutAuthorInput {
     nullable: true
   })
   tagsOnPremises?: TagsOnPremisesUpdateManyWithoutPremiseInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseUpdateManyWithoutPremiseInput, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseUpdateManyWithoutPremiseInput | undefined;
 }

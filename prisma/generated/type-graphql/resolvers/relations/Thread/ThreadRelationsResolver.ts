@@ -1,22 +1,13 @@
 import * as TypeGraphQL from "type-graphql";
-import { Premise } from "../../../models/Premise";
 import { Thread } from "../../../models/Thread";
+import { ThreadsOnPremise } from "../../../models/ThreadsOnPremise";
+import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
+import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
 import { ThreadChildThreadsArgs } from "./args/ThreadChildThreadsArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => Thread)
 export class ThreadRelationsResolver {
-  @TypeGraphQL.FieldResolver(_type => Premise, {
-    nullable: false
-  })
-  async premise(@TypeGraphQL.Root() thread: Thread, @TypeGraphQL.Ctx() ctx: any): Promise<Premise> {
-    return getPrismaFromContext(ctx).thread.findUnique({
-      where: {
-        id: thread.id,
-      },
-    }).premise({});
-  }
-
   @TypeGraphQL.FieldResolver(_type => Thread, {
     nullable: true
   })
@@ -37,5 +28,38 @@ export class ThreadRelationsResolver {
         id: thread.id,
       },
     }).childThreads(args);
+  }
+
+  @TypeGraphQL.FieldResolver(_type => ThreadsOnPremise, {
+    nullable: true
+  })
+  async threadsOnPremise(@TypeGraphQL.Root() thread: Thread, @TypeGraphQL.Ctx() ctx: any): Promise<ThreadsOnPremise | null> {
+    return getPrismaFromContext(ctx).thread.findUnique({
+      where: {
+        id: thread.id,
+      },
+    }).threadsOnPremise({});
+  }
+
+  @TypeGraphQL.FieldResolver(_type => ThreadsOnTimeline, {
+    nullable: true
+  })
+  async threadsOnTimeline(@TypeGraphQL.Root() thread: Thread, @TypeGraphQL.Ctx() ctx: any): Promise<ThreadsOnTimeline | null> {
+    return getPrismaFromContext(ctx).thread.findUnique({
+      where: {
+        id: thread.id,
+      },
+    }).threadsOnTimeline({});
+  }
+
+  @TypeGraphQL.FieldResolver(_type => ThreadsOnVision, {
+    nullable: true
+  })
+  async threadsOnVision(@TypeGraphQL.Root() thread: Thread, @TypeGraphQL.Ctx() ctx: any): Promise<ThreadsOnVision | null> {
+    return getPrismaFromContext(ctx).thread.findUnique({
+      where: {
+        id: thread.id,
+      },
+    }).threadsOnVision({});
   }
 }

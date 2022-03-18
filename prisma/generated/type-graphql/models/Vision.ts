@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { Premise } from "../models/Premise";
+import { ThreadsOnVision } from "../models/ThreadsOnVision";
 import { User } from "../models/User";
 import { VisionCount } from "../resolvers/outputs/VisionCount";
 
@@ -21,14 +22,14 @@ export class Vision {
   title!: string;
 
   @TypeGraphQL.Field(_type => Date, {
-    nullable: false
+    nullable: true
   })
-  activityDate!: Date;
+  activityDate?: Date | null;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  description!: string;
+  description?: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -36,9 +37,9 @@ export class Vision {
   createdAt!: Date;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  reference!: string;
+  reference?: string | null;
 
   author?: User | null;
 
@@ -62,6 +63,8 @@ export class Vision {
   prevVision?: Vision | null;
 
   nextVision?: Vision[];
+
+  threadsOnVision?: ThreadsOnVision[];
 
   @TypeGraphQL.Field(_type => VisionCount, {
     nullable: true

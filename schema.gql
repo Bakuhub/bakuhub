@@ -55,6 +55,24 @@ type AggregateThread {
   _min: ThreadMinAggregate
 }
 
+type AggregateThreadsOnPremise {
+  _count: ThreadsOnPremiseCountAggregate
+  _max: ThreadsOnPremiseMaxAggregate
+  _min: ThreadsOnPremiseMinAggregate
+}
+
+type AggregateThreadsOnTimeline {
+  _count: ThreadsOnTimelineCountAggregate
+  _max: ThreadsOnTimelineMaxAggregate
+  _min: ThreadsOnTimelineMinAggregate
+}
+
+type AggregateThreadsOnVision {
+  _count: ThreadsOnVisionCountAggregate
+  _max: ThreadsOnVisionMaxAggregate
+  _min: ThreadsOnVisionMinAggregate
+}
+
 type AggregateTimeline {
   _count: TimelineCountAggregate
   _max: TimelineMaxAggregate
@@ -184,6 +202,9 @@ type Mutation {
   createManyTagsOnPremises(data: [TagsOnPremisesCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyTagsOnTimelines(data: [TagsOnTimelinesCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyThread(data: [ThreadCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyThreadsOnPremise(data: [ThreadsOnPremiseCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyThreadsOnTimeline(data: [ThreadsOnTimelineCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyThreadsOnVision(data: [ThreadsOnVisionCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyTimeline(data: [TimelineCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyUser(data: [UserCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyVision(data: [VisionCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
@@ -194,6 +215,9 @@ type Mutation {
   createTagsOnPremises(data: TagsOnPremisesCreateInput!): TagsOnPremises!
   createTagsOnTimelines(data: TagsOnTimelinesCreateInput!): TagsOnTimelines!
   createThread(data: ThreadCreateInput!): Thread!
+  createThreadsOnPremise(data: ThreadsOnPremiseCreateInput!): ThreadsOnPremise!
+  createThreadsOnTimeline(data: ThreadsOnTimelineCreateInput!): ThreadsOnTimeline!
+  createThreadsOnVision(data: ThreadsOnVisionCreateInput!): ThreadsOnVision!
   createTimeline(data: TimelineCreateInput!): Timeline!
   createUser(data: UserCreateInput!): User!
   createVision(data: VisionCreateInput!): Vision!
@@ -204,6 +228,9 @@ type Mutation {
   deleteManyTagsOnPremises(where: TagsOnPremisesWhereInput): AffectedRowsOutput!
   deleteManyTagsOnTimelines(where: TagsOnTimelinesWhereInput): AffectedRowsOutput!
   deleteManyThread(where: ThreadWhereInput): AffectedRowsOutput!
+  deleteManyThreadsOnPremise(where: ThreadsOnPremiseWhereInput): AffectedRowsOutput!
+  deleteManyThreadsOnTimeline(where: ThreadsOnTimelineWhereInput): AffectedRowsOutput!
+  deleteManyThreadsOnVision(where: ThreadsOnVisionWhereInput): AffectedRowsOutput!
   deleteManyTimeline(where: TimelineWhereInput): AffectedRowsOutput!
   deleteManyUser(where: UserWhereInput): AffectedRowsOutput!
   deleteManyVision(where: VisionWhereInput): AffectedRowsOutput!
@@ -214,6 +241,9 @@ type Mutation {
   deleteTagsOnPremises(where: TagsOnPremisesWhereUniqueInput!): TagsOnPremises
   deleteTagsOnTimelines(where: TagsOnTimelinesWhereUniqueInput!): TagsOnTimelines
   deleteThread(where: ThreadWhereUniqueInput!): Thread
+  deleteThreadsOnPremise(where: ThreadsOnPremiseWhereUniqueInput!): ThreadsOnPremise
+  deleteThreadsOnTimeline(where: ThreadsOnTimelineWhereUniqueInput!): ThreadsOnTimeline
+  deleteThreadsOnVision(where: ThreadsOnVisionWhereUniqueInput!): ThreadsOnVision
   deleteTimeline(where: TimelineWhereUniqueInput!): Timeline
   deleteUser(where: UserWhereUniqueInput!): User
   deleteVision(where: VisionWhereUniqueInput!): Vision
@@ -224,6 +254,9 @@ type Mutation {
   updateManyTagsOnPremises(data: TagsOnPremisesUpdateManyMutationInput!, where: TagsOnPremisesWhereInput): AffectedRowsOutput!
   updateManyTagsOnTimelines(data: TagsOnTimelinesUpdateManyMutationInput!, where: TagsOnTimelinesWhereInput): AffectedRowsOutput!
   updateManyThread(data: ThreadUpdateManyMutationInput!, where: ThreadWhereInput): AffectedRowsOutput!
+  updateManyThreadsOnPremise(data: ThreadsOnPremiseUpdateManyMutationInput!, where: ThreadsOnPremiseWhereInput): AffectedRowsOutput!
+  updateManyThreadsOnTimeline(data: ThreadsOnTimelineUpdateManyMutationInput!, where: ThreadsOnTimelineWhereInput): AffectedRowsOutput!
+  updateManyThreadsOnVision(data: ThreadsOnVisionUpdateManyMutationInput!, where: ThreadsOnVisionWhereInput): AffectedRowsOutput!
   updateManyTimeline(data: TimelineUpdateManyMutationInput!, where: TimelineWhereInput): AffectedRowsOutput!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): AffectedRowsOutput!
   updateManyVision(data: VisionUpdateManyMutationInput!, where: VisionWhereInput): AffectedRowsOutput!
@@ -234,6 +267,9 @@ type Mutation {
   updateTagsOnPremises(data: TagsOnPremisesUpdateInput!, where: TagsOnPremisesWhereUniqueInput!): TagsOnPremises
   updateTagsOnTimelines(data: TagsOnTimelinesUpdateInput!, where: TagsOnTimelinesWhereUniqueInput!): TagsOnTimelines
   updateThread(data: ThreadUpdateInput!, where: ThreadWhereUniqueInput!): Thread
+  updateThreadsOnPremise(data: ThreadsOnPremiseUpdateInput!, where: ThreadsOnPremiseWhereUniqueInput!): ThreadsOnPremise
+  updateThreadsOnTimeline(data: ThreadsOnTimelineUpdateInput!, where: ThreadsOnTimelineWhereUniqueInput!): ThreadsOnTimeline
+  updateThreadsOnVision(data: ThreadsOnVisionUpdateInput!, where: ThreadsOnVisionWhereUniqueInput!): ThreadsOnVision
   updateTimeline(data: TimelineUpdateInput!, where: TimelineWhereUniqueInput!): Timeline
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateVision(data: VisionUpdateInput!, where: VisionWhereUniqueInput!): Vision
@@ -244,6 +280,9 @@ type Mutation {
   upsertTagsOnPremises(create: TagsOnPremisesCreateInput!, update: TagsOnPremisesUpdateInput!, where: TagsOnPremisesWhereUniqueInput!): TagsOnPremises!
   upsertTagsOnTimelines(create: TagsOnTimelinesCreateInput!, update: TagsOnTimelinesUpdateInput!, where: TagsOnTimelinesWhereUniqueInput!): TagsOnTimelines!
   upsertThread(create: ThreadCreateInput!, update: ThreadUpdateInput!, where: ThreadWhereUniqueInput!): Thread!
+  upsertThreadsOnPremise(create: ThreadsOnPremiseCreateInput!, update: ThreadsOnPremiseUpdateInput!, where: ThreadsOnPremiseWhereUniqueInput!): ThreadsOnPremise!
+  upsertThreadsOnTimeline(create: ThreadsOnTimelineCreateInput!, update: ThreadsOnTimelineUpdateInput!, where: ThreadsOnTimelineWhereUniqueInput!): ThreadsOnTimeline!
+  upsertThreadsOnVision(create: ThreadsOnVisionCreateInput!, update: ThreadsOnVisionUpdateInput!, where: ThreadsOnVisionWhereUniqueInput!): ThreadsOnVision!
   upsertTimeline(create: TimelineCreateInput!, update: TimelineUpdateInput!, where: TimelineWhereUniqueInput!): Timeline!
   upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   upsertVision(create: VisionCreateInput!, update: VisionUpdateInput!, where: VisionWhereUniqueInput!): Vision!
@@ -432,7 +471,7 @@ type Premise {
   premisesOnTimelines(cursor: PremisesOnTimelinesWhereUniqueInput, distinct: [PremisesOnTimelinesScalarFieldEnum!], orderBy: [PremisesOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: PremisesOnTimelinesWhereInput): [PremisesOnTimelines!]!
   status: PremiseStatus!
   tagsOnPremises(cursor: TagsOnPremisesWhereUniqueInput, distinct: [TagsOnPremisesScalarFieldEnum!], orderBy: [TagsOnPremisesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnPremisesWhereInput): [TagsOnPremises!]!
-  thread(cursor: ThreadWhereUniqueInput, distinct: [ThreadScalarFieldEnum!], orderBy: [ThreadOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadWhereInput): [Thread!]!
+  threadsOnPremise(cursor: ThreadsOnPremiseWhereUniqueInput, distinct: [ThreadsOnPremiseScalarFieldEnum!], orderBy: [ThreadsOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnPremiseWhereInput): [ThreadsOnPremise!]!
   title: String!
   updatedAt: DateTime!
   vision(cursor: VisionWhereUniqueInput, distinct: [VisionScalarFieldEnum!], orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): [Vision!]!
@@ -441,7 +480,7 @@ type Premise {
 type PremiseCount {
   premisesOnTimelines: Int!
   tagsOnPremises: Int!
-  thread: Int!
+  threadsOnPremise: Int!
   vision: Int!
 }
 
@@ -471,7 +510,7 @@ input PremiseCreateInput {
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
   status: PremiseStatus!
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
-  thread: ThreadCreateNestedManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
@@ -518,10 +557,10 @@ input PremiseCreateNestedOneWithoutTagsOnPremisesInput {
   create: PremiseCreateWithoutTagsOnPremisesInput
 }
 
-input PremiseCreateNestedOneWithoutThreadInput {
+input PremiseCreateNestedOneWithoutThreadsOnPremiseInput {
   connect: PremiseWhereUniqueInput
-  connectOrCreate: PremiseCreateOrConnectWithoutThreadInput
-  create: PremiseCreateWithoutThreadInput
+  connectOrCreate: PremiseCreateOrConnectWithoutThreadsOnPremiseInput
+  create: PremiseCreateWithoutThreadsOnPremiseInput
 }
 
 input PremiseCreateNestedOneWithoutVisionInput {
@@ -545,8 +584,8 @@ input PremiseCreateOrConnectWithoutTagsOnPremisesInput {
   where: PremiseWhereUniqueInput!
 }
 
-input PremiseCreateOrConnectWithoutThreadInput {
-  create: PremiseCreateWithoutThreadInput!
+input PremiseCreateOrConnectWithoutThreadsOnPremiseInput {
+  create: PremiseCreateWithoutThreadsOnPremiseInput!
   where: PremiseWhereUniqueInput!
 }
 
@@ -561,7 +600,7 @@ input PremiseCreateWithoutAuthorInput {
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
   status: PremiseStatus!
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
-  thread: ThreadCreateNestedManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
@@ -573,7 +612,7 @@ input PremiseCreateWithoutPremisesOnTimelinesInput {
   id: String
   status: PremiseStatus!
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
-  thread: ThreadCreateNestedManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
@@ -585,13 +624,13 @@ input PremiseCreateWithoutTagsOnPremisesInput {
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
   status: PremiseStatus!
-  thread: ThreadCreateNestedManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
 }
 
-input PremiseCreateWithoutThreadInput {
+input PremiseCreateWithoutThreadsOnPremiseInput {
   author: UserCreateNestedOneWithoutPremiseInput
   createdAt: DateTime
   id: String
@@ -610,7 +649,7 @@ input PremiseCreateWithoutVisionInput {
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
   status: PremiseStatus!
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
-  thread: ThreadCreateNestedManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
   title: String!
   updatedAt: DateTime
 }
@@ -693,7 +732,7 @@ input PremiseOrderByWithRelationInput {
   premisesOnTimelines: PremisesOnTimelinesOrderByRelationAggregateInput
   status: SortOrder
   tagsOnPremises: TagsOnPremisesOrderByRelationAggregateInput
-  thread: ThreadOrderByRelationAggregateInput
+  threadsOnPremise: ThreadsOnPremiseOrderByRelationAggregateInput
   title: SortOrder
   updatedAt: SortOrder
   vision: VisionOrderByRelationAggregateInput
@@ -752,7 +791,7 @@ input PremiseUpdateInput {
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
   status: EnumPremiseStatusFieldUpdateOperationsInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
-  thread: ThreadUpdateManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
@@ -801,12 +840,12 @@ input PremiseUpdateOneRequiredWithoutTagsOnPremisesInput {
   upsert: PremiseUpsertWithoutTagsOnPremisesInput
 }
 
-input PremiseUpdateOneRequiredWithoutThreadInput {
+input PremiseUpdateOneRequiredWithoutThreadsOnPremiseInput {
   connect: PremiseWhereUniqueInput
-  connectOrCreate: PremiseCreateOrConnectWithoutThreadInput
-  create: PremiseCreateWithoutThreadInput
-  update: PremiseUpdateWithoutThreadInput
-  upsert: PremiseUpsertWithoutThreadInput
+  connectOrCreate: PremiseCreateOrConnectWithoutThreadsOnPremiseInput
+  create: PremiseCreateWithoutThreadsOnPremiseInput
+  update: PremiseUpdateWithoutThreadsOnPremiseInput
+  upsert: PremiseUpsertWithoutThreadsOnPremiseInput
 }
 
 input PremiseUpdateOneRequiredWithoutVisionInput {
@@ -828,7 +867,7 @@ input PremiseUpdateWithoutAuthorInput {
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
   status: EnumPremiseStatusFieldUpdateOperationsInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
-  thread: ThreadUpdateManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
@@ -840,7 +879,7 @@ input PremiseUpdateWithoutPremisesOnTimelinesInput {
   id: StringFieldUpdateOperationsInput
   status: EnumPremiseStatusFieldUpdateOperationsInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
-  thread: ThreadUpdateManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
@@ -852,13 +891,13 @@ input PremiseUpdateWithoutTagsOnPremisesInput {
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
   status: EnumPremiseStatusFieldUpdateOperationsInput
-  thread: ThreadUpdateManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
 }
 
-input PremiseUpdateWithoutThreadInput {
+input PremiseUpdateWithoutThreadsOnPremiseInput {
   author: UserUpdateOneWithoutPremiseInput
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
@@ -877,7 +916,7 @@ input PremiseUpdateWithoutVisionInput {
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
   status: EnumPremiseStatusFieldUpdateOperationsInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
-  thread: ThreadUpdateManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -898,9 +937,9 @@ input PremiseUpsertWithoutTagsOnPremisesInput {
   update: PremiseUpdateWithoutTagsOnPremisesInput!
 }
 
-input PremiseUpsertWithoutThreadInput {
-  create: PremiseCreateWithoutThreadInput!
-  update: PremiseUpdateWithoutThreadInput!
+input PremiseUpsertWithoutThreadsOnPremiseInput {
+  create: PremiseCreateWithoutThreadsOnPremiseInput!
+  update: PremiseUpdateWithoutThreadsOnPremiseInput!
 }
 
 input PremiseUpsertWithoutVisionInput {
@@ -919,7 +958,7 @@ input PremiseWhereInput {
   premisesOnTimelines: PremisesOnTimelinesListRelationFilter
   status: EnumPremiseStatusFilter
   tagsOnPremises: TagsOnPremisesListRelationFilter
-  thread: ThreadListRelationFilter
+  threadsOnPremise: ThreadsOnPremiseListRelationFilter
   title: StringFilter
   updatedAt: DateTimeFilter
   vision: VisionListRelationFilter
@@ -1208,6 +1247,9 @@ type Query {
   aggregateTagsOnPremises(cursor: TagsOnPremisesWhereUniqueInput, orderBy: [TagsOnPremisesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnPremisesWhereInput): AggregateTagsOnPremises!
   aggregateTagsOnTimelines(cursor: TagsOnTimelinesWhereUniqueInput, orderBy: [TagsOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnTimelinesWhereInput): AggregateTagsOnTimelines!
   aggregateThread(cursor: ThreadWhereUniqueInput, orderBy: [ThreadOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadWhereInput): AggregateThread!
+  aggregateThreadsOnPremise(cursor: ThreadsOnPremiseWhereUniqueInput, orderBy: [ThreadsOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnPremiseWhereInput): AggregateThreadsOnPremise!
+  aggregateThreadsOnTimeline(cursor: ThreadsOnTimelineWhereUniqueInput, orderBy: [ThreadsOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnTimelineWhereInput): AggregateThreadsOnTimeline!
+  aggregateThreadsOnVision(cursor: ThreadsOnVisionWhereUniqueInput, orderBy: [ThreadsOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnVisionWhereInput): AggregateThreadsOnVision!
   aggregateTimeline(cursor: TimelineWhereUniqueInput, orderBy: [TimelineOrderByWithRelationInput!], skip: Int, take: Int, where: TimelineWhereInput): AggregateTimeline!
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): AggregateUser!
   aggregateVision(cursor: VisionWhereUniqueInput, orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): AggregateVision!
@@ -1218,6 +1260,9 @@ type Query {
   findFirstTagsOnPremises(cursor: TagsOnPremisesWhereUniqueInput, distinct: [TagsOnPremisesScalarFieldEnum!], orderBy: [TagsOnPremisesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnPremisesWhereInput): TagsOnPremises
   findFirstTagsOnTimelines(cursor: TagsOnTimelinesWhereUniqueInput, distinct: [TagsOnTimelinesScalarFieldEnum!], orderBy: [TagsOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnTimelinesWhereInput): TagsOnTimelines
   findFirstThread(cursor: ThreadWhereUniqueInput, distinct: [ThreadScalarFieldEnum!], orderBy: [ThreadOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadWhereInput): Thread
+  findFirstThreadsOnPremise(cursor: ThreadsOnPremiseWhereUniqueInput, distinct: [ThreadsOnPremiseScalarFieldEnum!], orderBy: [ThreadsOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnPremiseWhereInput): ThreadsOnPremise
+  findFirstThreadsOnTimeline(cursor: ThreadsOnTimelineWhereUniqueInput, distinct: [ThreadsOnTimelineScalarFieldEnum!], orderBy: [ThreadsOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnTimelineWhereInput): ThreadsOnTimeline
+  findFirstThreadsOnVision(cursor: ThreadsOnVisionWhereUniqueInput, distinct: [ThreadsOnVisionScalarFieldEnum!], orderBy: [ThreadsOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnVisionWhereInput): ThreadsOnVision
   findFirstTimeline(cursor: TimelineWhereUniqueInput, distinct: [TimelineScalarFieldEnum!], orderBy: [TimelineOrderByWithRelationInput!], skip: Int, take: Int, where: TimelineWhereInput): Timeline
   findFirstUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum!], orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): User
   findFirstVision(cursor: VisionWhereUniqueInput, distinct: [VisionScalarFieldEnum!], orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): Vision
@@ -1234,6 +1279,9 @@ type Query {
   groupByTagsOnPremises(by: [TagsOnPremisesScalarFieldEnum!]!, having: TagsOnPremisesScalarWhereWithAggregatesInput, orderBy: [TagsOnPremisesOrderByWithAggregationInput!], skip: Int, take: Int, where: TagsOnPremisesWhereInput): [TagsOnPremisesGroupBy!]!
   groupByTagsOnTimelines(by: [TagsOnTimelinesScalarFieldEnum!]!, having: TagsOnTimelinesScalarWhereWithAggregatesInput, orderBy: [TagsOnTimelinesOrderByWithAggregationInput!], skip: Int, take: Int, where: TagsOnTimelinesWhereInput): [TagsOnTimelinesGroupBy!]!
   groupByThread(by: [ThreadScalarFieldEnum!]!, having: ThreadScalarWhereWithAggregatesInput, orderBy: [ThreadOrderByWithAggregationInput!], skip: Int, take: Int, where: ThreadWhereInput): [ThreadGroupBy!]!
+  groupByThreadsOnPremise(by: [ThreadsOnPremiseScalarFieldEnum!]!, having: ThreadsOnPremiseScalarWhereWithAggregatesInput, orderBy: [ThreadsOnPremiseOrderByWithAggregationInput!], skip: Int, take: Int, where: ThreadsOnPremiseWhereInput): [ThreadsOnPremiseGroupBy!]!
+  groupByThreadsOnTimeline(by: [ThreadsOnTimelineScalarFieldEnum!]!, having: ThreadsOnTimelineScalarWhereWithAggregatesInput, orderBy: [ThreadsOnTimelineOrderByWithAggregationInput!], skip: Int, take: Int, where: ThreadsOnTimelineWhereInput): [ThreadsOnTimelineGroupBy!]!
+  groupByThreadsOnVision(by: [ThreadsOnVisionScalarFieldEnum!]!, having: ThreadsOnVisionScalarWhereWithAggregatesInput, orderBy: [ThreadsOnVisionOrderByWithAggregationInput!], skip: Int, take: Int, where: ThreadsOnVisionWhereInput): [ThreadsOnVisionGroupBy!]!
   groupByTimeline(by: [TimelineScalarFieldEnum!]!, having: TimelineScalarWhereWithAggregatesInput, orderBy: [TimelineOrderByWithAggregationInput!], skip: Int, take: Int, where: TimelineWhereInput): [TimelineGroupBy!]!
   groupByUser(by: [UserScalarFieldEnum!]!, having: UserScalarWhereWithAggregatesInput, orderBy: [UserOrderByWithAggregationInput!], skip: Int, take: Int, where: UserWhereInput): [UserGroupBy!]!
   groupByVision(by: [VisionScalarFieldEnum!]!, having: VisionScalarWhereWithAggregatesInput, orderBy: [VisionOrderByWithAggregationInput!], skip: Int, take: Int, where: VisionWhereInput): [VisionGroupBy!]!
@@ -1245,6 +1293,12 @@ type Query {
   tags(cursor: TagWhereUniqueInput, distinct: [TagScalarFieldEnum!], orderBy: [TagOrderByWithRelationInput!], skip: Int, take: Int, where: TagWhereInput): [Tag!]!
   thread(where: ThreadWhereUniqueInput!): Thread
   threads(cursor: ThreadWhereUniqueInput, distinct: [ThreadScalarFieldEnum!], orderBy: [ThreadOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadWhereInput): [Thread!]!
+  threadsOnPremise(where: ThreadsOnPremiseWhereUniqueInput!): ThreadsOnPremise
+  threadsOnPremises(cursor: ThreadsOnPremiseWhereUniqueInput, distinct: [ThreadsOnPremiseScalarFieldEnum!], orderBy: [ThreadsOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnPremiseWhereInput): [ThreadsOnPremise!]!
+  threadsOnTimeline(where: ThreadsOnTimelineWhereUniqueInput!): ThreadsOnTimeline
+  threadsOnTimelines(cursor: ThreadsOnTimelineWhereUniqueInput, distinct: [ThreadsOnTimelineScalarFieldEnum!], orderBy: [ThreadsOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnTimelineWhereInput): [ThreadsOnTimeline!]!
+  threadsOnVision(where: ThreadsOnVisionWhereUniqueInput!): ThreadsOnVision
+  threadsOnVisions(cursor: ThreadsOnVisionWhereUniqueInput, distinct: [ThreadsOnVisionScalarFieldEnum!], orderBy: [ThreadsOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnVisionWhereInput): [ThreadsOnVision!]!
   timeline(where: TimelineWhereUniqueInput!): Timeline
   timelines(cursor: TimelineWhereUniqueInput, distinct: [TimelineScalarFieldEnum!], orderBy: [TimelineOrderByWithRelationInput!], skip: Int, take: Int, where: TimelineWhereInput): [Timeline!]!
   user(where: UserWhereUniqueInput!): User
@@ -2308,9 +2362,10 @@ type Thread {
   id: String!
   parentThread: Thread
   parentThreadId: String
-  premise: Premise!
-  premiseId: String!
   reference: String!
+  threadsOnPremise: ThreadsOnPremise
+  threadsOnTimeline: ThreadsOnTimeline
+  threadsOnVision: ThreadsOnVision
   title: String!
 }
 
@@ -2325,7 +2380,6 @@ type ThreadCountAggregate {
   description: Int!
   id: Int!
   parentThreadId: Int!
-  premiseId: Int!
   reference: Int!
   title: Int!
 }
@@ -2336,7 +2390,6 @@ input ThreadCountOrderByAggregateInput {
   description: SortOrder
   id: SortOrder
   parentThreadId: SortOrder
-  premiseId: SortOrder
   reference: SortOrder
   title: SortOrder
 }
@@ -2348,8 +2401,10 @@ input ThreadCreateInput {
   description: String!
   id: String
   parentThread: ThreadCreateNestedOneWithoutChildThreadsInput
-  premise: PremiseCreateNestedOneWithoutThreadInput!
   reference: String!
+  threadsOnPremise: ThreadsOnPremiseCreateNestedOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
 }
 
@@ -2359,7 +2414,6 @@ input ThreadCreateManyInput {
   description: String!
   id: String
   parentThreadId: String
-  premiseId: String!
   reference: String!
   title: String!
 }
@@ -2369,28 +2423,12 @@ input ThreadCreateManyParentThreadInput {
   createdAt: DateTime
   description: String!
   id: String
-  premiseId: String!
   reference: String!
   title: String!
 }
 
 input ThreadCreateManyParentThreadInputEnvelope {
   data: [ThreadCreateManyParentThreadInput!]!
-  skipDuplicates: Boolean
-}
-
-input ThreadCreateManyPremiseInput {
-  activityDate: DateTime!
-  createdAt: DateTime
-  description: String!
-  id: String
-  parentThreadId: String
-  reference: String!
-  title: String!
-}
-
-input ThreadCreateManyPremiseInputEnvelope {
-  data: [ThreadCreateManyPremiseInput!]!
   skipDuplicates: Boolean
 }
 
@@ -2401,17 +2439,28 @@ input ThreadCreateNestedManyWithoutParentThreadInput {
   createMany: ThreadCreateManyParentThreadInputEnvelope
 }
 
-input ThreadCreateNestedManyWithoutPremiseInput {
-  connect: [ThreadWhereUniqueInput!]
-  connectOrCreate: [ThreadCreateOrConnectWithoutPremiseInput!]
-  create: [ThreadCreateWithoutPremiseInput!]
-  createMany: ThreadCreateManyPremiseInputEnvelope
-}
-
 input ThreadCreateNestedOneWithoutChildThreadsInput {
   connect: ThreadWhereUniqueInput
   connectOrCreate: ThreadCreateOrConnectWithoutChildThreadsInput
   create: ThreadCreateWithoutChildThreadsInput
+}
+
+input ThreadCreateNestedOneWithoutThreadsOnPremiseInput {
+  connect: ThreadWhereUniqueInput
+  connectOrCreate: ThreadCreateOrConnectWithoutThreadsOnPremiseInput
+  create: ThreadCreateWithoutThreadsOnPremiseInput
+}
+
+input ThreadCreateNestedOneWithoutThreadsOnTimelineInput {
+  connect: ThreadWhereUniqueInput
+  connectOrCreate: ThreadCreateOrConnectWithoutThreadsOnTimelineInput
+  create: ThreadCreateWithoutThreadsOnTimelineInput
+}
+
+input ThreadCreateNestedOneWithoutThreadsOnVisionInput {
+  connect: ThreadWhereUniqueInput
+  connectOrCreate: ThreadCreateOrConnectWithoutThreadsOnVisionInput
+  create: ThreadCreateWithoutThreadsOnVisionInput
 }
 
 input ThreadCreateOrConnectWithoutChildThreadsInput {
@@ -2424,8 +2473,18 @@ input ThreadCreateOrConnectWithoutParentThreadInput {
   where: ThreadWhereUniqueInput!
 }
 
-input ThreadCreateOrConnectWithoutPremiseInput {
-  create: ThreadCreateWithoutPremiseInput!
+input ThreadCreateOrConnectWithoutThreadsOnPremiseInput {
+  create: ThreadCreateWithoutThreadsOnPremiseInput!
+  where: ThreadWhereUniqueInput!
+}
+
+input ThreadCreateOrConnectWithoutThreadsOnTimelineInput {
+  create: ThreadCreateWithoutThreadsOnTimelineInput!
+  where: ThreadWhereUniqueInput!
+}
+
+input ThreadCreateOrConnectWithoutThreadsOnVisionInput {
+  create: ThreadCreateWithoutThreadsOnVisionInput!
   where: ThreadWhereUniqueInput!
 }
 
@@ -2435,8 +2494,10 @@ input ThreadCreateWithoutChildThreadsInput {
   description: String!
   id: String
   parentThread: ThreadCreateNestedOneWithoutChildThreadsInput
-  premise: PremiseCreateNestedOneWithoutThreadInput!
   reference: String!
+  threadsOnPremise: ThreadsOnPremiseCreateNestedOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
 }
 
@@ -2446,12 +2507,14 @@ input ThreadCreateWithoutParentThreadInput {
   createdAt: DateTime
   description: String!
   id: String
-  premise: PremiseCreateNestedOneWithoutThreadInput!
   reference: String!
+  threadsOnPremise: ThreadsOnPremiseCreateNestedOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
 }
 
-input ThreadCreateWithoutPremiseInput {
+input ThreadCreateWithoutThreadsOnPremiseInput {
   activityDate: DateTime!
   childThreads: ThreadCreateNestedManyWithoutParentThreadInput
   createdAt: DateTime
@@ -2459,6 +2522,34 @@ input ThreadCreateWithoutPremiseInput {
   id: String
   parentThread: ThreadCreateNestedOneWithoutChildThreadsInput
   reference: String!
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
+  title: String!
+}
+
+input ThreadCreateWithoutThreadsOnTimelineInput {
+  activityDate: DateTime!
+  childThreads: ThreadCreateNestedManyWithoutParentThreadInput
+  createdAt: DateTime
+  description: String!
+  id: String
+  parentThread: ThreadCreateNestedOneWithoutChildThreadsInput
+  reference: String!
+  threadsOnPremise: ThreadsOnPremiseCreateNestedOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
+  title: String!
+}
+
+input ThreadCreateWithoutThreadsOnVisionInput {
+  activityDate: DateTime!
+  childThreads: ThreadCreateNestedManyWithoutParentThreadInput
+  createdAt: DateTime
+  description: String!
+  id: String
+  parentThread: ThreadCreateNestedOneWithoutChildThreadsInput
+  reference: String!
+  threadsOnPremise: ThreadsOnPremiseCreateNestedOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
   title: String!
 }
 
@@ -2471,7 +2562,6 @@ type ThreadGroupBy {
   description: String!
   id: String!
   parentThreadId: String
-  premiseId: String!
   reference: String!
   title: String!
 }
@@ -2488,7 +2578,6 @@ type ThreadMaxAggregate {
   description: String
   id: String
   parentThreadId: String
-  premiseId: String
   reference: String
   title: String
 }
@@ -2499,7 +2588,6 @@ input ThreadMaxOrderByAggregateInput {
   description: SortOrder
   id: SortOrder
   parentThreadId: SortOrder
-  premiseId: SortOrder
   reference: SortOrder
   title: SortOrder
 }
@@ -2510,7 +2598,6 @@ type ThreadMinAggregate {
   description: String
   id: String
   parentThreadId: String
-  premiseId: String
   reference: String
   title: String
 }
@@ -2521,7 +2608,6 @@ input ThreadMinOrderByAggregateInput {
   description: SortOrder
   id: SortOrder
   parentThreadId: SortOrder
-  premiseId: SortOrder
   reference: SortOrder
   title: SortOrder
 }
@@ -2539,7 +2625,6 @@ input ThreadOrderByWithAggregationInput {
   description: SortOrder
   id: SortOrder
   parentThreadId: SortOrder
-  premiseId: SortOrder
   reference: SortOrder
   title: SortOrder
 }
@@ -2552,9 +2637,10 @@ input ThreadOrderByWithRelationInput {
   id: SortOrder
   parentThread: ThreadOrderByWithRelationInput
   parentThreadId: SortOrder
-  premise: PremiseOrderByWithRelationInput
-  premiseId: SortOrder
   reference: SortOrder
+  threadsOnPremise: ThreadsOnPremiseOrderByWithRelationInput
+  threadsOnTimeline: ThreadsOnTimelineOrderByWithRelationInput
+  threadsOnVision: ThreadsOnVisionOrderByWithRelationInput
   title: SortOrder
 }
 
@@ -2569,7 +2655,6 @@ enum ThreadScalarFieldEnum {
   description
   id
   parentThreadId
-  premiseId
   reference
   title
 }
@@ -2583,7 +2668,6 @@ input ThreadScalarWhereInput {
   description: StringFilter
   id: StringFilter
   parentThreadId: StringNullableFilter
-  premiseId: StringFilter
   reference: StringFilter
   title: StringFilter
 }
@@ -2597,7 +2681,6 @@ input ThreadScalarWhereWithAggregatesInput {
   description: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
   parentThreadId: StringNullableWithAggregatesFilter
-  premiseId: StringWithAggregatesFilter
   reference: StringWithAggregatesFilter
   title: StringWithAggregatesFilter
 }
@@ -2609,8 +2692,10 @@ input ThreadUpdateInput {
   description: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   parentThread: ThreadUpdateOneWithoutChildThreadsInput
-  premise: PremiseUpdateOneRequiredWithoutThreadInput
   reference: StringFieldUpdateOperationsInput
+  threadsOnPremise: ThreadsOnPremiseUpdateOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -2624,11 +2709,6 @@ input ThreadUpdateManyMutationInput {
 }
 
 input ThreadUpdateManyWithWhereWithoutParentThreadInput {
-  data: ThreadUpdateManyMutationInput!
-  where: ThreadScalarWhereInput!
-}
-
-input ThreadUpdateManyWithWhereWithoutPremiseInput {
   data: ThreadUpdateManyMutationInput!
   where: ThreadScalarWhereInput!
 }
@@ -2647,18 +2727,28 @@ input ThreadUpdateManyWithoutParentThreadInput {
   upsert: [ThreadUpsertWithWhereUniqueWithoutParentThreadInput!]
 }
 
-input ThreadUpdateManyWithoutPremiseInput {
-  connect: [ThreadWhereUniqueInput!]
-  connectOrCreate: [ThreadCreateOrConnectWithoutPremiseInput!]
-  create: [ThreadCreateWithoutPremiseInput!]
-  createMany: ThreadCreateManyPremiseInputEnvelope
-  delete: [ThreadWhereUniqueInput!]
-  deleteMany: [ThreadScalarWhereInput!]
-  disconnect: [ThreadWhereUniqueInput!]
-  set: [ThreadWhereUniqueInput!]
-  update: [ThreadUpdateWithWhereUniqueWithoutPremiseInput!]
-  updateMany: [ThreadUpdateManyWithWhereWithoutPremiseInput!]
-  upsert: [ThreadUpsertWithWhereUniqueWithoutPremiseInput!]
+input ThreadUpdateOneRequiredWithoutThreadsOnPremiseInput {
+  connect: ThreadWhereUniqueInput
+  connectOrCreate: ThreadCreateOrConnectWithoutThreadsOnPremiseInput
+  create: ThreadCreateWithoutThreadsOnPremiseInput
+  update: ThreadUpdateWithoutThreadsOnPremiseInput
+  upsert: ThreadUpsertWithoutThreadsOnPremiseInput
+}
+
+input ThreadUpdateOneRequiredWithoutThreadsOnTimelineInput {
+  connect: ThreadWhereUniqueInput
+  connectOrCreate: ThreadCreateOrConnectWithoutThreadsOnTimelineInput
+  create: ThreadCreateWithoutThreadsOnTimelineInput
+  update: ThreadUpdateWithoutThreadsOnTimelineInput
+  upsert: ThreadUpsertWithoutThreadsOnTimelineInput
+}
+
+input ThreadUpdateOneRequiredWithoutThreadsOnVisionInput {
+  connect: ThreadWhereUniqueInput
+  connectOrCreate: ThreadCreateOrConnectWithoutThreadsOnVisionInput
+  create: ThreadCreateWithoutThreadsOnVisionInput
+  update: ThreadUpdateWithoutThreadsOnVisionInput
+  upsert: ThreadUpsertWithoutThreadsOnVisionInput
 }
 
 input ThreadUpdateOneWithoutChildThreadsInput {
@@ -2676,19 +2766,16 @@ input ThreadUpdateWithWhereUniqueWithoutParentThreadInput {
   where: ThreadWhereUniqueInput!
 }
 
-input ThreadUpdateWithWhereUniqueWithoutPremiseInput {
-  data: ThreadUpdateWithoutPremiseInput!
-  where: ThreadWhereUniqueInput!
-}
-
 input ThreadUpdateWithoutChildThreadsInput {
   activityDate: DateTimeFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   parentThread: ThreadUpdateOneWithoutChildThreadsInput
-  premise: PremiseUpdateOneRequiredWithoutThreadInput
   reference: StringFieldUpdateOperationsInput
+  threadsOnPremise: ThreadsOnPremiseUpdateOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -2698,12 +2785,14 @@ input ThreadUpdateWithoutParentThreadInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
-  premise: PremiseUpdateOneRequiredWithoutThreadInput
   reference: StringFieldUpdateOperationsInput
+  threadsOnPremise: ThreadsOnPremiseUpdateOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
 }
 
-input ThreadUpdateWithoutPremiseInput {
+input ThreadUpdateWithoutThreadsOnPremiseInput {
   activityDate: DateTimeFieldUpdateOperationsInput
   childThreads: ThreadUpdateManyWithoutParentThreadInput
   createdAt: DateTimeFieldUpdateOperationsInput
@@ -2711,6 +2800,34 @@ input ThreadUpdateWithoutPremiseInput {
   id: StringFieldUpdateOperationsInput
   parentThread: ThreadUpdateOneWithoutChildThreadsInput
   reference: StringFieldUpdateOperationsInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input ThreadUpdateWithoutThreadsOnTimelineInput {
+  activityDate: DateTimeFieldUpdateOperationsInput
+  childThreads: ThreadUpdateManyWithoutParentThreadInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  parentThread: ThreadUpdateOneWithoutChildThreadsInput
+  reference: StringFieldUpdateOperationsInput
+  threadsOnPremise: ThreadsOnPremiseUpdateOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input ThreadUpdateWithoutThreadsOnVisionInput {
+  activityDate: DateTimeFieldUpdateOperationsInput
+  childThreads: ThreadUpdateManyWithoutParentThreadInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  parentThread: ThreadUpdateOneWithoutChildThreadsInput
+  reference: StringFieldUpdateOperationsInput
+  threadsOnPremise: ThreadsOnPremiseUpdateOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -2720,15 +2837,24 @@ input ThreadUpsertWithWhereUniqueWithoutParentThreadInput {
   where: ThreadWhereUniqueInput!
 }
 
-input ThreadUpsertWithWhereUniqueWithoutPremiseInput {
-  create: ThreadCreateWithoutPremiseInput!
-  update: ThreadUpdateWithoutPremiseInput!
-  where: ThreadWhereUniqueInput!
-}
-
 input ThreadUpsertWithoutChildThreadsInput {
   create: ThreadCreateWithoutChildThreadsInput!
   update: ThreadUpdateWithoutChildThreadsInput!
+}
+
+input ThreadUpsertWithoutThreadsOnPremiseInput {
+  create: ThreadCreateWithoutThreadsOnPremiseInput!
+  update: ThreadUpdateWithoutThreadsOnPremiseInput!
+}
+
+input ThreadUpsertWithoutThreadsOnTimelineInput {
+  create: ThreadCreateWithoutThreadsOnTimelineInput!
+  update: ThreadUpdateWithoutThreadsOnTimelineInput!
+}
+
+input ThreadUpsertWithoutThreadsOnVisionInput {
+  create: ThreadCreateWithoutThreadsOnVisionInput!
+  update: ThreadUpdateWithoutThreadsOnVisionInput!
 }
 
 input ThreadWhereInput {
@@ -2742,14 +2868,768 @@ input ThreadWhereInput {
   id: StringFilter
   parentThread: ThreadRelationFilter
   parentThreadId: StringNullableFilter
-  premise: PremiseRelationFilter
-  premiseId: StringFilter
   reference: StringFilter
+  threadsOnPremise: ThreadsOnPremiseRelationFilter
+  threadsOnTimeline: ThreadsOnTimelineRelationFilter
+  threadsOnVision: ThreadsOnVisionRelationFilter
   title: StringFilter
 }
 
 input ThreadWhereUniqueInput {
   id: String
+}
+
+type ThreadsOnPremise {
+  assignedAt: DateTime!
+  premise: Premise!
+  premiseId: String!
+  thread: Thread!
+  threadId: String!
+}
+
+type ThreadsOnPremiseCountAggregate {
+  _all: Int!
+  assignedAt: Int!
+  premiseId: Int!
+  threadId: Int!
+}
+
+input ThreadsOnPremiseCountOrderByAggregateInput {
+  assignedAt: SortOrder
+  premiseId: SortOrder
+  threadId: SortOrder
+}
+
+input ThreadsOnPremiseCreateInput {
+  assignedAt: DateTime
+  premise: PremiseCreateNestedOneWithoutThreadsOnPremiseInput!
+  thread: ThreadCreateNestedOneWithoutThreadsOnPremiseInput!
+}
+
+input ThreadsOnPremiseCreateManyInput {
+  assignedAt: DateTime
+  premiseId: String!
+  threadId: String!
+}
+
+input ThreadsOnPremiseCreateManyPremiseInput {
+  assignedAt: DateTime
+  threadId: String!
+}
+
+input ThreadsOnPremiseCreateManyPremiseInputEnvelope {
+  data: [ThreadsOnPremiseCreateManyPremiseInput!]!
+  skipDuplicates: Boolean
+}
+
+input ThreadsOnPremiseCreateNestedManyWithoutPremiseInput {
+  connect: [ThreadsOnPremiseWhereUniqueInput!]
+  connectOrCreate: [ThreadsOnPremiseCreateOrConnectWithoutPremiseInput!]
+  create: [ThreadsOnPremiseCreateWithoutPremiseInput!]
+  createMany: ThreadsOnPremiseCreateManyPremiseInputEnvelope
+}
+
+input ThreadsOnPremiseCreateNestedOneWithoutThreadInput {
+  connect: ThreadsOnPremiseWhereUniqueInput
+  connectOrCreate: ThreadsOnPremiseCreateOrConnectWithoutThreadInput
+  create: ThreadsOnPremiseCreateWithoutThreadInput
+}
+
+input ThreadsOnPremiseCreateOrConnectWithoutPremiseInput {
+  create: ThreadsOnPremiseCreateWithoutPremiseInput!
+  where: ThreadsOnPremiseWhereUniqueInput!
+}
+
+input ThreadsOnPremiseCreateOrConnectWithoutThreadInput {
+  create: ThreadsOnPremiseCreateWithoutThreadInput!
+  where: ThreadsOnPremiseWhereUniqueInput!
+}
+
+input ThreadsOnPremiseCreateWithoutPremiseInput {
+  assignedAt: DateTime
+  thread: ThreadCreateNestedOneWithoutThreadsOnPremiseInput!
+}
+
+input ThreadsOnPremiseCreateWithoutThreadInput {
+  assignedAt: DateTime
+  premise: PremiseCreateNestedOneWithoutThreadsOnPremiseInput!
+}
+
+type ThreadsOnPremiseGroupBy {
+  _count: ThreadsOnPremiseCountAggregate
+  _max: ThreadsOnPremiseMaxAggregate
+  _min: ThreadsOnPremiseMinAggregate
+  assignedAt: DateTime!
+  premiseId: String!
+  threadId: String!
+}
+
+input ThreadsOnPremiseListRelationFilter {
+  every: ThreadsOnPremiseWhereInput
+  none: ThreadsOnPremiseWhereInput
+  some: ThreadsOnPremiseWhereInput
+}
+
+type ThreadsOnPremiseMaxAggregate {
+  assignedAt: DateTime
+  premiseId: String
+  threadId: String
+}
+
+input ThreadsOnPremiseMaxOrderByAggregateInput {
+  assignedAt: SortOrder
+  premiseId: SortOrder
+  threadId: SortOrder
+}
+
+type ThreadsOnPremiseMinAggregate {
+  assignedAt: DateTime
+  premiseId: String
+  threadId: String
+}
+
+input ThreadsOnPremiseMinOrderByAggregateInput {
+  assignedAt: SortOrder
+  premiseId: SortOrder
+  threadId: SortOrder
+}
+
+input ThreadsOnPremiseOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ThreadsOnPremiseOrderByWithAggregationInput {
+  _count: ThreadsOnPremiseCountOrderByAggregateInput
+  _max: ThreadsOnPremiseMaxOrderByAggregateInput
+  _min: ThreadsOnPremiseMinOrderByAggregateInput
+  assignedAt: SortOrder
+  premiseId: SortOrder
+  threadId: SortOrder
+}
+
+input ThreadsOnPremiseOrderByWithRelationInput {
+  assignedAt: SortOrder
+  premise: PremiseOrderByWithRelationInput
+  premiseId: SortOrder
+  thread: ThreadOrderByWithRelationInput
+  threadId: SortOrder
+}
+
+input ThreadsOnPremiseRelationFilter {
+  is: ThreadsOnPremiseWhereInput
+  isNot: ThreadsOnPremiseWhereInput
+}
+
+enum ThreadsOnPremiseScalarFieldEnum {
+  assignedAt
+  premiseId
+  threadId
+}
+
+input ThreadsOnPremiseScalarWhereInput {
+  AND: [ThreadsOnPremiseScalarWhereInput!]
+  NOT: [ThreadsOnPremiseScalarWhereInput!]
+  OR: [ThreadsOnPremiseScalarWhereInput!]
+  assignedAt: DateTimeFilter
+  premiseId: StringFilter
+  threadId: StringFilter
+}
+
+input ThreadsOnPremiseScalarWhereWithAggregatesInput {
+  AND: [ThreadsOnPremiseScalarWhereWithAggregatesInput!]
+  NOT: [ThreadsOnPremiseScalarWhereWithAggregatesInput!]
+  OR: [ThreadsOnPremiseScalarWhereWithAggregatesInput!]
+  assignedAt: DateTimeWithAggregatesFilter
+  premiseId: StringWithAggregatesFilter
+  threadId: StringWithAggregatesFilter
+}
+
+input ThreadsOnPremiseThreadIdPremiseIdCompoundUniqueInput {
+  premiseId: String!
+  threadId: String!
+}
+
+input ThreadsOnPremiseUpdateInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  premise: PremiseUpdateOneRequiredWithoutThreadsOnPremiseInput
+  thread: ThreadUpdateOneRequiredWithoutThreadsOnPremiseInput
+}
+
+input ThreadsOnPremiseUpdateManyMutationInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ThreadsOnPremiseUpdateManyWithWhereWithoutPremiseInput {
+  data: ThreadsOnPremiseUpdateManyMutationInput!
+  where: ThreadsOnPremiseScalarWhereInput!
+}
+
+input ThreadsOnPremiseUpdateManyWithoutPremiseInput {
+  connect: [ThreadsOnPremiseWhereUniqueInput!]
+  connectOrCreate: [ThreadsOnPremiseCreateOrConnectWithoutPremiseInput!]
+  create: [ThreadsOnPremiseCreateWithoutPremiseInput!]
+  createMany: ThreadsOnPremiseCreateManyPremiseInputEnvelope
+  delete: [ThreadsOnPremiseWhereUniqueInput!]
+  deleteMany: [ThreadsOnPremiseScalarWhereInput!]
+  disconnect: [ThreadsOnPremiseWhereUniqueInput!]
+  set: [ThreadsOnPremiseWhereUniqueInput!]
+  update: [ThreadsOnPremiseUpdateWithWhereUniqueWithoutPremiseInput!]
+  updateMany: [ThreadsOnPremiseUpdateManyWithWhereWithoutPremiseInput!]
+  upsert: [ThreadsOnPremiseUpsertWithWhereUniqueWithoutPremiseInput!]
+}
+
+input ThreadsOnPremiseUpdateOneWithoutThreadInput {
+  connect: ThreadsOnPremiseWhereUniqueInput
+  connectOrCreate: ThreadsOnPremiseCreateOrConnectWithoutThreadInput
+  create: ThreadsOnPremiseCreateWithoutThreadInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ThreadsOnPremiseUpdateWithoutThreadInput
+  upsert: ThreadsOnPremiseUpsertWithoutThreadInput
+}
+
+input ThreadsOnPremiseUpdateWithWhereUniqueWithoutPremiseInput {
+  data: ThreadsOnPremiseUpdateWithoutPremiseInput!
+  where: ThreadsOnPremiseWhereUniqueInput!
+}
+
+input ThreadsOnPremiseUpdateWithoutPremiseInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  thread: ThreadUpdateOneRequiredWithoutThreadsOnPremiseInput
+}
+
+input ThreadsOnPremiseUpdateWithoutThreadInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  premise: PremiseUpdateOneRequiredWithoutThreadsOnPremiseInput
+}
+
+input ThreadsOnPremiseUpsertWithWhereUniqueWithoutPremiseInput {
+  create: ThreadsOnPremiseCreateWithoutPremiseInput!
+  update: ThreadsOnPremiseUpdateWithoutPremiseInput!
+  where: ThreadsOnPremiseWhereUniqueInput!
+}
+
+input ThreadsOnPremiseUpsertWithoutThreadInput {
+  create: ThreadsOnPremiseCreateWithoutThreadInput!
+  update: ThreadsOnPremiseUpdateWithoutThreadInput!
+}
+
+input ThreadsOnPremiseWhereInput {
+  AND: [ThreadsOnPremiseWhereInput!]
+  NOT: [ThreadsOnPremiseWhereInput!]
+  OR: [ThreadsOnPremiseWhereInput!]
+  assignedAt: DateTimeFilter
+  premise: PremiseRelationFilter
+  premiseId: StringFilter
+  thread: ThreadRelationFilter
+  threadId: StringFilter
+}
+
+input ThreadsOnPremiseWhereUniqueInput {
+  threadId: String
+  threadId_premiseId: ThreadsOnPremiseThreadIdPremiseIdCompoundUniqueInput
+}
+
+type ThreadsOnTimeline {
+  assignedAt: DateTime!
+  thread: Thread!
+  threadId: String!
+  timeline: Timeline!
+  timelineId: String!
+}
+
+type ThreadsOnTimelineCountAggregate {
+  _all: Int!
+  assignedAt: Int!
+  threadId: Int!
+  timelineId: Int!
+}
+
+input ThreadsOnTimelineCountOrderByAggregateInput {
+  assignedAt: SortOrder
+  threadId: SortOrder
+  timelineId: SortOrder
+}
+
+input ThreadsOnTimelineCreateInput {
+  assignedAt: DateTime
+  thread: ThreadCreateNestedOneWithoutThreadsOnTimelineInput!
+  timeline: TimelineCreateNestedOneWithoutThreadsOnTimelineInput!
+}
+
+input ThreadsOnTimelineCreateManyInput {
+  assignedAt: DateTime
+  threadId: String!
+  timelineId: String!
+}
+
+input ThreadsOnTimelineCreateManyTimelineInput {
+  assignedAt: DateTime
+  threadId: String!
+}
+
+input ThreadsOnTimelineCreateManyTimelineInputEnvelope {
+  data: [ThreadsOnTimelineCreateManyTimelineInput!]!
+  skipDuplicates: Boolean
+}
+
+input ThreadsOnTimelineCreateNestedManyWithoutTimelineInput {
+  connect: [ThreadsOnTimelineWhereUniqueInput!]
+  connectOrCreate: [ThreadsOnTimelineCreateOrConnectWithoutTimelineInput!]
+  create: [ThreadsOnTimelineCreateWithoutTimelineInput!]
+  createMany: ThreadsOnTimelineCreateManyTimelineInputEnvelope
+}
+
+input ThreadsOnTimelineCreateNestedOneWithoutThreadInput {
+  connect: ThreadsOnTimelineWhereUniqueInput
+  connectOrCreate: ThreadsOnTimelineCreateOrConnectWithoutThreadInput
+  create: ThreadsOnTimelineCreateWithoutThreadInput
+}
+
+input ThreadsOnTimelineCreateOrConnectWithoutThreadInput {
+  create: ThreadsOnTimelineCreateWithoutThreadInput!
+  where: ThreadsOnTimelineWhereUniqueInput!
+}
+
+input ThreadsOnTimelineCreateOrConnectWithoutTimelineInput {
+  create: ThreadsOnTimelineCreateWithoutTimelineInput!
+  where: ThreadsOnTimelineWhereUniqueInput!
+}
+
+input ThreadsOnTimelineCreateWithoutThreadInput {
+  assignedAt: DateTime
+  timeline: TimelineCreateNestedOneWithoutThreadsOnTimelineInput!
+}
+
+input ThreadsOnTimelineCreateWithoutTimelineInput {
+  assignedAt: DateTime
+  thread: ThreadCreateNestedOneWithoutThreadsOnTimelineInput!
+}
+
+type ThreadsOnTimelineGroupBy {
+  _count: ThreadsOnTimelineCountAggregate
+  _max: ThreadsOnTimelineMaxAggregate
+  _min: ThreadsOnTimelineMinAggregate
+  assignedAt: DateTime!
+  threadId: String!
+  timelineId: String!
+}
+
+input ThreadsOnTimelineListRelationFilter {
+  every: ThreadsOnTimelineWhereInput
+  none: ThreadsOnTimelineWhereInput
+  some: ThreadsOnTimelineWhereInput
+}
+
+type ThreadsOnTimelineMaxAggregate {
+  assignedAt: DateTime
+  threadId: String
+  timelineId: String
+}
+
+input ThreadsOnTimelineMaxOrderByAggregateInput {
+  assignedAt: SortOrder
+  threadId: SortOrder
+  timelineId: SortOrder
+}
+
+type ThreadsOnTimelineMinAggregate {
+  assignedAt: DateTime
+  threadId: String
+  timelineId: String
+}
+
+input ThreadsOnTimelineMinOrderByAggregateInput {
+  assignedAt: SortOrder
+  threadId: SortOrder
+  timelineId: SortOrder
+}
+
+input ThreadsOnTimelineOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ThreadsOnTimelineOrderByWithAggregationInput {
+  _count: ThreadsOnTimelineCountOrderByAggregateInput
+  _max: ThreadsOnTimelineMaxOrderByAggregateInput
+  _min: ThreadsOnTimelineMinOrderByAggregateInput
+  assignedAt: SortOrder
+  threadId: SortOrder
+  timelineId: SortOrder
+}
+
+input ThreadsOnTimelineOrderByWithRelationInput {
+  assignedAt: SortOrder
+  thread: ThreadOrderByWithRelationInput
+  threadId: SortOrder
+  timeline: TimelineOrderByWithRelationInput
+  timelineId: SortOrder
+}
+
+input ThreadsOnTimelineRelationFilter {
+  is: ThreadsOnTimelineWhereInput
+  isNot: ThreadsOnTimelineWhereInput
+}
+
+enum ThreadsOnTimelineScalarFieldEnum {
+  assignedAt
+  threadId
+  timelineId
+}
+
+input ThreadsOnTimelineScalarWhereInput {
+  AND: [ThreadsOnTimelineScalarWhereInput!]
+  NOT: [ThreadsOnTimelineScalarWhereInput!]
+  OR: [ThreadsOnTimelineScalarWhereInput!]
+  assignedAt: DateTimeFilter
+  threadId: StringFilter
+  timelineId: StringFilter
+}
+
+input ThreadsOnTimelineScalarWhereWithAggregatesInput {
+  AND: [ThreadsOnTimelineScalarWhereWithAggregatesInput!]
+  NOT: [ThreadsOnTimelineScalarWhereWithAggregatesInput!]
+  OR: [ThreadsOnTimelineScalarWhereWithAggregatesInput!]
+  assignedAt: DateTimeWithAggregatesFilter
+  threadId: StringWithAggregatesFilter
+  timelineId: StringWithAggregatesFilter
+}
+
+input ThreadsOnTimelineThreadIdTimelineIdCompoundUniqueInput {
+  threadId: String!
+  timelineId: String!
+}
+
+input ThreadsOnTimelineUpdateInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  thread: ThreadUpdateOneRequiredWithoutThreadsOnTimelineInput
+  timeline: TimelineUpdateOneRequiredWithoutThreadsOnTimelineInput
+}
+
+input ThreadsOnTimelineUpdateManyMutationInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ThreadsOnTimelineUpdateManyWithWhereWithoutTimelineInput {
+  data: ThreadsOnTimelineUpdateManyMutationInput!
+  where: ThreadsOnTimelineScalarWhereInput!
+}
+
+input ThreadsOnTimelineUpdateManyWithoutTimelineInput {
+  connect: [ThreadsOnTimelineWhereUniqueInput!]
+  connectOrCreate: [ThreadsOnTimelineCreateOrConnectWithoutTimelineInput!]
+  create: [ThreadsOnTimelineCreateWithoutTimelineInput!]
+  createMany: ThreadsOnTimelineCreateManyTimelineInputEnvelope
+  delete: [ThreadsOnTimelineWhereUniqueInput!]
+  deleteMany: [ThreadsOnTimelineScalarWhereInput!]
+  disconnect: [ThreadsOnTimelineWhereUniqueInput!]
+  set: [ThreadsOnTimelineWhereUniqueInput!]
+  update: [ThreadsOnTimelineUpdateWithWhereUniqueWithoutTimelineInput!]
+  updateMany: [ThreadsOnTimelineUpdateManyWithWhereWithoutTimelineInput!]
+  upsert: [ThreadsOnTimelineUpsertWithWhereUniqueWithoutTimelineInput!]
+}
+
+input ThreadsOnTimelineUpdateOneWithoutThreadInput {
+  connect: ThreadsOnTimelineWhereUniqueInput
+  connectOrCreate: ThreadsOnTimelineCreateOrConnectWithoutThreadInput
+  create: ThreadsOnTimelineCreateWithoutThreadInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ThreadsOnTimelineUpdateWithoutThreadInput
+  upsert: ThreadsOnTimelineUpsertWithoutThreadInput
+}
+
+input ThreadsOnTimelineUpdateWithWhereUniqueWithoutTimelineInput {
+  data: ThreadsOnTimelineUpdateWithoutTimelineInput!
+  where: ThreadsOnTimelineWhereUniqueInput!
+}
+
+input ThreadsOnTimelineUpdateWithoutThreadInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  timeline: TimelineUpdateOneRequiredWithoutThreadsOnTimelineInput
+}
+
+input ThreadsOnTimelineUpdateWithoutTimelineInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  thread: ThreadUpdateOneRequiredWithoutThreadsOnTimelineInput
+}
+
+input ThreadsOnTimelineUpsertWithWhereUniqueWithoutTimelineInput {
+  create: ThreadsOnTimelineCreateWithoutTimelineInput!
+  update: ThreadsOnTimelineUpdateWithoutTimelineInput!
+  where: ThreadsOnTimelineWhereUniqueInput!
+}
+
+input ThreadsOnTimelineUpsertWithoutThreadInput {
+  create: ThreadsOnTimelineCreateWithoutThreadInput!
+  update: ThreadsOnTimelineUpdateWithoutThreadInput!
+}
+
+input ThreadsOnTimelineWhereInput {
+  AND: [ThreadsOnTimelineWhereInput!]
+  NOT: [ThreadsOnTimelineWhereInput!]
+  OR: [ThreadsOnTimelineWhereInput!]
+  assignedAt: DateTimeFilter
+  thread: ThreadRelationFilter
+  threadId: StringFilter
+  timeline: TimelineRelationFilter
+  timelineId: StringFilter
+}
+
+input ThreadsOnTimelineWhereUniqueInput {
+  threadId: String
+  threadId_timelineId: ThreadsOnTimelineThreadIdTimelineIdCompoundUniqueInput
+}
+
+type ThreadsOnVision {
+  assignedAt: DateTime!
+  thread: Thread!
+  threadId: String!
+  vision: Vision!
+  visionId: String!
+}
+
+type ThreadsOnVisionCountAggregate {
+  _all: Int!
+  assignedAt: Int!
+  threadId: Int!
+  visionId: Int!
+}
+
+input ThreadsOnVisionCountOrderByAggregateInput {
+  assignedAt: SortOrder
+  threadId: SortOrder
+  visionId: SortOrder
+}
+
+input ThreadsOnVisionCreateInput {
+  assignedAt: DateTime
+  thread: ThreadCreateNestedOneWithoutThreadsOnVisionInput!
+  vision: VisionCreateNestedOneWithoutThreadsOnVisionInput!
+}
+
+input ThreadsOnVisionCreateManyInput {
+  assignedAt: DateTime
+  threadId: String!
+  visionId: String!
+}
+
+input ThreadsOnVisionCreateManyVisionInput {
+  assignedAt: DateTime
+  threadId: String!
+}
+
+input ThreadsOnVisionCreateManyVisionInputEnvelope {
+  data: [ThreadsOnVisionCreateManyVisionInput!]!
+  skipDuplicates: Boolean
+}
+
+input ThreadsOnVisionCreateNestedManyWithoutVisionInput {
+  connect: [ThreadsOnVisionWhereUniqueInput!]
+  connectOrCreate: [ThreadsOnVisionCreateOrConnectWithoutVisionInput!]
+  create: [ThreadsOnVisionCreateWithoutVisionInput!]
+  createMany: ThreadsOnVisionCreateManyVisionInputEnvelope
+}
+
+input ThreadsOnVisionCreateNestedOneWithoutThreadInput {
+  connect: ThreadsOnVisionWhereUniqueInput
+  connectOrCreate: ThreadsOnVisionCreateOrConnectWithoutThreadInput
+  create: ThreadsOnVisionCreateWithoutThreadInput
+}
+
+input ThreadsOnVisionCreateOrConnectWithoutThreadInput {
+  create: ThreadsOnVisionCreateWithoutThreadInput!
+  where: ThreadsOnVisionWhereUniqueInput!
+}
+
+input ThreadsOnVisionCreateOrConnectWithoutVisionInput {
+  create: ThreadsOnVisionCreateWithoutVisionInput!
+  where: ThreadsOnVisionWhereUniqueInput!
+}
+
+input ThreadsOnVisionCreateWithoutThreadInput {
+  assignedAt: DateTime
+  vision: VisionCreateNestedOneWithoutThreadsOnVisionInput!
+}
+
+input ThreadsOnVisionCreateWithoutVisionInput {
+  assignedAt: DateTime
+  thread: ThreadCreateNestedOneWithoutThreadsOnVisionInput!
+}
+
+type ThreadsOnVisionGroupBy {
+  _count: ThreadsOnVisionCountAggregate
+  _max: ThreadsOnVisionMaxAggregate
+  _min: ThreadsOnVisionMinAggregate
+  assignedAt: DateTime!
+  threadId: String!
+  visionId: String!
+}
+
+input ThreadsOnVisionListRelationFilter {
+  every: ThreadsOnVisionWhereInput
+  none: ThreadsOnVisionWhereInput
+  some: ThreadsOnVisionWhereInput
+}
+
+type ThreadsOnVisionMaxAggregate {
+  assignedAt: DateTime
+  threadId: String
+  visionId: String
+}
+
+input ThreadsOnVisionMaxOrderByAggregateInput {
+  assignedAt: SortOrder
+  threadId: SortOrder
+  visionId: SortOrder
+}
+
+type ThreadsOnVisionMinAggregate {
+  assignedAt: DateTime
+  threadId: String
+  visionId: String
+}
+
+input ThreadsOnVisionMinOrderByAggregateInput {
+  assignedAt: SortOrder
+  threadId: SortOrder
+  visionId: SortOrder
+}
+
+input ThreadsOnVisionOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ThreadsOnVisionOrderByWithAggregationInput {
+  _count: ThreadsOnVisionCountOrderByAggregateInput
+  _max: ThreadsOnVisionMaxOrderByAggregateInput
+  _min: ThreadsOnVisionMinOrderByAggregateInput
+  assignedAt: SortOrder
+  threadId: SortOrder
+  visionId: SortOrder
+}
+
+input ThreadsOnVisionOrderByWithRelationInput {
+  assignedAt: SortOrder
+  thread: ThreadOrderByWithRelationInput
+  threadId: SortOrder
+  vision: VisionOrderByWithRelationInput
+  visionId: SortOrder
+}
+
+input ThreadsOnVisionRelationFilter {
+  is: ThreadsOnVisionWhereInput
+  isNot: ThreadsOnVisionWhereInput
+}
+
+enum ThreadsOnVisionScalarFieldEnum {
+  assignedAt
+  threadId
+  visionId
+}
+
+input ThreadsOnVisionScalarWhereInput {
+  AND: [ThreadsOnVisionScalarWhereInput!]
+  NOT: [ThreadsOnVisionScalarWhereInput!]
+  OR: [ThreadsOnVisionScalarWhereInput!]
+  assignedAt: DateTimeFilter
+  threadId: StringFilter
+  visionId: StringFilter
+}
+
+input ThreadsOnVisionScalarWhereWithAggregatesInput {
+  AND: [ThreadsOnVisionScalarWhereWithAggregatesInput!]
+  NOT: [ThreadsOnVisionScalarWhereWithAggregatesInput!]
+  OR: [ThreadsOnVisionScalarWhereWithAggregatesInput!]
+  assignedAt: DateTimeWithAggregatesFilter
+  threadId: StringWithAggregatesFilter
+  visionId: StringWithAggregatesFilter
+}
+
+input ThreadsOnVisionThreadIdVisionIdCompoundUniqueInput {
+  threadId: String!
+  visionId: String!
+}
+
+input ThreadsOnVisionUpdateInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  thread: ThreadUpdateOneRequiredWithoutThreadsOnVisionInput
+  vision: VisionUpdateOneRequiredWithoutThreadsOnVisionInput
+}
+
+input ThreadsOnVisionUpdateManyMutationInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ThreadsOnVisionUpdateManyWithWhereWithoutVisionInput {
+  data: ThreadsOnVisionUpdateManyMutationInput!
+  where: ThreadsOnVisionScalarWhereInput!
+}
+
+input ThreadsOnVisionUpdateManyWithoutVisionInput {
+  connect: [ThreadsOnVisionWhereUniqueInput!]
+  connectOrCreate: [ThreadsOnVisionCreateOrConnectWithoutVisionInput!]
+  create: [ThreadsOnVisionCreateWithoutVisionInput!]
+  createMany: ThreadsOnVisionCreateManyVisionInputEnvelope
+  delete: [ThreadsOnVisionWhereUniqueInput!]
+  deleteMany: [ThreadsOnVisionScalarWhereInput!]
+  disconnect: [ThreadsOnVisionWhereUniqueInput!]
+  set: [ThreadsOnVisionWhereUniqueInput!]
+  update: [ThreadsOnVisionUpdateWithWhereUniqueWithoutVisionInput!]
+  updateMany: [ThreadsOnVisionUpdateManyWithWhereWithoutVisionInput!]
+  upsert: [ThreadsOnVisionUpsertWithWhereUniqueWithoutVisionInput!]
+}
+
+input ThreadsOnVisionUpdateOneWithoutThreadInput {
+  connect: ThreadsOnVisionWhereUniqueInput
+  connectOrCreate: ThreadsOnVisionCreateOrConnectWithoutThreadInput
+  create: ThreadsOnVisionCreateWithoutThreadInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ThreadsOnVisionUpdateWithoutThreadInput
+  upsert: ThreadsOnVisionUpsertWithoutThreadInput
+}
+
+input ThreadsOnVisionUpdateWithWhereUniqueWithoutVisionInput {
+  data: ThreadsOnVisionUpdateWithoutVisionInput!
+  where: ThreadsOnVisionWhereUniqueInput!
+}
+
+input ThreadsOnVisionUpdateWithoutThreadInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  vision: VisionUpdateOneRequiredWithoutThreadsOnVisionInput
+}
+
+input ThreadsOnVisionUpdateWithoutVisionInput {
+  assignedAt: DateTimeFieldUpdateOperationsInput
+  thread: ThreadUpdateOneRequiredWithoutThreadsOnVisionInput
+}
+
+input ThreadsOnVisionUpsertWithWhereUniqueWithoutVisionInput {
+  create: ThreadsOnVisionCreateWithoutVisionInput!
+  update: ThreadsOnVisionUpdateWithoutVisionInput!
+  where: ThreadsOnVisionWhereUniqueInput!
+}
+
+input ThreadsOnVisionUpsertWithoutThreadInput {
+  create: ThreadsOnVisionCreateWithoutThreadInput!
+  update: ThreadsOnVisionUpdateWithoutThreadInput!
+}
+
+input ThreadsOnVisionWhereInput {
+  AND: [ThreadsOnVisionWhereInput!]
+  NOT: [ThreadsOnVisionWhereInput!]
+  OR: [ThreadsOnVisionWhereInput!]
+  assignedAt: DateTimeFilter
+  thread: ThreadRelationFilter
+  threadId: StringFilter
+  vision: VisionRelationFilter
+  visionId: StringFilter
+}
+
+input ThreadsOnVisionWhereUniqueInput {
+  threadId: String
+  threadId_visionId: ThreadsOnVisionThreadIdVisionIdCompoundUniqueInput
 }
 
 type Timeline {
@@ -2761,12 +3641,14 @@ type Timeline {
   premisesOnTimelines(cursor: PremisesOnTimelinesWhereUniqueInput, distinct: [PremisesOnTimelinesScalarFieldEnum!], orderBy: [PremisesOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: PremisesOnTimelinesWhereInput): [PremisesOnTimelines!]!
   status: String!
   tagsOnTimelines(cursor: TagsOnTimelinesWhereUniqueInput, distinct: [TagsOnTimelinesScalarFieldEnum!], orderBy: [TagsOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnTimelinesWhereInput): [TagsOnTimelines!]!
+  threadsOnTimeline(cursor: ThreadsOnTimelineWhereUniqueInput, distinct: [ThreadsOnTimelineScalarFieldEnum!], orderBy: [ThreadsOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnTimelineWhereInput): [ThreadsOnTimeline!]!
   title: String!
 }
 
 type TimelineCount {
   premisesOnTimelines: Int!
   tagsOnTimelines: Int!
+  threadsOnTimeline: Int!
 }
 
 type TimelineCountAggregate {
@@ -2793,6 +3675,7 @@ input TimelineCreateInput {
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   status: String!
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
 }
 
@@ -2835,6 +3718,12 @@ input TimelineCreateNestedOneWithoutTagsOnTimelinesInput {
   create: TimelineCreateWithoutTagsOnTimelinesInput
 }
 
+input TimelineCreateNestedOneWithoutThreadsOnTimelineInput {
+  connect: TimelineWhereUniqueInput
+  connectOrCreate: TimelineCreateOrConnectWithoutThreadsOnTimelineInput
+  create: TimelineCreateWithoutThreadsOnTimelineInput
+}
+
 input TimelineCreateOrConnectWithoutAuthorInput {
   create: TimelineCreateWithoutAuthorInput!
   where: TimelineWhereUniqueInput!
@@ -2850,12 +3739,18 @@ input TimelineCreateOrConnectWithoutTagsOnTimelinesInput {
   where: TimelineWhereUniqueInput!
 }
 
+input TimelineCreateOrConnectWithoutThreadsOnTimelineInput {
+  create: TimelineCreateWithoutThreadsOnTimelineInput!
+  where: TimelineWhereUniqueInput!
+}
+
 input TimelineCreateWithoutAuthorInput {
   description: String!
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   status: String!
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
 }
 
@@ -2865,6 +3760,7 @@ input TimelineCreateWithoutPremisesOnTimelinesInput {
   id: String
   status: String!
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
 }
 
@@ -2874,6 +3770,17 @@ input TimelineCreateWithoutTagsOnTimelinesInput {
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   status: String!
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
+  title: String!
+}
+
+input TimelineCreateWithoutThreadsOnTimelineInput {
+  author: UserCreateNestedOneWithoutTimelineInput!
+  description: String!
+  id: String
+  premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
+  status: String!
+  tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   title: String!
 }
 
@@ -2949,6 +3856,7 @@ input TimelineOrderByWithRelationInput {
   premisesOnTimelines: PremisesOnTimelinesOrderByRelationAggregateInput
   status: SortOrder
   tagsOnTimelines: TagsOnTimelinesOrderByRelationAggregateInput
+  threadsOnTimeline: ThreadsOnTimelineOrderByRelationAggregateInput
   title: SortOrder
 }
 
@@ -2994,6 +3902,7 @@ input TimelineUpdateInput {
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   status: StringFieldUpdateOperationsInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -3039,6 +3948,14 @@ input TimelineUpdateOneRequiredWithoutTagsOnTimelinesInput {
   upsert: TimelineUpsertWithoutTagsOnTimelinesInput
 }
 
+input TimelineUpdateOneRequiredWithoutThreadsOnTimelineInput {
+  connect: TimelineWhereUniqueInput
+  connectOrCreate: TimelineCreateOrConnectWithoutThreadsOnTimelineInput
+  create: TimelineCreateWithoutThreadsOnTimelineInput
+  update: TimelineUpdateWithoutThreadsOnTimelineInput
+  upsert: TimelineUpsertWithoutThreadsOnTimelineInput
+}
+
 input TimelineUpdateWithWhereUniqueWithoutAuthorInput {
   data: TimelineUpdateWithoutAuthorInput!
   where: TimelineWhereUniqueInput!
@@ -3050,6 +3967,7 @@ input TimelineUpdateWithoutAuthorInput {
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   status: StringFieldUpdateOperationsInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -3059,6 +3977,7 @@ input TimelineUpdateWithoutPremisesOnTimelinesInput {
   id: StringFieldUpdateOperationsInput
   status: StringFieldUpdateOperationsInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -3068,6 +3987,17 @@ input TimelineUpdateWithoutTagsOnTimelinesInput {
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   status: StringFieldUpdateOperationsInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input TimelineUpdateWithoutThreadsOnTimelineInput {
+  author: UserUpdateOneRequiredWithoutTimelineInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
+  status: StringFieldUpdateOperationsInput
+  tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -3087,6 +4017,11 @@ input TimelineUpsertWithoutTagsOnTimelinesInput {
   update: TimelineUpdateWithoutTagsOnTimelinesInput!
 }
 
+input TimelineUpsertWithoutThreadsOnTimelineInput {
+  create: TimelineCreateWithoutThreadsOnTimelineInput!
+  update: TimelineUpdateWithoutThreadsOnTimelineInput!
+}
+
 input TimelineWhereInput {
   AND: [TimelineWhereInput!]
   NOT: [TimelineWhereInput!]
@@ -3098,6 +4033,7 @@ input TimelineWhereInput {
   premisesOnTimelines: PremisesOnTimelinesListRelationFilter
   status: StringFilter
   tagsOnTimelines: TagsOnTimelinesListRelationFilter
+  threadsOnTimeline: ThreadsOnTimelineListRelationFilter
   title: StringFilter
 }
 
@@ -3436,11 +4372,13 @@ type Vision {
   prevVision: Vision
   prevVisionId: String
   reference: String!
+  threadsOnVision(cursor: ThreadsOnVisionWhereUniqueInput, distinct: [ThreadsOnVisionScalarFieldEnum!], orderBy: [ThreadsOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnVisionWhereInput): [ThreadsOnVision!]!
   title: String!
 }
 
 type VisionCount {
   nextVision: Int!
+  threadsOnVision: Int!
 }
 
 type VisionCountAggregate {
@@ -3478,6 +4416,7 @@ input VisionCreateInput {
   premise: PremiseCreateNestedOneWithoutVisionInput!
   prevVision: VisionCreateNestedOneWithoutNextVisionInput
   reference: String!
+  threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   title: String!
 }
 
@@ -3568,6 +4507,12 @@ input VisionCreateNestedOneWithoutNextVisionInput {
   create: VisionCreateWithoutNextVisionInput
 }
 
+input VisionCreateNestedOneWithoutThreadsOnVisionInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutThreadsOnVisionInput
+  create: VisionCreateWithoutThreadsOnVisionInput
+}
+
 input VisionCreateOrConnectWithoutAuthorInput {
   create: VisionCreateWithoutAuthorInput!
   where: VisionWhereUniqueInput!
@@ -3588,6 +4533,11 @@ input VisionCreateOrConnectWithoutPrevVisionInput {
   where: VisionWhereUniqueInput!
 }
 
+input VisionCreateOrConnectWithoutThreadsOnVisionInput {
+  create: VisionCreateWithoutThreadsOnVisionInput!
+  where: VisionWhereUniqueInput!
+}
+
 input VisionCreateWithoutAuthorInput {
   activityDate: DateTime!
   createdAt: DateTime
@@ -3597,6 +4547,7 @@ input VisionCreateWithoutAuthorInput {
   premise: PremiseCreateNestedOneWithoutVisionInput!
   prevVision: VisionCreateNestedOneWithoutNextVisionInput
   reference: String!
+  threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   title: String!
 }
 
@@ -3609,6 +4560,7 @@ input VisionCreateWithoutNextVisionInput {
   premise: PremiseCreateNestedOneWithoutVisionInput!
   prevVision: VisionCreateNestedOneWithoutNextVisionInput
   reference: String!
+  threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   title: String!
 }
 
@@ -3621,6 +4573,7 @@ input VisionCreateWithoutPremiseInput {
   nextVision: VisionCreateNestedManyWithoutPrevVisionInput
   prevVision: VisionCreateNestedOneWithoutNextVisionInput
   reference: String!
+  threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   title: String!
 }
 
@@ -3632,6 +4585,20 @@ input VisionCreateWithoutPrevVisionInput {
   id: String
   nextVision: VisionCreateNestedManyWithoutPrevVisionInput
   premise: PremiseCreateNestedOneWithoutVisionInput!
+  reference: String!
+  threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
+  title: String!
+}
+
+input VisionCreateWithoutThreadsOnVisionInput {
+  activityDate: DateTime!
+  author: UserCreateNestedOneWithoutVisionInput
+  createdAt: DateTime
+  description: String!
+  id: String
+  nextVision: VisionCreateNestedManyWithoutPrevVisionInput
+  premise: PremiseCreateNestedOneWithoutVisionInput!
+  prevVision: VisionCreateNestedOneWithoutNextVisionInput
   reference: String!
   title: String!
 }
@@ -3737,6 +4704,7 @@ input VisionOrderByWithRelationInput {
   prevVision: VisionOrderByWithRelationInput
   prevVisionId: SortOrder
   reference: SortOrder
+  threadsOnVision: ThreadsOnVisionOrderByRelationAggregateInput
   title: SortOrder
 }
 
@@ -3797,6 +4765,7 @@ input VisionUpdateInput {
   premise: PremiseUpdateOneRequiredWithoutVisionInput
   prevVision: VisionUpdateOneWithoutNextVisionInput
   reference: StringFieldUpdateOperationsInput
+  threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -3866,6 +4835,14 @@ input VisionUpdateManyWithoutPrevVisionInput {
   upsert: [VisionUpsertWithWhereUniqueWithoutPrevVisionInput!]
 }
 
+input VisionUpdateOneRequiredWithoutThreadsOnVisionInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutThreadsOnVisionInput
+  create: VisionCreateWithoutThreadsOnVisionInput
+  update: VisionUpdateWithoutThreadsOnVisionInput
+  upsert: VisionUpsertWithoutThreadsOnVisionInput
+}
+
 input VisionUpdateOneWithoutNextVisionInput {
   connect: VisionWhereUniqueInput
   connectOrCreate: VisionCreateOrConnectWithoutNextVisionInput
@@ -3900,6 +4877,7 @@ input VisionUpdateWithoutAuthorInput {
   premise: PremiseUpdateOneRequiredWithoutVisionInput
   prevVision: VisionUpdateOneWithoutNextVisionInput
   reference: StringFieldUpdateOperationsInput
+  threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -3912,6 +4890,7 @@ input VisionUpdateWithoutNextVisionInput {
   premise: PremiseUpdateOneRequiredWithoutVisionInput
   prevVision: VisionUpdateOneWithoutNextVisionInput
   reference: StringFieldUpdateOperationsInput
+  threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -3924,6 +4903,7 @@ input VisionUpdateWithoutPremiseInput {
   nextVision: VisionUpdateManyWithoutPrevVisionInput
   prevVision: VisionUpdateOneWithoutNextVisionInput
   reference: StringFieldUpdateOperationsInput
+  threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -3935,6 +4915,20 @@ input VisionUpdateWithoutPrevVisionInput {
   id: StringFieldUpdateOperationsInput
   nextVision: VisionUpdateManyWithoutPrevVisionInput
   premise: PremiseUpdateOneRequiredWithoutVisionInput
+  reference: StringFieldUpdateOperationsInput
+  threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input VisionUpdateWithoutThreadsOnVisionInput {
+  activityDate: DateTimeFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutVisionInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  nextVision: VisionUpdateManyWithoutPrevVisionInput
+  premise: PremiseUpdateOneRequiredWithoutVisionInput
+  prevVision: VisionUpdateOneWithoutNextVisionInput
   reference: StringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
 }
@@ -3962,6 +4956,11 @@ input VisionUpsertWithoutNextVisionInput {
   update: VisionUpdateWithoutNextVisionInput!
 }
 
+input VisionUpsertWithoutThreadsOnVisionInput {
+  create: VisionCreateWithoutThreadsOnVisionInput!
+  update: VisionUpdateWithoutThreadsOnVisionInput!
+}
+
 input VisionWhereInput {
   AND: [VisionWhereInput!]
   NOT: [VisionWhereInput!]
@@ -3978,6 +4977,7 @@ input VisionWhereInput {
   prevVision: VisionRelationFilter
   prevVisionId: StringNullableFilter
   reference: StringFilter
+  threadsOnVision: ThreadsOnVisionListRelationFilter
   title: StringFilter
 }
 

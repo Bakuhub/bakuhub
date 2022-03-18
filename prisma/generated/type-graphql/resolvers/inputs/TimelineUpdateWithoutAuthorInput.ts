@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { PremisesOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/PremisesOnTimelinesUpdateManyWithoutTimelineInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TagsOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/TagsOnTimelinesUpdateManyWithoutTimelineInput";
+import { ThreadsOnTimelineUpdateManyWithoutTimelineInput } from "../inputs/ThreadsOnTimelineUpdateManyWithoutTimelineInput";
 
 @TypeGraphQL.InputType("TimelineUpdateWithoutAuthorInput", {
   isAbstract: true
@@ -39,4 +40,9 @@ export class TimelineUpdateWithoutAuthorInput {
     nullable: true
   })
   tagsOnTimelines?: TagsOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnTimelineUpdateManyWithoutTimelineInput, {
+    nullable: true
+  })
+  threadsOnTimeline?: ThreadsOnTimelineUpdateManyWithoutTimelineInput | undefined;
 }

@@ -1,0 +1,12 @@
+export { AggregateThreadsOnPremiseArgs } from "./AggregateThreadsOnPremiseArgs";
+export { CreateManyThreadsOnPremiseArgs } from "./CreateManyThreadsOnPremiseArgs";
+export { CreateThreadsOnPremiseArgs } from "./CreateThreadsOnPremiseArgs";
+export { DeleteManyThreadsOnPremiseArgs } from "./DeleteManyThreadsOnPremiseArgs";
+export { DeleteThreadsOnPremiseArgs } from "./DeleteThreadsOnPremiseArgs";
+export { FindFirstThreadsOnPremiseArgs } from "./FindFirstThreadsOnPremiseArgs";
+export { FindManyThreadsOnPremiseArgs } from "./FindManyThreadsOnPremiseArgs";
+export { FindUniqueThreadsOnPremiseArgs } from "./FindUniqueThreadsOnPremiseArgs";
+export { GroupByThreadsOnPremiseArgs } from "./GroupByThreadsOnPremiseArgs";
+export { UpdateManyThreadsOnPremiseArgs } from "./UpdateManyThreadsOnPremiseArgs";
+export { UpdateThreadsOnPremiseArgs } from "./UpdateThreadsOnPremiseArgs";
+export { UpsertThreadsOnPremiseArgs } from "./UpsertThreadsOnPremiseArgs";

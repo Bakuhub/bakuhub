@@ -3,9 +3,11 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
+import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { PremiseRelationFilter } from "../inputs/PremiseRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { ThreadsOnVisionListRelationFilter } from "../inputs/ThreadsOnVisionListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
 import { VisionRelationFilter } from "../inputs/VisionRelationFilter";
@@ -39,25 +41,25 @@ export class VisionWhereInput {
   })
   title?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeFilter, {
+  @TypeGraphQL.Field(_type => DateTimeNullableFilter, {
     nullable: true
   })
-  activityDate?: DateTimeFilter | undefined;
+  activityDate?: DateTimeNullableFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  description?: StringFilter | undefined;
+  description?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
   })
   createdAt?: DateTimeFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  reference?: StringFilter | undefined;
+  reference?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => UserRelationFilter, {
     nullable: true
@@ -93,4 +95,9 @@ export class VisionWhereInput {
     nullable: true
   })
   nextVision?: VisionListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnVisionListRelationFilter, {
+    nullable: true
+  })
+  threadsOnVision?: ThreadsOnVisionListRelationFilter | undefined;
 }

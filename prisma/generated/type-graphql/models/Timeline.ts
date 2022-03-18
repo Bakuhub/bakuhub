@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { PremisesOnTimelines } from "../models/PremisesOnTimelines";
 import { TagsOnTimelines } from "../models/TagsOnTimelines";
+import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
 import { User } from "../models/User";
 import { TimelineCount } from "../resolvers/outputs/TimelineCount";
 
@@ -41,6 +42,8 @@ export class Timeline {
   premisesOnTimelines?: PremisesOnTimelines[];
 
   tagsOnTimelines?: TagsOnTimelines[];
+
+  threadsOnTimeline?: ThreadsOnTimeline[];
 
   @TypeGraphQL.Field(_type => TimelineCount, {
     nullable: true

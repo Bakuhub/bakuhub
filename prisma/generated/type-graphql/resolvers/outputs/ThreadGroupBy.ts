@@ -21,14 +21,14 @@ export class ThreadGroupBy {
   title!: string;
 
   @TypeGraphQL.Field(_type => Date, {
-    nullable: false
+    nullable: true
   })
-  activityDate!: Date;
+  activityDate!: Date | null;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  description!: string;
+  description!: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -36,14 +36,9 @@ export class ThreadGroupBy {
   createdAt!: Date;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  reference!: string;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  premiseId!: string;
+  reference!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

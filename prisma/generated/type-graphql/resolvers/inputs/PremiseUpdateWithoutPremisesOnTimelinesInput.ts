@@ -6,7 +6,7 @@ import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdat
 import { EnumPremiseStatusFieldUpdateOperationsInput } from "../inputs/EnumPremiseStatusFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TagsOnPremisesUpdateManyWithoutPremiseInput } from "../inputs/TagsOnPremisesUpdateManyWithoutPremiseInput";
-import { ThreadUpdateManyWithoutPremiseInput } from "../inputs/ThreadUpdateManyWithoutPremiseInput";
+import { ThreadsOnPremiseUpdateManyWithoutPremiseInput } from "../inputs/ThreadsOnPremiseUpdateManyWithoutPremiseInput";
 import { UserUpdateOneWithoutPremiseInput } from "../inputs/UserUpdateOneWithoutPremiseInput";
 import { VisionUpdateManyWithoutPremiseInput } from "../inputs/VisionUpdateManyWithoutPremiseInput";
 
@@ -49,13 +49,13 @@ export class PremiseUpdateWithoutPremisesOnTimelinesInput {
   })
   vision?: VisionUpdateManyWithoutPremiseInput | undefined;
 
-  @TypeGraphQL.Field(_type => ThreadUpdateManyWithoutPremiseInput, {
-    nullable: true
-  })
-  thread?: ThreadUpdateManyWithoutPremiseInput | undefined;
-
   @TypeGraphQL.Field(_type => TagsOnPremisesUpdateManyWithoutPremiseInput, {
     nullable: true
   })
   tagsOnPremises?: TagsOnPremisesUpdateManyWithoutPremiseInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseUpdateManyWithoutPremiseInput, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseUpdateManyWithoutPremiseInput | undefined;
 }

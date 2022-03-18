@@ -8,7 +8,7 @@ import { PremisesOnTimelinesListRelationFilter } from "../inputs/PremisesOnTimel
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { TagsOnPremisesListRelationFilter } from "../inputs/TagsOnPremisesListRelationFilter";
-import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
+import { ThreadsOnPremiseListRelationFilter } from "../inputs/ThreadsOnPremiseListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
 
@@ -71,11 +71,6 @@ export class PremiseWhereInput {
   })
   vision?: VisionListRelationFilter | undefined;
 
-  @TypeGraphQL.Field(_type => ThreadListRelationFilter, {
-    nullable: true
-  })
-  thread?: ThreadListRelationFilter | undefined;
-
   @TypeGraphQL.Field(_type => PremisesOnTimelinesListRelationFilter, {
     nullable: true
   })
@@ -85,4 +80,9 @@ export class PremiseWhereInput {
     nullable: true
   })
   tagsOnPremises?: TagsOnPremisesListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseListRelationFilter, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseListRelationFilter | undefined;
 }

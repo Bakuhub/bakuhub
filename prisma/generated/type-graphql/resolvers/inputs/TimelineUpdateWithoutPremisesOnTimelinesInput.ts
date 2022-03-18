@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TagsOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/TagsOnTimelinesUpdateManyWithoutTimelineInput";
+import { ThreadsOnTimelineUpdateManyWithoutTimelineInput } from "../inputs/ThreadsOnTimelineUpdateManyWithoutTimelineInput";
 import { UserUpdateOneRequiredWithoutTimelineInput } from "../inputs/UserUpdateOneRequiredWithoutTimelineInput";
 
 @TypeGraphQL.InputType("TimelineUpdateWithoutPremisesOnTimelinesInput", {
@@ -39,4 +40,9 @@ export class TimelineUpdateWithoutPremisesOnTimelinesInput {
     nullable: true
   })
   tagsOnTimelines?: TagsOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnTimelineUpdateManyWithoutTimelineInput, {
+    nullable: true
+  })
+  threadsOnTimeline?: ThreadsOnTimelineUpdateManyWithoutTimelineInput | undefined;
 }

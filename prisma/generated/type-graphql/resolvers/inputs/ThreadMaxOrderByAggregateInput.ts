@@ -41,10 +41,5 @@ export class ThreadMaxOrderByAggregateInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  premiseId?: "asc" | "desc" | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
   parentThreadId?: "asc" | "desc" | undefined;
 }

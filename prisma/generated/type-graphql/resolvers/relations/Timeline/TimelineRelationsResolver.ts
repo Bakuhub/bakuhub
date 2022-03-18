@@ -1,10 +1,12 @@
 import * as TypeGraphQL from "type-graphql";
 import { PremisesOnTimelines } from "../../../models/PremisesOnTimelines";
 import { TagsOnTimelines } from "../../../models/TagsOnTimelines";
+import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
 import { Timeline } from "../../../models/Timeline";
 import { User } from "../../../models/User";
 import { TimelinePremisesOnTimelinesArgs } from "./args/TimelinePremisesOnTimelinesArgs";
 import { TimelineTagsOnTimelinesArgs } from "./args/TimelineTagsOnTimelinesArgs";
+import { TimelineThreadsOnTimelineArgs } from "./args/TimelineThreadsOnTimelineArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => Timeline)
@@ -40,5 +42,16 @@ export class TimelineRelationsResolver {
         id: timeline.id,
       },
     }).tagsOnTimelines(args);
+  }
+
+  @TypeGraphQL.FieldResolver(_type => [ThreadsOnTimeline], {
+    nullable: false
+  })
+  async threadsOnTimeline(@TypeGraphQL.Root() timeline: Timeline, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: TimelineThreadsOnTimelineArgs): Promise<ThreadsOnTimeline[]> {
+    return getPrismaFromContext(ctx).timeline.findUnique({
+      where: {
+        id: timeline.id,
+      },
+    }).threadsOnTimeline(args);
   }
 }

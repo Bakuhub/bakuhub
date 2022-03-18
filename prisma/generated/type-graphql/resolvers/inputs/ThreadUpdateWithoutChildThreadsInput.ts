@@ -3,9 +3,13 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
-import { PremiseUpdateOneRequiredWithoutThreadInput } from "../inputs/PremiseUpdateOneRequiredWithoutThreadInput";
+import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
+import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { ThreadUpdateOneWithoutChildThreadsInput } from "../inputs/ThreadUpdateOneWithoutChildThreadsInput";
+import { ThreadsOnPremiseUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnPremiseUpdateOneWithoutThreadInput";
+import { ThreadsOnTimelineUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnTimelineUpdateOneWithoutThreadInput";
+import { ThreadsOnVisionUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnVisionUpdateOneWithoutThreadInput";
 
 @TypeGraphQL.InputType("ThreadUpdateWithoutChildThreadsInput", {
   isAbstract: true
@@ -21,33 +25,43 @@ export class ThreadUpdateWithoutChildThreadsInput {
   })
   title?: StringFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableDateTimeFieldUpdateOperationsInput, {
     nullable: true
   })
-  activityDate?: DateTimeFieldUpdateOperationsInput | undefined;
+  activityDate?: NullableDateTimeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
   })
-  description?: StringFieldUpdateOperationsInput | undefined;
+  description?: NullableStringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
     nullable: true
   })
   createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
   })
-  reference?: StringFieldUpdateOperationsInput | undefined;
-
-  @TypeGraphQL.Field(_type => PremiseUpdateOneRequiredWithoutThreadInput, {
-    nullable: true
-  })
-  premise?: PremiseUpdateOneRequiredWithoutThreadInput | undefined;
+  reference?: NullableStringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => ThreadUpdateOneWithoutChildThreadsInput, {
     nullable: true
   })
   parentThread?: ThreadUpdateOneWithoutChildThreadsInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseUpdateOneWithoutThreadInput, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseUpdateOneWithoutThreadInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnTimelineUpdateOneWithoutThreadInput, {
+    nullable: true
+  })
+  threadsOnTimeline?: ThreadsOnTimelineUpdateOneWithoutThreadInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnVisionUpdateOneWithoutThreadInput, {
+    nullable: true
+  })
+  threadsOnVision?: ThreadsOnVisionUpdateOneWithoutThreadInput | undefined;
 }

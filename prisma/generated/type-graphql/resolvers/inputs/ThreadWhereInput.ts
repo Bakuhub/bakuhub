@@ -3,11 +3,14 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
-import { PremiseRelationFilter } from "../inputs/PremiseRelationFilter";
+import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
 import { ThreadRelationFilter } from "../inputs/ThreadRelationFilter";
+import { ThreadsOnPremiseRelationFilter } from "../inputs/ThreadsOnPremiseRelationFilter";
+import { ThreadsOnTimelineRelationFilter } from "../inputs/ThreadsOnTimelineRelationFilter";
+import { ThreadsOnVisionRelationFilter } from "../inputs/ThreadsOnVisionRelationFilter";
 
 @TypeGraphQL.InputType("ThreadWhereInput", {
   isAbstract: true
@@ -38,35 +41,25 @@ export class ThreadWhereInput {
   })
   title?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeFilter, {
+  @TypeGraphQL.Field(_type => DateTimeNullableFilter, {
     nullable: true
   })
-  activityDate?: DateTimeFilter | undefined;
+  activityDate?: DateTimeNullableFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  description?: StringFilter | undefined;
+  description?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
   })
   createdAt?: DateTimeFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  reference?: StringFilter | undefined;
-
-  @TypeGraphQL.Field(_type => PremiseRelationFilter, {
-    nullable: true
-  })
-  premise?: PremiseRelationFilter | undefined;
-
-  @TypeGraphQL.Field(_type => StringFilter, {
-    nullable: true
-  })
-  premiseId?: StringFilter | undefined;
+  reference?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
@@ -82,4 +75,19 @@ export class ThreadWhereInput {
     nullable: true
   })
   childThreads?: ThreadListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseRelationFilter, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnTimelineRelationFilter, {
+    nullable: true
+  })
+  threadsOnTimeline?: ThreadsOnTimelineRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnVisionRelationFilter, {
+    nullable: true
+  })
+  threadsOnVision?: ThreadsOnVisionRelationFilter | undefined;
 }

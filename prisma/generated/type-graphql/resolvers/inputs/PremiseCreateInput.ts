@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { PremisesOnTimelinesCreateNestedManyWithoutPremiseInput } from "../inputs/PremisesOnTimelinesCreateNestedManyWithoutPremiseInput";
 import { TagsOnPremisesCreateNestedManyWithoutPremiseInput } from "../inputs/TagsOnPremisesCreateNestedManyWithoutPremiseInput";
-import { ThreadCreateNestedManyWithoutPremiseInput } from "../inputs/ThreadCreateNestedManyWithoutPremiseInput";
+import { ThreadsOnPremiseCreateNestedManyWithoutPremiseInput } from "../inputs/ThreadsOnPremiseCreateNestedManyWithoutPremiseInput";
 import { UserCreateNestedOneWithoutPremiseInput } from "../inputs/UserCreateNestedOneWithoutPremiseInput";
 import { VisionCreateNestedManyWithoutPremiseInput } from "../inputs/VisionCreateNestedManyWithoutPremiseInput";
 import { PremiseStatus } from "../../enums/PremiseStatus";
@@ -48,11 +48,6 @@ export class PremiseCreateInput {
   })
   vision?: VisionCreateNestedManyWithoutPremiseInput | undefined;
 
-  @TypeGraphQL.Field(_type => ThreadCreateNestedManyWithoutPremiseInput, {
-    nullable: true
-  })
-  thread?: ThreadCreateNestedManyWithoutPremiseInput | undefined;
-
   @TypeGraphQL.Field(_type => PremisesOnTimelinesCreateNestedManyWithoutPremiseInput, {
     nullable: true
   })
@@ -62,4 +57,9 @@ export class PremiseCreateInput {
     nullable: true
   })
   tagsOnPremises?: TagsOnPremisesCreateNestedManyWithoutPremiseInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseCreateNestedManyWithoutPremiseInput, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput | undefined;
 }

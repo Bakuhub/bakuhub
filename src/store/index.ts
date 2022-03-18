@@ -1,10 +1,14 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {counterReducer} from "./slices/couterSlice";
+import {premiseReducer} from "./slices/premiseSlice";
+import {threadReducer} from "./slices/threadSlice";
 // ...
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer
+        counter: counterReducer,
+        premise: premiseReducer,
+        thread: threadReducer
     },
 });
 

@@ -2,8 +2,10 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { PremiseCreateNestedOneWithoutThreadInput } from "../inputs/PremiseCreateNestedOneWithoutThreadInput";
 import { ThreadCreateNestedManyWithoutParentThreadInput } from "../inputs/ThreadCreateNestedManyWithoutParentThreadInput";
+import { ThreadsOnPremiseCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnPremiseCreateNestedOneWithoutThreadInput";
+import { ThreadsOnTimelineCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnTimelineCreateNestedOneWithoutThreadInput";
+import { ThreadsOnVisionCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnVisionCreateNestedOneWithoutThreadInput";
 
 @TypeGraphQL.InputType("ThreadCreateWithoutParentThreadInput", {
   isAbstract: true
@@ -20,14 +22,14 @@ export class ThreadCreateWithoutParentThreadInput {
   title!: string;
 
   @TypeGraphQL.Field(_type => Date, {
-    nullable: false
+    nullable: true
   })
-  activityDate!: Date;
+  activityDate?: Date | undefined;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  description!: string;
+  description?: string | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
@@ -35,17 +37,27 @@ export class ThreadCreateWithoutParentThreadInput {
   createdAt?: Date | undefined;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  reference!: string;
-
-  @TypeGraphQL.Field(_type => PremiseCreateNestedOneWithoutThreadInput, {
-    nullable: false
-  })
-  premise!: PremiseCreateNestedOneWithoutThreadInput;
+  reference?: string | undefined;
 
   @TypeGraphQL.Field(_type => ThreadCreateNestedManyWithoutParentThreadInput, {
     nullable: true
   })
   childThreads?: ThreadCreateNestedManyWithoutParentThreadInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseCreateNestedOneWithoutThreadInput, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseCreateNestedOneWithoutThreadInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnTimelineCreateNestedOneWithoutThreadInput, {
+    nullable: true
+  })
+  threadsOnTimeline?: ThreadsOnTimelineCreateNestedOneWithoutThreadInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnVisionCreateNestedOneWithoutThreadInput, {
+    nullable: true
+  })
+  threadsOnVision?: ThreadsOnVisionCreateNestedOneWithoutThreadInput | undefined;
 }

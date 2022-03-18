@@ -40,11 +40,6 @@ export class ThreadCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  premiseId!: number;
-
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-    nullable: false
-  })
   parentThreadId!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {

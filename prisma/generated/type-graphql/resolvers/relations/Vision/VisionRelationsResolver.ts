@@ -1,8 +1,10 @@
 import * as TypeGraphQL from "type-graphql";
 import { Premise } from "../../../models/Premise";
+import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
 import { VisionNextVisionArgs } from "./args/VisionNextVisionArgs";
+import { VisionThreadsOnVisionArgs } from "./args/VisionThreadsOnVisionArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => Vision)
@@ -49,5 +51,16 @@ export class VisionRelationsResolver {
         id: vision.id,
       },
     }).nextVision(args);
+  }
+
+  @TypeGraphQL.FieldResolver(_type => [ThreadsOnVision], {
+    nullable: false
+  })
+  async threadsOnVision(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: VisionThreadsOnVisionArgs): Promise<ThreadsOnVision[]> {
+    return getPrismaFromContext(ctx).vision.findUnique({
+      where: {
+        id: vision.id,
+      },
+    }).threadsOnVision(args);
   }
 }

@@ -2,8 +2,10 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { PremiseOrderByWithRelationInput } from "../inputs/PremiseOrderByWithRelationInput";
 import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
+import { ThreadsOnPremiseOrderByWithRelationInput } from "../inputs/ThreadsOnPremiseOrderByWithRelationInput";
+import { ThreadsOnTimelineOrderByWithRelationInput } from "../inputs/ThreadsOnTimelineOrderByWithRelationInput";
+import { ThreadsOnVisionOrderByWithRelationInput } from "../inputs/ThreadsOnVisionOrderByWithRelationInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("ThreadOrderByWithRelationInput", {
@@ -40,16 +42,6 @@ export class ThreadOrderByWithRelationInput {
   })
   reference?: "asc" | "desc" | undefined;
 
-  @TypeGraphQL.Field(_type => PremiseOrderByWithRelationInput, {
-    nullable: true
-  })
-  premise?: PremiseOrderByWithRelationInput | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
-  premiseId?: "asc" | "desc" | undefined;
-
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
@@ -64,4 +56,19 @@ export class ThreadOrderByWithRelationInput {
     nullable: true
   })
   childThreads?: ThreadOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseOrderByWithRelationInput, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnTimelineOrderByWithRelationInput, {
+    nullable: true
+  })
+  threadsOnTimeline?: ThreadsOnTimelineOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnVisionOrderByWithRelationInput, {
+    nullable: true
+  })
+  threadsOnVision?: ThreadsOnVisionOrderByWithRelationInput | undefined;
 }

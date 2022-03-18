@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { PremiseOrderByWithRelationInput } from "../inputs/PremiseOrderByWithRelationInput";
+import { ThreadsOnVisionOrderByRelationAggregateInput } from "../inputs/ThreadsOnVisionOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
 import { SortOrder } from "../../enums/SortOrder";
@@ -75,4 +76,9 @@ export class VisionOrderByWithRelationInput {
     nullable: true
   })
   nextVision?: VisionOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnVisionOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  threadsOnVision?: ThreadsOnVisionOrderByRelationAggregateInput | undefined;
 }

@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ThreadsOnVisionCreateNestedManyWithoutVisionInput } from "../inputs/ThreadsOnVisionCreateNestedManyWithoutVisionInput";
 import { UserCreateNestedOneWithoutVisionInput } from "../inputs/UserCreateNestedOneWithoutVisionInput";
 import { VisionCreateNestedManyWithoutPrevVisionInput } from "../inputs/VisionCreateNestedManyWithoutPrevVisionInput";
 import { VisionCreateNestedOneWithoutNextVisionInput } from "../inputs/VisionCreateNestedOneWithoutNextVisionInput";
@@ -21,14 +22,14 @@ export class VisionCreateWithoutPremiseInput {
   title!: string;
 
   @TypeGraphQL.Field(_type => Date, {
-    nullable: false
+    nullable: true
   })
-  activityDate!: Date;
+  activityDate?: Date | undefined;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  description!: string;
+  description?: string | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
@@ -36,9 +37,9 @@ export class VisionCreateWithoutPremiseInput {
   createdAt?: Date | undefined;
 
   @TypeGraphQL.Field(_type => String, {
-    nullable: false
+    nullable: true
   })
-  reference!: string;
+  reference?: string | undefined;
 
   @TypeGraphQL.Field(_type => UserCreateNestedOneWithoutVisionInput, {
     nullable: true
@@ -54,4 +55,9 @@ export class VisionCreateWithoutPremiseInput {
     nullable: true
   })
   nextVision?: VisionCreateNestedManyWithoutPrevVisionInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnVisionCreateNestedManyWithoutVisionInput, {
+    nullable: true
+  })
+  threadsOnVision?: ThreadsOnVisionCreateNestedManyWithoutVisionInput | undefined;
 }

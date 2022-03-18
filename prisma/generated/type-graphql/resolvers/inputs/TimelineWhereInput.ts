@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { PremisesOnTimelinesListRelationFilter } from "../inputs/PremisesOnTimelinesListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { TagsOnTimelinesListRelationFilter } from "../inputs/TagsOnTimelinesListRelationFilter";
+import { ThreadsOnTimelineListRelationFilter } from "../inputs/ThreadsOnTimelineListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
 
 @TypeGraphQL.InputType("TimelineWhereInput", {
@@ -65,4 +66,9 @@ export class TimelineWhereInput {
     nullable: true
   })
   tagsOnTimelines?: TagsOnTimelinesListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnTimelineListRelationFilter, {
+    nullable: true
+  })
+  threadsOnTimeline?: ThreadsOnTimelineListRelationFilter | undefined;
 }

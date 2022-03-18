@@ -1,18 +1,9 @@
 import {Button, Grid, TextField} from "@mui/material";
 import {useState} from "react";
-import {fetchApi} from "../../services/fetchApi";
 
 export const CreateComment = () => {
     const [comment, setComment] = useState("");
     const handleSubmit = async () => {
-        const responseBody = await fetchApi("/api/create/comment", {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({})
-        });
     };
     const handleCancel = () => {
         console.info("------------ggg-----------");
