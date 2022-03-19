@@ -6,6 +6,7 @@ import {useQuery} from "@apollo/client";
 import {Premise} from "../../../prisma/generated/type-graphql";
 import {premisesQuery} from "../../gql/query/premisesQuery";
 import {useEffect} from "react";
+import MUIRichTextEditor from "mui-rte";
 
 export const MainPage = () => {
     const router = useRouter();
@@ -38,6 +39,10 @@ export const MainPage = () => {
             <TextField id="outlined-basic" label="Search" variant="outlined"/>
         </Grid>
         <Grid item xs={4}>
+            <MUIRichTextEditor
+                    inlineToolbar={true}
+                    label={"fojdopsfjpodsj"}
+            />
             <CustomizedTimeline/>
         </Grid>
         {

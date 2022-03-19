@@ -9,8 +9,7 @@ async function seed() {
         data: {
             title: "I want to reply to Boris Johnson plans Saudi Arabia visit to seek oil supply increase",
             activityDate: new Date(),
-            description:
-                    "MPs voice deep concerns over trip after mass execution by regime and its continuing role in Yemen war",
+            description: "2312",
             reference: "",
             parentThread: {
                 connect: {

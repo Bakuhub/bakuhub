@@ -21,12 +21,10 @@ export default function NestedList() {
 
     return (
             <List
-                    sx={{width: "100%", maxWidth: 360, bgcolor: "background.paper"}}
-                    component="nav"
-                    aria-labelledby="nested-list-subheader"
+                    sx={{width: "100%", bgcolor: "background.paper"}}
                     subheader={
                         <ListSubheader component="div" id="nested-list-subheader">
-                            Nested List Items
+                            CommentSection
                         </ListSubheader>
                     }
             >
