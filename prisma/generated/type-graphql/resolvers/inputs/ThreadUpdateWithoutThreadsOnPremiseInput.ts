@@ -10,6 +10,7 @@ import { ThreadUpdateManyWithoutParentThreadInput } from "../inputs/ThreadUpdate
 import { ThreadUpdateOneWithoutChildThreadsInput } from "../inputs/ThreadUpdateOneWithoutChildThreadsInput";
 import { ThreadsOnTimelineUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnTimelineUpdateOneWithoutThreadInput";
 import { ThreadsOnVisionUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnVisionUpdateOneWithoutThreadInput";
+import { UserUpdateOneWithoutThreadInput } from "../inputs/UserUpdateOneWithoutThreadInput";
 
 @TypeGraphQL.InputType("ThreadUpdateWithoutThreadsOnPremiseInput", {
   isAbstract: true
@@ -44,6 +45,11 @@ export class ThreadUpdateWithoutThreadsOnPremiseInput {
     nullable: true
   })
   reference?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => UserUpdateOneWithoutThreadInput, {
+    nullable: true
+  })
+  author?: UserUpdateOneWithoutThreadInput | undefined;
 
   @TypeGraphQL.Field(_type => ThreadUpdateOneWithoutChildThreadsInput, {
     nullable: true

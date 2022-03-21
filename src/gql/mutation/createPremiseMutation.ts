@@ -24,7 +24,6 @@ export const createPremiseMutation = gql`
                 title
                 prevVisionId
                 author {
-                    role
                     name
                     email
                 }

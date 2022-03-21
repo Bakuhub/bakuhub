@@ -16,7 +16,7 @@ export class UserMinOrderByAggregateInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  createdAt?: "asc" | "desc" | undefined;
+  name?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
@@ -26,10 +26,10 @@ export class UserMinOrderByAggregateInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  name?: "asc" | "desc" | undefined;
+  emailVerified?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  role?: "asc" | "desc" | undefined;
+  image?: "asc" | "desc" | undefined;
 }

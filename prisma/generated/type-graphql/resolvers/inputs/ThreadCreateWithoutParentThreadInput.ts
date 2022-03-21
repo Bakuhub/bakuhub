@@ -6,6 +6,7 @@ import { ThreadCreateNestedManyWithoutParentThreadInput } from "../inputs/Thread
 import { ThreadsOnPremiseCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnPremiseCreateNestedOneWithoutThreadInput";
 import { ThreadsOnTimelineCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnTimelineCreateNestedOneWithoutThreadInput";
 import { ThreadsOnVisionCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnVisionCreateNestedOneWithoutThreadInput";
+import { UserCreateNestedOneWithoutThreadInput } from "../inputs/UserCreateNestedOneWithoutThreadInput";
 
 @TypeGraphQL.InputType("ThreadCreateWithoutParentThreadInput", {
   isAbstract: true
@@ -40,6 +41,11 @@ export class ThreadCreateWithoutParentThreadInput {
     nullable: true
   })
   reference?: string | undefined;
+
+  @TypeGraphQL.Field(_type => UserCreateNestedOneWithoutThreadInput, {
+    nullable: true
+  })
+  author?: UserCreateNestedOneWithoutThreadInput | undefined;
 
   @TypeGraphQL.Field(_type => ThreadCreateNestedManyWithoutParentThreadInput, {
     nullable: true

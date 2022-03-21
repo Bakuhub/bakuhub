@@ -1,5 +1,7 @@
+export { AccountRelationsResolver } from "./Account/AccountRelationsResolver";
 export { PremiseRelationsResolver } from "./Premise/PremiseRelationsResolver";
 export { PremisesOnTimelinesRelationsResolver } from "./PremisesOnTimelines/PremisesOnTimelinesRelationsResolver";
+export { SessionRelationsResolver } from "./Session/SessionRelationsResolver";
 export { TagRelationsResolver } from "./Tag/TagRelationsResolver";
 export { TagsOnPremisesRelationsResolver } from "./TagsOnPremises/TagsOnPremisesRelationsResolver";
 export { TagsOnTimelinesRelationsResolver } from "./TagsOnTimelines/TagsOnTimelinesRelationsResolver";

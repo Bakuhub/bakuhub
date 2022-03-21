@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../scalars";
 import { ThreadsOnPremise } from "../models/ThreadsOnPremise";
 import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
+import { User } from "../models/User";
 import { ThreadCount } from "../resolvers/outputs/ThreadCount";
 
 @TypeGraphQL.ObjectType("Thread", {
@@ -40,6 +41,13 @@ export class Thread {
     nullable: true
   })
   reference?: string | null;
+
+  author?: User | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  authorId?: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

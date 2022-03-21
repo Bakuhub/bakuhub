@@ -3,16 +3,30 @@ import {gql} from "@apollo/client";
 export const threadsQuery = gql`
     query Query {
         threads {
-            id
             title
             activityDate
             description
             createdAt
             reference
+            parentThreadId
             _count {
                 childThreads
             }
-            parentThreadId
+            childThreads {
+                title
+                description
+                authorId
+                author {
+                    name
+                    image
+                    email
+                }
+            }
+            author {
+                name
+                image
+                email
+            }
         }
     }
 `;

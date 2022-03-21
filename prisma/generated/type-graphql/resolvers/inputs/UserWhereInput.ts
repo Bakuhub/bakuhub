@@ -2,11 +2,13 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { DateTimeFilter } from "../inputs/DateTimeFilter";
-import { EnumRoleFilter } from "../inputs/EnumRoleFilter";
+import { AccountListRelationFilter } from "../inputs/AccountListRelationFilter";
+import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { PremiseListRelationFilter } from "../inputs/PremiseListRelationFilter";
+import { SessionListRelationFilter } from "../inputs/SessionListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
 import { TimelineListRelationFilter } from "../inputs/TimelineListRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
 
@@ -34,30 +36,45 @@ export class UserWhereInput {
   })
   id?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeFilter, {
-    nullable: true
-  })
-  createdAt?: DateTimeFilter | undefined;
-
-  @TypeGraphQL.Field(_type => StringFilter, {
-    nullable: true
-  })
-  email?: StringFilter | undefined;
-
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
   name?: StringNullableFilter | undefined;
 
-  @TypeGraphQL.Field(_type => EnumRoleFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  role?: EnumRoleFilter | undefined;
+  email?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => DateTimeNullableFilter, {
+    nullable: true
+  })
+  emailVerified?: DateTimeNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  image?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => AccountListRelationFilter, {
+    nullable: true
+  })
+  accounts?: AccountListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => SessionListRelationFilter, {
+    nullable: true
+  })
+  sessions?: SessionListRelationFilter | undefined;
 
   @TypeGraphQL.Field(_type => PremiseListRelationFilter, {
     nullable: true
   })
   premise?: PremiseListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadListRelationFilter, {
+    nullable: true
+  })
+  thread?: ThreadListRelationFilter | undefined;
 
   @TypeGraphQL.Field(_type => VisionListRelationFilter, {
     nullable: true

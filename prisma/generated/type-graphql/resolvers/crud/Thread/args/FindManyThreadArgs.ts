@@ -35,5 +35,5 @@ export class FindManyThreadArgs {
   @TypeGraphQL.Field(_type => [ThreadScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "reference" | "parentThreadId"> | undefined;
+  distinct?: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "reference" | "authorId" | "parentThreadId"> | undefined;
 }

@@ -6,10 +6,13 @@ import {fetchApi} from "../../../services/fetchApi";
 import {useMutation} from "@apollo/client";
 import {createPremiseMutation} from "../../../gql/mutation/createPremiseMutation";
 import {get} from "lodash";
+import {useSession} from "next-auth/react";
 
 export const CreatePremise = () => {
     const router = useRouter();
-
+    const session = useSession();
+    console.info(session.data);
+    const [description, setDescription] = useState("");
     const [activityDate, setActivityDate] = useState(new Date());
     const [referenceUrl, setReferenceUrl] = useState("");
     const [title, setTitle] = useState("");
@@ -20,6 +23,25 @@ export const CreatePremise = () => {
             case ReferenceType.VIDEO:
             case ReferenceType.IMAGE:
                 return <TextField fullWidth
+                                  onChange={async (e) => {
+                                      console.info(get(e, "target.files[0]"));
+                                      const fileParts = get(e, "target.files[0].name", "").split(".");
+                                      const fileName = fileParts[0];
+                                      const fileType = fileParts[1];
+                                      const result = await fetchApi("/api/test", {
+                                          method: "POST",
+                                          headers: {
+                                              "Accept": "application/json",
+                                              "Content-Type": "application/json"
+                                          },
+                                          body: JSON.stringify({
+                                                      fileName, fileType
+                                                  }
+                                          )
+                                      });
+                                      console.info(result);
+                                  }
+                                  }
                                   type={"file"}/>;
             default:
                 return <TextField
@@ -48,17 +70,22 @@ export const CreatePremise = () => {
             variables:
                     {
                         data: {
+                            "author": {
+                                "connect": {
+                                    "id": get(session, "data.userId", "")
+                                }
+                            },
                             title,
-                            status: "RUMOUR",
+                            status: "REFERENCE_PROVIDED",
                             tagsOnPremises: {
                                 create: [{
                                     tag: {
                                         connectOrCreate: {
                                             create: {
-                                                label: "computing",
+                                                label: "ukraine",
                                             },
                                             where: {
-                                                label: "computing",
+                                                label: "ukraine",
                                             },
                                         },
                                     }
@@ -68,17 +95,20 @@ export const CreatePremise = () => {
                             vision: {
                                 create: [{
                                     title,
-                                    description: "this is cde",
+                                    description,
                                     activityDate,
                                     reference: snapshot.url || "",
+                                    "author": {
+                                        "connect": {
+                                            "id": get(session, "data.userId", "")
+                                        }
+                                    }
                                 }]
                             }
                         }
                     }
         };
         const result = await createNewPremise(variable);
-        console.info(result);
-        console.info("-0fe-w0f=-we0=-f0we=");
     };
     useEffect(
             () => {
@@ -119,6 +149,17 @@ export const CreatePremise = () => {
                     // value={activityDate}
 
                        fullWidth type={"datetime-local"}/>
+        </Grid>
+        <Grid item xs={12}>
+            <TextField
+                    multiline
+                    fullWidth
+                    onChange={({target: {value}}) => setDescription(value)}
+                    value={description}
+                    maxRows={5}
+                    label="Description"
+                    variant="outlined"
+            />
         </Grid>
         <Grid item xs={12}>
             {getReferenceInput()}

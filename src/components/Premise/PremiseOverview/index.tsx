@@ -17,7 +17,6 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import {Premise} from "../../../../prisma/generated/type-graphql";
 import {get} from "lodash";
 import {useRouter} from "next/router";
-import {Thread} from "../../Thread";
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -102,7 +101,6 @@ function PremiseOverview({premise}: { premise: Premise }) {
                         </CardContent>
                     </Collapse>
                 </Card>
-                <Thread/>
             </>
     );
 }

@@ -10,7 +10,8 @@ export const premiseQuery = gql`
             status
             author {
                 name
-                role
+                image
+                email
             }
             vision(where: $visionWhere2) {
                 title

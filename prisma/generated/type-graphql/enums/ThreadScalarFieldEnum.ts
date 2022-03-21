@@ -7,6 +7,7 @@ export enum ThreadScalarFieldEnum {
   description = "description",
   createdAt = "createdAt",
   reference = "reference",
+  authorId = "authorId",
   parentThreadId = "parentThreadId"
 }
 TypeGraphQL.registerEnumType(ThreadScalarFieldEnum, {

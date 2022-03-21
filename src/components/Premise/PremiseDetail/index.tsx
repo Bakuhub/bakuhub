@@ -5,16 +5,16 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
-import {Thread as ThreadCreator} from "../../Thread";
+import {ThreadCreator} from "../../Thread/ThreadCreator";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {setActivePremiseId} from "../../../store/slices/premiseSlice";
 import {useDispatch} from "react-redux";
 import {useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
-import NestedList from "../../Thread/ThreadList";
-import {setActiveThreadId} from "../../../store/slices/threadSlice";
+import {ThreadDetail} from "../../Thread/ThreadDetail";
+import ReplyIcon from "@mui/icons-material/Reply";
+import {LinearProgress} from "@mui/material";
 
 interface PremiseDetailProps {
     premise: Premise;
@@ -33,7 +33,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-    console.info(data?.threads);
     return (
             <>
                 <CardMedia
@@ -49,18 +48,17 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                 </CardContent>
                 <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
-                        <FavoriteIcon onClick={() => dispatch(setActivePremiseId(premise.id))}/>
+                        <ReplyIcon onClick={() => dispatch(setActivePremiseId(premise.id))}/>
                     </IconButton>
                     <IconButton aria-label="share">
                         <ShareIcon/>
                     </IconButton>
                 </CardActions>
                 <ThreadCreator/>
-                <NestedList/>
                 {
-                    data ? data.threads.map((thread, index) => <div key={index}
-                                                                    onClick={() => dispatch(setActiveThreadId(thread.id))}
-                    >{thread.title}</div>):<div>loading</div>
+                    data ? data.threads.map((thread, index) => <ThreadDetail key={thread.id} thread={thread}/>):
+                            // eslint-disable-next-line react/jsx-no-undef
+                            <LinearProgress/>
                 }
             </>
     );

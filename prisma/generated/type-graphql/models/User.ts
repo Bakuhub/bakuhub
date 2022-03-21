@@ -2,10 +2,12 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
+import { Account } from "../models/Account";
 import { Premise } from "../models/Premise";
+import { Session } from "../models/Session";
+import { Thread } from "../models/Thread";
 import { Timeline } from "../models/Timeline";
 import { Vision } from "../models/Vision";
-import { Role } from "../enums/Role";
 import { UserCount } from "../resolvers/outputs/UserCount";
 
 @TypeGraphQL.ObjectType("User", {
@@ -17,27 +19,33 @@ export class User {
   })
   id!: string;
 
-  @TypeGraphQL.Field(_type => Date, {
-    nullable: false
-  })
-  createdAt!: Date;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  email!: string;
-
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
   name?: string | null;
 
-  @TypeGraphQL.Field(_type => Role, {
-    nullable: false
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
   })
-  role!: "USER" | "ADMIN";
+  email?: string | null;
+
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: true
+  })
+  emailVerified?: Date | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  image?: string | null;
+
+  accounts?: Account[];
+
+  sessions?: Session[];
 
   premise?: Premise[];
+
+  thread?: Thread[];
 
   vision?: Vision[];
 

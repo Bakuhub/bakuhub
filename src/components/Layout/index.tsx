@@ -84,7 +84,7 @@ export const Layout: React.FunctionComponent = ({children}) => {
                         <Typography variant="h6" onClick={() => router.push("/")} noWrap component="div">
                             Main page
                         </Typography>
-                        <Button onClick={() => router.push("/user/signin")}>
+                        <Button variant={"outlined"} onClick={() => router.push("/api/auth/login")}>
                             Sign in
                         </Button>
                     </Toolbar>

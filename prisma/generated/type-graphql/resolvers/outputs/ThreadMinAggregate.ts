@@ -40,5 +40,10 @@ export class ThreadMinAggregate {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
+  authorId!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
   parentThreadId!: string | null;
 }

@@ -6,6 +6,7 @@ import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRela
 import { ThreadsOnPremiseOrderByWithRelationInput } from "../inputs/ThreadsOnPremiseOrderByWithRelationInput";
 import { ThreadsOnTimelineOrderByWithRelationInput } from "../inputs/ThreadsOnTimelineOrderByWithRelationInput";
 import { ThreadsOnVisionOrderByWithRelationInput } from "../inputs/ThreadsOnVisionOrderByWithRelationInput";
+import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("ThreadOrderByWithRelationInput", {
@@ -41,6 +42,16 @@ export class ThreadOrderByWithRelationInput {
     nullable: true
   })
   reference?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => UserOrderByWithRelationInput, {
+    nullable: true
+  })
+  author?: UserOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  authorId?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true

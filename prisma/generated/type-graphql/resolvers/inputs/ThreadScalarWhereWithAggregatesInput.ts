@@ -59,5 +59,10 @@ export class ThreadScalarWhereWithAggregatesInput {
   @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
     nullable: true
   })
+  authorId?: StringNullableWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
   parentThreadId?: StringNullableWithAggregatesFilter | undefined;
 }

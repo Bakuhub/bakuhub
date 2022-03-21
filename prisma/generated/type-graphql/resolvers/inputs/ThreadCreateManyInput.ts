@@ -40,5 +40,10 @@ export class ThreadCreateManyInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
+  authorId?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
   parentThreadId?: string | undefined;
 }

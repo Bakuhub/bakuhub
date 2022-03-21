@@ -11,6 +11,7 @@ import { ThreadRelationFilter } from "../inputs/ThreadRelationFilter";
 import { ThreadsOnPremiseRelationFilter } from "../inputs/ThreadsOnPremiseRelationFilter";
 import { ThreadsOnTimelineRelationFilter } from "../inputs/ThreadsOnTimelineRelationFilter";
 import { ThreadsOnVisionRelationFilter } from "../inputs/ThreadsOnVisionRelationFilter";
+import { UserRelationFilter } from "../inputs/UserRelationFilter";
 
 @TypeGraphQL.InputType("ThreadWhereInput", {
   isAbstract: true
@@ -60,6 +61,16 @@ export class ThreadWhereInput {
     nullable: true
   })
   reference?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => UserRelationFilter, {
+    nullable: true
+  })
+  author?: UserRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  authorId?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true

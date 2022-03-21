@@ -6,7 +6,8 @@ import {useQuery} from "@apollo/client";
 import {Premise} from "../../../prisma/generated/type-graphql";
 import {premisesQuery} from "../../gql/query/premisesQuery";
 import {useEffect} from "react";
-import MUIRichTextEditor from "mui-rte";
+import {signIn} from "next-auth/react";
+import {UserStatus} from "../Auth";
 
 export const MainPage = () => {
     const router = useRouter();
@@ -20,11 +21,22 @@ export const MainPage = () => {
     }, [data]);
     return <Grid container spacing={1} justifyContent={"center"}>
         <Grid item container justifyContent={"center"} xs={12}>
-            <Typography variant={"h6"}>
+            <Typography variant={"h6"} onClick={() => signIn()}>
                 Bakuhub
             </Typography>
+            <UserStatus/>
             <Button variant={"outlined"} onClick={() => router.push("/create/premise")}>
                 Create Premise
+            </Button>
+            <Button onClick={() => {
+                fetch("/api/test").then(
+                        res => {
+                            console.info("---------------------------------------fdis0-fids");
+                            console.info(res.json());
+                        }
+                );
+            }}>
+                test
             </Button>
         </Grid>
         <Grid>
@@ -39,10 +51,6 @@ export const MainPage = () => {
             <TextField id="outlined-basic" label="Search" variant="outlined"/>
         </Grid>
         <Grid item xs={4}>
-            <MUIRichTextEditor
-                    inlineToolbar={true}
-                    label={"fojdopsfjpodsj"}
-            />
             <CustomizedTimeline/>
         </Grid>
         {

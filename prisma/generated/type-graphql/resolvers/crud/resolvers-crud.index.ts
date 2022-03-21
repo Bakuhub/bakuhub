@@ -1,5 +1,7 @@
+export { AccountCrudResolver } from "./Account/AccountCrudResolver";
 export { PremiseCrudResolver } from "./Premise/PremiseCrudResolver";
 export { PremisesOnTimelinesCrudResolver } from "./PremisesOnTimelines/PremisesOnTimelinesCrudResolver";
+export { SessionCrudResolver } from "./Session/SessionCrudResolver";
 export { SnapshotCrudResolver } from "./Snapshot/SnapshotCrudResolver";
 export { TagCrudResolver } from "./Tag/TagCrudResolver";
 export { TagsOnPremisesCrudResolver } from "./TagsOnPremises/TagsOnPremisesCrudResolver";
@@ -10,4 +12,5 @@ export { ThreadsOnTimelineCrudResolver } from "./ThreadsOnTimeline/ThreadsOnTime
 export { ThreadsOnVisionCrudResolver } from "./ThreadsOnVision/ThreadsOnVisionCrudResolver";
 export { TimelineCrudResolver } from "./Timeline/TimelineCrudResolver";
 export { UserCrudResolver } from "./User/UserCrudResolver";
+export { VerificationTokenCrudResolver } from "./VerificationToken/VerificationTokenCrudResolver";
 export { VisionCrudResolver } from "./Vision/VisionCrudResolver";

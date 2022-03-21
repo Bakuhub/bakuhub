@@ -3,11 +3,23 @@ import { Thread } from "../../../models/Thread";
 import { ThreadsOnPremise } from "../../../models/ThreadsOnPremise";
 import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
 import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
+import { User } from "../../../models/User";
 import { ThreadChildThreadsArgs } from "./args/ThreadChildThreadsArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => Thread)
 export class ThreadRelationsResolver {
+  @TypeGraphQL.FieldResolver(_type => User, {
+    nullable: true
+  })
+  async author(@TypeGraphQL.Root() thread: Thread, @TypeGraphQL.Ctx() ctx: any): Promise<User | null> {
+    return getPrismaFromContext(ctx).thread.findUnique({
+      where: {
+        id: thread.id,
+      },
+    }).author({});
+  }
+
   @TypeGraphQL.FieldResolver(_type => Thread, {
     nullable: true
   })

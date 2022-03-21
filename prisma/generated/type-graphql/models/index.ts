@@ -1,5 +1,7 @@
+export { Account } from "./Account";
 export { Premise } from "./Premise";
 export { PremisesOnTimelines } from "./PremisesOnTimelines";
+export { Session } from "./Session";
 export { Snapshot } from "./Snapshot";
 export { Tag } from "./Tag";
 export { TagsOnPremises } from "./TagsOnPremises";
@@ -10,4 +12,5 @@ export { ThreadsOnTimeline } from "./ThreadsOnTimeline";
 export { ThreadsOnVision } from "./ThreadsOnVision";
 export { Timeline } from "./Timeline";
 export { User } from "./User";
+export { VerificationToken } from "./VerificationToken";
 export { Vision } from "./Vision";
