@@ -19,6 +19,7 @@ export const uploadUrlToS3 = async (url: string): Promise<UploadUrlToS3Response>
     await page.goto(url);
     const screenshot = await page.screenshot({fullPage: true});
     const fileName = `snapshot/${getUUID()}.png`;
+    console.info(screenshot);
     const result = await s3.putObject({
         Body: screenshot,
         Bucket: "bakuhub",

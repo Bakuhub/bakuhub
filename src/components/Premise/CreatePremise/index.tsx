@@ -24,7 +24,6 @@ export const CreatePremise = () => {
                     () => {
                         console.info("-0-0-0-0-");
                         console.info(imageUrl);
-                        fetchApi("/api/test");
                     }, [imageUrl]
             );
             const readFile = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -33,46 +32,26 @@ export const CreatePremise = () => {
                     reader.onload = function (e) {
                         const url = get(e, "target.result", "");
                         setImageUrl(url);
-                        fetchApi("/api/test", {
-                            method: "POST",
-                            body: {
-                                url
-                            }
-                        });
                     };
-                    reader.readAsArrayBuffer(get(e, "target.files[0]", ""));
+                    console.info(get(e, "target.files[0]", ""));
+                    reader.readAsDataURL(get(e, "target.files[0]", ""));
                 });
 
             };
             const handleUpload = async (e: ChangeEvent<HTMLTextAreaElement>) => {
-                // const file = get(e, "target.files[0]", "");
-                // const filename = encodeURIComponent(file.name);
-                // const res = await axios.get(`/api/test?file=${filename}`);
-                // console.info(res);
-                // const formData = new FormData();
-                //
-                // // @ts-ignore
-                // Object.entries({...fields, file}).forEach(([key, value]: [key: string, value: string]) => {
-                //     formData.append(key, value);
-                // });
-                //
-                // const upload = await axios.put(res.data.url
-                //         , formData);
-                // console.info(upload);
-                // console.info("-----------------");
-                // // const res = await fetch(uploadUrl, {
-                // //     method: "PUT",
-                // //     body: data,
-                // //     headers: {
-                // //         // file type has to match presigned url type
-                // //         "Content-Type": file.type,
-                // //     },
-                // // });
-                // if (upload?.ok) {
-                //     console.log("Uploaded successfully!");
-                // } else {
-                //     console.error("Upload failed.");
-                // }
+                const isFileValid = get(e, "target.files[0]", "");
+                if (isFileValid) {
+                    const reader = new FileReader();
+                    reader.onload = async function (e) {
+                        const arrayBuffer = get(e, "target.result", "");
+                        const thisShouldBeIt = await fetchApi("/api/test", {
+                            method: "POST",
+                            body: arrayBuffer
+                        });
+                        console.info(thisShouldBeIt);
+                    };
+                    reader.readAsBinaryString(get(e, "target.files[0]", ""));
+                }
             };
             const getReferenceInput = () => {
                 switch (referenceType) {
