@@ -63,7 +63,7 @@ function PremiseOverview({premise}: { premise: Premise }) {
                                 </IconButton>
                             }
                             title={premise.title}
-                            subheader={get(premise, "vision[0].activityDate", "")}
+                            subheader={get(premise, "vision[0].activityDate", "").toString()}
                     />
                     <CardMedia
                             component="img"

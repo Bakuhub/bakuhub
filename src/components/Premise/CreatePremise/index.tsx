@@ -7,18 +7,22 @@ import {useMutation} from "@apollo/client";
 import {createPremiseMutation} from "../../../gql/mutation/createPremiseMutation";
 import {get} from "lodash";
 import {useSession} from "next-auth/react";
+import {FileInput} from "../../FileInput";
+import PremiseOverview from "../PremiseOverview";
 
 export const CreatePremise = () => {
-            const router = useRouter();
             const session = useSession();
-            console.info(session.data);
+            console.info(session);
+            const user = get(session, "data.user");
+            const userId = get(session, "data.userId");
+            const router = useRouter();
             const [imageUrl, setImageUrl] = useState("");
             const [description, setDescription] = useState("");
             const [activityDate, setActivityDate] = useState(new Date());
             const [referenceUrl, setReferenceUrl] = useState("");
             const [title, setTitle] = useState("");
             const [referenceType, setReferenceType] = useState("");
-
+            const [attachment, setAttachment] = useState();
             const [createNewPremise, {data}] = useMutation(createPremiseMutation);
             useEffect(
                     () => {
@@ -183,6 +187,9 @@ export const CreatePremise = () => {
                 <Grid item xs={12}>
                     {getReferenceInput()}
                 </Grid>
+                <Grid item xs={12}>
+                    <FileInput attachment={attachment} setAttachment={setAttachment}/>
+                </Grid>
                 <Grid item container xs={12}>
                     <Button type={"submit"} variant={"contained"}>
                         Create
@@ -193,6 +200,30 @@ export const CreatePremise = () => {
                     }}>
                         Cancel
                     </Button>
+                </Grid>
+                <Grid item>
+                    {user!=="" &&
+                    <PremiseOverview premise={{
+                        title,
+                        "id": "",
+                        "createdAt": new Date(),
+                        updatedAt: new Date(),
+                        "status": referenceUrl ? "REFERENCE_PROVIDED":"RUMOUR",
+                        "author": user,
+                        "vision": [
+                            {
+                                activityDate,
+                                description,
+                                title,
+                                "createdAt": new Date(),
+                                reference: referenceUrl,
+                                "authorId": userId,
+                                "nextVision": [],
+                                id: "",
+                                premiseId: ""
+                            }
+                        ]
+                    }}/>}
                 </Grid>
             </Grid>;
         }

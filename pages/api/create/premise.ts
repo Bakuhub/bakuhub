@@ -15,29 +15,5 @@ export default async function handler(
     const description = "";
     const snapshot = await uploadUrlToS3(referenceUrl);
     const url = snapshot.url;
-    // await prisma.premise.create({
-    //     data: {
-    //         title,
-    //         status: PremiseStatus.RUMOUR,
-    //         tagsOnPremises: {
-    //             create: [{
-    //                 tag: {
-    //                     connect: {
-    //                         label: "this is a new tag"
-    //                     }
-    //                 }
-    //             }
-    //             ]
-    //         },
-    //         vision: {
-    //             create: [{
-    //                 title,
-    //                 description,
-    //                 activityDate,
-    //                 reference: url,
-    //             }]
-    //         }
-    //     }
-    // });
     res.status(200).json({snapshot});
 }
