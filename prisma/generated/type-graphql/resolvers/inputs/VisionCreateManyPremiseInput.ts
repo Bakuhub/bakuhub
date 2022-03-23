@@ -45,5 +45,10 @@ export class VisionCreateManyPremiseInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
+  thumbnail?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
   prevVisionId?: string | undefined;
 }

@@ -55,6 +55,11 @@ export class VisionUpdateWithoutPrevVisionInput {
   })
   premise?: PremiseUpdateOneRequiredWithoutVisionInput | undefined;
 
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  thumbnail?: NullableStringFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => VisionUpdateManyWithoutPrevVisionInput, {
     nullable: true
   })

@@ -76,6 +76,11 @@ export class VisionWhereInput {
   })
   premise?: PremiseRelationFilter | undefined;
 
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  thumbnail?: StringNullableFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
   })

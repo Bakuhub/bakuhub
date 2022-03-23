@@ -40,4 +40,9 @@ export class VisionUpdateManyMutationInput {
     nullable: true
   })
   reference?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  thumbnail?: NullableStringFieldUpdateOperationsInput | undefined;
 }

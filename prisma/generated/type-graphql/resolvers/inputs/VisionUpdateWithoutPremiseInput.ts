@@ -50,6 +50,11 @@ export class VisionUpdateWithoutPremiseInput {
   })
   author?: UserUpdateOneWithoutVisionInput | undefined;
 
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  thumbnail?: NullableStringFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => VisionUpdateOneWithoutNextVisionInput, {
     nullable: true
   })

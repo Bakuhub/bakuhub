@@ -22,7 +22,7 @@ export const CreatePremise = () => {
             const [referenceUrl, setReferenceUrl] = useState("");
             const [title, setTitle] = useState("");
             const [referenceType, setReferenceType] = useState("");
-            const [attachment, setAttachment] = useState();
+            const [attachment, setAttachment] = useState("");
             const [createNewPremise, {data}] = useMutation(createPremiseMutation);
             useEffect(
                     () => {
@@ -203,27 +203,29 @@ export const CreatePremise = () => {
                 </Grid>
                 <Grid item>
                     {user!=="" &&
-                    <PremiseOverview premise={{
-                        title,
-                        "id": "",
-                        "createdAt": new Date(),
-                        updatedAt: new Date(),
-                        "status": referenceUrl ? "REFERENCE_PROVIDED":"RUMOUR",
-                        "author": user,
-                        "vision": [
-                            {
-                                activityDate,
-                                description,
-                                title,
-                                "createdAt": new Date(),
-                                reference: referenceUrl,
-                                "authorId": userId,
-                                "nextVision": [],
-                                id: "",
-                                premiseId: ""
-                            }
-                        ]
-                    }}/>}
+                    <PremiseOverview
+                        premise={{
+                            title,
+                            "id": "",
+                            "createdAt": new Date(),
+                            updatedAt: new Date(),
+                            "status": referenceUrl ? "REFERENCE_PROVIDED":"RUMOUR",
+                            "author": user,
+                            "vision": [
+                                {
+                                    activityDate,
+                                    description,
+                                    title,
+                                    "createdAt": new Date(),
+                                    reference: referenceUrl,
+                                    "authorId": userId,
+                                    "nextVision": [],
+                                    id: "",
+                                    premiseId: "",
+                                    thumbnail: attachment
+                                }
+                            ]
+                        }}/>}
                 </Grid>
             </Grid>;
         }

@@ -61,6 +61,11 @@ export class VisionScalarWhereWithAggregatesInput {
   })
   authorId?: StringNullableWithAggregatesFilter | undefined;
 
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  thumbnail?: StringNullableWithAggregatesFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
     nullable: true
   })

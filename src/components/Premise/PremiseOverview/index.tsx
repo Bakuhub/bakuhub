@@ -14,7 +14,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import {Premise} from "../../../../prisma/generated/type-graphql";
+import {Premise, Vision} from "../../../../prisma/generated/type-graphql";
 import {get} from "lodash";
 import {useRouter} from "next/router";
 
@@ -37,8 +37,20 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 function PremiseOverview({premise}: { premise: Premise }) {
     const router = useRouter();
     const [expanded, setExpanded] = React.useState(false);
-    console.info(premise);
+    const vision: Vision = get(premise, "vision[0]");
     console.info(get(premise, "vision[0].reference", ""));
+    const getThumbnail = (): string => {
+        const thumbnail = get(vision, "thumbnail", false);
+        const snapshot = get(vision, "reference", "");
+        switch (true) {
+            case typeof thumbnail==="string":
+                return thumbnail as string;
+            default:
+            case typeof snapshot==="string":
+                return snapshot as string;
+        }
+    };
+    const thumbnail = getThumbnail();
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -68,7 +80,7 @@ function PremiseOverview({premise}: { premise: Premise }) {
                     <CardMedia
                             component="img"
                             height="194"
-                            image={get(premise, "vision[0].reference", "")}
+                            image={thumbnail}
                             alt="Paella dish"
                     />
                     <CardContent>

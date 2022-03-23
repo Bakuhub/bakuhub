@@ -1,8 +1,7 @@
-import {TextField} from "@mui/material";
-import React from "react";
+import {Button} from "@mui/material";
+import React, {ChangeEvent} from "react";
 import {get} from "lodash";
 import {fetchApi} from "../../services/fetchApi";
-import Image from "next/image";
 
 interface FileInputProps {
     attachment: string;
@@ -16,7 +15,7 @@ export const FileInput: React.FunctionComponent<FileInputProps> = (
         }
 ) => {
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: ChangeEvent<HTMLInputElement>) => {
         const isFileValid = get(e, "target.files[0]", "");
         if (isFileValid) {
             const reader = new FileReader();
@@ -27,18 +26,20 @@ export const FileInput: React.FunctionComponent<FileInputProps> = (
                     body: arrayBuffer
                 });
                 setAttachment(res.url);
-
             };
             reader.readAsBinaryString(get(e, "target.files[0]", ""));
         }
     };
-    return <><TextField label={"preview image"} fullWidth
-                        onChange={handleSubmit}
-                        type={"file"}
-    />{attachment &&
-    <Image src={attachment} alt="Picture of the author"
-           height={200}
-           width={200}
-    />
-    }</>;
+    return <><Button
+            variant="contained"
+            component="label"
+    >
+        Upload Preview File
+        <input
+                onChange={handleSubmit}
+                type="file"
+                hidden
+        />
+    </Button>
+    </>;
 };

@@ -45,6 +45,11 @@ export class VisionCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
+  thumbnail!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
   premiseId!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {

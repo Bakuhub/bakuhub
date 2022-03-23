@@ -15,7 +15,7 @@ generator typegraphql {
 }
 
 model Account {
-  id                String  @id @default(cuid())
+  id                String  @id @default(uuid())
   userId            String
   type              String
   provider          String
@@ -34,7 +34,7 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(cuid())
+  id           String   @id @default(uuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
@@ -42,7 +42,7 @@ model Session {
 }
 
 model User {
-  id            String     @id @default(cuid())
+  id            String     @id @default(uuid())
   name          String?
   email         String?    @unique
   emailVerified DateTime?
@@ -79,17 +79,17 @@ model Premise {
 }
 
 model Vision {
-  id           String    @id @default(uuid())
-  title        String    @db.VarChar(255)
-  activityDate DateTime?
-  description  String?
-  createdAt    DateTime  @default(now())
-  reference    String?
-  author       User?     @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  authorId     String?
-  premise      Premise   @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  premiseId    String
-
+  id              String            @id @default(uuid())
+  title           String            @db.VarChar(255)
+  activityDate    DateTime?
+  description     String?
+  createdAt       DateTime          @default(now())
+  reference       String?
+  author          User?             @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId        String?
+  premise         Premise           @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  thumbnail       String?
+  premiseId       String
   prevVisionId    String?
   prevVision      Vision?           @relation("VisionHistory", fields: [prevVisionId], references: [id])
   nextVision      Vision[]          @relation("VisionHistory")

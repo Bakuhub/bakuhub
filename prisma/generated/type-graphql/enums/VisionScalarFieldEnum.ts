@@ -8,6 +8,7 @@ export enum VisionScalarFieldEnum {
   createdAt = "createdAt",
   reference = "reference",
   authorId = "authorId",
+  thumbnail = "thumbnail",
   premiseId = "premiseId",
   prevVisionId = "prevVisionId"
 }

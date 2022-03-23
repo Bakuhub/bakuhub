@@ -46,6 +46,11 @@ export class VisionCreateWithoutPremiseInput {
   })
   author?: UserCreateNestedOneWithoutVisionInput | undefined;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  thumbnail?: string | undefined;
+
   @TypeGraphQL.Field(_type => VisionCreateNestedOneWithoutNextVisionInput, {
     nullable: true
   })

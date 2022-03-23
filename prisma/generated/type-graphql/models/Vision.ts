@@ -51,6 +51,11 @@ export class Vision {
   premise?: Premise;
 
   @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  thumbnail?: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
   premiseId!: string;
