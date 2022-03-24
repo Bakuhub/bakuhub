@@ -528,6 +528,23 @@ type AggregateVision {
     _min: VisionMinAggregate
 }
 
+input BoolFieldUpdateOperationsInput {
+    set: Boolean
+}
+
+input BoolFilter {
+    equals: Boolean
+    not: NestedBoolFilter
+}
+
+input BoolWithAggregatesFilter {
+    _count: NestedIntFilter
+    _max: NestedBoolFilter
+    _min: NestedBoolFilter
+    equals: Boolean
+    not: NestedBoolWithAggregatesFilter
+}
+
 """
 The javascript `Date` as string. Type represents date and time as the ISO Date string.
 """
@@ -775,6 +792,19 @@ type Mutation {
     upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
     upsertVerificationToken(create: VerificationTokenCreateInput!, update: VerificationTokenUpdateInput!, where: VerificationTokenWhereUniqueInput!): VerificationToken!
     upsertVision(create: VisionCreateInput!, update: VisionUpdateInput!, where: VisionWhereUniqueInput!): Vision!
+}
+
+input NestedBoolFilter {
+    equals: Boolean
+    not: NestedBoolFilter
+}
+
+input NestedBoolWithAggregatesFilter {
+    _count: NestedIntFilter
+    _max: NestedBoolFilter
+    _min: NestedBoolFilter
+    equals: Boolean
+    not: NestedBoolWithAggregatesFilter
 }
 
 input NestedDateTimeFilter {
@@ -5564,6 +5594,7 @@ type Vision {
     authorId: String
     createdAt: DateTime!
     description: String
+    draftMode: Boolean!
     id: String!
     nextVision(cursor: VisionWhereUniqueInput, distinct: [VisionScalarFieldEnum!], orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): [Vision!]!
     premise: Premise!
@@ -5572,6 +5603,7 @@ type Vision {
     prevVisionId: String
     reference: String
     threadsOnVision(cursor: ThreadsOnVisionWhereUniqueInput, distinct: [ThreadsOnVisionScalarFieldEnum!], orderBy: [ThreadsOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnVisionWhereInput): [ThreadsOnVision!]!
+    thumbnail: String
     title: String!
 }
 
@@ -5586,10 +5618,12 @@ type VisionCountAggregate {
     authorId: Int!
     createdAt: Int!
     description: Int!
+    draftMode: Int!
     id: Int!
     premiseId: Int!
     prevVisionId: Int!
     reference: Int!
+    thumbnail: Int!
     title: Int!
 }
 
@@ -5598,10 +5632,12 @@ input VisionCountOrderByAggregateInput {
     authorId: SortOrder
     createdAt: SortOrder
     description: SortOrder
+    draftMode: SortOrder
     id: SortOrder
     premiseId: SortOrder
     prevVisionId: SortOrder
     reference: SortOrder
+    thumbnail: SortOrder
     title: SortOrder
 }
 
@@ -5610,12 +5646,14 @@ input VisionCreateInput {
     author: UserCreateNestedOneWithoutVisionInput
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     nextVision: VisionCreateNestedManyWithoutPrevVisionInput
     premise: PremiseCreateNestedOneWithoutVisionInput!
     prevVision: VisionCreateNestedOneWithoutNextVisionInput
     reference: String
     threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
+    thumbnail: String
     title: String!
 }
 
@@ -5623,10 +5661,12 @@ input VisionCreateManyAuthorInput {
     activityDate: DateTime
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     premiseId: String!
     prevVisionId: String
     reference: String
+    thumbnail: String
     title: String!
 }
 
@@ -5640,10 +5680,12 @@ input VisionCreateManyInput {
     authorId: String
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     premiseId: String!
     prevVisionId: String
     reference: String
+    thumbnail: String
     title: String!
 }
 
@@ -5652,9 +5694,11 @@ input VisionCreateManyPremiseInput {
     authorId: String
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     prevVisionId: String
     reference: String
+    thumbnail: String
     title: String!
 }
 
@@ -5668,9 +5712,11 @@ input VisionCreateManyPrevVisionInput {
     authorId: String
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     premiseId: String!
     reference: String
+    thumbnail: String
     title: String!
 }
 
@@ -5741,12 +5787,14 @@ input VisionCreateWithoutAuthorInput {
     activityDate: DateTime
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     nextVision: VisionCreateNestedManyWithoutPrevVisionInput
     premise: PremiseCreateNestedOneWithoutVisionInput!
     prevVision: VisionCreateNestedOneWithoutNextVisionInput
     reference: String
     threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
+    thumbnail: String
     title: String!
 }
 
@@ -5755,11 +5803,13 @@ input VisionCreateWithoutNextVisionInput {
     author: UserCreateNestedOneWithoutVisionInput
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     premise: PremiseCreateNestedOneWithoutVisionInput!
     prevVision: VisionCreateNestedOneWithoutNextVisionInput
     reference: String
     threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
+    thumbnail: String
     title: String!
 }
 
@@ -5768,11 +5818,13 @@ input VisionCreateWithoutPremiseInput {
     author: UserCreateNestedOneWithoutVisionInput
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     nextVision: VisionCreateNestedManyWithoutPrevVisionInput
     prevVision: VisionCreateNestedOneWithoutNextVisionInput
     reference: String
     threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
+    thumbnail: String
     title: String!
 }
 
@@ -5781,11 +5833,13 @@ input VisionCreateWithoutPrevVisionInput {
     author: UserCreateNestedOneWithoutVisionInput
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     nextVision: VisionCreateNestedManyWithoutPrevVisionInput
     premise: PremiseCreateNestedOneWithoutVisionInput!
     reference: String
     threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
+    thumbnail: String
     title: String!
 }
 
@@ -5794,11 +5848,13 @@ input VisionCreateWithoutThreadsOnVisionInput {
     author: UserCreateNestedOneWithoutVisionInput
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     nextVision: VisionCreateNestedManyWithoutPrevVisionInput
     premise: PremiseCreateNestedOneWithoutVisionInput!
     prevVision: VisionCreateNestedOneWithoutNextVisionInput
     reference: String
+    thumbnail: String
     title: String!
 }
 
@@ -5810,10 +5866,12 @@ type VisionGroupBy {
     authorId: String
     createdAt: DateTime!
     description: String
+    draftMode: Boolean!
     id: String!
     premiseId: String!
     prevVisionId: String
     reference: String
+    thumbnail: String
     title: String!
 }
 
@@ -5828,10 +5886,12 @@ type VisionMaxAggregate {
     authorId: String
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     premiseId: String
     prevVisionId: String
     reference: String
+    thumbnail: String
     title: String
 }
 
@@ -5840,10 +5900,12 @@ input VisionMaxOrderByAggregateInput {
     authorId: SortOrder
     createdAt: SortOrder
     description: SortOrder
+    draftMode: SortOrder
     id: SortOrder
     premiseId: SortOrder
     prevVisionId: SortOrder
     reference: SortOrder
+    thumbnail: SortOrder
     title: SortOrder
 }
 
@@ -5852,10 +5914,12 @@ type VisionMinAggregate {
     authorId: String
     createdAt: DateTime
     description: String
+    draftMode: Boolean
     id: String
     premiseId: String
     prevVisionId: String
     reference: String
+    thumbnail: String
     title: String
 }
 
@@ -5864,10 +5928,12 @@ input VisionMinOrderByAggregateInput {
     authorId: SortOrder
     createdAt: SortOrder
     description: SortOrder
+    draftMode: SortOrder
     id: SortOrder
     premiseId: SortOrder
     prevVisionId: SortOrder
     reference: SortOrder
+    thumbnail: SortOrder
     title: SortOrder
 }
 
@@ -5883,10 +5949,12 @@ input VisionOrderByWithAggregationInput {
     authorId: SortOrder
     createdAt: SortOrder
     description: SortOrder
+    draftMode: SortOrder
     id: SortOrder
     premiseId: SortOrder
     prevVisionId: SortOrder
     reference: SortOrder
+    thumbnail: SortOrder
     title: SortOrder
 }
 
@@ -5896,6 +5964,7 @@ input VisionOrderByWithRelationInput {
     authorId: SortOrder
     createdAt: SortOrder
     description: SortOrder
+    draftMode: SortOrder
     id: SortOrder
     nextVision: VisionOrderByRelationAggregateInput
     premise: PremiseOrderByWithRelationInput
@@ -5904,6 +5973,7 @@ input VisionOrderByWithRelationInput {
     prevVisionId: SortOrder
     reference: SortOrder
     threadsOnVision: ThreadsOnVisionOrderByRelationAggregateInput
+    thumbnail: SortOrder
     title: SortOrder
 }
 
@@ -5917,10 +5987,12 @@ enum VisionScalarFieldEnum {
     authorId
     createdAt
     description
+    draftMode
     id
     premiseId
     prevVisionId
     reference
+    thumbnail
     title
 }
 
@@ -5932,10 +6004,12 @@ input VisionScalarWhereInput {
     authorId: StringNullableFilter
     createdAt: DateTimeFilter
     description: StringNullableFilter
+    draftMode: BoolFilter
     id: StringFilter
     premiseId: StringFilter
     prevVisionId: StringNullableFilter
     reference: StringNullableFilter
+    thumbnail: StringNullableFilter
     title: StringFilter
 }
 
@@ -5947,10 +6021,12 @@ input VisionScalarWhereWithAggregatesInput {
     authorId: StringNullableWithAggregatesFilter
     createdAt: DateTimeWithAggregatesFilter
     description: StringNullableWithAggregatesFilter
+    draftMode: BoolWithAggregatesFilter
     id: StringWithAggregatesFilter
     premiseId: StringWithAggregatesFilter
     prevVisionId: StringNullableWithAggregatesFilter
     reference: StringNullableWithAggregatesFilter
+    thumbnail: StringNullableWithAggregatesFilter
     title: StringWithAggregatesFilter
 }
 
@@ -5959,12 +6035,14 @@ input VisionUpdateInput {
     author: UserUpdateOneWithoutVisionInput
     createdAt: DateTimeFieldUpdateOperationsInput
     description: NullableStringFieldUpdateOperationsInput
+    draftMode: BoolFieldUpdateOperationsInput
     id: StringFieldUpdateOperationsInput
     nextVision: VisionUpdateManyWithoutPrevVisionInput
     premise: PremiseUpdateOneRequiredWithoutVisionInput
     prevVision: VisionUpdateOneWithoutNextVisionInput
     reference: NullableStringFieldUpdateOperationsInput
     threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
+    thumbnail: NullableStringFieldUpdateOperationsInput
     title: StringFieldUpdateOperationsInput
 }
 
@@ -5972,8 +6050,10 @@ input VisionUpdateManyMutationInput {
     activityDate: NullableDateTimeFieldUpdateOperationsInput
     createdAt: DateTimeFieldUpdateOperationsInput
     description: NullableStringFieldUpdateOperationsInput
+    draftMode: BoolFieldUpdateOperationsInput
     id: StringFieldUpdateOperationsInput
     reference: NullableStringFieldUpdateOperationsInput
+    thumbnail: NullableStringFieldUpdateOperationsInput
     title: StringFieldUpdateOperationsInput
 }
 
@@ -6071,12 +6151,14 @@ input VisionUpdateWithoutAuthorInput {
     activityDate: NullableDateTimeFieldUpdateOperationsInput
     createdAt: DateTimeFieldUpdateOperationsInput
     description: NullableStringFieldUpdateOperationsInput
+    draftMode: BoolFieldUpdateOperationsInput
     id: StringFieldUpdateOperationsInput
     nextVision: VisionUpdateManyWithoutPrevVisionInput
     premise: PremiseUpdateOneRequiredWithoutVisionInput
     prevVision: VisionUpdateOneWithoutNextVisionInput
     reference: NullableStringFieldUpdateOperationsInput
     threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
+    thumbnail: NullableStringFieldUpdateOperationsInput
     title: StringFieldUpdateOperationsInput
 }
 
@@ -6085,11 +6167,13 @@ input VisionUpdateWithoutNextVisionInput {
     author: UserUpdateOneWithoutVisionInput
     createdAt: DateTimeFieldUpdateOperationsInput
     description: NullableStringFieldUpdateOperationsInput
+    draftMode: BoolFieldUpdateOperationsInput
     id: StringFieldUpdateOperationsInput
     premise: PremiseUpdateOneRequiredWithoutVisionInput
     prevVision: VisionUpdateOneWithoutNextVisionInput
     reference: NullableStringFieldUpdateOperationsInput
     threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
+    thumbnail: NullableStringFieldUpdateOperationsInput
     title: StringFieldUpdateOperationsInput
 }
 
@@ -6098,11 +6182,13 @@ input VisionUpdateWithoutPremiseInput {
     author: UserUpdateOneWithoutVisionInput
     createdAt: DateTimeFieldUpdateOperationsInput
     description: NullableStringFieldUpdateOperationsInput
+    draftMode: BoolFieldUpdateOperationsInput
     id: StringFieldUpdateOperationsInput
     nextVision: VisionUpdateManyWithoutPrevVisionInput
     prevVision: VisionUpdateOneWithoutNextVisionInput
     reference: NullableStringFieldUpdateOperationsInput
     threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
+    thumbnail: NullableStringFieldUpdateOperationsInput
     title: StringFieldUpdateOperationsInput
 }
 
@@ -6111,11 +6197,13 @@ input VisionUpdateWithoutPrevVisionInput {
     author: UserUpdateOneWithoutVisionInput
     createdAt: DateTimeFieldUpdateOperationsInput
     description: NullableStringFieldUpdateOperationsInput
+    draftMode: BoolFieldUpdateOperationsInput
     id: StringFieldUpdateOperationsInput
     nextVision: VisionUpdateManyWithoutPrevVisionInput
     premise: PremiseUpdateOneRequiredWithoutVisionInput
     reference: NullableStringFieldUpdateOperationsInput
     threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
+    thumbnail: NullableStringFieldUpdateOperationsInput
     title: StringFieldUpdateOperationsInput
 }
 
@@ -6124,11 +6212,13 @@ input VisionUpdateWithoutThreadsOnVisionInput {
     author: UserUpdateOneWithoutVisionInput
     createdAt: DateTimeFieldUpdateOperationsInput
     description: NullableStringFieldUpdateOperationsInput
+    draftMode: BoolFieldUpdateOperationsInput
     id: StringFieldUpdateOperationsInput
     nextVision: VisionUpdateManyWithoutPrevVisionInput
     premise: PremiseUpdateOneRequiredWithoutVisionInput
     prevVision: VisionUpdateOneWithoutNextVisionInput
     reference: NullableStringFieldUpdateOperationsInput
+    thumbnail: NullableStringFieldUpdateOperationsInput
     title: StringFieldUpdateOperationsInput
 }
 
@@ -6169,6 +6259,7 @@ input VisionWhereInput {
     authorId: StringNullableFilter
     createdAt: DateTimeFilter
     description: StringNullableFilter
+    draftMode: BoolFilter
     id: StringFilter
     nextVision: VisionListRelationFilter
     premise: PremiseRelationFilter
@@ -6177,6 +6268,7 @@ input VisionWhereInput {
     prevVisionId: StringNullableFilter
     reference: StringNullableFilter
     threadsOnVision: ThreadsOnVisionListRelationFilter
+    thumbnail: StringNullableFilter
     title: StringFilter
 }
 

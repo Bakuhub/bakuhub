@@ -10,6 +10,7 @@ export enum VisionScalarFieldEnum {
   authorId = "authorId",
   thumbnail = "thumbnail",
   premiseId = "premiseId",
+  draftMode = "draftMode",
   prevVisionId = "prevVisionId"
 }
 TypeGraphQL.registerEnumType(VisionScalarFieldEnum, {

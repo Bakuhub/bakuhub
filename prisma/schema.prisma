@@ -90,6 +90,7 @@ model Vision {
   premise         Premise           @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   thumbnail       String?
   premiseId       String
+  draftMode       Boolean           @default(false)
   prevVisionId    String?
   prevVision      Vision?           @relation("VisionHistory", fields: [prevVisionId], references: [id])
   nextVision      Vision[]          @relation("VisionHistory")

@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { BoolWithAggregatesFilter } from "../inputs/BoolWithAggregatesFilter";
 import { DateTimeNullableWithAggregatesFilter } from "../inputs/DateTimeNullableWithAggregatesFilter";
 import { DateTimeWithAggregatesFilter } from "../inputs/DateTimeWithAggregatesFilter";
 import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
@@ -70,6 +71,11 @@ export class VisionScalarWhereWithAggregatesInput {
     nullable: true
   })
   premiseId?: StringWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
+    nullable: true
+  })
+  draftMode?: BoolWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
     nullable: true

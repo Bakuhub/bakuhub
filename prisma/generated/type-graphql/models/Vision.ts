@@ -60,6 +60,11 @@ export class Vision {
   })
   premiseId!: string;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: false
+  })
+  draftMode!: boolean;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })

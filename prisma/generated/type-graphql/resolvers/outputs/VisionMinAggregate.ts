@@ -52,6 +52,11 @@ export class VisionMinAggregate {
   })
   premiseId!: string | null;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  draftMode!: boolean | null;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })

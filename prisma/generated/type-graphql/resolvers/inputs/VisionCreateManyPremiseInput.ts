@@ -47,6 +47,11 @@ export class VisionCreateManyPremiseInput {
   })
   thumbnail?: string | undefined;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  draftMode?: boolean | undefined;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })

@@ -40,17 +40,24 @@ function PremiseOverview({premise}: { premise: Premise }) {
     const vision: Vision = get(premise, "vision[0]");
     console.info(get(premise, "vision[0].reference", ""));
     const getThumbnail = (): string => {
-        const thumbnail = get(vision, "thumbnail", false);
+        const thumbnail = get(vision, "thumbnail", "");
         const snapshot = get(vision, "reference", "");
         switch (true) {
-            case typeof thumbnail==="string":
+            case  thumbnail!=="":
+                console.info(1);
                 return thumbnail as string;
-            default:
-            case typeof snapshot==="string":
+            case snapshot!=="":
+                console.info(2);
                 return snapshot as string;
+            default:
+                console.info(3);
+                return "/images/default/thumbnail.jpg";
         }
     };
     const thumbnail = getThumbnail();
+    console.info("=====================");
+    console.info(thumbnail);
+    console.info("=====================");
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -92,7 +99,7 @@ function PremiseOverview({premise}: { premise: Premise }) {
                         <IconButton aria-label="add to favorites">
                             <FavoriteIcon/>
                         </IconButton>
-                        <IconButton aria-label="share">
+                        <IconButton onClick={() => router.push(`/create/vision/${premise.id}`)} aria-label="share">
                             <ShareIcon/>
                         </IconButton>
                         <ExpandMore

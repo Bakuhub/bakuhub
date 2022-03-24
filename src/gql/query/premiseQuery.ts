@@ -14,18 +14,22 @@ export const premiseQuery = gql`
                 email
             }
             vision(where: $visionWhere2) {
+                id
                 title
                 activityDate
                 description
                 createdAt
                 reference
                 authorId
+                prevVisionId
+                draftMode
                 nextVision {
                     title
                     activityDate
                     description
                     createdAt
                     reference
+                    draftMode
                 }
             }
         }

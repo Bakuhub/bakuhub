@@ -56,7 +56,6 @@ export const MainPage = () => {
         {
             data?.premises.map(
                     premise => <Grid key={premise.id} item xs={3}
-
                     ><PremiseOverview premise={premise}/></Grid>
             )
 

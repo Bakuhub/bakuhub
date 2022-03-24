@@ -57,6 +57,11 @@ export class VisionCreateInput {
   })
   thumbnail?: string | undefined;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  draftMode?: boolean | undefined;
+
   @TypeGraphQL.Field(_type => VisionCreateNestedOneWithoutNextVisionInput, {
     nullable: true
   })

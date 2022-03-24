@@ -14,7 +14,6 @@ export const FileInput: React.FunctionComponent<FileInputProps> = (
             setAttachment
         }
 ) => {
-
     const handleSubmit = (e: ChangeEvent<HTMLInputElement>) => {
         const isFileValid = get(e, "target.files[0]", "");
         if (isFileValid) {
@@ -34,7 +33,7 @@ export const FileInput: React.FunctionComponent<FileInputProps> = (
             variant="contained"
             component="label"
     >
-        Upload Preview File
+        Upload Thumbnail
         <input
                 onChange={handleSubmit}
                 type="file"

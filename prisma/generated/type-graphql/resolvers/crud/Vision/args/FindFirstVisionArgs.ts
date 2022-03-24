@@ -35,5 +35,5 @@ export class FindFirstVisionArgs {
   @TypeGraphQL.Field(_type => [VisionScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "reference" | "authorId" | "thumbnail" | "premiseId" | "prevVisionId"> | undefined;
+  distinct?: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "reference" | "authorId" | "thumbnail" | "premiseId" | "draftMode" | "prevVisionId"> | undefined;
 }

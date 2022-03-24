@@ -51,4 +51,9 @@ export class VisionCreateManyPrevVisionInput {
     nullable: false
   })
   premiseId!: string;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  draftMode?: boolean | undefined;
 }
