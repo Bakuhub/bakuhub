@@ -13,6 +13,7 @@ import {ThreadDetail} from "../../Thread/ThreadDetail";
 import ReplyIcon from "@mui/icons-material/Reply";
 import {Grid, LinearProgress} from "@mui/material";
 import Image from "next/image";
+import {router} from "next/client";
 
 interface PremiseDetailProps {
     premise: Premise;
@@ -21,7 +22,6 @@ interface PremiseDetailProps {
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const dispatch = useDispatch();
     const {
-        loading, error,
         data
     } = useQuery<{ threads: Thread[] }>(threadsQuery);
     const activeVision = premise.vision?.find(vision =>
@@ -30,12 +30,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id);
     console.info("active vision");
     console.info(activeVision);
-    const [expanded, setExpanded] = React.useState(false);
     console.info(premise);
     console.info(get(premise, "vision[0].reference", ""));
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
     return (
             <>
                 <Grid>
@@ -57,7 +53,9 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                 </Grid>
                 <Grid>
                     {
-                        allOtherVisions?.map(vision => <div id={vision.id}>{vision.id}</div>)
+                        allOtherVisions?.map(vision => <div key={vision.id}
+                                                            onClick={() => router.push(`review/vision/${vision.id}`)}
+                                                            id={vision.id}>{vision.id}</div>)
                     }
                 </Grid>
                 <ThreadCreator/>

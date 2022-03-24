@@ -3,6 +3,7 @@ import {getPremiseById} from "../../src/services/getServerSideProps/getPremiseBy
 
 export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
     const premise = await getPremiseById(context.query.id);
+    console.info(premise);
     return {
         props: {
             premise
