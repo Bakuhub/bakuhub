@@ -1,5 +1,4 @@
 import * as React from "react";
-import {get} from "lodash";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ShareIcon from "@mui/icons-material/Share";
@@ -13,13 +12,15 @@ import {ThreadDetail} from "../../Thread/ThreadDetail";
 import ReplyIcon from "@mui/icons-material/Reply";
 import {Grid, LinearProgress} from "@mui/material";
 import Image from "next/image";
-import {router} from "next/client";
+import {useRouter} from "next/router";
+import {getThumbnail} from "../../../utils/getThumbnail";
 
 interface PremiseDetailProps {
     premise: Premise;
 }
 
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
+    const router = useRouter();
     const dispatch = useDispatch();
     const {
         data
@@ -28,39 +29,41 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
             vision.nextVision?.every(nextVision => !!nextVision.draftMode)
             && !vision.draftMode);
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id);
-    console.info("active vision");
-    console.info(activeVision);
-    console.info(premise);
-    console.info(get(premise, "vision[0].reference", ""));
+    const thumbnail = getThumbnail(activeVision);
     return (
             <>
                 <Grid>
                     <Image
                             height="400"
                             width="400"
-                            src={get(premise, "vision[0].reference", "")}
+                            src={thumbnail}
                             alt="Paella dish"
                     />
                     <Typography variant="body2" color="text.secondary">
-                        {get(premise, "vision[0].description", "")}
+                        {activeVision?.title}
                     </Typography>
-                    <IconButton aria-label="add to favorites">
-                        <ReplyIcon onClick={() => dispatch(setActivePremiseId(premise.id))}/>
+                    <Typography variant="body2" color="text.secondary">
+                        {activeVision?.description}
+                    </Typography>
+                    <IconButton aria-label="add to favorites" onClick={() => dispatch(setActivePremiseId(premise.id))}>
+                        <ReplyIcon/>
                     </IconButton>
                     <IconButton aria-label="share">
                         <ShareIcon/>
                     </IconButton>
                 </Grid>
-                <Grid>
+                <Grid item container md={6}>
+                    <Typography variant={"subtitle1"}> Merge requests opened:</Typography>
                     {
-                        allOtherVisions?.map(vision => <div key={vision.id}
-                                                            onClick={() => router.push(`review/vision/${vision.id}`)}
-                                                            id={vision.id}>{vision.id}</div>)
+                        allOtherVisions?.map(vision => <Typography key={vision.id}
+                                                                   onClick={() => router.push(`/review/vision/${vision.id}`)}
+                        >{vision.id}</Typography>)
                     }
                 </Grid>
                 <ThreadCreator/>
                 {
-                    data ? data.threads.map((thread, index) => <ThreadDetail key={thread.id} thread={thread}/>):
+                    data ? data.threads.map((thread, index) => <ThreadDetail key={thread.id ? thread.id:index}
+                                                                             thread={thread}/>):
                             // eslint-disable-next-line react/jsx-no-undef
                             <LinearProgress/>
                 }

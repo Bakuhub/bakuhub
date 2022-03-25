@@ -95,7 +95,16 @@ model Vision {
   prevVision      Vision?           @relation("VisionHistory", fields: [prevVisionId], references: [id])
   nextVision      Vision[]          @relation("VisionHistory")
   threadsOnVision ThreadsOnVision[]
+  mergeRequest MergeRequest?
+}
 
+
+model MergeRequest {
+  id String @id @default(cuid())
+  title String @db.VarChar(255)
+  description String?
+  vision Vision @relation(fields: [visionId],references: [id], onDelete: Cascade,onUpdate: Cascade)
+  visionId String  
 }
 
 model Timeline {
@@ -220,10 +229,10 @@ enum PremiseStatus {
   MISINFORMATION
 }
 
-enum MainThreadType {
-  Timeline
-  Premise
-  Vision
+enum MergeRequestStatus {
+  OPEN
+  CLOSE
+  MERGED
 }
 
 enum Role {

@@ -2,6 +2,7 @@ import apollo from "../../lib/apollo";
 import {premiseQuery} from "../../gql/query/premiseQuery";
 
 export const getPremiseById = async (premiseId: string) => {
+    console.info("start");
     const {data: {premise}} = await apollo.query({
         query: premiseQuery, variables: {
             "where": {

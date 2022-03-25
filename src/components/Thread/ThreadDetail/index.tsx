@@ -68,9 +68,9 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({thread, isCh
         <Grid>
             {
                 (thread?.childThreads || []).map(
-                        (childThread) => <ThreadDetail
+                        (childThread, index) => <ThreadDetail
                                 isChildThread
-                                key={childThread.id}
+                                key={index}
                                 thread={childThread}/>
                 )
             }

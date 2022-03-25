@@ -1,5 +1,5 @@
-import {Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
-import {FormEvent, FunctionComponent, useEffect, useState} from "react";
+import {Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
+import {FormEvent, FunctionComponent, useState} from "react";
 import {ReferenceType} from "../../../constants/ReferenceType";
 import {useRouter} from "next/router";
 import {fetchApi} from "../../../services/fetchApi";
@@ -18,6 +18,7 @@ export interface CreatePremiseProps {
 }
 
 export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) => {
+    console.info("premise");
     console.info(premise);
     const session = useSession();
     const user = get(session, "data.user");
@@ -48,47 +49,46 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             });
             console.info(snapshot.url);
             const variable = {
-                variables:
-                        {
-                            data: {
+                variables: {
+                    data: {
+                        "author": {
+                            "connect": {
+                                "id": get(session, "data.userId", "")
+                            }
+                        },
+                        title,
+                        status: "REFERENCE_PROVIDED",
+                        tagsOnPremises: {
+                            create: [{
+                                tag: {
+                                    connectOrCreate: {
+                                        create: {
+                                            label: "ukraine",
+                                        },
+                                        where: {
+                                            label: "ukraine",
+                                        },
+                                    },
+                                }
+                            }
+                            ]
+                        },
+                        vision: {
+                            create: [{
+                                title,
+                                description,
+                                activityDate,
+                                reference: snapshot.url || "",
                                 "author": {
                                     "connect": {
                                         "id": get(session, "data.userId", "")
                                     }
                                 },
-                                title,
-                                status: "REFERENCE_PROVIDED",
-                                tagsOnPremises: {
-                                    create: [{
-                                        tag: {
-                                            connectOrCreate: {
-                                                create: {
-                                                    label: "ukraine",
-                                                },
-                                                where: {
-                                                    label: "ukraine",
-                                                },
-                                            },
-                                        }
-                                    }
-                                    ]
-                                },
-                                vision: {
-                                    create: [{
-                                        title,
-                                        description,
-                                        activityDate,
-                                        reference: snapshot.url || "",
-                                        "author": {
-                                            "connect": {
-                                                "id": get(session, "data.userId", "")
-                                            }
-                                        },
 
-                                    }]
-                                }
-                            }
+                            }]
                         }
+                    }
+                }
             };
             const result = await createNewPremise(variable);
         } else {
@@ -134,77 +134,77 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             const result = await createNewVision(variables);
         }
     };
-    useEffect(
-            () => {
-                console.log(activityDate);
-            }, [activityDate]
-    );
-    return <Grid component={"form"} onSubmit={submit} container spacing={1}>
-        <Grid item xs={12}>
-            <TextField required fullWidth
-                       onChange={({target: {value}}) => setTitle(value)}
-                       value={title}
-                       label="Title" variant="outlined"/>
+    return <Grid container spacing={1}>
+        <Grid xs={12} md={6} component={"form"} item onSubmit={submit} container spacing={1}>
+            <Grid item xs={12}>
+                <TextField required fullWidth
+                           onChange={({target: {value}}) => setTitle(value)}
+                           value={title}
+                           label="Title" variant="outlined"/>
+            </Grid>
+            <Grid item xs={6}>
+                <FormControl required fullWidth>
+                    <InputLabel>Reference Type</InputLabel>
+                    <Select
+                            label={"Reference Type"}
+                            variant={"outlined"}
+                            value={referenceType}
+                            onChange={(e) => {
+                                setReferenceType(e.target.value);
+                            }}
+                    >
+                        {
+                            Object.values(ReferenceType).map(
+                                    value => <MenuItem key={value} value={value}>{value}</MenuItem>
+                            )
+                        }
+                    </Select>
+                </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+                <TextField onChange={e => {
+                    setActivityDate(new Date(get(e, "target.value", "")));
+                }}
+                           fullWidth type={"datetime-local"}/>
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                        multiline
+                        fullWidth
+                        onChange={({target: {value}}) => setDescription(value)}
+                        value={description}
+                        maxRows={5}
+                        label="Description"
+                        variant="outlined"
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                        value={referenceUrl || ""}
+                        onChange={(e) => setReferenceUrl(e.target.value)}
+                        fullWidth
+                        label={"reference url"}
+                /> </Grid>
+            <Grid item xs={12}>
+                <FileInput attachment={attachment} setAttachment={setAttachment}/>
+            </Grid>
+            <Grid item container xs={12}>
+                <Button type={"submit"} variant={"contained"}>
+                    Create
+                </Button>
+                <Button variant={"outlined"} onClick={() => {
+                    console.info(router);
+                    router.back();
+                }}>
+                    Cancel
+                </Button>
+            </Grid>
+
         </Grid>
-        <Grid item xs={6}>
-            <FormControl required fullWidth>
-                <InputLabel>Reference Type</InputLabel>
-                <Select
-                        label={"Reference Type"}
-                        variant={"outlined"}
-                        value={referenceType}
-                        onChange={(e) => {
-                            console.info(e.target.value);
-                            setReferenceType(e.target.value);
-                        }}
-                >
-                    {
-                        Object.values(ReferenceType).map(
-                                value => <MenuItem key={value} value={value}>{value}</MenuItem>
-                        )
-                    }
-                </Select>
-            </FormControl>
-        </Grid>
-        <Grid item xs={6}>
-            <TextField onChange={e => {
-                setActivityDate(new Date(get(e, "target.value", "")));
-            }}
-                       fullWidth type={"datetime-local"}/>
-        </Grid>
-        <Grid item xs={12}>
-            <TextField
-                    multiline
-                    fullWidth
-                    onChange={({target: {value}}) => setDescription(value)}
-                    value={description}
-                    maxRows={5}
-                    label="Description"
-                    variant="outlined"
-            />
-        </Grid>
-        <Grid item xs={12}>
-            <TextField
-                    value={referenceUrl || ""}
-                    onChange={(e) => setReferenceUrl(e.target.value)}
-                    fullWidth
-                    label={"reference url"}
-            /> </Grid>
-        <Grid item xs={12}>
-            <FileInput attachment={attachment} setAttachment={setAttachment}/>
-        </Grid>
-        <Grid item container xs={12}>
-            <Button type={"submit"} variant={"contained"}>
-                Create
-            </Button>
-            <Button variant={"outlined"} onClick={() => {
-                console.info(router);
-                router.back();
-            }}>
-                Cancel
-            </Button>
-        </Grid>
-        <Grid item>
+        <Grid xs={12} md={6} item>
+            <Typography>
+                Preview:
+            </Typography>
             {user!=="" &&
             <PremiseOverview
                 premise={{

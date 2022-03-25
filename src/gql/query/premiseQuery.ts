@@ -24,6 +24,7 @@ export const premiseQuery = gql`
                 prevVisionId
                 draftMode
                 nextVision {
+                    id
                     title
                     activityDate
                     description

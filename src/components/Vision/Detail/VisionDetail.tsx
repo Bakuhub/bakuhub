@@ -14,6 +14,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import * as React from "react";
 import {useRouter} from "next/router";
 import {Vision} from "../../../../prisma/generated/type-graphql";
+import {getThumbnail} from "../../../utils/getThumbnail";
 
 export interface VisionDetailProps {
     vision: Vision;
@@ -22,22 +23,8 @@ export interface VisionDetailProps {
 
 export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision, premiseId}) => {
     const router = useRouter();
-    const getThumbnail = (): string => {
-        const thumbnail = get(vision, "thumbnail", "");
-        const snapshot = get(vision, "reference", "");
-        switch (true) {
-            case  thumbnail!=="":
-                console.info(1);
-                return thumbnail as string;
-            case snapshot!=="":
-                console.info(2);
-                return snapshot as string;
-            default:
-                console.info(3);
-                return "/images/default/thumbnail.jpg";
-        }
-    };
-    const thumbnail = getThumbnail();
+    console.info(vision);
+    const thumbnail = getThumbnail(vision);
     const getRedirectUrl = () => premiseId ? `/premises/${premiseId}`:`/visions/${vision.id}`;
     const redirectedUrl = getRedirectUrl();
     return <Card sx={{maxWidth: 345}}>
@@ -75,7 +62,7 @@ export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision
             <IconButton aria-label="add to favorites">
                 <FavoriteIcon/>
             </IconButton>
-            <IconButton onClick={() => router.push(`/create/vision/${vision.premiseId}`)} aria-label="share">
+            <IconButton onClick={() => router.push(`/create/vision/${premiseId}`)} aria-label="share">
                 <ShareIcon/>
             </IconButton>
         </CardActions>
