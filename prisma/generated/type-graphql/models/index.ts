@@ -1,4 +1,5 @@
 export { Account } from "./Account";
+export { MergeRequest } from "./MergeRequest";
 export { Premise } from "./Premise";
 export { PremisesOnTimelines } from "./PremisesOnTimelines";
 export { Session } from "./Session";

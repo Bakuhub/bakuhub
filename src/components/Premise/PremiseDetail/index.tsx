@@ -14,6 +14,7 @@ import {Grid, LinearProgress} from "@mui/material";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
+import {get} from "lodash";
 
 interface PremiseDetailProps {
     premise: Premise;
@@ -21,6 +22,7 @@ interface PremiseDetailProps {
 
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const router = useRouter();
+    console.info(premise);
     const dispatch = useDispatch();
     const {
         data
@@ -28,7 +30,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const activeVision = premise.vision?.find(vision =>
             vision.nextVision?.every(nextVision => !!nextVision.draftMode)
             && !vision.draftMode);
-    const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id);
+    const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
+            && get(vision, "mergeRequest.id", false));
     const thumbnail = getThumbnail(activeVision);
     return (
             <>
@@ -56,7 +59,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     <Typography variant={"subtitle1"}> Merge requests opened:</Typography>
                     {
                         allOtherVisions?.map(vision => <Typography key={vision.id}
-                                                                   onClick={() => router.push(`/review/vision/${vision.id}`)}
+                                                                   onClick={() => router.push(`/review/mergeRequest/${get(vision, "mergeRequest.id", false)}`)}
                         >{vision.id}</Typography>)
                     }
                 </Grid>

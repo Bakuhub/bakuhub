@@ -1,20 +1,24 @@
 import apollo from "../../../src/lib/apollo";
-import {visionQuery} from "../../../src/gql/query/visionQuery";
 import {VisionMergeRequest} from "../../../src/components/Vision/MergeRequest";
+import {mergeRequestQuery} from "../../../src/gql/query/mergeRequestQuery";
 
 export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
-    const {data: {vision}} = await apollo.query({
-        query: visionQuery, variables: {
+    const {data} = await apollo.query({
+        query: mergeRequestQuery, variables: {
+
             "where": {
-                "id": context.query.id
-            },
+                "id": "cl1778zls0012haq7hg3kdho6"
+            }
         }
-    },);
+
+    });
+
     return {
         props: {
-            vision
+            mergeRequest: data.mergeRequest
         }, // will be passed to the page component as props
     };
+
 }
 
 

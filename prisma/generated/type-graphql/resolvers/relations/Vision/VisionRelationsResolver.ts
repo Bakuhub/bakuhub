@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import { MergeRequest } from "../../../models/MergeRequest";
 import { Premise } from "../../../models/Premise";
 import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
 import { User } from "../../../models/User";
@@ -62,5 +63,16 @@ export class VisionRelationsResolver {
         id: vision.id,
       },
     }).threadsOnVision(args);
+  }
+
+  @TypeGraphQL.FieldResolver(_type => MergeRequest, {
+    nullable: true
+  })
+  async mergeRequest(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any): Promise<MergeRequest | null> {
+    return getPrismaFromContext(ctx).vision.findUnique({
+      where: {
+        id: vision.id,
+      },
+    }).mergeRequest({});
   }
 }

@@ -12,27 +12,35 @@ import PremiseOverview from "../PremiseOverview";
 import {Premise} from "../../../../prisma/generated/type-graphql";
 import {getInitialProps} from "./utils/getInitialProps";
 import {createVisionMutation} from "../../../gql/mutation/createVisionMutation";
+import {MergeRequest} from "../../MergeRequest";
 
 export interface CreatePremiseProps {
     premise: Premise;
 }
 
 export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) => {
-    console.info("premise");
-    console.info(premise);
     const session = useSession();
+    console.info("-0-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-0");
     const user = get(session, "data.user");
     const userId = get(session, "data.userId");
+    console.info(userId);
+
     const router = useRouter();
     const [description, setDescription] = useState(() => getInitialProps(premise, "description"));
-    const [activityDate, setActivityDate] = useState(() => getInitialProps(premise, "activityDate"));
+    const [activityDate, setActivityDate] = useState(() => {
+        console.info("--------------------this is the one----------");
+        console.info(new Date(getInitialProps(premise, "activityDate")));
+        const date = getInitialProps(premise, "activityDate");
+        return date ? new Date(date):null;
+    });
     const [referenceUrl, setReferenceUrl] = useState(() => getInitialProps(premise, "reference"));
     const [title, setTitle] = useState(() => getInitialProps(premise, "title"));
     const [referenceType, setReferenceType] = useState("");
     const [attachment, setAttachment] = useState(() => getInitialProps(premise, "thumbnail"));
     const [createNewPremise, {data}] = useMutation(createPremiseMutation);
     const [createNewVision,] = useMutation(createVisionMutation);
-
+    const [mergeRequestTitle, setMergeRequestTitle] = useState("");
+    const [mergeRequestDescription, setMergeRequestDescription] = useState("");
     const submit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -47,7 +55,6 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                     referenceUrl, referenceType, title,
                 })
             });
-            console.info(snapshot.url);
             const variable = {
                 variables: {
                     data: {
@@ -101,6 +108,12 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                         "reference": referenceUrl,
                         "thumbnail": attachment,
                         "draftMode": true,
+                        "mergeRequest": {
+                            "create": {
+                                "title": mergeRequestTitle,
+                                "description": mergeRequestDescription
+                            }
+                        },
                         "author": {
                             "connect": {
                                 "id": userId
@@ -135,6 +148,12 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
         }
     };
     return <Grid container spacing={1}>
+        <MergeRequest
+                mergeRequestTitle={mergeRequestTitle}
+                setMergeRequestTitle={setMergeRequestTitle}
+                mergeRequestDescription={mergeRequestDescription}
+                setMergeRequestDescription={setMergeRequestDescription}
+        />
         <Grid xs={12} md={6} component={"form"} item onSubmit={submit} container spacing={1}>
             <Grid item xs={12}>
                 <TextField required fullWidth
@@ -163,8 +182,10 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             </Grid>
             <Grid item xs={6}>
                 <TextField onChange={e => {
+                    console.info(e.target.value);
                     setActivityDate(new Date(get(e, "target.value", "")));
                 }}
+                           value={activityDate ? new Date(activityDate).toISOString().split(".")[0]:""}
                            fullWidth type={"datetime-local"}/>
             </Grid>
             <Grid item xs={12}>
@@ -182,8 +203,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 <TextField
                         value={referenceUrl || ""}
                         onChange={(e) => setReferenceUrl(e.target.value)}
-                        fullWidth
-                        label={"reference url"}
+                        fullWidth label={"reference url"}
                 /> </Grid>
             <Grid item xs={12}>
                 <FileInput attachment={attachment} setAttachment={setAttachment}/>
@@ -193,7 +213,6 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                     Create
                 </Button>
                 <Button variant={"outlined"} onClick={() => {
-                    console.info(router);
                     router.back();
                 }}>
                     Cancel
@@ -232,4 +251,5 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 }}/>}
         </Grid>
     </Grid>;
+
 };

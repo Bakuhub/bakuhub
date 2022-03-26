@@ -18,7 +18,7 @@
     "validate-type-graphql-schema": "npm run prisma-schema-update && npm run restart",
     "prisma-schema-push-to-db": "npx prisma db push",
     "prisma-redeploy-db-structure": "npm run prisma-schema-reformat && npm run prisma-schema-update && npm run prisma-schema-push-to-db",
-    "server": "cd && cd MemoryPalaces/WebstormProjects/typegraphql-prisma/examples/3-picking-actions/ && npm run start"
+    "server": "cd && cd MemoryPalaces/WebstormProjects/typegraphql-prisma/examples/3-picking-actions/ && npm run go"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"

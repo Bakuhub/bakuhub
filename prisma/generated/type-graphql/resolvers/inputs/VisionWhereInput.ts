@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { BoolFilter } from "../inputs/BoolFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
+import { MergeRequestRelationFilter } from "../inputs/MergeRequestRelationFilter";
 import { PremiseRelationFilter } from "../inputs/PremiseRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -111,4 +112,9 @@ export class VisionWhereInput {
     nullable: true
   })
   threadsOnVision?: ThreadsOnVisionListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => MergeRequestRelationFilter, {
+    nullable: true
+  })
+  mergeRequest?: MergeRequestRelationFilter | undefined;
 }

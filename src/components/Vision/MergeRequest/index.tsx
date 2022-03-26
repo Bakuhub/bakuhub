@@ -1,18 +1,20 @@
-import {Vision} from "../../../../prisma/generated/type-graphql";
+import {MergeRequest} from "../../../../prisma/generated/type-graphql";
 import React from "react";
 import {Button, Grid, Typography} from "@mui/material";
 import {VisionDetail} from "../Detail/VisionDetail";
 import {useMutation} from "@apollo/client";
 import {mergeVisionIntoPremiseMutation} from "../../../gql/mutation/mergeVisionIntoPremiseMutation";
+import {get} from "lodash";
 
 export interface CreateVisionProps {
-    vision: Vision;
+    mergeRequest: MergeRequest;
 }
 
-export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({vision}) => {
-
-    console.info(vision);
+export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({mergeRequest}) => {
+    const vision = get(mergeRequest, "vision");
+    console.info(mergeRequest);
     const [mergeVisionIntoPremise] = useMutation(mergeVisionIntoPremiseMutation);
+    if (!vision) return <div>no vision</div>;
     return <Grid container>
         <Grid item container md={6} xs={12}>
             <Typography>
@@ -31,13 +33,20 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
         <Grid item xs={12}>
             <Button onClick={() => mergeVisionIntoPremise({
                 variables: {
+                    "where": {
+                        "id": vision.id
+                    },
                     "data": {
                         "draftMode": {
                             "set": false
+                        },
+                        "mergeRequest": {
+                            "update": {
+                                "status": {
+                                    "set": "MERGED"
+                                }
+                            }
                         }
-                    },
-                    "where": {
-                        "id": vision.id
                     }
                 }
             })}>

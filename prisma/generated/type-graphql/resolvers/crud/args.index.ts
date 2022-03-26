@@ -1,4 +1,5 @@
 export * from "./Account/args";
+export * from "./MergeRequest/args";
 export * from "./Premise/args";
 export * from "./PremisesOnTimelines/args";
 export * from "./Session/args";

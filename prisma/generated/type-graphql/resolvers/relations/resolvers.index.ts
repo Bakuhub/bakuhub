@@ -1,4 +1,5 @@
 export { AccountRelationsResolver } from "./Account/AccountRelationsResolver";
+export { MergeRequestRelationsResolver } from "./MergeRequest/MergeRequestRelationsResolver";
 export { PremiseRelationsResolver } from "./Premise/PremiseRelationsResolver";
 export { PremisesOnTimelinesRelationsResolver } from "./PremisesOnTimelines/PremisesOnTimelinesRelationsResolver";
 export { SessionRelationsResolver } from "./Session/SessionRelationsResolver";

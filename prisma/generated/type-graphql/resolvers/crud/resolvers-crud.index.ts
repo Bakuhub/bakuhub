@@ -1,4 +1,5 @@
 export { AccountCrudResolver } from "./Account/AccountCrudResolver";
+export { MergeRequestCrudResolver } from "./MergeRequest/MergeRequestCrudResolver";
 export { PremiseCrudResolver } from "./Premise/PremiseCrudResolver";
 export { PremisesOnTimelinesCrudResolver } from "./PremisesOnTimelines/PremisesOnTimelinesCrudResolver";
 export { SessionCrudResolver } from "./Session/SessionCrudResolver";

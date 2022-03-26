@@ -95,16 +95,16 @@ model Vision {
   prevVision      Vision?           @relation("VisionHistory", fields: [prevVisionId], references: [id])
   nextVision      Vision[]          @relation("VisionHistory")
   threadsOnVision ThreadsOnVision[]
-  mergeRequest MergeRequest?
+  mergeRequest    MergeRequest?
 }
 
-
 model MergeRequest {
-  id String @id @default(cuid())
-  title String @db.VarChar(255)
+  id          String             @id @default(cuid())
+  title       String             @db.VarChar(255)
   description String?
-  vision Vision @relation(fields: [visionId],references: [id], onDelete: Cascade,onUpdate: Cascade)
-  visionId String  
+  status      MergeRequestStatus @default(OPEN)
+  vision      Vision             @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  visionId    String             @unique
 }
 
 model Timeline {

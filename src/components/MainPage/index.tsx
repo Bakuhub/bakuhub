@@ -4,18 +4,35 @@ import {useRouter} from "next/router";
 import {useQuery} from "@apollo/client";
 import {Premise} from "../../../prisma/generated/type-graphql";
 import {premisesQuery} from "../../gql/query/premisesQuery";
-import {useEffect} from "react";
 import {signIn} from "next-auth/react";
 import {UserStatus} from "../Auth";
 
 export const MainPage = () => {
     const router = useRouter();
     const {loading, error, data} = useQuery<{ premises: Premise[] }>(premisesQuery, {
-        variables: {}
+        variables: {
+            "where": {
+                "OR": [
+                    {
+                        "draftMode": {
+                            "equals": false
+                        },
+                        "AND": [
+                            {
+                                "nextVision": {
+                                    "every": {
+                                        "draftMode": {
+                                            "equals": true
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
     });
-    useEffect(() => {
-        console.info(new Date());
-    }, [data]);
     return <Grid container spacing={1} justifyContent={"center"}>
         <Grid item container justifyContent={"center"} xs={12}>
             <Typography variant={"h6"} onClick={() => signIn()}>

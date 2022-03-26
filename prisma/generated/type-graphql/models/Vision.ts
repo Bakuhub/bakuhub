@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
+import { MergeRequest } from "../models/MergeRequest";
 import { Premise } from "../models/Premise";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
 import { User } from "../models/User";
@@ -75,6 +76,8 @@ export class Vision {
   nextVision?: Vision[];
 
   threadsOnVision?: ThreadsOnVision[];
+
+  mergeRequest?: MergeRequest | null;
 
   @TypeGraphQL.Field(_type => VisionCount, {
     nullable: true

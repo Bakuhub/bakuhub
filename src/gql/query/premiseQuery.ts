@@ -23,6 +23,9 @@ export const premiseQuery = gql`
                 authorId
                 prevVisionId
                 draftMode
+                mergeRequest {
+                    id
+                }
                 nextVision {
                     id
                     title

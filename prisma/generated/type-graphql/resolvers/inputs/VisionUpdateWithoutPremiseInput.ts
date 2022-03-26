@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
+import { MergeRequestUpdateOneWithoutVisionInput } from "../inputs/MergeRequestUpdateOneWithoutVisionInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
@@ -75,4 +76,9 @@ export class VisionUpdateWithoutPremiseInput {
     nullable: true
   })
   threadsOnVision?: ThreadsOnVisionUpdateManyWithoutVisionInput | undefined;
+
+  @TypeGraphQL.Field(_type => MergeRequestUpdateOneWithoutVisionInput, {
+    nullable: true
+  })
+  mergeRequest?: MergeRequestUpdateOneWithoutVisionInput | undefined;
 }

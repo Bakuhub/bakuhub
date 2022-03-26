@@ -1,0 +1,12 @@
+export { AggregateMergeRequestArgs } from "./AggregateMergeRequestArgs";
+export { CreateManyMergeRequestArgs } from "./CreateManyMergeRequestArgs";
+export { CreateMergeRequestArgs } from "./CreateMergeRequestArgs";
+export { DeleteManyMergeRequestArgs } from "./DeleteManyMergeRequestArgs";
+export { DeleteMergeRequestArgs } from "./DeleteMergeRequestArgs";
+export { FindFirstMergeRequestArgs } from "./FindFirstMergeRequestArgs";
+export { FindManyMergeRequestArgs } from "./FindManyMergeRequestArgs";
+export { FindUniqueMergeRequestArgs } from "./FindUniqueMergeRequestArgs";
+export { GroupByMergeRequestArgs } from "./GroupByMergeRequestArgs";
+export { UpdateManyMergeRequestArgs } from "./UpdateManyMergeRequestArgs";
+export { UpdateMergeRequestArgs } from "./UpdateMergeRequestArgs";
+export { UpsertMergeRequestArgs } from "./UpsertMergeRequestArgs";

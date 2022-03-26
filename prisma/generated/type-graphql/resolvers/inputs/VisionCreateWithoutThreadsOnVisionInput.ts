@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { MergeRequestCreateNestedOneWithoutVisionInput } from "../inputs/MergeRequestCreateNestedOneWithoutVisionInput";
 import { PremiseCreateNestedOneWithoutVisionInput } from "../inputs/PremiseCreateNestedOneWithoutVisionInput";
 import { UserCreateNestedOneWithoutVisionInput } from "../inputs/UserCreateNestedOneWithoutVisionInput";
 import { VisionCreateNestedManyWithoutPrevVisionInput } from "../inputs/VisionCreateNestedManyWithoutPrevVisionInput";
@@ -70,4 +71,9 @@ export class VisionCreateWithoutThreadsOnVisionInput {
     nullable: true
   })
   nextVision?: VisionCreateNestedManyWithoutPrevVisionInput | undefined;
+
+  @TypeGraphQL.Field(_type => MergeRequestCreateNestedOneWithoutVisionInput, {
+    nullable: true
+  })
+  mergeRequest?: MergeRequestCreateNestedOneWithoutVisionInput | undefined;
 }

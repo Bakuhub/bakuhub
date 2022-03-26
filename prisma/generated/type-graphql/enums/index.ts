@@ -1,5 +1,6 @@
 export { AccountScalarFieldEnum } from "./AccountScalarFieldEnum";
-export { MainThreadType } from "./MainThreadType";
+export { MergeRequestScalarFieldEnum } from "./MergeRequestScalarFieldEnum";
+export { MergeRequestStatus } from "./MergeRequestStatus";
 export { PremiseScalarFieldEnum } from "./PremiseScalarFieldEnum";
 export { PremiseStatus } from "./PremiseStatus";
 export { PremisesOnTimelinesScalarFieldEnum } from "./PremisesOnTimelinesScalarFieldEnum";
