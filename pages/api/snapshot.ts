@@ -9,8 +9,6 @@ export default async function handler(
 ) {
     const {
         referenceUrl,
-        activityDate,
-        title,
     } = req.body;
     const description = "";
     const snapshot = await uploadUrlToS3(referenceUrl);

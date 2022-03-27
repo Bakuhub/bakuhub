@@ -22,6 +22,7 @@ interface PremiseDetailProps {
 
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const router = useRouter();
+    console.info("-----this is premise================");
     console.info(premise);
     const dispatch = useDispatch();
     const {
@@ -31,7 +32,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
             vision.nextVision?.every(nextVision => !!nextVision.draftMode)
             && !vision.draftMode);
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
-            && get(vision, "mergeRequest.id", false));
+            && get(vision, "mergeRequest.status")==="OPEN");
     const thumbnail = getThumbnail(activeVision);
     return (
             <>
@@ -51,7 +52,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     <IconButton aria-label="add to favorites" onClick={() => dispatch(setActivePremiseId(premise.id))}>
                         <ReplyIcon/>
                     </IconButton>
-                    <IconButton aria-label="share">
+                    <IconButton onClick={() => router.push(`/create/vision/${premise.id}`)} aria-label="share">
                         <ShareIcon/>
                     </IconButton>
                 </Grid>

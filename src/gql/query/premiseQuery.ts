@@ -25,6 +25,7 @@ export const premiseQuery = gql`
                 draftMode
                 mergeRequest {
                     id
+                    status
                 }
                 nextVision {
                     id

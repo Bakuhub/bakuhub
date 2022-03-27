@@ -1,4 +1,4 @@
-import {MergeRequest, MergeRequestStatus} from "../../../../prisma/generated/type-graphql";
+import {MergeRequest} from "../../../../prisma/generated/type-graphql/";
 import React from "react";
 import {Button, Grid, Typography} from "@mui/material";
 import {VisionDetail} from "../Detail/VisionDetail";
@@ -12,7 +12,6 @@ export interface CreateVisionProps {
 
 export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({mergeRequest}) => {
     const vision = get(mergeRequest, "vision");
-    console.info(mergeRequest);
     const [mergeVisionIntoPremise] = useMutation(mergeVisionIntoPremiseMutation);
     if (!vision) return <div>no vision</div>;
     return <Grid container>
@@ -64,7 +63,7 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                         "mergeRequest": {
                             "update": {
                                 "status": {
-                                    "set": MergeRequestStatus.CLOSE
+                                    "set": "CLOSE"
                                 }
                             }
                         }

@@ -19,7 +19,7 @@ export const DrawerList = () => {
     },
         {
             text: "create new snapshot",
-            url: "create/snapshot",
+            url: "/create/snapshot",
             icon: AddTaskIcon
         }
     ];

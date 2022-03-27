@@ -8,6 +8,6 @@ export interface CreateVisionProps {
 export const createVision: React.FunctionComponent<CreateVisionProps> = ({premise}) => {
 
     return <>
-        
+
     </>;
 };

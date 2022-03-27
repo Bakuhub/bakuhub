@@ -11,6 +11,11 @@ export const themeOptions: ThemeOptions = {
             main: "#f5f100",
         },
     },
+    typography: {
+        body1: {
+            whiteSpace: "pre-wrap"
+        }
+    }
 };
 
 export const theme = createTheme(themeOptions);

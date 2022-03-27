@@ -1,21 +1,21 @@
 import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
-import { Prisma } from "@prisma/client";
-import { DecimalJSScalar } from "../../scalars";
-import { UserCreateWithoutTimelineInput } from "../inputs/UserCreateWithoutTimelineInput";
-import { UserUpdateWithoutTimelineInput } from "../inputs/UserUpdateWithoutTimelineInput";
+import {Prisma} from "@prisma/client";
+import {DecimalJSScalar} from "../../scalars";
+import {UserCreateWithoutTimelineInput} from "./UserCreateWithoutTimelineInput";
+import {UserUpdateWithoutTimelineInput} from "./UserUpdateWithoutTimelineInput";
 
 @TypeGraphQL.InputType("UserUpsertWithoutTimelineInput", {
-  isAbstract: true
+    isAbstract: true
 })
 export class UserUpsertWithoutTimelineInput {
-  @TypeGraphQL.Field(_type => UserUpdateWithoutTimelineInput, {
-    nullable: false
-  })
-  update!: UserUpdateWithoutTimelineInput;
+    @TypeGraphQL.Field(_type => UserUpdateWithoutTimelineInput, {
+        nullable: false
+    })
+    update!: UserUpdateWithoutTimelineInput;
 
-  @TypeGraphQL.Field(_type => UserCreateWithoutTimelineInput, {
-    nullable: false
-  })
-  create!: UserCreateWithoutTimelineInput;
+    @TypeGraphQL.Field(_type => UserCreateWithoutTimelineInput, {
+        nullable: false
+    })
+    create!: UserCreateWithoutTimelineInput;
 }

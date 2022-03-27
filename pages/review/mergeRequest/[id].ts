@@ -7,7 +7,7 @@ export async function getServerSideProps<GetServerSideProps>(context: { query: {
         query: mergeRequestQuery, variables: {
 
             "where": {
-                "id": "cl1778zls0012haq7hg3kdho6"
+                "id": context.query.id
             }
         }
 

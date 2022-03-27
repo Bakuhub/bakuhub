@@ -1,30 +1,30 @@
 import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
-import { Prisma } from "@prisma/client";
-import { DecimalJSScalar } from "../scalars";
-import { Thread } from "../models/Thread";
-import { Timeline } from "../models/Timeline";
+import {Prisma} from "@prisma/client";
+import {DecimalJSScalar} from "../scalars";
+import {Thread} from "./Thread";
+import {Timeline} from "./Timeline";
 
 @TypeGraphQL.ObjectType("ThreadsOnTimeline", {
-  isAbstract: true
+    isAbstract: true
 })
 export class ThreadsOnTimeline {
-  thread?: Thread;
+    thread?: Thread;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  threadId!: string;
+    @TypeGraphQL.Field(_type => String, {
+        nullable: false
+    })
+    threadId!: string;
 
-  timeline?: Timeline;
+    timeline?: Timeline;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  timelineId!: string;
+    @TypeGraphQL.Field(_type => String, {
+        nullable: false
+    })
+    timelineId!: string;
 
-  @TypeGraphQL.Field(_type => Date, {
-    nullable: false
-  })
-  assignedAt!: Date;
+    @TypeGraphQL.Field(_type => Date, {
+        nullable: false
+    })
+    assignedAt!: Date;
 }

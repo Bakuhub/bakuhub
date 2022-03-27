@@ -1,4 +1,9 @@
 import {get} from "lodash";
 import {Premise} from "../../../../../prisma/generated/type-graphql";
+import {getActiveVisionFromPremise} from "../../../../utils/getActiveVisionFromPremise";
 
-export const getInitialProps = (premise: Premise, propertyName: string) => get(premise, `vision[0].${propertyName}`, "");
+export const getInitialProps = (premise: Premise, propertyName: string) => {
+    if (!premise) return "";
+    const activeVision = getActiveVisionFromPremise(premise);
+    return get(activeVision, propertyName, "");
+};

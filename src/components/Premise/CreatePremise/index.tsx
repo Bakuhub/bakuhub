@@ -12,7 +12,6 @@ import {Premise} from "../../../../prisma/generated/type-graphql";
 import {getInitialProps} from "./utils/getInitialProps";
 import {createVisionMutation} from "../../../gql/mutation/createVisionMutation";
 import {MergeRequest} from "../../MergeRequest";
-import Icon from "@mui/material/Icon";
 
 
 export interface CreatePremiseProps {
@@ -23,7 +22,6 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
     const session = useSession();
     const user = get(session, "data.user");
     const userId = get(session, "data.userId");
-
     const router = useRouter();
     const [description, setDescription] = useState(() => getInitialProps(premise, "description"));
     const [activityDate, setActivityDate] = useState(() => {
@@ -154,14 +152,10 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             />
         }
         <Grid xs={12} md={6} component={"form"} item onSubmit={submit} container spacing={1}>
-            <Grid item xs={12}>
-                <Icon>add_circle</Icon>
-                <Icon color="primary">add_circle</Icon>
-                <Icon fontSize="small">add_circle</Icon>
-                <Icon sx={{fontSize: 30}}>add_circle</Icon> <TextField required fullWidth
-                                                                       onChange={({target: {value}}) => setTitle(value)}
-                                                                       value={title}
-                                                                       label="Title" variant="outlined"/>
+            <Grid item xs={12}><TextField required fullWidth
+                                          onChange={({target: {value}}) => setTitle(value)}
+                                          value={title}
+                                          label="Title" variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
                 <TextField

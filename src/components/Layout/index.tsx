@@ -11,6 +11,7 @@ import {LayoutDrawer} from "./Sections/Drawer";
 import {DrawerHeader} from "./Sections/Drawer/styled";
 import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
+import {Grid} from "@mui/material";
 
 
 const Main = styled("main", {shouldForwardProp: (prop) => prop!=="open"})<{
@@ -79,10 +80,13 @@ export const Layout: React.FunctionComponent = ({children}) => {
                         >
                             <MenuIcon/>
                         </IconButton>
-                        <Typography variant="h6" onClick={() => router.push("/")} noWrap component="div">
-                            Bakuhub
-                        </Typography>
-                        <AuthButton/>
+                        <Grid item container xs={12} justifyContent={"space-between"} alignItems={"center"}>
+
+                            <Typography variant="h6" onClick={() => router.push("/")} noWrap component="div">
+                                Bakuhub
+                            </Typography>
+                            <AuthButton/>
+                        </Grid>
                     </Toolbar>
                 </AppBar>
                 <LayoutDrawer open={open} handleDrawerClose={handleDrawerClose}/>

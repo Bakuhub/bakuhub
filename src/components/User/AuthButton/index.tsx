@@ -3,7 +3,11 @@ import {Button, CircularProgress} from "@mui/material";
 import React from "react";
 import {UserAvatar} from "../Avatar";
 import {get} from "lodash";
+import styled from "@emotion/styled";
 
+export const AuthButtonContainer = styled.div`
+  display: flex;
+`;
 export const AuthButton = () => {
     const session = useSession();
     console.info("ffffffffffffffffffffffffffffffffffffffffffffff");
@@ -12,10 +16,12 @@ export const AuthButton = () => {
         case session.status==="loading":
             return <CircularProgress/>;
         case session.status==="authenticated":
-            return <>                    <UserAvatar {...get(session, "data.user", {})}/>
+            return <AuthButtonContainer>
+                <UserAvatar {...get(session, "data.user", {})}/>
                 <Button variant={"outlined"} onClick={() => signOut()}>
                     Logout
-                </Button></>;
+                </Button>
+            </AuthButtonContainer>;
         case session.status==="unauthenticated":
 
         default:
