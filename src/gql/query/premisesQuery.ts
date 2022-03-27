@@ -6,13 +6,21 @@ export const premisesQuery = gql`
             id
             vision(where: $where) {
                 title
+                description
                 activityDate
                 id
                 createdAt
                 reference
                 thumbnail
                 draftMode
+                author {
+                    id
+                    image
+                    email
+                    name
+                }
             }
+
         }
     }
 `;

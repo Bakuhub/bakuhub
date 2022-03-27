@@ -17,11 +17,17 @@ export const DrawerList = () => {
         url: "/create/comment",
         icon: AddTaskIcon
     },
+        {
+            text: "create new snapshot",
+            url: "create/snapshot",
+            icon: AddTaskIcon
+        }
     ];
     const router = useRouter();
     return <List>
         {DrawerListOptions.map((DrawerListOption, index) => (
-                <ListItem onClick={() => router.push(DrawerListOption.url)} key={DrawerListOption.url}>
+                <ListItem button onClick={() => router.push(DrawerListOption.url)}
+                          key={DrawerListOption.url}>
                     <ListItemIcon>
                         <Icon component={DrawerListOption.icon}/>
                     </ListItemIcon>

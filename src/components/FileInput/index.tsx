@@ -1,4 +1,4 @@
-import {Button} from "@mui/material";
+import {Avatar, Button, Grid} from "@mui/material";
 import React, {ChangeEvent} from "react";
 import {get} from "lodash";
 import {fetchApi} from "../../services/fetchApi";
@@ -29,16 +29,28 @@ export const FileInput: React.FunctionComponent<FileInputProps> = (
             reader.readAsBinaryString(get(e, "target.files[0]", ""));
         }
     };
-    return <><Button
-            variant="contained"
-            component="label"
-    >
-        Upload Thumbnail
-        <input
-                onChange={handleSubmit}
-                type="file"
-                hidden
-        />
-    </Button>
-    </>;
+    return <Grid item container justifyItems={"center"} alignItems={"center"} xs={12}>
+        <Grid item xs={8}>
+            {attachment ? <Button variant="contained"
+                                  onClick={() => setAttachment("")}>
+                remove file
+            </Button>:<Button
+                    fullWidth
+                    variant="contained"
+                    component="label"
+            >
+                Upload Thumbnail
+                <input
+                        onChange={handleSubmit}
+                        type="file"
+                        hidden
+                />
+            </Button>}</Grid>
+        {attachment && <Grid item xs={4}>
+            <Avatar
+                variant={"rounded"}
+                src={attachment}
+            />
+        </Grid>}
+    </Grid>;
 };

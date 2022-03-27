@@ -160,10 +160,10 @@ model PremisesOnTimelines {
 model Snapshot {
   id        String   @id @unique @default(uuid())
   createdAt DateTime @default(now())
-  versionId String
-  url       String
-  sourceUrl String
-  caption   String
+  versionId String  @db.VarChar(255)
+  s3Url     String  @db.VarChar(255)
+  sourceUrl String 
+  caption   String 
 }
 
 //

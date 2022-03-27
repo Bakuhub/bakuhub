@@ -1,7 +1,6 @@
 import * as React from "react";
 import {styled} from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar, {AppBarProps as MuiAppBarProps} from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -10,8 +9,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import {drawerWidth} from "../../constants/style";
 import {LayoutDrawer} from "./Sections/Drawer";
 import {DrawerHeader} from "./Sections/Drawer/styled";
-import {Button} from "@mui/material";
 import {useRouter} from "next/router";
+import {AuthButton} from "../User/AuthButton";
 
 
 const Main = styled("main", {shouldForwardProp: (prop) => prop!=="open"})<{
@@ -69,7 +68,6 @@ export const Layout: React.FunctionComponent = ({children}) => {
 
     return (
             <Box sx={{display: "flex"}}>
-                <CssBaseline/>
                 <AppBar position="fixed" open={open}>
                     <Toolbar>
                         <IconButton
@@ -82,11 +80,9 @@ export const Layout: React.FunctionComponent = ({children}) => {
                             <MenuIcon/>
                         </IconButton>
                         <Typography variant="h6" onClick={() => router.push("/")} noWrap component="div">
-                            Main page
+                            Bakuhub
                         </Typography>
-                        <Button variant={"outlined"} onClick={() => router.push("/api/auth/login")}>
-                            Sign in
-                        </Button>
+                        <AuthButton/>
                     </Toolbar>
                 </AppBar>
                 <LayoutDrawer open={open} handleDrawerClose={handleDrawerClose}/>

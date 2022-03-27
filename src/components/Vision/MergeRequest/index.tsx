@@ -1,4 +1,4 @@
-import {MergeRequest} from "../../../../prisma/generated/type-graphql";
+import {MergeRequest, MergeRequestStatus} from "../../../../prisma/generated/type-graphql";
 import React from "react";
 import {Button, Grid, Typography} from "@mui/material";
 import {VisionDetail} from "../Detail/VisionDetail";
@@ -51,6 +51,27 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                 }
             })}>
                 merge
+            </Button>
+            <Button onClick={() => mergeVisionIntoPremise({
+                variables: {
+                    "where": {
+                        "id": vision.id
+                    },
+                    "data": {
+                        "draftMode": {
+                            "set": true
+                        },
+                        "mergeRequest": {
+                            "update": {
+                                "status": {
+                                    "set": MergeRequestStatus.CLOSE
+                                }
+                            }
+                        }
+                    }
+                }
+            })}>
+
             </Button>
         </Grid>
     </Grid>;

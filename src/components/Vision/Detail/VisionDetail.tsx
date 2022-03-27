@@ -1,7 +1,5 @@
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-import Avatar from "@mui/material/Avatar";
-import {red} from "@mui/material/colors";
 import {get} from "lodash";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -15,6 +13,7 @@ import * as React from "react";
 import {useRouter} from "next/router";
 import {Vision} from "../../../../prisma/generated/type-graphql";
 import {getThumbnail} from "../../../utils/getThumbnail";
+import {UserAvatar} from "../../User/Avatar";
 
 export interface VisionDetailProps {
     vision: Vision;
@@ -23,21 +22,16 @@ export interface VisionDetailProps {
 
 export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision, premiseId}) => {
     const router = useRouter();
-    console.info(vision);
     const thumbnail = getThumbnail(vision);
     const getRedirectUrl = () => premiseId ? `/premises/${premiseId}`:`/visions/${vision.id}`;
     const redirectedUrl = getRedirectUrl();
     return <Card sx={{maxWidth: 345}}>
         <CardHeader
+                onClick={() => {
+                    router.push(redirectedUrl);
+                }}
                 avatar={
-                    <Avatar
-                            onClick={() => {
-                                console.info("-30-2103=-012=-");
-                                router.push(redirectedUrl);
-                            }}
-                            sx={{bgcolor: red[500]}} aria-label="recipe">
-                        {get(vision, "author.name[0]", "")}
-                    </Avatar>
+                    <UserAvatar {...vision.author}/>
                 }
                 action={
                     <IconButton aria-label="settings">
@@ -51,7 +45,7 @@ export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision
                 component="img"
                 height="194"
                 image={thumbnail}
-                alt="Paella dish"
+                alt="Premise Preview"
         />
         <CardContent>
             <Typography variant="body2" color="text.secondary">

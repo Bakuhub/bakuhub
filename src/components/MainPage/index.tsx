@@ -1,4 +1,4 @@
-import {Button, Grid, TextField, Typography} from "@mui/material";
+import {Button, CircularProgress, Grid, TextField, Typography} from "@mui/material";
 import PremiseOverview from "../Premise/PremiseOverview";
 import {useRouter} from "next/router";
 import {useQuery} from "@apollo/client";
@@ -33,6 +33,7 @@ export const MainPage = () => {
             }
         }
     });
+    console.info({loading, error, data});
     return <Grid container spacing={1} justifyContent={"center"}>
         <Grid item container justifyContent={"center"} xs={12}>
             <Typography variant={"h6"} onClick={() => signIn()}>
@@ -43,23 +44,16 @@ export const MainPage = () => {
                 Create Premise
             </Button>
         </Grid>
-        {/*<Grid>*/}
-        {/*    <Typography>*/}
-        {/*        reduce misinformation*/}
-        {/*    </Typography>*/}
-        {/*    <Typography>*/}
-        {/*        when you talk to another person, communication, interface or a area where both of us have to*/}
-        {/*        understand a common vocabulary </Typography>*/}
-        {/*</Grid>*/}
         <Grid item container justifyContent={"center"} xs={12}>
             <TextField id="outlined-basic" label="Search" variant="outlined"/>
         </Grid>
         {
-            data?.premises.map(
-                    premise => <Grid key={premise.id} item xs={3}
+            (loading) ? <Grid>
+                <CircularProgress/>
+            </Grid>:data?.premises.map(
+                    premise => <Grid key={premise.id} item xs={4} lg={3}
                     ><PremiseOverview premise={premise}/></Grid>
             )
-
         }
     </Grid>;
 };

@@ -1,6 +1,5 @@
-import {Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
+import {Button, Grid, TextField, Typography} from "@mui/material";
 import {FormEvent, FunctionComponent, useState} from "react";
-import {ReferenceType} from "../../../constants/ReferenceType";
 import {useRouter} from "next/router";
 import {fetchApi} from "../../../services/fetchApi";
 import {useMutation} from "@apollo/client";
@@ -13,6 +12,8 @@ import {Premise} from "../../../../prisma/generated/type-graphql";
 import {getInitialProps} from "./utils/getInitialProps";
 import {createVisionMutation} from "../../../gql/mutation/createVisionMutation";
 import {MergeRequest} from "../../MergeRequest";
+import Icon from "@mui/material/Icon";
+
 
 export interface CreatePremiseProps {
     premise: Premise;
@@ -20,16 +21,12 @@ export interface CreatePremiseProps {
 
 export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) => {
     const session = useSession();
-    console.info("-0-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-00-0-0");
     const user = get(session, "data.user");
     const userId = get(session, "data.userId");
-    console.info(userId);
 
     const router = useRouter();
     const [description, setDescription] = useState(() => getInitialProps(premise, "description"));
     const [activityDate, setActivityDate] = useState(() => {
-        console.info("--------------------this is the one----------");
-        console.info(new Date(getInitialProps(premise, "activityDate")));
         const date = getInitialProps(premise, "activityDate");
         return date ? new Date(date):null;
     });
@@ -148,45 +145,36 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
         }
     };
     return <Grid container spacing={1}>
-        <MergeRequest
+        {
+            premise && <MergeRequest
                 mergeRequestTitle={mergeRequestTitle}
                 setMergeRequestTitle={setMergeRequestTitle}
                 mergeRequestDescription={mergeRequestDescription}
                 setMergeRequestDescription={setMergeRequestDescription}
-        />
+            />
+        }
         <Grid xs={12} md={6} component={"form"} item onSubmit={submit} container spacing={1}>
             <Grid item xs={12}>
-                <TextField required fullWidth
-                           onChange={({target: {value}}) => setTitle(value)}
-                           value={title}
-                           label="Title" variant="outlined"/>
+                <Icon>add_circle</Icon>
+                <Icon color="primary">add_circle</Icon>
+                <Icon fontSize="small">add_circle</Icon>
+                <Icon sx={{fontSize: 30}}>add_circle</Icon> <TextField required fullWidth
+                                                                       onChange={({target: {value}}) => setTitle(value)}
+                                                                       value={title}
+                                                                       label="Title" variant="outlined"/>
             </Grid>
-            <Grid item xs={6}>
-                <FormControl required fullWidth>
-                    <InputLabel>Reference Type</InputLabel>
-                    <Select
-                            label={"Reference Type"}
-                            variant={"outlined"}
-                            value={referenceType}
-                            onChange={(e) => {
-                                setReferenceType(e.target.value);
-                            }}
-                    >
-                        {
-                            Object.values(ReferenceType).map(
-                                    value => <MenuItem key={value} value={value}>{value}</MenuItem>
-                            )
-                        }
-                    </Select>
-                </FormControl>
-            </Grid>
-            <Grid item xs={6}>
-                <TextField onChange={e => {
-                    console.info(e.target.value);
-                    setActivityDate(new Date(get(e, "target.value", "")));
-                }}
-                           value={activityDate ? new Date(activityDate).toISOString().split(".")[0]:""}
-                           fullWidth type={"datetime-local"}/>
+            <Grid item xs={12}>
+                <TextField
+                        onChange={e => {
+                            setActivityDate(new Date(get(e, "target.value", "")));
+                        }}
+                        value={activityDate ? new Date(activityDate).toISOString().split(".")[0]:""}
+                        fullWidth
+                        type={"datetime-local"}
+                        variant={"outlined"}
+                        helperText={"please enter the datetime-local "}
+                        label={activityDate ? "activity date":""}
+                />
             </Grid>
             <Grid item xs={12}>
                 <TextField
@@ -208,20 +196,21 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             <Grid item xs={12}>
                 <FileInput attachment={attachment} setAttachment={setAttachment}/>
             </Grid>
-            <Grid item container xs={12}>
-                <Button type={"submit"} variant={"contained"}>
+            <Grid item container xs={6}>
+                <Button fullWidth type={"submit"} variant={"contained"}>
                     Create
                 </Button>
-                <Button variant={"outlined"} onClick={() => {
+            </Grid>
+            <Grid item container xs={6}>
+                <Button fullWidth variant={"outlined"} onClick={() => {
                     router.back();
                 }}>
                     Cancel
                 </Button>
             </Grid>
-
         </Grid>
         <Grid xs={12} md={6} item>
-            <Typography>
+            <Typography variant={"h5"}>
                 Preview:
             </Typography>
             {user!=="" &&
@@ -243,6 +232,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                             reference: referenceUrl,
                             "authorId": userId,
                             "nextVision": [],
+                            "author": user,
                             id: "",
                             premiseId: "",
                             thumbnail: attachment

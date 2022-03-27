@@ -58,9 +58,11 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                 <Grid item container md={6}>
                     <Typography variant={"subtitle1"}> Merge requests opened:</Typography>
                     {
-                        allOtherVisions?.map(vision => <Typography key={vision.id}
-                                                                   onClick={() => router.push(`/review/mergeRequest/${get(vision, "mergeRequest.id", false)}`)}
-                        >{vision.id}</Typography>)
+                        allOtherVisions?.map(vision =>
+                                <Typography key={vision.id}
+                                            onClick={() => router.push(`/review/mergeRequest/${get(vision, "mergeRequest.id", false)}`)}
+                                >{vision.id}
+                                </Typography>)
                     }
                 </Grid>
                 <ThreadCreator/>
