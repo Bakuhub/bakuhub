@@ -1,0 +1,12 @@
+export { AggregateReferenceArgs } from "./AggregateReferenceArgs";
+export { CreateManyReferenceArgs } from "./CreateManyReferenceArgs";
+export { CreateReferenceArgs } from "./CreateReferenceArgs";
+export { DeleteManyReferenceArgs } from "./DeleteManyReferenceArgs";
+export { DeleteReferenceArgs } from "./DeleteReferenceArgs";
+export { FindFirstReferenceArgs } from "./FindFirstReferenceArgs";
+export { FindManyReferenceArgs } from "./FindManyReferenceArgs";
+export { FindUniqueReferenceArgs } from "./FindUniqueReferenceArgs";
+export { GroupByReferenceArgs } from "./GroupByReferenceArgs";
+export { UpdateManyReferenceArgs } from "./UpdateManyReferenceArgs";
+export { UpdateReferenceArgs } from "./UpdateReferenceArgs";
+export { UpsertReferenceArgs } from "./UpsertReferenceArgs";

@@ -1,6 +1,6 @@
 export { UserAccountsArgs } from "./UserAccountsArgs";
-export { UserPremiseArgs } from "./UserPremiseArgs";
+export { UserPremisesArgs } from "./UserPremisesArgs";
 export { UserSessionsArgs } from "./UserSessionsArgs";
-export { UserThreadArgs } from "./UserThreadArgs";
-export { UserTimelineArgs } from "./UserTimelineArgs";
-export { UserVisionArgs } from "./UserVisionArgs";
+export { UserThreadsArgs } from "./UserThreadsArgs";
+export { UserTimelinesArgs } from "./UserTimelinesArgs";
+export { UserVisionsArgs } from "./UserVisionsArgs";

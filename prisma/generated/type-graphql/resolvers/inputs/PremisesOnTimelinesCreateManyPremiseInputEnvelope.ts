@@ -1,20 +1,20 @@
 import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
-import {Prisma} from "@prisma/client";
-import {DecimalJSScalar} from "../../scalars";
-import {PremisesOnTimelinesCreateManyPremiseInput} from "./PremisesOnTimelinesCreateManyPremiseInput";
+import { Prisma } from "@prisma/client";
+import { DecimalJSScalar } from "../../scalars";
+import { PremisesOnTimelinesCreateManyPremiseInput } from "../inputs/PremisesOnTimelinesCreateManyPremiseInput";
 
 @TypeGraphQL.InputType("PremisesOnTimelinesCreateManyPremiseInputEnvelope", {
-    isAbstract: true
+  isAbstract: true
 })
 export class PremisesOnTimelinesCreateManyPremiseInputEnvelope {
-    @TypeGraphQL.Field(_type => [PremisesOnTimelinesCreateManyPremiseInput], {
-        nullable: false
-    })
-    data!: PremisesOnTimelinesCreateManyPremiseInput[];
+  @TypeGraphQL.Field(_type => [PremisesOnTimelinesCreateManyPremiseInput], {
+    nullable: false
+  })
+  data!: PremisesOnTimelinesCreateManyPremiseInput[];
 
-    @TypeGraphQL.Field(_type => Boolean, {
-        nullable: true
-    })
-    skipDuplicates?: boolean | undefined;
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  skipDuplicates?: boolean | undefined;
 }

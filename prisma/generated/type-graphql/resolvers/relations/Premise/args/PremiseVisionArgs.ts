@@ -35,5 +35,5 @@ export class PremiseVisionArgs {
   @TypeGraphQL.Field(_type => [VisionScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "reference" | "authorId" | "thumbnail" | "premiseId" | "draftMode" | "prevVisionId"> | undefined;
+  distinct?: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "referenceId" | "authorId" | "thumbnail" | "premiseId" | "draftMode" | "prevVisionId"> | undefined;
 }

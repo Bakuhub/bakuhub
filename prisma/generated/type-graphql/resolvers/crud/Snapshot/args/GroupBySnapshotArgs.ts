@@ -20,7 +20,7 @@ export class GroupBySnapshotArgs {
   @TypeGraphQL.Field(_type => [SnapshotScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "createdAt" | "versionId" | "url" | "sourceUrl" | "caption">;
+  by!: Array<"id" | "createdAt" | "versionId" | "s3Url" | "sourceUrl" | "caption">;
 
   @TypeGraphQL.Field(_type => SnapshotScalarWhereWithAggregatesInput, {
     nullable: true

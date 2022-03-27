@@ -10,8 +10,6 @@ export default async function handler(
     const {
         referenceUrl,
     } = req.body;
-    const description = "";
     const snapshot = await uploadUrlToS3(referenceUrl);
-    const url = snapshot.url;
     res.status(200).json({snapshot});
 }

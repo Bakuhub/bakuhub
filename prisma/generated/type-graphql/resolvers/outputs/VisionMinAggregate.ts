@@ -35,7 +35,7 @@ export class VisionMinAggregate {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  reference!: string | null;
+  referenceId!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

@@ -2,6 +2,7 @@ export { AccountCrudResolver } from "./Account/AccountCrudResolver";
 export { MergeRequestCrudResolver } from "./MergeRequest/MergeRequestCrudResolver";
 export { PremiseCrudResolver } from "./Premise/PremiseCrudResolver";
 export { PremisesOnTimelinesCrudResolver } from "./PremisesOnTimelines/PremisesOnTimelinesCrudResolver";
+export { ReferenceCrudResolver } from "./Reference/ReferenceCrudResolver";
 export { SessionCrudResolver } from "./Session/SessionCrudResolver";
 export { SnapshotCrudResolver } from "./Snapshot/SnapshotCrudResolver";
 export { TagCrudResolver } from "./Tag/TagCrudResolver";

@@ -1,2 +1,2 @@
-export { VisionNextVisionArgs } from "./VisionNextVisionArgs";
+export { VisionNextVisionsArgs } from "./VisionNextVisionsArgs";
 export { VisionThreadsOnVisionArgs } from "./VisionThreadsOnVisionArgs";

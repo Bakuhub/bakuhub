@@ -2,14 +2,14 @@ import axios from "axios";
 
 export const getSnapshot = async ({
                                       url,
-                                      referenceType,
-                                      title
-                                  }: { url: string, referenceType: string, title: string }) => {
+                                  }: { url: string }): Promise<{
+    url: string
+    versionId: string
+} | void> => {
     const result = await axios.post("/api/snapshot", {
-        referenceUrl: url, referenceType, title,
+        referenceUrl: url
     });
     if (result.status===200) {
-        return result.data;
+        return result.data.snapshot;
     }
-    return result;
 };

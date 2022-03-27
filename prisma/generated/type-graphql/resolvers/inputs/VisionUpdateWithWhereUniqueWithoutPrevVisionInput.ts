@@ -1,21 +1,21 @@
 import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
-import {Prisma} from "@prisma/client";
-import {DecimalJSScalar} from "../../scalars";
-import {VisionUpdateWithoutPrevVisionInput} from "./VisionUpdateWithoutPrevVisionInput";
-import {VisionWhereUniqueInput} from "./VisionWhereUniqueInput";
+import { Prisma } from "@prisma/client";
+import { DecimalJSScalar } from "../../scalars";
+import { VisionUpdateWithoutPrevVisionInput } from "../inputs/VisionUpdateWithoutPrevVisionInput";
+import { VisionWhereUniqueInput } from "../inputs/VisionWhereUniqueInput";
 
 @TypeGraphQL.InputType("VisionUpdateWithWhereUniqueWithoutPrevVisionInput", {
-    isAbstract: true
+  isAbstract: true
 })
 export class VisionUpdateWithWhereUniqueWithoutPrevVisionInput {
-    @TypeGraphQL.Field(_type => VisionWhereUniqueInput, {
-        nullable: false
-    })
-    where!: VisionWhereUniqueInput;
+  @TypeGraphQL.Field(_type => VisionWhereUniqueInput, {
+    nullable: false
+  })
+  where!: VisionWhereUniqueInput;
 
-    @TypeGraphQL.Field(_type => VisionUpdateWithoutPrevVisionInput, {
-        nullable: false
-    })
-    data!: VisionUpdateWithoutPrevVisionInput;
+  @TypeGraphQL.Field(_type => VisionUpdateWithoutPrevVisionInput, {
+    nullable: false
+  })
+  data!: VisionUpdateWithoutPrevVisionInput;
 }

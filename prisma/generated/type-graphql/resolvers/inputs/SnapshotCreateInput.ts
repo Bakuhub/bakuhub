@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ReferenceCreateNestedManyWithoutSnapshotsInput } from "../inputs/ReferenceCreateNestedManyWithoutSnapshotsInput";
 
 @TypeGraphQL.InputType("SnapshotCreateInput", {
   isAbstract: true
@@ -25,7 +26,7 @@ export class SnapshotCreateInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  url!: string;
+  s3Url!: string;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false
@@ -36,4 +37,9 @@ export class SnapshotCreateInput {
     nullable: false
   })
   caption!: string;
+
+  @TypeGraphQL.Field(_type => ReferenceCreateNestedManyWithoutSnapshotsInput, {
+    nullable: true
+  })
+  references?: ReferenceCreateNestedManyWithoutSnapshotsInput | undefined;
 }

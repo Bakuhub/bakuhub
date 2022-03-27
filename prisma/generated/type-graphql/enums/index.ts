@@ -5,7 +5,7 @@ export { PremiseScalarFieldEnum } from "./PremiseScalarFieldEnum";
 export { PremiseStatus } from "./PremiseStatus";
 export { PremisesOnTimelinesScalarFieldEnum } from "./PremisesOnTimelinesScalarFieldEnum";
 export { QueryMode } from "./QueryMode";
-export { Role } from "./Role";
+export { ReferenceScalarFieldEnum } from "./ReferenceScalarFieldEnum";
 export { SessionScalarFieldEnum } from "./SessionScalarFieldEnum";
 export { SnapshotScalarFieldEnum } from "./SnapshotScalarFieldEnum";
 export { SortOrder } from "./SortOrder";

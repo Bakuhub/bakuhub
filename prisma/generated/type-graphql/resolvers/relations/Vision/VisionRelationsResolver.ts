@@ -1,15 +1,27 @@
 import * as TypeGraphQL from "type-graphql";
 import { MergeRequest } from "../../../models/MergeRequest";
 import { Premise } from "../../../models/Premise";
+import { Reference } from "../../../models/Reference";
 import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
-import { VisionNextVisionArgs } from "./args/VisionNextVisionArgs";
+import { VisionNextVisionsArgs } from "./args/VisionNextVisionsArgs";
 import { VisionThreadsOnVisionArgs } from "./args/VisionThreadsOnVisionArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => Vision)
 export class VisionRelationsResolver {
+  @TypeGraphQL.FieldResolver(_type => Reference, {
+    nullable: true
+  })
+  async reference(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any): Promise<Reference | null> {
+    return getPrismaFromContext(ctx).vision.findUnique({
+      where: {
+        id: vision.id,
+      },
+    }).reference({});
+  }
+
   @TypeGraphQL.FieldResolver(_type => User, {
     nullable: true
   })
@@ -46,12 +58,12 @@ export class VisionRelationsResolver {
   @TypeGraphQL.FieldResolver(_type => [Vision], {
     nullable: false
   })
-  async nextVision(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: VisionNextVisionArgs): Promise<Vision[]> {
+  async nextVisions(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: VisionNextVisionsArgs): Promise<Vision[]> {
     return getPrismaFromContext(ctx).vision.findUnique({
       where: {
         id: vision.id,
       },
-    }).nextVision(args);
+    }).nextVisions(args);
   }
 
   @TypeGraphQL.FieldResolver(_type => [ThreadsOnVision], {

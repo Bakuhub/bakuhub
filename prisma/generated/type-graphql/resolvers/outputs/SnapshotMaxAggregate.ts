@@ -25,7 +25,7 @@ export class SnapshotMaxAggregate {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  url!: string | null;
+  s3Url!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

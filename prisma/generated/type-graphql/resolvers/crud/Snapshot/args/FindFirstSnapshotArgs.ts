@@ -35,5 +35,5 @@ export class FindFirstSnapshotArgs {
   @TypeGraphQL.Field(_type => [SnapshotScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "createdAt" | "versionId" | "url" | "sourceUrl" | "caption"> | undefined;
+  distinct?: Array<"id" | "createdAt" | "versionId" | "s3Url" | "sourceUrl" | "caption"> | undefined;
 }

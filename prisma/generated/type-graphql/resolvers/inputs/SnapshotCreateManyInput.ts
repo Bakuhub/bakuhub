@@ -25,7 +25,7 @@ export class SnapshotCreateManyInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  url!: string;
+  s3Url!: string;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false

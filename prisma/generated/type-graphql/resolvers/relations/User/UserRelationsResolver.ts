@@ -7,11 +7,11 @@ import { Timeline } from "../../../models/Timeline";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
 import { UserAccountsArgs } from "./args/UserAccountsArgs";
-import { UserPremiseArgs } from "./args/UserPremiseArgs";
+import { UserPremisesArgs } from "./args/UserPremisesArgs";
 import { UserSessionsArgs } from "./args/UserSessionsArgs";
-import { UserThreadArgs } from "./args/UserThreadArgs";
-import { UserTimelineArgs } from "./args/UserTimelineArgs";
-import { UserVisionArgs } from "./args/UserVisionArgs";
+import { UserThreadsArgs } from "./args/UserThreadsArgs";
+import { UserTimelinesArgs } from "./args/UserTimelinesArgs";
+import { UserVisionsArgs } from "./args/UserVisionsArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => User)
@@ -41,44 +41,44 @@ export class UserRelationsResolver {
   @TypeGraphQL.FieldResolver(_type => [Premise], {
     nullable: false
   })
-  async premise(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserPremiseArgs): Promise<Premise[]> {
+  async premises(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserPremisesArgs): Promise<Premise[]> {
     return getPrismaFromContext(ctx).user.findUnique({
       where: {
         id: user.id,
       },
-    }).premise(args);
+    }).premises(args);
   }
 
   @TypeGraphQL.FieldResolver(_type => [Thread], {
     nullable: false
   })
-  async thread(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserThreadArgs): Promise<Thread[]> {
+  async threads(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserThreadsArgs): Promise<Thread[]> {
     return getPrismaFromContext(ctx).user.findUnique({
       where: {
         id: user.id,
       },
-    }).thread(args);
+    }).threads(args);
   }
 
   @TypeGraphQL.FieldResolver(_type => [Vision], {
     nullable: false
   })
-  async vision(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserVisionArgs): Promise<Vision[]> {
+  async visions(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserVisionsArgs): Promise<Vision[]> {
     return getPrismaFromContext(ctx).user.findUnique({
       where: {
         id: user.id,
       },
-    }).vision(args);
+    }).visions(args);
   }
 
   @TypeGraphQL.FieldResolver(_type => [Timeline], {
     nullable: false
   })
-  async timeline(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserTimelineArgs): Promise<Timeline[]> {
+  async timelines(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserTimelinesArgs): Promise<Timeline[]> {
     return getPrismaFromContext(ctx).user.findUnique({
       where: {
         id: user.id,
       },
-    }).timeline(args);
+    }).timelines(args);
   }
 }

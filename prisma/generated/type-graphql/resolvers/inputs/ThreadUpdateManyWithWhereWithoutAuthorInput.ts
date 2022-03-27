@@ -1,21 +1,21 @@
 import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
-import {Prisma} from "@prisma/client";
-import {DecimalJSScalar} from "../../scalars";
-import {ThreadScalarWhereInput} from "./ThreadScalarWhereInput";
-import {ThreadUpdateManyMutationInput} from "./ThreadUpdateManyMutationInput";
+import { Prisma } from "@prisma/client";
+import { DecimalJSScalar } from "../../scalars";
+import { ThreadScalarWhereInput } from "../inputs/ThreadScalarWhereInput";
+import { ThreadUpdateManyMutationInput } from "../inputs/ThreadUpdateManyMutationInput";
 
 @TypeGraphQL.InputType("ThreadUpdateManyWithWhereWithoutAuthorInput", {
-    isAbstract: true
+  isAbstract: true
 })
 export class ThreadUpdateManyWithWhereWithoutAuthorInput {
-    @TypeGraphQL.Field(_type => ThreadScalarWhereInput, {
-        nullable: false
-    })
-    where!: ThreadScalarWhereInput;
+  @TypeGraphQL.Field(_type => ThreadScalarWhereInput, {
+    nullable: false
+  })
+  where!: ThreadScalarWhereInput;
 
-    @TypeGraphQL.Field(_type => ThreadUpdateManyMutationInput, {
-        nullable: false
-    })
-    data!: ThreadUpdateManyMutationInput;
+  @TypeGraphQL.Field(_type => ThreadUpdateManyMutationInput, {
+    nullable: false
+  })
+  data!: ThreadUpdateManyMutationInput;
 }

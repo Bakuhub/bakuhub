@@ -35,7 +35,7 @@ export class VisionCreateManyPrevVisionInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  reference?: string | undefined;
+  referenceId?: string | undefined;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

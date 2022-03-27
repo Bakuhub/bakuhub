@@ -36,7 +36,7 @@ export class VisionCountOrderByAggregateInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  reference?: "asc" | "desc" | undefined;
+  referenceId?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true

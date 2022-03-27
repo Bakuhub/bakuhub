@@ -1,6 +1,5 @@
 datasource db {
   // url      = "file:./dev.db"
-
   url      = env("DATABASE_URL")
   provider = "postgresql"
 }
@@ -15,7 +14,7 @@ generator typegraphql {
 }
 
 model Account {
-  id                String  @id @default(uuid())
+  id                String  @id @default(cuid())
   userId            String
   type              String
   provider          String
@@ -34,7 +33,7 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(uuid())
+  id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
@@ -42,17 +41,18 @@ model Session {
 }
 
 model User {
-  id            String     @id @default(uuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String?    @unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  premise       Premise[]
-  thread        Thread[]
-  vision        Vision[]
-  timeline      Timeline[]
+
+  premises  Premise[]
+  threads   Thread[]
+  visions   Vision[]
+  timelines Timeline[]
 }
 
 model VerificationToken {
@@ -64,7 +64,7 @@ model VerificationToken {
 }
 
 model Premise {
-  id                  String                @id @default(uuid())
+  id                  String                @id @default(cuid())
   title               String                @db.VarChar(255)
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
@@ -75,16 +75,16 @@ model Premise {
   premisesOnTimelines PremisesOnTimelines[]
   tagsOnPremises      TagsOnPremises[]
   threadsOnPremise    ThreadsOnPremise[]
-
 }
 
 model Vision {
-  id              String            @id @default(uuid())
+  id              String            @id @default(cuid())
   title           String            @db.VarChar(255)
   activityDate    DateTime?
   description     String?
   createdAt       DateTime          @default(now())
-  reference       String?
+  reference       Reference?        @relation(fields: [referenceId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  referenceId     String?
   author          User?             @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId        String?
   premise         Premise           @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
@@ -93,9 +93,15 @@ model Vision {
   draftMode       Boolean           @default(false)
   prevVisionId    String?
   prevVision      Vision?           @relation("VisionHistory", fields: [prevVisionId], references: [id])
-  nextVision      Vision[]          @relation("VisionHistory")
+  nextVisions     Vision[]          @relation("VisionHistory")
   threadsOnVision ThreadsOnVision[]
   mergeRequest    MergeRequest?
+}
+
+model Reference {
+  id        String     @id @default(cuid())
+  snapshots Snapshot[]
+  Vision    Vision[]
 }
 
 model MergeRequest {
@@ -108,16 +114,16 @@ model MergeRequest {
 }
 
 model Timeline {
-  id                  String                @id @default(uuid())
-  title               String                @db.VarChar(255)
-  description         String
-  status              String
-  author              User                  @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  authorId            String
+  id          String @id @default(cuid())
+  title       String @db.VarChar(255)
+  description String
+  status      String
+  author      User   @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId    String
+
   premisesOnTimelines PremisesOnTimelines[]
   tagsOnTimelines     TagsOnTimelines[]
   threadsOnTimeline   ThreadsOnTimeline[]
-
 }
 
 model Tag {
@@ -158,23 +164,17 @@ model PremisesOnTimelines {
 }
 
 model Snapshot {
-  id        String   @id @unique @default(uuid())
-  createdAt DateTime @default(now())
-  versionId String  @db.VarChar(255)
-  s3Url     String  @db.VarChar(255)
-  sourceUrl String 
-  caption   String 
+  id         String      @id @unique @default(cuid())
+  createdAt  DateTime    @default(now())
+  versionId  String      @db.VarChar(255)
+  s3Url      String      @db.VarChar(255)
+  sourceUrl  String
+  caption    String
+  references Reference[]
 }
 
-//
-//model MainCode {
-//  id String @id @unique @default(uuid())
-//  mainThreadType MainThreadType
-//  relatedId String
-//}
-
 model Thread {
-  id             String    @id @default(uuid())
+  id             String    @id @default(cuid())
   title          String    @db.VarChar(255)
   activityDate   DateTime?
   description    String?
@@ -233,9 +233,4 @@ enum MergeRequestStatus {
   OPEN
   CLOSE
   MERGED
-}
-
-enum Role {
-  USER
-  ADMIN
 }

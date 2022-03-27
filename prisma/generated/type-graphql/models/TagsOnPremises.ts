@@ -1,30 +1,30 @@
 import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
-import {Prisma} from "@prisma/client";
-import {DecimalJSScalar} from "../scalars";
-import {Premise} from "./Premise";
-import {Tag} from "./Tag";
+import { Prisma } from "@prisma/client";
+import { DecimalJSScalar } from "../scalars";
+import { Premise } from "../models/Premise";
+import { Tag } from "../models/Tag";
 
 @TypeGraphQL.ObjectType("TagsOnPremises", {
-    isAbstract: true
+  isAbstract: true
 })
 export class TagsOnPremises {
-    tag?: Tag;
+  tag?: Tag;
 
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-        nullable: false
-    })
-    tagId!: number;
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  tagId!: number;
 
-    premise?: Premise;
+  premise?: Premise;
 
-    @TypeGraphQL.Field(_type => String, {
-        nullable: false
-    })
-    premiseId!: string;
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  premiseId!: string;
 
-    @TypeGraphQL.Field(_type => Date, {
-        nullable: false
-    })
-    assignedAt!: Date;
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: false
+  })
+  assignedAt!: Date;
 }

@@ -4,7 +4,7 @@ export enum SnapshotScalarFieldEnum {
   id = "id",
   createdAt = "createdAt",
   versionId = "versionId",
-  url = "url",
+  s3Url = "s3Url",
   sourceUrl = "sourceUrl",
   caption = "caption"
 }
