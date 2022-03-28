@@ -11,7 +11,8 @@ import {LayoutDrawer} from "./Sections/Drawer";
 import {DrawerHeader} from "./Sections/Drawer/styled";
 import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
-import {Alert, Grid, Snackbar} from "@mui/material";
+import {Grid} from "@mui/material";
+import {LayoutSnackbar} from "./Sections/Snackbar";
 
 
 const Main = styled("main", {shouldForwardProp: (prop) => prop!=="open"})<{
@@ -99,11 +100,7 @@ export const Layout: React.FunctionComponent = ({children}) => {
                 <LayoutDrawer open={open} handleDrawerClose={handleDrawerClose}/>
                 <Main open={open}>
                     <DrawerHeader/>
-                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                        <Alert onClose={handleClose} severity="success" sx={{width: "100%"}}>
-                            This is a success message!
-                        </Alert>
-                    </Snackbar>
+                    <LayoutSnackbar/>
                     {children}
                 </Main>
             </Box>

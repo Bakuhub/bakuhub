@@ -10,6 +10,10 @@ export default async function handler(
     const {
         referenceUrl,
     } = req.body;
-    const snapshot = await uploadUrlToS3(referenceUrl);
-    res.status(200).json({snapshot});
+    try {
+        const snapshot = await uploadUrlToS3(referenceUrl);
+        res.status(200).json({snapshot});
+    } catch (e) {
+        res.status(200).json({errorMessage: e});
+    }
 }

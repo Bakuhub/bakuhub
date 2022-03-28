@@ -6,10 +6,15 @@ export const getSnapshot = async ({
     url: string
     versionId: string
 } | void> => {
-    const result = await axios.post("/api/snapshot", {
-        referenceUrl: url
-    });
-    if (result.status===200) {
-        return result.data.snapshot;
+    try {
+        const result = await axios.post("/api/snapshot", {
+            referenceUrl: url
+        });
+        if (result.status===200) {
+            if (result.data)
+                return result.data;
+        }
+    } catch (e) {
+        console.error(e);
     }
 };

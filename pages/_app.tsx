@@ -7,7 +7,8 @@ import apolloClient from "../src/lib/apollo";
 import {SessionProvider} from "next-auth/react";
 import {ThemeProvider} from "@mui/material/styles";
 import {theme} from "../src/theme";
-import {CssBaseline} from "@mui/material";
+import {Collapse, CssBaseline} from "@mui/material";
+import {SnackbarProvider} from "notistack";
 
 function MyApp({
                    Component, pageProps: {session, ...pageProps},
@@ -20,17 +21,32 @@ function MyApp({
             <ApolloProvider client={apolloClient}>
                 {/* for redux store */}
                 <Provider store={store}>
-                    {/* for Dark theme */}
-                    <CssBaseline/>
-                    {/*get MUI dynamic fonts*/}
-                    <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-                    />
-                    {/* for layout with drawer and header */}
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
+                    <SnackbarProvider
+                            maxSnack={3}
+                            anchorOrigin={{
+                                vertical: "bottom",
+                                horizontal: "left",
+                            }}
+                            TransitionComponent={Collapse}
+                            iconVariant={{
+                                success: "✅",
+                                error: "✖️",
+                                warning: "⚠️",
+                                info: "ℹ️",
+                            }}
+                    >
+                        {/* for Dark theme */}
+                        <CssBaseline/>
+                        {/*get MUI dynamic fonts*/}
+                        <link
+                                rel="stylesheet"
+                                href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                        />
+                        {/* for layout with drawer and header */}
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                    </SnackbarProvider>
                 </Provider>
             </ApolloProvider>
         </ThemeProvider>
