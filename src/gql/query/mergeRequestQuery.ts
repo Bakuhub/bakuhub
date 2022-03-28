@@ -8,16 +8,28 @@ export const mergeRequestQuery = gql`
                 title
                 activityDate
                 description
-                reference
                 createdAt
                 thumbnail
+                reference {
+                    snapshots {
+                        sourceUrl
+                        s3Url
+                        versionId
+                    }
+                }
                 prevVision {
                     title
                     activityDate
                     id
                     description
                     createdAt
-                    reference
+                    reference {
+                        snapshots {
+                            sourceUrl
+                            s3Url
+                            versionId
+                        }
+                    }
                     thumbnail
                     draftMode
                 }

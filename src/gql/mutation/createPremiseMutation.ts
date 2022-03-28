@@ -27,9 +27,8 @@ export const createPremiseMutation = gql`
                     name
                     email
                 }
-                nextVision {
+                nextVisions {
                     description
-                    reference
                     authorId
                 }
             }

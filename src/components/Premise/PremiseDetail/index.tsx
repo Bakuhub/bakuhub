@@ -29,7 +29,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
         data
     } = useQuery<{ threads: Thread[] }>(threadsQuery);
     const activeVision = premise.vision?.find(vision =>
-            vision.nextVision?.every(nextVision => !!nextVision.draftMode)
+            vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
             && !vision.draftMode);
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
             && get(vision, "mergeRequest.status")==="OPEN");

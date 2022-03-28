@@ -11,7 +11,7 @@ import {LayoutDrawer} from "./Sections/Drawer";
 import {DrawerHeader} from "./Sections/Drawer/styled";
 import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
-import {Grid} from "@mui/material";
+import {Alert, Grid, Snackbar} from "@mui/material";
 
 
 const Main = styled("main", {shouldForwardProp: (prop) => prop!=="open"})<{
@@ -66,6 +66,13 @@ export const Layout: React.FunctionComponent = ({children}) => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason==="clickaway") {
+            return;
+        }
+
+        setOpen(false);
+    };
 
     return (
             <Box sx={{display: "flex"}}>
@@ -92,6 +99,11 @@ export const Layout: React.FunctionComponent = ({children}) => {
                 <LayoutDrawer open={open} handleDrawerClose={handleDrawerClose}/>
                 <Main open={open}>
                     <DrawerHeader/>
+                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <Alert onClose={handleClose} severity="success" sx={{width: "100%"}}>
+                            This is a success message!
+                        </Alert>
+                    </Snackbar>
                     {children}
                 </Main>
             </Box>

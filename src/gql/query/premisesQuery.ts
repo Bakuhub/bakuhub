@@ -10,7 +10,6 @@ export const premisesQuery = gql`
                 activityDate
                 id
                 createdAt
-                reference
                 thumbnail
                 draftMode
                 author {

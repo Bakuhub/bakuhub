@@ -8,7 +8,13 @@ export const visionQuery = gql`
             activityDate
             description
             createdAt
-            reference
+            reference {
+                snapshots {
+                    sourceUrl
+                    s3Url
+                    versionId
+                }
+            }
             thumbnail
             author {
                 name
@@ -21,7 +27,13 @@ export const visionQuery = gql`
                 activityDate
                 description
                 createdAt
-                reference
+                reference {
+                    snapshots {
+                        sourceUrl
+                        s3Url
+                        versionId
+                    }
+                }
                 authorId
                 thumbnail
                 premiseId

@@ -19,7 +19,6 @@ export const premiseQuery = gql`
                 activityDate
                 description
                 createdAt
-                reference
                 authorId
                 prevVisionId
                 draftMode
@@ -27,13 +26,12 @@ export const premiseQuery = gql`
                     id
                     status
                 }
-                nextVision {
+                nextVisions {
                     id
                     title
                     activityDate
                     description
                     createdAt
-                    reference
                     draftMode
                 }
             }

@@ -5,7 +5,7 @@ export const createSnapshotMutation = gql`
         createSnapshot(data: $data) {
             createdAt
             versionId
-            url
+            s3Url
             sourceUrl
             caption
         }

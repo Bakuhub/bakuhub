@@ -225,7 +225,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                             "createdAt": new Date(),
                             reference: referenceUrl,
                             "authorId": userId,
-                            "nextVision": [],
+                            "nextVisions": [],
                             "author": user,
                             id: "",
                             premiseId: "",

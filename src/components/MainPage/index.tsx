@@ -19,7 +19,7 @@ export const MainPage = () => {
                         },
                         "AND": [
                             {
-                                "nextVision": {
+                                "nextVisions": {
                                     "every": {
                                         "draftMode": {
                                             "equals": true

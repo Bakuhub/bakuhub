@@ -12,16 +12,17 @@ export const Snapshot = () => {
             url: referenceUrl,
         });
         if (snapshot) {
-            await createSnapshot({
+            const result = await createSnapshot({
                 variables: {
                     "data": {
                         "versionId": snapshot.versionId,
-                        "url": snapshot.url,
+                        s3Url: snapshot.url,
                         "sourceUrl": referenceUrl,
                         "caption": ""
                     }
                 }
             });
+            console.info(result);
         } else {
 
         }

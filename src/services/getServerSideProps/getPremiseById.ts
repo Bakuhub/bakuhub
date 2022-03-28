@@ -23,7 +23,7 @@ export const getPremiseById = async (premiseId: string) => {
                                 },
                                 "AND": [
                                     {
-                                        "nextVision": {
+                                        "nextVisions": {
                                             "every": {
                                                 "draftMode": {
                                                     "equals": true
