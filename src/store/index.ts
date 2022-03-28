@@ -2,7 +2,6 @@ import {configureStore} from "@reduxjs/toolkit";
 import {counterReducer} from "./slices/couterSlice";
 import {premiseReducer} from "./slices/premiseSlice";
 import {threadReducer} from "./slices/threadSlice";
-import {snackbarReducer} from "./slices/snackbarSlice";
 // ...
 
 export const store = configureStore({
@@ -10,7 +9,6 @@ export const store = configureStore({
         counter: counterReducer,
         premise: premiseReducer,
         thread: threadReducer,
-        snackbar: snackbarReducer
     },
 });
 

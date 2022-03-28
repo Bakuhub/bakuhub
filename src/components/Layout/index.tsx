@@ -12,7 +12,6 @@ import {DrawerHeader} from "./Sections/Drawer/styled";
 import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
 import {Grid} from "@mui/material";
-import {LayoutSnackbar} from "./Sections/Snackbar";
 
 
 const Main = styled("main", {shouldForwardProp: (prop) => prop!=="open"})<{
@@ -100,7 +99,6 @@ export const Layout: React.FunctionComponent = ({children}) => {
                 <LayoutDrawer open={open} handleDrawerClose={handleDrawerClose}/>
                 <Main open={open}>
                     <DrawerHeader/>
-                    <LayoutSnackbar/>
                     {children}
                 </Main>
             </Box>
