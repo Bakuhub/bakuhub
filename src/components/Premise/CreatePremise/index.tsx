@@ -12,6 +12,7 @@ import {getInitialProps} from "./utils/getInitialProps";
 import {createVisionMutation} from "../../../gql/mutation/createVisionMutation";
 import {MergeRequest} from "../../MergeRequest";
 import {SnapshotCreator} from "../../Snapshot";
+import {LoadingButton} from "@mui/lab";
 
 
 export interface CreatePremiseProps {
@@ -26,9 +27,9 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
     const [description, setDescription] = useState(() => getInitialProps(premise, "description"));
     const [activityDate, setActivityDate] = useState(() => {
         const date = getInitialProps(premise, "activityDate");
-        return date ? new Date(date):null;
+        return date ? date:null;
     });
-    const [referenceUrl, setReferenceUrl] = useState(() => getInitialProps(premise, "reference"));
+    const [loading, setLoading] = useState(false);
     const [title, setTitle] = useState(() => getInitialProps(premise, "title"));
     const [attachment, setAttachment] = useState(() => getInitialProps(premise, "thumbnail"));
     const [createNewPremise, {data}] = useMutation(createPremiseMutation);
@@ -36,14 +37,19 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
     const [mergeRequestTitle, setMergeRequestTitle] = useState("");
     const [mergeRequestDescription, setMergeRequestDescription] = useState("");
     const [snapshots, setSnapshots] = useState<Snapshot[]>(() => {
-
-        const snapshots = getInitialProps(premise, "reference.snapshot");
-        if (snapshots)
-            return [];
+        const snapshots = getInitialProps(premise, "reference.snapshots");
+        console.info("snapshots");
+        console.info(premise);
+        console.info("snapshots");
+        console.info(snapshots);
+        if (snapshots) {
+            return snapshots;
+        }
+        return [];
     });
     const submit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+        setLoading(true);
         if (!premise) {
             const variable = {
                 variables: {
@@ -95,6 +101,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 }
             };
             const result = await createNewPremise(variable);
+            setLoading(false);
         } else {
             const variables = {
                 variables: {
@@ -149,6 +156,8 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 }
             };
             const result = await createNewVision(variables);
+            setLoading(false);
+
         }
     };
     return <Grid container spacing={1}>
@@ -191,15 +200,15 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 />
             </Grid>
             <Grid item xs={12}>
-                <SnapshotCreator updateSnapshotsCallback={setSnapshots}/>
+                <SnapshotCreator initialSnapshots={snapshots} updateSnapshotsCallback={setSnapshots}/>
             </Grid>
             <Grid item xs={12}>
                 <FileInput attachment={attachment} setAttachment={setAttachment}/>
             </Grid>
             <Grid item container xs={6}>
-                <Button fullWidth type={"submit"} variant={"contained"}>
+                <LoadingButton loading={loading} fullWidth type={"submit"} variant={"contained"}>
                     Create
-                </Button>
+                </LoadingButton>
             </Grid>
             <Grid item container xs={6}>
                 <Button fullWidth variant={"outlined"} onClick={() => {
@@ -220,7 +229,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                     "id": "",
                     "createdAt": new Date(),
                     updatedAt: new Date(),
-                    "status": referenceUrl ? "REFERENCE_PROVIDED":"RUMOUR",
+                    "status": snapshots.length ? "REFERENCE_PROVIDED":"RUMOUR",
                     "author": user,
                     "vision": [
                         {
@@ -229,7 +238,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                             title,
                             draftMode: false,
                             "createdAt": new Date(),
-                            reference: referenceUrl,
+                            reference: {id: "", snapshots},
                             "authorId": userId,
                             "nextVisions": [],
                             "author": user,

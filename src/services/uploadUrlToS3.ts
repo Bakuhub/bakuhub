@@ -14,9 +14,14 @@ export const uploadUrlToS3 = async (url: string): Promise<UploadUrlToS3Response>
         secretAccessKey: process.env.AWS_S3_BUCKET_SECRET_ACCESS_KEY,
     });
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch(
+    );
     const page = await browser.newPage();
     await page.goto(url);
+    const [button] = await page.$x("//button[contains(., 'cookies')]");
+    if (button) {
+        await button.click();
+    }
     const screenshot = await page.screenshot({fullPage: true});
     const fileName = `snapshot/${getUUID()}.png`;
     const result = await s3.putObject({

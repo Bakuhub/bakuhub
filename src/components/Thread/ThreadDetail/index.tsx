@@ -6,6 +6,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import {Thread} from "../../../../prisma/generated/type-graphql";
 import {useSession} from "next-auth/react";
 import {get} from "lodash";
+import {fromNow} from "../../../utils/fromNow";
 
 interface ThreadDetailProps {
     thread: Thread;
@@ -37,16 +38,16 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({thread, isCh
         }
     }>
         <Grid item container>
-            <Grid>
+            <Grid item>
                 <Avatar src={author.image}/>
             </Grid>
-            <Grid>
-                <Grid item container>
+            <Grid item>
+                <Grid item alignItems={"center"} container>
                     <Typography>
                         {author.name}
                     </Typography>
-                    <Typography>
-                        {thread.createdAt}
+                    <Typography variant={"body2"}>
+                        {fromNow(thread.activityDate)}
                     </Typography>
                 </Grid>
                 <Typography>

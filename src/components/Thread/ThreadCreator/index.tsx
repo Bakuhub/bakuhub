@@ -43,7 +43,6 @@ export const ThreadCreator = () => {
     };
     const handleSubmit = async () => {
         const result = await createThread({variables: getVariables()});
-        console.info(result);
     };
     const handleCancel = () => {
         console.info("------------ggg-----------");

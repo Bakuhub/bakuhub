@@ -21,11 +21,13 @@ export const MergeRequest: FunctionComponent<MergeRequestProps> = ({
                     fullWidth
                     onChange={({target: {value}}) => setMergeRequestTitle(value)}
                     value={mergeRequestTitle}
-                    label="MergeRequest"
+                    label="MergeRequest Title"
                     variant="outlined"
+                    helperText={"title will represent the merge request"}
             /></Grid>
         <Grid item xs={12}>
             <TextField
+                    helperText={"describe what this change is about"}
                     multiline
                     fullWidth
                     onChange={({target: {value}}) => setMergeRequestDescription(value)}

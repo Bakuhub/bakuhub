@@ -14,6 +14,8 @@ import {useRouter} from "next/router";
 import {Vision} from "../../../../prisma/generated/type-graphql";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import {UserAvatar} from "../../User/Avatar";
+import {Tooltip} from "@mui/material";
+import {fromNow} from "../../../utils/fromNow";
 import moment from "moment";
 
 export interface VisionDetailProps {
@@ -41,7 +43,10 @@ export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision
                     </IconButton>
                 }
                 title={vision.title}
-                subheader={moment(get(vision, "activityDate", "")).fromNow()}
+                subheader={<Tooltip
+                        title={vision.activityDate ? moment(vision.activityDate).format("yyyy-MMM-DD HH:mm"):""}>
+                    <Typography>{fromNow(vision.activityDate)}</Typography>
+                </Tooltip>}
         />
         <CardMedia
                 component="img"

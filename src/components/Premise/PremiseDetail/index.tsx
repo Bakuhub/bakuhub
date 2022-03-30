@@ -33,6 +33,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
             && get(vision, "mergeRequest.status")==="OPEN");
     const thumbnail = getThumbnail(activeVision);
+
     return (
             <>
                 <Grid>

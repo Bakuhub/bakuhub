@@ -7,19 +7,24 @@ import {get} from "lodash";
 import {useSnackbar} from "notistack";
 import {Snapshot} from "../../../prisma/generated/type-graphql";
 import DeleteIcon from "@mui/icons-material/Delete";
-import moment from "moment";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import {LoadingButton} from "@mui/lab";
+import moment from "moment";
 
 export interface SnapshotCreatorProps {
     caption?: string;
+    initialSnapshots?: Snapshot[];
     updateSnapshotsCallback: (snapshots: Snapshot[]) => void;
 }
 
-export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({caption, updateSnapshotsCallback}) => {
+export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
+                                                                                   caption,
+                                                                                   initialSnapshots,
+                                                                                   updateSnapshotsCallback
+                                                                               }) => {
     const {enqueueSnackbar} = useSnackbar();
-    const [snapshots, setSnapshots] = useState<Snapshot[]>([]);
+    const [snapshots, setSnapshots] = useState<Snapshot[]>(initialSnapshots || []);
     const [referenceUrl, setReferenceUrl] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [createSnapshot] = useMutation(createSnapshotMutation);
@@ -29,6 +34,7 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
             enqueueSnackbar("max references are 3, please remove one before add", {
                 variant: "error",
             });
+            setIsLoading(false);
             return;
         }
         enqueueSnackbar("getting snapshot", {
@@ -70,6 +76,7 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
                 variant: "error",
             });
         }
+        setReferenceUrl("");
         setIsLoading(false);
     };
     useEffect(() => {

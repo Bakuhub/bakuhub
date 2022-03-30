@@ -3,8 +3,6 @@ import {Button} from "@mui/material";
 
 export const UserStatus = () => {
     const {data: session} = useSession();
-    console.info(session);
-    console.info("this is sesssion");
     if (session) {
 
         return <Button onClick={() => signOut()}>
