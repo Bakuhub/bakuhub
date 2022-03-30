@@ -19,6 +19,14 @@ export const premiseQuery = gql`
                 activityDate
                 description
                 createdAt
+                reference {
+                    snapshots{
+                        sourceUrl
+                        s3Url
+                        versionId
+                        id
+                    }
+                }
                 authorId
                 prevVisionId
                 draftMode

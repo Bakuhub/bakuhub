@@ -15,6 +15,7 @@ import Image from "next/image";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import {get} from "lodash";
+import {ReferenceOverview} from "../../Reference/ReferenceOverview";
 
 interface PremiseDetailProps {
     premise: Premise;
@@ -22,8 +23,6 @@ interface PremiseDetailProps {
 
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const router = useRouter();
-    console.info("-----this is premise================");
-    console.info(premise);
     const dispatch = useDispatch();
     const {
         data
@@ -49,6 +48,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     <Typography variant="body2" color="text.secondary">
                         {activeVision?.description}
                     </Typography>
+                    <ReferenceOverview snapshots={
+                        get(activeVision, "reference.snapshots", [])}/>
                     <IconButton aria-label="add to favorites" onClick={() => dispatch(setActivePremiseId(premise.id))}>
                         <ReplyIcon/>
                     </IconButton>
@@ -62,7 +63,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                         allOtherVisions?.map(vision =>
                                 <Typography key={vision.id}
                                             onClick={() => router.push(`/review/mergeRequest/${get(vision, "mergeRequest.id", false)}`)}
-                                >{vision.id}
+                                >
+                                    {vision.id}
                                 </Typography>)
                     }
                 </Grid>

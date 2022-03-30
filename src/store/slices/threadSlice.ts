@@ -1,23 +1,27 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {ThreadConnectType} from "../../types";
 
 export const threadSlice = createSlice({
     name: "thread",
     initialState: {
-        threads: [],
-        activeThreadId: null,
+        connector: {
+            type: ThreadConnectType.VISION,
+            id: null
+        },
+        parentThreadId: null
     },
     reducers: {
-        setActiveThreads: (state, action) => {
-            state.threads = action.payload;
+        setConnector: (state, action) => {
+            state.connector = action.payload;
         },
-        setActiveThreadId: (state, action) => {
-            console.info(state, action);
-            state.activeThreadId = action.payload;
+        setParentThreadId: (state, action) => {
+            state.parentThreadId = action.payload;
         }
-    },
+    }
 });
 
+
 // Action creators are generated for each case reducer function
-export const {setActiveThreadId, setActiveThreads} = threadSlice.actions;
+export const {setConnector, setParentThreadId} = threadSlice.actions;
 
 export const threadReducer = threadSlice.reducer;

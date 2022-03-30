@@ -35,7 +35,12 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
     const [createNewVision,] = useMutation(createVisionMutation);
     const [mergeRequestTitle, setMergeRequestTitle] = useState("");
     const [mergeRequestDescription, setMergeRequestDescription] = useState("");
-    const [snapshots, setSnapshots] = useState<Snapshot[]>([]);
+    const [snapshots, setSnapshots] = useState<Snapshot[]>(() => {
+
+        const snapshots = getInitialProps(premise, "reference.snapshot");
+        if (snapshots)
+            return [];
+    });
     const submit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -97,8 +102,15 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                         title,
                         activityDate,
                         description,
-                        "reference": referenceUrl,
-                        "thumbnail": attachment,
+                        "reference": {
+                            "create": {
+                                "snapshots": {
+                                    connect: snapshots.map(({id}) => ({
+                                        id
+                                    }))
+                                }
+                            }
+                        }, "thumbnail": attachment,
                         "draftMode": true,
                         "mergeRequest": {
                             "create": {
@@ -197,7 +209,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 </Button>
             </Grid>
         </Grid>
-        <Grid xs={12} md={6} item>
+        <Grid xs={12} md={6} container justifyContent={"center"} item>
             <Typography variant={"h5"}>
                 Preview:
             </Typography>

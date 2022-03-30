@@ -4,10 +4,14 @@ import {useMutation} from "@apollo/client";
 import {createThreadMutation} from "../../../gql/mutation/createThreadMutation";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store";
+import {getThreadsOnConnectorVariables} from "../../../utils/getThreadsOnConnectorVariables";
 
 export const ThreadCreator = () => {
     const activePremiseId = useSelector((state: RootState) => state.premise.activePremiseId);
-    const activeThreadId = useSelector((state: RootState) => state.thread.activeThreadId);
+    const connectorId = useSelector((state: RootState) => state.thread.connector.id);
+    const connectorType = useSelector((state: RootState) => state.thread.connector.type);
+    const parentThreadId = useSelector((state: RootState) => state.thread.parentThreadId);
+
     const [comment, setComment] = useState("");
     const [createThread, {data}] = useMutation(createThreadMutation);
     const getVariables = () => {
@@ -26,10 +30,11 @@ export const ThreadCreator = () => {
                         }
                     }
                 }:{},
-                ...activeThreadId ? {
+                ...getThreadsOnConnectorVariables({id: connectorId, type: connectorType}),
+                ...parentThreadId ? {
                     "parentThread": {
                         "connect": {
-                            "id": activeThreadId
+                            "id": parentThreadId
                         }
                     }
                 }:{}

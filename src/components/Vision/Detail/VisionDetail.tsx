@@ -14,6 +14,7 @@ import {useRouter} from "next/router";
 import {Vision} from "../../../../prisma/generated/type-graphql";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import {UserAvatar} from "../../User/Avatar";
+import moment from "moment";
 
 export interface VisionDetailProps {
     vision: Vision;
@@ -28,7 +29,8 @@ export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision
     return <Card sx={{maxWidth: 345}}>
         <CardHeader
                 onClick={() => {
-                    router.push(redirectedUrl);
+                    if (premiseId || vision.id)
+                        router.push(redirectedUrl);
                 }}
                 avatar={
                     <UserAvatar {...vision.author}/>
@@ -39,7 +41,7 @@ export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision
                     </IconButton>
                 }
                 title={vision.title}
-                subheader={get(vision, "activityDate", "")?.toString()}
+                subheader={moment(get(vision, "activityDate", "")).fromNow()}
         />
         <CardMedia
                 component="img"
