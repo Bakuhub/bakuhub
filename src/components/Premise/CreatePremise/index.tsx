@@ -1,17 +1,17 @@
 import {Button, Grid, TextField, Typography} from "@mui/material";
 import {FormEvent, FunctionComponent, useState} from "react";
 import {useRouter} from "next/router";
-import {fetchApi} from "../../../services/fetchApi";
 import {useMutation} from "@apollo/client";
 import {createPremiseMutation} from "../../../gql/mutation/createPremiseMutation";
 import {get} from "lodash";
 import {useSession} from "next-auth/react";
 import {FileInput} from "../../FileInput";
 import PremiseOverview from "../PremiseOverview";
-import {Premise} from "../../../../prisma/generated/type-graphql";
+import {Premise, Snapshot} from "../../../../prisma/generated/type-graphql";
 import {getInitialProps} from "./utils/getInitialProps";
 import {createVisionMutation} from "../../../gql/mutation/createVisionMutation";
 import {MergeRequest} from "../../MergeRequest";
+import {SnapshotCreator} from "../../Snapshot";
 
 
 export interface CreatePremiseProps {
@@ -30,26 +30,16 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
     });
     const [referenceUrl, setReferenceUrl] = useState(() => getInitialProps(premise, "reference"));
     const [title, setTitle] = useState(() => getInitialProps(premise, "title"));
-    const [referenceType, setReferenceType] = useState("");
     const [attachment, setAttachment] = useState(() => getInitialProps(premise, "thumbnail"));
     const [createNewPremise, {data}] = useMutation(createPremiseMutation);
     const [createNewVision,] = useMutation(createVisionMutation);
     const [mergeRequestTitle, setMergeRequestTitle] = useState("");
     const [mergeRequestDescription, setMergeRequestDescription] = useState("");
+    const [snapshots, setSnapshots] = useState<Snapshot[]>([]);
     const submit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!premise) {
-            const {snapshot} = await fetchApi("/api/create/premise", {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    referenceUrl, referenceType, title,
-                })
-            });
             const variable = {
                 variables: {
                     data: {
@@ -80,8 +70,15 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                                 title,
                                 description,
                                 activityDate,
-                                reference: snapshot.url || "",
-                                "author": {
+                                "reference": {
+                                    "create": {
+                                        "snapshots": {
+                                            connect: snapshots.map(({id}) => ({
+                                                id
+                                            }))
+                                        }
+                                    }
+                                }, "author": {
                                     "connect": {
                                         "id": get(session, "data.userId", "")
                                     }
@@ -182,11 +179,8 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 />
             </Grid>
             <Grid item xs={12}>
-                <TextField
-                        value={referenceUrl || ""}
-                        onChange={(e) => setReferenceUrl(e.target.value)}
-                        fullWidth label={"reference url"}
-                /> </Grid>
+                <SnapshotCreator updateSnapshotsCallback={setSnapshots}/>
+            </Grid>
             <Grid item xs={12}>
                 <FileInput attachment={attachment} setAttachment={setAttachment}/>
             </Grid>

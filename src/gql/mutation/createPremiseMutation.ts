@@ -18,7 +18,13 @@ export const createPremiseMutation = gql`
                 activityDate
                 description
                 createdAt
-                reference
+                reference {
+                    snapshots{
+                        id
+                        s3Url
+                        sourceUrl
+                    }
+                }
                 authorId
                 premiseId
                 title

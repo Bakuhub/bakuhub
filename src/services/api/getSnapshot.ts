@@ -12,7 +12,7 @@ export const getSnapshot = async ({
         });
         if (result.status===200) {
             if (result.data)
-                return result.data;
+                return result.data.snapshot;
         }
     } catch (e) {
         console.error(e);

@@ -1,3 +1,3 @@
-import {Snapshot} from "../../src/components/Snapshot";
+import {SnapshotCreator} from "../../src/components/Snapshot";
 
-export default Snapshot;
+export default SnapshotCreator;

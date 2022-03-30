@@ -14,6 +14,9 @@ export const themeOptions: ThemeOptions = {
     typography: {
         body1: {
             whiteSpace: "pre-wrap"
+        },
+        h6: {
+            cursor: "pointer"
         }
     }
 };
