@@ -12,11 +12,23 @@ export const themeOptions: ThemeOptions = {
         },
     },
     typography: {
+        // used in description and body for premise
         body1: {
             whiteSpace: "pre-wrap"
         },
+        // for link
         h6: {
             cursor: "pointer"
+        },
+        // user name
+        h4: {
+            fontWeight: 700,
+            fontSize: "1.125rem",
+        },
+        // grey
+        subtitle2: {
+            color: "grey",
+            paddingLeft: "20px"
         }
     }
 };

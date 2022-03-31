@@ -11,15 +11,11 @@ export const premisesQuery = gql`
                 id
                 reference {
                     snapshots{
-                        id
-                        versionId
                         sourceUrl
-                        s3Url
                     }
                 }
                 createdAt
                 thumbnail
-                draftMode
                 author {
                     id
                     image

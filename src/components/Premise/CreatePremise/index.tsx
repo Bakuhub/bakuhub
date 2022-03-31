@@ -38,10 +38,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
     const [mergeRequestDescription, setMergeRequestDescription] = useState("");
     const [snapshots, setSnapshots] = useState<Snapshot[]>(() => {
         const snapshots = getInitialProps(premise, "reference.snapshots");
-        console.info("snapshots");
         console.info(premise);
-        console.info("snapshots");
-        console.info(snapshots);
         if (snapshots) {
             return snapshots;
         }

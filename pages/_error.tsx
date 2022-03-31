@@ -1,6 +1,6 @@
-function MyApp(props: any) {
-    console.info(props);
-    return <div>fff</div>;
+function MyApp() {
+
+    return <div>error cant find page</div>;
 
 }
 

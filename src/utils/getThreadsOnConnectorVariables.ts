@@ -1,5 +1,6 @@
 import {ThreadConnectType} from "../types";
 import {capitalize} from "@mui/material";
+import {getTableNameByThreadConnectType} from "./getTableNameByThreadConnectType";
 
 interface GetThreadsOnConnectorVariablesProps {
     id: string | null;
@@ -9,19 +10,8 @@ interface GetThreadsOnConnectorVariablesProps {
 export const getThreadsOnConnectorVariables = ({
                                                    id, type
                                                }: GetThreadsOnConnectorVariablesProps) => {
-    const getTableName = () => {
-        switch (type) {
-            case ThreadConnectType.VISION:
-                return "vision";
-            case ThreadConnectType.MERGE_REQUEST:
-                return "mergeRequest";
-            case ThreadConnectType.PREMISE:
-                return "premise";
-            case ThreadConnectType.TIMELINE:
-                return "timeline";
-        }
-    };
-    const tableName = getTableName();
+
+    const tableName = getTableNameByThreadConnectType(type);
     const res = {
         [`threadsOn${capitalize(tableName)}`]: {
             "create": {

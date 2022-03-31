@@ -3,10 +3,7 @@ import {gql} from "@apollo/client";
 export const premiseQuery = gql`
     query Query($where: PremiseWhereUniqueInput!, $visionWhere2: VisionWhereInput) {
         premise(where: $where) {
-            title
             id
-            createdAt
-            updatedAt
             status
             author {
                 name
@@ -22,6 +19,7 @@ export const premiseQuery = gql`
                 reference {
                     snapshots{
                         sourceUrl
+                        createdAt
                         s3Url
                         versionId
                         id
@@ -33,6 +31,8 @@ export const premiseQuery = gql`
                 mergeRequest {
                     id
                     status
+                    title
+                    description
                 }
                 nextVisions {
                     id

@@ -1,8 +1,8 @@
 import {gql} from "@apollo/client";
 
 export const threadsQuery = gql`
-    query Query {
-        threads {
+    query Threads($where: ThreadWhereInput) {
+        threads  (where: $where){
             title
             activityDate
             description
