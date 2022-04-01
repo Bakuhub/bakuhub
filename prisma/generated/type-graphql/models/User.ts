@@ -4,6 +4,9 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { Account } from "../models/Account";
 import { Premise } from "../models/Premise";
+import { ReactionOnThread } from "../models/ReactionOnThread";
+import { ReactionOnTimeline } from "../models/ReactionOnTimeline";
+import { ReactionOnVision } from "../models/ReactionOnVision";
 import { Session } from "../models/Session";
 import { Thread } from "../models/Thread";
 import { Timeline } from "../models/Timeline";
@@ -55,6 +58,12 @@ export class User {
   visions?: Vision[];
 
   timelines?: Timeline[];
+
+  ReactionOnThread?: ReactionOnThread[];
+
+  ReactionOnTimeline?: ReactionOnTimeline[];
+
+  ReactionOnVision?: ReactionOnVision[];
 
   @TypeGraphQL.Field(_type => UserCount, {
     nullable: true

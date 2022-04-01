@@ -5,6 +5,9 @@ import { DecimalJSScalar } from "../../scalars";
 import { AccountListRelationFilter } from "../inputs/AccountListRelationFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { PremiseListRelationFilter } from "../inputs/PremiseListRelationFilter";
+import { ReactionOnThreadListRelationFilter } from "../inputs/ReactionOnThreadListRelationFilter";
+import { ReactionOnTimelineListRelationFilter } from "../inputs/ReactionOnTimelineListRelationFilter";
+import { ReactionOnVisionListRelationFilter } from "../inputs/ReactionOnVisionListRelationFilter";
 import { SessionListRelationFilter } from "../inputs/SessionListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -90,4 +93,19 @@ export class UserWhereInput {
     nullable: true
   })
   timelines?: TimelineListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnThreadListRelationFilter, {
+    nullable: true
+  })
+  ReactionOnThread?: ReactionOnThreadListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnTimelineListRelationFilter, {
+    nullable: true
+  })
+  ReactionOnTimeline?: ReactionOnTimelineListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnVisionListRelationFilter, {
+    nullable: true
+  })
+  ReactionOnVision?: ReactionOnVisionListRelationFilter | undefined;
 }

@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { PremisesOnTimelinesOrderByRelationAggregateInput } from "../inputs/PremisesOnTimelinesOrderByRelationAggregateInput";
+import { ReactionOnTimelineOrderByRelationAggregateInput } from "../inputs/ReactionOnTimelineOrderByRelationAggregateInput";
 import { TagsOnTimelinesOrderByRelationAggregateInput } from "../inputs/TagsOnTimelinesOrderByRelationAggregateInput";
 import { ThreadsOnTimelineOrderByRelationAggregateInput } from "../inputs/ThreadsOnTimelineOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
@@ -56,4 +57,9 @@ export class TimelineOrderByWithRelationInput {
     nullable: true
   })
   threadsOnTimeline?: ThreadsOnTimelineOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnTimelineOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  ReactionOnTimeline?: ReactionOnTimelineOrderByRelationAggregateInput | undefined;
 }

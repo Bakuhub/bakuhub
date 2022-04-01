@@ -4,6 +4,9 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { AccountOrderByRelationAggregateInput } from "../inputs/AccountOrderByRelationAggregateInput";
 import { PremiseOrderByRelationAggregateInput } from "../inputs/PremiseOrderByRelationAggregateInput";
+import { ReactionOnThreadOrderByRelationAggregateInput } from "../inputs/ReactionOnThreadOrderByRelationAggregateInput";
+import { ReactionOnTimelineOrderByRelationAggregateInput } from "../inputs/ReactionOnTimelineOrderByRelationAggregateInput";
+import { ReactionOnVisionOrderByRelationAggregateInput } from "../inputs/ReactionOnVisionOrderByRelationAggregateInput";
 import { SessionOrderByRelationAggregateInput } from "../inputs/SessionOrderByRelationAggregateInput";
 import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
 import { TimelineOrderByRelationAggregateInput } from "../inputs/TimelineOrderByRelationAggregateInput";
@@ -73,4 +76,19 @@ export class UserOrderByWithRelationInput {
     nullable: true
   })
   timelines?: TimelineOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnThreadOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  ReactionOnThread?: ReactionOnThreadOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnTimelineOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  ReactionOnTimeline?: ReactionOnTimelineOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnVisionOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  ReactionOnVision?: ReactionOnVisionOrderByRelationAggregateInput | undefined;
 }

@@ -6,6 +6,9 @@ import { AccountUpdateManyWithoutUserInput } from "../inputs/AccountUpdateManyWi
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { PremiseUpdateManyWithoutAuthorInput } from "../inputs/PremiseUpdateManyWithoutAuthorInput";
+import { ReactionOnThreadUpdateManyWithoutUserInput } from "../inputs/ReactionOnThreadUpdateManyWithoutUserInput";
+import { ReactionOnTimelineUpdateManyWithoutUserInput } from "../inputs/ReactionOnTimelineUpdateManyWithoutUserInput";
+import { ReactionOnVisionUpdateManyWithoutUserInput } from "../inputs/ReactionOnVisionUpdateManyWithoutUserInput";
 import { SessionUpdateManyWithoutUserInput } from "../inputs/SessionUpdateManyWithoutUserInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { ThreadUpdateManyWithoutAuthorInput } from "../inputs/ThreadUpdateManyWithoutAuthorInput";
@@ -75,4 +78,19 @@ export class UserUpdateInput {
     nullable: true
   })
   timelines?: TimelineUpdateManyWithoutAuthorInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnThreadUpdateManyWithoutUserInput, {
+    nullable: true
+  })
+  ReactionOnThread?: ReactionOnThreadUpdateManyWithoutUserInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnTimelineUpdateManyWithoutUserInput, {
+    nullable: true
+  })
+  ReactionOnTimeline?: ReactionOnTimelineUpdateManyWithoutUserInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnVisionUpdateManyWithoutUserInput, {
+    nullable: true
+  })
+  ReactionOnVision?: ReactionOnVisionUpdateManyWithoutUserInput | undefined;
 }

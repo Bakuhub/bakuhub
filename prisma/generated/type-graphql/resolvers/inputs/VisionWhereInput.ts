@@ -7,6 +7,7 @@ import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { MergeRequestRelationFilter } from "../inputs/MergeRequestRelationFilter";
 import { PremiseRelationFilter } from "../inputs/PremiseRelationFilter";
+import { ReactionOnVisionListRelationFilter } from "../inputs/ReactionOnVisionListRelationFilter";
 import { ReferenceRelationFilter } from "../inputs/ReferenceRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -128,4 +129,9 @@ export class VisionWhereInput {
     nullable: true
   })
   mergeRequest?: MergeRequestRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnVisionListRelationFilter, {
+    nullable: true
+  })
+  ReactionOnVision?: ReactionOnVisionListRelationFilter | undefined;
 }

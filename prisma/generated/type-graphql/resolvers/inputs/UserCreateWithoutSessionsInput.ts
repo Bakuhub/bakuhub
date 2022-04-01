@@ -4,6 +4,9 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { AccountCreateNestedManyWithoutUserInput } from "../inputs/AccountCreateNestedManyWithoutUserInput";
 import { PremiseCreateNestedManyWithoutAuthorInput } from "../inputs/PremiseCreateNestedManyWithoutAuthorInput";
+import { ReactionOnThreadCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnThreadCreateNestedManyWithoutUserInput";
+import { ReactionOnTimelineCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnTimelineCreateNestedManyWithoutUserInput";
+import { ReactionOnVisionCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnVisionCreateNestedManyWithoutUserInput";
 import { ThreadCreateNestedManyWithoutAuthorInput } from "../inputs/ThreadCreateNestedManyWithoutAuthorInput";
 import { TimelineCreateNestedManyWithoutAuthorInput } from "../inputs/TimelineCreateNestedManyWithoutAuthorInput";
 import { VisionCreateNestedManyWithoutAuthorInput } from "../inputs/VisionCreateNestedManyWithoutAuthorInput";
@@ -66,4 +69,19 @@ export class UserCreateWithoutSessionsInput {
     nullable: true
   })
   timelines?: TimelineCreateNestedManyWithoutAuthorInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnThreadCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  ReactionOnThread?: ReactionOnThreadCreateNestedManyWithoutUserInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnTimelineCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  ReactionOnTimeline?: ReactionOnTimelineCreateNestedManyWithoutUserInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnVisionCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  ReactionOnVision?: ReactionOnVisionCreateNestedManyWithoutUserInput | undefined;
 }

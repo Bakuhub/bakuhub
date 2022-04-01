@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ReactionOnThreadOrderByRelationAggregateInput } from "../inputs/ReactionOnThreadOrderByRelationAggregateInput";
 import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
 import { ThreadsOnPremiseOrderByWithRelationInput } from "../inputs/ThreadsOnPremiseOrderByWithRelationInput";
 import { ThreadsOnTimelineOrderByWithRelationInput } from "../inputs/ThreadsOnTimelineOrderByWithRelationInput";
@@ -82,4 +83,9 @@ export class ThreadOrderByWithRelationInput {
     nullable: true
   })
   threadsOnVision?: ThreadsOnVisionOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnThreadOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  ReactionOnThread?: ReactionOnThreadOrderByRelationAggregateInput | undefined;
 }

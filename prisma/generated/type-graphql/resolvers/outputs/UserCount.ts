@@ -36,4 +36,19 @@ export class UserCount {
     nullable: false
   })
   timelines!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  ReactionOnThread!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  ReactionOnTimeline!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  ReactionOnVision!: number;
 }

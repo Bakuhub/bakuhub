@@ -12,10 +12,6 @@ export const DrawerList = () => {
         text: "create new premise",
         url: "/create/premise",
         icon: AddTaskIcon
-    }, {
-        text: "create new comment",
-        url: "/create/comment",
-        icon: AddTaskIcon
     },
         {
             text: "create new snapshot",

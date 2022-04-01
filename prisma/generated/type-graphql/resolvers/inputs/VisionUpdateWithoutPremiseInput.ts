@@ -7,6 +7,7 @@ import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdat
 import { MergeRequestUpdateOneWithoutVisionInput } from "../inputs/MergeRequestUpdateOneWithoutVisionInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
+import { ReactionOnVisionUpdateManyWithoutVisionInput } from "../inputs/ReactionOnVisionUpdateManyWithoutVisionInput";
 import { ReferenceUpdateOneWithoutVisionInput } from "../inputs/ReferenceUpdateOneWithoutVisionInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { ThreadsOnVisionUpdateManyWithoutVisionInput } from "../inputs/ThreadsOnVisionUpdateManyWithoutVisionInput";
@@ -87,4 +88,9 @@ export class VisionUpdateWithoutPremiseInput {
     nullable: true
   })
   mergeRequest?: MergeRequestUpdateOneWithoutVisionInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReactionOnVisionUpdateManyWithoutVisionInput, {
+    nullable: true
+  })
+  ReactionOnVision?: ReactionOnVisionUpdateManyWithoutVisionInput | undefined;
 }

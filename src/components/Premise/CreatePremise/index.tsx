@@ -12,8 +12,13 @@ import {getInitialProps} from "./utils/getInitialProps";
 import {createVisionMutation} from "../../../gql/mutation/createVisionMutation";
 import {MergeRequest} from "../../MergeRequest";
 import {SnapshotCreator} from "../../Snapshot";
-import {LoadingButton} from "@mui/lab";
+import {DateTimePicker, LoadingButton} from "@mui/lab";
+import {useSnackbar} from "notistack";
+import {getAuthorVariableByUserId} from "../../../gql/utils/getAuthorVariableByUserId";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
+import DateAdapter from "@mui/lab/AdapterMoment";
+import moment from "moment";
 
 export interface CreatePremiseProps {
     premise: Premise;
@@ -21,6 +26,7 @@ export interface CreatePremiseProps {
 
 export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) => {
     const session = useSession();
+    const {enqueueSnackbar} = useSnackbar();
     const user = get(session, "data.user");
     const userId = get(session, "data.userId");
     const router = useRouter();
@@ -51,11 +57,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             const variable = {
                 variables: {
                     data: {
-                        "author": {
-                            "connect": {
-                                "id": get(session, "data.userId", "")
-                            }
-                        },
+                        ...getAuthorVariableByUserId(session.data?.userId),
                         title,
                         status: "REFERENCE_PROVIDED",
                         tagsOnPremises: {
@@ -86,18 +88,28 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                                             }))
                                         }
                                     }
-                                }, "author": {
-                                    "connect": {
-                                        "id": get(session, "data.userId", "")
-                                    }
                                 },
+                                ...getAuthorVariableByUserId(session.data?.userId),
 
                             }]
                         }
                     }
                 }
             };
-            const result = await createNewPremise(variable);
+            try {
+
+                const result = await createNewPremise(variable);
+                if (result.errors?.length) {
+                    result.errors?.map(({message}) => enqueueSnackbar(message, {variant: "error"}));
+                }
+                if (result.data) {
+                    enqueueSnackbar("premise created", {variant: "success"});
+                    await router.push(`/premises/${result.data.createPremise.id}`);
+                }
+            } catch (e) {
+                enqueueSnackbar(get(e, "message", ""), {variant: "error"});
+                console.error(e);
+            }
             setLoading(false);
         } else {
             const variables = {
@@ -173,17 +185,23 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                                           label="Title" variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-                <TextField
-                        onChange={e => {
-                            setActivityDate(new Date(get(e, "target.value", "")));
-                        }}
-                        value={activityDate ? new Date(activityDate).toISOString().split(".")[0]:""}
-                        fullWidth
-                        type={"datetime-local"}
-                        variant={"outlined"}
-                        helperText={"please enter the datetime-local "}
-                        label={activityDate ? "activity date":""}
-                />
+                <LocalizationProvider dateAdapter={DateAdapter}>
+                    <DateTimePicker
+                            label="Date&Time picker"
+                            onChange={value => {
+
+                                setActivityDate(value);
+                            }}
+                            value={moment(activityDate ? activityDate:Date.now())}
+                            renderInput={(params) => <TextField fullWidth
+                                                                required
+                                                                {...params}
+
+                                                                helperText={"please enter the datetime-local "}
+
+                            />}
+                    />
+                </LocalizationProvider>
             </Grid>
             <Grid item xs={12}>
                 <TextField

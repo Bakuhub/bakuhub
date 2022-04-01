@@ -16,4 +16,9 @@ export class VisionCount {
     nullable: false
   })
   threadsOnVision!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  ReactionOnVision!: number;
 }

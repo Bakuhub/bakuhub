@@ -21,4 +21,9 @@ export class TimelineCount {
     nullable: false
   })
   threadsOnTimeline!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  ReactionOnTimeline!: number;
 }

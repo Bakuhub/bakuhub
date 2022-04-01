@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { MergeRequest } from "../models/MergeRequest";
 import { Premise } from "../models/Premise";
+import { ReactionOnVision } from "../models/ReactionOnVision";
 import { Reference } from "../models/Reference";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
 import { User } from "../models/User";
@@ -86,6 +87,8 @@ export class Vision {
   threadsOnVision?: ThreadsOnVision[];
 
   mergeRequest?: MergeRequest | null;
+
+  ReactionOnVision?: ReactionOnVision[];
 
   @TypeGraphQL.Field(_type => VisionCount, {
     nullable: true

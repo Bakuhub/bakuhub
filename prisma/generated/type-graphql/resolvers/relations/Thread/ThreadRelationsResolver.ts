@@ -1,10 +1,12 @@
 import * as TypeGraphQL from "type-graphql";
+import { ReactionOnThread } from "../../../models/ReactionOnThread";
 import { Thread } from "../../../models/Thread";
 import { ThreadsOnPremise } from "../../../models/ThreadsOnPremise";
 import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
 import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
 import { User } from "../../../models/User";
 import { ThreadChildThreadsArgs } from "./args/ThreadChildThreadsArgs";
+import { ThreadReactionOnThreadArgs } from "./args/ThreadReactionOnThreadArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => Thread)
@@ -73,5 +75,16 @@ export class ThreadRelationsResolver {
         id: thread.id,
       },
     }).threadsOnVision({});
+  }
+
+  @TypeGraphQL.FieldResolver(_type => [ReactionOnThread], {
+    nullable: false
+  })
+  async ReactionOnThread(@TypeGraphQL.Root() thread: Thread, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: ThreadReactionOnThreadArgs): Promise<ReactionOnThread[]> {
+    return getPrismaFromContext(ctx).thread.findUnique({
+      where: {
+        id: thread.id,
+      },
+    }).ReactionOnThread(args);
   }
 }

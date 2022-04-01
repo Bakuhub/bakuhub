@@ -1,4 +1,4 @@
-export const getAuthorVariableByUserId = (id?: string) => {
+export const getAuthorVariableByUserId = (id?: unknown) => {
     return id ?
             {
                 author: {

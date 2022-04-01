@@ -11,4 +11,9 @@ export class ThreadCount {
     nullable: false
   })
   childThreads!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  ReactionOnThread!: number;
 }

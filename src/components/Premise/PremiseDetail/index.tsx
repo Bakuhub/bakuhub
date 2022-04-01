@@ -31,6 +31,7 @@ export const PremiseDetailContainer = () => {
     const router = useRouter();
     const premiseId = router.query.id;
     const {data, loading} = useQuery(premiseQuery, getPremiseDetailQueryVariable(premiseId as string));
+    console.info(data);
     if (loading) {
         return <CircularProgress/>;
     } else {
@@ -49,6 +50,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
         id: activeVision?.id || ""
     }));
     const {data: visionHistoryData} = useQuery(visionHistoryQuery, getVisionHistoryQueryVariable(premise.id));
+    console.info(visionHistoryData);
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
             && get(vision, "mergeRequest.status")==="OPEN");
