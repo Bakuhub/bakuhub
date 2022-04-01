@@ -45,6 +45,11 @@ export class UserScalarWhereWithAggregatesInput {
   })
   emailVerified?: DateTimeNullableWithAggregatesFilter | undefined;
 
+  @TypeGraphQL.Field(_type => DateTimeNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  updatedAt?: DateTimeNullableWithAggregatesFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
     nullable: true
   })

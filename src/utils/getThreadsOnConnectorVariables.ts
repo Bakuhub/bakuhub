@@ -1,15 +1,10 @@
-import {ThreadConnectType} from "../types";
 import {capitalize} from "@mui/material";
 import {getTableNameByThreadConnectType} from "./getTableNameByThreadConnectType";
-
-interface GetThreadsOnConnectorVariablesProps {
-    id: string | null;
-    type: ThreadConnectType;
-}
+import {ThreadConnectConfig} from "../store/slices/threadSlice";
 
 export const getThreadsOnConnectorVariables = ({
                                                    id, type
-                                               }: GetThreadsOnConnectorVariablesProps) => {
+                                               }: ThreadConnectConfig) => {
 
     const tableName = getTableNameByThreadConnectType(type);
     const res = {

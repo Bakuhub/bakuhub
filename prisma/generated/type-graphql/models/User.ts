@@ -34,6 +34,11 @@ export class User {
   })
   emailVerified?: Date | null;
 
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: true
+  })
+  updatedAt?: Date | null;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })

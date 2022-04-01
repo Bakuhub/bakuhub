@@ -27,6 +27,11 @@ export class UserCreateManyInput {
   })
   emailVerified?: Date | undefined;
 
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: true
+  })
+  updatedAt?: Date | undefined;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })

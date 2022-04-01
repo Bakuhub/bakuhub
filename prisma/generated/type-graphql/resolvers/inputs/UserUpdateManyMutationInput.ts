@@ -30,6 +30,11 @@ export class UserUpdateManyMutationInput {
   })
   emailVerified?: NullableDateTimeFieldUpdateOperationsInput | undefined;
 
+  @TypeGraphQL.Field(_type => NullableDateTimeFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  updatedAt?: NullableDateTimeFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
   })

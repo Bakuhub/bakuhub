@@ -1,14 +1,17 @@
-import {PremiseDetail} from "../../src/components/Premise/PremiseDetail";
-import {getPremiseById} from "../../src/services/getServerSideProps/getPremiseById";
+import {PremiseDetailContainer} from "../../src/components/Premise/PremiseDetail";
 
 export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
-    const premise = await getPremiseById(context.query.id);
+    // var start = new Date().getTime();
+    // const premise = await getPremiseById(context.query.id);
+    // var end = new Date().getTime();
+    // var time = end - start;
+    // console.info("Execution time: " + time);
     return {
         props: {
-            premise
+            // premise
         }, // will be passed to the page component as props
     };
 }
 
 
-export default PremiseDetail;
+export default PremiseDetailContainer;

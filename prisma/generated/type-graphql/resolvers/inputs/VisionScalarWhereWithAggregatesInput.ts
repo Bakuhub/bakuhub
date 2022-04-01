@@ -47,6 +47,11 @@ export class VisionScalarWhereWithAggregatesInput {
   })
   description?: StringNullableWithAggregatesFilter | undefined;
 
+  @TypeGraphQL.Field(_type => DateTimeNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  updatedAt?: DateTimeNullableWithAggregatesFilter | undefined;
+
   @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
     nullable: true
   })

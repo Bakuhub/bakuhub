@@ -45,6 +45,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
+  updatedAt     DateTime? @default(now()) @updatedAt
   image         String?
   accounts      Account[]
   sessions      Session[]
@@ -67,7 +68,7 @@ model Premise {
   id                  String                @id @default(cuid())
   title               String                @db.VarChar(255)
   createdAt           DateTime              @default(now())
-  updatedAt           DateTime              @updatedAt
+  updatedAt           DateTime?             @default(now()) @updatedAt
   status              PremiseStatus
   author              User?                 @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId            String?
@@ -82,6 +83,7 @@ model Vision {
   title           String            @db.VarChar(255)
   activityDate    DateTime?
   description     String?
+  updatedAt       DateTime?         @default(now()) @updatedAt
   createdAt       DateTime          @default(now())
   reference       Reference?        @relation(fields: [referenceId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   referenceId     String?

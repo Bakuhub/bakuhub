@@ -27,9 +27,9 @@ export class PremiseGroupBy {
   createdAt!: Date;
 
   @TypeGraphQL.Field(_type => Date, {
-    nullable: false
+    nullable: true
   })
-  updatedAt!: Date;
+  updatedAt!: Date | null;
 
   @TypeGraphQL.Field(_type => PremiseStatus, {
     nullable: false

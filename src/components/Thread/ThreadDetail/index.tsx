@@ -1,24 +1,33 @@
 import {FunctionComponent, useState} from "react";
-import {Avatar, Button, Collapse, Grid, TextField, Typography} from "@mui/material";
+import {Avatar, Button, CircularProgress, Collapse, Grid, Typography} from "@mui/material";
 import ReplyIcon from "@mui/icons-material/Reply";
 import ReportIcon from "@mui/icons-material/Report";
 import ShareIcon from "@mui/icons-material/Share";
 import {Thread} from "../../../../prisma/generated/type-graphql";
-import {useSession} from "next-auth/react";
 import {get} from "lodash";
 import {fromNow} from "../../../utils/fromNow";
-import {useDispatch} from "react-redux";
-import {setConnector} from "../../../store/slices/threadSlice";
-import {ThreadConnectType} from "../../../types";
+import {ThreadConnectConfig} from "../../../store/slices/threadSlice";
+import {Comment} from "../../Comment";
+import {useQuery} from "@apollo/client";
+import {threadsQuery} from "../../../gql/query/threadsQuery";
+import {getChildThreadsQueryVariable} from "../../../gql/utils/getChildThreadsQueryVariable";
 
 interface ThreadDetailProps {
     thread: Thread;
     isChildThread?: boolean;
+    connectConfig: ThreadConnectConfig;
 }
 
-export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({thread, isChildThread}) => {
-    const session = useSession();
+export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
+                                                                       thread,
+                                                                       isChildThread,
+                                                                       connectConfig
+                                                                   }) => {
     const [expanded, setExpanded] = useState(false);
+    const {
+        data, loading, refetch
+    } = useQuery<{ threads: Thread[] }>(threadsQuery, getChildThreadsQueryVariable(thread.id));
+    const childThreads = get(data, "threads", []);
     const getAuthor = () => {
         if (thread.author) {
             return {
@@ -34,10 +43,8 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({thread, isCh
         };
 
     };
-    const dispatch = useDispatch();
     const author = getAuthor();
-    return <Grid item container spacing={2} xs={12}>
-
+    return <Grid flexWrap={"nowrap"} item container spacing={2} xs={12}>
         <Grid item>
             <Avatar src={author.image}/>
         </Grid>
@@ -47,7 +54,7 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({thread, isCh
                     {author.name}
                 </Typography>
                 <Typography variant={"subtitle2"}>
-                    posted {fromNow(thread.activityDate)}
+                    posted {fromNow(thread.createdAt)}
                 </Typography>
             </Grid>
             <Typography>
@@ -56,10 +63,6 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({thread, isCh
             <Grid item container>
                 <Button variant="outlined" startIcon={<ReplyIcon/>} onClick={() => {
                     setExpanded(!expanded);
-                    dispatch(setConnector({
-                        type: ThreadConnectType.VISION,
-                        id: null
-                    }));
                 }}>
                     Reply
                 </Button>
@@ -71,31 +74,22 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({thread, isCh
                 </Button>
             </Grid>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <Grid item container xs={12}>
-                    <Grid item>
-                        <Grid item container>
-                            <Avatar style={{
-                                marginRight: "10px"
-                            }
-                            } src={author.image} sx={{width: 24, height: 24}}
-                            />
-                            <TextField multiline variant={"standard"} autoFocus/>
-                        </Grid>
-                        <Grid item container justifyContent={"flex-end"}>
-                            <Button>
-                                Submit
-                            </Button>
-                            <Button onClick={() => setExpanded(false)}>
-                                Cancel
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Grid>
+                <Comment connectConfig={
+                    {
+                        ...connectConfig,
+                        parentThreadId: thread.id
+                    }
+                }
+                         handleSubmitCallback={refetch}
+                         handleCancel={() => setExpanded(false)}/>
             </Collapse>
             <Grid item container>
                 {
-                    (thread?.childThreads || []).map(
+                    loading ? <CircularProgress/>:(childThreads || []).map(
                             (childThread, index) => <ThreadDetail
+                                    connectConfig={
+                                        connectConfig
+                                    }
                                     isChildThread
                                     key={index}
                                     thread={childThread}/>
@@ -103,13 +97,5 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({thread, isCh
                 }
             </Grid>
         </Grid>
-
-
-        {/*<Grid>*/}
-        {/*    <Input/>*/}
-        {/*    <Button variant={"contained"}>*/}
-        {/*        Submit*/}
-        {/*    </Button>*/}
-        {/*</Grid>*/}
     </Grid>;
 };

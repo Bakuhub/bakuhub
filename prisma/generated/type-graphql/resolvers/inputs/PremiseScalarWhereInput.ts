@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
+import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { EnumPremiseStatusFilter } from "../inputs/EnumPremiseStatusFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -41,10 +42,10 @@ export class PremiseScalarWhereInput {
   })
   createdAt?: DateTimeFilter | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeFilter, {
+  @TypeGraphQL.Field(_type => DateTimeNullableFilter, {
     nullable: true
   })
-  updatedAt?: DateTimeFilter | undefined;
+  updatedAt?: DateTimeNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => EnumPremiseStatusFilter, {
     nullable: true

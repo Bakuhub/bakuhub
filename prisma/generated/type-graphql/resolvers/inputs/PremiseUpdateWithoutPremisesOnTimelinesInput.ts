@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EnumPremiseStatusFieldUpdateOperationsInput } from "../inputs/EnumPremiseStatusFieldUpdateOperationsInput";
+import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TagsOnPremisesUpdateManyWithoutPremiseInput } from "../inputs/TagsOnPremisesUpdateManyWithoutPremiseInput";
 import { ThreadsOnPremiseUpdateManyWithoutPremiseInput } from "../inputs/ThreadsOnPremiseUpdateManyWithoutPremiseInput";
@@ -29,10 +30,10 @@ export class PremiseUpdateWithoutPremisesOnTimelinesInput {
   })
   createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableDateTimeFieldUpdateOperationsInput, {
     nullable: true
   })
-  updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
+  updatedAt?: NullableDateTimeFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => EnumPremiseStatusFieldUpdateOperationsInput, {
     nullable: true

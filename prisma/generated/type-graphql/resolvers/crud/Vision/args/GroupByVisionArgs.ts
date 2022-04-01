@@ -20,7 +20,7 @@ export class GroupByVisionArgs {
   @TypeGraphQL.Field(_type => [VisionScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "referenceId" | "authorId" | "thumbnail" | "premiseId" | "draftMode" | "prevVisionId">;
+  by!: Array<"id" | "title" | "activityDate" | "description" | "updatedAt" | "createdAt" | "referenceId" | "authorId" | "thumbnail" | "premiseId" | "draftMode" | "prevVisionId">;
 
   @TypeGraphQL.Field(_type => VisionScalarWhereWithAggregatesInput, {
     nullable: true

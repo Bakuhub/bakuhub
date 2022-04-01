@@ -51,6 +51,11 @@ export class UserWhereInput {
   })
   emailVerified?: DateTimeNullableFilter | undefined;
 
+  @TypeGraphQL.Field(_type => DateTimeNullableFilter, {
+    nullable: true
+  })
+  updatedAt?: DateTimeNullableFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })

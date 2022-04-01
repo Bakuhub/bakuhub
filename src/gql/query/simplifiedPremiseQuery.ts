@@ -1,19 +1,14 @@
 import {gql} from "@apollo/client";
 
-export const premiseQuery = gql`
+export const simplifiedPremiseQuery = gql`
     query Query($where: PremiseWhereUniqueInput!, $visionWhere2: VisionWhereInput) {
         premise(where: $where) {
             id
-            createdAt
-            updatedAt
             status
             author {
                 name
                 image
                 email
-            }
-            _count {
-                vision
             }
             vision(where: $visionWhere2) {
                 id
@@ -31,22 +26,7 @@ export const premiseQuery = gql`
                     }
                 }
                 authorId
-                prevVisionId
                 draftMode
-                mergeRequest {
-                    id
-                    status
-                    title
-                    description
-                }
-                nextVisions {
-                    id
-                    title
-                    activityDate
-                    description
-                    createdAt
-                    draftMode
-                }
             }
         }
     }

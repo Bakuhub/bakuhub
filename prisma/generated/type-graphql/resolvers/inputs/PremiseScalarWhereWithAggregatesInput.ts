@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { DateTimeNullableWithAggregatesFilter } from "../inputs/DateTimeNullableWithAggregatesFilter";
 import { DateTimeWithAggregatesFilter } from "../inputs/DateTimeWithAggregatesFilter";
 import { EnumPremiseStatusWithAggregatesFilter } from "../inputs/EnumPremiseStatusWithAggregatesFilter";
 import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
@@ -41,10 +42,10 @@ export class PremiseScalarWhereWithAggregatesInput {
   })
   createdAt?: DateTimeWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
+  @TypeGraphQL.Field(_type => DateTimeNullableWithAggregatesFilter, {
     nullable: true
   })
-  updatedAt?: DateTimeWithAggregatesFilter | undefined;
+  updatedAt?: DateTimeNullableWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => EnumPremiseStatusWithAggregatesFilter, {
     nullable: true

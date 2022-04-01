@@ -47,6 +47,11 @@ export class VisionScalarWhereInput {
   })
   description?: StringNullableFilter | undefined;
 
+  @TypeGraphQL.Field(_type => DateTimeNullableFilter, {
+    nullable: true
+  })
+  updatedAt?: DateTimeNullableFilter | undefined;
+
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
   })

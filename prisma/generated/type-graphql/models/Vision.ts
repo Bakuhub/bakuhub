@@ -34,6 +34,11 @@ export class Vision {
   description?: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
+    nullable: true
+  })
+  updatedAt?: Date | null;
+
+  @TypeGraphQL.Field(_type => Date, {
     nullable: false
   })
   createdAt!: Date;
