@@ -1,9 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ThreadConnectType} from "../../types";
+import {ConnectConfig, ConnectType} from "../../types";
 
-export interface ThreadConnectConfig {
-    type: ThreadConnectType;
-    id: null | string;
+export interface ThreadConnectConfig extends ConnectConfig {
     parentThreadId?: string;
 }
 
@@ -11,7 +9,7 @@ export const threadSlice = createSlice({
     name: "thread",
     initialState: {
         connector: {
-            type: ThreadConnectType.VISION,
+            type: ConnectType.VISION,
             id: null as string | null
         },
         parentThreadId: null

@@ -25,5 +25,5 @@ export class TimelineCount {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  ReactionOnTimeline!: number;
+  ReactionOnTimelines!: number;
 }

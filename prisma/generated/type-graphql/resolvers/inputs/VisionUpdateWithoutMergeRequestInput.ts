@@ -7,7 +7,7 @@ import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdat
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { PremiseUpdateOneRequiredWithoutVisionInput } from "../inputs/PremiseUpdateOneRequiredWithoutVisionInput";
-import { ReactionOnVisionUpdateManyWithoutVisionInput } from "../inputs/ReactionOnVisionUpdateManyWithoutVisionInput";
+import { ReactionOnVisionsUpdateManyWithoutVisionInput } from "../inputs/ReactionOnVisionsUpdateManyWithoutVisionInput";
 import { ReferenceUpdateOneWithoutVisionInput } from "../inputs/ReferenceUpdateOneWithoutVisionInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { ThreadsOnVisionUpdateManyWithoutVisionInput } from "../inputs/ThreadsOnVisionUpdateManyWithoutVisionInput";
@@ -89,8 +89,8 @@ export class VisionUpdateWithoutMergeRequestInput {
   })
   threadsOnVision?: ThreadsOnVisionUpdateManyWithoutVisionInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnVisionUpdateManyWithoutVisionInput, {
+  @TypeGraphQL.Field(_type => ReactionOnVisionsUpdateManyWithoutVisionInput, {
     nullable: true
   })
-  ReactionOnVision?: ReactionOnVisionUpdateManyWithoutVisionInput | undefined;
+  ReactionOnVisions?: ReactionOnVisionsUpdateManyWithoutVisionInput | undefined;
 }

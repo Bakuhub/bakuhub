@@ -20,5 +20,5 @@ export class VisionCount {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  ReactionOnVision!: number;
+  ReactionOnVisions!: number;
 }

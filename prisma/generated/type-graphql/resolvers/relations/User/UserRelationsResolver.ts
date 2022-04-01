@@ -1,9 +1,9 @@
 import * as TypeGraphQL from "type-graphql";
 import { Account } from "../../../models/Account";
 import { Premise } from "../../../models/Premise";
-import { ReactionOnThread } from "../../../models/ReactionOnThread";
-import { ReactionOnTimeline } from "../../../models/ReactionOnTimeline";
-import { ReactionOnVision } from "../../../models/ReactionOnVision";
+import { ReactionOnThreads } from "../../../models/ReactionOnThreads";
+import { ReactionOnTimelines } from "../../../models/ReactionOnTimelines";
+import { ReactionOnVisions } from "../../../models/ReactionOnVisions";
 import { Session } from "../../../models/Session";
 import { Thread } from "../../../models/Thread";
 import { Timeline } from "../../../models/Timeline";
@@ -11,9 +11,9 @@ import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
 import { UserAccountsArgs } from "./args/UserAccountsArgs";
 import { UserPremisesArgs } from "./args/UserPremisesArgs";
-import { UserReactionOnThreadArgs } from "./args/UserReactionOnThreadArgs";
-import { UserReactionOnTimelineArgs } from "./args/UserReactionOnTimelineArgs";
-import { UserReactionOnVisionArgs } from "./args/UserReactionOnVisionArgs";
+import { UserReactionOnThreadsArgs } from "./args/UserReactionOnThreadsArgs";
+import { UserReactionOnTimelinesArgs } from "./args/UserReactionOnTimelinesArgs";
+import { UserReactionOnVisionsArgs } from "./args/UserReactionOnVisionsArgs";
 import { UserSessionsArgs } from "./args/UserSessionsArgs";
 import { UserThreadsArgs } from "./args/UserThreadsArgs";
 import { UserTimelinesArgs } from "./args/UserTimelinesArgs";
@@ -88,36 +88,36 @@ export class UserRelationsResolver {
     }).timelines(args);
   }
 
-  @TypeGraphQL.FieldResolver(_type => [ReactionOnThread], {
+  @TypeGraphQL.FieldResolver(_type => [ReactionOnThreads], {
     nullable: false
   })
-  async ReactionOnThread(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserReactionOnThreadArgs): Promise<ReactionOnThread[]> {
+  async ReactionOnThreads(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserReactionOnThreadsArgs): Promise<ReactionOnThreads[]> {
     return getPrismaFromContext(ctx).user.findUnique({
       where: {
         id: user.id,
       },
-    }).ReactionOnThread(args);
+    }).ReactionOnThreads(args);
   }
 
-  @TypeGraphQL.FieldResolver(_type => [ReactionOnTimeline], {
+  @TypeGraphQL.FieldResolver(_type => [ReactionOnTimelines], {
     nullable: false
   })
-  async ReactionOnTimeline(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserReactionOnTimelineArgs): Promise<ReactionOnTimeline[]> {
+  async ReactionOnTimelines(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]> {
     return getPrismaFromContext(ctx).user.findUnique({
       where: {
         id: user.id,
       },
-    }).ReactionOnTimeline(args);
+    }).ReactionOnTimelines(args);
   }
 
-  @TypeGraphQL.FieldResolver(_type => [ReactionOnVision], {
+  @TypeGraphQL.FieldResolver(_type => [ReactionOnVisions], {
     nullable: false
   })
-  async ReactionOnVision(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserReactionOnVisionArgs): Promise<ReactionOnVision[]> {
+  async ReactionOnVisions(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UserReactionOnVisionsArgs): Promise<ReactionOnVisions[]> {
     return getPrismaFromContext(ctx).user.findUnique({
       where: {
         id: user.id,
       },
-    }).ReactionOnVision(args);
+    }).ReactionOnVisions(args);
   }
 }

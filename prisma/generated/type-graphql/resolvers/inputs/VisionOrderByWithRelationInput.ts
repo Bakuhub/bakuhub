@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { MergeRequestOrderByWithRelationInput } from "../inputs/MergeRequestOrderByWithRelationInput";
 import { PremiseOrderByWithRelationInput } from "../inputs/PremiseOrderByWithRelationInput";
-import { ReactionOnVisionOrderByRelationAggregateInput } from "../inputs/ReactionOnVisionOrderByRelationAggregateInput";
+import { ReactionOnVisionsOrderByRelationAggregateInput } from "../inputs/ReactionOnVisionsOrderByRelationAggregateInput";
 import { ReferenceOrderByWithRelationInput } from "../inputs/ReferenceOrderByWithRelationInput";
 import { ThreadsOnVisionOrderByRelationAggregateInput } from "../inputs/ThreadsOnVisionOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
@@ -110,8 +110,8 @@ export class VisionOrderByWithRelationInput {
   })
   mergeRequest?: MergeRequestOrderByWithRelationInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnVisionOrderByRelationAggregateInput, {
+  @TypeGraphQL.Field(_type => ReactionOnVisionsOrderByRelationAggregateInput, {
     nullable: true
   })
-  ReactionOnVision?: ReactionOnVisionOrderByRelationAggregateInput | undefined;
+  ReactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
 }

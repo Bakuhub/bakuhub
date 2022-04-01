@@ -2,7 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ReactionOnThreadCreateNestedManyWithoutThreadInput } from "../inputs/ReactionOnThreadCreateNestedManyWithoutThreadInput";
+import { ReactionOnThreadsCreateNestedManyWithoutThreadInput } from "../inputs/ReactionOnThreadsCreateNestedManyWithoutThreadInput";
 import { ThreadCreateNestedManyWithoutParentThreadInput } from "../inputs/ThreadCreateNestedManyWithoutParentThreadInput";
 import { ThreadCreateNestedOneWithoutChildThreadsInput } from "../inputs/ThreadCreateNestedOneWithoutChildThreadsInput";
 import { ThreadsOnPremiseCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnPremiseCreateNestedOneWithoutThreadInput";
@@ -74,8 +74,8 @@ export class ThreadCreateInput {
   })
   threadsOnVision?: ThreadsOnVisionCreateNestedOneWithoutThreadInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnThreadCreateNestedManyWithoutThreadInput, {
+  @TypeGraphQL.Field(_type => ReactionOnThreadsCreateNestedManyWithoutThreadInput, {
     nullable: true
   })
-  ReactionOnThread?: ReactionOnThreadCreateNestedManyWithoutThreadInput | undefined;
+  ReactionOnThreads?: ReactionOnThreadsCreateNestedManyWithoutThreadInput | undefined;
 }

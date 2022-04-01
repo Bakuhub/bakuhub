@@ -3,7 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { PremisesOnTimelinesListRelationFilter } from "../inputs/PremisesOnTimelinesListRelationFilter";
-import { ReactionOnTimelineListRelationFilter } from "../inputs/ReactionOnTimelineListRelationFilter";
+import { ReactionOnTimelinesListRelationFilter } from "../inputs/ReactionOnTimelinesListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { TagsOnTimelinesListRelationFilter } from "../inputs/TagsOnTimelinesListRelationFilter";
 import { ThreadsOnTimelineListRelationFilter } from "../inputs/ThreadsOnTimelineListRelationFilter";
@@ -73,8 +73,8 @@ export class TimelineWhereInput {
   })
   threadsOnTimeline?: ThreadsOnTimelineListRelationFilter | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnTimelineListRelationFilter, {
+  @TypeGraphQL.Field(_type => ReactionOnTimelinesListRelationFilter, {
     nullable: true
   })
-  ReactionOnTimeline?: ReactionOnTimelineListRelationFilter | undefined;
+  ReactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
 }

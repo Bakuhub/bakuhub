@@ -11,6 +11,7 @@ import {LoadingButton} from "@mui/lab";
 import {useSnackbar} from "notistack";
 import {getAuthorVariableByUserId} from "../../gql/utils/getAuthorVariableByUserId";
 import {getUserIdBySession} from "../../utils/getUserIdBySession";
+import {get} from "lodash";
 
 
 export interface CommentProps {
@@ -24,8 +25,6 @@ export const Comment: FunctionalComponent<CommentProps> = ({
                                                                connectConfig, handleCancel
                                                            }) => {
     const session = useSession();
-    console.info(connectConfig);
-    console.info("-------------------------");
     const {enqueueSnackbar} = useSnackbar();
     const avatarProps = getUserAvatar(session.data?.user);
     const [comment, setComment] = useState("");
@@ -35,11 +34,6 @@ export const Comment: FunctionalComponent<CommentProps> = ({
         return {
             "data": {
                 "title": comment,
-                author: {
-                    connect: {
-                        id: ""
-                    }
-                },
                 "description": comment,
                 ...getAuthorVariableByUserId(getUserIdBySession(session)),
                 ...getThreadsOnConnectorVariables(connectConfig),
@@ -62,7 +56,7 @@ export const Comment: FunctionalComponent<CommentProps> = ({
             await createThread({variables: getVariables()});
             enqueueSnackbar("submitting comment success", {variant: "success"});
         } catch (e) {
-            enqueueSnackbar("something went wrong, you can not post comment", {variant: "error"});
+            enqueueSnackbar(get(e, "message", "something went wrong, you can not post comment"), {variant: "error"});
         }
         if (handleSubmitCallback)
             handleSubmitCallback();
@@ -83,6 +77,11 @@ export const Comment: FunctionalComponent<CommentProps> = ({
         </Grid>
         <Grid item container xs={11} md={11.5}>
             <TextField
+                    onKeyPress={(e) => {
+                        if (e.key==="Enter" && e.ctrlKey) {
+                            handleSubmit();
+                        }
+                    }}
                     value={comment}
                     onChange={e => setComment(e.target.value)}
                     placeholder={"Add a comment..."}
@@ -102,5 +101,4 @@ export const Comment: FunctionalComponent<CommentProps> = ({
             </Button>
         </Grid>
     </Grid>;
-
 };

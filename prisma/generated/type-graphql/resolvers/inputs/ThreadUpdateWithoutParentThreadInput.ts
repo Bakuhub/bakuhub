@@ -5,7 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
-import { ReactionOnThreadUpdateManyWithoutThreadInput } from "../inputs/ReactionOnThreadUpdateManyWithoutThreadInput";
+import { ReactionOnThreadsUpdateManyWithoutThreadInput } from "../inputs/ReactionOnThreadsUpdateManyWithoutThreadInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { ThreadUpdateManyWithoutParentThreadInput } from "../inputs/ThreadUpdateManyWithoutParentThreadInput";
 import { ThreadsOnPremiseUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnPremiseUpdateOneWithoutThreadInput";
@@ -72,8 +72,8 @@ export class ThreadUpdateWithoutParentThreadInput {
   })
   threadsOnVision?: ThreadsOnVisionUpdateOneWithoutThreadInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnThreadUpdateManyWithoutThreadInput, {
+  @TypeGraphQL.Field(_type => ReactionOnThreadsUpdateManyWithoutThreadInput, {
     nullable: true
   })
-  ReactionOnThread?: ReactionOnThreadUpdateManyWithoutThreadInput | undefined;
+  ReactionOnThreads?: ReactionOnThreadsUpdateManyWithoutThreadInput | undefined;
 }

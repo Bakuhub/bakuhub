@@ -1,2 +1,2 @@
 export { ThreadChildThreadsArgs } from "./ThreadChildThreadsArgs";
-export { ThreadReactionOnThreadArgs } from "./ThreadReactionOnThreadArgs";
+export { ThreadReactionOnThreadsArgs } from "./ThreadReactionOnThreadsArgs";

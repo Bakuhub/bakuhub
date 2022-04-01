@@ -5,6 +5,8 @@ import {VisionDetail} from "../Detail/VisionDetail";
 import {useMutation} from "@apollo/client";
 import {mergeVisionIntoPremiseMutation} from "../../../gql/mutation/mergeVisionIntoPremiseMutation";
 import {get} from "lodash";
+import {useSnackbar} from "notistack";
+import {LoadingButton} from "@mui/lab";
 
 export interface CreateVisionProps {
     mergeRequest: MergeRequest;
@@ -12,7 +14,9 @@ export interface CreateVisionProps {
 
 export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({mergeRequest}) => {
     const vision = get(mergeRequest, "vision");
+    const [loading, setLoading] = React.useState(false);
     const [mergeVisionIntoPremise] = useMutation(mergeVisionIntoPremiseMutation);
+    const {enqueueSnackbar} = useSnackbar();
     if (!vision) return <div>no vision</div>;
     return <Grid container>
         <Grid item container md={6} xs={12}>
@@ -30,27 +34,41 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
             </Grid>}
 
         <Grid item xs={12}>
-            <Button onClick={() => mergeVisionIntoPremise({
-                variables: {
-                    "where": {
-                        "id": vision.id
-                    },
-                    "data": {
-                        "draftMode": {
-                            "set": false
-                        },
-                        "mergeRequest": {
-                            "update": {
-                                "status": {
-                                    "set": "MERGED"
+            <LoadingButton loading={loading} onClick={async () => {
+                setLoading(true);
+                try {
+                    const result = await mergeVisionIntoPremise({
+                        variables: {
+                            "where": {
+                                "id": vision.id
+                            },
+                            "data": {
+                                "draftMode": {
+                                    "set": false
+                                },
+                                "mergeRequest": {
+                                    "update": {
+                                        "status": {
+                                            "set": "MERGED"
+                                        }
+                                    }
                                 }
                             }
                         }
+                    });
+                    if (result.data) {
+                        enqueueSnackbar("Merge request has been successfully merged", {variant: "success"});
                     }
+                    if (result.errors) {
+                        enqueueSnackbar(result.errors[0].message, {variant: "error"});
+                    }
+                } catch (e) {
+                    enqueueSnackbar(get(e, "message", ""), {variant: "error"});
                 }
-            })}>
+                setLoading(false);
+            }}>
                 merge
-            </Button>
+            </LoadingButton>
             <Button onClick={() => mergeVisionIntoPremise({
                 variables: {
                     "where": {

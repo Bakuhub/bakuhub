@@ -5,7 +5,6 @@ import {mergeRequestQuery} from "../../../src/gql/query/mergeRequestQuery";
 export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
     const {data} = await apollo.query({
         query: mergeRequestQuery, variables: {
-
             "where": {
                 "id": context.query.id
             }

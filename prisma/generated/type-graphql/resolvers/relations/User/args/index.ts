@@ -1,8 +1,8 @@
 export { UserAccountsArgs } from "./UserAccountsArgs";
 export { UserPremisesArgs } from "./UserPremisesArgs";
-export { UserReactionOnThreadArgs } from "./UserReactionOnThreadArgs";
-export { UserReactionOnTimelineArgs } from "./UserReactionOnTimelineArgs";
-export { UserReactionOnVisionArgs } from "./UserReactionOnVisionArgs";
+export { UserReactionOnThreadsArgs } from "./UserReactionOnThreadsArgs";
+export { UserReactionOnTimelinesArgs } from "./UserReactionOnTimelinesArgs";
+export { UserReactionOnVisionsArgs } from "./UserReactionOnVisionsArgs";
 export { UserSessionsArgs } from "./UserSessionsArgs";
 export { UserThreadsArgs } from "./UserThreadsArgs";
 export { UserTimelinesArgs } from "./UserTimelinesArgs";

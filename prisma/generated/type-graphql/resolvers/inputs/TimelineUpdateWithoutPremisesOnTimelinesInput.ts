@@ -2,7 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ReactionOnTimelineUpdateManyWithoutTimelineInput } from "../inputs/ReactionOnTimelineUpdateManyWithoutTimelineInput";
+import { ReactionOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/ReactionOnTimelinesUpdateManyWithoutTimelineInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TagsOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/TagsOnTimelinesUpdateManyWithoutTimelineInput";
 import { ThreadsOnTimelineUpdateManyWithoutTimelineInput } from "../inputs/ThreadsOnTimelineUpdateManyWithoutTimelineInput";
@@ -47,8 +47,8 @@ export class TimelineUpdateWithoutPremisesOnTimelinesInput {
   })
   threadsOnTimeline?: ThreadsOnTimelineUpdateManyWithoutTimelineInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnTimelineUpdateManyWithoutTimelineInput, {
+  @TypeGraphQL.Field(_type => ReactionOnTimelinesUpdateManyWithoutTimelineInput, {
     nullable: true
   })
-  ReactionOnTimeline?: ReactionOnTimelineUpdateManyWithoutTimelineInput | undefined;
+  ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutTimelineInput | undefined;
 }

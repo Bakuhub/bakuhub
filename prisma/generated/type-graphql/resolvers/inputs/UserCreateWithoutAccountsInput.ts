@@ -3,9 +3,9 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { PremiseCreateNestedManyWithoutAuthorInput } from "../inputs/PremiseCreateNestedManyWithoutAuthorInput";
-import { ReactionOnThreadCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnThreadCreateNestedManyWithoutUserInput";
-import { ReactionOnTimelineCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnTimelineCreateNestedManyWithoutUserInput";
-import { ReactionOnVisionCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnVisionCreateNestedManyWithoutUserInput";
+import { ReactionOnThreadsCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnThreadsCreateNestedManyWithoutUserInput";
+import { ReactionOnTimelinesCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnTimelinesCreateNestedManyWithoutUserInput";
+import { ReactionOnVisionsCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnVisionsCreateNestedManyWithoutUserInput";
 import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreateNestedManyWithoutUserInput";
 import { ThreadCreateNestedManyWithoutAuthorInput } from "../inputs/ThreadCreateNestedManyWithoutAuthorInput";
 import { TimelineCreateNestedManyWithoutAuthorInput } from "../inputs/TimelineCreateNestedManyWithoutAuthorInput";
@@ -70,18 +70,18 @@ export class UserCreateWithoutAccountsInput {
   })
   timelines?: TimelineCreateNestedManyWithoutAuthorInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnThreadCreateNestedManyWithoutUserInput, {
+  @TypeGraphQL.Field(_type => ReactionOnThreadsCreateNestedManyWithoutUserInput, {
     nullable: true
   })
-  ReactionOnThread?: ReactionOnThreadCreateNestedManyWithoutUserInput | undefined;
+  ReactionOnThreads?: ReactionOnThreadsCreateNestedManyWithoutUserInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnTimelineCreateNestedManyWithoutUserInput, {
+  @TypeGraphQL.Field(_type => ReactionOnTimelinesCreateNestedManyWithoutUserInput, {
     nullable: true
   })
-  ReactionOnTimeline?: ReactionOnTimelineCreateNestedManyWithoutUserInput | undefined;
+  ReactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutUserInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnVisionCreateNestedManyWithoutUserInput, {
+  @TypeGraphQL.Field(_type => ReactionOnVisionsCreateNestedManyWithoutUserInput, {
     nullable: true
   })
-  ReactionOnVision?: ReactionOnVisionCreateNestedManyWithoutUserInput | undefined;
+  ReactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutUserInput | undefined;
 }

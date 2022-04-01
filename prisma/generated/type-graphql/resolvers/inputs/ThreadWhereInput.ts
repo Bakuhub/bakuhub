@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
-import { ReactionOnThreadListRelationFilter } from "../inputs/ReactionOnThreadListRelationFilter";
+import { ReactionOnThreadsListRelationFilter } from "../inputs/ReactionOnThreadsListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
@@ -103,8 +103,8 @@ export class ThreadWhereInput {
   })
   threadsOnVision?: ThreadsOnVisionRelationFilter | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnThreadListRelationFilter, {
+  @TypeGraphQL.Field(_type => ReactionOnThreadsListRelationFilter, {
     nullable: true
   })
-  ReactionOnThread?: ReactionOnThreadListRelationFilter | undefined;
+  ReactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
 }

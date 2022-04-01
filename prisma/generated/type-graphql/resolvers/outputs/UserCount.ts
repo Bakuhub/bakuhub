@@ -40,15 +40,15 @@ export class UserCount {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  ReactionOnThread!: number;
+  ReactionOnThreads!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  ReactionOnTimeline!: number;
+  ReactionOnTimelines!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  ReactionOnVision!: number;
+  ReactionOnVisions!: number;
 }

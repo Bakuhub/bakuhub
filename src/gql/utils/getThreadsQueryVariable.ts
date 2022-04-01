@@ -1,14 +1,14 @@
-import {ThreadConnectType} from "../../types";
-import {getTableNameByThreadConnectType} from "../../utils/getTableNameByThreadConnectType";
+import {ConnectType} from "../../types";
+import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
 import {capitalize} from "lodash";
 
 export interface GetThreadQueryVariableProps {
-    threadConnectType: ThreadConnectType;
+    threadConnectType: ConnectType;
     id: string;
 }
 
 export const getThreadsQueryVariable = ({threadConnectType, id}: GetThreadQueryVariableProps) => {
-    const tableName = getTableNameByThreadConnectType(threadConnectType);
+    const tableName = getTableNameByConnectType(threadConnectType);
     return {
         variables: {
             "where": {

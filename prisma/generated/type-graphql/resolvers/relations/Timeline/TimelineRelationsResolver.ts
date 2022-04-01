@@ -1,12 +1,12 @@
 import * as TypeGraphQL from "type-graphql";
 import { PremisesOnTimelines } from "../../../models/PremisesOnTimelines";
-import { ReactionOnTimeline } from "../../../models/ReactionOnTimeline";
+import { ReactionOnTimelines } from "../../../models/ReactionOnTimelines";
 import { TagsOnTimelines } from "../../../models/TagsOnTimelines";
 import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
 import { Timeline } from "../../../models/Timeline";
 import { User } from "../../../models/User";
 import { TimelinePremisesOnTimelinesArgs } from "./args/TimelinePremisesOnTimelinesArgs";
-import { TimelineReactionOnTimelineArgs } from "./args/TimelineReactionOnTimelineArgs";
+import { TimelineReactionOnTimelinesArgs } from "./args/TimelineReactionOnTimelinesArgs";
 import { TimelineTagsOnTimelinesArgs } from "./args/TimelineTagsOnTimelinesArgs";
 import { TimelineThreadsOnTimelineArgs } from "./args/TimelineThreadsOnTimelineArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
@@ -57,14 +57,14 @@ export class TimelineRelationsResolver {
     }).threadsOnTimeline(args);
   }
 
-  @TypeGraphQL.FieldResolver(_type => [ReactionOnTimeline], {
+  @TypeGraphQL.FieldResolver(_type => [ReactionOnTimelines], {
     nullable: false
   })
-  async ReactionOnTimeline(@TypeGraphQL.Root() timeline: Timeline, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: TimelineReactionOnTimelineArgs): Promise<ReactionOnTimeline[]> {
+  async ReactionOnTimelines(@TypeGraphQL.Root() timeline: Timeline, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: TimelineReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]> {
     return getPrismaFromContext(ctx).timeline.findUnique({
       where: {
         id: timeline.id,
       },
-    }).ReactionOnTimeline(args);
+    }).ReactionOnTimelines(args);
   }
 }

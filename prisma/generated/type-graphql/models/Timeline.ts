@@ -3,7 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { PremisesOnTimelines } from "../models/PremisesOnTimelines";
-import { ReactionOnTimeline } from "../models/ReactionOnTimeline";
+import { ReactionOnTimelines } from "../models/ReactionOnTimelines";
 import { TagsOnTimelines } from "../models/TagsOnTimelines";
 import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
 import { User } from "../models/User";
@@ -46,7 +46,7 @@ export class Timeline {
 
   threadsOnTimeline?: ThreadsOnTimeline[];
 
-  ReactionOnTimeline?: ReactionOnTimeline[];
+  ReactionOnTimelines?: ReactionOnTimelines[];
 
   @TypeGraphQL.Field(_type => TimelineCount, {
     nullable: true

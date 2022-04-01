@@ -1,13 +1,13 @@
 import * as TypeGraphQL from "type-graphql";
 import { MergeRequest } from "../../../models/MergeRequest";
 import { Premise } from "../../../models/Premise";
-import { ReactionOnVision } from "../../../models/ReactionOnVision";
+import { ReactionOnVisions } from "../../../models/ReactionOnVisions";
 import { Reference } from "../../../models/Reference";
 import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
 import { VisionNextVisionsArgs } from "./args/VisionNextVisionsArgs";
-import { VisionReactionOnVisionArgs } from "./args/VisionReactionOnVisionArgs";
+import { VisionReactionOnVisionsArgs } from "./args/VisionReactionOnVisionsArgs";
 import { VisionThreadsOnVisionArgs } from "./args/VisionThreadsOnVisionArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
@@ -90,14 +90,14 @@ export class VisionRelationsResolver {
     }).mergeRequest({});
   }
 
-  @TypeGraphQL.FieldResolver(_type => [ReactionOnVision], {
+  @TypeGraphQL.FieldResolver(_type => [ReactionOnVisions], {
     nullable: false
   })
-  async ReactionOnVision(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: VisionReactionOnVisionArgs): Promise<ReactionOnVision[]> {
+  async ReactionOnVisions(@TypeGraphQL.Root() vision: Vision, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: VisionReactionOnVisionsArgs): Promise<ReactionOnVisions[]> {
     return getPrismaFromContext(ctx).vision.findUnique({
       where: {
         id: vision.id,
       },
-    }).ReactionOnVision(args);
+    }).ReactionOnVisions(args);
   }
 }

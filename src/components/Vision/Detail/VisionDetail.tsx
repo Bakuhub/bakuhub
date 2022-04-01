@@ -26,6 +26,8 @@ export interface VisionDetailProps {
 export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision, premiseId}) => {
     const router = useRouter();
     const thumbnail = getThumbnail(vision);
+    console.info("------------------------------------");
+    console.info(vision);
     const getRedirectUrl = () => premiseId ? `/premises/${premiseId}`:`/visions/${vision.id}`;
     const redirectedUrl = getRedirectUrl();
     return <Card sx={{maxWidth: 345}}>

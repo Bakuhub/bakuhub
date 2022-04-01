@@ -112,6 +112,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             }
             setLoading(false);
         } else {
+            setLoading(true);
             const variables = {
                 variables: {
                     "data": {
@@ -149,26 +150,22 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                                 "id": getInitialProps(premise, "id")
                             }
                         },
-                        "threadsOnVision": {
-                            "create": [
-                                {
-                                    "thread": {
-                                        "create": {
-                                            "title": "this is the reason",
-                                            "description": "more detail"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
                     }
                 }
             };
             const result = await createNewVision(variables);
+            if (result.errors?.length) {
+                result.errors?.map(({message}) => enqueueSnackbar(message, {variant: "error"}));
+            }
+            if (result.data) {
+                enqueueSnackbar("merge request created", {variant: "success"});
+                await router.push(`/premises/${premise.id}`);
+            }
             setLoading(false);
 
         }
     };
+
     return <Grid container spacing={1}>
         {
             premise && <MergeRequest
@@ -248,7 +245,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                     "author": user,
                     "vision": [
                         {
-                            activityDate,
+                            activityDate: activityDate ? activityDate:Date.now(),
                             description,
                             title,
                             draftMode: false,

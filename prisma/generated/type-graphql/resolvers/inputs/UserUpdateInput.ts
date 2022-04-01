@@ -6,9 +6,9 @@ import { AccountUpdateManyWithoutUserInput } from "../inputs/AccountUpdateManyWi
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { PremiseUpdateManyWithoutAuthorInput } from "../inputs/PremiseUpdateManyWithoutAuthorInput";
-import { ReactionOnThreadUpdateManyWithoutUserInput } from "../inputs/ReactionOnThreadUpdateManyWithoutUserInput";
-import { ReactionOnTimelineUpdateManyWithoutUserInput } from "../inputs/ReactionOnTimelineUpdateManyWithoutUserInput";
-import { ReactionOnVisionUpdateManyWithoutUserInput } from "../inputs/ReactionOnVisionUpdateManyWithoutUserInput";
+import { ReactionOnThreadsUpdateManyWithoutUserInput } from "../inputs/ReactionOnThreadsUpdateManyWithoutUserInput";
+import { ReactionOnTimelinesUpdateManyWithoutUserInput } from "../inputs/ReactionOnTimelinesUpdateManyWithoutUserInput";
+import { ReactionOnVisionsUpdateManyWithoutUserInput } from "../inputs/ReactionOnVisionsUpdateManyWithoutUserInput";
 import { SessionUpdateManyWithoutUserInput } from "../inputs/SessionUpdateManyWithoutUserInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { ThreadUpdateManyWithoutAuthorInput } from "../inputs/ThreadUpdateManyWithoutAuthorInput";
@@ -79,18 +79,18 @@ export class UserUpdateInput {
   })
   timelines?: TimelineUpdateManyWithoutAuthorInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnThreadUpdateManyWithoutUserInput, {
+  @TypeGraphQL.Field(_type => ReactionOnThreadsUpdateManyWithoutUserInput, {
     nullable: true
   })
-  ReactionOnThread?: ReactionOnThreadUpdateManyWithoutUserInput | undefined;
+  ReactionOnThreads?: ReactionOnThreadsUpdateManyWithoutUserInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnTimelineUpdateManyWithoutUserInput, {
+  @TypeGraphQL.Field(_type => ReactionOnTimelinesUpdateManyWithoutUserInput, {
     nullable: true
   })
-  ReactionOnTimeline?: ReactionOnTimelineUpdateManyWithoutUserInput | undefined;
+  ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutUserInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnVisionUpdateManyWithoutUserInput, {
+  @TypeGraphQL.Field(_type => ReactionOnVisionsUpdateManyWithoutUserInput, {
     nullable: true
   })
-  ReactionOnVision?: ReactionOnVisionUpdateManyWithoutUserInput | undefined;
+  ReactionOnVisions?: ReactionOnVisionsUpdateManyWithoutUserInput | undefined;
 }

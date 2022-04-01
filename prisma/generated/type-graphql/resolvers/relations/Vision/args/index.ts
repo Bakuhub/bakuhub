@@ -1,3 +1,3 @@
 export { VisionNextVisionsArgs } from "./VisionNextVisionsArgs";
-export { VisionReactionOnVisionArgs } from "./VisionReactionOnVisionArgs";
+export { VisionReactionOnVisionsArgs } from "./VisionReactionOnVisionsArgs";
 export { VisionThreadsOnVisionArgs } from "./VisionThreadsOnVisionArgs";

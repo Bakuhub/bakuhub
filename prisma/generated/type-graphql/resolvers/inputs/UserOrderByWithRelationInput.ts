@@ -4,9 +4,9 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { AccountOrderByRelationAggregateInput } from "../inputs/AccountOrderByRelationAggregateInput";
 import { PremiseOrderByRelationAggregateInput } from "../inputs/PremiseOrderByRelationAggregateInput";
-import { ReactionOnThreadOrderByRelationAggregateInput } from "../inputs/ReactionOnThreadOrderByRelationAggregateInput";
-import { ReactionOnTimelineOrderByRelationAggregateInput } from "../inputs/ReactionOnTimelineOrderByRelationAggregateInput";
-import { ReactionOnVisionOrderByRelationAggregateInput } from "../inputs/ReactionOnVisionOrderByRelationAggregateInput";
+import { ReactionOnThreadsOrderByRelationAggregateInput } from "../inputs/ReactionOnThreadsOrderByRelationAggregateInput";
+import { ReactionOnTimelinesOrderByRelationAggregateInput } from "../inputs/ReactionOnTimelinesOrderByRelationAggregateInput";
+import { ReactionOnVisionsOrderByRelationAggregateInput } from "../inputs/ReactionOnVisionsOrderByRelationAggregateInput";
 import { SessionOrderByRelationAggregateInput } from "../inputs/SessionOrderByRelationAggregateInput";
 import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
 import { TimelineOrderByRelationAggregateInput } from "../inputs/TimelineOrderByRelationAggregateInput";
@@ -77,18 +77,18 @@ export class UserOrderByWithRelationInput {
   })
   timelines?: TimelineOrderByRelationAggregateInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnThreadOrderByRelationAggregateInput, {
+  @TypeGraphQL.Field(_type => ReactionOnThreadsOrderByRelationAggregateInput, {
     nullable: true
   })
-  ReactionOnThread?: ReactionOnThreadOrderByRelationAggregateInput | undefined;
+  ReactionOnThreads?: ReactionOnThreadsOrderByRelationAggregateInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnTimelineOrderByRelationAggregateInput, {
+  @TypeGraphQL.Field(_type => ReactionOnTimelinesOrderByRelationAggregateInput, {
     nullable: true
   })
-  ReactionOnTimeline?: ReactionOnTimelineOrderByRelationAggregateInput | undefined;
+  ReactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnVisionOrderByRelationAggregateInput, {
+  @TypeGraphQL.Field(_type => ReactionOnVisionsOrderByRelationAggregateInput, {
     nullable: true
   })
-  ReactionOnVision?: ReactionOnVisionOrderByRelationAggregateInput | undefined;
+  ReactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
 }

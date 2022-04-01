@@ -2,7 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
-import { ReactionOnThread } from "../models/ReactionOnThread";
+import { ReactionOnThreads } from "../models/ReactionOnThreads";
 import { ThreadsOnPremise } from "../models/ThreadsOnPremise";
 import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
@@ -65,7 +65,7 @@ export class Thread {
 
   threadsOnVision?: ThreadsOnVision | null;
 
-  ReactionOnThread?: ReactionOnThread[];
+  ReactionOnThreads?: ReactionOnThreads[];
 
   @TypeGraphQL.Field(_type => ThreadCount, {
     nullable: true

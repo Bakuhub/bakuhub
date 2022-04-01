@@ -1,4 +1,4 @@
 export { TimelinePremisesOnTimelinesArgs } from "./TimelinePremisesOnTimelinesArgs";
-export { TimelineReactionOnTimelineArgs } from "./TimelineReactionOnTimelineArgs";
+export { TimelineReactionOnTimelinesArgs } from "./TimelineReactionOnTimelinesArgs";
 export { TimelineTagsOnTimelinesArgs } from "./TimelineTagsOnTimelinesArgs";
 export { TimelineThreadsOnTimelineArgs } from "./TimelineThreadsOnTimelineArgs";

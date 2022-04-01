@@ -3,7 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { PremisesOnTimelinesCreateNestedManyWithoutTimelineInput } from "../inputs/PremisesOnTimelinesCreateNestedManyWithoutTimelineInput";
-import { ReactionOnTimelineCreateNestedManyWithoutTimelineInput } from "../inputs/ReactionOnTimelineCreateNestedManyWithoutTimelineInput";
+import { ReactionOnTimelinesCreateNestedManyWithoutTimelineInput } from "../inputs/ReactionOnTimelinesCreateNestedManyWithoutTimelineInput";
 import { ThreadsOnTimelineCreateNestedManyWithoutTimelineInput } from "../inputs/ThreadsOnTimelineCreateNestedManyWithoutTimelineInput";
 import { UserCreateNestedOneWithoutTimelinesInput } from "../inputs/UserCreateNestedOneWithoutTimelinesInput";
 
@@ -46,8 +46,8 @@ export class TimelineCreateWithoutTagsOnTimelinesInput {
   })
   threadsOnTimeline?: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnTimelineCreateNestedManyWithoutTimelineInput, {
+  @TypeGraphQL.Field(_type => ReactionOnTimelinesCreateNestedManyWithoutTimelineInput, {
     nullable: true
   })
-  ReactionOnTimeline?: ReactionOnTimelineCreateNestedManyWithoutTimelineInput | undefined;
+  ReactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
 }

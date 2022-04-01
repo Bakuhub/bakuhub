@@ -27,6 +27,7 @@ export const themeOptions: ThemeOptions = {
         },
         // grey
         subtitle2: {
+            cursor: "pointer",
             color: "grey",
             paddingLeft: "20px"
         }

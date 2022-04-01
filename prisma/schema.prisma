@@ -50,13 +50,13 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  premises           Premise[]
-  threads            Thread[]
-  visions            Vision[]
-  timelines          Timeline[]
-  ReactionOnThread   ReactionOnThread[]
-  ReactionOnTimeline ReactionOnTimeline[]
-  ReactionOnVision   ReactionOnVision[]
+  premises            Premise[]
+  threads             Thread[]
+  visions             Vision[]
+  timelines           Timeline[]
+  ReactionOnThreads   ReactionOnThreads[]
+  ReactionOnTimelines ReactionOnTimelines[]
+  ReactionOnVisions   ReactionOnVisions[]
 }
 
 model VerificationToken {
@@ -82,26 +82,26 @@ model Premise {
 }
 
 model Vision {
-  id               String             @id @default(cuid())
-  title            String             @db.VarChar(255)
-  activityDate     DateTime?
-  description      String?
-  updatedAt        DateTime?          @default(now()) @updatedAt
-  createdAt        DateTime           @default(now())
-  reference        Reference?         @relation(fields: [referenceId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  referenceId      String?
-  author           User?              @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  authorId         String?
-  premise          Premise            @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  thumbnail        String?
-  premiseId        String
-  draftMode        Boolean            @default(false)
-  prevVisionId     String?
-  prevVision       Vision?            @relation("VisionHistory", fields: [prevVisionId], references: [id])
-  nextVisions      Vision[]           @relation("VisionHistory")
-  threadsOnVision  ThreadsOnVision[]
-  mergeRequest     MergeRequest?
-  ReactionOnVision ReactionOnVision[]
+  id                String              @id @default(cuid())
+  title             String              @db.VarChar(255)
+  activityDate      DateTime?
+  description       String?
+  updatedAt         DateTime?           @default(now()) @updatedAt
+  createdAt         DateTime            @default(now())
+  reference         Reference?          @relation(fields: [referenceId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  referenceId       String?
+  author            User?               @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId          String?
+  premise           Premise             @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  thumbnail         String?
+  premiseId         String
+  draftMode         Boolean             @default(false)
+  prevVisionId      String?
+  prevVision        Vision?             @relation("VisionHistory", fields: [prevVisionId], references: [id])
+  nextVisions       Vision[]            @relation("VisionHistory")
+  threadsOnVision   ThreadsOnVision[]
+  mergeRequest      MergeRequest?
+  ReactionOnVisions ReactionOnVisions[]
 }
 
 model Reference {
@@ -130,7 +130,7 @@ model Timeline {
   premisesOnTimelines PremisesOnTimelines[]
   tagsOnTimelines     TagsOnTimelines[]
   threadsOnTimeline   ThreadsOnTimeline[]
-  ReactionOnTimeline  ReactionOnTimeline[]
+  ReactionOnTimelines ReactionOnTimelines[]
 }
 
 model Tag {
@@ -196,7 +196,7 @@ model Thread {
   threadsOnPremise  ThreadsOnPremise?
   threadsOnTimeline ThreadsOnTimeline?
   threadsOnVision   ThreadsOnVision?
-  ReactionOnThread  ReactionOnThread[]
+  ReactionOnThreads ReactionOnThreads[]
 }
 
 model ThreadsOnPremise {
@@ -219,34 +219,37 @@ model ThreadsOnTimeline {
   @@id([threadId, timelineId])
 }
 
-model ReactionOnThread {
-  id        String   @id @default(cuid())
+model ReactionOnThreads {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId    String
   thread    Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   threadId  String
   reaction  Reaction
   createdAt DateTime @default(now())
+
+  @@id([userId, threadId])
 }
 
-model ReactionOnTimeline {
-  id         String   @id @default(cuid())
+model ReactionOnTimelines {
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId     String
   timeline   Timeline @relation(fields: [timelineId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   timelineId String
   reaction   Reaction
   createdAt  DateTime @default(now())
+
+  @@id([userId, timelineId])
 }
 
-model ReactionOnVision {
-  id        String   @id @default(cuid())
+model ReactionOnVisions {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId    String
   vision    Vision   @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   visionId  String
   reaction  Reaction
   createdAt DateTime @default(now())
+
+  @@id([userId, visionId])
 }
 
 model ThreadsOnVision {

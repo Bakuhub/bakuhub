@@ -5,9 +5,9 @@ import { DecimalJSScalar } from "../../scalars";
 import { AccountListRelationFilter } from "../inputs/AccountListRelationFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { PremiseListRelationFilter } from "../inputs/PremiseListRelationFilter";
-import { ReactionOnThreadListRelationFilter } from "../inputs/ReactionOnThreadListRelationFilter";
-import { ReactionOnTimelineListRelationFilter } from "../inputs/ReactionOnTimelineListRelationFilter";
-import { ReactionOnVisionListRelationFilter } from "../inputs/ReactionOnVisionListRelationFilter";
+import { ReactionOnThreadsListRelationFilter } from "../inputs/ReactionOnThreadsListRelationFilter";
+import { ReactionOnTimelinesListRelationFilter } from "../inputs/ReactionOnTimelinesListRelationFilter";
+import { ReactionOnVisionsListRelationFilter } from "../inputs/ReactionOnVisionsListRelationFilter";
 import { SessionListRelationFilter } from "../inputs/SessionListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -94,18 +94,18 @@ export class UserWhereInput {
   })
   timelines?: TimelineListRelationFilter | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnThreadListRelationFilter, {
+  @TypeGraphQL.Field(_type => ReactionOnThreadsListRelationFilter, {
     nullable: true
   })
-  ReactionOnThread?: ReactionOnThreadListRelationFilter | undefined;
+  ReactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnTimelineListRelationFilter, {
+  @TypeGraphQL.Field(_type => ReactionOnTimelinesListRelationFilter, {
     nullable: true
   })
-  ReactionOnTimeline?: ReactionOnTimelineListRelationFilter | undefined;
+  ReactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnVisionListRelationFilter, {
+  @TypeGraphQL.Field(_type => ReactionOnVisionsListRelationFilter, {
     nullable: true
   })
-  ReactionOnVision?: ReactionOnVisionListRelationFilter | undefined;
+  ReactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
 }

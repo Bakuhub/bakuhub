@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { MergeRequestCreateNestedOneWithoutVisionInput } from "../inputs/MergeRequestCreateNestedOneWithoutVisionInput";
 import { PremiseCreateNestedOneWithoutVisionInput } from "../inputs/PremiseCreateNestedOneWithoutVisionInput";
-import { ReactionOnVisionCreateNestedManyWithoutVisionInput } from "../inputs/ReactionOnVisionCreateNestedManyWithoutVisionInput";
+import { ReactionOnVisionsCreateNestedManyWithoutVisionInput } from "../inputs/ReactionOnVisionsCreateNestedManyWithoutVisionInput";
 import { ReferenceCreateNestedOneWithoutVisionInput } from "../inputs/ReferenceCreateNestedOneWithoutVisionInput";
 import { UserCreateNestedOneWithoutVisionsInput } from "../inputs/UserCreateNestedOneWithoutVisionsInput";
 import { VisionCreateNestedManyWithoutPrevVisionInput } from "../inputs/VisionCreateNestedManyWithoutPrevVisionInput";
@@ -84,8 +84,8 @@ export class VisionCreateWithoutThreadsOnVisionInput {
   })
   mergeRequest?: MergeRequestCreateNestedOneWithoutVisionInput | undefined;
 
-  @TypeGraphQL.Field(_type => ReactionOnVisionCreateNestedManyWithoutVisionInput, {
+  @TypeGraphQL.Field(_type => ReactionOnVisionsCreateNestedManyWithoutVisionInput, {
     nullable: true
   })
-  ReactionOnVision?: ReactionOnVisionCreateNestedManyWithoutVisionInput | undefined;
+  ReactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutVisionInput | undefined;
 }

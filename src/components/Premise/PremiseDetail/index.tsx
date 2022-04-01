@@ -1,11 +1,9 @@
 import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import ShareIcon from "@mui/icons-material/Share";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
-import {setActivePremiseId} from "../../../store/slices/premiseSlice";
 import {useDispatch} from "react-redux";
-import {useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
 import {ThreadDetail} from "../../Thread/ThreadDetail";
 import ReplyIcon from "@mui/icons-material/Reply";
@@ -16,12 +14,19 @@ import {getThumbnail} from "../../../utils/getThumbnail";
 import {get} from "lodash";
 import {ReferenceOverview} from "../../Reference/ReferenceOverview";
 import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
-import {ThreadConnectType} from "../../../types";
+import {ConnectType} from "../../../types";
 import {Comment} from "../../Comment";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {premiseQuery} from "../../../gql/query/premiseQuery";
 import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
 import {getVisionHistoryQueryVariable, visionHistoryQuery} from "../../../gql/query/VisionHistoryQuery";
+import {getCreateReactionVariables, Reaction} from "../../../gql/utils/getCreateReactionVariables";
+import {createReactionOnVisionMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
+import {getUserIdBySession} from "../../../utils/getUserIdBySession";
+import {useSession} from "next-auth/react";
+import {useSnackbar} from "notistack";
+import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
+import {LoadingButton} from "@mui/lab";
 
 interface PremiseDetailProps {
     premise: Premise;
@@ -39,33 +44,49 @@ export const PremiseDetailContainer = () => {
     }
 };
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
-
+    const session = useSession();
     const router = useRouter();
+    const {enqueueSnackbar} = useSnackbar();
     const dispatch = useDispatch();
     const activeVision = premise.vision?.find(vision =>
             vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
             && !vision.draftMode);
-    const {data: threadsQueryData} = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
-        threadConnectType: ThreadConnectType.VISION,
+    const {
+        data: threadsQueryData,
+        refetch: refetchThreads
+    } = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
+        threadConnectType: ConnectType.VISION,
         id: activeVision?.id || ""
     }));
+    const [isRedirecting, setIsRedirecting] = React.useState(false);
+    const [createReactionOnVision,] = useMutation(createReactionOnVisionMutation);
+
     const {data: visionHistoryData} = useQuery(visionHistoryQuery, getVisionHistoryQueryVariable(premise.id));
     console.info(visionHistoryData);
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
             && get(vision, "mergeRequest.status")==="OPEN");
     const thumbnail = getThumbnail(activeVision);
-
+    const onClick = async () => {
+        if (activeVision?.id) {
+            const result = await createReactionOnVision(getCreateReactionVariables({
+                id: activeVision.id,
+                reaction: Reaction.UPVOTE,
+                type: ConnectType.VISION,
+                userId: getUserIdBySession(session)
+            }));
+            console.info(result);
+        }
+    };
     return (
             <Grid container>
                 <Grid item container xs={12}>
-                    <Grid item xs={4}>
-                        <Image
-                                height="400"
-                                width="400"
-                                src={thumbnail}
-                                alt="Paella dish"
-                        />
+                    <Grid item xs={4}> <Image
+                            height="400"
+                            width="400"
+                            src={thumbnail}
+                            alt="Paella dish"
+                    />
                     </Grid>
                     <Grid item xs={4}>
                         <Typography variant="h3" color="text.secondary">
@@ -96,20 +117,29 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     </Grid>
                     <ReferenceOverview snapshots={
                         get(activeVision, "reference.snapshots", [])}/>
-                    <IconButton aria-label="add to favorites" onClick={() => dispatch(setActivePremiseId(premise.id))}>
+                    <IconButton aria-label="add to favorites"
+                                color={"primary"}
+                                onClick={onClick}>
                         <ReplyIcon/>
                     </IconButton>
-                    <IconButton onClick={() => router.push(`/create/vision/${premise.id}`)} aria-label="share">
-                        <ShareIcon/>
-                    </IconButton>
+                    <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {
+                        setIsRedirecting(true);
+                        router.push(`/create/vision/${premise.id}`);
+                    }} aria-label="share" startIcon={<AccountTreeTwoToneIcon/>
+                    }>
+                        Create new vision
+                    </LoadingButton>
                 </Grid>
 
-                <Comment connectConfig={
-                    {
-                        type: ThreadConnectType.VISION,
-                        id: activeVision?.id || null
-                    }
-                } handleCancel={() => console.info("cancel")}/>
+                <Comment
+                        connectConfig={
+                            {
+                                type: ConnectType.VISION,
+                                id: activeVision?.id || ""
+                            }
+                        }
+                        handleSubmitCallback={refetchThreads}
+                />
                 <Grid item container xs={12}>
                     {
                         mainThreads ? mainThreads.map((thread, index) =>
@@ -118,7 +148,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                                                 thread={thread}
                                                 connectConfig={
                                                     {
-                                                        type: ThreadConnectType.VISION,
+                                                        type: ConnectType.VISION,
                                                         id: activeVision?.id || ""
                                                     }
                                                 }

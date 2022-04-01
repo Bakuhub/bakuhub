@@ -1,12 +1,12 @@
 import * as TypeGraphQL from "type-graphql";
-import { ReactionOnThread } from "../../../models/ReactionOnThread";
+import { ReactionOnThreads } from "../../../models/ReactionOnThreads";
 import { Thread } from "../../../models/Thread";
 import { ThreadsOnPremise } from "../../../models/ThreadsOnPremise";
 import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
 import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
 import { User } from "../../../models/User";
 import { ThreadChildThreadsArgs } from "./args/ThreadChildThreadsArgs";
-import { ThreadReactionOnThreadArgs } from "./args/ThreadReactionOnThreadArgs";
+import { ThreadReactionOnThreadsArgs } from "./args/ThreadReactionOnThreadsArgs";
 import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
 @TypeGraphQL.Resolver(_of => Thread)
@@ -77,14 +77,14 @@ export class ThreadRelationsResolver {
     }).threadsOnVision({});
   }
 
-  @TypeGraphQL.FieldResolver(_type => [ReactionOnThread], {
+  @TypeGraphQL.FieldResolver(_type => [ReactionOnThreads], {
     nullable: false
   })
-  async ReactionOnThread(@TypeGraphQL.Root() thread: Thread, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: ThreadReactionOnThreadArgs): Promise<ReactionOnThread[]> {
+  async ReactionOnThreads(@TypeGraphQL.Root() thread: Thread, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: ThreadReactionOnThreadsArgs): Promise<ReactionOnThreads[]> {
     return getPrismaFromContext(ctx).thread.findUnique({
       where: {
         id: thread.id,
       },
-    }).ReactionOnThread(args);
+    }).ReactionOnThreads(args);
   }
 }
