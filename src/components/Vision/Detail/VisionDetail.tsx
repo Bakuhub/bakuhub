@@ -28,7 +28,7 @@ export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision
     const thumbnail = getThumbnail(vision);
     console.info("------------------------------------");
     console.info(vision);
-    const getRedirectUrl = () => premiseId ? `/premises/${premiseId}`:`/visions/${vision.id}`;
+    const getRedirectUrl = () => premiseId ? `/premise/${premiseId}`:`/vision/${vision.id}`;
     const redirectedUrl = getRedirectUrl();
     return <Card sx={{maxWidth: 345}}>
         <CardHeader

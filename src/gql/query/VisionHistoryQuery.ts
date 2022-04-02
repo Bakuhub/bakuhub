@@ -5,6 +5,13 @@ export const visionHistoryQuery = gql`
         visions(where: $where) {
             id
             prevVisionId
+            mergeRequest {
+                description
+                title
+                id
+            }
+            createdAt
+            updatedAt
             author {
                 id
                 name
@@ -31,6 +38,11 @@ export const getVisionHistoryQueryVariable = (premiseId: string) => ({
                     }
                 }
             ]
-        }
+        },
+        "orderBy": [
+            {
+                "updatedAt": "desc"
+            }
+        ]
     }
 });

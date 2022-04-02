@@ -104,7 +104,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 }
                 if (result.data) {
                     enqueueSnackbar("premise created", {variant: "success"});
-                    await router.push(`/premises/${result.data.createPremise.id}`);
+                    await router.push(`/premise/${result.data.createPremise.id}`);
                 }
             } catch (e) {
                 enqueueSnackbar(get(e, "message", ""), {variant: "error"});
@@ -159,7 +159,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             }
             if (result.data) {
                 enqueueSnackbar("merge request created", {variant: "success"});
-                await router.push(`/premises/${premise.id}`);
+                await router.push(`/premise/${premise.id}`);
             }
             setLoading(false);
 

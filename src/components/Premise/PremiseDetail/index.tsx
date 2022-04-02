@@ -2,12 +2,11 @@ import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
-import {useDispatch} from "react-redux";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
 import {ThreadDetail} from "../../Thread/ThreadDetail";
 import ReplyIcon from "@mui/icons-material/Reply";
-import {CircularProgress, Grid, LinearProgress, Tooltip} from "@mui/material";
+import {Button, CircularProgress, Grid, LinearProgress, Tooltip} from "@mui/material";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
@@ -19,14 +18,14 @@ import {Comment} from "../../Comment";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {premiseQuery} from "../../../gql/query/premiseQuery";
 import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
-import {getVisionHistoryQueryVariable, visionHistoryQuery} from "../../../gql/query/VisionHistoryQuery";
+import {getVisionHistoryQueryVariable} from "../../../gql/query/VisionHistoryQuery";
 import {getCreateReactionVariables, Reaction} from "../../../gql/utils/getCreateReactionVariables";
 import {createReactionOnVisionMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
 import {useSession} from "next-auth/react";
-import {useSnackbar} from "notistack";
 import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {LoadingButton} from "@mui/lab";
+import {visionHistoryCountQuery} from "../../../gql/query/VisionHistoryCountQuery";
 
 interface PremiseDetailProps {
     premise: Premise;
@@ -35,19 +34,20 @@ interface PremiseDetailProps {
 export const PremiseDetailContainer = () => {
     const router = useRouter();
     const premiseId = router.query.id;
-    const {data, loading} = useQuery(premiseQuery, getPremiseDetailQueryVariable(premiseId as string));
+    const {data, loading, error} = useQuery(premiseQuery, getPremiseDetailQueryVariable(premiseId as string));
     console.info(data);
-    if (loading) {
+    if (loading && !data) {
         return <CircularProgress/>;
     } else {
+        if (error) {
+            return <Typography>{error.message}</Typography>;
+        }
         return <PremiseDetail premise={data.premise}/>;
     }
 };
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const session = useSession();
     const router = useRouter();
-    const {enqueueSnackbar} = useSnackbar();
-    const dispatch = useDispatch();
     const activeVision = premise.vision?.find(vision =>
             vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
             && !vision.draftMode);
@@ -61,8 +61,12 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const [createReactionOnVision,] = useMutation(createReactionOnVisionMutation);
 
-    const {data: visionHistoryData} = useQuery(visionHistoryQuery, getVisionHistoryQueryVariable(premise.id));
-    console.info(visionHistoryData);
+    const {
+        data: visionHistoryData,
+        loading: visionHistoryLoading,
+        error: visionHistoryError
+    } = useQuery(visionHistoryCountQuery, getVisionHistoryQueryVariable(premise.id));
+    const visionHistoryCount: number = get(visionHistoryData, "visions.length", 1);
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
             && get(vision, "mergeRequest.status")==="OPEN");
@@ -81,12 +85,20 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     return (
             <Grid container>
                 <Grid item container xs={12}>
-                    <Grid item xs={4}> <Image
-                            height="400"
-                            width="400"
-                            src={thumbnail}
-                            alt="Paella dish"
-                    />
+                    <Grid item xs={4}>
+                        <Grid item>
+                            <Tooltip title={"view log"}>
+                                <Button variant={"outlined"}
+                                        onClick={() => router.push(`/history/premise/${premise.id}`)}>
+                                    visions: {visionHistoryCount}</Button>
+                            </Tooltip>
+                        </Grid>
+                        <Image
+                                height="400"
+                                width="400"
+                                src={thumbnail}
+                                alt="Paella dish"
+                        />
                     </Grid>
                     <Grid item xs={4}>
                         <Typography variant="h3" color="text.secondary">
@@ -131,14 +143,13 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     </LoadingButton>
                 </Grid>
 
-                <Comment
-                        connectConfig={
-                            {
-                                type: ConnectType.VISION,
-                                id: activeVision?.id || ""
-                            }
-                        }
-                        handleSubmitCallback={refetchThreads}
+                <Comment connectConfig={
+                    {
+                        type: ConnectType.VISION,
+                        id: activeVision?.id || ""
+                    }
+                }
+                         handleSubmitCallback={refetchThreads}
                 />
                 <Grid item container xs={12}>
                     {
