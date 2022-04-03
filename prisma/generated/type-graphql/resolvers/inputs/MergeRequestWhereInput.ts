@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { EnumMergeRequestStatusFilter } from "../inputs/EnumMergeRequestStatusFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { ThreadsOnMergeRequestListRelationFilter } from "../inputs/ThreadsOnMergeRequestListRelationFilter";
 import { VisionRelationFilter } from "../inputs/VisionRelationFilter";
 
 @TypeGraphQL.InputType("MergeRequestWhereInput", {
@@ -55,4 +56,9 @@ export class MergeRequestWhereInput {
     nullable: true
   })
   visionId?: StringFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnMergeRequestListRelationFilter, {
+    nullable: true
+  })
+  threadsOnMergeRequest?: ThreadsOnMergeRequestListRelationFilter | undefined;
 }

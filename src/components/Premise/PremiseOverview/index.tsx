@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Premise} from "../../../../prisma/generated/type-graphql";
-import {VisionDetail} from "../../Vision/Detail/VisionDetail";
+import {VisionDetail} from "../../Vision/VisionOverview/VisionDetail";
 import {getActiveVisionFromPremise} from "../../../utils/getActiveVisionFromPremise";
 
 function PremiseOverview({premise}: { premise: Premise }) {

@@ -12,6 +12,7 @@ export { Tag } from "./Tag";
 export { TagsOnPremises } from "./TagsOnPremises";
 export { TagsOnTimelines } from "./TagsOnTimelines";
 export { Thread } from "./Thread";
+export { ThreadsOnMergeRequest } from "./ThreadsOnMergeRequest";
 export { ThreadsOnPremise } from "./ThreadsOnPremise";
 export { ThreadsOnTimeline } from "./ThreadsOnTimeline";
 export { ThreadsOnVision } from "./ThreadsOnVision";

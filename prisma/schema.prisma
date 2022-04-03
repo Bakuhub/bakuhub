@@ -111,12 +111,13 @@ model Reference {
 }
 
 model MergeRequest {
-  id          String             @id @default(cuid())
-  title       String             @db.VarChar(255)
-  description String?
-  status      MergeRequestStatus @default(OPEN)
-  vision      Vision             @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  visionId    String             @unique
+  id                    String                  @id @default(cuid())
+  title                 String                  @db.VarChar(255)
+  description           String?
+  status                MergeRequestStatus      @default(OPEN)
+  vision                Vision                  @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  visionId              String                  @unique
+  threadsOnMergeRequest ThreadsOnMergeRequest[]
 }
 
 model Timeline {
@@ -193,10 +194,21 @@ model Thread {
   parentThread   Thread?   @relation("ParentThreadChildThreads", fields: [parentThreadId], references: [id])
   childThreads   Thread[]  @relation("ParentThreadChildThreads")
 
-  threadsOnPremise  ThreadsOnPremise?
-  threadsOnTimeline ThreadsOnTimeline?
-  threadsOnVision   ThreadsOnVision?
-  ReactionOnThreads ReactionOnThreads[]
+  threadsOnPremise      ThreadsOnPremise?
+  threadsOnTimeline     ThreadsOnTimeline?
+  threadsOnVision       ThreadsOnVision?
+  threadsOnMergeRequest ThreadsOnMergeRequest?
+  ReactionOnThreads     ReactionOnThreads[]
+}
+
+model ThreadsOnMergeRequest {
+  thread         Thread       @relation(fields: [threadId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  threadId       String       @unique
+  mergeRequest   MergeRequest @relation(fields: [mergeRequestId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  mergeRequestId String
+  assignedAt     DateTime     @default(now())
+
+  @@id([threadId, mergeRequestId])
 }
 
 model ThreadsOnPremise {

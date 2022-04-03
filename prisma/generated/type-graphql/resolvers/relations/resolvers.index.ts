@@ -12,6 +12,7 @@ export { TagRelationsResolver } from "./Tag/TagRelationsResolver";
 export { TagsOnPremisesRelationsResolver } from "./TagsOnPremises/TagsOnPremisesRelationsResolver";
 export { TagsOnTimelinesRelationsResolver } from "./TagsOnTimelines/TagsOnTimelinesRelationsResolver";
 export { ThreadRelationsResolver } from "./Thread/ThreadRelationsResolver";
+export { ThreadsOnMergeRequestRelationsResolver } from "./ThreadsOnMergeRequest/ThreadsOnMergeRequestRelationsResolver";
 export { ThreadsOnPremiseRelationsResolver } from "./ThreadsOnPremise/ThreadsOnPremiseRelationsResolver";
 export { ThreadsOnTimelineRelationsResolver } from "./ThreadsOnTimeline/ThreadsOnTimelineRelationsResolver";
 export { ThreadsOnVisionRelationsResolver } from "./ThreadsOnVision/ThreadsOnVisionRelationsResolver";

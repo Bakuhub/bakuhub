@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ThreadsOnMergeRequestOrderByRelationAggregateInput } from "../inputs/ThreadsOnMergeRequestOrderByRelationAggregateInput";
 import { VisionOrderByWithRelationInput } from "../inputs/VisionOrderByWithRelationInput";
 import { SortOrder } from "../../enums/SortOrder";
 
@@ -38,4 +39,9 @@ export class MergeRequestOrderByWithRelationInput {
     nullable: true
   })
   visionId?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnMergeRequestOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  threadsOnMergeRequest?: ThreadsOnMergeRequestOrderByRelationAggregateInput | undefined;
 }

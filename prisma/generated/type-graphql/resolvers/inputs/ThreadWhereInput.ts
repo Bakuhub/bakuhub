@@ -9,6 +9,7 @@ import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
 import { ThreadRelationFilter } from "../inputs/ThreadRelationFilter";
+import { ThreadsOnMergeRequestRelationFilter } from "../inputs/ThreadsOnMergeRequestRelationFilter";
 import { ThreadsOnPremiseRelationFilter } from "../inputs/ThreadsOnPremiseRelationFilter";
 import { ThreadsOnTimelineRelationFilter } from "../inputs/ThreadsOnTimelineRelationFilter";
 import { ThreadsOnVisionRelationFilter } from "../inputs/ThreadsOnVisionRelationFilter";
@@ -102,6 +103,11 @@ export class ThreadWhereInput {
     nullable: true
   })
   threadsOnVision?: ThreadsOnVisionRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnMergeRequestRelationFilter, {
+    nullable: true
+  })
+  threadsOnMergeRequest?: ThreadsOnMergeRequestRelationFilter | undefined;
 
   @TypeGraphQL.Field(_type => ReactionOnThreadsListRelationFilter, {
     nullable: true

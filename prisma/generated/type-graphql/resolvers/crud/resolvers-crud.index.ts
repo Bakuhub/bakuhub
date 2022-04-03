@@ -12,6 +12,7 @@ export { TagCrudResolver } from "./Tag/TagCrudResolver";
 export { TagsOnPremisesCrudResolver } from "./TagsOnPremises/TagsOnPremisesCrudResolver";
 export { TagsOnTimelinesCrudResolver } from "./TagsOnTimelines/TagsOnTimelinesCrudResolver";
 export { ThreadCrudResolver } from "./Thread/ThreadCrudResolver";
+export { ThreadsOnMergeRequestCrudResolver } from "./ThreadsOnMergeRequest/ThreadsOnMergeRequestCrudResolver";
 export { ThreadsOnPremiseCrudResolver } from "./ThreadsOnPremise/ThreadsOnPremiseCrudResolver";
 export { ThreadsOnTimelineCrudResolver } from "./ThreadsOnTimeline/ThreadsOnTimelineCrudResolver";
 export { ThreadsOnVisionCrudResolver } from "./ThreadsOnVision/ThreadsOnVisionCrudResolver";

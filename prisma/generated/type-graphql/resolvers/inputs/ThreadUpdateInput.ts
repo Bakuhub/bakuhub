@@ -9,6 +9,7 @@ import { ReactionOnThreadsUpdateManyWithoutThreadInput } from "../inputs/Reactio
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { ThreadUpdateManyWithoutParentThreadInput } from "../inputs/ThreadUpdateManyWithoutParentThreadInput";
 import { ThreadUpdateOneWithoutChildThreadsInput } from "../inputs/ThreadUpdateOneWithoutChildThreadsInput";
+import { ThreadsOnMergeRequestUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnMergeRequestUpdateOneWithoutThreadInput";
 import { ThreadsOnPremiseUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnPremiseUpdateOneWithoutThreadInput";
 import { ThreadsOnTimelineUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnTimelineUpdateOneWithoutThreadInput";
 import { ThreadsOnVisionUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnVisionUpdateOneWithoutThreadInput";
@@ -77,6 +78,11 @@ export class ThreadUpdateInput {
     nullable: true
   })
   threadsOnVision?: ThreadsOnVisionUpdateOneWithoutThreadInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnMergeRequestUpdateOneWithoutThreadInput, {
+    nullable: true
+  })
+  threadsOnMergeRequest?: ThreadsOnMergeRequestUpdateOneWithoutThreadInput | undefined;
 
   @TypeGraphQL.Field(_type => ReactionOnThreadsUpdateManyWithoutThreadInput, {
     nullable: true

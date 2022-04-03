@@ -18,14 +18,14 @@ import {Comment} from "../../Comment";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {premiseQuery} from "../../../gql/query/premiseQuery";
 import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
-import {getVisionHistoryQueryVariable} from "../../../gql/query/VisionHistoryQuery";
+import {getVisionHistoryQueryVariable} from "../../../gql/query/visionHistoryQuery";
 import {getCreateReactionVariables, Reaction} from "../../../gql/utils/getCreateReactionVariables";
 import {createReactionOnVisionMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
 import {useSession} from "next-auth/react";
 import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {LoadingButton} from "@mui/lab";
-import {visionHistoryCountQuery} from "../../../gql/query/VisionHistoryCountQuery";
+import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
 
 interface PremiseDetailProps {
     premise: Premise;

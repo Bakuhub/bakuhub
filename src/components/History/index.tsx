@@ -6,17 +6,15 @@ import moment from "moment";
 import {get} from "lodash";
 import * as React from "react";
 import {useQuery} from "@apollo/client";
-import {visionHistoryQuery} from "../../gql/query/VisionHistoryQuery";
+import {getVisionHistoryQueryVariable, visionHistoryQuery} from "../../gql/query/visionHistoryQuery";
 import {Vision} from "../../../prisma/generated/type-graphql";
 
 export const History = () => {
     const router = useRouter();
     const {premiseId} = router.query;
-    const {data, loading, error} = useQuery(visionHistoryQuery, {
-        variables: {
-            premiseId: premiseId || "",
-        },
-    });
+    console.info(premiseId);
+    console.info("-00000000000000000000000000000000000");
+    const {data, loading, error} = useQuery(visionHistoryQuery, getVisionHistoryQueryVariable(premiseId as string));
     console.info(premiseId);
     console.info(data);
     const visions: Vision[] = get(data, "visions", []);
@@ -31,7 +29,7 @@ export const History = () => {
             <Grid container>
                 {visions.map(vision => <Grid key={vision.id} item container xs={12}>
 
-                    <Button onClick={() => router.push("/vision/")}>
+                    <Button onClick={() => router.push(`/vision/${vision.id}`)}>
                         {vision.id}
                     </Button>
                     <Tooltip title={vision.updatedAt || ""}>

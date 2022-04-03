@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { EnumMergeRequestStatusFieldUpdateOperationsInput } from "../inputs/EnumMergeRequestStatusFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
+import { ThreadsOnMergeRequestUpdateManyWithoutMergeRequestInput } from "../inputs/ThreadsOnMergeRequestUpdateManyWithoutMergeRequestInput";
 
 @TypeGraphQL.InputType("MergeRequestUpdateWithoutVisionInput", {
   isAbstract: true
@@ -29,4 +30,9 @@ export class MergeRequestUpdateWithoutVisionInput {
     nullable: true
   })
   status?: EnumMergeRequestStatusFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnMergeRequestUpdateManyWithoutMergeRequestInput, {
+    nullable: true
+  })
+  threadsOnMergeRequest?: ThreadsOnMergeRequestUpdateManyWithoutMergeRequestInput | undefined;
 }

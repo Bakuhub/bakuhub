@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { ReactionOnThreads } from "../models/ReactionOnThreads";
+import { ThreadsOnMergeRequest } from "../models/ThreadsOnMergeRequest";
 import { ThreadsOnPremise } from "../models/ThreadsOnPremise";
 import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
@@ -64,6 +65,8 @@ export class Thread {
   threadsOnTimeline?: ThreadsOnTimeline | null;
 
   threadsOnVision?: ThreadsOnVision | null;
+
+  threadsOnMergeRequest?: ThreadsOnMergeRequest | null;
 
   ReactionOnThreads?: ReactionOnThreads[];
 

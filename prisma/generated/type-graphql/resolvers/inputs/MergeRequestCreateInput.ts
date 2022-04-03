@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ThreadsOnMergeRequestCreateNestedManyWithoutMergeRequestInput } from "../inputs/ThreadsOnMergeRequestCreateNestedManyWithoutMergeRequestInput";
 import { VisionCreateNestedOneWithoutMergeRequestInput } from "../inputs/VisionCreateNestedOneWithoutMergeRequestInput";
 import { MergeRequestStatus } from "../../enums/MergeRequestStatus";
 
@@ -33,4 +34,9 @@ export class MergeRequestCreateInput {
     nullable: false
   })
   vision!: VisionCreateNestedOneWithoutMergeRequestInput;
+
+  @TypeGraphQL.Field(_type => ThreadsOnMergeRequestCreateNestedManyWithoutMergeRequestInput, {
+    nullable: true
+  })
+  threadsOnMergeRequest?: ThreadsOnMergeRequestCreateNestedManyWithoutMergeRequestInput | undefined;
 }

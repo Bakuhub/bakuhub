@@ -1,12 +1,18 @@
-import {MergeRequest} from "../../../../prisma/generated/type-graphql/";
+import {MergeRequest, Thread} from "../../../../prisma/generated/type-graphql/";
 import React from "react";
-import {Button, Grid, Typography} from "@mui/material";
-import {VisionDetail} from "../Detail/VisionDetail";
-import {useMutation} from "@apollo/client";
+import {Grid, LinearProgress, Typography} from "@mui/material";
+import {VisionDetail} from "../VisionOverview/VisionDetail";
+import {useMutation, useQuery} from "@apollo/client";
 import {mergeVisionIntoPremiseMutation} from "../../../gql/mutation/mergeVisionIntoPremiseMutation";
 import {get} from "lodash";
 import {useSnackbar} from "notistack";
 import {LoadingButton} from "@mui/lab";
+import {Comment} from "../../Comment";
+import {ConnectType} from "../../../types";
+import {preprocessThreads} from "../../../utils/preprocess/threads";
+import {threadsQuery} from "../../../gql/query/threadsQuery";
+import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
+import {ThreadDetail} from "../../Thread/ThreadDetail";
 
 export interface CreateVisionProps {
     mergeRequest: MergeRequest;
@@ -17,6 +23,15 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
     const [loading, setLoading] = React.useState(false);
     const [mergeVisionIntoPremise] = useMutation(mergeVisionIntoPremiseMutation);
     const {enqueueSnackbar} = useSnackbar();
+    const {
+        data: threadsQueryData,
+        refetch: refetchThreads
+    } = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
+        threadConnectType: ConnectType.MERGE_REQUEST,
+        id: mergeRequest.id
+    }));
+    const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
+
     if (!vision) return <div>no vision</div>;
     return <Grid container>
         <Grid item container md={6} xs={12}>
@@ -69,27 +84,31 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
             }}>
                 merge
             </LoadingButton>
-            <Button onClick={() => mergeVisionIntoPremise({
-                variables: {
-                    "where": {
-                        "id": vision.id
-                    },
-                    "data": {
-                        "draftMode": {
-                            "set": true
-                        },
-                        "mergeRequest": {
-                            "update": {
-                                "status": {
-                                    "set": "CLOSE"
-                                }
-                            }
-                        }
-                    }
-                }
-            })}>
+        </Grid>
 
-            </Button>
+        <Comment connectConfig={
+            {
+                type: ConnectType.MERGE_REQUEST,
+                id: mergeRequest.id
+            }
+        }
+                 handleSubmitCallback={refetchThreads}
+        />
+        <Grid item container xs={12}>
+            {
+                mainThreads ? mainThreads.map((thread, index) =>
+                                <ThreadDetail
+                                        key={thread.id ? thread.id:index}
+                                        thread={thread}
+                                        connectConfig={
+                                            {
+                                                type: ConnectType.MERGE_REQUEST,
+                                                id: mergeRequest.id
+                                            }
+                                        }
+                                />):
+                        <LinearProgress/>
+            }
         </Grid>
     </Grid>;
 };

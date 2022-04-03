@@ -1,3 +1,4 @@
+export * from "./MergeRequest/args";
 export * from "./Premise/args";
 export * from "./Reference/args";
 export * from "./Snapshot/args";

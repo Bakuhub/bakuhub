@@ -3,60 +3,37 @@ import {gql} from "@apollo/client";
 export const visionQuery = gql`
     query Vision($where: VisionWhereUniqueInput!) {
         vision(where: $where) {
-            title
             id
+            title
             activityDate
             description
             createdAt
+            premiseId
             reference {
-                snapshots {
+                snapshots{
                     sourceUrl
+                    createdAt
                     s3Url
                     versionId
+                    id
                 }
             }
-            thumbnail
-            author {
-                name
-                image
-                email
+            authorId
+            prevVisionId
+            draftMode
+            mergeRequest {
                 id
+                status
+                title
+                description
             }
-            prevVision {
+            nextVisions {
+                id
                 title
                 activityDate
                 description
                 createdAt
-                reference {
-                    snapshots {
-                        sourceUrl
-                        s3Url
-                        versionId
-                    }
-                }
-                authorId
-                thumbnail
-                premiseId
                 draftMode
-                author {
-                    name
-                    id
-                    email
-                    image
-                }
-            }
-            threadsOnVision {
-                thread {
-                    _count {
-                        childThreads
-                    }
-                    author {
-                        name
-                        email
-                        image
-                        id
-                    }
-                }
             }
         }
     }

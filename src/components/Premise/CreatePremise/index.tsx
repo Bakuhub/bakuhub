@@ -182,6 +182,9 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                                           label="Title" variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
+
+            </Grid>
+            <Grid item xs={12}>
                 <LocalizationProvider dateAdapter={DateAdapter}>
                     <DateTimePicker
                             label="Date&Time picker"
@@ -194,7 +197,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                                                                 required
                                                                 {...params}
 
-                                                                helperText={"please enter the datetime-local "}
+                                                                helperText={"please enter the date it happened"}
 
                             />}
                     />

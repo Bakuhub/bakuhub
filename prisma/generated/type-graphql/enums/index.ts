@@ -17,6 +17,7 @@ export { TagScalarFieldEnum } from "./TagScalarFieldEnum";
 export { TagsOnPremisesScalarFieldEnum } from "./TagsOnPremisesScalarFieldEnum";
 export { TagsOnTimelinesScalarFieldEnum } from "./TagsOnTimelinesScalarFieldEnum";
 export { ThreadScalarFieldEnum } from "./ThreadScalarFieldEnum";
+export { ThreadsOnMergeRequestScalarFieldEnum } from "./ThreadsOnMergeRequestScalarFieldEnum";
 export { ThreadsOnPremiseScalarFieldEnum } from "./ThreadsOnPremiseScalarFieldEnum";
 export { ThreadsOnTimelineScalarFieldEnum } from "./ThreadsOnTimelineScalarFieldEnum";
 export { ThreadsOnVisionScalarFieldEnum } from "./ThreadsOnVisionScalarFieldEnum";
