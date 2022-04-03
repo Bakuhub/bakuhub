@@ -1,6 +1,6 @@
 import {ConnectType} from "../../types";
 import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
-import {capitalize} from "lodash";
+import {capitalize} from "@mui/material";
 
 export interface GetThreadQueryVariableProps {
     threadConnectType: ConnectType;

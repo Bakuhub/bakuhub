@@ -8,6 +8,7 @@ import * as React from "react";
 import {useQuery} from "@apollo/client";
 import {getVisionHistoryQueryVariable, visionHistoryQuery} from "../../gql/query/visionHistoryQuery";
 import {Vision} from "../../../prisma/generated/type-graphql";
+import {TimelineContainer} from "../Timeline";
 
 export const History = () => {
     const router = useRouter();
@@ -27,6 +28,7 @@ export const History = () => {
 
     return (
             <Grid container>
+                <TimelineContainer visions={visions}/>
                 {visions.map(vision => <Grid key={vision.id} item container xs={12}>
 
                     <Button onClick={() => router.push(`/vision/${vision.id}`)}>
