@@ -17,6 +17,10 @@ export const DrawerList = () => {
             text: "create new snapshot",
             url: "/create/snapshot",
             icon: AddTaskIcon
+        }, {
+            text: "create new timeline",
+            url: "/create/timeline",
+            icon: AddTaskIcon
         }
     ];
     const router = useRouter();
