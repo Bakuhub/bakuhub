@@ -1,10 +1,8 @@
 import * as React from "react";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
-import ReplyIcon from "@mui/icons-material/Reply";
 import {Button, CircularProgress, Grid, Tooltip} from "@mui/material";
 import Image from "next/image";
 import {useRouter} from "next/router";
@@ -133,11 +131,11 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     </Grid>
                     <ReferenceOverview snapshots={
                         get(activeVision, "reference.snapshots", [])}/>
-                    <IconButton aria-label="add to favorites"
-                                color={"primary"}
-                                onClick={onClick}>
-                        <ReplyIcon/>
-                    </IconButton>
+                    {/*<IconButton aria-label="add to favorites"*/}
+                    {/*            color={"primary"}*/}
+                    {/*            onClick={onClick}>*/}
+                    {/*    <ReplyIcon/>*/}
+                    {/*</IconButton>*/}
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {
                         setIsRedirecting(true);
                         router.push(`/create/vision/${premise.id}`);

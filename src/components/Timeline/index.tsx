@@ -34,7 +34,6 @@ export const TimelineContainer: FunctionComponent<TimelineContainerProps> = ({
                                 {vision.updatedAt}
                             </Typography>
                         </Tooltip>
-
                     </TimelineOppositeContent>
                     <TimelineSeparator>
                         <TimelineDot>
