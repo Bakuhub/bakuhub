@@ -42,6 +42,9 @@ function MyApp({
                                 rel="stylesheet"
                                 href="https://fonts.googleapis.com/icon?family=Material+Icons"
                         />
+                        <title>
+                            bakuhub
+                        </title>
                         {/* for layout with drawer and header */}
                         <Layout>
                             <Component {...pageProps} />
