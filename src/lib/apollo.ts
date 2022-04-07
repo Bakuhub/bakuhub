@@ -5,7 +5,7 @@ import {get} from "lodash";
 
 const apolloClient = new ApolloClient({
     uri: `${getUrl(process.env.NODE_ENV==="development" ? "http://localhost:4000":
-            `${get(process, "env.NEXT_PUBLIC_VERCEL_URL", "rrrr.com")}${get(process, "env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL", "/api/grnotright")}`)}`,
+            `${get(process, "env.NEXT_PUBLIC_VERCEL_URL", "bakuhub.com")}${get(process, "env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL", "/api/graphql")}`)}`,
     cache: new InMemoryCache({
         typePolicies: {
             Query: {
