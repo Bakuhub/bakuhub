@@ -1,10 +1,10 @@
 import {buildSchema} from "type-graphql";
-import {resolvers} from "../prisma/generated/type-graphql";
+import {resolvers} from "@generated/type-graphql";
 
 export async function createSchema() {
     return await buildSchema({
-        resolvers: resolvers,
-        //emitSchemaFile: process.env.NODE_ENV==="development",
+        resolvers,
+        emitSchemaFile: true,
         validate: false,
     });
 }
