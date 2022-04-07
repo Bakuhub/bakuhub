@@ -13,7 +13,6 @@ import {SnackbarProvider} from "notistack";
 function MyApp({
                    Component, pageProps: {session, ...pageProps},
                }: AppProps) {
-    console.info(process.env);
     // useSession with next-auth
     return <SessionProvider session={session}>
         {/* this is MUI theme*/}

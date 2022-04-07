@@ -9,6 +9,10 @@ import {UserStatus} from "../Auth";
 
 export const MainPage = () => {
     const router = useRouter();
+    console.info(process.env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL);
+    console.info(process.env.NEXT_PUBLIC_VERCEL_URL);
+    console.info(process.env);
+    console.info("------------------------");
     const {loading, error, data} = useQuery<{ premises: Premise[] }>(premisesQuery, {
         variables: {
             "where": {
