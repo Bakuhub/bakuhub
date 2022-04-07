@@ -8,7 +8,7 @@ export const themeOptions: ThemeOptions = {
             main: "#3f51b5",
         },
         secondary: {
-            main: "#f5f100",
+            main: "#404A7E",
         },
     },
     typography: {

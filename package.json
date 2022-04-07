@@ -32,6 +32,8 @@
     "@mui/icons-material": "^5.5.1",
     "@mui/lab": "^5.0.0-alpha.72",
     "@mui/material": "^5.5.0",
+    "@mui/x-data-grid": "^5.8.0",
+    "@mui/x-data-grid-generator": "^5.8.0",
     "@next-auth/prisma-adapter": "^1.0.3",
     "@prisma/client": "^3.11.0",
     "@reduxjs/toolkit": "^1.8.0",

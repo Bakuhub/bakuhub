@@ -3,9 +3,9 @@ import {useState} from "react";
 import {LoadingButton} from "@mui/lab";
 import {getVisionsByKeywordArgs} from "../../../gql/helper/getVisionsByKeywordArgs";
 import {useQuery} from "@apollo/client";
-import {TimelineContainer} from "../index";
-import {VisionDetail} from "../../Vision/VisionOverview/VisionDetail";
 import {Vision} from "../../../../prisma/generated/type-graphql";
+import {TimelineContainer} from "../index";
+import {VisionDataGrid} from "../../Vision/VisionDataGrid";
 
 export const TimelineCreator = () => {
     const [keyword, setKeyword] = useState("");
@@ -13,9 +13,13 @@ export const TimelineCreator = () => {
     const {data, loading, error, refetch} = useQuery(
             ...getVisionsByKeywordArgs(keyword)
     );
-    console.info(data);
+    const [timelineNodes, setTimelineNodes] = useState<Vision[]>([]);
+    const visions = data?.visions.map((vision: Vision) => ({
+        ...vision,
+        inTimeline: timelineNodes.some(timelineVision => timelineVision.id===vision.id)
+    }));
     return (
-            <Grid container justifyContent={"center"}>
+            <Grid container>
                 <Typography variant={"h1"}>TimelineCreator</Typography>
                 <Grid item xs={11}>
                     <TextField
@@ -33,30 +37,40 @@ export const TimelineCreator = () => {
                                }}>
                     Search
                 </LoadingButton>
-                <Grid item container xs={8} alignContent={"center"}>
-                    {data && data.visions.map(
-                            (vision: Vision) => <VisionDetail key={vision.id} vision={vision}/>
-                    )}
+                <Grid item xs={8}>
+                    <VisionDataGrid handleUpdateVisionStatus={
+                        (visionId: string, nextStatus) => {
+
+                            const newTimelineNode = visions.find((vision: Vision) => vision.id===visionId);
+                            if (newTimelineNode) {
+                                if (nextStatus) {
+                                    setTimelineNodes([...timelineNodes, newTimelineNode]);
+                                } else {
+                                    setTimelineNodes(timelineNodes.filter((timelineNode: Vision) => timelineNode.id!==visionId));
+                                }
+                            }
+                        }
+                    } loading={loading} visions={visions || []}/>
                 </Grid>
-                {data && <Grid item container xs={4}><TimelineContainer
-                    getTitle={
-                        (vision) => {
-                            return `${vision.title}`;
+                <Grid item container xs={4}><TimelineContainer
+                        getTitle={
+                            (vision) => {
+                                return `${vision.title}`;
+                            }
                         }
-                    }
-                    getDescription={
-                        (vision) => {
-                            return `${vision.description}`;
+                        getDescription={
+                            (vision) => {
+                                return `${vision.description}`;
+                            }
                         }
-                    }
-                    getDate={(vision) => {
-                        if (vision.activityDate)
-                            return new Date(vision.activityDate).toLocaleDateString();
-                        else
-                            return "invariant";
-                    }}
-                    visions={data.visions || []}/>
-                </Grid>}
+                        getDate={(vision) => {
+                            if (vision.activityDate)
+                                return new Date(vision.activityDate).toLocaleDateString();
+                            else
+                                return "invariant";
+                        }}
+                        visions={timelineNodes}/>
+                </Grid>
             </Grid>
     );
 };

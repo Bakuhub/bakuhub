@@ -1,7 +1,7 @@
 import {MergeRequest, Thread} from "../../../../prisma/generated/type-graphql/";
 import React from "react";
 import {Grid, Typography} from "@mui/material";
-import {VisionDetail} from "../VisionOverview/VisionDetail";
+import {VisionOverview} from "../VisionOverview/VisionOverview";
 import {useMutation, useQuery} from "@apollo/client";
 import {mergeVisionIntoPremiseMutation} from "../../../gql/mutation/mergeVisionIntoPremiseMutation";
 import {get} from "lodash";
@@ -46,14 +46,14 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
             <Typography>
                 Merge request: {vision.id}
             </Typography>
-            <VisionDetail vision={vision}/>
+            <VisionOverview vision={vision}/>
         </Grid>
         {
             vision.prevVision && <Grid item container md={6} xs={12}>
                 <Typography>
                     this is the old version {vision.prevVision.id}
                 </Typography>
-                <VisionDetail vision={vision.prevVision}/>
+                <VisionOverview vision={vision.prevVision}/>
             </Grid>}
 
         <Grid item xs={12}>

@@ -21,9 +21,10 @@ import moment from "moment";
 export interface VisionDetailProps {
     vision: Vision;
     premiseId?: string;
+    hideImage?: boolean;
 }
 
-export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision, premiseId}) => {
+export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({vision, premiseId, hideImage}) => {
     const router = useRouter();
     const [expanded, setExpanded] = React.useState(false);
     const thumbnail = getThumbnail(vision);
@@ -54,7 +55,7 @@ export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision
                     <Typography>{fromNow(vision.activityDate)}</Typography>
                 </Tooltip>}
         />
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Collapse in={expanded || !hideImage} timeout="auto" unmountOnExit>
 
             <CardMedia
                     component="img"
