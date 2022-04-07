@@ -1,0 +1,38 @@
+import { BoolFilter } from "../inputs/BoolFilter";
+import { DateTimeFilter } from "../inputs/DateTimeFilter";
+import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
+import { MergeRequestRelationFilter } from "../inputs/MergeRequestRelationFilter";
+import { PremiseRelationFilter } from "../inputs/PremiseRelationFilter";
+import { ReactionOnVisionsListRelationFilter } from "../inputs/ReactionOnVisionsListRelationFilter";
+import { ReferenceRelationFilter } from "../inputs/ReferenceRelationFilter";
+import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { ThreadsOnVisionListRelationFilter } from "../inputs/ThreadsOnVisionListRelationFilter";
+import { UserRelationFilter } from "../inputs/UserRelationFilter";
+import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
+import { VisionRelationFilter } from "../inputs/VisionRelationFilter";
+export declare class VisionWhereInput {
+    AND?: VisionWhereInput[] | undefined;
+    OR?: VisionWhereInput[] | undefined;
+    NOT?: VisionWhereInput[] | undefined;
+    id?: StringFilter | undefined;
+    title?: StringFilter | undefined;
+    activityDate?: DateTimeNullableFilter | undefined;
+    description?: StringNullableFilter | undefined;
+    updatedAt?: DateTimeNullableFilter | undefined;
+    createdAt?: DateTimeFilter | undefined;
+    reference?: ReferenceRelationFilter | undefined;
+    referenceId?: StringNullableFilter | undefined;
+    author?: UserRelationFilter | undefined;
+    authorId?: StringNullableFilter | undefined;
+    premise?: PremiseRelationFilter | undefined;
+    thumbnail?: StringNullableFilter | undefined;
+    premiseId?: StringFilter | undefined;
+    draftMode?: BoolFilter | undefined;
+    prevVisionId?: StringNullableFilter | undefined;
+    prevVision?: VisionRelationFilter | undefined;
+    nextVisions?: VisionListRelationFilter | undefined;
+    threadsOnVision?: ThreadsOnVisionListRelationFilter | undefined;
+    mergeRequest?: MergeRequestRelationFilter | undefined;
+    ReactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
+}

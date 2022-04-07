@@ -1,0 +1,15 @@
+import { PremisesOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/PremisesOnTimelinesUpdateManyWithoutTimelineInput";
+import { ReactionOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/ReactionOnTimelinesUpdateManyWithoutTimelineInput";
+import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
+import { TagsOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/TagsOnTimelinesUpdateManyWithoutTimelineInput";
+import { ThreadsOnTimelineUpdateManyWithoutTimelineInput } from "../inputs/ThreadsOnTimelineUpdateManyWithoutTimelineInput";
+export declare class TimelineUpdateWithoutAuthorInput {
+    id?: StringFieldUpdateOperationsInput | undefined;
+    title?: StringFieldUpdateOperationsInput | undefined;
+    description?: StringFieldUpdateOperationsInput | undefined;
+    status?: StringFieldUpdateOperationsInput | undefined;
+    premisesOnTimelines?: PremisesOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+    tagsOnTimelines?: TagsOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+    threadsOnTimeline?: ThreadsOnTimelineUpdateManyWithoutTimelineInput | undefined;
+    ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+}

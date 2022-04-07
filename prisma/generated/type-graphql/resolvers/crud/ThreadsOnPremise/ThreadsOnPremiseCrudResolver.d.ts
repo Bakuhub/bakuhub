@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateThreadsOnPremiseArgs } from "./args/AggregateThreadsOnPremiseArgs";
+import { CreateManyThreadsOnPremiseArgs } from "./args/CreateManyThreadsOnPremiseArgs";
+import { CreateThreadsOnPremiseArgs } from "./args/CreateThreadsOnPremiseArgs";
+import { DeleteManyThreadsOnPremiseArgs } from "./args/DeleteManyThreadsOnPremiseArgs";
+import { DeleteThreadsOnPremiseArgs } from "./args/DeleteThreadsOnPremiseArgs";
+import { FindFirstThreadsOnPremiseArgs } from "./args/FindFirstThreadsOnPremiseArgs";
+import { FindManyThreadsOnPremiseArgs } from "./args/FindManyThreadsOnPremiseArgs";
+import { FindUniqueThreadsOnPremiseArgs } from "./args/FindUniqueThreadsOnPremiseArgs";
+import { GroupByThreadsOnPremiseArgs } from "./args/GroupByThreadsOnPremiseArgs";
+import { UpdateManyThreadsOnPremiseArgs } from "./args/UpdateManyThreadsOnPremiseArgs";
+import { UpdateThreadsOnPremiseArgs } from "./args/UpdateThreadsOnPremiseArgs";
+import { UpsertThreadsOnPremiseArgs } from "./args/UpsertThreadsOnPremiseArgs";
+import { ThreadsOnPremise } from "../../../models/ThreadsOnPremise";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateThreadsOnPremise } from "../../outputs/AggregateThreadsOnPremise";
+import { ThreadsOnPremiseGroupBy } from "../../outputs/ThreadsOnPremiseGroupBy";
+export declare class ThreadsOnPremiseCrudResolver {
+    threadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: FindUniqueThreadsOnPremiseArgs): Promise<ThreadsOnPremise | null>;
+    findFirstThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: FindFirstThreadsOnPremiseArgs): Promise<ThreadsOnPremise | null>;
+    threadsOnPremises(ctx: any, info: GraphQLResolveInfo, args: FindManyThreadsOnPremiseArgs): Promise<ThreadsOnPremise[]>;
+    createThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: CreateThreadsOnPremiseArgs): Promise<ThreadsOnPremise>;
+    createManyThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: CreateManyThreadsOnPremiseArgs): Promise<AffectedRowsOutput>;
+    deleteThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: DeleteThreadsOnPremiseArgs): Promise<ThreadsOnPremise | null>;
+    updateThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: UpdateThreadsOnPremiseArgs): Promise<ThreadsOnPremise | null>;
+    deleteManyThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: DeleteManyThreadsOnPremiseArgs): Promise<AffectedRowsOutput>;
+    updateManyThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: UpdateManyThreadsOnPremiseArgs): Promise<AffectedRowsOutput>;
+    upsertThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: UpsertThreadsOnPremiseArgs): Promise<ThreadsOnPremise>;
+    aggregateThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: AggregateThreadsOnPremiseArgs): Promise<AggregateThreadsOnPremise>;
+    groupByThreadsOnPremise(ctx: any, info: GraphQLResolveInfo, args: GroupByThreadsOnPremiseArgs): Promise<ThreadsOnPremiseGroupBy[]>;
+}

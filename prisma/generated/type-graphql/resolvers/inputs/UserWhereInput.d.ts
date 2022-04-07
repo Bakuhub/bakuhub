@@ -1,0 +1,32 @@
+import { AccountListRelationFilter } from "../inputs/AccountListRelationFilter";
+import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
+import { PremiseListRelationFilter } from "../inputs/PremiseListRelationFilter";
+import { ReactionOnThreadsListRelationFilter } from "../inputs/ReactionOnThreadsListRelationFilter";
+import { ReactionOnTimelinesListRelationFilter } from "../inputs/ReactionOnTimelinesListRelationFilter";
+import { ReactionOnVisionsListRelationFilter } from "../inputs/ReactionOnVisionsListRelationFilter";
+import { SessionListRelationFilter } from "../inputs/SessionListRelationFilter";
+import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
+import { TimelineListRelationFilter } from "../inputs/TimelineListRelationFilter";
+import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
+export declare class UserWhereInput {
+    AND?: UserWhereInput[] | undefined;
+    OR?: UserWhereInput[] | undefined;
+    NOT?: UserWhereInput[] | undefined;
+    id?: StringFilter | undefined;
+    name?: StringNullableFilter | undefined;
+    email?: StringNullableFilter | undefined;
+    emailVerified?: DateTimeNullableFilter | undefined;
+    updatedAt?: DateTimeNullableFilter | undefined;
+    image?: StringNullableFilter | undefined;
+    accounts?: AccountListRelationFilter | undefined;
+    sessions?: SessionListRelationFilter | undefined;
+    premises?: PremiseListRelationFilter | undefined;
+    threads?: ThreadListRelationFilter | undefined;
+    visions?: VisionListRelationFilter | undefined;
+    timelines?: TimelineListRelationFilter | undefined;
+    ReactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
+    ReactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
+    ReactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
+}

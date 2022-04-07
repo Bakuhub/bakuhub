@@ -1,0 +1,30 @@
+import { Account } from "../../../models/Account";
+import { Premise } from "../../../models/Premise";
+import { ReactionOnThreads } from "../../../models/ReactionOnThreads";
+import { ReactionOnTimelines } from "../../../models/ReactionOnTimelines";
+import { ReactionOnVisions } from "../../../models/ReactionOnVisions";
+import { Session } from "../../../models/Session";
+import { Thread } from "../../../models/Thread";
+import { Timeline } from "../../../models/Timeline";
+import { User } from "../../../models/User";
+import { Vision } from "../../../models/Vision";
+import { UserAccountsArgs } from "./args/UserAccountsArgs";
+import { UserPremisesArgs } from "./args/UserPremisesArgs";
+import { UserReactionOnThreadsArgs } from "./args/UserReactionOnThreadsArgs";
+import { UserReactionOnTimelinesArgs } from "./args/UserReactionOnTimelinesArgs";
+import { UserReactionOnVisionsArgs } from "./args/UserReactionOnVisionsArgs";
+import { UserSessionsArgs } from "./args/UserSessionsArgs";
+import { UserThreadsArgs } from "./args/UserThreadsArgs";
+import { UserTimelinesArgs } from "./args/UserTimelinesArgs";
+import { UserVisionsArgs } from "./args/UserVisionsArgs";
+export declare class UserRelationsResolver {
+    accounts(user: User, ctx: any, args: UserAccountsArgs): Promise<Account[]>;
+    sessions(user: User, ctx: any, args: UserSessionsArgs): Promise<Session[]>;
+    premises(user: User, ctx: any, args: UserPremisesArgs): Promise<Premise[]>;
+    threads(user: User, ctx: any, args: UserThreadsArgs): Promise<Thread[]>;
+    visions(user: User, ctx: any, args: UserVisionsArgs): Promise<Vision[]>;
+    timelines(user: User, ctx: any, args: UserTimelinesArgs): Promise<Timeline[]>;
+    ReactionOnThreads(user: User, ctx: any, args: UserReactionOnThreadsArgs): Promise<ReactionOnThreads[]>;
+    ReactionOnTimelines(user: User, ctx: any, args: UserReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]>;
+    ReactionOnVisions(user: User, ctx: any, args: UserReactionOnVisionsArgs): Promise<ReactionOnVisions[]>;
+}
