@@ -14,15 +14,20 @@ import {Vision} from "../../../prisma/generated/type-graphql";
 
 export interface TimelineContainerProps {
     visions: Vision[];
+    getTitle: (vision: Vision) => string;
+    getDescription: (vision: Vision) => string;
+    getDate: (vision: Vision) => string;
 }
 
 export const TimelineContainer: FunctionComponent<TimelineContainerProps> = ({
-                                                                                 visions
+                                                                                 visions,
+                                                                                 getTitle,
+                                                                                 getDescription,
+                                                                                 getDate,
                                                                              }) => {
     return (
             <Timeline position="alternate">
                 {visions.map((vision) => <TimelineItem key={vision.id}>
-
                     <TimelineOppositeContent
                             sx={{m: "auto 0"}}
                             align="right"
@@ -31,7 +36,7 @@ export const TimelineContainer: FunctionComponent<TimelineContainerProps> = ({
                     >
                         <Tooltip title={"activity date"}>
                             <Typography>
-                                {vision.updatedAt}
+                                {getDate(vision)}
                             </Typography>
                         </Tooltip>
                     </TimelineOppositeContent>
@@ -43,9 +48,9 @@ export const TimelineContainer: FunctionComponent<TimelineContainerProps> = ({
                     </TimelineSeparator>
                     <TimelineContent sx={{py: "12px", px: 2}}>
                         <Typography variant="h6" component="span">
-                            {vision.mergeRequest?.title}
+                            {getTitle(vision)}
                         </Typography>
-                        <Typography>{vision.mergeRequest?.description}</Typography>
+                        <Typography>{getDescription(vision)}</Typography>
                     </TimelineContent>
                 </TimelineItem>)}
             </Timeline>

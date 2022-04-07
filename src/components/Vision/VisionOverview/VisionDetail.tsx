@@ -14,7 +14,7 @@ import {useRouter} from "next/router";
 import {Vision} from "../../../../prisma/generated/type-graphql";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import {UserAvatar} from "../../User/Avatar";
-import {Tooltip} from "@mui/material";
+import {Collapse, Tooltip} from "@mui/material";
 import {fromNow} from "../../../utils/fromNow";
 import moment from "moment";
 
@@ -25,12 +25,16 @@ export interface VisionDetailProps {
 
 export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision, premiseId}) => {
     const router = useRouter();
+    const [expanded, setExpanded] = React.useState(false);
     const thumbnail = getThumbnail(vision);
     console.info("------------------------------------");
     console.info(vision);
     const getRedirectUrl = () => premiseId ? `/premise/${premiseId}`:`/vision/${vision.id}`;
     const redirectedUrl = getRedirectUrl();
-    return <Card sx={{maxWidth: 345}}>
+    return <Card
+            onMouseEnter={() => setExpanded(true)}
+            onMouseLeave={() => setExpanded(false)}
+            sx={{maxWidth: 345}}>
         <CardHeader
                 onClick={() => {
                     if (premiseId || vision.id)
@@ -50,12 +54,15 @@ export const VisionDetail: React.FunctionComponent<VisionDetailProps> = ({vision
                     <Typography>{fromNow(vision.activityDate)}</Typography>
                 </Tooltip>}
         />
-        <CardMedia
-                component="img"
-                height="194"
-                image={thumbnail}
-                alt="Premise Preview"
-        />
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+
+            <CardMedia
+                    component="img"
+                    height="194"
+                    image={thumbnail}
+                    alt="Premise Preview"
+            />
+        </Collapse>
         <CardContent>
             <Typography variant="body2" color="text.secondary">
                 {get(vision, "description", "")}

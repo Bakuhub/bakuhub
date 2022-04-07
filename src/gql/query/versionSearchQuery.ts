@@ -8,6 +8,7 @@ export const versionSearchQuery = gql`
             prevVisionId
             draftMode
             description
+            activityDate
             nextVisions {
                 draftMode
             }
