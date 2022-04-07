@@ -16,7 +16,6 @@
 /build
 
 # auto-generated type-graphql
-prisma/generated
 
 # misc
 .DS_Store

@@ -28,7 +28,10 @@ export const History = () => {
 
     return (
             <Grid container>
-                <TimelineContainer visions={visions}/>
+                <TimelineContainer visions={visions}
+                                   getDate={(vision) => vision.activityDate?.toISOString() || "no date"}
+                                   getDescription={(vision) => vision.description || "no description"}
+                                   getTitle={(vision) => vision.title}/>
                 {visions.map(vision => <Grid key={vision.id} item container xs={12}>
 
                     <Button onClick={() => router.push(`/vision/${vision.id}`)}>

@@ -1,0 +1,12 @@
+export { AggregateThreadsOnMergeRequestArgs } from "./AggregateThreadsOnMergeRequestArgs";
+export { CreateManyThreadsOnMergeRequestArgs } from "./CreateManyThreadsOnMergeRequestArgs";
+export { CreateThreadsOnMergeRequestArgs } from "./CreateThreadsOnMergeRequestArgs";
+export { DeleteManyThreadsOnMergeRequestArgs } from "./DeleteManyThreadsOnMergeRequestArgs";
+export { DeleteThreadsOnMergeRequestArgs } from "./DeleteThreadsOnMergeRequestArgs";
+export { FindFirstThreadsOnMergeRequestArgs } from "./FindFirstThreadsOnMergeRequestArgs";
+export { FindManyThreadsOnMergeRequestArgs } from "./FindManyThreadsOnMergeRequestArgs";
+export { FindUniqueThreadsOnMergeRequestArgs } from "./FindUniqueThreadsOnMergeRequestArgs";
+export { GroupByThreadsOnMergeRequestArgs } from "./GroupByThreadsOnMergeRequestArgs";
+export { UpdateManyThreadsOnMergeRequestArgs } from "./UpdateManyThreadsOnMergeRequestArgs";
+export { UpdateThreadsOnMergeRequestArgs } from "./UpdateThreadsOnMergeRequestArgs";
+export { UpsertThreadsOnMergeRequestArgs } from "./UpsertThreadsOnMergeRequestArgs";
