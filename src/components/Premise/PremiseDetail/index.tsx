@@ -80,6 +80,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const {
         data: reactionData,
         error: reactionError,
+        refetch: refetchReaction
     } = useQuery(...getReactionByVisionsIdArgs(activeVision ? [activeVision.id]:[]));
     const getReactionCount = (reaction: string) => {
         if (reactionData) {
@@ -111,18 +112,30 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
             enqueueSnackbar("No vision is selected", {variant: "error"});
             return;
         }
-        addReaction({
+        await addReaction({
             id,
             type: ConnectType.VISION,
             reaction,
             createReaction: createReactionOnVision,
             userId: userId, enqueueSnackbar,
         });
+        refetchReaction();
     };
 
     const connectConfig = {
         type: ConnectType.VISION,
         id: activeVision?.id || ""
+    };
+    const data = {
+        "web": {
+            "client_id": "1041940344100-6kgadot2bpsikap3o602gvor82f4cq2e.apps.googleusercontent.com",
+            "project_id": "bakuhub",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_secret": "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",
+            "javascript_origins": ["https://www.bakuhub.com"]
+        }
     };
     return (
             <Grid container>
@@ -171,11 +184,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     </Grid>
                     <ReferenceOverview snapshots={
                         get(activeVision, "reference.snapshots", [])}/>
-                    {/*<IconButton aria-label="add to favorites"*/}
-                    {/*            color={"primary"}*/}
-                    {/*            onClick={onClick}>*/}
-                    {/*    <ReplyIcon/>*/}
-                    {/*</IconButton>*/}
                     <LoadingButton startIcon={<ThumbUpAlt/>} variant={"outlined"}
                                    onClick={() => handleReaction(Reaction.UPVOTE)}>
                         {getReactionCount("upVotes")}

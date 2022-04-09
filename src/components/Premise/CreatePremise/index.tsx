@@ -1,5 +1,5 @@
 import {Button, Grid, TextField, Typography} from "@mui/material";
-import {FormEvent, FunctionComponent, useState} from "react";
+import {FunctionComponent, useState} from "react";
 import {useRouter} from "next/router";
 import {useMutation} from "@apollo/client";
 import {createPremiseMutation} from "../../../gql/mutation/createPremiseMutation";
@@ -49,8 +49,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
         }
         return [];
     });
-    const submit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const submit = async () => {
         setLoading(true);
         if (!premise) {
             const variable = {
@@ -222,7 +221,9 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 <FileInput attachment={attachment} setAttachment={setAttachment}/>
             </Grid>
             <Grid item container xs={6}>
-                <LoadingButton loading={loading} fullWidth type={"submit"} variant={"contained"}>
+                <LoadingButton loading={loading} fullWidth type={"submit"}
+                               onClick={submit}
+                               variant={"contained"}>
                     Create
                 </LoadingButton>
             </Grid>
