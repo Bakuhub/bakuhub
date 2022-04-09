@@ -34,4 +34,5 @@ export const getPremiseDetailQueryVariable = (premiseId: string) => (
                     ]
                 }
             }
-        });
+        }
+);

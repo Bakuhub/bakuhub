@@ -48,8 +48,9 @@ export const VisionSearchResult: FunctionComponent<VisionSearchResultProps> = ({
         <CardActions>
             <Button
                     onClick={() => {
-                        if (vision.id)
+                        if (vision.id) {
                             router.push(redirectedUrl);
+                        }
                     }} size="small">Learn More</Button>
             <LoadingButton
                     loading={loading}

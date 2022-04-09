@@ -59,37 +59,42 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                         title,
                         status: "REFERENCE_PROVIDED",
                         tagsOnPremises: {
-                            create: [{
-                                tag: {
-                                    connectOrCreate: {
-                                        create: {
-                                            label: "ukraine",
+                            create: [
+                                {
+                                    tag: {
+                                        connectOrCreate: {
+                                            create: {
+                                                label: "ukraine",
+                                            },
+                                            where: {
+                                                label: "ukraine",
+                                            },
                                         },
-                                        where: {
-                                            label: "ukraine",
-                                        },
-                                    },
+                                    }
                                 }
-                            }
                             ]
                         },
                         vision: {
-                            create: [{
-                                title,
-                                description,
-                                activityDate,
-                                "reference": {
-                                    "create": {
-                                        "snapshots": {
-                                            connect: snapshots.map(({id}) => ({
-                                                id
-                                            }))
+                            create: [
+                                {
+                                    title,
+                                    description,
+                                    activityDate,
+                                    "reference": {
+                                        "create": {
+                                            "snapshots": {
+                                                connect: snapshots.map(({id}) => (
+                                                        {
+                                                            id
+                                                        }
+                                                ))
+                                            }
                                         }
-                                    }
-                                },
-                                ...getAuthorVariableByUserId(session.data?.userId),
+                                    },
+                                    ...getAuthorVariableByUserId(session.data?.userId),
 
-                            }]
+                                }
+                            ]
                         }
                     }
                 }
@@ -120,9 +125,11 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                         "reference": {
                             "create": {
                                 "snapshots": {
-                                    connect: snapshots.map(({id}) => ({
-                                        id
-                                    }))
+                                    connect: snapshots.map(({id}) => (
+                                            {
+                                                id
+                                            }
+                                    ))
                                 }
                             }
                         }, "thumbnail": attachment,
@@ -239,32 +246,32 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             <Typography variant={"h5"}>
                 Preview:
             </Typography>
-            {user!=="" &&
-            <PremiseOverview
-                premise={{
-                    title,
-                    "id": "",
-                    "createdAt": new Date(),
-                    updatedAt: new Date(),
-                    "status": snapshots.length ? "REFERENCE_PROVIDED":"RUMOUR",
-                    "author": user,
-                    "vision": [
-                        {
-                            activityDate: activityDate ? activityDate:Date.now(),
-                            description,
-                            title,
-                            draftMode: false,
-                            "createdAt": new Date(),
-                            reference: {id: "", snapshots},
-                            "authorId": userId,
-                            "nextVisions": [],
-                            "author": user,
-                            id: "",
-                            premiseId: "",
-                            thumbnail: attachment
-                        }
-                    ]
-                }}/>}
+            {user !== "" &&
+             <PremiseOverview
+                 premise={{
+                     title,
+                     "id": "",
+                     "createdAt": new Date(),
+                     updatedAt: new Date(),
+                     "status": snapshots.length ? "REFERENCE_PROVIDED":"RUMOUR",
+                     "author": user,
+                     "vision": [
+                         {
+                             activityDate: activityDate ? activityDate:Date.now(),
+                             description,
+                             title,
+                             draftMode: false,
+                             "createdAt": new Date(),
+                             reference: {id: "", snapshots},
+                             "authorId": userId,
+                             "nextVisions": [],
+                             "author": user,
+                             id: "",
+                             premiseId: "",
+                             thumbnail: attachment
+                         }
+                     ]
+                 }}/>}
         </Grid>
     </Grid>;
 

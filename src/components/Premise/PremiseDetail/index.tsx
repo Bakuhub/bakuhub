@@ -55,16 +55,16 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const router = useRouter();
     const {enqueueSnackbar} = useSnackbar();
     const activeVision = premise.vision?.find(vision =>
-            vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
-            && !vision.draftMode);
+                                                      vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
+                                                      && !vision.draftMode);
 
     const {
         data: threadsQueryData,
         refetch: refetchThreads,
     } = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
-        threadConnectType: ConnectType.VISION,
-        id: activeVision?.id || ""
-    }));
+                                                                                  threadConnectType: ConnectType.VISION,
+                                                                                  id: activeVision?.id || ""
+                                                                              }));
     const [createReactionOnVision] = useMutation(upsertReactionOnVisionsMutation, {
         errorPolicy: "all",
     });
@@ -78,8 +78,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
 
     const visionHistoryCount: number = get(visionHistoryData, "visions.length", 1);
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
-    const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
-            && get(vision, "mergeRequest.status")==="OPEN");
+    const allOtherVisions = premise.vision?.filter(vision => vision.id !== activeVision?.id
+                                                             && get(vision, "mergeRequest.status") === "OPEN");
     const thumbnail = getThumbnail(activeVision);
 
     const connectConfig = {
@@ -118,17 +118,25 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                         </Grid>
                         {
                             allOtherVisions?.map(vision =>
-                                    <Grid key={vision.id} item container xs={12}>
-                                        <Tooltip title={get(vision, "mergeRequest.description", "")}>
-                                            <Typography
-                                                    variant={"h6"}
-                                                    key={vision.id}
-                                                    onClick={() => router.push(`/review/mergeRequest/${get(vision, "mergeRequest.id", false)}`)}
-                                            >
-                                                {get(vision, "mergeRequest.title", "")}
-                                            </Typography>
-                                        </Tooltip>
-                                    </Grid>)
+                                                         <Grid key={vision.id} item container xs={12}>
+                                                             <Tooltip title={get(
+                                                                     vision,
+                                                                     "mergeRequest.description",
+                                                                     ""
+                                                             )}>
+                                                                 <Typography
+                                                                         variant={"h6"}
+                                                                         key={vision.id}
+                                                                         onClick={() => router.push(`/review/mergeRequest/${get(
+                                                                                 vision,
+                                                                                 "mergeRequest.id",
+                                                                                 false
+                                                                         )}`)}
+                                                                 >
+                                                                     {get(vision, "mergeRequest.title", "")}
+                                                                 </Typography>
+                                                             </Tooltip>
+                                                         </Grid>)
                         }
                     </Grid>
                     <ReferenceOverview snapshots={

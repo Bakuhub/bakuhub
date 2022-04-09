@@ -5,8 +5,9 @@ import {getActiveVisionFromPremise} from "../../../utils/getActiveVisionFromPrem
 
 function PremiseOverview({premise}: { premise: Premise }) {
     const vision = getActiveVisionFromPremise(premise);
-    if (vision)
+    if (vision) {
         return <VisionOverview vision={vision} premiseId={premise.id}/>;
+    }
     return <div>
         {premise.id} cant find related vision
     </div>;

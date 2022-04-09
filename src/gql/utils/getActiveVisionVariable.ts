@@ -1,12 +1,14 @@
-export const getActiveVisionVariable = () => ({
-    "draftMode": {
-        "equals": false
-    },
-    "nextVisions": {
-        "every": {
+export const getActiveVisionVariable = () => (
+        {
             "draftMode": {
-                "equals": true
+                "equals": false
+            },
+            "nextVisions": {
+                "every": {
+                    "draftMode": {
+                        "equals": true
+                    }
+                }
             }
         }
-    }
-});
+);

@@ -1,7 +1,9 @@
-export const getVisionDetailVariable = (id: string) => ({
-    variables: {
-        "where": {
-            id
+export const getVisionDetailVariable = (id: string) => (
+        {
+            variables: {
+                "where": {
+                    id
+                }
+            }
         }
-    }
-});
+);

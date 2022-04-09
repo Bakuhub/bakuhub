@@ -41,23 +41,23 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
             variant: "info",
         });
         const res = await getSnapshot({
-            url: referenceUrl,
-        });
+                                          url: referenceUrl,
+                                      });
 
         if (res && res.url) {
             enqueueSnackbar("saving snapshot", {
                 variant: "info",
             });
             const result = await createSnapshot({
-                variables: {
-                    "data": {
-                        "versionId": res.versionId,
-                        s3Url: res.url,
-                        "sourceUrl": referenceUrl,
-                        "caption": caption || ""
-                    }
-                }
-            });
+                                                    variables: {
+                                                        "data": {
+                                                            "versionId": res.versionId,
+                                                            s3Url: res.url,
+                                                            "sourceUrl": referenceUrl,
+                                                            "caption": caption || ""
+                                                        }
+                                                    }
+                                                });
             const newSnapshot: Snapshot = get(result, "data.createSnapshot", {});
             if (newSnapshot) {
                 setSnapshots([...snapshots, newSnapshot]);
@@ -80,8 +80,9 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
         setIsLoading(false);
     };
     useEffect(() => {
-        if (updateSnapshotsCallback)
+        if (updateSnapshotsCallback) {
             updateSnapshotsCallback(snapshots);
+        }
     }, [snapshots]);
     return <Grid alignContent={"center"} container>
         <Grid item container justifyContent={"space-between"}>
@@ -101,30 +102,32 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
         </Grid>
         {
             snapshots.map(({versionId, sourceUrl, createdAt, s3Url}: Snapshot) =>
-                    <Grid justifyContent={"space-between"} key={versionId} item container alignItems={"center"} xs={12}>
-                        <Tooltip key={versionId} title={sourceUrl}>
-                            <Typography variant={"h6"} onClick={() => window.open(sourceUrl)}>
-                                {new URL(sourceUrl).host}...
-                            </Typography>
-                        </Tooltip>
-                        <Grid item>
-                            <Tooltip onClick={() => window.open(s3Url)}
-                                     title={`Snapshot created at ${moment(createdAt).fromNow()}`}>
-                                <IconButton>
-                                    <InsertPhotoIcon/>
-                                </IconButton>
-                            </Tooltip>
-                            <IconButton
-                                    onClick={() => {
-                                        setSnapshots(
-                                                snapshots.filter(snapshot => snapshot.versionId!==versionId)
-                                        );
-                                    }
-                                    } aria-label="delete">
-                                <DeleteIcon fontSize="inherit"/>
-                            </IconButton>
-                        </Grid>
-                    </Grid>
+                                  <Grid justifyContent={"space-between"} key={versionId} item container
+                                        alignItems={"center"} xs={12}>
+                                      <Tooltip key={versionId} title={sourceUrl}>
+                                          <Typography variant={"h6"} onClick={() => window.open(sourceUrl)}>
+                                              {new URL(sourceUrl).host}...
+                                          </Typography>
+                                      </Tooltip>
+                                      <Grid item>
+                                          <Tooltip onClick={() => window.open(s3Url)}
+                                                   title={`Snapshot created at ${moment(createdAt).fromNow()}`}>
+                                              <IconButton>
+                                                  <InsertPhotoIcon/>
+                                              </IconButton>
+                                          </Tooltip>
+                                          <IconButton
+                                                  onClick={() => {
+                                                      setSnapshots(
+                                                              snapshots.filter(snapshot => snapshot.versionId !==
+                                                                                           versionId)
+                                                      );
+                                                  }
+                                                  } aria-label="delete">
+                                              <DeleteIcon fontSize="inherit"/>
+                                          </IconButton>
+                                      </Grid>
+                                  </Grid>
             )
         }
     </Grid>;

@@ -34,32 +34,36 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
         data: reactionByUserData, loading: loadingReactionByUser,
         refetch: refetchReactionByUser
     } = useQuery(...getReactionByUserArgs({
-        type,
-        id,
-        userId: getUserIdBySession(session)
-    }));
+                                              type,
+                                              id,
+                                              userId: getUserIdBySession(session)
+                                          }));
     const currentReaction = get(reactionByUserData, "reactionByUser.reaction");
     const handleReaction = async (reaction: Reaction) => {
         setVoting(reaction);
         const userId = getUserIdBySession(session);
         switch (true) {
-            case (!userId): {
+            case (
+                    !userId
+            ): {
                 enqueueSnackbar("You need to login to perform this action", {variant: "error"});
                 break;
             }
-            case(!id): {
+            case(
+                    !id
+            ): {
                 enqueueSnackbar("No vision is selected", {variant: "error"});
                 break;
             }
             default: {
 
                 await addReaction({
-                    id,
-                    type,
-                    reaction,
-                    createReaction,
-                    userId: userId, enqueueSnackbar,
-                });
+                                      id,
+                                      type,
+                                      reaction,
+                                      createReaction,
+                                      userId: userId, enqueueSnackbar,
+                                  });
                 refetchReactionByUser();
                 refetchReaction();
             }
@@ -70,22 +74,29 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
     const getReactionCount = (reaction: string) => {
         if (reactionData) {
             const selectedReactionData = get(reactionData, reaction, []);
-            const selectedReactionDataByVisionId = find(selectedReactionData, (reaction: { visionId: string }) => reaction.visionId===id);
+            const selectedReactionDataByVisionId = find(
+                    selectedReactionData,
+                    (reaction: { visionId: string }) => reaction.visionId === id
+            );
             if (selectedReactionDataByVisionId) return selectedReactionDataByVisionId._count._all;
         }
         return 0;
     };
     return <>
         <LoadingButton
-                loading={(voting===Reaction.UPVOTE) || loadingReactionByUser}
+                loading={(
+                                 voting === Reaction.UPVOTE
+                         ) || loadingReactionByUser}
                 startIcon={
-                    currentReaction===Reaction.UPVOTE ? <ThumbUpAlt/>:<ThumbUpOffAltIcon/>}
+                    currentReaction === Reaction.UPVOTE ? <ThumbUpAlt/>:<ThumbUpOffAltIcon/>}
                 variant={"outlined"}
                 onClick={() => handleReaction(Reaction.UPVOTE)}>
             {getReactionCount("upVotes")}
         </LoadingButton>
-        <LoadingButton startIcon={currentReaction===Reaction.DOWNVOTE ? <ThumbDownAlt/>:<ThumbDownOffAlt/>}
-                       loading={(voting===Reaction.DOWNVOTE) || loadingReactionByUser}
+        <LoadingButton startIcon={currentReaction === Reaction.DOWNVOTE ? <ThumbDownAlt/>:<ThumbDownOffAlt/>}
+                       loading={(
+                                        voting === Reaction.DOWNVOTE
+                                ) || loadingReactionByUser}
                        variant={"outlined"}
                        onClick={() => handleReaction(Reaction.DOWNVOTE)}>
             {getReactionCount("downVotes")}

@@ -6,23 +6,23 @@ export interface ThreadConnectConfig extends ConnectConfig {
 }
 
 export const threadSlice = createSlice({
-    name: "thread",
-    initialState: {
-        connector: {
-            type: ConnectType.VISION,
-            id: null as string | null
-        },
-        parentThreadId: null
-    },
-    reducers: {
-        setConnector: (state, action: PayloadAction<ThreadConnectConfig>) => {
-            state.connector = action.payload;
-        },
-        setParentThreadId: (state, action) => {
-            state.parentThreadId = action.payload;
-        }
-    }
-});
+                                           name: "thread",
+                                           initialState: {
+                                               connector: {
+                                                   type: ConnectType.VISION,
+                                                   id: null as string | null
+                                               },
+                                               parentThreadId: null
+                                           },
+                                           reducers: {
+                                               setConnector: (state, action: PayloadAction<ThreadConnectConfig>) => {
+                                                   state.connector = action.payload;
+                                               },
+                                               setParentThreadId: (state, action) => {
+                                                   state.parentThreadId = action.payload;
+                                               }
+                                           }
+                                       });
 
 
 // Action creators are generated for each case reducer function

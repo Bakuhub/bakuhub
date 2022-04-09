@@ -42,9 +42,9 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
         data: threadsQueryData,
         refetch: refetchThreads
     } = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
-        threadConnectType: ConnectType.VISION,
-        id: vision?.id || ""
-    }));
+                                                                                  threadConnectType: ConnectType.VISION,
+                                                                                  id: vision?.id || ""
+                                                                              }));
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
 
     const {
@@ -61,11 +61,12 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
     const onClick = async () => {
         if (vision?.id) {
             const result = await createReactionOnVision(getCreateReactionVariables({
-                id: vision.id,
-                reaction: Reaction.UPVOTE,
-                type: ConnectType.VISION,
-                userId: getUserIdBySession(session)
-            }));
+                                                                                       id: vision.id,
+                                                                                       reaction: Reaction.UPVOTE,
+                                                                                       type: ConnectType.VISION,
+                                                                                       userId: getUserIdBySession(
+                                                                                               session)
+                                                                                   }));
             console.info(result);
         }
     };
@@ -138,17 +139,17 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                 <Grid item container xs={12}>
                     {
                         mainThreads ? mainThreads.map((thread, index) =>
-                                        <ThreadDetail
-                                                key={thread.id ? thread.id:index}
-                                                thread={thread}
-                                                connectConfig={
-                                                    {
-                                                        type: ConnectType.VISION,
-                                                        id: vision?.id || ""
-                                                    }
-                                                }
-                                        />):
-                                <LinearProgress/>
+                                                              <ThreadDetail
+                                                                      key={thread.id ? thread.id:index}
+                                                                      thread={thread}
+                                                                      connectConfig={
+                                                                          {
+                                                                              type: ConnectType.VISION,
+                                                                              id: vision?.id || ""
+                                                                          }
+                                                                      }
+                                                              />):
+                        <LinearProgress/>
                     }
                 </Grid>
             </Grid>

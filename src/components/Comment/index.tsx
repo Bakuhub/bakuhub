@@ -58,10 +58,12 @@ export const Comment: FunctionalComponent<CommentProps> = ({
         } catch (e) {
             enqueueSnackbar(get(e, "message", "something went wrong, you can not post comment"), {variant: "error"});
         }
-        if (handleSubmitCallback)
+        if (handleSubmitCallback) {
             handleSubmitCallback();
-        if (handleCancel)
+        }
+        if (handleCancel) {
             handleCancel();
+        }
         setLoading(false);
         setComment("");
     };
@@ -78,7 +80,7 @@ export const Comment: FunctionalComponent<CommentProps> = ({
         <Grid item container xs={11} md={11.5}>
             <TextField
                     onKeyPress={(e) => {
-                        if (e.key==="Enter" && e.ctrlKey) {
+                        if (e.key === "Enter" && e.ctrlKey) {
                             handleSubmit();
                         }
                     }}

@@ -15,10 +15,12 @@ export const TimelineCreator = () => {
             ...getVisionsByKeywordArgs(keyword)
     );
     const [timelineNodes, setTimelineNodes] = useState<Vision[]>([]);
-    const visions = data?.visions.map((vision: Vision) => ({
-        ...vision,
-        inTimeline: timelineNodes.some(timelineVision => timelineVision.id===vision.id)
-    }));
+    const visions = data?.visions.map((vision: Vision) => (
+            {
+                ...vision,
+                inTimeline: timelineNodes.some(timelineVision => timelineVision.id === vision.id)
+            }
+    ));
     return (
             <Grid container>
 
@@ -50,12 +52,13 @@ export const TimelineCreator = () => {
                     <VisionDataGrid handleUpdateVisionStatus={
                         (visionId: string, nextStatus) => {
 
-                            const newTimelineNode = visions.find((vision: Vision) => vision.id===visionId);
+                            const newTimelineNode = visions.find((vision: Vision) => vision.id === visionId);
                             if (newTimelineNode) {
                                 if (nextStatus) {
                                     setTimelineNodes([...timelineNodes, newTimelineNode]);
                                 } else {
-                                    setTimelineNodes(timelineNodes.filter((timelineNode: Vision) => timelineNode.id!==visionId));
+                                    setTimelineNodes(timelineNodes.filter((timelineNode: Vision) => timelineNode.id !==
+                                                                                                    visionId));
                                 }
                             }
                         }
@@ -73,10 +76,11 @@ export const TimelineCreator = () => {
                             }
                         }
                         getDate={(vision) => {
-                            if (vision.activityDate)
+                            if (vision.activityDate) {
                                 return new Date(vision.activityDate).toLocaleDateString();
-                            else
+                            } else {
                                 return "invariant";
+                            }
                         }}
                         visions={timelineNodes}/>
                 </Grid>

@@ -8,11 +8,12 @@ import {Icon} from "@mui/material";
 import {useRouter} from "next/router";
 
 export const DrawerList = () => {
-    const DrawerListOptions = [{
-        text: "create new premise",
-        url: "/create/premise",
-        icon: AddTaskIcon
-    },
+    const DrawerListOptions = [
+        {
+            text: "create new premise",
+            url: "/create/premise",
+            icon: AddTaskIcon
+        },
         {
             text: "create new snapshot",
             url: "/create/snapshot",

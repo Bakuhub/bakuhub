@@ -84,7 +84,9 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
             </Collapse>
             <Grid item container>
                 {
-                    loading ? <CircularProgress/>:(childThreads || []).map(
+                    loading ? <CircularProgress/>:(
+                            childThreads || []
+                    ).map(
                             (childThread, index) => <ThreadDetail
                                     connectConfig={
                                         connectConfig

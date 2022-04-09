@@ -10,9 +10,10 @@ export const getSnapshot = async ({
         const result = await axios.post("/api/snapshot", {
             referenceUrl: url
         });
-        if (result.status===200) {
-            if (result.data)
+        if (result.status === 200) {
+            if (result.data) {
                 return result.data.snapshot;
+            }
         }
     } catch (e) {
         console.error(e);

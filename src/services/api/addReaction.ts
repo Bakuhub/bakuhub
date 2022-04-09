@@ -18,11 +18,11 @@ export const addReaction = async ({
                                   }: AddReaction) => {
     if (id) {
         const result = await handlePromise(createReaction(getCreateReactionVariables({
-            id,
-            reaction,
-            type,
-            userId
-        })));
+                                                                                         id,
+                                                                                         reaction,
+                                                                                         type,
+                                                                                         userId
+                                                                                     })));
         const errors = get(result, "networkError.result.errors", []);
         if (errors.length > 0) {
             errors.forEach((error: { message: string }) => enqueueSnackbar(error.message, {variant: "error"}));

@@ -14,12 +14,12 @@ export const ThreadContainer: FunctionComponent<ThreadContainerProps> = ({thread
             <Grid item container xs={12}>
                 {
                     threads ? threads.map((thread, index) =>
-                                    <ThreadDetail
-                                            key={thread.id ? thread.id:index}
-                                            thread={thread}
-                                            connectConfig={connectConfig}
-                                    />):
-                            <LinearProgress/>
+                                                  <ThreadDetail
+                                                          key={thread.id ? thread.id:index}
+                                                          thread={thread}
+                                                          connectConfig={connectConfig}
+                                                  />):
+                    <LinearProgress/>
                 }
             </Grid>
     );

@@ -27,14 +27,14 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
         data: threadsQueryData,
         refetch: refetchThreads
     } = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
-        threadConnectType: ConnectType.MERGE_REQUEST,
-        id: mergeRequest.id
-    }));
+                                                                                  threadConnectType: ConnectType.MERGE_REQUEST,
+                                                                                  id: mergeRequest.id
+                                                                              }));
     console.info(threadsQueryData);
     console.info(getThreadsQueryVariable({
-        threadConnectType: ConnectType.MERGE_REQUEST,
-        id: mergeRequest.id
-    }));
+                                             threadConnectType: ConnectType.MERGE_REQUEST,
+                                             id: mergeRequest.id
+                                         }));
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
     const connectConfig = {
         type: ConnectType.MERGE_REQUEST,
@@ -61,24 +61,24 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                 setLoading(true);
                 try {
                     const result = await mergeVisionIntoPremise({
-                        variables: {
-                            "where": {
-                                "id": vision.id
-                            },
-                            "data": {
-                                "draftMode": {
-                                    "set": false
-                                },
-                                "mergeRequest": {
-                                    "update": {
-                                        "status": {
-                                            "set": "MERGED"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
+                                                                    variables: {
+                                                                        "where": {
+                                                                            "id": vision.id
+                                                                        },
+                                                                        "data": {
+                                                                            "draftMode": {
+                                                                                "set": false
+                                                                            },
+                                                                            "mergeRequest": {
+                                                                                "update": {
+                                                                                    "status": {
+                                                                                        "set": "MERGED"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                });
                     if (result.data) {
                         enqueueSnackbar("Merge request has been successfully merged", {variant: "success"});
                     }

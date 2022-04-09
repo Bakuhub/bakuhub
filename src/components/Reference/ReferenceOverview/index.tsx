@@ -15,16 +15,18 @@ export const ReferenceOverview: FunctionComponent<ReferenceOverviewProps> = ({sn
     return <Grid item container>
         {
             snapshots.map(
-                    (snapshot, index) => (<Grid alignItems={"center"} container item key={snapshot.id}>
-                        <Typography variant={"body2"}>
-                            {snapshot.sourceUrl}
-                        </Typography>
-                        <Tooltip title={"download snapshot"}>
-                            <StyledIconButton onClick={() => window.open(snapshot.s3Url)}>
-                                <CloudDownloadIcon/>
-                            </StyledIconButton>
-                        </Tooltip>
-                    </Grid>)
+                    (snapshot, index) => (
+                            <Grid alignItems={"center"} container item key={snapshot.id}>
+                                <Typography variant={"body2"}>
+                                    {snapshot.sourceUrl}
+                                </Typography>
+                                <Tooltip title={"download snapshot"}>
+                                    <StyledIconButton onClick={() => window.open(snapshot.s3Url)}>
+                                        <CloudDownloadIcon/>
+                                    </StyledIconButton>
+                                </Tooltip>
+                            </Grid>
+                    )
             )
         }
     </Grid>;

@@ -1,34 +1,36 @@
-export const getSearchActiveVisionByKeywordVariable = (keyword: string) => ({
-    variables: {
-        "where": {
-            "AND": [
-                {
-                    "draftMode": {
-                        "equals": false
-                    },
-                    "nextVisions": {
-                        "every": {
-                            "draftMode": {
-                                "equals": true
-                            }
-                        }
-                    }
-                }, {
-                    "OR": [
+export const getSearchActiveVisionByKeywordVariable = (keyword: string) => (
+        {
+            variables: {
+                "where": {
+                    "AND": [
                         {
-                            "title": {
-                                "contains": keyword
+                            "draftMode": {
+                                "equals": false
                             },
-
-                        }, {
-                            "description": {
-                                "contains": keyword
+                            "nextVisions": {
+                                "every": {
+                                    "draftMode": {
+                                        "equals": true
+                                    }
+                                }
                             }
-                        }
-                    ],
-                }
-            ]
-        }
+                        }, {
+                            "OR": [
+                                {
+                                    "title": {
+                                        "contains": keyword
+                                    },
 
-    }
-});
+                                }, {
+                                    "description": {
+                                        "contains": keyword
+                                    }
+                                }
+                            ],
+                        }
+                    ]
+                }
+
+            }
+        }
+);

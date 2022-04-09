@@ -41,7 +41,9 @@ export const MainPage = () => {
     return <Grid container spacing={1}>
 
         {
-            (loading) ? <Grid>
+            (
+                    loading
+            ) ? <Grid>
                 <CircularProgress/>
             </Grid>:data?.premises.map(
                     premise => <Grid key={premise.id} item xs={4} lg={3}

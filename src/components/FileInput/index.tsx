@@ -35,17 +35,17 @@ export const FileInput: React.FunctionComponent<FileInputProps> = (
                                   onClick={() => setAttachment("")}>
                 remove file
             </Button>:<Button
-                    fullWidth
-                    variant="contained"
-                    component="label"
-            >
-                Upload Thumbnail
-                <input
-                        onChange={handleSubmit}
-                        type="file"
-                        hidden
-                />
-            </Button>}</Grid>
+                     fullWidth
+                     variant="contained"
+                     component="label"
+             >
+                 Upload Thumbnail
+                 <input
+                         onChange={handleSubmit}
+                         type="file"
+                         hidden
+                 />
+             </Button>}</Grid>
         {attachment && <Grid item xs={4}>
             <Avatar
                 variant={"rounded"}

@@ -31,7 +31,7 @@ export const LayoutDrawer = ({open, handleDrawerClose}: LayoutDrawerProps) => {
     >
         <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
-                {theme.direction==="ltr" ? <ChevronLeftIcon/>:<ChevronRightIcon/>}
+                {theme.direction === "ltr" ? <ChevronLeftIcon/>:<ChevronRightIcon/>}
             </IconButton>
         </DrawerHeader>
         <Divider/>

@@ -4,5 +4,5 @@ export const getActiveVisionFromPremise = (premise: Premise): Vision | undefined
     const isVisionLive = !vision.draftMode;
     const isVisionLatestVersionOfPremise = !vision.nextVisions?.some(vision => !vision.draftMode);
     return isVisionLatestVersionOfPremise
-            && isVisionLive;
+           && isVisionLive;
 });

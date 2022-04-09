@@ -21,28 +21,30 @@ export const visionHistoryQuery = gql`
         }
     }
 `;
-export const getVisionHistoryQueryVariable = (premiseId: string) => ({
-    variables: {
-        "where": {
-            "premise": {
-                "is": {
-                    "id": {
-                        "equals": premiseId
+export const getVisionHistoryQueryVariable = (premiseId: string) => (
+        {
+            variables: {
+                "where": {
+                    "premise": {
+                        "is": {
+                            "id": {
+                                "equals": premiseId
+                            }
+                        }
+                    },
+                    "AND": [
+                        {
+                            "draftMode": {
+                                "equals": false
+                            }
+                        }
+                    ]
+                },
+                "orderBy": [
+                    {
+                        "updatedAt": "desc"
                     }
-                }
-            },
-            "AND": [
-                {
-                    "draftMode": {
-                        "equals": false
-                    }
-                }
-            ]
-        },
-        "orderBy": [
-            {
-                "updatedAt": "desc"
+                ]
             }
-        ]
-    }
-});
+        }
+);

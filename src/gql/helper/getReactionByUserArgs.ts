@@ -19,18 +19,20 @@ export const getReactionByUserArgs = ({
                                           type,
                                           id,
                                           userId
-                                      }: GetReactionByUserArgsProps): [DocumentNode, { variables: { where: { [p: string]: { equals: string | null } } } }] => [reactionByUserQuery, {
-    variables: {
-        "where": {
-            ...userId ?
-                    {
-                        "userId": {
-                            "equals": userId
-                        }
-                    }:{},
-            [`${getTableNameByConnectType(type)}Id`]: {
-                "equals": id
+                                      }: GetReactionByUserArgsProps): [DocumentNode, { variables: { where: { [p: string]: { equals: string | null } } } }] => [
+    reactionByUserQuery, {
+        variables: {
+            "where": {
+                ...userId ?
+                        {
+                            "userId": {
+                                "equals": userId
+                            }
+                        }:{},
+                [`${getTableNameByConnectType(type)}Id`]: {
+                    "equals": id
+                }
             }
         }
     }
-}];
+];

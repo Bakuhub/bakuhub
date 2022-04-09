@@ -44,8 +44,9 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
             sx={{maxWidth: 345}}>
         <CardHeader
                 onClick={() => {
-                    if (premiseId || vision.id)
+                    if (premiseId || vision.id) {
                         router.push(redirectedUrl);
+                    }
                 }}
                 avatar={
                     <UserAvatar {...vision.author}/>
