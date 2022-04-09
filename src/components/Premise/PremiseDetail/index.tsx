@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useEffect} from "react";
 import Typography from "@mui/material/Typography";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
@@ -7,7 +8,7 @@ import {Button, CircularProgress, Grid, Tooltip} from "@mui/material";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
-import {get} from "lodash";
+import {find, get} from "lodash";
 import {ReferenceOverview} from "../../Reference/ReferenceOverview";
 import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
 import {ConnectType} from "../../../types";
@@ -16,14 +17,23 @@ import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {premiseQuery} from "../../../gql/query/premiseQuery";
 import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
 import {getVisionHistoryQueryVariable} from "../../../gql/query/visionHistoryQuery";
-import {getCreateReactionVariables, Reaction} from "../../../gql/utils/getCreateReactionVariables";
-import {createReactionOnVisionMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
+import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
 import {useSession} from "next-auth/react";
 import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {LoadingButton} from "@mui/lab";
 import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
 import {ThreadContainer} from "../../Thread/ThreadContainer";
+import {ThumbDownAlt, ThumbUpAlt} from "@mui/icons-material";
+import {useSnackbar} from "notistack";
+import {getReactionByVisionsIdArgs} from "../../../gql/helper/getReactionByVisionsIdArgs";
+import {addReaction} from "../../../services/api/addReaction";
+
+export enum Reaction {
+    LIKE = "LIKE",
+    UPVOTE = "UPVOTE",
+    DOWNVOTE = "DOWNVOTE"
+}
 
 interface PremiseDetailProps {
     premise: Premise;
@@ -33,7 +43,6 @@ export const PremiseDetailContainer = () => {
     const router = useRouter();
     const premiseId = router.query.id;
     const {data, loading, error} = useQuery(premiseQuery, getPremiseDetailQueryVariable(premiseId as string));
-    console.info(data);
     if (loading && !data) {
         return <CircularProgress/>;
     } else {
@@ -45,7 +54,9 @@ export const PremiseDetailContainer = () => {
 };
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const session = useSession();
+    const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
+    const {enqueueSnackbar} = useSnackbar();
     const activeVision = premise.vision?.find(vision =>
             vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
             && !vision.draftMode);
@@ -56,30 +67,59 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
         threadConnectType: ConnectType.VISION,
         id: activeVision?.id || ""
     }));
-    const [isRedirecting, setIsRedirecting] = React.useState(false);
-    const [createReactionOnVision,] = useMutation(createReactionOnVisionMutation);
+    const [createReactionOnVision] = useMutation(upsertReactionOnVisionsMutation, {
+        errorPolicy: "all",
+    });
 
     const {
         data: visionHistoryData,
         loading: visionHistoryLoading,
         error: visionHistoryError
     } = useQuery(visionHistoryCountQuery, getVisionHistoryQueryVariable(premise.id));
+
+    const {
+        data: reactionData,
+        error: reactionError,
+    } = useQuery(...getReactionByVisionsIdArgs(activeVision ? [activeVision.id]:[]));
+    const getReactionCount = (reaction: string) => {
+        if (reactionData) {
+            const selectedReactionData = get(reactionData, reaction, []);
+            const selectedReactionDataByVisionId = find(selectedReactionData, (reaction: { visionId: string }) => reaction.visionId===activeVision?.id);
+            if (selectedReactionDataByVisionId) return selectedReactionDataByVisionId._count._all;
+        }
+        return 0;
+    };
+    useEffect(() => {
+        if (reactionError)
+            reactionError?.message && enqueueSnackbar(reactionError.message, {
+                variant: "error"
+            });
+    }, [reactionError]);
     const visionHistoryCount: number = get(visionHistoryData, "visions.length", 1);
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
     const allOtherVisions = premise.vision?.filter(vision => vision.id!==activeVision?.id
             && get(vision, "mergeRequest.status")==="OPEN");
     const thumbnail = getThumbnail(activeVision);
-    const onClick = async () => {
-        if (activeVision?.id) {
-            const result = await createReactionOnVision(getCreateReactionVariables({
-                id: activeVision.id,
-                reaction: Reaction.UPVOTE,
-                type: ConnectType.VISION,
-                userId: getUserIdBySession(session)
-            }));
-            console.info(result);
+    const handleReaction = async (reaction: Reaction) => {
+        const userId = getUserIdBySession(session);
+        if (!userId) {
+            enqueueSnackbar("You need to login to perform this action", {variant: "error"});
+            return;
         }
+        const id = activeVision?.id;
+        if (!id) {
+            enqueueSnackbar("No vision is selected", {variant: "error"});
+            return;
+        }
+        addReaction({
+            id,
+            type: ConnectType.VISION,
+            reaction,
+            createReaction: createReactionOnVision,
+            userId: userId, enqueueSnackbar,
+        });
     };
+
     const connectConfig = {
         type: ConnectType.VISION,
         id: activeVision?.id || ""
@@ -136,6 +176,14 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     {/*            onClick={onClick}>*/}
                     {/*    <ReplyIcon/>*/}
                     {/*</IconButton>*/}
+                    <LoadingButton startIcon={<ThumbUpAlt/>} variant={"outlined"}
+                                   onClick={() => handleReaction(Reaction.UPVOTE)}>
+                        {getReactionCount("upVotes")}
+                    </LoadingButton>
+                    <LoadingButton startIcon={<ThumbDownAlt/>} variant={"outlined"}
+                                   onClick={() => handleReaction(Reaction.DOWNVOTE)}>
+                        {getReactionCount("downVotes")}
+                    </LoadingButton>
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {
                         setIsRedirecting(true);
                         router.push(`/create/vision/${premise.id}`);

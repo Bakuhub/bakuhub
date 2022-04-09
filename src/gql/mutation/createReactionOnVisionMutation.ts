@@ -1,11 +1,12 @@
 import {gql} from "@apollo/client";
 
-export const createReactionOnVisionMutation = gql`
-    mutation CreateReactionOnVision($data: ReactionOnVisionCreateInput!) {
-        createReactionOnVision(data: $data) {
+export const upsertReactionOnVisionsMutation = gql`
+    mutation UpsertReactionOnVisions($where: ReactionOnVisionsWhereUniqueInput!, $create: ReactionOnVisionsCreateInput!, $update: ReactionOnVisionsUpdateInput!) {
+        upsertReactionOnVisions(where: $where, create: $create, update: $update) {
             userId
             visionId
             reaction
+            createdAt
         }
     }
 `;

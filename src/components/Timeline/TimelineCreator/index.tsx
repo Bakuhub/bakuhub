@@ -1,14 +1,15 @@
-import {Grid, TextField, Typography} from "@mui/material";
+import {Grid, TextField} from "@mui/material";
 import {useState} from "react";
-import {LoadingButton} from "@mui/lab";
 import {getVisionsByKeywordArgs} from "../../../gql/helper/getVisionsByKeywordArgs";
 import {useQuery} from "@apollo/client";
 import {Vision} from "../../../../prisma/generated/type-graphql";
 import {TimelineContainer} from "../index";
 import {VisionDataGrid} from "../../Vision/VisionDataGrid";
+import {LoadingButton} from "@mui/lab";
 
 export const TimelineCreator = () => {
     const [keyword, setKeyword] = useState("");
+    const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const {data, loading, error, refetch} = useQuery(
             ...getVisionsByKeywordArgs(keyword)
@@ -20,24 +21,32 @@ export const TimelineCreator = () => {
     }));
     return (
             <Grid container>
-                <Typography variant={"h1"}>TimelineCreator</Typography>
-                <Grid item xs={11}>
-                    <TextField
-                            fullWidth
-                            value={keyword}
-                            onChange={(e) => setKeyword(e.target.value)}
-                            label="Search"
-                            variant="outlined"
-                    />
-                </Grid>
-                <LoadingButton loading={loading}
-                               variant={"outlined"}
-                               onClick={() => {
-                                   refetch();
-                               }}>
-                    Search
-                </LoadingButton>
-                <Grid item xs={8}>
+
+                <Grid item container xs={8}>
+                    <Grid item xs={6}>
+                        <TextField fullWidth={true} label={"title"} value={title}
+                                   onChange={e => setTitle(e.target.value)}/>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField fullWidth={true} label={"description"} value={description}
+                                   onChange={e => setDescription(e.target.value)}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                                fullWidth
+                                value={keyword}
+                                onChange={(e) => setKeyword(e.target.value)}
+                                label="Search"
+                                variant="outlined"
+                        />
+                        <LoadingButton loading={loading}
+                                       variant={"outlined"}
+                                       onClick={() => {
+                                           refetch();
+                                       }}>
+                            Search
+                        </LoadingButton>
+                    </Grid>
                     <VisionDataGrid handleUpdateVisionStatus={
                         (visionId: string, nextStatus) => {
 

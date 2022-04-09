@@ -12,6 +12,7 @@ import {DrawerHeader} from "./Sections/Drawer/styled";
 import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
 import {Grid} from "@mui/material";
+import SpeedDialContainer from "./Sections/SpeedDialContainer";
 
 
 const Main = styled("main", {shouldForwardProp: (prop) => prop!=="open"})<{
@@ -57,7 +58,7 @@ const AppBar = styled(MuiAppBar, {
 
 export const Layout: React.FunctionComponent = ({children}) => {
     const router = useRouter();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -100,6 +101,7 @@ export const Layout: React.FunctionComponent = ({children}) => {
                 <Main open={open}>
                     <DrawerHeader/>
                     {children}
+                    <SpeedDialContainer/>
                 </Main>
             </Box>
     );

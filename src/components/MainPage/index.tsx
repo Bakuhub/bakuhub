@@ -1,18 +1,13 @@
-import {Button, CircularProgress, Grid, TextField, Typography} from "@mui/material";
+import {CircularProgress, Grid} from "@mui/material";
 import PremiseOverview from "../Premise/PremiseOverview";
-import {useRouter} from "next/router";
 import {useQuery} from "@apollo/client";
 import {Premise} from "../../../prisma/generated/type-graphql";
 import {premisesQuery} from "../../gql/query/premisesQuery";
-import {signIn} from "next-auth/react";
-import {UserStatus} from "../Auth";
+import {getReactionByVisionsIdArgs} from "../../gql/helper/getReactionByVisionsIdArgs";
+import {getActiveVisionFromPremise} from "../../utils/getActiveVisionFromPremise";
+import {get} from "lodash";
 
 export const MainPage = () => {
-    const router = useRouter();
-    console.info(process.env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL);
-    console.info(process.env.NEXT_PUBLIC_VERCEL_URL);
-    console.info(process.env);
-    console.info("------------------------");
     const {loading, error, data} = useQuery<{ premises: Premise[] }>(premisesQuery, {
         variables: {
             "where": {
@@ -37,20 +32,15 @@ export const MainPage = () => {
             }
         }
     });
-    console.info({loading, error, data});
+    const {
+        data: reactionByVisionsId
+    } = useQuery(...getReactionByVisionsIdArgs(get(data, "premises", []).map(premise => {
+        const vision = getActiveVisionFromPremise(premise);
+        return vision ? vision.id:"";
+    })));
+    console.info("reactionByVisionsId", reactionByVisionsId);
     return <Grid container spacing={1} justifyContent={"center"}>
-        <Grid item container justifyContent={"center"} xs={12}>
-            <Typography variant={"h6"} onClick={() => signIn()}>
-                Bakuhub
-            </Typography>
-            <UserStatus/>
-            <Button variant={"outlined"} onClick={() => router.push("/create/premise")}>
-                Create Premise
-            </Button>
-        </Grid>
-        <Grid item container justifyContent={"center"} xs={12}>
-            <TextField id="outlined-basic" label="Search" variant="outlined"/>
-        </Grid>
+
         {
             (loading) ? <Grid>
                 <CircularProgress/>

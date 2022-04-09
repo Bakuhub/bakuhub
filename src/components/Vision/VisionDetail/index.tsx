@@ -12,11 +12,7 @@ export const VisionDetail = () => {
     if (loading) return <CircularProgress/>;
     if (error) return <ErrorPage/>;
     const {vision} = data;
-    console.info("----------------------------");
-    console.info(data);
     return (
-            <div>
-                <DetailPage vision={vision}/>
-            </div>
+            <DetailPage vision={vision}/>
     );
 };

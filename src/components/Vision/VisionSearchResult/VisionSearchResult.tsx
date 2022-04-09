@@ -23,8 +23,6 @@ export const VisionSearchResult: FunctionComponent<VisionSearchResultProps> = ({
     const [loading, setLoading] = React.useState(false);
     const [expanded, setExpanded] = React.useState(false);
     const thumbnail = getThumbnail(vision);
-    console.info("------------------------------------");
-    console.info(vision);
     const getRedirectUrl = () => `/vision/${vision.id}`;
     const redirectedUrl = getRedirectUrl();
     return <Card>

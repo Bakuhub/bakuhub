@@ -12,15 +12,17 @@ export const premiseQuery = gql`
                 image
                 email
             }
-            _count {
-                vision
-            }
             vision(where: $visionWhere2) {
                 id
                 title
                 activityDate
                 description
                 createdAt
+                ReactionOnVisions {
+                    visionId
+                    userId
+                    reaction
+                }
                 reference {
                     snapshots{
                         sourceUrl

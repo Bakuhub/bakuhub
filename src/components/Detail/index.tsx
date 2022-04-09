@@ -20,11 +20,14 @@ import {getThreadsQueryVariable} from "../../gql/utils/getThreadsQueryVariable";
 import {visionHistoryCountQuery} from "../../gql/query/visionHistoryCountQuery";
 import {getVisionHistoryQueryVariable} from "../../gql/query/visionHistoryQuery";
 import {getThumbnail} from "../../utils/getThumbnail";
-import {getCreateReactionVariables, Reaction} from "../../gql/utils/getCreateReactionVariables";
+import {getCreateReactionVariables} from "../../gql/utils/getCreateReactionVariables";
 import {getUserIdBySession} from "../../utils/getUserIdBySession";
-import {createReactionOnVisionMutation} from "../../gql/mutation/createReactionOnVisionMutation";
 import {useSession} from "next-auth/react";
 import {preprocessThreads} from "../../utils/preprocess/threads";
+import {Reaction} from "../Premise/PremiseDetail";
+import {addReaction} from "../../services/api/addReaction";
+import {upsertReactionOnVisionsMutation} from "../../gql/mutation/createReactionOnVisionMutation";
+import {useSnackbar} from "notistack";
 
 export interface DetailPageProps {
     vision: Vision;
@@ -33,6 +36,7 @@ export interface DetailPageProps {
 export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
     const router = useRouter();
     const session = useSession();
+    const {enqueueSnackbar} = useSnackbar();
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const {
         data: threadsQueryData,
@@ -49,10 +53,10 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
         error: visionHistoryError
     } = useQuery(visionHistoryCountQuery, getVisionHistoryQueryVariable(vision.premiseId));
     const visionHistoryCount: number = get(visionHistoryData, "visions.length", 1);
-    const [createReactionOnVision,] = useMutation(createReactionOnVisionMutation);
-
+    const [createReactionOnVision] = useMutation(upsertReactionOnVisionsMutation, {
+        errorPolicy: "all",
+    });
     const thumbnail = getThumbnail(vision);
-
 
     const onClick = async () => {
         if (vision?.id) {
@@ -97,7 +101,21 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                         get(vision, "reference.snapshots", [])}/>
                     <IconButton aria-label="add to favorites"
                                 color={"primary"}
-                                onClick={onClick}>
+                                onClick={() => {
+                                    const userId = getUserIdBySession(session);
+                                    if (userId) {
+                                        addReaction(
+                                                {
+                                                    id: vision.id,
+                                                    reaction: Reaction.UPVOTE,
+                                                    type: ConnectType.VISION,
+                                                    userId,
+                                                    createReaction: createReactionOnVision,
+                                                    enqueueSnackbar
+                                                }
+                                        );
+                                    }
+                                }}>
                         <ReplyIcon/>
                     </IconButton>
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {

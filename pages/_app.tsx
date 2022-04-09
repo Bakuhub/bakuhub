@@ -13,8 +13,6 @@ import {SnackbarProvider} from "notistack";
 function MyApp({
                    Component, pageProps: {session, ...pageProps},
                }: AppProps) {
-    console.info(process.env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL);
-    console.info(process.env.NEXT_PUBLIC_BASE_URL);
     // useSession with next-auth
     return <SessionProvider session={session}>
         {/* this is MUI theme*/}
@@ -31,7 +29,7 @@ function MyApp({
                             }}
                             TransitionComponent={Collapse}
                             iconVariant={{
-                                success: "✅",
+                                success: "✅ ",
                                 error: "✖️",
                                 warning: "⚠️",
                                 info: "ℹ️",

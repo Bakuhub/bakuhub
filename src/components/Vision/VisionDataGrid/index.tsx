@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from "react";
 import {DataGrid, GridColDef, GridRowsProp, GridToolbar} from "@mui/x-data-grid";
 import {Vision} from "../../../../prisma/generated/type-graphql";
-import {Button, LinearProgress} from "@mui/material";
+import {Chip, LinearProgress} from "@mui/material";
 
 const rows: GridRowsProp = [
     {id: 1, col1: "Hello", col2: "World"},
@@ -11,18 +11,28 @@ const rows: GridRowsProp = [
 
 
 const getColumns = (updatedSelectedStatus: (visionId: string, nextStatus: boolean) => void): GridColDef[] => [
-    {field: "title", headerName: "title"},
-    {field: "description", headerName: "description"},
-    {field: "updatedAt", headerName: "createdAt"},
-    {field: "activityDate", headerName: "activity Date"},
     {
-        field: "inTimeline", headerName: "in Timeline",
+        field: "title", headerName: "title", flex: 1,
+    },
+    {
+        field: "description", headerName: "description", flex: 1,
+    },
+    {
+        field: "updatedAt", headerName: "createdAt", flex: 1,
+    },
+    {
+        field: "activityDate", headerName: "activity Date", flex: 1,
+    },
+    {
+        field: "inTimeline", headerName: "in Timeline", flex: 1,
+
         renderCell: (params) => {
             console.info(params);
             console.info("---------------------");
-            return <Button fullWidth onClick={() => updatedSelectedStatus(params.row.id, !params.value)}>
-                {params.value ? "Remove":"Add"}
-            </Button>;
+            return <Chip
+                    label={params.value ? "Remove":"Add"}
+                    color={params.value ? "error":"primary"}
+                    onClick={() => updatedSelectedStatus(params.row.id, !params.value)}/>;
         }
     },
 ];
@@ -54,6 +64,7 @@ export const VisionDataGrid: FunctionComponent<VisionDataGridProps> = ({
                         rowsPerPageOptions={[5]}
                         disableSelectionOnClick
                         autoHeight
-                        autoPageSize/></div>
+                        autoPageSize/>
+            </div>
     );
 };
