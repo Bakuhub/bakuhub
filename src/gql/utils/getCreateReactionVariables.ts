@@ -1,6 +1,7 @@
 import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
 import {ConnectConfig} from "../../types";
 import {Reaction} from "../../../prisma/generated/type-graphql";
+import {getTableNameWithId} from "../../utils/getTableNameWithId";
 
 
 export interface ReactionConnectConfig extends ConnectConfig {
@@ -17,12 +18,13 @@ export const getCreateReactionVariables = ({
                                                id,
                                                reaction,
                                                userId
-                                           }: ReactionConnectConfig): { variables: { create: { [p: string]: Reaction | { connect: { id: string } }; reaction: Reaction; user: { connect: { id: string } } }; update: { reaction: { set: Reaction } }; where: { userId_visionId: { [p: string]: string | null; userId: string } } } } => {
+                                           }: ReactionConnectConfig): { variables: { create: { [p: string]: Reaction | { connect: { id: string } }; reaction: Reaction; user: { connect: { id: string } } }; update: { reaction: { set: Reaction } }; where: { [p: string]: { [p: string]: string | null | undefined; userId: string } } } } => {
     const tableName = getTableNameByConnectType(type);
+    const tableNameWithId = getTableNameWithId(tableName);
     return {
         variables: {
             "where": {
-                "userId_visionId": {
+                [`userId_${tableNameWithId}`]: {
                     userId,
                     [`${tableName}Id`]: id
                 }

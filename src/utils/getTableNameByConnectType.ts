@@ -10,5 +10,9 @@ export const getTableNameByConnectType = (threadConnectType: ConnectType, isCapi
             return "premise";
         case ConnectType.TIMELINE:
             return "timeline";
+        case ConnectType.THREAD:
+            return "thread";
+        default:
+            return "";
     }
 };

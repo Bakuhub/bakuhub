@@ -3,9 +3,10 @@ import PremiseOverview from "../Premise/PremiseOverview";
 import {useQuery} from "@apollo/client";
 import {Premise} from "../../../prisma/generated/type-graphql";
 import {premisesQuery} from "../../gql/query/premisesQuery";
-import {getReactionByVisionsIdArgs} from "../../gql/helper/getReactionByVisionsIdArgs";
+import {getReactionByIdArgs} from "../../gql/helper/getReactionByIdArgs";
 import {getActiveVisionFromPremise} from "../../utils/getActiveVisionFromPremise";
 import {get} from "lodash";
+import {ConnectType} from "../../types";
 
 export const MainPage = () => {
     const {loading, error, data} = useQuery<{ premises: Premise[] }>(premisesQuery, {
@@ -34,10 +35,10 @@ export const MainPage = () => {
     });
     const {
         data: reactionByVisionsId
-    } = useQuery(...getReactionByVisionsIdArgs(get(data, "premises", []).map(premise => {
+    } = useQuery(...getReactionByIdArgs(get(data, "premises", []).map(premise => {
         const vision = getActiveVisionFromPremise(premise);
         return vision ? vision.id:"";
-    })));
+    }), ConnectType.VISION));
     return <Grid container spacing={1}>
 
         {

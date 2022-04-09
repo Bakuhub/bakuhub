@@ -8,9 +8,12 @@ import {get} from "lodash";
 import {fromNow} from "../../../utils/fromNow";
 import {ThreadConnectConfig} from "../../../store/slices/threadSlice";
 import {Comment} from "../../Comment";
-import {useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
 import {getChildThreadsQueryVariable} from "../../../gql/utils/getChildThreadsQueryVariable";
+import {ReactionButtons} from "../../Reaction";
+import {ConnectType} from "../../../types";
+import {upsertReactionOnThreadsMutation} from "../../../gql/mutation/createReactionOnThreadsMutation";
 
 interface ThreadDetailProps {
     thread: Thread;
@@ -28,6 +31,9 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
         data, loading, refetch
     } = useQuery<{ threads: Thread[] }>(threadsQuery, getChildThreadsQueryVariable(thread.id));
     const childThreads = get(data, "threads", []);
+    const [createReaction] = useMutation(upsertReactionOnThreadsMutation, {
+        errorPolicy: "all",
+    });
     const getAuthor = () => {
         if (thread.author) {
             return {
@@ -68,6 +74,7 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
                 <Button variant="outlined">
                     <ReportIcon/>
                 </Button>
+                <ReactionButtons createReaction={createReaction} type={ConnectType.THREAD} id={thread.id}/>
                 <Button variant="outlined" endIcon={<ShareIcon/>}>
                     Share
                 </Button>

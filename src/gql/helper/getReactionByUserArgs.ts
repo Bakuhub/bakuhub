@@ -1,15 +1,21 @@
-import {gql} from "@apollo/client";
 import {ConnectConfig} from "../../types";
 import {DocumentNode} from "graphql";
 import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
+import {capitalize} from "@mui/material";
+import {gql} from "@apollo/client";
 
-const reactionByUserQuery = gql`
-    query FindFirstReactionOnVisions($where: ReactionOnVisionsWhereInput) {
-        reactionByUser: findFirstReactionOnVisions(where: $where) {
+const reactionByUserQuery = (tableName: string) => {
+    console.info(tableName);
+    console.info(capitalize(tableName));
+    const queryString = `
+    query FindFirstReactionOn${capitalize(tableName)}s($where: ReactionOn${capitalize(tableName)}sWhereInput) {
+        reactionByUser: findFirstReactionOn${capitalize(tableName)}s(where: $where) {
             reaction
         }
     }
 `;
+    return gql(queryString);
+};
 
 export interface GetReactionByUserArgsProps extends ConnectConfig {
     userId?: string;
@@ -20,7 +26,7 @@ export const getReactionByUserArgs = ({
                                           id,
                                           userId
                                       }: GetReactionByUserArgsProps): [DocumentNode, { variables: { where: { [p: string]: { equals: string | null } } } }] => [
-    reactionByUserQuery, {
+    reactionByUserQuery(getTableNameByConnectType(type)), {
         variables: {
             "where": {
                 ...userId ?

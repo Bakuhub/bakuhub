@@ -5,7 +5,7 @@ import * as React from "react";
 import {FunctionComponent} from "react";
 import {find, get} from "lodash";
 import {useQuery} from "@apollo/client";
-import {getReactionByVisionsIdArgs} from "../../gql/helper/getReactionByVisionsIdArgs";
+import {getReactionByIdArgs} from "../../gql/helper/getReactionByIdArgs";
 import {getReactionByUserArgs} from "../../gql/helper/getReactionByUserArgs";
 import {ConnectConfig} from "../../types";
 import {getUserIdBySession} from "../../utils/getUserIdBySession";
@@ -14,6 +14,8 @@ import {useSession} from "next-auth/react";
 import {Reaction} from "../Premise/PremiseDetail";
 import {useSnackbar} from "notistack";
 import {CreateReactionVariables} from "../../gql/utils/getCreateReactionVariables";
+import {getTableNameWithId} from "../../utils/getTableNameWithId";
+import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
 
 export interface ReactionButtonsProps extends ConnectConfig {
     createReaction: (variables: CreateReactionVariables) => Promise<any>;
@@ -28,7 +30,7 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
         data: reactionData,
         error: reactionError,
         refetch: refetchReaction
-    } = useQuery(...getReactionByVisionsIdArgs(id ? [id]:[]));
+    } = useQuery(...getReactionByIdArgs(id ? [id]:[], type));
 
     const {
         data: reactionByUserData, loading: loadingReactionByUser,
@@ -72,13 +74,16 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
     };
 
     const getReactionCount = (reaction: string) => {
+        console.info(reactionData);
+        console.info("this is reaction data");
         if (reactionData) {
             const selectedReactionData = get(reactionData, reaction, []);
-            const selectedReactionDataByVisionId = find(
+            const tableNameWithId = getTableNameWithId(getTableNameByConnectType(type));
+            const selectedReactionDataById = find(
                     selectedReactionData,
-                    (reaction: { visionId: string }) => reaction.visionId === id
+                    (reaction: { visionId: string }) => get(reaction, tableNameWithId) === id
             );
-            if (selectedReactionDataByVisionId) return selectedReactionDataByVisionId._count._all;
+            if (selectedReactionDataById) return selectedReactionDataById._count._all;
         }
         return 0;
     };

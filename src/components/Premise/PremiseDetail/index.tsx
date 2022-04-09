@@ -17,16 +17,13 @@ import {premiseQuery} from "../../../gql/query/premiseQuery";
 import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
 import {getVisionHistoryQueryVariable} from "../../../gql/query/visionHistoryQuery";
 import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
-import {useSession} from "next-auth/react";
 import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {LoadingButton} from "@mui/lab";
 import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
 import {ThreadContainer} from "../../Thread/ThreadContainer";
-import {useSnackbar} from "notistack";
 import {ReactionButtons} from "../../Reaction";
 
 export enum Reaction {
-    LIKE = "LIKE",
     UPVOTE = "UPVOTE",
     DOWNVOTE = "DOWNVOTE"
 }
@@ -49,11 +46,8 @@ export const PremiseDetailContainer = () => {
     }
 };
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
-    const session = useSession();
-    const [voting, setVoting] = React.useState<Reaction | null>();
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
-    const {enqueueSnackbar} = useSnackbar();
     const activeVision = premise.vision?.find(vision =>
                                                       vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
                                                       && !vision.draftMode);
