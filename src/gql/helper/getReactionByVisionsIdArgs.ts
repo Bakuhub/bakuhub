@@ -19,9 +19,9 @@ const reactionByVisionsIdQuery = gql`
         }
     }`;
 
+
 export const getReactionByVisionsIdArgs = (visionIds: string[]): [DocumentNode, { variables: { by: string; whereDownvotes: { AND: ({ visionId: { in: string[] } | { equals: string } } | { reaction: { equals: string } })[] }; whereUpvotes: { AND: ({ visionId: { in: string[] } | { equals: string } } | { reaction: { equals: string } })[] } } }] => [reactionByVisionsIdQuery,
     {
-
         variables: {
             "by": "visionId",
             whereUpvotes: {

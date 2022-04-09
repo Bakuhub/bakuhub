@@ -41,7 +41,6 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
             id: "",
             image: "/images/anonymous.jpg"
         };
-
     };
     const author = getAuthor();
     return <Grid flexWrap={"nowrap"} item container spacing={2} xs={12}>
@@ -66,8 +65,8 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
                 }}>
                     Reply
                 </Button>
-                <Button variant="outlined" endIcon={<ReportIcon/>}>
-                    Report
+                <Button variant="outlined">
+                    <ReportIcon/>
                 </Button>
                 <Button variant="outlined" endIcon={<ShareIcon/>}>
                     Share

@@ -38,8 +38,7 @@ export const MainPage = () => {
         const vision = getActiveVisionFromPremise(premise);
         return vision ? vision.id:"";
     })));
-    console.info("reactionByVisionsId", reactionByVisionsId);
-    return <Grid container spacing={1} justifyContent={"center"}>
+    return <Grid container spacing={1}>
 
         {
             (loading) ? <Grid>

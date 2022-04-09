@@ -87,6 +87,7 @@ export const Comment: FunctionalComponent<CommentProps> = ({
                     placeholder={"Add a comment..."}
                     fullWidth
                     multiline
+                    maxRows={5}
                     variant={"standard"}
                     autoFocus
             />

@@ -28,9 +28,15 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
     const router = useRouter();
     const [expanded, setExpanded] = React.useState(false);
     const thumbnail = getThumbnail(vision);
-    console.info("------------------------------------");
-    console.info(vision);
     const getRedirectUrl = () => premiseId ? `/premise/${premiseId}`:`/vision/${vision.id}`;
+    const getDescription = () => {
+        const description = get(vision, "description", "");
+        if (description && description.length > 100) {
+            return description.substring(0, 100) + "...";
+        } else {
+            return description;
+        }
+    };
     const redirectedUrl = getRedirectUrl();
     return <Card
             onMouseEnter={() => setExpanded(true)}
@@ -66,7 +72,7 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
         </Collapse>
         <CardContent>
             <Typography variant="body2" color="text.secondary">
-                {get(vision, "description", "")}
+                {getDescription()}
             </Typography>
         </CardContent>
         <CardActions disableSpacing>
