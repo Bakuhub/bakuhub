@@ -24,10 +24,12 @@ import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {LoadingButton} from "@mui/lab";
 import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
 import {ThreadContainer} from "../../Thread/ThreadContainer";
-import {ThumbDownAlt, ThumbUpAlt} from "@mui/icons-material";
+import {ThumbDownAlt, ThumbDownOffAlt, ThumbUpAlt} from "@mui/icons-material";
 import {useSnackbar} from "notistack";
 import {getReactionByVisionsIdArgs} from "../../../gql/helper/getReactionByVisionsIdArgs";
 import {addReaction} from "../../../services/api/addReaction";
+import {getReactionByUserArgs} from "../../../gql/helper/getReactionByUserArgs";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 export enum Reaction {
     LIKE = "LIKE",
@@ -54,6 +56,7 @@ export const PremiseDetailContainer = () => {
 };
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const session = useSession();
+    const [voting, setVoting] = React.useState<Reaction | null>();
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
     const {enqueueSnackbar} = useSnackbar();
@@ -61,8 +64,16 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
             vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
             && !vision.draftMode);
     const {
+        data: reactionByUserData, loading: loadingReactionByUser,
+        refetch: refetchReactionByUser
+    } = useQuery(...getReactionByUserArgs({
+        type: ConnectType.VISION,
+        id: activeVision?.id,
+        userId: getUserIdBySession(session)
+    }));
+    const {
         data: threadsQueryData,
-        refetch: refetchThreads
+        refetch: refetchThreads,
     } = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
         threadConnectType: ConnectType.VISION,
         id: activeVision?.id || ""
@@ -90,6 +101,10 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
         }
         return 0;
     };
+    const currentReaction = get(reactionByUserData, "reactionByUser.reaction");
+    console.log(currentReaction);
+    console.log(reactionByUserData);
+    console.info("-this is reaction by user--------------------");
     useEffect(() => {
         if (reactionError)
             reactionError?.message && enqueueSnackbar(reactionError.message, {
@@ -102,6 +117,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
             && get(vision, "mergeRequest.status")==="OPEN");
     const thumbnail = getThumbnail(activeVision);
     const handleReaction = async (reaction: Reaction) => {
+        setVoting(reaction);
         const userId = getUserIdBySession(session);
         if (!userId) {
             enqueueSnackbar("You need to login to perform this action", {variant: "error"});
@@ -119,23 +135,14 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
             createReaction: createReactionOnVision,
             userId: userId, enqueueSnackbar,
         });
+        refetchReactionByUser();
         refetchReaction();
+        setVoting(null);
     };
 
     const connectConfig = {
         type: ConnectType.VISION,
         id: activeVision?.id || ""
-    };
-    const data = {
-        "web": {
-            "client_id": "1041940344100-6kgadot2bpsikap3o602gvor82f4cq2e.apps.googleusercontent.com",
-            "project_id": "bakuhub",
-            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-            "token_uri": "https://oauth2.googleapis.com/token",
-            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-            "client_secret": "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",
-            "javascript_origins": ["https://www.bakuhub.com"]
-        }
     };
     return (
             <Grid container>
@@ -155,7 +162,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                                 alt="Paella dish"
                         />
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={6}>
                         <Typography variant="h3" color="text.secondary">
                             {activeVision?.title}
                         </Typography>
@@ -163,7 +170,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                             {activeVision?.description}
                         </Typography>
                     </Grid>
-                    <Grid item container xs={4} alignContent={"flex-start"}>
+                    <Grid item container xs={2} alignContent={"flex-start"}>
                         <Grid item xs={12}>
                             <Typography variant={"h5"}>Merge requests opened:</Typography>
                         </Grid>
@@ -184,11 +191,18 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     </Grid>
                     <ReferenceOverview snapshots={
                         get(activeVision, "reference.snapshots", [])}/>
-                    <LoadingButton startIcon={<ThumbUpAlt/>} variant={"outlined"}
-                                   onClick={() => handleReaction(Reaction.UPVOTE)}>
+                    <LoadingButton
+                            loading={(voting===Reaction.UPVOTE) || loadingReactionByUser}
+                            startIcon={
+                                currentReaction===Reaction.UPVOTE ? <ThumbUpAlt/>:<ThumbUpOffAltIcon/>}
+                            variant={"outlined"}
+                            onClick={() => handleReaction(Reaction.UPVOTE)}>
                         {getReactionCount("upVotes")}
                     </LoadingButton>
-                    <LoadingButton startIcon={<ThumbDownAlt/>} variant={"outlined"}
+                    <LoadingButton startIcon={currentReaction===Reaction.DOWNVOTE ? <ThumbDownAlt/>:<ThumbDownOffAlt/>}
+                                   loading={(voting===Reaction.DOWNVOTE) || loadingReactionByUser}
+
+                                   variant={"outlined"}
                                    onClick={() => handleReaction(Reaction.DOWNVOTE)}>
                         {getReactionCount("downVotes")}
                     </LoadingButton>

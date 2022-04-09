@@ -7,5 +7,5 @@ export enum ConnectType {
 
 export interface ConnectConfig {
     type: ConnectType;
-    id: string | null;
+    id: string | null | undefined;
 }

@@ -13,12 +13,9 @@ import {TimelineContainer} from "../Timeline";
 export const History = () => {
     const router = useRouter();
     const {premiseId} = router.query;
-    console.info(premiseId);
-    console.info("-00000000000000000000000000000000000");
     const {data, loading, error} = useQuery(visionHistoryQuery, getVisionHistoryQueryVariable(premiseId as string));
-    console.info(premiseId);
-    console.info(data);
     const visions: Vision[] = get(data, "visions", []);
+    console.info(data);
     if (loading) return <CircularProgress/>;
     if (!premiseId || error) {
         return <ErrorPage>
@@ -27,7 +24,7 @@ export const History = () => {
     }
 
     return (
-            <Grid container>
+            <>
                 <TimelineContainer visions={visions}
                                    getDate={(vision) => vision.activityDate?.toISOString() || "no date"}
                                    getDescription={(vision) => vision.description || "no description"}
@@ -52,6 +49,6 @@ export const History = () => {
                     </Tooltip>
                 </Grid>)}
 
-            </Grid>
+            </>
     );
 };
