@@ -7,7 +7,7 @@ import {Button, CircularProgress, Grid, Tooltip} from "@mui/material";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
-import {get} from "lodash";
+import get from "lodash/get";
 import {ReferenceOverview} from "../../Reference/ReferenceOverview";
 import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
 import {ConnectType} from "../../../types";

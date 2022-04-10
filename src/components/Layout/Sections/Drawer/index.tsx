@@ -1,13 +1,13 @@
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Divider from "@mui/material/Divider";
 import {DrawerList} from "./Sections/DrawerList";
 import * as React from "react";
 import {DrawerHeader} from "./styled";
 import {drawerWidth} from "../../../../constants/style";
-import {useTheme} from "@mui/system";
+import Icon from "@mui/material/Icon";
+import useTheme from "@mui/system/useTheme";
+import {MaterialUIIcons} from "../../../../constants/MaterialUIIcons";
 
 interface LayoutDrawerProps {
     open: boolean,
@@ -31,7 +31,9 @@ export const LayoutDrawer = ({open, handleDrawerClose}: LayoutDrawerProps) => {
     >
         <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
-                {theme.direction === "ltr" ? <ChevronLeftIcon/>:<ChevronRightIcon/>}
+                <Icon>
+                    {theme.direction === "ltr" ? MaterialUIIcons.chevron_left:MaterialUIIcons.chevron_right}
+                </Icon>
             </IconButton>
         </DrawerHeader>
         <Divider/>

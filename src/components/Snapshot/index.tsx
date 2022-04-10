@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {getSnapshot} from "../../services/api/getSnapshot";
 import {useMutation} from "@apollo/client";
 import {createSnapshotMutation} from "../../gql/mutation/createSnapshotMutation";
-import {get} from "lodash";
+import get from "lodash/get";
 import {useSnackbar} from "notistack";
 import {Snapshot} from "../../../prisma/generated/type-graphql";
 import DeleteIcon from "@mui/icons-material/Delete";

@@ -1,4 +1,4 @@
-import {get} from "lodash";
+import get from "lodash/get";
 import {Premise} from "../../../../../prisma/generated/type-graphql";
 import {getActiveVisionFromPremise} from "../../../../utils/getActiveVisionFromPremise";
 

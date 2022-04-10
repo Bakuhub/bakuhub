@@ -1,9 +1,8 @@
-import {LoadingButton} from "@mui/lab";
-import {ThumbDownAlt, ThumbDownOffAlt, ThumbUpAlt} from "@mui/icons-material";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import LoadingButton from "@mui/lab/LoadingButton";
 import * as React from "react";
 import {FunctionComponent} from "react";
-import {find, get} from "lodash";
+import get from "lodash/get";
+import find from "lodash/find";
 import {useQuery} from "@apollo/client";
 import {getReactionByIdArgs} from "../../gql/helper/getReactionByIdArgs";
 import {getReactionByUserArgs} from "../../gql/helper/getReactionByUserArgs";
@@ -16,6 +15,8 @@ import {useSnackbar} from "notistack";
 import {CreateReactionVariables} from "../../gql/utils/getCreateReactionVariables";
 import {getTableNameWithId} from "../../utils/getTableNameWithId";
 import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
+import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
+import {Icon} from "@mui/material";
 
 export interface ReactionButtonsProps extends ConnectConfig {
     createReaction: (variables: CreateReactionVariables) => Promise<any>;
@@ -74,8 +75,6 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
     };
 
     const getReactionCount = (reaction: string) => {
-        console.info(reactionData);
-        console.info("this is reaction data");
         if (reactionData) {
             const selectedReactionData = get(reactionData, reaction, []);
             const tableNameWithId = getTableNameWithId(getTableNameByConnectType(type));
@@ -93,12 +92,19 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
                                  voting === Reaction.UPVOTE
                          ) || loadingReactionByUser}
                 startIcon={
-                    currentReaction === Reaction.UPVOTE ? <ThumbUpAlt/>:<ThumbUpOffAltIcon/>}
+                    <Icon>
+                        {currentReaction === Reaction.UPVOTE ? MaterialUIIcons.thumb_up_alt
+                                                             :MaterialUIIcons.thumb_up_off_alt}
+                    </Icon>
+                }
                 variant={"outlined"}
                 onClick={() => handleReaction(Reaction.UPVOTE)}>
             {getReactionCount("upVotes")}
         </LoadingButton>
-        <LoadingButton startIcon={currentReaction === Reaction.DOWNVOTE ? <ThumbDownAlt/>:<ThumbDownOffAlt/>}
+        <LoadingButton startIcon={<Icon>
+            {currentReaction === Reaction.DOWNVOTE ? MaterialUIIcons.thumb_down_alt
+                                                   :MaterialUIIcons.thumb_down_off_alt}
+        </Icon>}
                        loading={(
                                         voting === Reaction.DOWNVOTE
                                 ) || loadingReactionByUser}
@@ -108,3 +114,4 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
         </LoadingButton>
     </>;
 };
+

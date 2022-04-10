@@ -1,7 +1,7 @@
 import {Button, Grid, LinearProgress, Tooltip} from "@mui/material";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
-import {get} from "lodash";
+import get from "lodash/get";
 import {ReferenceOverview} from "../Reference/ReferenceOverview";
 import IconButton from "@mui/material/IconButton";
 import ReplyIcon from "@mui/icons-material/Reply";
@@ -117,6 +117,7 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                                         );
                                     }
                                 }}>
+
                         <ReplyIcon/>
                     </IconButton>
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {

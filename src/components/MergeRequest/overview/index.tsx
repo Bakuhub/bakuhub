@@ -1,5 +1,5 @@
 import {Grid, Tooltip, Typography} from "@mui/material";
-import {get} from "lodash";
+import get from "lodash/get";
 import {useRouter} from "next/router";
 import {Vision} from "../../../../prisma/generated/type-graphql";
 

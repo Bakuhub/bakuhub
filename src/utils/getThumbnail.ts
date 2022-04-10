@@ -1,5 +1,5 @@
 import {Vision} from "../../prisma/generated/type-graphql";
-import {get} from "lodash";
+import get from "lodash/get";
 
 export const getThumbnail = (vision?: Vision) => {
     const thumbnail = get(vision, "thumbnail");

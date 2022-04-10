@@ -4,7 +4,7 @@ import {Grid, Typography} from "@mui/material";
 import {VisionOverview} from "../VisionOverview/VisionOverview";
 import {useMutation, useQuery} from "@apollo/client";
 import {mergeVisionIntoPremiseMutation} from "../../../gql/mutation/mergeVisionIntoPremiseMutation";
-import {get} from "lodash";
+import get from "lodash/get";
 import {useSnackbar} from "notistack";
 import {LoadingButton} from "@mui/lab";
 import {Comment} from "../../Comment";

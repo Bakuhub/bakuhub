@@ -5,7 +5,7 @@ import {Premise} from "../../../prisma/generated/type-graphql";
 import {premisesQuery} from "../../gql/query/premisesQuery";
 import {getReactionByIdArgs} from "../../gql/helper/getReactionByIdArgs";
 import {getActiveVisionFromPremise} from "../../utils/getActiveVisionFromPremise";
-import {get} from "lodash";
+import get from "lodash/get";
 import {ConnectType} from "../../types";
 
 export const MainPage = () => {

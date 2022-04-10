@@ -1,7 +1,7 @@
 import {handlePromise} from "../handlePromise";
 import {CreateReactionVariables, getCreateReactionVariables} from "../../gql/utils/getCreateReactionVariables";
 import {ConnectConfig} from "../../types";
-import {get} from "lodash";
+import get from "lodash/get";
 import {Reaction} from "../../components/Premise/PremiseDetail";
 import {OptionsObject, SnackbarKey, SnackbarMessage} from "notistack";
 

@@ -1,6 +1,6 @@
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-import {get} from "lodash";
+import get from "lodash/get";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CardMedia from "@mui/material/CardMedia";

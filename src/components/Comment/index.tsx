@@ -11,7 +11,7 @@ import {LoadingButton} from "@mui/lab";
 import {useSnackbar} from "notistack";
 import {getAuthorVariableByUserId} from "../../gql/utils/getAuthorVariableByUserId";
 import {getUserIdBySession} from "../../utils/getUserIdBySession";
-import {get} from "lodash";
+import get from "lodash/get";
 
 
 export interface CommentProps {

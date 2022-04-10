@@ -4,7 +4,7 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import ReportIcon from "@mui/icons-material/Report";
 import ShareIcon from "@mui/icons-material/Share";
 import {Thread} from "../../../../prisma/generated/type-graphql";
-import {get} from "lodash";
+import get from "lodash/get";
 import {fromNow} from "../../../utils/fromNow";
 import {ThreadConnectConfig} from "../../../store/slices/threadSlice";
 import {Comment} from "../../Comment";

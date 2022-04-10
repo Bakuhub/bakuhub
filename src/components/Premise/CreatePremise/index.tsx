@@ -3,7 +3,7 @@ import {FunctionComponent, useState} from "react";
 import {useRouter} from "next/router";
 import {useMutation} from "@apollo/client";
 import {createPremiseMutation} from "../../../gql/mutation/createPremiseMutation";
-import {get} from "lodash";
+import get from "lodash/get";
 import {useSession} from "next-auth/react";
 import {FileInput} from "../../FileInput";
 import PremiseOverview from "../PremiseOverview";

@@ -1,6 +1,6 @@
 import {Avatar, Button, Grid} from "@mui/material";
 import React, {ChangeEvent} from "react";
-import {get} from "lodash";
+import get from "lodash/get";
 import {fetchApi} from "../../services/fetchApi";
 
 interface FileInputProps {
