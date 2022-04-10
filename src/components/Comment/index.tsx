@@ -105,3 +105,5 @@ export const Comment: FunctionalComponent<CommentProps> = ({
         </Grid>
     </Grid>;
 };
+
+export default Comment;

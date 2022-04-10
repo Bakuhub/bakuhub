@@ -157,3 +157,4 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
 
     );
 };
+export default DetailPage;

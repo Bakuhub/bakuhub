@@ -39,3 +39,5 @@ export const MergeRequest: FunctionComponent<MergeRequestProps> = ({
     </Grid>;
 
 };
+
+export default MergeRequest;

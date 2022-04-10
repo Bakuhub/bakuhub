@@ -5,14 +5,14 @@ import MuiAppBar, {AppBarProps as MuiAppBarProps} from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import {drawerWidth} from "../../constants/style";
 import {LayoutDrawer} from "./Sections/Drawer";
 import {DrawerHeader} from "./Sections/Drawer/styled";
 import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
-import {Grid} from "@mui/material";
+import {Grid, Icon} from "@mui/material";
 import SpeedDialContainer from "./Sections/SpeedDialContainer";
+import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
 
 
 const Main = styled(
@@ -83,13 +83,6 @@ export const Layout: React.FunctionComponent = ({children}) => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === "clickaway") {
-            return;
-        }
-
-        setOpen(false);
-    };
 
     return (
             <Box sx={{display: "flex"}}>
@@ -106,7 +99,7 @@ export const Layout: React.FunctionComponent = ({children}) => {
                                     )
                                 }}
                         >
-                            <MenuIcon/>
+                            <Icon>{MaterialUIIcons.menu}</Icon>
                         </IconButton>
                         <Grid item container xs={12} justifyContent={"space-between"} alignItems={"center"}>
 
@@ -126,3 +119,4 @@ export const Layout: React.FunctionComponent = ({children}) => {
             </Box>
     );
 };
+export default Layout;

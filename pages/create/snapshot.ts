@@ -1,3 +1,4 @@
-import {SnapshotCreator} from "../../src/components/Snapshot";
+import dynamic from "next/dynamic";
 
-export default SnapshotCreator;
+const snapshotCreator = dynamic(() => import("../../src/components/Snapshot"), {ssr: false});
+export default snapshotCreator;

@@ -2,8 +2,10 @@ import {useRouter} from "next/router";
 import {useQuery} from "@apollo/client";
 import {getVisionQueryArgs} from "../../../gql/helper/getVisionQueryArgs";
 import {CircularProgress} from "@mui/material";
-import {ErrorPage} from "../../Error";
-import {DetailPage} from "../../Detail";
+import dynamic from "next/dynamic";
+
+const ErrorPage = dynamic(() => import("../../Error"));
+const DetailPage = dynamic(() => import("../../Detail"));
 // use in page /vision/:visionId
 export const VisionDetail = () => {
     const router = useRouter();

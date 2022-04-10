@@ -1,4 +1,4 @@
-import {Grid, IconButton, TextField, Tooltip, Typography} from "@mui/material";
+import {Grid, Icon, IconButton, TextField, Tooltip, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {getSnapshot} from "../../services/api/getSnapshot";
 import {useMutation} from "@apollo/client";
@@ -6,11 +6,9 @@ import {createSnapshotMutation} from "../../gql/mutation/createSnapshotMutation"
 import get from "lodash/get";
 import {useSnackbar} from "notistack";
 import {Snapshot} from "../../../prisma/generated/type-graphql";
-import DeleteIcon from "@mui/icons-material/Delete";
-import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
-import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
-import {LoadingButton} from "@mui/lab";
 import moment from "moment";
+import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
+import {LoadingButton} from "@mui/lab";
 
 export interface SnapshotCreatorProps {
     caption?: string;
@@ -95,9 +93,11 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
                 />
             </Grid>
             <Grid item container xs={2} justifyContent={"flex-end"}>
-                <LoadingButton loading={isLoading} variant={"outlined"} onClick={handleClick}>
-                    <Tooltip title={"add reference"}><AddToPhotosIcon/></Tooltip>
-                </LoadingButton>
+                <Tooltip title={"add reference"}>
+                    <LoadingButton loading={isLoading} variant={"outlined"} onClick={handleClick}>
+                        <Icon>{MaterialUIIcons.add_to_photos}</Icon>
+                    </LoadingButton>
+                </Tooltip>
             </Grid>
         </Grid>
         {
@@ -113,7 +113,9 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
                                           <Tooltip onClick={() => window.open(s3Url)}
                                                    title={`Snapshot created at ${moment(createdAt).fromNow()}`}>
                                               <IconButton>
-                                                  <InsertPhotoIcon/>
+                                                  <Icon>
+                                                      {MaterialUIIcons.insert_photo}
+                                                  </Icon>
                                               </IconButton>
                                           </Tooltip>
                                           <IconButton
@@ -124,7 +126,7 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
                                                       );
                                                   }
                                                   } aria-label="delete">
-                                              <DeleteIcon fontSize="inherit"/>
+                                              <Icon>  {MaterialUIIcons.delete}  </Icon>
                                           </IconButton>
                                       </Grid>
                                   </Grid>
@@ -132,3 +134,5 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
         }
     </Grid>;
 };
+
+export default SnapshotCreator;

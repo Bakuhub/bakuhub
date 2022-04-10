@@ -9,7 +9,7 @@ export interface ThreadContainerProps {
     connectConfig: ThreadConnectConfig;
 }
 
-export const ThreadContainer: FunctionComponent<ThreadContainerProps> = ({threads, connectConfig}) => {
+const ThreadContainer: FunctionComponent<ThreadContainerProps> = ({threads, connectConfig}) => {
     return (
             <Grid item container xs={12}>
                 {
@@ -24,3 +24,5 @@ export const ThreadContainer: FunctionComponent<ThreadContainerProps> = ({thread
             </Grid>
     );
 };
+
+export default ThreadContainer;

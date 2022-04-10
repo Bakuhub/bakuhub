@@ -1,14 +1,15 @@
 import type {AppProps} from "next/app";
-import {Provider} from "react-redux";
-import {store} from "../src/store";
-import {Layout} from "../src/components/Layout";
 import {ApolloProvider} from "@apollo/client";
 import apolloClient from "../src/lib/apollo";
 import {SessionProvider} from "next-auth/react";
 import {ThemeProvider} from "@mui/material/styles";
 import {theme} from "../src/theme";
-import {Collapse, CssBaseline} from "@mui/material";
+import dynamic from "next/dynamic";
 import {SnackbarProvider} from "notistack";
+import {Collapse} from "@mui/material";
+
+const CssBaseline = dynamic(() => import("@mui/material/CssBaseline"));
+const Layout = dynamic(() => import("../src/components/Layout"));
 
 function MyApp({
                    Component, pageProps: {session, ...pageProps},
@@ -20,37 +21,37 @@ function MyApp({
             {/* for apollo provide for useQuery and useMutation */}
             <ApolloProvider client={apolloClient}>
                 {/* for redux store */}
-                <Provider store={store}>
-                    <SnackbarProvider
-                            maxSnack={3}
-                            anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "left",
-                            }}
-                            TransitionComponent={Collapse}
-                            iconVariant={{
-                                success: "✅ ",
-                                error: "✖️",
-                                warning: "⚠️",
-                                info: "ℹ️",
-                            }}
-                    >
-                        {/* for Dark theme */}
-                        <CssBaseline/>
-                        {/*get MUI dynamic fonts*/}
-                        <link
-                                rel="stylesheet"
-                                href="https://fonts.googleapis.com/icon?family=Material+Icons"
-                        />
-                        <title>
-                            bakuhub
-                        </title>
-                        {/* for layout with drawer and header */}
-                        <Layout>
-                            <Component {...pageProps} />
-                        </Layout>
-                    </SnackbarProvider>
-                </Provider>
+                {/*<Provider store={store}>*/}
+                <SnackbarProvider
+                        maxSnack={3}
+                        anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "left",
+                        }}
+                        TransitionComponent={Collapse}
+                        iconVariant={{
+                            success: "✅ ",
+                            error: "✖️",
+                            warning: "⚠️",
+                            info: "ℹ️",
+                        }}
+                >
+                    {/* for Dark theme */}
+                    <CssBaseline/>
+                    {/*get MUI dynamic fonts*/}
+                    <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                    />
+                    <title>
+                        bakuhub
+                    </title>
+                    {/* for layout with drawer and header */}
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </SnackbarProvider>
+                {/*</Provider>*/}
             </ApolloProvider>
         </ThemeProvider>
     </SessionProvider>;

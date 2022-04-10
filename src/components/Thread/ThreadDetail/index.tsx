@@ -11,9 +11,11 @@ import {Comment} from "../../Comment";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
 import {getChildThreadsQueryVariable} from "../../../gql/utils/getChildThreadsQueryVariable";
-import {ReactionButtons} from "../../Reaction";
 import {ConnectType} from "../../../types";
 import {upsertReactionOnThreadsMutation} from "../../../gql/mutation/createReactionOnThreadsMutation";
+import dynamic from "next/dynamic";
+
+const ReactionButtons = dynamic(() => import("../../Reaction"));
 
 interface ThreadDetailProps {
     thread: Thread;

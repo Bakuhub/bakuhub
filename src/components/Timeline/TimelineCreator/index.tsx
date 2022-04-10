@@ -3,9 +3,11 @@ import {useState} from "react";
 import {getVisionsByKeywordArgs} from "../../../gql/helper/getVisionsByKeywordArgs";
 import {useQuery} from "@apollo/client";
 import {Vision} from "../../../../prisma/generated/type-graphql";
-import {TimelineContainer} from "../index";
-import {VisionDataGrid} from "../../Vision/VisionDataGrid";
+import dynamic from "next/dynamic";
 import {LoadingButton} from "@mui/lab";
+import TimelineContainer from "../index";
+
+const VisionDataGrid = dynamic(() => import("../../Vision/VisionDataGrid"));
 
 export const TimelineCreator = () => {
     const [keyword, setKeyword] = useState("");

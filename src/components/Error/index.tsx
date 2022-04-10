@@ -9,3 +9,5 @@ export const ErrorPage: FunctionComponent = ({children}) => {
             </div>
     );
 };
+
+export default ErrorPage;

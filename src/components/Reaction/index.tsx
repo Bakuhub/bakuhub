@@ -16,7 +16,7 @@ import {CreateReactionVariables} from "../../gql/utils/getCreateReactionVariable
 import {getTableNameWithId} from "../../utils/getTableNameWithId";
 import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
 import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
-import {Icon} from "@mui/material";
+import Icon from "@mui/material/Icon";
 
 export interface ReactionButtonsProps extends ConnectConfig {
     createReaction: (variables: CreateReactionVariables) => Promise<any>;
@@ -114,4 +114,4 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
         </LoadingButton>
     </>;
 };
-
+export default ReactionButtons;

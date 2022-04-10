@@ -4,7 +4,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import * as React from "react";
 import AddTaskIcon from "@mui/icons-material/AddTask";
-import {Icon} from "@mui/material";
+import Icon from "@mui/material/Icon";
 import {useRouter} from "next/router";
 
 export const DrawerList = () => {

@@ -43,6 +43,7 @@ export interface VisionDataGridProps {
     handleUpdateVisionStatus: (visionId: string, nextStatus: boolean) => void;
 }
 
+
 export const VisionDataGrid: FunctionComponent<VisionDataGridProps> = ({
                                                                            visions, loading,
                                                                            handleUpdateVisionStatus
@@ -68,3 +69,4 @@ export const VisionDataGrid: FunctionComponent<VisionDataGridProps> = ({
             </div>
     );
 };
+export default VisionDataGrid;

@@ -1,27 +1,28 @@
 import * as React from "react";
-import Typography from "@mui/material/Typography";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
-import {Button, CircularProgress, Grid, Tooltip} from "@mui/material";
-import Image from "next/image";
+import {Button, CircularProgress, Grid, Tooltip, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import get from "lodash/get";
 import {ReferenceOverview} from "../../Reference/ReferenceOverview";
 import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
 import {ConnectType} from "../../../types";
-import {Comment} from "../../Comment";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {premiseQuery} from "../../../gql/query/premiseQuery";
 import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
 import {getVisionHistoryQueryVariable} from "../../../gql/query/visionHistoryQuery";
 import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
-import {LoadingButton} from "@mui/lab";
 import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
-import {ThreadContainer} from "../../Thread/ThreadContainer";
-import {ReactionButtons} from "../../Reaction";
+import dynamic from "next/dynamic";
+
+const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
+const Comment = dynamic(() => import("../../Comment"));
+const Image = dynamic(() => import("next/image"));
+const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
+const ReactionButtons = dynamic(() => import("../../Reaction"));
 
 export enum Reaction {
     UPVOTE = "UPVOTE",

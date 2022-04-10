@@ -3,12 +3,12 @@ import {ErrorPage} from "../Error";
 import {Button, CircularProgress, Grid, Tooltip} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
-import get from "lodash/get";
 import * as React from "react";
 import {useQuery} from "@apollo/client";
 import {getVisionHistoryQueryVariable, visionHistoryQuery} from "../../gql/query/visionHistoryQuery";
 import {Vision} from "../../../prisma/generated/type-graphql";
 import {TimelineContainer} from "../Timeline";
+import get from "lodash/get";
 
 export const History = () => {
     const router = useRouter();

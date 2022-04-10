@@ -100,3 +100,5 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
         </CardActions>
     </Card>;
 };
+
+export default VisionOverview;

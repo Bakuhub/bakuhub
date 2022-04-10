@@ -1,18 +1,21 @@
-import {MergeRequest, Thread} from "../../../../prisma/generated/type-graphql/";
+import {MergeRequest, Thread} from "../../../../prisma/generated/type-graphql";
 import React from "react";
 import {Grid, Typography} from "@mui/material";
-import {VisionOverview} from "../VisionOverview/VisionOverview";
 import {useMutation, useQuery} from "@apollo/client";
 import {mergeVisionIntoPremiseMutation} from "../../../gql/mutation/mergeVisionIntoPremiseMutation";
 import get from "lodash/get";
 import {useSnackbar} from "notistack";
-import {LoadingButton} from "@mui/lab";
-import {Comment} from "../../Comment";
 import {ConnectType} from "../../../types";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
 import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
-import {ThreadContainer} from "../../Thread/ThreadContainer";
+import dynamic from "next/dynamic";
+
+const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
+const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
+const Comment = dynamic(() => import("../../Comment"));
+const VisionOverview = dynamic(() => import("../VisionOverview/VisionOverview"));
+
 
 export interface CreateVisionProps {
     mergeRequest: MergeRequest;

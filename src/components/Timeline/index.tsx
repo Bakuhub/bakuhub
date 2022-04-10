@@ -56,3 +56,4 @@ export const TimelineContainer: FunctionComponent<TimelineContainerProps> = ({
             </Timeline>
     );
 };
+export default TimelineContainer;
