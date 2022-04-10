@@ -10,7 +10,7 @@ export const threadSlice = createSlice({
                                            initialState: {
                                                connector: {
                                                    type: ConnectType.VISION,
-                                                   id: null as string | null
+                                                   id: null as string | undefined | null,
                                                },
                                                parentThreadId: null
                                            },
