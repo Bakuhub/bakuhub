@@ -18,10 +18,10 @@ export const getCreateReactionVariables = ({
                                                id,
                                                reaction,
                                                userId
-                                           }: ReactionConnectConfig): { variables: { create: { [p: string]: Reaction | { connect: { id: string } }; reaction: Reaction; user: { connect: { id: string } } }; update: { reaction: { set: Reaction } }; where: { [p: string]: { [p: string]: string | null | undefined; userId: string } } } } => {
+                                           }: ReactionConnectConfig): CreateReactionVariables => {
     const tableName = getTableNameByConnectType(type);
     const tableNameWithId = getTableNameWithId(tableName);
-    return {
+    return <CreateReactionVariables>{
         variables: {
             "where": {
                 [`userId_${tableNameWithId}`]: {

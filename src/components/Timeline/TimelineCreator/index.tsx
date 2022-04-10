@@ -22,9 +22,21 @@ export const TimelineCreator = () => {
             }
     ));
     return (
-            <Grid container>
+            <Grid container alignItems={"flex-start"}>
 
                 <Grid item container xs={8}>
+                    <Grid item xs={12}>
+                        <LoadingButton loading={loading}
+                                       variant={"outlined"}
+                                       onClick={() => {
+                                           refetch();
+                                       }}>
+                            Search
+                        </LoadingButton>
+                        <LoadingButton>
+                            Create Timeline
+                        </LoadingButton>
+                    </Grid>
                     <Grid item xs={6}>
                         <TextField fullWidth={true} label={"title"} value={title}
                                    onChange={e => setTitle(e.target.value)}/>
@@ -41,13 +53,7 @@ export const TimelineCreator = () => {
                                 label="Search"
                                 variant="outlined"
                         />
-                        <LoadingButton loading={loading}
-                                       variant={"outlined"}
-                                       onClick={() => {
-                                           refetch();
-                                       }}>
-                            Search
-                        </LoadingButton>
+
                     </Grid>
                     <VisionDataGrid handleUpdateVisionStatus={
                         (visionId: string, nextStatus) => {

@@ -181,7 +181,6 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
             />
         }
         <Grid xs={12} md={6} component={"form"} item
-                // onSubmit={submit}
               container spacing={1}>
             <Grid item xs={12}><TextField required fullWidth
                                           onChange={({target: {value}}) => setTitle(value)}

@@ -7,7 +7,6 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import * as React from "react";
 import {useRouter} from "next/router";
@@ -17,6 +16,10 @@ import {UserAvatar} from "../../User/Avatar";
 import {Collapse, Tooltip} from "@mui/material";
 import {fromNow} from "../../../utils/fromNow";
 import moment from "moment";
+import {ReactionButtons} from "../../Reaction";
+import {useMutation} from "@apollo/client";
+import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
+import {ConnectType} from "../../../types";
 
 export interface VisionDetailProps {
     vision: Vision;
@@ -37,11 +40,13 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
             return description;
         }
     };
+    const [createReaction] = useMutation(upsertReactionOnVisionsMutation);
     const redirectedUrl = getRedirectUrl();
     return <Card
             onMouseEnter={() => setExpanded(true)}
             onMouseLeave={() => setExpanded(false)}
-            sx={{maxWidth: 345}}>
+            sx={{maxWidth: 345}}
+    >
         <CardHeader
                 onClick={() => {
                     if (premiseId || vision.id) {
@@ -57,13 +62,21 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
                     </IconButton>
                 }
                 title={vision.title}
-                subheader={<Tooltip
-                        title={vision.activityDate ? moment(vision.activityDate).format("yyyy-MMM-DD HH:mm"):""}>
-                    <Typography>{fromNow(vision.activityDate)}</Typography>
-                </Tooltip>}
+                subheader={
+                    <Tooltip
+                            title={vision.activityDate
+                                   ?
+                                   moment(vision.activityDate).format("yyyy-MMM-DD HH:mm")
+                                   :""}>
+                        <Typography>{fromNow(vision.activityDate)}</Typography>
+                    </Tooltip>
+                }
         />
-        <Collapse in={expanded || !hideImage} timeout="auto" unmountOnExit>
-
+        <Collapse
+                in={expanded || !hideImage}
+                timeout="auto"
+                unmountOnExit
+        >
             <CardMedia
                     component="img"
                     height="194"
@@ -72,14 +85,15 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
             />
         </Collapse>
         <CardContent>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+                    variant="body2"
+                    color="text.secondary"
+            >
                 {getDescription()}
             </Typography>
         </CardContent>
         <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-                <FavoriteIcon/>
-            </IconButton>
+            <ReactionButtons createReaction={createReaction} type={ConnectType.VISION} id={vision.id}/>
             <IconButton onClick={() => router.push(`/create/vision/${premiseId}`)} aria-label="share">
                 <ShareIcon/>
             </IconButton>

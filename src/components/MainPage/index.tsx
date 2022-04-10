@@ -39,6 +39,8 @@ export const MainPage = () => {
         const vision = getActiveVisionFromPremise(premise);
         return vision ? vision.id:"";
     }), ConnectType.VISION));
+    console.info(reactionByVisionsId);
+    console.info("------------------------------");
     return <Grid container spacing={1}>
 
         {
@@ -47,7 +49,7 @@ export const MainPage = () => {
             ) ? <Grid>
                 <CircularProgress/>
             </Grid>:data?.premises.map(
-                    premise => <Grid key={premise.id} item xs={4} lg={3}
+                    premise => <Grid key={premise.id} item
                     ><PremiseOverview premise={premise}/></Grid>
             )
         }
