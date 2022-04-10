@@ -1,0 +1,12 @@
+export { AggregateVotesOnVisionArgs } from "./AggregateVotesOnVisionArgs";
+export { CreateManyVotesOnVisionArgs } from "./CreateManyVotesOnVisionArgs";
+export { CreateVotesOnVisionArgs } from "./CreateVotesOnVisionArgs";
+export { DeleteManyVotesOnVisionArgs } from "./DeleteManyVotesOnVisionArgs";
+export { DeleteVotesOnVisionArgs } from "./DeleteVotesOnVisionArgs";
+export { FindFirstVotesOnVisionArgs } from "./FindFirstVotesOnVisionArgs";
+export { FindManyVotesOnVisionArgs } from "./FindManyVotesOnVisionArgs";
+export { FindUniqueVotesOnVisionArgs } from "./FindUniqueVotesOnVisionArgs";
+export { GroupByVotesOnVisionArgs } from "./GroupByVotesOnVisionArgs";
+export { UpdateManyVotesOnVisionArgs } from "./UpdateManyVotesOnVisionArgs";
+export { UpdateVotesOnVisionArgs } from "./UpdateVotesOnVisionArgs";
+export { UpsertVotesOnVisionArgs } from "./UpsertVotesOnVisionArgs";

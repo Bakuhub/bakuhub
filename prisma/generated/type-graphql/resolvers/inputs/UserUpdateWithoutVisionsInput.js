@@ -14,6 +14,10 @@ const SessionUpdateManyWithoutUserInput_1 = require("../inputs/SessionUpdateMany
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 const ThreadUpdateManyWithoutAuthorInput_1 = require("../inputs/ThreadUpdateManyWithoutAuthorInput");
 const TimelineUpdateManyWithoutAuthorInput_1 = require("../inputs/TimelineUpdateManyWithoutAuthorInput");
+const VotesOnPremiseUpdateManyWithoutUserInput_1 = require("../inputs/VotesOnPremiseUpdateManyWithoutUserInput");
+const VotesOnThreadUpdateManyWithoutUserInput_1 = require("../inputs/VotesOnThreadUpdateManyWithoutUserInput");
+const VotesOnTimelineUpdateManyWithoutUserInput_1 = require("../inputs/VotesOnTimelineUpdateManyWithoutUserInput");
+const VotesOnVisionUpdateManyWithoutUserInput_1 = require("../inputs/VotesOnVisionUpdateManyWithoutUserInput");
 let UserUpdateWithoutVisionsInput = class UserUpdateWithoutVisionsInput {
 };
 tslib_1.__decorate([
@@ -100,6 +104,30 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsUpdateManyWithoutUserInput_1.ReactionOnVisionsUpdateManyWithoutUserInput)
 ], UserUpdateWithoutVisionsInput.prototype, "ReactionOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnVisionUpdateManyWithoutUserInput_1.VotesOnVisionUpdateManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnVisionUpdateManyWithoutUserInput_1.VotesOnVisionUpdateManyWithoutUserInput)
+], UserUpdateWithoutVisionsInput.prototype, "votesOnVision", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineUpdateManyWithoutUserInput_1.VotesOnTimelineUpdateManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineUpdateManyWithoutUserInput_1.VotesOnTimelineUpdateManyWithoutUserInput)
+], UserUpdateWithoutVisionsInput.prototype, "votesOnTimeline", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnPremiseUpdateManyWithoutUserInput_1.VotesOnPremiseUpdateManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnPremiseUpdateManyWithoutUserInput_1.VotesOnPremiseUpdateManyWithoutUserInput)
+], UserUpdateWithoutVisionsInput.prototype, "votesOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnThreadUpdateManyWithoutUserInput_1.VotesOnThreadUpdateManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnThreadUpdateManyWithoutUserInput_1.VotesOnThreadUpdateManyWithoutUserInput)
+], UserUpdateWithoutVisionsInput.prototype, "votesOnThread", void 0);
 UserUpdateWithoutVisionsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutVisionsInput", {
         isAbstract: true

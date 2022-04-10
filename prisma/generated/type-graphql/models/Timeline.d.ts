@@ -3,6 +3,7 @@ import { ReactionOnTimelines } from "../models/ReactionOnTimelines";
 import { TagsOnTimelines } from "../models/TagsOnTimelines";
 import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
 import { User } from "../models/User";
+import { VotesOnTimeline } from "../models/VotesOnTimeline";
 import { TimelineCount } from "../resolvers/outputs/TimelineCount";
 export declare class Timeline {
     id: string;
@@ -15,5 +16,6 @@ export declare class Timeline {
     tagsOnTimelines?: TagsOnTimelines[];
     threadsOnTimeline?: ThreadsOnTimeline[];
     ReactionOnTimelines?: ReactionOnTimelines[];
+    votesOnTimeline?: VotesOnTimeline[];
     _count?: TimelineCount | null;
 }

@@ -7,6 +7,7 @@ const PremisesOnTimelinesCreateNestedManyWithoutPremiseInput_1 = require("../inp
 const TagsOnPremisesCreateNestedManyWithoutPremiseInput_1 = require("../inputs/TagsOnPremisesCreateNestedManyWithoutPremiseInput");
 const ThreadsOnPremiseCreateNestedManyWithoutPremiseInput_1 = require("../inputs/ThreadsOnPremiseCreateNestedManyWithoutPremiseInput");
 const VisionCreateNestedManyWithoutPremiseInput_1 = require("../inputs/VisionCreateNestedManyWithoutPremiseInput");
+const VotesOnPremiseCreateNestedManyWithoutPremiseInput_1 = require("../inputs/VotesOnPremiseCreateNestedManyWithoutPremiseInput");
 const PremiseStatus_1 = require("../../enums/PremiseStatus");
 let PremiseCreateWithoutAuthorInput = class PremiseCreateWithoutAuthorInput {
 };
@@ -64,6 +65,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ThreadsOnPremiseCreateNestedManyWithoutPremiseInput_1.ThreadsOnPremiseCreateNestedManyWithoutPremiseInput)
 ], PremiseCreateWithoutAuthorInput.prototype, "threadsOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnPremiseCreateNestedManyWithoutPremiseInput_1.VotesOnPremiseCreateNestedManyWithoutPremiseInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnPremiseCreateNestedManyWithoutPremiseInput_1.VotesOnPremiseCreateNestedManyWithoutPremiseInput)
+], PremiseCreateWithoutAuthorInput.prototype, "votesOnPremise", void 0);
 PremiseCreateWithoutAuthorInput = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseCreateWithoutAuthorInput", {
         isAbstract: true

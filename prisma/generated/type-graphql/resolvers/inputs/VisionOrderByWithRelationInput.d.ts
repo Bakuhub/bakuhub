@@ -5,6 +5,7 @@ import { ReferenceOrderByWithRelationInput } from "../inputs/ReferenceOrderByWit
 import { ThreadsOnVisionOrderByRelationAggregateInput } from "../inputs/ThreadsOnVisionOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
+import { VotesOnVisionOrderByRelationAggregateInput } from "../inputs/VotesOnVisionOrderByRelationAggregateInput";
 export declare class VisionOrderByWithRelationInput {
     id?: "asc" | "desc" | undefined;
     title?: "asc" | "desc" | undefined;
@@ -26,4 +27,5 @@ export declare class VisionOrderByWithRelationInput {
     threadsOnVision?: ThreadsOnVisionOrderByRelationAggregateInput | undefined;
     mergeRequest?: MergeRequestOrderByWithRelationInput | undefined;
     ReactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
+    votesOnVision?: VotesOnVisionOrderByRelationAggregateInput | undefined;
 }

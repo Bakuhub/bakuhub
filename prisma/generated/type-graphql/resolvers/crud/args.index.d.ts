@@ -20,3 +20,7 @@ export * from "./Timeline/args";
 export * from "./User/args";
 export * from "./VerificationToken/args";
 export * from "./Vision/args";
+export * from "./VotesOnPremise/args";
+export * from "./VotesOnThread/args";
+export * from "./VotesOnTimeline/args";
+export * from "./VotesOnVision/args";

@@ -10,6 +10,7 @@ import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOpe
 import { ThreadsOnVisionUpdateManyWithoutVisionInput } from "../inputs/ThreadsOnVisionUpdateManyWithoutVisionInput";
 import { UserUpdateOneWithoutVisionsInput } from "../inputs/UserUpdateOneWithoutVisionsInput";
 import { VisionUpdateOneWithoutNextVisionsInput } from "../inputs/VisionUpdateOneWithoutNextVisionsInput";
+import { VotesOnVisionUpdateManyWithoutVisionInput } from "../inputs/VotesOnVisionUpdateManyWithoutVisionInput";
 export declare class VisionUpdateWithoutNextVisionsInput {
     id?: StringFieldUpdateOperationsInput | undefined;
     title?: StringFieldUpdateOperationsInput | undefined;
@@ -26,4 +27,5 @@ export declare class VisionUpdateWithoutNextVisionsInput {
     threadsOnVision?: ThreadsOnVisionUpdateManyWithoutVisionInput | undefined;
     mergeRequest?: MergeRequestUpdateOneWithoutVisionInput | undefined;
     ReactionOnVisions?: ReactionOnVisionsUpdateManyWithoutVisionInput | undefined;
+    votesOnVision?: VotesOnVisionUpdateManyWithoutVisionInput | undefined;
 }

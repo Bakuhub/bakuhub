@@ -9,6 +9,10 @@ import { SessionUpdateManyWithoutUserInput } from "../inputs/SessionUpdateManyWi
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TimelineUpdateManyWithoutAuthorInput } from "../inputs/TimelineUpdateManyWithoutAuthorInput";
 import { VisionUpdateManyWithoutAuthorInput } from "../inputs/VisionUpdateManyWithoutAuthorInput";
+import { VotesOnPremiseUpdateManyWithoutUserInput } from "../inputs/VotesOnPremiseUpdateManyWithoutUserInput";
+import { VotesOnThreadUpdateManyWithoutUserInput } from "../inputs/VotesOnThreadUpdateManyWithoutUserInput";
+import { VotesOnTimelineUpdateManyWithoutUserInput } from "../inputs/VotesOnTimelineUpdateManyWithoutUserInput";
+import { VotesOnVisionUpdateManyWithoutUserInput } from "../inputs/VotesOnVisionUpdateManyWithoutUserInput";
 export declare class UserUpdateWithoutThreadsInput {
     id?: StringFieldUpdateOperationsInput | undefined;
     name?: NullableStringFieldUpdateOperationsInput | undefined;
@@ -24,4 +28,8 @@ export declare class UserUpdateWithoutThreadsInput {
     ReactionOnThreads?: ReactionOnThreadsUpdateManyWithoutUserInput | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutUserInput | undefined;
     ReactionOnVisions?: ReactionOnVisionsUpdateManyWithoutUserInput | undefined;
+    votesOnVision?: VotesOnVisionUpdateManyWithoutUserInput | undefined;
+    votesOnTimeline?: VotesOnTimelineUpdateManyWithoutUserInput | undefined;
+    votesOnPremise?: VotesOnPremiseUpdateManyWithoutUserInput | undefined;
+    votesOnThread?: VotesOnThreadUpdateManyWithoutUserInput | undefined;
 }

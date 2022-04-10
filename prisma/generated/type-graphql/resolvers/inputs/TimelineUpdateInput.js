@@ -9,6 +9,7 @@ const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateO
 const TagsOnTimelinesUpdateManyWithoutTimelineInput_1 = require("../inputs/TagsOnTimelinesUpdateManyWithoutTimelineInput");
 const ThreadsOnTimelineUpdateManyWithoutTimelineInput_1 = require("../inputs/ThreadsOnTimelineUpdateManyWithoutTimelineInput");
 const UserUpdateOneRequiredWithoutTimelinesInput_1 = require("../inputs/UserUpdateOneRequiredWithoutTimelinesInput");
+const VotesOnTimelineUpdateManyWithoutTimelineInput_1 = require("../inputs/VotesOnTimelineUpdateManyWithoutTimelineInput");
 let TimelineUpdateInput = class TimelineUpdateInput {
 };
 tslib_1.__decorate([
@@ -65,6 +66,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesUpdateManyWithoutTimelineInput_1.ReactionOnTimelinesUpdateManyWithoutTimelineInput)
 ], TimelineUpdateInput.prototype, "ReactionOnTimelines", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineUpdateManyWithoutTimelineInput_1.VotesOnTimelineUpdateManyWithoutTimelineInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineUpdateManyWithoutTimelineInput_1.VotesOnTimelineUpdateManyWithoutTimelineInput)
+], TimelineUpdateInput.prototype, "votesOnTimeline", void 0);
 TimelineUpdateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineUpdateInput", {
         isAbstract: true

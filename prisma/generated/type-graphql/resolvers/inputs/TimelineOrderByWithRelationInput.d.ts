@@ -3,6 +3,7 @@ import { ReactionOnTimelinesOrderByRelationAggregateInput } from "../inputs/Reac
 import { TagsOnTimelinesOrderByRelationAggregateInput } from "../inputs/TagsOnTimelinesOrderByRelationAggregateInput";
 import { ThreadsOnTimelineOrderByRelationAggregateInput } from "../inputs/ThreadsOnTimelineOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
+import { VotesOnTimelineOrderByRelationAggregateInput } from "../inputs/VotesOnTimelineOrderByRelationAggregateInput";
 export declare class TimelineOrderByWithRelationInput {
     id?: "asc" | "desc" | undefined;
     title?: "asc" | "desc" | undefined;
@@ -14,4 +15,5 @@ export declare class TimelineOrderByWithRelationInput {
     tagsOnTimelines?: TagsOnTimelinesOrderByRelationAggregateInput | undefined;
     threadsOnTimeline?: ThreadsOnTimelineOrderByRelationAggregateInput | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
+    votesOnTimeline?: VotesOnTimelineOrderByRelationAggregateInput | undefined;
 }

@@ -6,6 +6,10 @@ import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreate
 import { ThreadCreateNestedManyWithoutAuthorInput } from "../inputs/ThreadCreateNestedManyWithoutAuthorInput";
 import { TimelineCreateNestedManyWithoutAuthorInput } from "../inputs/TimelineCreateNestedManyWithoutAuthorInput";
 import { VisionCreateNestedManyWithoutAuthorInput } from "../inputs/VisionCreateNestedManyWithoutAuthorInput";
+import { VotesOnPremiseCreateNestedManyWithoutUserInput } from "../inputs/VotesOnPremiseCreateNestedManyWithoutUserInput";
+import { VotesOnThreadCreateNestedManyWithoutUserInput } from "../inputs/VotesOnThreadCreateNestedManyWithoutUserInput";
+import { VotesOnTimelineCreateNestedManyWithoutUserInput } from "../inputs/VotesOnTimelineCreateNestedManyWithoutUserInput";
+import { VotesOnVisionCreateNestedManyWithoutUserInput } from "../inputs/VotesOnVisionCreateNestedManyWithoutUserInput";
 export declare class UserCreateWithoutReactionOnVisionsInput {
     id?: string | undefined;
     name?: string | undefined;
@@ -21,4 +25,8 @@ export declare class UserCreateWithoutReactionOnVisionsInput {
     timelines?: TimelineCreateNestedManyWithoutAuthorInput | undefined;
     ReactionOnThreads?: ReactionOnThreadsCreateNestedManyWithoutUserInput | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutUserInput | undefined;
+    votesOnVision?: VotesOnVisionCreateNestedManyWithoutUserInput | undefined;
+    votesOnTimeline?: VotesOnTimelineCreateNestedManyWithoutUserInput | undefined;
+    votesOnPremise?: VotesOnPremiseCreateNestedManyWithoutUserInput | undefined;
+    votesOnThread?: VotesOnThreadCreateNestedManyWithoutUserInput | undefined;
 }

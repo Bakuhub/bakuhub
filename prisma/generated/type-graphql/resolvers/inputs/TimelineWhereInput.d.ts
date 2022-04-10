@@ -4,6 +4,7 @@ import { StringFilter } from "../inputs/StringFilter";
 import { TagsOnTimelinesListRelationFilter } from "../inputs/TagsOnTimelinesListRelationFilter";
 import { ThreadsOnTimelineListRelationFilter } from "../inputs/ThreadsOnTimelineListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
+import { VotesOnTimelineListRelationFilter } from "../inputs/VotesOnTimelineListRelationFilter";
 export declare class TimelineWhereInput {
     AND?: TimelineWhereInput[] | undefined;
     OR?: TimelineWhereInput[] | undefined;
@@ -18,4 +19,5 @@ export declare class TimelineWhereInput {
     tagsOnTimelines?: TagsOnTimelinesListRelationFilter | undefined;
     threadsOnTimeline?: ThreadsOnTimelineListRelationFilter | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
+    votesOnTimeline?: VotesOnTimelineListRelationFilter | undefined;
 }

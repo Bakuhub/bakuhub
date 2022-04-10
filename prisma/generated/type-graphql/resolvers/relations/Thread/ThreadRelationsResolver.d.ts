@@ -5,8 +5,10 @@ import { ThreadsOnPremise } from "../../../models/ThreadsOnPremise";
 import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
 import { ThreadsOnVision } from "../../../models/ThreadsOnVision";
 import { User } from "../../../models/User";
+import { VotesOnThread } from "../../../models/VotesOnThread";
 import { ThreadChildThreadsArgs } from "./args/ThreadChildThreadsArgs";
 import { ThreadReactionOnThreadsArgs } from "./args/ThreadReactionOnThreadsArgs";
+import { ThreadVotesOnThreadArgs } from "./args/ThreadVotesOnThreadArgs";
 export declare class ThreadRelationsResolver {
     author(thread: Thread, ctx: any): Promise<User | null>;
     parentThread(thread: Thread, ctx: any): Promise<Thread | null>;
@@ -16,4 +18,5 @@ export declare class ThreadRelationsResolver {
     threadsOnVision(thread: Thread, ctx: any): Promise<ThreadsOnVision | null>;
     threadsOnMergeRequest(thread: Thread, ctx: any): Promise<ThreadsOnMergeRequest | null>;
     ReactionOnThreads(thread: Thread, ctx: any, args: ThreadReactionOnThreadsArgs): Promise<ReactionOnThreads[]>;
+    votesOnThread(thread: Thread, ctx: any, args: ThreadVotesOnThreadArgs): Promise<VotesOnThread[]>;
 }

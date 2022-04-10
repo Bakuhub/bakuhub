@@ -3,6 +3,7 @@ import { TagsOnPremises } from "../models/TagsOnPremises";
 import { ThreadsOnPremise } from "../models/ThreadsOnPremise";
 import { User } from "../models/User";
 import { Vision } from "../models/Vision";
+import { VotesOnPremise } from "../models/VotesOnPremise";
 import { PremiseCount } from "../resolvers/outputs/PremiseCount";
 export declare class Premise {
     id: string;
@@ -16,5 +17,6 @@ export declare class Premise {
     premisesOnTimelines?: PremisesOnTimelines[];
     tagsOnPremises?: TagsOnPremises[];
     threadsOnPremise?: ThreadsOnPremise[];
+    votesOnPremise?: VotesOnPremise[];
     _count?: PremiseCount | null;
 }

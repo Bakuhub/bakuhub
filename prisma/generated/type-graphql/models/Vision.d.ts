@@ -4,6 +4,7 @@ import { ReactionOnVisions } from "../models/ReactionOnVisions";
 import { Reference } from "../models/Reference";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
 import { User } from "../models/User";
+import { VotesOnVision } from "../models/VotesOnVision";
 import { VisionCount } from "../resolvers/outputs/VisionCount";
 export declare class Vision {
     id: string;
@@ -26,5 +27,6 @@ export declare class Vision {
     threadsOnVision?: ThreadsOnVision[];
     mergeRequest?: MergeRequest | null;
     ReactionOnVisions?: ReactionOnVisions[];
+    votesOnVision?: VotesOnVision[];
     _count?: VisionCount | null;
 }

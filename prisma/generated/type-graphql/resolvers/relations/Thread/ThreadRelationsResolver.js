@@ -10,8 +10,10 @@ const ThreadsOnPremise_1 = require("../../../models/ThreadsOnPremise");
 const ThreadsOnTimeline_1 = require("../../../models/ThreadsOnTimeline");
 const ThreadsOnVision_1 = require("../../../models/ThreadsOnVision");
 const User_1 = require("../../../models/User");
+const VotesOnThread_1 = require("../../../models/VotesOnThread");
 const ThreadChildThreadsArgs_1 = require("./args/ThreadChildThreadsArgs");
 const ThreadReactionOnThreadsArgs_1 = require("./args/ThreadReactionOnThreadsArgs");
+const ThreadVotesOnThreadArgs_1 = require("./args/ThreadVotesOnThreadArgs");
 const helpers_1 = require("../../../helpers");
 let ThreadRelationsResolver = class ThreadRelationsResolver {
     async author(thread, ctx) {
@@ -69,6 +71,13 @@ let ThreadRelationsResolver = class ThreadRelationsResolver {
                 id: thread.id,
             },
         }).ReactionOnThreads(args);
+    }
+    async votesOnThread(thread, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).thread.findUnique({
+            where: {
+                id: thread.id,
+            },
+        }).votesOnThread(args);
     }
 };
 tslib_1.__decorate([
@@ -153,6 +162,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [Thread_1.Thread, Object, ThreadReactionOnThreadsArgs_1.ThreadReactionOnThreadsArgs]),
     tslib_1.__metadata("design:returntype", Promise)
 ], ThreadRelationsResolver.prototype, "ReactionOnThreads", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VotesOnThread_1.VotesOnThread], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [Thread_1.Thread, Object, ThreadVotesOnThreadArgs_1.ThreadVotesOnThreadArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], ThreadRelationsResolver.prototype, "votesOnThread", null);
 ThreadRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => Thread_1.Thread)
 ], ThreadRelationsResolver);

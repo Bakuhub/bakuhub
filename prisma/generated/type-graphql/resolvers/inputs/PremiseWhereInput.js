@@ -14,6 +14,7 @@ const TagsOnPremisesListRelationFilter_1 = require("../inputs/TagsOnPremisesList
 const ThreadsOnPremiseListRelationFilter_1 = require("../inputs/ThreadsOnPremiseListRelationFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
 const VisionListRelationFilter_1 = require("../inputs/VisionListRelationFilter");
+const VotesOnPremiseListRelationFilter_1 = require("../inputs/VotesOnPremiseListRelationFilter");
 let PremiseWhereInput = PremiseWhereInput_1 = class PremiseWhereInput {
 };
 tslib_1.__decorate([
@@ -100,6 +101,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ThreadsOnPremiseListRelationFilter_1.ThreadsOnPremiseListRelationFilter)
 ], PremiseWhereInput.prototype, "threadsOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnPremiseListRelationFilter_1.VotesOnPremiseListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnPremiseListRelationFilter_1.VotesOnPremiseListRelationFilter)
+], PremiseWhereInput.prototype, "votesOnPremise", void 0);
 PremiseWhereInput = PremiseWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseWhereInput", {
         isAbstract: true

@@ -14,6 +14,7 @@ const ThreadsOnMergeRequestUpdateOneWithoutThreadInput_1 = require("../inputs/Th
 const ThreadsOnTimelineUpdateOneWithoutThreadInput_1 = require("../inputs/ThreadsOnTimelineUpdateOneWithoutThreadInput");
 const ThreadsOnVisionUpdateOneWithoutThreadInput_1 = require("../inputs/ThreadsOnVisionUpdateOneWithoutThreadInput");
 const UserUpdateOneWithoutThreadsInput_1 = require("../inputs/UserUpdateOneWithoutThreadsInput");
+const VotesOnThreadUpdateManyWithoutThreadInput_1 = require("../inputs/VotesOnThreadUpdateManyWithoutThreadInput");
 let ThreadUpdateWithoutThreadsOnPremiseInput = class ThreadUpdateWithoutThreadsOnPremiseInput {
 };
 tslib_1.__decorate([
@@ -94,6 +95,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsUpdateManyWithoutThreadInput_1.ReactionOnThreadsUpdateManyWithoutThreadInput)
 ], ThreadUpdateWithoutThreadsOnPremiseInput.prototype, "ReactionOnThreads", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnThreadUpdateManyWithoutThreadInput_1.VotesOnThreadUpdateManyWithoutThreadInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnThreadUpdateManyWithoutThreadInput_1.VotesOnThreadUpdateManyWithoutThreadInput)
+], ThreadUpdateWithoutThreadsOnPremiseInput.prototype, "votesOnThread", void 0);
 ThreadUpdateWithoutThreadsOnPremiseInput = tslib_1.__decorate([
     TypeGraphQL.InputType("ThreadUpdateWithoutThreadsOnPremiseInput", {
         isAbstract: true

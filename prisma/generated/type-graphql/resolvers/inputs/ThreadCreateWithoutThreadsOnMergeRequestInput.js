@@ -10,6 +10,7 @@ const ThreadsOnPremiseCreateNestedOneWithoutThreadInput_1 = require("../inputs/T
 const ThreadsOnTimelineCreateNestedOneWithoutThreadInput_1 = require("../inputs/ThreadsOnTimelineCreateNestedOneWithoutThreadInput");
 const ThreadsOnVisionCreateNestedOneWithoutThreadInput_1 = require("../inputs/ThreadsOnVisionCreateNestedOneWithoutThreadInput");
 const UserCreateNestedOneWithoutThreadsInput_1 = require("../inputs/UserCreateNestedOneWithoutThreadsInput");
+const VotesOnThreadCreateNestedManyWithoutThreadInput_1 = require("../inputs/VotesOnThreadCreateNestedManyWithoutThreadInput");
 let ThreadCreateWithoutThreadsOnMergeRequestInput = class ThreadCreateWithoutThreadsOnMergeRequestInput {
 };
 tslib_1.__decorate([
@@ -90,6 +91,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsCreateNestedManyWithoutThreadInput_1.ReactionOnThreadsCreateNestedManyWithoutThreadInput)
 ], ThreadCreateWithoutThreadsOnMergeRequestInput.prototype, "ReactionOnThreads", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnThreadCreateNestedManyWithoutThreadInput_1.VotesOnThreadCreateNestedManyWithoutThreadInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnThreadCreateNestedManyWithoutThreadInput_1.VotesOnThreadCreateNestedManyWithoutThreadInput)
+], ThreadCreateWithoutThreadsOnMergeRequestInput.prototype, "votesOnThread", void 0);
 ThreadCreateWithoutThreadsOnMergeRequestInput = tslib_1.__decorate([
     TypeGraphQL.InputType("ThreadCreateWithoutThreadsOnMergeRequestInput", {
         isAbstract: true

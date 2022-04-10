@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PremiseVisionArgs = exports.PremiseThreadsOnPremiseArgs = exports.PremiseTagsOnPremisesArgs = exports.PremisePremisesOnTimelinesArgs = void 0;
+exports.PremiseVotesOnPremiseArgs = exports.PremiseVisionArgs = exports.PremiseThreadsOnPremiseArgs = exports.PremiseTagsOnPremisesArgs = exports.PremisePremisesOnTimelinesArgs = void 0;
 var PremisePremisesOnTimelinesArgs_1 = require("./PremisePremisesOnTimelinesArgs");
 Object.defineProperty(exports, "PremisePremisesOnTimelinesArgs", { enumerable: true, get: function () { return PremisePremisesOnTimelinesArgs_1.PremisePremisesOnTimelinesArgs; } });
 var PremiseTagsOnPremisesArgs_1 = require("./PremiseTagsOnPremisesArgs");
@@ -9,3 +9,5 @@ var PremiseThreadsOnPremiseArgs_1 = require("./PremiseThreadsOnPremiseArgs");
 Object.defineProperty(exports, "PremiseThreadsOnPremiseArgs", { enumerable: true, get: function () { return PremiseThreadsOnPremiseArgs_1.PremiseThreadsOnPremiseArgs; } });
 var PremiseVisionArgs_1 = require("./PremiseVisionArgs");
 Object.defineProperty(exports, "PremiseVisionArgs", { enumerable: true, get: function () { return PremiseVisionArgs_1.PremiseVisionArgs; } });
+var PremiseVotesOnPremiseArgs_1 = require("./PremiseVotesOnPremiseArgs");
+Object.defineProperty(exports, "PremiseVotesOnPremiseArgs", { enumerable: true, get: function () { return PremiseVotesOnPremiseArgs_1.PremiseVotesOnPremiseArgs; } });

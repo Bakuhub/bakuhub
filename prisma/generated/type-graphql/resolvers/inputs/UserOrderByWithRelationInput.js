@@ -12,6 +12,10 @@ const SessionOrderByRelationAggregateInput_1 = require("../inputs/SessionOrderBy
 const ThreadOrderByRelationAggregateInput_1 = require("../inputs/ThreadOrderByRelationAggregateInput");
 const TimelineOrderByRelationAggregateInput_1 = require("../inputs/TimelineOrderByRelationAggregateInput");
 const VisionOrderByRelationAggregateInput_1 = require("../inputs/VisionOrderByRelationAggregateInput");
+const VotesOnPremiseOrderByRelationAggregateInput_1 = require("../inputs/VotesOnPremiseOrderByRelationAggregateInput");
+const VotesOnThreadOrderByRelationAggregateInput_1 = require("../inputs/VotesOnThreadOrderByRelationAggregateInput");
+const VotesOnTimelineOrderByRelationAggregateInput_1 = require("../inputs/VotesOnTimelineOrderByRelationAggregateInput");
+const VotesOnVisionOrderByRelationAggregateInput_1 = require("../inputs/VotesOnVisionOrderByRelationAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
 let UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
 };
@@ -105,6 +109,30 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsOrderByRelationAggregateInput_1.ReactionOnVisionsOrderByRelationAggregateInput)
 ], UserOrderByWithRelationInput.prototype, "ReactionOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnVisionOrderByRelationAggregateInput_1.VotesOnVisionOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnVisionOrderByRelationAggregateInput_1.VotesOnVisionOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "votesOnVision", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineOrderByRelationAggregateInput_1.VotesOnTimelineOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineOrderByRelationAggregateInput_1.VotesOnTimelineOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "votesOnTimeline", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnPremiseOrderByRelationAggregateInput_1.VotesOnPremiseOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnPremiseOrderByRelationAggregateInput_1.VotesOnPremiseOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "votesOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnThreadOrderByRelationAggregateInput_1.VotesOnThreadOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnThreadOrderByRelationAggregateInput_1.VotesOnThreadOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "votesOnThread", void 0);
 UserOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserOrderByWithRelationInput", {
         isAbstract: true

@@ -8,6 +8,7 @@ import { TagsOnPremisesListRelationFilter } from "../inputs/TagsOnPremisesListRe
 import { ThreadsOnPremiseListRelationFilter } from "../inputs/ThreadsOnPremiseListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
+import { VotesOnPremiseListRelationFilter } from "../inputs/VotesOnPremiseListRelationFilter";
 export declare class PremiseWhereInput {
     AND?: PremiseWhereInput[] | undefined;
     OR?: PremiseWhereInput[] | undefined;
@@ -23,4 +24,5 @@ export declare class PremiseWhereInput {
     premisesOnTimelines?: PremisesOnTimelinesListRelationFilter | undefined;
     tagsOnPremises?: TagsOnPremisesListRelationFilter | undefined;
     threadsOnPremise?: ThreadsOnPremiseListRelationFilter | undefined;
+    votesOnPremise?: VotesOnPremiseListRelationFilter | undefined;
 }

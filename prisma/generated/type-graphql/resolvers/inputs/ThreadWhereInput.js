@@ -16,6 +16,7 @@ const ThreadsOnPremiseRelationFilter_1 = require("../inputs/ThreadsOnPremiseRela
 const ThreadsOnTimelineRelationFilter_1 = require("../inputs/ThreadsOnTimelineRelationFilter");
 const ThreadsOnVisionRelationFilter_1 = require("../inputs/ThreadsOnVisionRelationFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
+const VotesOnThreadListRelationFilter_1 = require("../inputs/VotesOnThreadListRelationFilter");
 let ThreadWhereInput = ThreadWhereInput_1 = class ThreadWhereInput {
 };
 tslib_1.__decorate([
@@ -132,6 +133,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsListRelationFilter_1.ReactionOnThreadsListRelationFilter)
 ], ThreadWhereInput.prototype, "ReactionOnThreads", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnThreadListRelationFilter_1.VotesOnThreadListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnThreadListRelationFilter_1.VotesOnThreadListRelationFilter)
+], ThreadWhereInput.prototype, "votesOnThread", void 0);
 ThreadWhereInput = ThreadWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("ThreadWhereInput", {
         isAbstract: true

@@ -5,6 +5,7 @@ import { ThreadsOnPremiseOrderByWithRelationInput } from "../inputs/ThreadsOnPre
 import { ThreadsOnTimelineOrderByWithRelationInput } from "../inputs/ThreadsOnTimelineOrderByWithRelationInput";
 import { ThreadsOnVisionOrderByWithRelationInput } from "../inputs/ThreadsOnVisionOrderByWithRelationInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
+import { VotesOnThreadOrderByRelationAggregateInput } from "../inputs/VotesOnThreadOrderByRelationAggregateInput";
 export declare class ThreadOrderByWithRelationInput {
     id?: "asc" | "desc" | undefined;
     title?: "asc" | "desc" | undefined;
@@ -22,4 +23,5 @@ export declare class ThreadOrderByWithRelationInput {
     threadsOnVision?: ThreadsOnVisionOrderByWithRelationInput | undefined;
     threadsOnMergeRequest?: ThreadsOnMergeRequestOrderByWithRelationInput | undefined;
     ReactionOnThreads?: ReactionOnThreadsOrderByRelationAggregateInput | undefined;
+    votesOnThread?: VotesOnThreadOrderByRelationAggregateInput | undefined;
 }

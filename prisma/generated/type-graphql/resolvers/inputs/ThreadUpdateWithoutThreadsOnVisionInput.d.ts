@@ -9,6 +9,7 @@ import { ThreadsOnMergeRequestUpdateOneWithoutThreadInput } from "../inputs/Thre
 import { ThreadsOnPremiseUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnPremiseUpdateOneWithoutThreadInput";
 import { ThreadsOnTimelineUpdateOneWithoutThreadInput } from "../inputs/ThreadsOnTimelineUpdateOneWithoutThreadInput";
 import { UserUpdateOneWithoutThreadsInput } from "../inputs/UserUpdateOneWithoutThreadsInput";
+import { VotesOnThreadUpdateManyWithoutThreadInput } from "../inputs/VotesOnThreadUpdateManyWithoutThreadInput";
 export declare class ThreadUpdateWithoutThreadsOnVisionInput {
     id?: StringFieldUpdateOperationsInput | undefined;
     title?: StringFieldUpdateOperationsInput | undefined;
@@ -23,4 +24,5 @@ export declare class ThreadUpdateWithoutThreadsOnVisionInput {
     threadsOnTimeline?: ThreadsOnTimelineUpdateOneWithoutThreadInput | undefined;
     threadsOnMergeRequest?: ThreadsOnMergeRequestUpdateOneWithoutThreadInput | undefined;
     ReactionOnThreads?: ReactionOnThreadsUpdateManyWithoutThreadInput | undefined;
+    votesOnThread?: VotesOnThreadUpdateManyWithoutThreadInput | undefined;
 }

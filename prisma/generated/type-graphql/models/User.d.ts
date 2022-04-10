@@ -7,6 +7,10 @@ import { Session } from "../models/Session";
 import { Thread } from "../models/Thread";
 import { Timeline } from "../models/Timeline";
 import { Vision } from "../models/Vision";
+import { VotesOnPremise } from "../models/VotesOnPremise";
+import { VotesOnThread } from "../models/VotesOnThread";
+import { VotesOnTimeline } from "../models/VotesOnTimeline";
+import { VotesOnVision } from "../models/VotesOnVision";
 import { UserCount } from "../resolvers/outputs/UserCount";
 export declare class User {
     id: string;
@@ -24,5 +28,9 @@ export declare class User {
     ReactionOnThreads?: ReactionOnThreads[];
     ReactionOnTimelines?: ReactionOnTimelines[];
     ReactionOnVisions?: ReactionOnVisions[];
+    votesOnVision?: VotesOnVision[];
+    votesOnTimeline?: VotesOnTimeline[];
+    votesOnPremise?: VotesOnPremise[];
+    votesOnThread?: VotesOnThread[];
     _count?: UserCount | null;
 }

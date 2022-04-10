@@ -13,6 +13,10 @@ const Thread_1 = require("../../../models/Thread");
 const Timeline_1 = require("../../../models/Timeline");
 const User_1 = require("../../../models/User");
 const Vision_1 = require("../../../models/Vision");
+const VotesOnPremise_1 = require("../../../models/VotesOnPremise");
+const VotesOnThread_1 = require("../../../models/VotesOnThread");
+const VotesOnTimeline_1 = require("../../../models/VotesOnTimeline");
+const VotesOnVision_1 = require("../../../models/VotesOnVision");
 const UserAccountsArgs_1 = require("./args/UserAccountsArgs");
 const UserPremisesArgs_1 = require("./args/UserPremisesArgs");
 const UserReactionOnThreadsArgs_1 = require("./args/UserReactionOnThreadsArgs");
@@ -22,6 +26,10 @@ const UserSessionsArgs_1 = require("./args/UserSessionsArgs");
 const UserThreadsArgs_1 = require("./args/UserThreadsArgs");
 const UserTimelinesArgs_1 = require("./args/UserTimelinesArgs");
 const UserVisionsArgs_1 = require("./args/UserVisionsArgs");
+const UserVotesOnPremiseArgs_1 = require("./args/UserVotesOnPremiseArgs");
+const UserVotesOnThreadArgs_1 = require("./args/UserVotesOnThreadArgs");
+const UserVotesOnTimelineArgs_1 = require("./args/UserVotesOnTimelineArgs");
+const UserVotesOnVisionArgs_1 = require("./args/UserVotesOnVisionArgs");
 const helpers_1 = require("../../../helpers");
 let UserRelationsResolver = class UserRelationsResolver {
     async accounts(user, ctx, args) {
@@ -86,6 +94,34 @@ let UserRelationsResolver = class UserRelationsResolver {
                 id: user.id,
             },
         }).ReactionOnVisions(args);
+    }
+    async votesOnVision(user, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
+            where: {
+                id: user.id,
+            },
+        }).votesOnVision(args);
+    }
+    async votesOnTimeline(user, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
+            where: {
+                id: user.id,
+            },
+        }).votesOnTimeline(args);
+    }
+    async votesOnPremise(user, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
+            where: {
+                id: user.id,
+            },
+        }).votesOnPremise(args);
+    }
+    async votesOnThread(user, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
+            where: {
+                id: user.id,
+            },
+        }).votesOnThread(args);
     }
 };
 tslib_1.__decorate([
@@ -187,6 +223,50 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserReactionOnVisionsArgs_1.UserReactionOnVisionsArgs]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserRelationsResolver.prototype, "ReactionOnVisions", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VotesOnVision_1.VotesOnVision], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserVotesOnVisionArgs_1.UserVotesOnVisionArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], UserRelationsResolver.prototype, "votesOnVision", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VotesOnTimeline_1.VotesOnTimeline], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserVotesOnTimelineArgs_1.UserVotesOnTimelineArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], UserRelationsResolver.prototype, "votesOnTimeline", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VotesOnPremise_1.VotesOnPremise], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserVotesOnPremiseArgs_1.UserVotesOnPremiseArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], UserRelationsResolver.prototype, "votesOnPremise", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VotesOnThread_1.VotesOnThread], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserVotesOnThreadArgs_1.UserVotesOnThreadArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], UserRelationsResolver.prototype, "votesOnThread", null);
 UserRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => User_1.User)
 ], UserRelationsResolver);

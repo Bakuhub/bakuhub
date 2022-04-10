@@ -2,6 +2,7 @@ import { PremisesOnTimelinesCreateNestedManyWithoutPremiseInput } from "../input
 import { TagsOnPremisesCreateNestedManyWithoutPremiseInput } from "../inputs/TagsOnPremisesCreateNestedManyWithoutPremiseInput";
 import { UserCreateNestedOneWithoutPremisesInput } from "../inputs/UserCreateNestedOneWithoutPremisesInput";
 import { VisionCreateNestedManyWithoutPremiseInput } from "../inputs/VisionCreateNestedManyWithoutPremiseInput";
+import { VotesOnPremiseCreateNestedManyWithoutPremiseInput } from "../inputs/VotesOnPremiseCreateNestedManyWithoutPremiseInput";
 export declare class PremiseCreateWithoutThreadsOnPremiseInput {
     id?: string | undefined;
     title: string;
@@ -12,4 +13,5 @@ export declare class PremiseCreateWithoutThreadsOnPremiseInput {
     vision?: VisionCreateNestedManyWithoutPremiseInput | undefined;
     premisesOnTimelines?: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput | undefined;
     tagsOnPremises?: TagsOnPremisesCreateNestedManyWithoutPremiseInput | undefined;
+    votesOnPremise?: VotesOnPremiseCreateNestedManyWithoutPremiseInput | undefined;
 }

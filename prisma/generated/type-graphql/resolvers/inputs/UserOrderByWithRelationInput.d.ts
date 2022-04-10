@@ -7,6 +7,10 @@ import { SessionOrderByRelationAggregateInput } from "../inputs/SessionOrderByRe
 import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
 import { TimelineOrderByRelationAggregateInput } from "../inputs/TimelineOrderByRelationAggregateInput";
 import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
+import { VotesOnPremiseOrderByRelationAggregateInput } from "../inputs/VotesOnPremiseOrderByRelationAggregateInput";
+import { VotesOnThreadOrderByRelationAggregateInput } from "../inputs/VotesOnThreadOrderByRelationAggregateInput";
+import { VotesOnTimelineOrderByRelationAggregateInput } from "../inputs/VotesOnTimelineOrderByRelationAggregateInput";
+import { VotesOnVisionOrderByRelationAggregateInput } from "../inputs/VotesOnVisionOrderByRelationAggregateInput";
 export declare class UserOrderByWithRelationInput {
     id?: "asc" | "desc" | undefined;
     name?: "asc" | "desc" | undefined;
@@ -23,4 +27,8 @@ export declare class UserOrderByWithRelationInput {
     ReactionOnThreads?: ReactionOnThreadsOrderByRelationAggregateInput | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
     ReactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
+    votesOnVision?: VotesOnVisionOrderByRelationAggregateInput | undefined;
+    votesOnTimeline?: VotesOnTimelineOrderByRelationAggregateInput | undefined;
+    votesOnPremise?: VotesOnPremiseOrderByRelationAggregateInput | undefined;
+    votesOnThread?: VotesOnThreadOrderByRelationAggregateInput | undefined;
 }

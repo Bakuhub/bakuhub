@@ -10,9 +10,11 @@ const Reference_1 = require("../../../models/Reference");
 const ThreadsOnVision_1 = require("../../../models/ThreadsOnVision");
 const User_1 = require("../../../models/User");
 const Vision_1 = require("../../../models/Vision");
+const VotesOnVision_1 = require("../../../models/VotesOnVision");
 const VisionNextVisionsArgs_1 = require("./args/VisionNextVisionsArgs");
 const VisionReactionOnVisionsArgs_1 = require("./args/VisionReactionOnVisionsArgs");
 const VisionThreadsOnVisionArgs_1 = require("./args/VisionThreadsOnVisionArgs");
+const VisionVotesOnVisionArgs_1 = require("./args/VisionVotesOnVisionArgs");
 const helpers_1 = require("../../../helpers");
 let VisionRelationsResolver = class VisionRelationsResolver {
     async reference(vision, ctx) {
@@ -70,6 +72,13 @@ let VisionRelationsResolver = class VisionRelationsResolver {
                 id: vision.id,
             },
         }).ReactionOnVisions(args);
+    }
+    async votesOnVision(vision, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).vision.findUnique({
+            where: {
+                id: vision.id,
+            },
+        }).votesOnVision(args);
     }
 };
 tslib_1.__decorate([
@@ -155,6 +164,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [Vision_1.Vision, Object, VisionReactionOnVisionsArgs_1.VisionReactionOnVisionsArgs]),
     tslib_1.__metadata("design:returntype", Promise)
 ], VisionRelationsResolver.prototype, "ReactionOnVisions", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VotesOnVision_1.VotesOnVision], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [Vision_1.Vision, Object, VisionVotesOnVisionArgs_1.VisionVotesOnVisionArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], VisionRelationsResolver.prototype, "votesOnVision", null);
 VisionRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => Vision_1.Vision)
 ], VisionRelationsResolver);

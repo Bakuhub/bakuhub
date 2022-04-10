@@ -4,6 +4,7 @@ import { ThreadsOnPremise } from "../models/ThreadsOnPremise";
 import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
 import { User } from "../models/User";
+import { VotesOnThread } from "../models/VotesOnThread";
 import { ThreadCount } from "../resolvers/outputs/ThreadCount";
 export declare class Thread {
     id: string;
@@ -22,5 +23,6 @@ export declare class Thread {
     threadsOnVision?: ThreadsOnVision | null;
     threadsOnMergeRequest?: ThreadsOnMergeRequest | null;
     ReactionOnThreads?: ReactionOnThreads[];
+    votesOnThread?: VotesOnThread[];
     _count?: ThreadCount | null;
 }

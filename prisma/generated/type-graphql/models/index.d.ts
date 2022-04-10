@@ -20,3 +20,7 @@ export { Timeline } from "./Timeline";
 export { User } from "./User";
 export { VerificationToken } from "./VerificationToken";
 export { Vision } from "./Vision";
+export { VotesOnPremise } from "./VotesOnPremise";
+export { VotesOnThread } from "./VotesOnThread";
+export { VotesOnTimeline } from "./VotesOnTimeline";
+export { VotesOnVision } from "./VotesOnVision";

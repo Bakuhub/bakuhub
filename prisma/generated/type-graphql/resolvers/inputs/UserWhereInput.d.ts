@@ -10,6 +10,10 @@ import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
 import { TimelineListRelationFilter } from "../inputs/TimelineListRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
+import { VotesOnPremiseListRelationFilter } from "../inputs/VotesOnPremiseListRelationFilter";
+import { VotesOnThreadListRelationFilter } from "../inputs/VotesOnThreadListRelationFilter";
+import { VotesOnTimelineListRelationFilter } from "../inputs/VotesOnTimelineListRelationFilter";
+import { VotesOnVisionListRelationFilter } from "../inputs/VotesOnVisionListRelationFilter";
 export declare class UserWhereInput {
     AND?: UserWhereInput[] | undefined;
     OR?: UserWhereInput[] | undefined;
@@ -29,4 +33,8 @@ export declare class UserWhereInput {
     ReactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
     ReactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
+    votesOnVision?: VotesOnVisionListRelationFilter | undefined;
+    votesOnTimeline?: VotesOnTimelineListRelationFilter | undefined;
+    votesOnPremise?: VotesOnPremiseListRelationFilter | undefined;
+    votesOnThread?: VotesOnThreadListRelationFilter | undefined;
 }

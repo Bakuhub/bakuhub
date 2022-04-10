@@ -7,45 +7,41 @@ import {capitalize} from "@mui/material";
 import {gql} from "@apollo/client";
 
 const reactionByVisionsIdQuery = (tableName: string) => {
-    const queryString = `query _count($by: [ReactionOn${capitalize(tableName)}sScalarFieldEnum!]!, $whereUpvotes: ReactionOn${capitalize(
-            tableName)}sWhereInput,
-        $whereDownvotes: ReactionOn${capitalize(tableName)}sWhereInput) {
-        upVotes: groupByReactionOn${capitalize(tableName)}s (by: $by, where: $whereUpvotes) {
-            _count {
-                _all
+    const queryString = `
+        query _count($whereUpvotes: ReactionOn${capitalize(tableName)}sWhereInput,$whereDownvotes:ReactionOn${capitalize(
+            tableName)}sWhereInput) {
+            upVotes: aggregateReactionOn${capitalize(tableName)}s(where: $whereUpvotes) {
+                _count {
+                    reaction
+                }
             }
-            ${tableName}Id
-        }
-        downVotes:groupByReactionOn${capitalize(tableName)}s(by: $by, where: $whereDownvotes) {
-            _count {
-                _all
+            downVotes: aggregateReactionOn${capitalize(tableName)}s(where: $whereDownvotes) {
+                _count {
+                    reaction
+                }
             }
-            ${tableName}Id
         }
-    }`;
+    `;
     return gql(queryString);
 };
 
 
 export function getReactionByIdArgs(
-        ids: string[],
+        id: string,
         type: ConnectType
-): [DocumentNode, { variables: { by: string; whereDownvotes: { AND: ({ [p: string]: { in: string[] } | { equals: string } } | { reaction: { equals: Reaction } })[] }; whereUpvotes: { AND: ({ [p: string]: { in: string[] } | { equals: string } } | { reaction: { equals: Reaction } })[] } } }] {
+): [DocumentNode, { variables: { whereDownvotes: { AND: ({ [p: string]: { equals: string } } | { reaction: { equals: Reaction } })[] }; whereUpvotes: { AND: ({ [p: string]: { equals: string } } | { reaction: { equals: Reaction } })[] } } }] {
     const tableName = getTableNameByConnectType(type);
     const tableNameWithId = getTableNameWithId(tableName);
     return [
         reactionByVisionsIdQuery(tableName),
         {
             variables: {
-                "by": tableNameWithId,
                 whereUpvotes: {
                     AND: [
                         {
 
-                            [tableNameWithId]: ids.length > 1 ? {
-                                "in": ids
-                            }:{
-                                "equals": ids[0]
+                            [tableNameWithId]: {
+                                "equals": id
                             }
                         }, {
                             "reaction": {
@@ -59,10 +55,8 @@ export function getReactionByIdArgs(
                     AND: [
                         {
 
-                            [tableNameWithId]: ids.length > 1 ? {
-                                "in": ids
-                            }:{
-                                "equals": ids[0]
+                            [tableNameWithId]: {
+                                "equals": id
                             }
                         }, {
                             "reaction": {

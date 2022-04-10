@@ -8,6 +8,7 @@ const TagsOnPremisesOrderByRelationAggregateInput_1 = require("../inputs/TagsOnP
 const ThreadsOnPremiseOrderByRelationAggregateInput_1 = require("../inputs/ThreadsOnPremiseOrderByRelationAggregateInput");
 const UserOrderByWithRelationInput_1 = require("../inputs/UserOrderByWithRelationInput");
 const VisionOrderByRelationAggregateInput_1 = require("../inputs/VisionOrderByRelationAggregateInput");
+const VotesOnPremiseOrderByRelationAggregateInput_1 = require("../inputs/VotesOnPremiseOrderByRelationAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
 let PremiseOrderByWithRelationInput = class PremiseOrderByWithRelationInput {
 };
@@ -77,6 +78,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ThreadsOnPremiseOrderByRelationAggregateInput_1.ThreadsOnPremiseOrderByRelationAggregateInput)
 ], PremiseOrderByWithRelationInput.prototype, "threadsOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnPremiseOrderByRelationAggregateInput_1.VotesOnPremiseOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnPremiseOrderByRelationAggregateInput_1.VotesOnPremiseOrderByRelationAggregateInput)
+], PremiseOrderByWithRelationInput.prototype, "votesOnPremise", void 0);
 PremiseOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseOrderByWithRelationInput", {
         isAbstract: true

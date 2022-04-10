@@ -9,10 +9,12 @@ const TagsOnPremises_1 = require("../../../models/TagsOnPremises");
 const ThreadsOnPremise_1 = require("../../../models/ThreadsOnPremise");
 const User_1 = require("../../../models/User");
 const Vision_1 = require("../../../models/Vision");
+const VotesOnPremise_1 = require("../../../models/VotesOnPremise");
 const PremisePremisesOnTimelinesArgs_1 = require("./args/PremisePremisesOnTimelinesArgs");
 const PremiseTagsOnPremisesArgs_1 = require("./args/PremiseTagsOnPremisesArgs");
 const PremiseThreadsOnPremiseArgs_1 = require("./args/PremiseThreadsOnPremiseArgs");
 const PremiseVisionArgs_1 = require("./args/PremiseVisionArgs");
+const PremiseVotesOnPremiseArgs_1 = require("./args/PremiseVotesOnPremiseArgs");
 const helpers_1 = require("../../../helpers");
 let PremiseRelationsResolver = class PremiseRelationsResolver {
     async author(premise, ctx) {
@@ -49,6 +51,13 @@ let PremiseRelationsResolver = class PremiseRelationsResolver {
                 id: premise.id,
             },
         }).threadsOnPremise(args);
+    }
+    async votesOnPremise(premise, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).premise.findUnique({
+            where: {
+                id: premise.id,
+            },
+        }).votesOnPremise(args);
     }
 };
 tslib_1.__decorate([
@@ -105,6 +114,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [Premise_1.Premise, Object, PremiseThreadsOnPremiseArgs_1.PremiseThreadsOnPremiseArgs]),
     tslib_1.__metadata("design:returntype", Promise)
 ], PremiseRelationsResolver.prototype, "threadsOnPremise", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VotesOnPremise_1.VotesOnPremise], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [Premise_1.Premise, Object, PremiseVotesOnPremiseArgs_1.PremiseVotesOnPremiseArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], PremiseRelationsResolver.prototype, "votesOnPremise", null);
 PremiseRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => Premise_1.Premise)
 ], PremiseRelationsResolver);

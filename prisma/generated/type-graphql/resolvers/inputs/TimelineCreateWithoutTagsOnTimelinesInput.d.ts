@@ -2,6 +2,7 @@ import { PremisesOnTimelinesCreateNestedManyWithoutTimelineInput } from "../inpu
 import { ReactionOnTimelinesCreateNestedManyWithoutTimelineInput } from "../inputs/ReactionOnTimelinesCreateNestedManyWithoutTimelineInput";
 import { ThreadsOnTimelineCreateNestedManyWithoutTimelineInput } from "../inputs/ThreadsOnTimelineCreateNestedManyWithoutTimelineInput";
 import { UserCreateNestedOneWithoutTimelinesInput } from "../inputs/UserCreateNestedOneWithoutTimelinesInput";
+import { VotesOnTimelineCreateNestedManyWithoutTimelineInput } from "../inputs/VotesOnTimelineCreateNestedManyWithoutTimelineInput";
 export declare class TimelineCreateWithoutTagsOnTimelinesInput {
     id?: string | undefined;
     title: string;
@@ -11,4 +12,5 @@ export declare class TimelineCreateWithoutTagsOnTimelinesInput {
     premisesOnTimelines?: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     threadsOnTimeline?: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
+    votesOnTimeline?: VotesOnTimelineCreateNestedManyWithoutTimelineInput | undefined;
 }

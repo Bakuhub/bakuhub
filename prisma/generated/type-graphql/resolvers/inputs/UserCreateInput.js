@@ -12,6 +12,10 @@ const SessionCreateNestedManyWithoutUserInput_1 = require("../inputs/SessionCrea
 const ThreadCreateNestedManyWithoutAuthorInput_1 = require("../inputs/ThreadCreateNestedManyWithoutAuthorInput");
 const TimelineCreateNestedManyWithoutAuthorInput_1 = require("../inputs/TimelineCreateNestedManyWithoutAuthorInput");
 const VisionCreateNestedManyWithoutAuthorInput_1 = require("../inputs/VisionCreateNestedManyWithoutAuthorInput");
+const VotesOnPremiseCreateNestedManyWithoutUserInput_1 = require("../inputs/VotesOnPremiseCreateNestedManyWithoutUserInput");
+const VotesOnThreadCreateNestedManyWithoutUserInput_1 = require("../inputs/VotesOnThreadCreateNestedManyWithoutUserInput");
+const VotesOnTimelineCreateNestedManyWithoutUserInput_1 = require("../inputs/VotesOnTimelineCreateNestedManyWithoutUserInput");
+const VotesOnVisionCreateNestedManyWithoutUserInput_1 = require("../inputs/VotesOnVisionCreateNestedManyWithoutUserInput");
 let UserCreateInput = class UserCreateInput {
 };
 tslib_1.__decorate([
@@ -104,6 +108,30 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsCreateNestedManyWithoutUserInput_1.ReactionOnVisionsCreateNestedManyWithoutUserInput)
 ], UserCreateInput.prototype, "ReactionOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnVisionCreateNestedManyWithoutUserInput_1.VotesOnVisionCreateNestedManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnVisionCreateNestedManyWithoutUserInput_1.VotesOnVisionCreateNestedManyWithoutUserInput)
+], UserCreateInput.prototype, "votesOnVision", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineCreateNestedManyWithoutUserInput_1.VotesOnTimelineCreateNestedManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineCreateNestedManyWithoutUserInput_1.VotesOnTimelineCreateNestedManyWithoutUserInput)
+], UserCreateInput.prototype, "votesOnTimeline", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnPremiseCreateNestedManyWithoutUserInput_1.VotesOnPremiseCreateNestedManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnPremiseCreateNestedManyWithoutUserInput_1.VotesOnPremiseCreateNestedManyWithoutUserInput)
+], UserCreateInput.prototype, "votesOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnThreadCreateNestedManyWithoutUserInput_1.VotesOnThreadCreateNestedManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnThreadCreateNestedManyWithoutUserInput_1.VotesOnThreadCreateNestedManyWithoutUserInput)
+], UserCreateInput.prototype, "votesOnThread", void 0);
 UserCreateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserCreateInput", {
         isAbstract: true

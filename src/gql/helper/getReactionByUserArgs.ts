@@ -5,8 +5,6 @@ import {capitalize} from "@mui/material";
 import {gql} from "@apollo/client";
 
 const reactionByUserQuery = (tableName: string) => {
-    console.info(tableName);
-    console.info(capitalize(tableName));
     const queryString = `
     query FindFirstReactionOn${capitalize(tableName)}s($where: ReactionOn${capitalize(tableName)}sWhereInput) {
         reactionByUser: findFirstReactionOn${capitalize(tableName)}s(where: $where) {

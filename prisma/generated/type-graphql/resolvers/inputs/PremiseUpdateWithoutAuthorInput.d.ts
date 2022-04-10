@@ -6,6 +6,7 @@ import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOpe
 import { TagsOnPremisesUpdateManyWithoutPremiseInput } from "../inputs/TagsOnPremisesUpdateManyWithoutPremiseInput";
 import { ThreadsOnPremiseUpdateManyWithoutPremiseInput } from "../inputs/ThreadsOnPremiseUpdateManyWithoutPremiseInput";
 import { VisionUpdateManyWithoutPremiseInput } from "../inputs/VisionUpdateManyWithoutPremiseInput";
+import { VotesOnPremiseUpdateManyWithoutPremiseInput } from "../inputs/VotesOnPremiseUpdateManyWithoutPremiseInput";
 export declare class PremiseUpdateWithoutAuthorInput {
     id?: StringFieldUpdateOperationsInput | undefined;
     title?: StringFieldUpdateOperationsInput | undefined;
@@ -16,4 +17,5 @@ export declare class PremiseUpdateWithoutAuthorInput {
     premisesOnTimelines?: PremisesOnTimelinesUpdateManyWithoutPremiseInput | undefined;
     tagsOnPremises?: TagsOnPremisesUpdateManyWithoutPremiseInput | undefined;
     threadsOnPremise?: ThreadsOnPremiseUpdateManyWithoutPremiseInput | undefined;
+    votesOnPremise?: VotesOnPremiseUpdateManyWithoutPremiseInput | undefined;
 }

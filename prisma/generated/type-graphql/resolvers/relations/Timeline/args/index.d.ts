@@ -2,3 +2,4 @@ export { TimelinePremisesOnTimelinesArgs } from "./TimelinePremisesOnTimelinesAr
 export { TimelineReactionOnTimelinesArgs } from "./TimelineReactionOnTimelinesArgs";
 export { TimelineTagsOnTimelinesArgs } from "./TimelineTagsOnTimelinesArgs";
 export { TimelineThreadsOnTimelineArgs } from "./TimelineThreadsOnTimelineArgs";
+export { TimelineVotesOnTimelineArgs } from "./TimelineVotesOnTimelineArgs";

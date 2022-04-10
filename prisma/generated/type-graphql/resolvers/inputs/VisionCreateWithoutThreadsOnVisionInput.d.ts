@@ -5,6 +5,7 @@ import { ReferenceCreateNestedOneWithoutVisionInput } from "../inputs/ReferenceC
 import { UserCreateNestedOneWithoutVisionsInput } from "../inputs/UserCreateNestedOneWithoutVisionsInput";
 import { VisionCreateNestedManyWithoutPrevVisionInput } from "../inputs/VisionCreateNestedManyWithoutPrevVisionInput";
 import { VisionCreateNestedOneWithoutNextVisionsInput } from "../inputs/VisionCreateNestedOneWithoutNextVisionsInput";
+import { VotesOnVisionCreateNestedManyWithoutVisionInput } from "../inputs/VotesOnVisionCreateNestedManyWithoutVisionInput";
 export declare class VisionCreateWithoutThreadsOnVisionInput {
     id?: string | undefined;
     title: string;
@@ -21,4 +22,5 @@ export declare class VisionCreateWithoutThreadsOnVisionInput {
     nextVisions?: VisionCreateNestedManyWithoutPrevVisionInput | undefined;
     mergeRequest?: MergeRequestCreateNestedOneWithoutVisionInput | undefined;
     ReactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutVisionInput | undefined;
+    votesOnVision?: VotesOnVisionCreateNestedManyWithoutVisionInput | undefined;
 }

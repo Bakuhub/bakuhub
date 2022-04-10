@@ -11,6 +11,7 @@ import { ThreadsOnVisionListRelationFilter } from "../inputs/ThreadsOnVisionList
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
 import { VisionRelationFilter } from "../inputs/VisionRelationFilter";
+import { VotesOnVisionListRelationFilter } from "../inputs/VotesOnVisionListRelationFilter";
 export declare class VisionWhereInput {
     AND?: VisionWhereInput[] | undefined;
     OR?: VisionWhereInput[] | undefined;
@@ -35,4 +36,5 @@ export declare class VisionWhereInput {
     threadsOnVision?: ThreadsOnVisionListRelationFilter | undefined;
     mergeRequest?: MergeRequestRelationFilter | undefined;
     ReactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
+    votesOnVision?: VotesOnVisionListRelationFilter | undefined;
 }

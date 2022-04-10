@@ -11,6 +11,7 @@ const TagsOnPremisesUpdateManyWithoutPremiseInput_1 = require("../inputs/TagsOnP
 const ThreadsOnPremiseUpdateManyWithoutPremiseInput_1 = require("../inputs/ThreadsOnPremiseUpdateManyWithoutPremiseInput");
 const UserUpdateOneWithoutPremisesInput_1 = require("../inputs/UserUpdateOneWithoutPremisesInput");
 const VisionUpdateManyWithoutPremiseInput_1 = require("../inputs/VisionUpdateManyWithoutPremiseInput");
+const VotesOnPremiseUpdateManyWithoutPremiseInput_1 = require("../inputs/VotesOnPremiseUpdateManyWithoutPremiseInput");
 let PremiseUpdateWithoutPremisesOnTimelinesInput = class PremiseUpdateWithoutPremisesOnTimelinesInput {
 };
 tslib_1.__decorate([
@@ -67,6 +68,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ThreadsOnPremiseUpdateManyWithoutPremiseInput_1.ThreadsOnPremiseUpdateManyWithoutPremiseInput)
 ], PremiseUpdateWithoutPremisesOnTimelinesInput.prototype, "threadsOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnPremiseUpdateManyWithoutPremiseInput_1.VotesOnPremiseUpdateManyWithoutPremiseInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnPremiseUpdateManyWithoutPremiseInput_1.VotesOnPremiseUpdateManyWithoutPremiseInput)
+], PremiseUpdateWithoutPremisesOnTimelinesInput.prototype, "votesOnPremise", void 0);
 PremiseUpdateWithoutPremisesOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseUpdateWithoutPremisesOnTimelinesInput", {
         isAbstract: true

@@ -1,8 +1,5 @@
 import {FunctionComponent, useState} from "react";
-import {Avatar, Button, CircularProgress, Collapse, Grid, Typography} from "@mui/material";
-import ReplyIcon from "@mui/icons-material/Reply";
-import ReportIcon from "@mui/icons-material/Report";
-import ShareIcon from "@mui/icons-material/Share";
+import {Avatar, Button, CircularProgress, Collapse, Grid, Icon, Typography} from "@mui/material";
 import {Thread} from "../../../../prisma/generated/type-graphql";
 import get from "lodash/get";
 import {fromNow} from "../../../utils/fromNow";
@@ -14,6 +11,7 @@ import {getChildThreadsQueryVariable} from "../../../gql/utils/getChildThreadsQu
 import {ConnectType} from "../../../types";
 import {upsertReactionOnThreadsMutation} from "../../../gql/mutation/createReactionOnThreadsMutation";
 import dynamic from "next/dynamic";
+import {MaterialUIIcons} from "../../../constants/MaterialUIIcons";
 
 const ReactionButtons = dynamic(() => import("../../Reaction"));
 
@@ -68,16 +66,25 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
                 {thread.title}
             </Typography>
             <Grid item container>
-                <Button variant="outlined" startIcon={<ReplyIcon/>} onClick={() => {
+                <Button variant="outlined" startIcon={
+                    <Icon>
+                        {MaterialUIIcons.reply}
+                    </Icon>
+                } onClick={() => {
                     setExpanded(!expanded);
                 }}>
                     Reply
                 </Button>
+
                 <Button variant="outlined">
-                    <ReportIcon/>
+                    <Icon>
+                        {MaterialUIIcons.report}
+                    </Icon>
                 </Button>
                 <ReactionButtons createReaction={createReaction} type={ConnectType.THREAD} id={thread.id}/>
-                <Button variant="outlined" endIcon={<ShareIcon/>}>
+                <Button variant="outlined" endIcon={<Icon>
+                    {MaterialUIIcons.share}
+                </Icon>}>
                     Share
                 </Button>
             </Grid>

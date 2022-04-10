@@ -1,0 +1,12 @@
+export { AggregateVotesOnPremiseArgs } from "./AggregateVotesOnPremiseArgs";
+export { CreateManyVotesOnPremiseArgs } from "./CreateManyVotesOnPremiseArgs";
+export { CreateVotesOnPremiseArgs } from "./CreateVotesOnPremiseArgs";
+export { DeleteManyVotesOnPremiseArgs } from "./DeleteManyVotesOnPremiseArgs";
+export { DeleteVotesOnPremiseArgs } from "./DeleteVotesOnPremiseArgs";
+export { FindFirstVotesOnPremiseArgs } from "./FindFirstVotesOnPremiseArgs";
+export { FindManyVotesOnPremiseArgs } from "./FindManyVotesOnPremiseArgs";
+export { FindUniqueVotesOnPremiseArgs } from "./FindUniqueVotesOnPremiseArgs";
+export { GroupByVotesOnPremiseArgs } from "./GroupByVotesOnPremiseArgs";
+export { UpdateManyVotesOnPremiseArgs } from "./UpdateManyVotesOnPremiseArgs";
+export { UpdateVotesOnPremiseArgs } from "./UpdateVotesOnPremiseArgs";
+export { UpsertVotesOnPremiseArgs } from "./UpsertVotesOnPremiseArgs";

@@ -9,10 +9,12 @@ const TagsOnTimelines_1 = require("../../../models/TagsOnTimelines");
 const ThreadsOnTimeline_1 = require("../../../models/ThreadsOnTimeline");
 const Timeline_1 = require("../../../models/Timeline");
 const User_1 = require("../../../models/User");
+const VotesOnTimeline_1 = require("../../../models/VotesOnTimeline");
 const TimelinePremisesOnTimelinesArgs_1 = require("./args/TimelinePremisesOnTimelinesArgs");
 const TimelineReactionOnTimelinesArgs_1 = require("./args/TimelineReactionOnTimelinesArgs");
 const TimelineTagsOnTimelinesArgs_1 = require("./args/TimelineTagsOnTimelinesArgs");
 const TimelineThreadsOnTimelineArgs_1 = require("./args/TimelineThreadsOnTimelineArgs");
+const TimelineVotesOnTimelineArgs_1 = require("./args/TimelineVotesOnTimelineArgs");
 const helpers_1 = require("../../../helpers");
 let TimelineRelationsResolver = class TimelineRelationsResolver {
     async author(timeline, ctx) {
@@ -49,6 +51,13 @@ let TimelineRelationsResolver = class TimelineRelationsResolver {
                 id: timeline.id,
             },
         }).ReactionOnTimelines(args);
+    }
+    async votesOnTimeline(timeline, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).timeline.findUnique({
+            where: {
+                id: timeline.id,
+            },
+        }).votesOnTimeline(args);
     }
 };
 tslib_1.__decorate([
@@ -105,6 +114,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [Timeline_1.Timeline, Object, TimelineReactionOnTimelinesArgs_1.TimelineReactionOnTimelinesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
 ], TimelineRelationsResolver.prototype, "ReactionOnTimelines", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VotesOnTimeline_1.VotesOnTimeline], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [Timeline_1.Timeline, Object, TimelineVotesOnTimelineArgs_1.TimelineVotesOnTimelineArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], TimelineRelationsResolver.prototype, "votesOnTimeline", null);
 TimelineRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => Timeline_1.Timeline)
 ], TimelineRelationsResolver);

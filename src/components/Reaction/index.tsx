@@ -2,7 +2,6 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import * as React from "react";
 import {FunctionComponent} from "react";
 import get from "lodash/get";
-import find from "lodash/find";
 import {useQuery} from "@apollo/client";
 import {getReactionByIdArgs} from "../../gql/helper/getReactionByIdArgs";
 import {getReactionByUserArgs} from "../../gql/helper/getReactionByUserArgs";
@@ -13,8 +12,6 @@ import {useSession} from "next-auth/react";
 import {Reaction} from "../Premise/PremiseDetail";
 import {useSnackbar} from "notistack";
 import {CreateReactionVariables} from "../../gql/utils/getCreateReactionVariables";
-import {getTableNameWithId} from "../../utils/getTableNameWithId";
-import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
 import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
 import Icon from "@mui/material/Icon";
 
@@ -31,8 +28,10 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
         data: reactionData,
         error: reactionError,
         refetch: refetchReaction
-    } = useQuery(...getReactionByIdArgs(id ? [id]:[], type));
-
+    } = useQuery(...getReactionByIdArgs(id || "", type));
+    console.info(reactionData);
+    console.info("====================");
+    console.info("====================");
     const {
         data: reactionByUserData, loading: loadingReactionByUser,
         refetch: refetchReactionByUser
@@ -77,12 +76,9 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
     const getReactionCount = (reaction: string) => {
         if (reactionData) {
             const selectedReactionData = get(reactionData, reaction, []);
-            const tableNameWithId = getTableNameWithId(getTableNameByConnectType(type));
-            const selectedReactionDataById = find(
-                    selectedReactionData,
-                    (reaction: { visionId: string }) => get(reaction, tableNameWithId) === id
-            );
-            if (selectedReactionDataById) return selectedReactionDataById._count._all;
+            console.info(selectedReactionData);
+            console.info("this is the selected reaction data");
+            if (selectedReactionData) return selectedReactionData._count.reaction;
         }
         return 0;
     };

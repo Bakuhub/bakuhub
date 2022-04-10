@@ -19,3 +19,7 @@ export { ThreadsOnVisionRelationsResolver } from "./ThreadsOnVision/ThreadsOnVis
 export { TimelineRelationsResolver } from "./Timeline/TimelineRelationsResolver";
 export { UserRelationsResolver } from "./User/UserRelationsResolver";
 export { VisionRelationsResolver } from "./Vision/VisionRelationsResolver";
+export { VotesOnPremiseRelationsResolver } from "./VotesOnPremise/VotesOnPremiseRelationsResolver";
+export { VotesOnThreadRelationsResolver } from "./VotesOnThread/VotesOnThreadRelationsResolver";
+export { VotesOnTimelineRelationsResolver } from "./VotesOnTimeline/VotesOnTimelineRelationsResolver";
+export { VotesOnVisionRelationsResolver } from "./VotesOnVision/VotesOnVisionRelationsResolver";

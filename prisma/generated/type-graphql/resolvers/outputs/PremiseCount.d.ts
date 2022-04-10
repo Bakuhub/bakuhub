@@ -3,4 +3,5 @@ export declare class PremiseCount {
     premisesOnTimelines: number;
     tagsOnPremises: number;
     threadsOnPremise: number;
+    votesOnPremise: number;
 }

@@ -8,6 +8,7 @@ const ReactionOnTimelinesUpdateManyWithoutTimelineInput_1 = require("../inputs/R
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 const ThreadsOnTimelineUpdateManyWithoutTimelineInput_1 = require("../inputs/ThreadsOnTimelineUpdateManyWithoutTimelineInput");
 const UserUpdateOneRequiredWithoutTimelinesInput_1 = require("../inputs/UserUpdateOneRequiredWithoutTimelinesInput");
+const VotesOnTimelineUpdateManyWithoutTimelineInput_1 = require("../inputs/VotesOnTimelineUpdateManyWithoutTimelineInput");
 let TimelineUpdateWithoutTagsOnTimelinesInput = class TimelineUpdateWithoutTagsOnTimelinesInput {
 };
 tslib_1.__decorate([
@@ -58,6 +59,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesUpdateManyWithoutTimelineInput_1.ReactionOnTimelinesUpdateManyWithoutTimelineInput)
 ], TimelineUpdateWithoutTagsOnTimelinesInput.prototype, "ReactionOnTimelines", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineUpdateManyWithoutTimelineInput_1.VotesOnTimelineUpdateManyWithoutTimelineInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineUpdateManyWithoutTimelineInput_1.VotesOnTimelineUpdateManyWithoutTimelineInput)
+], TimelineUpdateWithoutTagsOnTimelinesInput.prototype, "votesOnTimeline", void 0);
 TimelineUpdateWithoutTagsOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineUpdateWithoutTagsOnTimelinesInput", {
         isAbstract: true

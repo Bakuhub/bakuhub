@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateVotesOnTimelineArgs } from "./args/AggregateVotesOnTimelineArgs";
+import { CreateManyVotesOnTimelineArgs } from "./args/CreateManyVotesOnTimelineArgs";
+import { CreateVotesOnTimelineArgs } from "./args/CreateVotesOnTimelineArgs";
+import { DeleteManyVotesOnTimelineArgs } from "./args/DeleteManyVotesOnTimelineArgs";
+import { DeleteVotesOnTimelineArgs } from "./args/DeleteVotesOnTimelineArgs";
+import { FindFirstVotesOnTimelineArgs } from "./args/FindFirstVotesOnTimelineArgs";
+import { FindManyVotesOnTimelineArgs } from "./args/FindManyVotesOnTimelineArgs";
+import { FindUniqueVotesOnTimelineArgs } from "./args/FindUniqueVotesOnTimelineArgs";
+import { GroupByVotesOnTimelineArgs } from "./args/GroupByVotesOnTimelineArgs";
+import { UpdateManyVotesOnTimelineArgs } from "./args/UpdateManyVotesOnTimelineArgs";
+import { UpdateVotesOnTimelineArgs } from "./args/UpdateVotesOnTimelineArgs";
+import { UpsertVotesOnTimelineArgs } from "./args/UpsertVotesOnTimelineArgs";
+import { VotesOnTimeline } from "../../../models/VotesOnTimeline";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateVotesOnTimeline } from "../../outputs/AggregateVotesOnTimeline";
+import { VotesOnTimelineGroupBy } from "../../outputs/VotesOnTimelineGroupBy";
+export declare class VotesOnTimelineCrudResolver {
+    votesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: FindUniqueVotesOnTimelineArgs): Promise<VotesOnTimeline | null>;
+    findFirstVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: FindFirstVotesOnTimelineArgs): Promise<VotesOnTimeline | null>;
+    votesOnTimelines(ctx: any, info: GraphQLResolveInfo, args: FindManyVotesOnTimelineArgs): Promise<VotesOnTimeline[]>;
+    createVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: CreateVotesOnTimelineArgs): Promise<VotesOnTimeline>;
+    createManyVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: CreateManyVotesOnTimelineArgs): Promise<AffectedRowsOutput>;
+    deleteVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: DeleteVotesOnTimelineArgs): Promise<VotesOnTimeline | null>;
+    updateVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: UpdateVotesOnTimelineArgs): Promise<VotesOnTimeline | null>;
+    deleteManyVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: DeleteManyVotesOnTimelineArgs): Promise<AffectedRowsOutput>;
+    updateManyVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: UpdateManyVotesOnTimelineArgs): Promise<AffectedRowsOutput>;
+    upsertVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: UpsertVotesOnTimelineArgs): Promise<VotesOnTimeline>;
+    aggregateVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: AggregateVotesOnTimelineArgs): Promise<AggregateVotesOnTimeline>;
+    groupByVotesOnTimeline(ctx: any, info: GraphQLResolveInfo, args: GroupByVotesOnTimelineArgs): Promise<VotesOnTimelineGroupBy[]>;
+}

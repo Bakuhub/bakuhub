@@ -8,4 +8,8 @@ export declare class UserCount {
     ReactionOnThreads: number;
     ReactionOnTimelines: number;
     ReactionOnVisions: number;
+    votesOnVision: number;
+    votesOnTimeline: number;
+    votesOnPremise: number;
+    votesOnThread: number;
 }

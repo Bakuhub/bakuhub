@@ -17,6 +17,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Number)
 ], ThreadCount.prototype, "ReactionOnThreads", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
+], ThreadCount.prototype, "votesOnThread", void 0);
 ThreadCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("ThreadCount", {
         isAbstract: true

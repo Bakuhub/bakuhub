@@ -8,6 +8,10 @@ import { Thread } from "../../../models/Thread";
 import { Timeline } from "../../../models/Timeline";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
+import { VotesOnPremise } from "../../../models/VotesOnPremise";
+import { VotesOnThread } from "../../../models/VotesOnThread";
+import { VotesOnTimeline } from "../../../models/VotesOnTimeline";
+import { VotesOnVision } from "../../../models/VotesOnVision";
 import { UserAccountsArgs } from "./args/UserAccountsArgs";
 import { UserPremisesArgs } from "./args/UserPremisesArgs";
 import { UserReactionOnThreadsArgs } from "./args/UserReactionOnThreadsArgs";
@@ -17,6 +21,10 @@ import { UserSessionsArgs } from "./args/UserSessionsArgs";
 import { UserThreadsArgs } from "./args/UserThreadsArgs";
 import { UserTimelinesArgs } from "./args/UserTimelinesArgs";
 import { UserVisionsArgs } from "./args/UserVisionsArgs";
+import { UserVotesOnPremiseArgs } from "./args/UserVotesOnPremiseArgs";
+import { UserVotesOnThreadArgs } from "./args/UserVotesOnThreadArgs";
+import { UserVotesOnTimelineArgs } from "./args/UserVotesOnTimelineArgs";
+import { UserVotesOnVisionArgs } from "./args/UserVotesOnVisionArgs";
 export declare class UserRelationsResolver {
     accounts(user: User, ctx: any, args: UserAccountsArgs): Promise<Account[]>;
     sessions(user: User, ctx: any, args: UserSessionsArgs): Promise<Session[]>;
@@ -27,4 +35,8 @@ export declare class UserRelationsResolver {
     ReactionOnThreads(user: User, ctx: any, args: UserReactionOnThreadsArgs): Promise<ReactionOnThreads[]>;
     ReactionOnTimelines(user: User, ctx: any, args: UserReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]>;
     ReactionOnVisions(user: User, ctx: any, args: UserReactionOnVisionsArgs): Promise<ReactionOnVisions[]>;
+    votesOnVision(user: User, ctx: any, args: UserVotesOnVisionArgs): Promise<VotesOnVision[]>;
+    votesOnTimeline(user: User, ctx: any, args: UserVotesOnTimelineArgs): Promise<VotesOnTimeline[]>;
+    votesOnPremise(user: User, ctx: any, args: UserVotesOnPremiseArgs): Promise<VotesOnPremise[]>;
+    votesOnThread(user: User, ctx: any, args: UserVotesOnThreadArgs): Promise<VotesOnThread[]>;
 }

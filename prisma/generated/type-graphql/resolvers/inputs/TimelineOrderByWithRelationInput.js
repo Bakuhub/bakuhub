@@ -8,6 +8,7 @@ const ReactionOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/Re
 const TagsOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/TagsOnTimelinesOrderByRelationAggregateInput");
 const ThreadsOnTimelineOrderByRelationAggregateInput_1 = require("../inputs/ThreadsOnTimelineOrderByRelationAggregateInput");
 const UserOrderByWithRelationInput_1 = require("../inputs/UserOrderByWithRelationInput");
+const VotesOnTimelineOrderByRelationAggregateInput_1 = require("../inputs/VotesOnTimelineOrderByRelationAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
 let TimelineOrderByWithRelationInput = class TimelineOrderByWithRelationInput {
 };
@@ -71,6 +72,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesOrderByRelationAggregateInput_1.ReactionOnTimelinesOrderByRelationAggregateInput)
 ], TimelineOrderByWithRelationInput.prototype, "ReactionOnTimelines", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineOrderByRelationAggregateInput_1.VotesOnTimelineOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineOrderByRelationAggregateInput_1.VotesOnTimelineOrderByRelationAggregateInput)
+], TimelineOrderByWithRelationInput.prototype, "votesOnTimeline", void 0);
 TimelineOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineOrderByWithRelationInput", {
         isAbstract: true

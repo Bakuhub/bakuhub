@@ -27,6 +27,10 @@ declare const crudResolversMap: {
     ReactionOnTimelines: typeof crudResolvers.ReactionOnTimelinesCrudResolver;
     ReactionOnVisions: typeof crudResolvers.ReactionOnVisionsCrudResolver;
     ThreadsOnVision: typeof crudResolvers.ThreadsOnVisionCrudResolver;
+    VotesOnVision: typeof crudResolvers.VotesOnVisionCrudResolver;
+    VotesOnTimeline: typeof crudResolvers.VotesOnTimelineCrudResolver;
+    VotesOnPremise: typeof crudResolvers.VotesOnPremiseCrudResolver;
+    VotesOnThread: typeof crudResolvers.VotesOnThreadCrudResolver;
 };
 declare type ResolverModelNames = keyof typeof crudResolversMap;
 declare type ModelResolverActionNames<TModel extends ResolverModelNames> = keyof typeof crudResolversMap[TModel]["prototype"];
@@ -68,6 +72,10 @@ declare const relationResolversMap: {
     ReactionOnTimelines: typeof relationResolvers.ReactionOnTimelinesRelationsResolver;
     ReactionOnVisions: typeof relationResolvers.ReactionOnVisionsRelationsResolver;
     ThreadsOnVision: typeof relationResolvers.ThreadsOnVisionRelationsResolver;
+    VotesOnVision: typeof relationResolvers.VotesOnVisionRelationsResolver;
+    VotesOnTimeline: typeof relationResolvers.VotesOnTimelineRelationsResolver;
+    VotesOnPremise: typeof relationResolvers.VotesOnPremiseRelationsResolver;
+    VotesOnThread: typeof relationResolvers.VotesOnThreadRelationsResolver;
 };
 declare type RelationResolverModelNames = keyof typeof relationResolversMap;
 declare type RelationResolverActionNames<TModel extends RelationResolverModelNames> = keyof typeof relationResolversMap[TModel]["prototype"];

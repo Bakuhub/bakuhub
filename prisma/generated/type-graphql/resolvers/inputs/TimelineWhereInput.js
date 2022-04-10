@@ -10,6 +10,7 @@ const StringFilter_1 = require("../inputs/StringFilter");
 const TagsOnTimelinesListRelationFilter_1 = require("../inputs/TagsOnTimelinesListRelationFilter");
 const ThreadsOnTimelineListRelationFilter_1 = require("../inputs/ThreadsOnTimelineListRelationFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
+const VotesOnTimelineListRelationFilter_1 = require("../inputs/VotesOnTimelineListRelationFilter");
 let TimelineWhereInput = TimelineWhereInput_1 = class TimelineWhereInput {
 };
 tslib_1.__decorate([
@@ -90,6 +91,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesListRelationFilter_1.ReactionOnTimelinesListRelationFilter)
 ], TimelineWhereInput.prototype, "ReactionOnTimelines", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineListRelationFilter_1.VotesOnTimelineListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineListRelationFilter_1.VotesOnTimelineListRelationFilter)
+], TimelineWhereInput.prototype, "votesOnTimeline", void 0);
 TimelineWhereInput = TimelineWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineWhereInput", {
         isAbstract: true

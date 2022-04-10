@@ -10,6 +10,7 @@ import { ThreadsOnPremiseRelationFilter } from "../inputs/ThreadsOnPremiseRelati
 import { ThreadsOnTimelineRelationFilter } from "../inputs/ThreadsOnTimelineRelationFilter";
 import { ThreadsOnVisionRelationFilter } from "../inputs/ThreadsOnVisionRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
+import { VotesOnThreadListRelationFilter } from "../inputs/VotesOnThreadListRelationFilter";
 export declare class ThreadWhereInput {
     AND?: ThreadWhereInput[] | undefined;
     OR?: ThreadWhereInput[] | undefined;
@@ -30,4 +31,5 @@ export declare class ThreadWhereInput {
     threadsOnVision?: ThreadsOnVisionRelationFilter | undefined;
     threadsOnMergeRequest?: ThreadsOnMergeRequestRelationFilter | undefined;
     ReactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
+    votesOnThread?: VotesOnThreadListRelationFilter | undefined;
 }

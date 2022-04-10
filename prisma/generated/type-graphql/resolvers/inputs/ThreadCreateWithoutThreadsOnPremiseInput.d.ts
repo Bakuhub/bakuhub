@@ -5,6 +5,7 @@ import { ThreadsOnMergeRequestCreateNestedOneWithoutThreadInput } from "../input
 import { ThreadsOnTimelineCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnTimelineCreateNestedOneWithoutThreadInput";
 import { ThreadsOnVisionCreateNestedOneWithoutThreadInput } from "../inputs/ThreadsOnVisionCreateNestedOneWithoutThreadInput";
 import { UserCreateNestedOneWithoutThreadsInput } from "../inputs/UserCreateNestedOneWithoutThreadsInput";
+import { VotesOnThreadCreateNestedManyWithoutThreadInput } from "../inputs/VotesOnThreadCreateNestedManyWithoutThreadInput";
 export declare class ThreadCreateWithoutThreadsOnPremiseInput {
     id?: string | undefined;
     title: string;
@@ -19,4 +20,5 @@ export declare class ThreadCreateWithoutThreadsOnPremiseInput {
     threadsOnVision?: ThreadsOnVisionCreateNestedOneWithoutThreadInput | undefined;
     threadsOnMergeRequest?: ThreadsOnMergeRequestCreateNestedOneWithoutThreadInput | undefined;
     ReactionOnThreads?: ReactionOnThreadsCreateNestedManyWithoutThreadInput | undefined;
+    votesOnThread?: VotesOnThreadCreateNestedManyWithoutThreadInput | undefined;
 }

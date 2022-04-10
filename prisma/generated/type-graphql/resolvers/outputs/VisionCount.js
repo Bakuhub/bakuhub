@@ -23,6 +23,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Number)
 ], VisionCount.prototype, "ReactionOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
+], VisionCount.prototype, "votesOnVision", void 0);
 VisionCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("VisionCount", {
         isAbstract: true

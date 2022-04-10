@@ -1,4 +1,7 @@
 export enum MaterialUIIcons {
+    reply = "reply",
+    report = "report",
+    share = "share",
     chevron_right = "chevron_right",
     chevron_left = "chevron_left",
     thumb_up_off_alt = "thumb_up_off_alt",

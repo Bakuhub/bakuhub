@@ -20,3 +20,7 @@ export { TimelineCrudResolver } from "./Timeline/TimelineCrudResolver";
 export { UserCrudResolver } from "./User/UserCrudResolver";
 export { VerificationTokenCrudResolver } from "./VerificationToken/VerificationTokenCrudResolver";
 export { VisionCrudResolver } from "./Vision/VisionCrudResolver";
+export { VotesOnPremiseCrudResolver } from "./VotesOnPremise/VotesOnPremiseCrudResolver";
+export { VotesOnThreadCrudResolver } from "./VotesOnThread/VotesOnThreadCrudResolver";
+export { VotesOnTimelineCrudResolver } from "./VotesOnTimeline/VotesOnTimelineCrudResolver";
+export { VotesOnVisionCrudResolver } from "./VotesOnVision/VotesOnVisionCrudResolver";

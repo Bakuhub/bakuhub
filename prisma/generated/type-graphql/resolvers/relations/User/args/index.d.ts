@@ -7,3 +7,7 @@ export { UserSessionsArgs } from "./UserSessionsArgs";
 export { UserThreadsArgs } from "./UserThreadsArgs";
 export { UserTimelinesArgs } from "./UserTimelinesArgs";
 export { UserVisionsArgs } from "./UserVisionsArgs";
+export { UserVotesOnPremiseArgs } from "./UserVotesOnPremiseArgs";
+export { UserVotesOnThreadArgs } from "./UserVotesOnThreadArgs";
+export { UserVotesOnTimelineArgs } from "./UserVotesOnTimelineArgs";
+export { UserVotesOnVisionArgs } from "./UserVotesOnVisionArgs";

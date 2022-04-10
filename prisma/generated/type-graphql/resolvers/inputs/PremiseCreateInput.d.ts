@@ -3,6 +3,7 @@ import { TagsOnPremisesCreateNestedManyWithoutPremiseInput } from "../inputs/Tag
 import { ThreadsOnPremiseCreateNestedManyWithoutPremiseInput } from "../inputs/ThreadsOnPremiseCreateNestedManyWithoutPremiseInput";
 import { UserCreateNestedOneWithoutPremisesInput } from "../inputs/UserCreateNestedOneWithoutPremisesInput";
 import { VisionCreateNestedManyWithoutPremiseInput } from "../inputs/VisionCreateNestedManyWithoutPremiseInput";
+import { VotesOnPremiseCreateNestedManyWithoutPremiseInput } from "../inputs/VotesOnPremiseCreateNestedManyWithoutPremiseInput";
 export declare class PremiseCreateInput {
     id?: string | undefined;
     title: string;
@@ -14,4 +15,5 @@ export declare class PremiseCreateInput {
     premisesOnTimelines?: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput | undefined;
     tagsOnPremises?: TagsOnPremisesCreateNestedManyWithoutPremiseInput | undefined;
     threadsOnPremise?: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput | undefined;
+    votesOnPremise?: VotesOnPremiseCreateNestedManyWithoutPremiseInput | undefined;
 }

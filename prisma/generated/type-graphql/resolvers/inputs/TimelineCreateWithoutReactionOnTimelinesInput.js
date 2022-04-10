@@ -7,6 +7,7 @@ const PremisesOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../in
 const TagsOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/TagsOnTimelinesCreateNestedManyWithoutTimelineInput");
 const ThreadsOnTimelineCreateNestedManyWithoutTimelineInput_1 = require("../inputs/ThreadsOnTimelineCreateNestedManyWithoutTimelineInput");
 const UserCreateNestedOneWithoutTimelinesInput_1 = require("../inputs/UserCreateNestedOneWithoutTimelinesInput");
+const VotesOnTimelineCreateNestedManyWithoutTimelineInput_1 = require("../inputs/VotesOnTimelineCreateNestedManyWithoutTimelineInput");
 let TimelineCreateWithoutReactionOnTimelinesInput = class TimelineCreateWithoutReactionOnTimelinesInput {
 };
 tslib_1.__decorate([
@@ -57,6 +58,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ThreadsOnTimelineCreateNestedManyWithoutTimelineInput_1.ThreadsOnTimelineCreateNestedManyWithoutTimelineInput)
 ], TimelineCreateWithoutReactionOnTimelinesInput.prototype, "threadsOnTimeline", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineCreateNestedManyWithoutTimelineInput_1.VotesOnTimelineCreateNestedManyWithoutTimelineInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineCreateNestedManyWithoutTimelineInput_1.VotesOnTimelineCreateNestedManyWithoutTimelineInput)
+], TimelineCreateWithoutReactionOnTimelinesInput.prototype, "votesOnTimeline", void 0);
 TimelineCreateWithoutReactionOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineCreateWithoutReactionOnTimelinesInput", {
         isAbstract: true

@@ -4,9 +4,9 @@ import {getVisionsByKeywordArgs} from "../../../gql/helper/getVisionsByKeywordAr
 import {useQuery} from "@apollo/client";
 import {Vision} from "../../../../prisma/generated/type-graphql";
 import dynamic from "next/dynamic";
-import {LoadingButton} from "@mui/lab";
 import TimelineContainer from "../index";
 
+const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
 const VisionDataGrid = dynamic(() => import("../../Vision/VisionDataGrid"));
 
 export const TimelineCreator = () => {
@@ -25,7 +25,6 @@ export const TimelineCreator = () => {
     ));
     return (
             <Grid container alignItems={"flex-start"}>
-
                 <Grid item container xs={8}>
                     <Grid item xs={12}>
                         <LoadingButton loading={loading}
@@ -59,7 +58,6 @@ export const TimelineCreator = () => {
                     </Grid>
                     <VisionDataGrid handleUpdateVisionStatus={
                         (visionId: string, nextStatus) => {
-
                             const newTimelineNode = visions.find((vision: Vision) => vision.id === visionId);
                             if (newTimelineNode) {
                                 if (nextStatus) {

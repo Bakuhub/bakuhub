@@ -16,6 +16,10 @@ const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
 const ThreadListRelationFilter_1 = require("../inputs/ThreadListRelationFilter");
 const TimelineListRelationFilter_1 = require("../inputs/TimelineListRelationFilter");
 const VisionListRelationFilter_1 = require("../inputs/VisionListRelationFilter");
+const VotesOnPremiseListRelationFilter_1 = require("../inputs/VotesOnPremiseListRelationFilter");
+const VotesOnThreadListRelationFilter_1 = require("../inputs/VotesOnThreadListRelationFilter");
+const VotesOnTimelineListRelationFilter_1 = require("../inputs/VotesOnTimelineListRelationFilter");
+const VotesOnVisionListRelationFilter_1 = require("../inputs/VotesOnVisionListRelationFilter");
 let UserWhereInput = UserWhereInput_1 = class UserWhereInput {
 };
 tslib_1.__decorate([
@@ -126,6 +130,30 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsListRelationFilter_1.ReactionOnVisionsListRelationFilter)
 ], UserWhereInput.prototype, "ReactionOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnVisionListRelationFilter_1.VotesOnVisionListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnVisionListRelationFilter_1.VotesOnVisionListRelationFilter)
+], UserWhereInput.prototype, "votesOnVision", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnTimelineListRelationFilter_1.VotesOnTimelineListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnTimelineListRelationFilter_1.VotesOnTimelineListRelationFilter)
+], UserWhereInput.prototype, "votesOnTimeline", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnPremiseListRelationFilter_1.VotesOnPremiseListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnPremiseListRelationFilter_1.VotesOnPremiseListRelationFilter)
+], UserWhereInput.prototype, "votesOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnThreadListRelationFilter_1.VotesOnThreadListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnThreadListRelationFilter_1.VotesOnThreadListRelationFilter)
+], UserWhereInput.prototype, "votesOnThread", void 0);
 UserWhereInput = UserWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("UserWhereInput", {
         isAbstract: true

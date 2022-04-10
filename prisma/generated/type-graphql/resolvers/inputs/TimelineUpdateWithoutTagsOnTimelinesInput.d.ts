@@ -3,6 +3,7 @@ import { ReactionOnTimelinesUpdateManyWithoutTimelineInput } from "../inputs/Rea
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { ThreadsOnTimelineUpdateManyWithoutTimelineInput } from "../inputs/ThreadsOnTimelineUpdateManyWithoutTimelineInput";
 import { UserUpdateOneRequiredWithoutTimelinesInput } from "../inputs/UserUpdateOneRequiredWithoutTimelinesInput";
+import { VotesOnTimelineUpdateManyWithoutTimelineInput } from "../inputs/VotesOnTimelineUpdateManyWithoutTimelineInput";
 export declare class TimelineUpdateWithoutTagsOnTimelinesInput {
     id?: StringFieldUpdateOperationsInput | undefined;
     title?: StringFieldUpdateOperationsInput | undefined;
@@ -12,4 +13,5 @@ export declare class TimelineUpdateWithoutTagsOnTimelinesInput {
     premisesOnTimelines?: PremisesOnTimelinesUpdateManyWithoutTimelineInput | undefined;
     threadsOnTimeline?: ThreadsOnTimelineUpdateManyWithoutTimelineInput | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+    votesOnTimeline?: VotesOnTimelineUpdateManyWithoutTimelineInput | undefined;
 }

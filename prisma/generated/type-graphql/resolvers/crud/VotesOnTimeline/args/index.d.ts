@@ -1,0 +1,12 @@
+export { AggregateVotesOnTimelineArgs } from "./AggregateVotesOnTimelineArgs";
+export { CreateManyVotesOnTimelineArgs } from "./CreateManyVotesOnTimelineArgs";
+export { CreateVotesOnTimelineArgs } from "./CreateVotesOnTimelineArgs";
+export { DeleteManyVotesOnTimelineArgs } from "./DeleteManyVotesOnTimelineArgs";
+export { DeleteVotesOnTimelineArgs } from "./DeleteVotesOnTimelineArgs";
+export { FindFirstVotesOnTimelineArgs } from "./FindFirstVotesOnTimelineArgs";
+export { FindManyVotesOnTimelineArgs } from "./FindManyVotesOnTimelineArgs";
+export { FindUniqueVotesOnTimelineArgs } from "./FindUniqueVotesOnTimelineArgs";
+export { GroupByVotesOnTimelineArgs } from "./GroupByVotesOnTimelineArgs";
+export { UpdateManyVotesOnTimelineArgs } from "./UpdateManyVotesOnTimelineArgs";
+export { UpdateVotesOnTimelineArgs } from "./UpdateVotesOnTimelineArgs";
+export { UpsertVotesOnTimelineArgs } from "./UpsertVotesOnTimelineArgs";

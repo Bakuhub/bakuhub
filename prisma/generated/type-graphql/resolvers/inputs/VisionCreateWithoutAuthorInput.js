@@ -10,6 +10,7 @@ const ReferenceCreateNestedOneWithoutVisionInput_1 = require("../inputs/Referenc
 const ThreadsOnVisionCreateNestedManyWithoutVisionInput_1 = require("../inputs/ThreadsOnVisionCreateNestedManyWithoutVisionInput");
 const VisionCreateNestedManyWithoutPrevVisionInput_1 = require("../inputs/VisionCreateNestedManyWithoutPrevVisionInput");
 const VisionCreateNestedOneWithoutNextVisionsInput_1 = require("../inputs/VisionCreateNestedOneWithoutNextVisionsInput");
+const VotesOnVisionCreateNestedManyWithoutVisionInput_1 = require("../inputs/VotesOnVisionCreateNestedManyWithoutVisionInput");
 let VisionCreateWithoutAuthorInput = class VisionCreateWithoutAuthorInput {
 };
 tslib_1.__decorate([
@@ -102,6 +103,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsCreateNestedManyWithoutVisionInput_1.ReactionOnVisionsCreateNestedManyWithoutVisionInput)
 ], VisionCreateWithoutAuthorInput.prototype, "ReactionOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VotesOnVisionCreateNestedManyWithoutVisionInput_1.VotesOnVisionCreateNestedManyWithoutVisionInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VotesOnVisionCreateNestedManyWithoutVisionInput_1.VotesOnVisionCreateNestedManyWithoutVisionInput)
+], VisionCreateWithoutAuthorInput.prototype, "votesOnVision", void 0);
 VisionCreateWithoutAuthorInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionCreateWithoutAuthorInput", {
         isAbstract: true
