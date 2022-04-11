@@ -6,7 +6,7 @@ import {DocumentNode} from "graphql";
 import {capitalize} from "@mui/material";
 import {gql} from "@apollo/client";
 
-const reactionByVisionsIdQuery = (tableName: string) => {
+const reactionByIdQuery = (tableName: string) => {
     const queryString = `
         query _count($whereUpvotes: ReactionOn${capitalize(tableName)}sWhereInput,$whereDownvotes:ReactionOn${capitalize(
             tableName)}sWhereInput) {
@@ -33,7 +33,7 @@ export function getReactionByIdArgs(
     const tableName = getTableNameByConnectType(type);
     const tableNameWithId = getTableNameWithId(tableName);
     return [
-        reactionByVisionsIdQuery(tableName),
+        reactionByIdQuery(tableName),
         {
             variables: {
                 whereUpvotes: {

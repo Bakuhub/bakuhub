@@ -564,6 +564,38 @@ type AggregateVision {
   _min: VisionMinAggregate
 }
 
+type AggregateVotesOnPremise {
+  _avg: VotesOnPremiseAvgAggregate
+  _count: VotesOnPremiseCountAggregate
+  _max: VotesOnPremiseMaxAggregate
+  _min: VotesOnPremiseMinAggregate
+  _sum: VotesOnPremiseSumAggregate
+}
+
+type AggregateVotesOnThread {
+  _avg: VotesOnThreadAvgAggregate
+  _count: VotesOnThreadCountAggregate
+  _max: VotesOnThreadMaxAggregate
+  _min: VotesOnThreadMinAggregate
+  _sum: VotesOnThreadSumAggregate
+}
+
+type AggregateVotesOnTimeline {
+  _avg: VotesOnTimelineAvgAggregate
+  _count: VotesOnTimelineCountAggregate
+  _max: VotesOnTimelineMaxAggregate
+  _min: VotesOnTimelineMinAggregate
+  _sum: VotesOnTimelineSumAggregate
+}
+
+type AggregateVotesOnVision {
+  _avg: VotesOnVisionAvgAggregate
+  _count: VotesOnVisionCountAggregate
+  _max: VotesOnVisionMaxAggregate
+  _min: VotesOnVisionMinAggregate
+  _sum: VotesOnVisionSumAggregate
+}
+
 input BoolFieldUpdateOperationsInput {
   set: Boolean
 }
@@ -701,6 +733,14 @@ input EnumReactionWithAggregatesFilter {
   in: [Reaction!]
   not: NestedEnumReactionWithAggregatesFilter
   notIn: [Reaction!]
+}
+
+input IntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
 }
 
 input IntFilter {
@@ -1040,6 +1080,10 @@ type Mutation {
   createManyUser(data: [UserCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyVerificationToken(data: [VerificationTokenCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyVision(data: [VisionCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyVotesOnPremise(data: [VotesOnPremiseCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyVotesOnThread(data: [VotesOnThreadCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyVotesOnTimeline(data: [VotesOnTimelineCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyVotesOnVision(data: [VotesOnVisionCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createMergeRequest(data: MergeRequestCreateInput!): MergeRequest!
   createPremise(data: PremiseCreateInput!): Premise!
   createPremisesOnTimelines(data: PremisesOnTimelinesCreateInput!): PremisesOnTimelines!
@@ -1061,6 +1105,10 @@ type Mutation {
   createUser(data: UserCreateInput!): User!
   createVerificationToken(data: VerificationTokenCreateInput!): VerificationToken!
   createVision(data: VisionCreateInput!): Vision!
+  createVotesOnPremise(data: VotesOnPremiseCreateInput!): VotesOnPremise!
+  createVotesOnThread(data: VotesOnThreadCreateInput!): VotesOnThread!
+  createVotesOnTimeline(data: VotesOnTimelineCreateInput!): VotesOnTimeline!
+  createVotesOnVision(data: VotesOnVisionCreateInput!): VotesOnVision!
   deleteAccount(where: AccountWhereUniqueInput!): Account
   deleteManyAccount(where: AccountWhereInput): AffectedRowsOutput!
   deleteManyMergeRequest(where: MergeRequestWhereInput): AffectedRowsOutput!
@@ -1084,6 +1132,10 @@ type Mutation {
   deleteManyUser(where: UserWhereInput): AffectedRowsOutput!
   deleteManyVerificationToken(where: VerificationTokenWhereInput): AffectedRowsOutput!
   deleteManyVision(where: VisionWhereInput): AffectedRowsOutput!
+  deleteManyVotesOnPremise(where: VotesOnPremiseWhereInput): AffectedRowsOutput!
+  deleteManyVotesOnThread(where: VotesOnThreadWhereInput): AffectedRowsOutput!
+  deleteManyVotesOnTimeline(where: VotesOnTimelineWhereInput): AffectedRowsOutput!
+  deleteManyVotesOnVision(where: VotesOnVisionWhereInput): AffectedRowsOutput!
   deleteMergeRequest(where: MergeRequestWhereUniqueInput!): MergeRequest
   deletePremise(where: PremiseWhereUniqueInput!): Premise
   deletePremisesOnTimelines(where: PremisesOnTimelinesWhereUniqueInput!): PremisesOnTimelines
@@ -1105,6 +1157,10 @@ type Mutation {
   deleteUser(where: UserWhereUniqueInput!): User
   deleteVerificationToken(where: VerificationTokenWhereUniqueInput!): VerificationToken
   deleteVision(where: VisionWhereUniqueInput!): Vision
+  deleteVotesOnPremise(where: VotesOnPremiseWhereUniqueInput!): VotesOnPremise
+  deleteVotesOnThread(where: VotesOnThreadWhereUniqueInput!): VotesOnThread
+  deleteVotesOnTimeline(where: VotesOnTimelineWhereUniqueInput!): VotesOnTimeline
+  deleteVotesOnVision(where: VotesOnVisionWhereUniqueInput!): VotesOnVision
   updateAccount(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
   updateManyAccount(data: AccountUpdateManyMutationInput!, where: AccountWhereInput): AffectedRowsOutput!
   updateManyMergeRequest(data: MergeRequestUpdateManyMutationInput!, where: MergeRequestWhereInput): AffectedRowsOutput!
@@ -1128,6 +1184,10 @@ type Mutation {
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): AffectedRowsOutput!
   updateManyVerificationToken(data: VerificationTokenUpdateManyMutationInput!, where: VerificationTokenWhereInput): AffectedRowsOutput!
   updateManyVision(data: VisionUpdateManyMutationInput!, where: VisionWhereInput): AffectedRowsOutput!
+  updateManyVotesOnPremise(data: VotesOnPremiseUpdateManyMutationInput!, where: VotesOnPremiseWhereInput): AffectedRowsOutput!
+  updateManyVotesOnThread(data: VotesOnThreadUpdateManyMutationInput!, where: VotesOnThreadWhereInput): AffectedRowsOutput!
+  updateManyVotesOnTimeline(data: VotesOnTimelineUpdateManyMutationInput!, where: VotesOnTimelineWhereInput): AffectedRowsOutput!
+  updateManyVotesOnVision(data: VotesOnVisionUpdateManyMutationInput!, where: VotesOnVisionWhereInput): AffectedRowsOutput!
   updateMergeRequest(data: MergeRequestUpdateInput!, where: MergeRequestWhereUniqueInput!): MergeRequest
   updatePremise(data: PremiseUpdateInput!, where: PremiseWhereUniqueInput!): Premise
   updatePremisesOnTimelines(data: PremisesOnTimelinesUpdateInput!, where: PremisesOnTimelinesWhereUniqueInput!): PremisesOnTimelines
@@ -1149,6 +1209,10 @@ type Mutation {
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateVerificationToken(data: VerificationTokenUpdateInput!, where: VerificationTokenWhereUniqueInput!): VerificationToken
   updateVision(data: VisionUpdateInput!, where: VisionWhereUniqueInput!): Vision
+  updateVotesOnPremise(data: VotesOnPremiseUpdateInput!, where: VotesOnPremiseWhereUniqueInput!): VotesOnPremise
+  updateVotesOnThread(data: VotesOnThreadUpdateInput!, where: VotesOnThreadWhereUniqueInput!): VotesOnThread
+  updateVotesOnTimeline(data: VotesOnTimelineUpdateInput!, where: VotesOnTimelineWhereUniqueInput!): VotesOnTimeline
+  updateVotesOnVision(data: VotesOnVisionUpdateInput!, where: VotesOnVisionWhereUniqueInput!): VotesOnVision
   upsertAccount(create: AccountCreateInput!, update: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account!
   upsertMergeRequest(create: MergeRequestCreateInput!, update: MergeRequestUpdateInput!, where: MergeRequestWhereUniqueInput!): MergeRequest!
   upsertPremise(create: PremiseCreateInput!, update: PremiseUpdateInput!, where: PremiseWhereUniqueInput!): Premise!
@@ -1171,6 +1235,10 @@ type Mutation {
   upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   upsertVerificationToken(create: VerificationTokenCreateInput!, update: VerificationTokenUpdateInput!, where: VerificationTokenWhereUniqueInput!): VerificationToken!
   upsertVision(create: VisionCreateInput!, update: VisionUpdateInput!, where: VisionWhereUniqueInput!): Vision!
+  upsertVotesOnPremise(create: VotesOnPremiseCreateInput!, update: VotesOnPremiseUpdateInput!, where: VotesOnPremiseWhereUniqueInput!): VotesOnPremise!
+  upsertVotesOnThread(create: VotesOnThreadCreateInput!, update: VotesOnThreadUpdateInput!, where: VotesOnThreadWhereUniqueInput!): VotesOnThread!
+  upsertVotesOnTimeline(create: VotesOnTimelineCreateInput!, update: VotesOnTimelineUpdateInput!, where: VotesOnTimelineWhereUniqueInput!): VotesOnTimeline!
+  upsertVotesOnVision(create: VotesOnVisionCreateInput!, update: VotesOnVisionUpdateInput!, where: VotesOnVisionWhereUniqueInput!): VotesOnVision!
 }
 
 input NestedBoolFilter {
@@ -1454,6 +1522,7 @@ type Premise {
   title: String!
   updatedAt: DateTime
   vision(cursor: VisionWhereUniqueInput, distinct: [VisionScalarFieldEnum!], orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): [Vision!]!
+  votesOnPremise(cursor: VotesOnPremiseWhereUniqueInput, distinct: [VotesOnPremiseScalarFieldEnum!], orderBy: [VotesOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnPremiseWhereInput): [VotesOnPremise!]!
 }
 
 type PremiseCount {
@@ -1461,6 +1530,7 @@ type PremiseCount {
   tagsOnPremises: Int!
   threadsOnPremise: Int!
   vision: Int!
+  votesOnPremise: Int!
 }
 
 type PremiseCountAggregate {
@@ -1493,6 +1563,7 @@ input PremiseCreateInput {
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutPremiseInput
 }
 
 input PremiseCreateManyAuthorInput {
@@ -1548,6 +1619,12 @@ input PremiseCreateNestedOneWithoutVisionInput {
   create: PremiseCreateWithoutVisionInput
 }
 
+input PremiseCreateNestedOneWithoutVotesOnPremiseInput {
+  connect: PremiseWhereUniqueInput
+  connectOrCreate: PremiseCreateOrConnectWithoutVotesOnPremiseInput
+  create: PremiseCreateWithoutVotesOnPremiseInput
+}
+
 input PremiseCreateOrConnectWithoutAuthorInput {
   create: PremiseCreateWithoutAuthorInput!
   where: PremiseWhereUniqueInput!
@@ -1573,6 +1650,11 @@ input PremiseCreateOrConnectWithoutVisionInput {
   where: PremiseWhereUniqueInput!
 }
 
+input PremiseCreateOrConnectWithoutVotesOnPremiseInput {
+  create: PremiseCreateWithoutVotesOnPremiseInput!
+  where: PremiseWhereUniqueInput!
+}
+
 input PremiseCreateWithoutAuthorInput {
   createdAt: DateTime
   id: String
@@ -1583,6 +1665,7 @@ input PremiseCreateWithoutAuthorInput {
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutPremiseInput
 }
 
 input PremiseCreateWithoutPremisesOnTimelinesInput {
@@ -1595,6 +1678,7 @@ input PremiseCreateWithoutPremisesOnTimelinesInput {
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutPremiseInput
 }
 
 input PremiseCreateWithoutTagsOnPremisesInput {
@@ -1607,6 +1691,7 @@ input PremiseCreateWithoutTagsOnPremisesInput {
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutPremiseInput
 }
 
 input PremiseCreateWithoutThreadsOnPremiseInput {
@@ -1619,6 +1704,7 @@ input PremiseCreateWithoutThreadsOnPremiseInput {
   title: String!
   updatedAt: DateTime
   vision: VisionCreateNestedManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutPremiseInput
 }
 
 input PremiseCreateWithoutVisionInput {
@@ -1631,6 +1717,20 @@ input PremiseCreateWithoutVisionInput {
   threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
   title: String!
   updatedAt: DateTime
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutPremiseInput
+}
+
+input PremiseCreateWithoutVotesOnPremiseInput {
+  author: UserCreateNestedOneWithoutPremisesInput
+  createdAt: DateTime
+  id: String
+  premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
+  status: PremiseStatus!
+  tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
+  title: String!
+  updatedAt: DateTime
+  vision: VisionCreateNestedManyWithoutPremiseInput
 }
 
 type PremiseGroupBy {
@@ -1715,6 +1815,7 @@ input PremiseOrderByWithRelationInput {
   title: SortOrder
   updatedAt: SortOrder
   vision: VisionOrderByRelationAggregateInput
+  votesOnPremise: VotesOnPremiseOrderByRelationAggregateInput
 }
 
 input PremiseRelationFilter {
@@ -1774,6 +1875,7 @@ input PremiseUpdateInput {
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutPremiseInput
 }
 
 input PremiseUpdateManyMutationInput {
@@ -1835,6 +1937,14 @@ input PremiseUpdateOneRequiredWithoutVisionInput {
   upsert: PremiseUpsertWithoutVisionInput
 }
 
+input PremiseUpdateOneRequiredWithoutVotesOnPremiseInput {
+  connect: PremiseWhereUniqueInput
+  connectOrCreate: PremiseCreateOrConnectWithoutVotesOnPremiseInput
+  create: PremiseCreateWithoutVotesOnPremiseInput
+  update: PremiseUpdateWithoutVotesOnPremiseInput
+  upsert: PremiseUpsertWithoutVotesOnPremiseInput
+}
+
 input PremiseUpdateWithWhereUniqueWithoutAuthorInput {
   data: PremiseUpdateWithoutAuthorInput!
   where: PremiseWhereUniqueInput!
@@ -1850,6 +1960,7 @@ input PremiseUpdateWithoutAuthorInput {
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutPremiseInput
 }
 
 input PremiseUpdateWithoutPremisesOnTimelinesInput {
@@ -1862,6 +1973,7 @@ input PremiseUpdateWithoutPremisesOnTimelinesInput {
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutPremiseInput
 }
 
 input PremiseUpdateWithoutTagsOnPremisesInput {
@@ -1874,6 +1986,7 @@ input PremiseUpdateWithoutTagsOnPremisesInput {
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutPremiseInput
 }
 
 input PremiseUpdateWithoutThreadsOnPremiseInput {
@@ -1886,6 +1999,7 @@ input PremiseUpdateWithoutThreadsOnPremiseInput {
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   vision: VisionUpdateManyWithoutPremiseInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutPremiseInput
 }
 
 input PremiseUpdateWithoutVisionInput {
@@ -1898,6 +2012,20 @@ input PremiseUpdateWithoutVisionInput {
   threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutPremiseInput
+}
+
+input PremiseUpdateWithoutVotesOnPremiseInput {
+  author: UserUpdateOneWithoutPremisesInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
+  status: EnumPremiseStatusFieldUpdateOperationsInput
+  tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
+  threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  vision: VisionUpdateManyWithoutPremiseInput
 }
 
 input PremiseUpsertWithWhereUniqueWithoutAuthorInput {
@@ -1926,6 +2054,11 @@ input PremiseUpsertWithoutVisionInput {
   update: PremiseUpdateWithoutVisionInput!
 }
 
+input PremiseUpsertWithoutVotesOnPremiseInput {
+  create: PremiseCreateWithoutVotesOnPremiseInput!
+  update: PremiseUpdateWithoutVotesOnPremiseInput!
+}
+
 input PremiseWhereInput {
   AND: [PremiseWhereInput!]
   NOT: [PremiseWhereInput!]
@@ -1941,6 +2074,7 @@ input PremiseWhereInput {
   title: StringFilter
   updatedAt: DateTimeNullableFilter
   vision: VisionListRelationFilter
+  votesOnPremise: VotesOnPremiseListRelationFilter
 }
 
 input PremiseWhereUniqueInput {
@@ -2243,6 +2377,10 @@ type Query {
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): AggregateUser!
   aggregateVerificationToken(cursor: VerificationTokenWhereUniqueInput, orderBy: [VerificationTokenOrderByWithRelationInput!], skip: Int, take: Int, where: VerificationTokenWhereInput): AggregateVerificationToken!
   aggregateVision(cursor: VisionWhereUniqueInput, orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): AggregateVision!
+  aggregateVotesOnPremise(cursor: VotesOnPremiseWhereUniqueInput, orderBy: [VotesOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnPremiseWhereInput): AggregateVotesOnPremise!
+  aggregateVotesOnThread(cursor: VotesOnThreadWhereUniqueInput, orderBy: [VotesOnThreadOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnThreadWhereInput): AggregateVotesOnThread!
+  aggregateVotesOnTimeline(cursor: VotesOnTimelineWhereUniqueInput, orderBy: [VotesOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnTimelineWhereInput): AggregateVotesOnTimeline!
+  aggregateVotesOnVision(cursor: VotesOnVisionWhereUniqueInput, orderBy: [VotesOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnVisionWhereInput): AggregateVotesOnVision!
   findFirstAccount(cursor: AccountWhereUniqueInput, distinct: [AccountScalarFieldEnum!], orderBy: [AccountOrderByWithRelationInput!], skip: Int, take: Int, where: AccountWhereInput): Account
   findFirstMergeRequest(cursor: MergeRequestWhereUniqueInput, distinct: [MergeRequestScalarFieldEnum!], orderBy: [MergeRequestOrderByWithRelationInput!], skip: Int, take: Int, where: MergeRequestWhereInput): MergeRequest
   findFirstPremise(cursor: PremiseWhereUniqueInput, distinct: [PremiseScalarFieldEnum!], orderBy: [PremiseOrderByWithRelationInput!], skip: Int, take: Int, where: PremiseWhereInput): Premise
@@ -2265,6 +2403,10 @@ type Query {
   findFirstUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum!], orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): User
   findFirstVerificationToken(cursor: VerificationTokenWhereUniqueInput, distinct: [VerificationTokenScalarFieldEnum!], orderBy: [VerificationTokenOrderByWithRelationInput!], skip: Int, take: Int, where: VerificationTokenWhereInput): VerificationToken
   findFirstVision(cursor: VisionWhereUniqueInput, distinct: [VisionScalarFieldEnum!], orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): Vision
+  findFirstVotesOnPremise(cursor: VotesOnPremiseWhereUniqueInput, distinct: [VotesOnPremiseScalarFieldEnum!], orderBy: [VotesOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnPremiseWhereInput): VotesOnPremise
+  findFirstVotesOnThread(cursor: VotesOnThreadWhereUniqueInput, distinct: [VotesOnThreadScalarFieldEnum!], orderBy: [VotesOnThreadOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnThreadWhereInput): VotesOnThread
+  findFirstVotesOnTimeline(cursor: VotesOnTimelineWhereUniqueInput, distinct: [VotesOnTimelineScalarFieldEnum!], orderBy: [VotesOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnTimelineWhereInput): VotesOnTimeline
+  findFirstVotesOnVision(cursor: VotesOnVisionWhereUniqueInput, distinct: [VotesOnVisionScalarFieldEnum!], orderBy: [VotesOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnVisionWhereInput): VotesOnVision
   findManyPremisesOnTimelines(cursor: PremisesOnTimelinesWhereUniqueInput, distinct: [PremisesOnTimelinesScalarFieldEnum!], orderBy: [PremisesOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: PremisesOnTimelinesWhereInput): [PremisesOnTimelines!]!
   findManyReactionOnThreads(cursor: ReactionOnThreadsWhereUniqueInput, distinct: [ReactionOnThreadsScalarFieldEnum!], orderBy: [ReactionOnThreadsOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnThreadsWhereInput): [ReactionOnThreads!]!
   findManyReactionOnTimelines(cursor: ReactionOnTimelinesWhereUniqueInput, distinct: [ReactionOnTimelinesScalarFieldEnum!], orderBy: [ReactionOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnTimelinesWhereInput): [ReactionOnTimelines!]!
@@ -2299,6 +2441,10 @@ type Query {
   groupByUser(by: [UserScalarFieldEnum!]!, having: UserScalarWhereWithAggregatesInput, orderBy: [UserOrderByWithAggregationInput!], skip: Int, take: Int, where: UserWhereInput): [UserGroupBy!]!
   groupByVerificationToken(by: [VerificationTokenScalarFieldEnum!]!, having: VerificationTokenScalarWhereWithAggregatesInput, orderBy: [VerificationTokenOrderByWithAggregationInput!], skip: Int, take: Int, where: VerificationTokenWhereInput): [VerificationTokenGroupBy!]!
   groupByVision(by: [VisionScalarFieldEnum!]!, having: VisionScalarWhereWithAggregatesInput, orderBy: [VisionOrderByWithAggregationInput!], skip: Int, take: Int, where: VisionWhereInput): [VisionGroupBy!]!
+  groupByVotesOnPremise(by: [VotesOnPremiseScalarFieldEnum!]!, having: VotesOnPremiseScalarWhereWithAggregatesInput, orderBy: [VotesOnPremiseOrderByWithAggregationInput!], skip: Int, take: Int, where: VotesOnPremiseWhereInput): [VotesOnPremiseGroupBy!]!
+  groupByVotesOnThread(by: [VotesOnThreadScalarFieldEnum!]!, having: VotesOnThreadScalarWhereWithAggregatesInput, orderBy: [VotesOnThreadOrderByWithAggregationInput!], skip: Int, take: Int, where: VotesOnThreadWhereInput): [VotesOnThreadGroupBy!]!
+  groupByVotesOnTimeline(by: [VotesOnTimelineScalarFieldEnum!]!, having: VotesOnTimelineScalarWhereWithAggregatesInput, orderBy: [VotesOnTimelineOrderByWithAggregationInput!], skip: Int, take: Int, where: VotesOnTimelineWhereInput): [VotesOnTimelineGroupBy!]!
+  groupByVotesOnVision(by: [VotesOnVisionScalarFieldEnum!]!, having: VotesOnVisionScalarWhereWithAggregatesInput, orderBy: [VotesOnVisionOrderByWithAggregationInput!], skip: Int, take: Int, where: VotesOnVisionWhereInput): [VotesOnVisionGroupBy!]!
   mergeRequest(where: MergeRequestWhereUniqueInput!): MergeRequest
   mergeRequests(cursor: MergeRequestWhereUniqueInput, distinct: [MergeRequestScalarFieldEnum!], orderBy: [MergeRequestOrderByWithRelationInput!], skip: Int, take: Int, where: MergeRequestWhereInput): [MergeRequest!]!
   premise(where: PremiseWhereUniqueInput!): Premise
@@ -2329,6 +2475,14 @@ type Query {
   verificationTokens(cursor: VerificationTokenWhereUniqueInput, distinct: [VerificationTokenScalarFieldEnum!], orderBy: [VerificationTokenOrderByWithRelationInput!], skip: Int, take: Int, where: VerificationTokenWhereInput): [VerificationToken!]!
   vision(where: VisionWhereUniqueInput!): Vision
   visions(cursor: VisionWhereUniqueInput, distinct: [VisionScalarFieldEnum!], orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): [Vision!]!
+  votesOnPremise(where: VotesOnPremiseWhereUniqueInput!): VotesOnPremise
+  votesOnPremises(cursor: VotesOnPremiseWhereUniqueInput, distinct: [VotesOnPremiseScalarFieldEnum!], orderBy: [VotesOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnPremiseWhereInput): [VotesOnPremise!]!
+  votesOnThread(where: VotesOnThreadWhereUniqueInput!): VotesOnThread
+  votesOnThreads(cursor: VotesOnThreadWhereUniqueInput, distinct: [VotesOnThreadScalarFieldEnum!], orderBy: [VotesOnThreadOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnThreadWhereInput): [VotesOnThread!]!
+  votesOnTimeline(where: VotesOnTimelineWhereUniqueInput!): VotesOnTimeline
+  votesOnTimelines(cursor: VotesOnTimelineWhereUniqueInput, distinct: [VotesOnTimelineScalarFieldEnum!], orderBy: [VotesOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnTimelineWhereInput): [VotesOnTimeline!]!
+  votesOnVision(where: VotesOnVisionWhereUniqueInput!): VotesOnVision
+  votesOnVisions(cursor: VotesOnVisionWhereUniqueInput, distinct: [VotesOnVisionScalarFieldEnum!], orderBy: [VotesOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnVisionWhereInput): [VotesOnVision!]!
 }
 
 enum QueryMode {
@@ -4804,11 +4958,13 @@ type Thread {
   threadsOnTimeline: ThreadsOnTimeline
   threadsOnVision: ThreadsOnVision
   title: String!
+  votesOnThread(cursor: VotesOnThreadWhereUniqueInput, distinct: [VotesOnThreadScalarFieldEnum!], orderBy: [VotesOnThreadOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnThreadWhereInput): [VotesOnThread!]!
 }
 
 type ThreadCount {
   ReactionOnThreads: Int!
   childThreads: Int!
+  votesOnThread: Int!
 }
 
 type ThreadCountAggregate {
@@ -4849,6 +5005,7 @@ input ThreadCreateInput {
   threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
 }
 
 input ThreadCreateManyAuthorInput {
@@ -4942,6 +5099,12 @@ input ThreadCreateNestedOneWithoutThreadsOnVisionInput {
   create: ThreadCreateWithoutThreadsOnVisionInput
 }
 
+input ThreadCreateNestedOneWithoutVotesOnThreadInput {
+  connect: ThreadWhereUniqueInput
+  connectOrCreate: ThreadCreateOrConnectWithoutVotesOnThreadInput
+  create: ThreadCreateWithoutVotesOnThreadInput
+}
+
 input ThreadCreateOrConnectWithoutAuthorInput {
   create: ThreadCreateWithoutAuthorInput!
   where: ThreadWhereUniqueInput!
@@ -4982,6 +5145,11 @@ input ThreadCreateOrConnectWithoutThreadsOnVisionInput {
   where: ThreadWhereUniqueInput!
 }
 
+input ThreadCreateOrConnectWithoutVotesOnThreadInput {
+  create: ThreadCreateWithoutVotesOnThreadInput!
+  where: ThreadWhereUniqueInput!
+}
+
 input ThreadCreateWithoutAuthorInput {
   ReactionOnThreads: ReactionOnThreadsCreateNestedManyWithoutThreadInput
   activityDate: DateTime
@@ -4996,6 +5164,7 @@ input ThreadCreateWithoutAuthorInput {
   threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
 }
 
 input ThreadCreateWithoutChildThreadsInput {
@@ -5012,6 +5181,7 @@ input ThreadCreateWithoutChildThreadsInput {
   threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
 }
 
 input ThreadCreateWithoutParentThreadInput {
@@ -5028,6 +5198,7 @@ input ThreadCreateWithoutParentThreadInput {
   threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
 }
 
 input ThreadCreateWithoutReactionOnThreadsInput {
@@ -5044,6 +5215,7 @@ input ThreadCreateWithoutReactionOnThreadsInput {
   threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
 }
 
 input ThreadCreateWithoutThreadsOnMergeRequestInput {
@@ -5060,6 +5232,7 @@ input ThreadCreateWithoutThreadsOnMergeRequestInput {
   threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
 }
 
 input ThreadCreateWithoutThreadsOnPremiseInput {
@@ -5076,6 +5249,7 @@ input ThreadCreateWithoutThreadsOnPremiseInput {
   threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
 }
 
 input ThreadCreateWithoutThreadsOnTimelineInput {
@@ -5092,6 +5266,7 @@ input ThreadCreateWithoutThreadsOnTimelineInput {
   threadsOnPremise: ThreadsOnPremiseCreateNestedOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
 }
 
 input ThreadCreateWithoutThreadsOnVisionInput {
@@ -5107,6 +5282,24 @@ input ThreadCreateWithoutThreadsOnVisionInput {
   threadsOnMergeRequest: ThreadsOnMergeRequestCreateNestedOneWithoutThreadInput
   threadsOnPremise: ThreadsOnPremiseCreateNestedOneWithoutThreadInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
+  title: String!
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutThreadInput
+}
+
+input ThreadCreateWithoutVotesOnThreadInput {
+  ReactionOnThreads: ReactionOnThreadsCreateNestedManyWithoutThreadInput
+  activityDate: DateTime
+  author: UserCreateNestedOneWithoutThreadsInput
+  childThreads: ThreadCreateNestedManyWithoutParentThreadInput
+  createdAt: DateTime
+  description: String
+  id: String
+  parentThread: ThreadCreateNestedOneWithoutChildThreadsInput
+  reference: String
+  threadsOnMergeRequest: ThreadsOnMergeRequestCreateNestedOneWithoutThreadInput
+  threadsOnPremise: ThreadsOnPremiseCreateNestedOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionCreateNestedOneWithoutThreadInput
   title: String!
 }
 
@@ -5209,6 +5402,7 @@ input ThreadOrderByWithRelationInput {
   threadsOnTimeline: ThreadsOnTimelineOrderByWithRelationInput
   threadsOnVision: ThreadsOnVisionOrderByWithRelationInput
   title: SortOrder
+  votesOnThread: VotesOnThreadOrderByRelationAggregateInput
 }
 
 input ThreadRelationFilter {
@@ -5270,6 +5464,7 @@ input ThreadUpdateInput {
   threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
 }
 
 input ThreadUpdateManyMutationInput {
@@ -5359,6 +5554,14 @@ input ThreadUpdateOneRequiredWithoutThreadsOnVisionInput {
   upsert: ThreadUpsertWithoutThreadsOnVisionInput
 }
 
+input ThreadUpdateOneRequiredWithoutVotesOnThreadInput {
+  connect: ThreadWhereUniqueInput
+  connectOrCreate: ThreadCreateOrConnectWithoutVotesOnThreadInput
+  create: ThreadCreateWithoutVotesOnThreadInput
+  update: ThreadUpdateWithoutVotesOnThreadInput
+  upsert: ThreadUpsertWithoutVotesOnThreadInput
+}
+
 input ThreadUpdateOneWithoutChildThreadsInput {
   connect: ThreadWhereUniqueInput
   connectOrCreate: ThreadCreateOrConnectWithoutChildThreadsInput
@@ -5393,6 +5596,7 @@ input ThreadUpdateWithoutAuthorInput {
   threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
 }
 
 input ThreadUpdateWithoutChildThreadsInput {
@@ -5409,6 +5613,7 @@ input ThreadUpdateWithoutChildThreadsInput {
   threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
 }
 
 input ThreadUpdateWithoutParentThreadInput {
@@ -5425,6 +5630,7 @@ input ThreadUpdateWithoutParentThreadInput {
   threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
 }
 
 input ThreadUpdateWithoutReactionOnThreadsInput {
@@ -5441,6 +5647,7 @@ input ThreadUpdateWithoutReactionOnThreadsInput {
   threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
 }
 
 input ThreadUpdateWithoutThreadsOnMergeRequestInput {
@@ -5457,6 +5664,7 @@ input ThreadUpdateWithoutThreadsOnMergeRequestInput {
   threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
 }
 
 input ThreadUpdateWithoutThreadsOnPremiseInput {
@@ -5473,6 +5681,7 @@ input ThreadUpdateWithoutThreadsOnPremiseInput {
   threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
 }
 
 input ThreadUpdateWithoutThreadsOnTimelineInput {
@@ -5489,6 +5698,7 @@ input ThreadUpdateWithoutThreadsOnTimelineInput {
   threadsOnPremise: ThreadsOnPremiseUpdateOneWithoutThreadInput
   threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
 }
 
 input ThreadUpdateWithoutThreadsOnVisionInput {
@@ -5504,6 +5714,24 @@ input ThreadUpdateWithoutThreadsOnVisionInput {
   threadsOnMergeRequest: ThreadsOnMergeRequestUpdateOneWithoutThreadInput
   threadsOnPremise: ThreadsOnPremiseUpdateOneWithoutThreadInput
   threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
+  title: StringFieldUpdateOperationsInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutThreadInput
+}
+
+input ThreadUpdateWithoutVotesOnThreadInput {
+  ReactionOnThreads: ReactionOnThreadsUpdateManyWithoutThreadInput
+  activityDate: NullableDateTimeFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutThreadsInput
+  childThreads: ThreadUpdateManyWithoutParentThreadInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  parentThread: ThreadUpdateOneWithoutChildThreadsInput
+  reference: NullableStringFieldUpdateOperationsInput
+  threadsOnMergeRequest: ThreadsOnMergeRequestUpdateOneWithoutThreadInput
+  threadsOnPremise: ThreadsOnPremiseUpdateOneWithoutThreadInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateOneWithoutThreadInput
+  threadsOnVision: ThreadsOnVisionUpdateOneWithoutThreadInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -5549,6 +5777,11 @@ input ThreadUpsertWithoutThreadsOnVisionInput {
   update: ThreadUpdateWithoutThreadsOnVisionInput!
 }
 
+input ThreadUpsertWithoutVotesOnThreadInput {
+  create: ThreadCreateWithoutVotesOnThreadInput!
+  update: ThreadUpdateWithoutVotesOnThreadInput!
+}
+
 input ThreadWhereInput {
   AND: [ThreadWhereInput!]
   NOT: [ThreadWhereInput!]
@@ -5569,6 +5802,7 @@ input ThreadWhereInput {
   threadsOnTimeline: ThreadsOnTimelineRelationFilter
   threadsOnVision: ThreadsOnVisionRelationFilter
   title: StringFilter
+  votesOnThread: VotesOnThreadListRelationFilter
 }
 
 input ThreadWhereUniqueInput {
@@ -6591,6 +6825,7 @@ type Timeline {
   tagsOnTimelines(cursor: TagsOnTimelinesWhereUniqueInput, distinct: [TagsOnTimelinesScalarFieldEnum!], orderBy: [TagsOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnTimelinesWhereInput): [TagsOnTimelines!]!
   threadsOnTimeline(cursor: ThreadsOnTimelineWhereUniqueInput, distinct: [ThreadsOnTimelineScalarFieldEnum!], orderBy: [ThreadsOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnTimelineWhereInput): [ThreadsOnTimeline!]!
   title: String!
+  votesOnTimeline(cursor: VotesOnTimelineWhereUniqueInput, distinct: [VotesOnTimelineScalarFieldEnum!], orderBy: [VotesOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnTimelineWhereInput): [VotesOnTimeline!]!
 }
 
 type TimelineCount {
@@ -6598,6 +6833,7 @@ type TimelineCount {
   premisesOnTimelines: Int!
   tagsOnTimelines: Int!
   threadsOnTimeline: Int!
+  votesOnTimeline: Int!
 }
 
 type TimelineCountAggregate {
@@ -6627,6 +6863,7 @@ input TimelineCreateInput {
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutTimelineInput
 }
 
 input TimelineCreateManyAuthorInput {
@@ -6680,6 +6917,12 @@ input TimelineCreateNestedOneWithoutThreadsOnTimelineInput {
   create: TimelineCreateWithoutThreadsOnTimelineInput
 }
 
+input TimelineCreateNestedOneWithoutVotesOnTimelineInput {
+  connect: TimelineWhereUniqueInput
+  connectOrCreate: TimelineCreateOrConnectWithoutVotesOnTimelineInput
+  create: TimelineCreateWithoutVotesOnTimelineInput
+}
+
 input TimelineCreateOrConnectWithoutAuthorInput {
   create: TimelineCreateWithoutAuthorInput!
   where: TimelineWhereUniqueInput!
@@ -6705,6 +6948,11 @@ input TimelineCreateOrConnectWithoutThreadsOnTimelineInput {
   where: TimelineWhereUniqueInput!
 }
 
+input TimelineCreateOrConnectWithoutVotesOnTimelineInput {
+  create: TimelineCreateWithoutVotesOnTimelineInput!
+  where: TimelineWhereUniqueInput!
+}
+
 input TimelineCreateWithoutAuthorInput {
   ReactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
   description: String!
@@ -6714,6 +6962,7 @@ input TimelineCreateWithoutAuthorInput {
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutTimelineInput
 }
 
 input TimelineCreateWithoutPremisesOnTimelinesInput {
@@ -6725,6 +6974,7 @@ input TimelineCreateWithoutPremisesOnTimelinesInput {
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutTimelineInput
 }
 
 input TimelineCreateWithoutReactionOnTimelinesInput {
@@ -6736,6 +6986,7 @@ input TimelineCreateWithoutReactionOnTimelinesInput {
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutTimelineInput
 }
 
 input TimelineCreateWithoutTagsOnTimelinesInput {
@@ -6747,6 +6998,7 @@ input TimelineCreateWithoutTagsOnTimelinesInput {
   status: String!
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutTimelineInput
 }
 
 input TimelineCreateWithoutThreadsOnTimelineInput {
@@ -6757,6 +7009,19 @@ input TimelineCreateWithoutThreadsOnTimelineInput {
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   status: String!
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
+  title: String!
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutTimelineInput
+}
+
+input TimelineCreateWithoutVotesOnTimelineInput {
+  ReactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
+  author: UserCreateNestedOneWithoutTimelinesInput!
+  description: String!
+  id: String
+  premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
+  status: String!
+  tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
+  threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
 }
 
@@ -6835,6 +7100,7 @@ input TimelineOrderByWithRelationInput {
   tagsOnTimelines: TagsOnTimelinesOrderByRelationAggregateInput
   threadsOnTimeline: ThreadsOnTimelineOrderByRelationAggregateInput
   title: SortOrder
+  votesOnTimeline: VotesOnTimelineOrderByRelationAggregateInput
 }
 
 input TimelineRelationFilter {
@@ -6882,6 +7148,7 @@ input TimelineUpdateInput {
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutTimelineInput
 }
 
 input TimelineUpdateManyMutationInput {
@@ -6942,6 +7209,14 @@ input TimelineUpdateOneRequiredWithoutThreadsOnTimelineInput {
   upsert: TimelineUpsertWithoutThreadsOnTimelineInput
 }
 
+input TimelineUpdateOneRequiredWithoutVotesOnTimelineInput {
+  connect: TimelineWhereUniqueInput
+  connectOrCreate: TimelineCreateOrConnectWithoutVotesOnTimelineInput
+  create: TimelineCreateWithoutVotesOnTimelineInput
+  update: TimelineUpdateWithoutVotesOnTimelineInput
+  upsert: TimelineUpsertWithoutVotesOnTimelineInput
+}
+
 input TimelineUpdateWithWhereUniqueWithoutAuthorInput {
   data: TimelineUpdateWithoutAuthorInput!
   where: TimelineWhereUniqueInput!
@@ -6956,6 +7231,7 @@ input TimelineUpdateWithoutAuthorInput {
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutTimelineInput
 }
 
 input TimelineUpdateWithoutPremisesOnTimelinesInput {
@@ -6967,6 +7243,7 @@ input TimelineUpdateWithoutPremisesOnTimelinesInput {
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutTimelineInput
 }
 
 input TimelineUpdateWithoutReactionOnTimelinesInput {
@@ -6978,6 +7255,7 @@ input TimelineUpdateWithoutReactionOnTimelinesInput {
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutTimelineInput
 }
 
 input TimelineUpdateWithoutTagsOnTimelinesInput {
@@ -6989,6 +7267,7 @@ input TimelineUpdateWithoutTagsOnTimelinesInput {
   status: StringFieldUpdateOperationsInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutTimelineInput
 }
 
 input TimelineUpdateWithoutThreadsOnTimelineInput {
@@ -6999,6 +7278,19 @@ input TimelineUpdateWithoutThreadsOnTimelineInput {
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   status: StringFieldUpdateOperationsInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
+  title: StringFieldUpdateOperationsInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutTimelineInput
+}
+
+input TimelineUpdateWithoutVotesOnTimelineInput {
+  ReactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutTimelineInput
+  author: UserUpdateOneRequiredWithoutTimelinesInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
+  status: StringFieldUpdateOperationsInput
+  tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
+  threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -7028,6 +7320,11 @@ input TimelineUpsertWithoutThreadsOnTimelineInput {
   update: TimelineUpdateWithoutThreadsOnTimelineInput!
 }
 
+input TimelineUpsertWithoutVotesOnTimelineInput {
+  create: TimelineCreateWithoutVotesOnTimelineInput!
+  update: TimelineUpdateWithoutVotesOnTimelineInput!
+}
+
 input TimelineWhereInput {
   AND: [TimelineWhereInput!]
   NOT: [TimelineWhereInput!]
@@ -7042,6 +7339,7 @@ input TimelineWhereInput {
   tagsOnTimelines: TagsOnTimelinesListRelationFilter
   threadsOnTimeline: ThreadsOnTimelineListRelationFilter
   title: StringFilter
+  votesOnTimeline: VotesOnTimelineListRelationFilter
 }
 
 input TimelineWhereUniqueInput {
@@ -7065,6 +7363,10 @@ type User {
   timelines(cursor: TimelineWhereUniqueInput, distinct: [TimelineScalarFieldEnum!], orderBy: [TimelineOrderByWithRelationInput!], skip: Int, take: Int, where: TimelineWhereInput): [Timeline!]!
   updatedAt: DateTime
   visions(cursor: VisionWhereUniqueInput, distinct: [VisionScalarFieldEnum!], orderBy: [VisionOrderByWithRelationInput!], skip: Int, take: Int, where: VisionWhereInput): [Vision!]!
+  votesOnPremise(cursor: VotesOnPremiseWhereUniqueInput, distinct: [VotesOnPremiseScalarFieldEnum!], orderBy: [VotesOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnPremiseWhereInput): [VotesOnPremise!]!
+  votesOnThread(cursor: VotesOnThreadWhereUniqueInput, distinct: [VotesOnThreadScalarFieldEnum!], orderBy: [VotesOnThreadOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnThreadWhereInput): [VotesOnThread!]!
+  votesOnTimeline(cursor: VotesOnTimelineWhereUniqueInput, distinct: [VotesOnTimelineScalarFieldEnum!], orderBy: [VotesOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnTimelineWhereInput): [VotesOnTimeline!]!
+  votesOnVision(cursor: VotesOnVisionWhereUniqueInput, distinct: [VotesOnVisionScalarFieldEnum!], orderBy: [VotesOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnVisionWhereInput): [VotesOnVision!]!
 }
 
 type UserCount {
@@ -7077,6 +7379,10 @@ type UserCount {
   threads: Int!
   timelines: Int!
   visions: Int!
+  votesOnPremise: Int!
+  votesOnThread: Int!
+  votesOnTimeline: Int!
+  votesOnVision: Int!
 }
 
 type UserCountAggregate {
@@ -7114,6 +7420,10 @@ input UserCreateInput {
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateManyInput {
@@ -7179,6 +7489,30 @@ input UserCreateNestedOneWithoutVisionsInput {
   create: UserCreateWithoutVisionsInput
 }
 
+input UserCreateNestedOneWithoutVotesOnPremiseInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutVotesOnPremiseInput
+  create: UserCreateWithoutVotesOnPremiseInput
+}
+
+input UserCreateNestedOneWithoutVotesOnThreadInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutVotesOnThreadInput
+  create: UserCreateWithoutVotesOnThreadInput
+}
+
+input UserCreateNestedOneWithoutVotesOnTimelineInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutVotesOnTimelineInput
+  create: UserCreateWithoutVotesOnTimelineInput
+}
+
+input UserCreateNestedOneWithoutVotesOnVisionInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutVotesOnVisionInput
+  create: UserCreateWithoutVotesOnVisionInput
+}
+
 input UserCreateOrConnectWithoutAccountsInput {
   create: UserCreateWithoutAccountsInput!
   where: UserWhereUniqueInput!
@@ -7224,6 +7558,26 @@ input UserCreateOrConnectWithoutVisionsInput {
   where: UserWhereUniqueInput!
 }
 
+input UserCreateOrConnectWithoutVotesOnPremiseInput {
+  create: UserCreateWithoutVotesOnPremiseInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutVotesOnThreadInput {
+  create: UserCreateWithoutVotesOnThreadInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutVotesOnTimelineInput {
+  create: UserCreateWithoutVotesOnTimelineInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutVotesOnVisionInput {
+  create: UserCreateWithoutVotesOnVisionInput!
+  where: UserWhereUniqueInput!
+}
+
 input UserCreateWithoutAccountsInput {
   ReactionOnThreads: ReactionOnThreadsCreateNestedManyWithoutUserInput
   ReactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutUserInput
@@ -7239,6 +7593,10 @@ input UserCreateWithoutAccountsInput {
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateWithoutPremisesInput {
@@ -7256,6 +7614,10 @@ input UserCreateWithoutPremisesInput {
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateWithoutReactionOnThreadsInput {
@@ -7273,6 +7635,10 @@ input UserCreateWithoutReactionOnThreadsInput {
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateWithoutReactionOnTimelinesInput {
@@ -7290,6 +7656,10 @@ input UserCreateWithoutReactionOnTimelinesInput {
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateWithoutReactionOnVisionsInput {
@@ -7307,6 +7677,10 @@ input UserCreateWithoutReactionOnVisionsInput {
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateWithoutSessionsInput {
@@ -7324,6 +7698,10 @@ input UserCreateWithoutSessionsInput {
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateWithoutThreadsInput {
@@ -7341,6 +7719,10 @@ input UserCreateWithoutThreadsInput {
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateWithoutTimelinesInput {
@@ -7358,6 +7740,10 @@ input UserCreateWithoutTimelinesInput {
   threads: ThreadCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
   visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
 }
 
 input UserCreateWithoutVisionsInput {
@@ -7375,6 +7761,94 @@ input UserCreateWithoutVisionsInput {
   threads: ThreadCreateNestedManyWithoutAuthorInput
   timelines: TimelineCreateNestedManyWithoutAuthorInput
   updatedAt: DateTime
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
+}
+
+input UserCreateWithoutVotesOnPremiseInput {
+  ReactionOnThreads: ReactionOnThreadsCreateNestedManyWithoutUserInput
+  ReactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutUserInput
+  ReactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutUserInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+  email: String
+  emailVerified: DateTime
+  id: String
+  image: String
+  name: String
+  premises: PremiseCreateNestedManyWithoutAuthorInput
+  sessions: SessionCreateNestedManyWithoutUserInput
+  threads: ThreadCreateNestedManyWithoutAuthorInput
+  timelines: TimelineCreateNestedManyWithoutAuthorInput
+  updatedAt: DateTime
+  visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
+}
+
+input UserCreateWithoutVotesOnThreadInput {
+  ReactionOnThreads: ReactionOnThreadsCreateNestedManyWithoutUserInput
+  ReactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutUserInput
+  ReactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutUserInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+  email: String
+  emailVerified: DateTime
+  id: String
+  image: String
+  name: String
+  premises: PremiseCreateNestedManyWithoutAuthorInput
+  sessions: SessionCreateNestedManyWithoutUserInput
+  threads: ThreadCreateNestedManyWithoutAuthorInput
+  timelines: TimelineCreateNestedManyWithoutAuthorInput
+  updatedAt: DateTime
+  visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
+}
+
+input UserCreateWithoutVotesOnTimelineInput {
+  ReactionOnThreads: ReactionOnThreadsCreateNestedManyWithoutUserInput
+  ReactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutUserInput
+  ReactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutUserInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+  email: String
+  emailVerified: DateTime
+  id: String
+  image: String
+  name: String
+  premises: PremiseCreateNestedManyWithoutAuthorInput
+  sessions: SessionCreateNestedManyWithoutUserInput
+  threads: ThreadCreateNestedManyWithoutAuthorInput
+  timelines: TimelineCreateNestedManyWithoutAuthorInput
+  updatedAt: DateTime
+  visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutUserInput
+}
+
+input UserCreateWithoutVotesOnVisionInput {
+  ReactionOnThreads: ReactionOnThreadsCreateNestedManyWithoutUserInput
+  ReactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutUserInput
+  ReactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutUserInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+  email: String
+  emailVerified: DateTime
+  id: String
+  image: String
+  name: String
+  premises: PremiseCreateNestedManyWithoutAuthorInput
+  sessions: SessionCreateNestedManyWithoutUserInput
+  threads: ThreadCreateNestedManyWithoutAuthorInput
+  timelines: TimelineCreateNestedManyWithoutAuthorInput
+  updatedAt: DateTime
+  visions: VisionCreateNestedManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseCreateNestedManyWithoutUserInput
+  votesOnThread: VotesOnThreadCreateNestedManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineCreateNestedManyWithoutUserInput
 }
 
 type UserGroupBy {
@@ -7453,6 +7927,10 @@ input UserOrderByWithRelationInput {
   timelines: TimelineOrderByRelationAggregateInput
   updatedAt: SortOrder
   visions: VisionOrderByRelationAggregateInput
+  votesOnPremise: VotesOnPremiseOrderByRelationAggregateInput
+  votesOnThread: VotesOnThreadOrderByRelationAggregateInput
+  votesOnTimeline: VotesOnTimelineOrderByRelationAggregateInput
+  votesOnVision: VotesOnVisionOrderByRelationAggregateInput
 }
 
 input UserRelationFilter {
@@ -7497,6 +7975,10 @@ input UserUpdateInput {
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
@@ -7556,6 +8038,38 @@ input UserUpdateOneRequiredWithoutTimelinesInput {
   upsert: UserUpsertWithoutTimelinesInput
 }
 
+input UserUpdateOneRequiredWithoutVotesOnPremiseInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutVotesOnPremiseInput
+  create: UserCreateWithoutVotesOnPremiseInput
+  update: UserUpdateWithoutVotesOnPremiseInput
+  upsert: UserUpsertWithoutVotesOnPremiseInput
+}
+
+input UserUpdateOneRequiredWithoutVotesOnThreadInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutVotesOnThreadInput
+  create: UserCreateWithoutVotesOnThreadInput
+  update: UserUpdateWithoutVotesOnThreadInput
+  upsert: UserUpsertWithoutVotesOnThreadInput
+}
+
+input UserUpdateOneRequiredWithoutVotesOnTimelineInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutVotesOnTimelineInput
+  create: UserCreateWithoutVotesOnTimelineInput
+  update: UserUpdateWithoutVotesOnTimelineInput
+  upsert: UserUpsertWithoutVotesOnTimelineInput
+}
+
+input UserUpdateOneRequiredWithoutVotesOnVisionInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutVotesOnVisionInput
+  create: UserCreateWithoutVotesOnVisionInput
+  update: UserUpdateWithoutVotesOnVisionInput
+  upsert: UserUpsertWithoutVotesOnVisionInput
+}
+
 input UserUpdateOneWithoutPremisesInput {
   connect: UserWhereUniqueInput
   connectOrCreate: UserCreateOrConnectWithoutPremisesInput
@@ -7601,6 +8115,10 @@ input UserUpdateWithoutAccountsInput {
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutPremisesInput {
@@ -7618,6 +8136,10 @@ input UserUpdateWithoutPremisesInput {
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutReactionOnThreadsInput {
@@ -7635,6 +8157,10 @@ input UserUpdateWithoutReactionOnThreadsInput {
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutReactionOnTimelinesInput {
@@ -7652,6 +8178,10 @@ input UserUpdateWithoutReactionOnTimelinesInput {
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutReactionOnVisionsInput {
@@ -7669,6 +8199,10 @@ input UserUpdateWithoutReactionOnVisionsInput {
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutSessionsInput {
@@ -7686,6 +8220,10 @@ input UserUpdateWithoutSessionsInput {
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutThreadsInput {
@@ -7703,6 +8241,10 @@ input UserUpdateWithoutThreadsInput {
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutTimelinesInput {
@@ -7720,6 +8262,10 @@ input UserUpdateWithoutTimelinesInput {
   threads: ThreadUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
   visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutVisionsInput {
@@ -7737,6 +8283,94 @@ input UserUpdateWithoutVisionsInput {
   threads: ThreadUpdateManyWithoutAuthorInput
   timelines: TimelineUpdateManyWithoutAuthorInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutVotesOnPremiseInput {
+  ReactionOnThreads: ReactionOnThreadsUpdateManyWithoutUserInput
+  ReactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutUserInput
+  ReactionOnVisions: ReactionOnVisionsUpdateManyWithoutUserInput
+  accounts: AccountUpdateManyWithoutUserInput
+  email: NullableStringFieldUpdateOperationsInput
+  emailVerified: NullableDateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  premises: PremiseUpdateManyWithoutAuthorInput
+  sessions: SessionUpdateManyWithoutUserInput
+  threads: ThreadUpdateManyWithoutAuthorInput
+  timelines: TimelineUpdateManyWithoutAuthorInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  visions: VisionUpdateManyWithoutAuthorInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutVotesOnThreadInput {
+  ReactionOnThreads: ReactionOnThreadsUpdateManyWithoutUserInput
+  ReactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutUserInput
+  ReactionOnVisions: ReactionOnVisionsUpdateManyWithoutUserInput
+  accounts: AccountUpdateManyWithoutUserInput
+  email: NullableStringFieldUpdateOperationsInput
+  emailVerified: NullableDateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  premises: PremiseUpdateManyWithoutAuthorInput
+  sessions: SessionUpdateManyWithoutUserInput
+  threads: ThreadUpdateManyWithoutAuthorInput
+  timelines: TimelineUpdateManyWithoutAuthorInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutVotesOnTimelineInput {
+  ReactionOnThreads: ReactionOnThreadsUpdateManyWithoutUserInput
+  ReactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutUserInput
+  ReactionOnVisions: ReactionOnVisionsUpdateManyWithoutUserInput
+  accounts: AccountUpdateManyWithoutUserInput
+  email: NullableStringFieldUpdateOperationsInput
+  emailVerified: NullableDateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  premises: PremiseUpdateManyWithoutAuthorInput
+  sessions: SessionUpdateManyWithoutUserInput
+  threads: ThreadUpdateManyWithoutAuthorInput
+  timelines: TimelineUpdateManyWithoutAuthorInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutVotesOnVisionInput {
+  ReactionOnThreads: ReactionOnThreadsUpdateManyWithoutUserInput
+  ReactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutUserInput
+  ReactionOnVisions: ReactionOnVisionsUpdateManyWithoutUserInput
+  accounts: AccountUpdateManyWithoutUserInput
+  email: NullableStringFieldUpdateOperationsInput
+  emailVerified: NullableDateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  premises: PremiseUpdateManyWithoutAuthorInput
+  sessions: SessionUpdateManyWithoutUserInput
+  threads: ThreadUpdateManyWithoutAuthorInput
+  timelines: TimelineUpdateManyWithoutAuthorInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  visions: VisionUpdateManyWithoutAuthorInput
+  votesOnPremise: VotesOnPremiseUpdateManyWithoutUserInput
+  votesOnThread: VotesOnThreadUpdateManyWithoutUserInput
+  votesOnTimeline: VotesOnTimelineUpdateManyWithoutUserInput
 }
 
 input UserUpsertWithoutAccountsInput {
@@ -7784,6 +8418,26 @@ input UserUpsertWithoutVisionsInput {
   update: UserUpdateWithoutVisionsInput!
 }
 
+input UserUpsertWithoutVotesOnPremiseInput {
+  create: UserCreateWithoutVotesOnPremiseInput!
+  update: UserUpdateWithoutVotesOnPremiseInput!
+}
+
+input UserUpsertWithoutVotesOnThreadInput {
+  create: UserCreateWithoutVotesOnThreadInput!
+  update: UserUpdateWithoutVotesOnThreadInput!
+}
+
+input UserUpsertWithoutVotesOnTimelineInput {
+  create: UserCreateWithoutVotesOnTimelineInput!
+  update: UserUpdateWithoutVotesOnTimelineInput!
+}
+
+input UserUpsertWithoutVotesOnVisionInput {
+  create: UserCreateWithoutVotesOnVisionInput!
+  update: UserUpdateWithoutVotesOnVisionInput!
+}
+
 input UserWhereInput {
   AND: [UserWhereInput!]
   NOT: [UserWhereInput!]
@@ -7803,6 +8457,10 @@ input UserWhereInput {
   timelines: TimelineListRelationFilter
   updatedAt: DateTimeNullableFilter
   visions: VisionListRelationFilter
+  votesOnPremise: VotesOnPremiseListRelationFilter
+  votesOnThread: VotesOnThreadListRelationFilter
+  votesOnTimeline: VotesOnTimelineListRelationFilter
+  votesOnVision: VotesOnVisionListRelationFilter
 }
 
 input UserWhereUniqueInput {
@@ -7957,12 +8615,14 @@ type Vision {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision(cursor: VotesOnVisionWhereUniqueInput, distinct: [VotesOnVisionScalarFieldEnum!], orderBy: [VotesOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: VotesOnVisionWhereInput): [VotesOnVision!]!
 }
 
 type VisionCount {
   ReactionOnVisions: Int!
   nextVisions: Int!
   threadsOnVision: Int!
+  votesOnVision: Int!
 }
 
 type VisionCountAggregate {
@@ -8013,6 +8673,7 @@ input VisionCreateInput {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
 }
 
 input VisionCreateManyAuthorInput {
@@ -8158,6 +8819,12 @@ input VisionCreateNestedOneWithoutThreadsOnVisionInput {
   create: VisionCreateWithoutThreadsOnVisionInput
 }
 
+input VisionCreateNestedOneWithoutVotesOnVisionInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutVotesOnVisionInput
+  create: VisionCreateWithoutVotesOnVisionInput
+}
+
 input VisionCreateOrConnectWithoutAuthorInput {
   create: VisionCreateWithoutAuthorInput!
   where: VisionWhereUniqueInput!
@@ -8198,6 +8865,11 @@ input VisionCreateOrConnectWithoutThreadsOnVisionInput {
   where: VisionWhereUniqueInput!
 }
 
+input VisionCreateOrConnectWithoutVotesOnVisionInput {
+  create: VisionCreateWithoutVotesOnVisionInput!
+  where: VisionWhereUniqueInput!
+}
+
 input VisionCreateWithoutAuthorInput {
   ReactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutVisionInput
   activityDate: DateTime
@@ -8214,6 +8886,7 @@ input VisionCreateWithoutAuthorInput {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
 }
 
 input VisionCreateWithoutMergeRequestInput {
@@ -8232,6 +8905,7 @@ input VisionCreateWithoutMergeRequestInput {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
 }
 
 input VisionCreateWithoutNextVisionsInput {
@@ -8250,6 +8924,7 @@ input VisionCreateWithoutNextVisionsInput {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
 }
 
 input VisionCreateWithoutPremiseInput {
@@ -8268,6 +8943,7 @@ input VisionCreateWithoutPremiseInput {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
 }
 
 input VisionCreateWithoutPrevVisionInput {
@@ -8286,6 +8962,7 @@ input VisionCreateWithoutPrevVisionInput {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
 }
 
 input VisionCreateWithoutReactionOnVisionsInput {
@@ -8304,6 +8981,7 @@ input VisionCreateWithoutReactionOnVisionsInput {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
 }
 
 input VisionCreateWithoutReferenceInput {
@@ -8322,6 +9000,7 @@ input VisionCreateWithoutReferenceInput {
   thumbnail: String
   title: String!
   updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
 }
 
 input VisionCreateWithoutThreadsOnVisionInput {
@@ -8337,6 +9016,26 @@ input VisionCreateWithoutThreadsOnVisionInput {
   premise: PremiseCreateNestedOneWithoutVisionInput!
   prevVision: VisionCreateNestedOneWithoutNextVisionsInput
   reference: ReferenceCreateNestedOneWithoutVisionInput
+  thumbnail: String
+  title: String!
+  updatedAt: DateTime
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
+}
+
+input VisionCreateWithoutVotesOnVisionInput {
+  ReactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutVisionInput
+  activityDate: DateTime
+  author: UserCreateNestedOneWithoutVisionsInput
+  createdAt: DateTime
+  description: String
+  draftMode: Boolean
+  id: String
+  mergeRequest: MergeRequestCreateNestedOneWithoutVisionInput
+  nextVisions: VisionCreateNestedManyWithoutPrevVisionInput
+  premise: PremiseCreateNestedOneWithoutVisionInput!
+  prevVision: VisionCreateNestedOneWithoutNextVisionsInput
+  reference: ReferenceCreateNestedOneWithoutVisionInput
+  threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
   updatedAt: DateTime
@@ -8469,6 +9168,7 @@ input VisionOrderByWithRelationInput {
   thumbnail: SortOrder
   title: SortOrder
   updatedAt: SortOrder
+  votesOnVision: VotesOnVisionOrderByRelationAggregateInput
 }
 
 input VisionRelationFilter {
@@ -8544,6 +9244,7 @@ input VisionUpdateInput {
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
 }
 
 input VisionUpdateManyMutationInput {
@@ -8657,6 +9358,14 @@ input VisionUpdateOneRequiredWithoutThreadsOnVisionInput {
   upsert: VisionUpsertWithoutThreadsOnVisionInput
 }
 
+input VisionUpdateOneRequiredWithoutVotesOnVisionInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutVotesOnVisionInput
+  create: VisionCreateWithoutVotesOnVisionInput
+  update: VisionUpdateWithoutVotesOnVisionInput
+  upsert: VisionUpsertWithoutVotesOnVisionInput
+}
+
 input VisionUpdateOneWithoutNextVisionsInput {
   connect: VisionWhereUniqueInput
   connectOrCreate: VisionCreateOrConnectWithoutNextVisionsInput
@@ -8703,6 +9412,7 @@ input VisionUpdateWithoutAuthorInput {
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
 }
 
 input VisionUpdateWithoutMergeRequestInput {
@@ -8721,6 +9431,7 @@ input VisionUpdateWithoutMergeRequestInput {
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
 }
 
 input VisionUpdateWithoutNextVisionsInput {
@@ -8739,6 +9450,7 @@ input VisionUpdateWithoutNextVisionsInput {
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
 }
 
 input VisionUpdateWithoutPremiseInput {
@@ -8757,6 +9469,7 @@ input VisionUpdateWithoutPremiseInput {
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
 }
 
 input VisionUpdateWithoutPrevVisionInput {
@@ -8775,6 +9488,7 @@ input VisionUpdateWithoutPrevVisionInput {
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
 }
 
 input VisionUpdateWithoutReactionOnVisionsInput {
@@ -8793,6 +9507,7 @@ input VisionUpdateWithoutReactionOnVisionsInput {
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
 }
 
 input VisionUpdateWithoutReferenceInput {
@@ -8811,6 +9526,7 @@ input VisionUpdateWithoutReferenceInput {
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
 }
 
 input VisionUpdateWithoutThreadsOnVisionInput {
@@ -8826,6 +9542,26 @@ input VisionUpdateWithoutThreadsOnVisionInput {
   premise: PremiseUpdateOneRequiredWithoutVisionInput
   prevVision: VisionUpdateOneWithoutNextVisionsInput
   reference: ReferenceUpdateOneWithoutVisionInput
+  thumbnail: NullableStringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: NullableDateTimeFieldUpdateOperationsInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
+}
+
+input VisionUpdateWithoutVotesOnVisionInput {
+  ReactionOnVisions: ReactionOnVisionsUpdateManyWithoutVisionInput
+  activityDate: NullableDateTimeFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutVisionsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  draftMode: BoolFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  mergeRequest: MergeRequestUpdateOneWithoutVisionInput
+  nextVisions: VisionUpdateManyWithoutPrevVisionInput
+  premise: PremiseUpdateOneRequiredWithoutVisionInput
+  prevVision: VisionUpdateOneWithoutNextVisionsInput
+  reference: ReferenceUpdateOneWithoutVisionInput
+  threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -8875,6 +9611,11 @@ input VisionUpsertWithoutThreadsOnVisionInput {
   update: VisionUpdateWithoutThreadsOnVisionInput!
 }
 
+input VisionUpsertWithoutVotesOnVisionInput {
+  create: VisionCreateWithoutVotesOnVisionInput!
+  update: VisionUpdateWithoutVotesOnVisionInput!
+}
+
 input VisionWhereInput {
   AND: [VisionWhereInput!]
   NOT: [VisionWhereInput!]
@@ -8899,8 +9640,1269 @@ input VisionWhereInput {
   thumbnail: StringNullableFilter
   title: StringFilter
   updatedAt: DateTimeNullableFilter
+  votesOnVision: VotesOnVisionListRelationFilter
 }
 
 input VisionWhereUniqueInput {
   id: String
+}
+
+type VotesOnPremise {
+  createdAt: DateTime!
+  premise: Premise!
+  premiseId: String!
+  user: User!
+  userId: String!
+  vote: Int!
+}
+
+type VotesOnPremiseAvgAggregate {
+  vote: Float
+}
+
+input VotesOnPremiseAvgOrderByAggregateInput {
+  vote: SortOrder
+}
+
+type VotesOnPremiseCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  premiseId: Int!
+  userId: Int!
+  vote: Int!
+}
+
+input VotesOnPremiseCountOrderByAggregateInput {
+  createdAt: SortOrder
+  premiseId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnPremiseCreateInput {
+  createdAt: DateTime
+  premise: PremiseCreateNestedOneWithoutVotesOnPremiseInput!
+  user: UserCreateNestedOneWithoutVotesOnPremiseInput!
+  vote: Int
+}
+
+input VotesOnPremiseCreateManyInput {
+  createdAt: DateTime
+  premiseId: String!
+  userId: String!
+  vote: Int
+}
+
+input VotesOnPremiseCreateManyPremiseInput {
+  createdAt: DateTime
+  userId: String!
+  vote: Int
+}
+
+input VotesOnPremiseCreateManyPremiseInputEnvelope {
+  data: [VotesOnPremiseCreateManyPremiseInput!]!
+  skipDuplicates: Boolean
+}
+
+input VotesOnPremiseCreateManyUserInput {
+  createdAt: DateTime
+  premiseId: String!
+  vote: Int
+}
+
+input VotesOnPremiseCreateManyUserInputEnvelope {
+  data: [VotesOnPremiseCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input VotesOnPremiseCreateNestedManyWithoutPremiseInput {
+  connect: [VotesOnPremiseWhereUniqueInput!]
+  connectOrCreate: [VotesOnPremiseCreateOrConnectWithoutPremiseInput!]
+  create: [VotesOnPremiseCreateWithoutPremiseInput!]
+  createMany: VotesOnPremiseCreateManyPremiseInputEnvelope
+}
+
+input VotesOnPremiseCreateNestedManyWithoutUserInput {
+  connect: [VotesOnPremiseWhereUniqueInput!]
+  connectOrCreate: [VotesOnPremiseCreateOrConnectWithoutUserInput!]
+  create: [VotesOnPremiseCreateWithoutUserInput!]
+  createMany: VotesOnPremiseCreateManyUserInputEnvelope
+}
+
+input VotesOnPremiseCreateOrConnectWithoutPremiseInput {
+  create: VotesOnPremiseCreateWithoutPremiseInput!
+  where: VotesOnPremiseWhereUniqueInput!
+}
+
+input VotesOnPremiseCreateOrConnectWithoutUserInput {
+  create: VotesOnPremiseCreateWithoutUserInput!
+  where: VotesOnPremiseWhereUniqueInput!
+}
+
+input VotesOnPremiseCreateWithoutPremiseInput {
+  createdAt: DateTime
+  user: UserCreateNestedOneWithoutVotesOnPremiseInput!
+  vote: Int
+}
+
+input VotesOnPremiseCreateWithoutUserInput {
+  createdAt: DateTime
+  premise: PremiseCreateNestedOneWithoutVotesOnPremiseInput!
+  vote: Int
+}
+
+type VotesOnPremiseGroupBy {
+  _avg: VotesOnPremiseAvgAggregate
+  _count: VotesOnPremiseCountAggregate
+  _max: VotesOnPremiseMaxAggregate
+  _min: VotesOnPremiseMinAggregate
+  _sum: VotesOnPremiseSumAggregate
+  createdAt: DateTime!
+  premiseId: String!
+  userId: String!
+  vote: Int!
+}
+
+input VotesOnPremiseListRelationFilter {
+  every: VotesOnPremiseWhereInput
+  none: VotesOnPremiseWhereInput
+  some: VotesOnPremiseWhereInput
+}
+
+type VotesOnPremiseMaxAggregate {
+  createdAt: DateTime
+  premiseId: String
+  userId: String
+  vote: Int
+}
+
+input VotesOnPremiseMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  premiseId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+type VotesOnPremiseMinAggregate {
+  createdAt: DateTime
+  premiseId: String
+  userId: String
+  vote: Int
+}
+
+input VotesOnPremiseMinOrderByAggregateInput {
+  createdAt: SortOrder
+  premiseId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnPremiseOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input VotesOnPremiseOrderByWithAggregationInput {
+  _avg: VotesOnPremiseAvgOrderByAggregateInput
+  _count: VotesOnPremiseCountOrderByAggregateInput
+  _max: VotesOnPremiseMaxOrderByAggregateInput
+  _min: VotesOnPremiseMinOrderByAggregateInput
+  _sum: VotesOnPremiseSumOrderByAggregateInput
+  createdAt: SortOrder
+  premiseId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnPremiseOrderByWithRelationInput {
+  createdAt: SortOrder
+  premise: PremiseOrderByWithRelationInput
+  premiseId: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  vote: SortOrder
+}
+
+enum VotesOnPremiseScalarFieldEnum {
+  createdAt
+  premiseId
+  userId
+  vote
+}
+
+input VotesOnPremiseScalarWhereInput {
+  AND: [VotesOnPremiseScalarWhereInput!]
+  NOT: [VotesOnPremiseScalarWhereInput!]
+  OR: [VotesOnPremiseScalarWhereInput!]
+  createdAt: DateTimeFilter
+  premiseId: StringFilter
+  userId: StringFilter
+  vote: IntFilter
+}
+
+input VotesOnPremiseScalarWhereWithAggregatesInput {
+  AND: [VotesOnPremiseScalarWhereWithAggregatesInput!]
+  NOT: [VotesOnPremiseScalarWhereWithAggregatesInput!]
+  OR: [VotesOnPremiseScalarWhereWithAggregatesInput!]
+  createdAt: DateTimeWithAggregatesFilter
+  premiseId: StringWithAggregatesFilter
+  userId: StringWithAggregatesFilter
+  vote: IntWithAggregatesFilter
+}
+
+type VotesOnPremiseSumAggregate {
+  vote: Int
+}
+
+input VotesOnPremiseSumOrderByAggregateInput {
+  vote: SortOrder
+}
+
+input VotesOnPremiseUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  premise: PremiseUpdateOneRequiredWithoutVotesOnPremiseInput
+  user: UserUpdateOneRequiredWithoutVotesOnPremiseInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnPremiseUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnPremiseUpdateManyWithWhereWithoutPremiseInput {
+  data: VotesOnPremiseUpdateManyMutationInput!
+  where: VotesOnPremiseScalarWhereInput!
+}
+
+input VotesOnPremiseUpdateManyWithWhereWithoutUserInput {
+  data: VotesOnPremiseUpdateManyMutationInput!
+  where: VotesOnPremiseScalarWhereInput!
+}
+
+input VotesOnPremiseUpdateManyWithoutPremiseInput {
+  connect: [VotesOnPremiseWhereUniqueInput!]
+  connectOrCreate: [VotesOnPremiseCreateOrConnectWithoutPremiseInput!]
+  create: [VotesOnPremiseCreateWithoutPremiseInput!]
+  createMany: VotesOnPremiseCreateManyPremiseInputEnvelope
+  delete: [VotesOnPremiseWhereUniqueInput!]
+  deleteMany: [VotesOnPremiseScalarWhereInput!]
+  disconnect: [VotesOnPremiseWhereUniqueInput!]
+  set: [VotesOnPremiseWhereUniqueInput!]
+  update: [VotesOnPremiseUpdateWithWhereUniqueWithoutPremiseInput!]
+  updateMany: [VotesOnPremiseUpdateManyWithWhereWithoutPremiseInput!]
+  upsert: [VotesOnPremiseUpsertWithWhereUniqueWithoutPremiseInput!]
+}
+
+input VotesOnPremiseUpdateManyWithoutUserInput {
+  connect: [VotesOnPremiseWhereUniqueInput!]
+  connectOrCreate: [VotesOnPremiseCreateOrConnectWithoutUserInput!]
+  create: [VotesOnPremiseCreateWithoutUserInput!]
+  createMany: VotesOnPremiseCreateManyUserInputEnvelope
+  delete: [VotesOnPremiseWhereUniqueInput!]
+  deleteMany: [VotesOnPremiseScalarWhereInput!]
+  disconnect: [VotesOnPremiseWhereUniqueInput!]
+  set: [VotesOnPremiseWhereUniqueInput!]
+  update: [VotesOnPremiseUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [VotesOnPremiseUpdateManyWithWhereWithoutUserInput!]
+  upsert: [VotesOnPremiseUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input VotesOnPremiseUpdateWithWhereUniqueWithoutPremiseInput {
+  data: VotesOnPremiseUpdateWithoutPremiseInput!
+  where: VotesOnPremiseWhereUniqueInput!
+}
+
+input VotesOnPremiseUpdateWithWhereUniqueWithoutUserInput {
+  data: VotesOnPremiseUpdateWithoutUserInput!
+  where: VotesOnPremiseWhereUniqueInput!
+}
+
+input VotesOnPremiseUpdateWithoutPremiseInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutVotesOnPremiseInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnPremiseUpdateWithoutUserInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  premise: PremiseUpdateOneRequiredWithoutVotesOnPremiseInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnPremiseUpsertWithWhereUniqueWithoutPremiseInput {
+  create: VotesOnPremiseCreateWithoutPremiseInput!
+  update: VotesOnPremiseUpdateWithoutPremiseInput!
+  where: VotesOnPremiseWhereUniqueInput!
+}
+
+input VotesOnPremiseUpsertWithWhereUniqueWithoutUserInput {
+  create: VotesOnPremiseCreateWithoutUserInput!
+  update: VotesOnPremiseUpdateWithoutUserInput!
+  where: VotesOnPremiseWhereUniqueInput!
+}
+
+input VotesOnPremiseUserIdPremiseIdCompoundUniqueInput {
+  premiseId: String!
+  userId: String!
+}
+
+input VotesOnPremiseWhereInput {
+  AND: [VotesOnPremiseWhereInput!]
+  NOT: [VotesOnPremiseWhereInput!]
+  OR: [VotesOnPremiseWhereInput!]
+  createdAt: DateTimeFilter
+  premise: PremiseRelationFilter
+  premiseId: StringFilter
+  user: UserRelationFilter
+  userId: StringFilter
+  vote: IntFilter
+}
+
+input VotesOnPremiseWhereUniqueInput {
+  userId_premiseId: VotesOnPremiseUserIdPremiseIdCompoundUniqueInput
+}
+
+type VotesOnThread {
+  createdAt: DateTime!
+  thread: Thread!
+  threadId: String!
+  user: User!
+  userId: String!
+  vote: Int!
+}
+
+type VotesOnThreadAvgAggregate {
+  vote: Float
+}
+
+input VotesOnThreadAvgOrderByAggregateInput {
+  vote: SortOrder
+}
+
+type VotesOnThreadCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  threadId: Int!
+  userId: Int!
+  vote: Int!
+}
+
+input VotesOnThreadCountOrderByAggregateInput {
+  createdAt: SortOrder
+  threadId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnThreadCreateInput {
+  createdAt: DateTime
+  thread: ThreadCreateNestedOneWithoutVotesOnThreadInput!
+  user: UserCreateNestedOneWithoutVotesOnThreadInput!
+  vote: Int
+}
+
+input VotesOnThreadCreateManyInput {
+  createdAt: DateTime
+  threadId: String!
+  userId: String!
+  vote: Int
+}
+
+input VotesOnThreadCreateManyThreadInput {
+  createdAt: DateTime
+  userId: String!
+  vote: Int
+}
+
+input VotesOnThreadCreateManyThreadInputEnvelope {
+  data: [VotesOnThreadCreateManyThreadInput!]!
+  skipDuplicates: Boolean
+}
+
+input VotesOnThreadCreateManyUserInput {
+  createdAt: DateTime
+  threadId: String!
+  vote: Int
+}
+
+input VotesOnThreadCreateManyUserInputEnvelope {
+  data: [VotesOnThreadCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input VotesOnThreadCreateNestedManyWithoutThreadInput {
+  connect: [VotesOnThreadWhereUniqueInput!]
+  connectOrCreate: [VotesOnThreadCreateOrConnectWithoutThreadInput!]
+  create: [VotesOnThreadCreateWithoutThreadInput!]
+  createMany: VotesOnThreadCreateManyThreadInputEnvelope
+}
+
+input VotesOnThreadCreateNestedManyWithoutUserInput {
+  connect: [VotesOnThreadWhereUniqueInput!]
+  connectOrCreate: [VotesOnThreadCreateOrConnectWithoutUserInput!]
+  create: [VotesOnThreadCreateWithoutUserInput!]
+  createMany: VotesOnThreadCreateManyUserInputEnvelope
+}
+
+input VotesOnThreadCreateOrConnectWithoutThreadInput {
+  create: VotesOnThreadCreateWithoutThreadInput!
+  where: VotesOnThreadWhereUniqueInput!
+}
+
+input VotesOnThreadCreateOrConnectWithoutUserInput {
+  create: VotesOnThreadCreateWithoutUserInput!
+  where: VotesOnThreadWhereUniqueInput!
+}
+
+input VotesOnThreadCreateWithoutThreadInput {
+  createdAt: DateTime
+  user: UserCreateNestedOneWithoutVotesOnThreadInput!
+  vote: Int
+}
+
+input VotesOnThreadCreateWithoutUserInput {
+  createdAt: DateTime
+  thread: ThreadCreateNestedOneWithoutVotesOnThreadInput!
+  vote: Int
+}
+
+type VotesOnThreadGroupBy {
+  _avg: VotesOnThreadAvgAggregate
+  _count: VotesOnThreadCountAggregate
+  _max: VotesOnThreadMaxAggregate
+  _min: VotesOnThreadMinAggregate
+  _sum: VotesOnThreadSumAggregate
+  createdAt: DateTime!
+  threadId: String!
+  userId: String!
+  vote: Int!
+}
+
+input VotesOnThreadListRelationFilter {
+  every: VotesOnThreadWhereInput
+  none: VotesOnThreadWhereInput
+  some: VotesOnThreadWhereInput
+}
+
+type VotesOnThreadMaxAggregate {
+  createdAt: DateTime
+  threadId: String
+  userId: String
+  vote: Int
+}
+
+input VotesOnThreadMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  threadId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+type VotesOnThreadMinAggregate {
+  createdAt: DateTime
+  threadId: String
+  userId: String
+  vote: Int
+}
+
+input VotesOnThreadMinOrderByAggregateInput {
+  createdAt: SortOrder
+  threadId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnThreadOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input VotesOnThreadOrderByWithAggregationInput {
+  _avg: VotesOnThreadAvgOrderByAggregateInput
+  _count: VotesOnThreadCountOrderByAggregateInput
+  _max: VotesOnThreadMaxOrderByAggregateInput
+  _min: VotesOnThreadMinOrderByAggregateInput
+  _sum: VotesOnThreadSumOrderByAggregateInput
+  createdAt: SortOrder
+  threadId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnThreadOrderByWithRelationInput {
+  createdAt: SortOrder
+  thread: ThreadOrderByWithRelationInput
+  threadId: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  vote: SortOrder
+}
+
+enum VotesOnThreadScalarFieldEnum {
+  createdAt
+  threadId
+  userId
+  vote
+}
+
+input VotesOnThreadScalarWhereInput {
+  AND: [VotesOnThreadScalarWhereInput!]
+  NOT: [VotesOnThreadScalarWhereInput!]
+  OR: [VotesOnThreadScalarWhereInput!]
+  createdAt: DateTimeFilter
+  threadId: StringFilter
+  userId: StringFilter
+  vote: IntFilter
+}
+
+input VotesOnThreadScalarWhereWithAggregatesInput {
+  AND: [VotesOnThreadScalarWhereWithAggregatesInput!]
+  NOT: [VotesOnThreadScalarWhereWithAggregatesInput!]
+  OR: [VotesOnThreadScalarWhereWithAggregatesInput!]
+  createdAt: DateTimeWithAggregatesFilter
+  threadId: StringWithAggregatesFilter
+  userId: StringWithAggregatesFilter
+  vote: IntWithAggregatesFilter
+}
+
+type VotesOnThreadSumAggregate {
+  vote: Int
+}
+
+input VotesOnThreadSumOrderByAggregateInput {
+  vote: SortOrder
+}
+
+input VotesOnThreadUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  thread: ThreadUpdateOneRequiredWithoutVotesOnThreadInput
+  user: UserUpdateOneRequiredWithoutVotesOnThreadInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnThreadUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnThreadUpdateManyWithWhereWithoutThreadInput {
+  data: VotesOnThreadUpdateManyMutationInput!
+  where: VotesOnThreadScalarWhereInput!
+}
+
+input VotesOnThreadUpdateManyWithWhereWithoutUserInput {
+  data: VotesOnThreadUpdateManyMutationInput!
+  where: VotesOnThreadScalarWhereInput!
+}
+
+input VotesOnThreadUpdateManyWithoutThreadInput {
+  connect: [VotesOnThreadWhereUniqueInput!]
+  connectOrCreate: [VotesOnThreadCreateOrConnectWithoutThreadInput!]
+  create: [VotesOnThreadCreateWithoutThreadInput!]
+  createMany: VotesOnThreadCreateManyThreadInputEnvelope
+  delete: [VotesOnThreadWhereUniqueInput!]
+  deleteMany: [VotesOnThreadScalarWhereInput!]
+  disconnect: [VotesOnThreadWhereUniqueInput!]
+  set: [VotesOnThreadWhereUniqueInput!]
+  update: [VotesOnThreadUpdateWithWhereUniqueWithoutThreadInput!]
+  updateMany: [VotesOnThreadUpdateManyWithWhereWithoutThreadInput!]
+  upsert: [VotesOnThreadUpsertWithWhereUniqueWithoutThreadInput!]
+}
+
+input VotesOnThreadUpdateManyWithoutUserInput {
+  connect: [VotesOnThreadWhereUniqueInput!]
+  connectOrCreate: [VotesOnThreadCreateOrConnectWithoutUserInput!]
+  create: [VotesOnThreadCreateWithoutUserInput!]
+  createMany: VotesOnThreadCreateManyUserInputEnvelope
+  delete: [VotesOnThreadWhereUniqueInput!]
+  deleteMany: [VotesOnThreadScalarWhereInput!]
+  disconnect: [VotesOnThreadWhereUniqueInput!]
+  set: [VotesOnThreadWhereUniqueInput!]
+  update: [VotesOnThreadUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [VotesOnThreadUpdateManyWithWhereWithoutUserInput!]
+  upsert: [VotesOnThreadUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input VotesOnThreadUpdateWithWhereUniqueWithoutThreadInput {
+  data: VotesOnThreadUpdateWithoutThreadInput!
+  where: VotesOnThreadWhereUniqueInput!
+}
+
+input VotesOnThreadUpdateWithWhereUniqueWithoutUserInput {
+  data: VotesOnThreadUpdateWithoutUserInput!
+  where: VotesOnThreadWhereUniqueInput!
+}
+
+input VotesOnThreadUpdateWithoutThreadInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutVotesOnThreadInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnThreadUpdateWithoutUserInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  thread: ThreadUpdateOneRequiredWithoutVotesOnThreadInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnThreadUpsertWithWhereUniqueWithoutThreadInput {
+  create: VotesOnThreadCreateWithoutThreadInput!
+  update: VotesOnThreadUpdateWithoutThreadInput!
+  where: VotesOnThreadWhereUniqueInput!
+}
+
+input VotesOnThreadUpsertWithWhereUniqueWithoutUserInput {
+  create: VotesOnThreadCreateWithoutUserInput!
+  update: VotesOnThreadUpdateWithoutUserInput!
+  where: VotesOnThreadWhereUniqueInput!
+}
+
+input VotesOnThreadUserIdThreadIdCompoundUniqueInput {
+  threadId: String!
+  userId: String!
+}
+
+input VotesOnThreadWhereInput {
+  AND: [VotesOnThreadWhereInput!]
+  NOT: [VotesOnThreadWhereInput!]
+  OR: [VotesOnThreadWhereInput!]
+  createdAt: DateTimeFilter
+  thread: ThreadRelationFilter
+  threadId: StringFilter
+  user: UserRelationFilter
+  userId: StringFilter
+  vote: IntFilter
+}
+
+input VotesOnThreadWhereUniqueInput {
+  userId_threadId: VotesOnThreadUserIdThreadIdCompoundUniqueInput
+}
+
+type VotesOnTimeline {
+  createdAt: DateTime!
+  timeline: Timeline!
+  timelineId: String!
+  user: User!
+  userId: String!
+  vote: Int!
+}
+
+type VotesOnTimelineAvgAggregate {
+  vote: Float
+}
+
+input VotesOnTimelineAvgOrderByAggregateInput {
+  vote: SortOrder
+}
+
+type VotesOnTimelineCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  timelineId: Int!
+  userId: Int!
+  vote: Int!
+}
+
+input VotesOnTimelineCountOrderByAggregateInput {
+  createdAt: SortOrder
+  timelineId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnTimelineCreateInput {
+  createdAt: DateTime
+  timeline: TimelineCreateNestedOneWithoutVotesOnTimelineInput!
+  user: UserCreateNestedOneWithoutVotesOnTimelineInput!
+  vote: Int
+}
+
+input VotesOnTimelineCreateManyInput {
+  createdAt: DateTime
+  timelineId: String!
+  userId: String!
+  vote: Int
+}
+
+input VotesOnTimelineCreateManyTimelineInput {
+  createdAt: DateTime
+  userId: String!
+  vote: Int
+}
+
+input VotesOnTimelineCreateManyTimelineInputEnvelope {
+  data: [VotesOnTimelineCreateManyTimelineInput!]!
+  skipDuplicates: Boolean
+}
+
+input VotesOnTimelineCreateManyUserInput {
+  createdAt: DateTime
+  timelineId: String!
+  vote: Int
+}
+
+input VotesOnTimelineCreateManyUserInputEnvelope {
+  data: [VotesOnTimelineCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input VotesOnTimelineCreateNestedManyWithoutTimelineInput {
+  connect: [VotesOnTimelineWhereUniqueInput!]
+  connectOrCreate: [VotesOnTimelineCreateOrConnectWithoutTimelineInput!]
+  create: [VotesOnTimelineCreateWithoutTimelineInput!]
+  createMany: VotesOnTimelineCreateManyTimelineInputEnvelope
+}
+
+input VotesOnTimelineCreateNestedManyWithoutUserInput {
+  connect: [VotesOnTimelineWhereUniqueInput!]
+  connectOrCreate: [VotesOnTimelineCreateOrConnectWithoutUserInput!]
+  create: [VotesOnTimelineCreateWithoutUserInput!]
+  createMany: VotesOnTimelineCreateManyUserInputEnvelope
+}
+
+input VotesOnTimelineCreateOrConnectWithoutTimelineInput {
+  create: VotesOnTimelineCreateWithoutTimelineInput!
+  where: VotesOnTimelineWhereUniqueInput!
+}
+
+input VotesOnTimelineCreateOrConnectWithoutUserInput {
+  create: VotesOnTimelineCreateWithoutUserInput!
+  where: VotesOnTimelineWhereUniqueInput!
+}
+
+input VotesOnTimelineCreateWithoutTimelineInput {
+  createdAt: DateTime
+  user: UserCreateNestedOneWithoutVotesOnTimelineInput!
+  vote: Int
+}
+
+input VotesOnTimelineCreateWithoutUserInput {
+  createdAt: DateTime
+  timeline: TimelineCreateNestedOneWithoutVotesOnTimelineInput!
+  vote: Int
+}
+
+type VotesOnTimelineGroupBy {
+  _avg: VotesOnTimelineAvgAggregate
+  _count: VotesOnTimelineCountAggregate
+  _max: VotesOnTimelineMaxAggregate
+  _min: VotesOnTimelineMinAggregate
+  _sum: VotesOnTimelineSumAggregate
+  createdAt: DateTime!
+  timelineId: String!
+  userId: String!
+  vote: Int!
+}
+
+input VotesOnTimelineListRelationFilter {
+  every: VotesOnTimelineWhereInput
+  none: VotesOnTimelineWhereInput
+  some: VotesOnTimelineWhereInput
+}
+
+type VotesOnTimelineMaxAggregate {
+  createdAt: DateTime
+  timelineId: String
+  userId: String
+  vote: Int
+}
+
+input VotesOnTimelineMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  timelineId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+type VotesOnTimelineMinAggregate {
+  createdAt: DateTime
+  timelineId: String
+  userId: String
+  vote: Int
+}
+
+input VotesOnTimelineMinOrderByAggregateInput {
+  createdAt: SortOrder
+  timelineId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnTimelineOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input VotesOnTimelineOrderByWithAggregationInput {
+  _avg: VotesOnTimelineAvgOrderByAggregateInput
+  _count: VotesOnTimelineCountOrderByAggregateInput
+  _max: VotesOnTimelineMaxOrderByAggregateInput
+  _min: VotesOnTimelineMinOrderByAggregateInput
+  _sum: VotesOnTimelineSumOrderByAggregateInput
+  createdAt: SortOrder
+  timelineId: SortOrder
+  userId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnTimelineOrderByWithRelationInput {
+  createdAt: SortOrder
+  timeline: TimelineOrderByWithRelationInput
+  timelineId: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  vote: SortOrder
+}
+
+enum VotesOnTimelineScalarFieldEnum {
+  createdAt
+  timelineId
+  userId
+  vote
+}
+
+input VotesOnTimelineScalarWhereInput {
+  AND: [VotesOnTimelineScalarWhereInput!]
+  NOT: [VotesOnTimelineScalarWhereInput!]
+  OR: [VotesOnTimelineScalarWhereInput!]
+  createdAt: DateTimeFilter
+  timelineId: StringFilter
+  userId: StringFilter
+  vote: IntFilter
+}
+
+input VotesOnTimelineScalarWhereWithAggregatesInput {
+  AND: [VotesOnTimelineScalarWhereWithAggregatesInput!]
+  NOT: [VotesOnTimelineScalarWhereWithAggregatesInput!]
+  OR: [VotesOnTimelineScalarWhereWithAggregatesInput!]
+  createdAt: DateTimeWithAggregatesFilter
+  timelineId: StringWithAggregatesFilter
+  userId: StringWithAggregatesFilter
+  vote: IntWithAggregatesFilter
+}
+
+type VotesOnTimelineSumAggregate {
+  vote: Int
+}
+
+input VotesOnTimelineSumOrderByAggregateInput {
+  vote: SortOrder
+}
+
+input VotesOnTimelineUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  timeline: TimelineUpdateOneRequiredWithoutVotesOnTimelineInput
+  user: UserUpdateOneRequiredWithoutVotesOnTimelineInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnTimelineUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnTimelineUpdateManyWithWhereWithoutTimelineInput {
+  data: VotesOnTimelineUpdateManyMutationInput!
+  where: VotesOnTimelineScalarWhereInput!
+}
+
+input VotesOnTimelineUpdateManyWithWhereWithoutUserInput {
+  data: VotesOnTimelineUpdateManyMutationInput!
+  where: VotesOnTimelineScalarWhereInput!
+}
+
+input VotesOnTimelineUpdateManyWithoutTimelineInput {
+  connect: [VotesOnTimelineWhereUniqueInput!]
+  connectOrCreate: [VotesOnTimelineCreateOrConnectWithoutTimelineInput!]
+  create: [VotesOnTimelineCreateWithoutTimelineInput!]
+  createMany: VotesOnTimelineCreateManyTimelineInputEnvelope
+  delete: [VotesOnTimelineWhereUniqueInput!]
+  deleteMany: [VotesOnTimelineScalarWhereInput!]
+  disconnect: [VotesOnTimelineWhereUniqueInput!]
+  set: [VotesOnTimelineWhereUniqueInput!]
+  update: [VotesOnTimelineUpdateWithWhereUniqueWithoutTimelineInput!]
+  updateMany: [VotesOnTimelineUpdateManyWithWhereWithoutTimelineInput!]
+  upsert: [VotesOnTimelineUpsertWithWhereUniqueWithoutTimelineInput!]
+}
+
+input VotesOnTimelineUpdateManyWithoutUserInput {
+  connect: [VotesOnTimelineWhereUniqueInput!]
+  connectOrCreate: [VotesOnTimelineCreateOrConnectWithoutUserInput!]
+  create: [VotesOnTimelineCreateWithoutUserInput!]
+  createMany: VotesOnTimelineCreateManyUserInputEnvelope
+  delete: [VotesOnTimelineWhereUniqueInput!]
+  deleteMany: [VotesOnTimelineScalarWhereInput!]
+  disconnect: [VotesOnTimelineWhereUniqueInput!]
+  set: [VotesOnTimelineWhereUniqueInput!]
+  update: [VotesOnTimelineUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [VotesOnTimelineUpdateManyWithWhereWithoutUserInput!]
+  upsert: [VotesOnTimelineUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input VotesOnTimelineUpdateWithWhereUniqueWithoutTimelineInput {
+  data: VotesOnTimelineUpdateWithoutTimelineInput!
+  where: VotesOnTimelineWhereUniqueInput!
+}
+
+input VotesOnTimelineUpdateWithWhereUniqueWithoutUserInput {
+  data: VotesOnTimelineUpdateWithoutUserInput!
+  where: VotesOnTimelineWhereUniqueInput!
+}
+
+input VotesOnTimelineUpdateWithoutTimelineInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutVotesOnTimelineInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnTimelineUpdateWithoutUserInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  timeline: TimelineUpdateOneRequiredWithoutVotesOnTimelineInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnTimelineUpsertWithWhereUniqueWithoutTimelineInput {
+  create: VotesOnTimelineCreateWithoutTimelineInput!
+  update: VotesOnTimelineUpdateWithoutTimelineInput!
+  where: VotesOnTimelineWhereUniqueInput!
+}
+
+input VotesOnTimelineUpsertWithWhereUniqueWithoutUserInput {
+  create: VotesOnTimelineCreateWithoutUserInput!
+  update: VotesOnTimelineUpdateWithoutUserInput!
+  where: VotesOnTimelineWhereUniqueInput!
+}
+
+input VotesOnTimelineUserIdTimelineIdCompoundUniqueInput {
+  timelineId: String!
+  userId: String!
+}
+
+input VotesOnTimelineWhereInput {
+  AND: [VotesOnTimelineWhereInput!]
+  NOT: [VotesOnTimelineWhereInput!]
+  OR: [VotesOnTimelineWhereInput!]
+  createdAt: DateTimeFilter
+  timeline: TimelineRelationFilter
+  timelineId: StringFilter
+  user: UserRelationFilter
+  userId: StringFilter
+  vote: IntFilter
+}
+
+input VotesOnTimelineWhereUniqueInput {
+  userId_timelineId: VotesOnTimelineUserIdTimelineIdCompoundUniqueInput
+}
+
+type VotesOnVision {
+  createdAt: DateTime!
+  user: User!
+  userId: String!
+  vision: Vision!
+  visionId: String!
+  vote: Int!
+}
+
+type VotesOnVisionAvgAggregate {
+  vote: Float
+}
+
+input VotesOnVisionAvgOrderByAggregateInput {
+  vote: SortOrder
+}
+
+type VotesOnVisionCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  userId: Int!
+  visionId: Int!
+  vote: Int!
+}
+
+input VotesOnVisionCountOrderByAggregateInput {
+  createdAt: SortOrder
+  userId: SortOrder
+  visionId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnVisionCreateInput {
+  createdAt: DateTime
+  user: UserCreateNestedOneWithoutVotesOnVisionInput!
+  vision: VisionCreateNestedOneWithoutVotesOnVisionInput!
+  vote: Int
+}
+
+input VotesOnVisionCreateManyInput {
+  createdAt: DateTime
+  userId: String!
+  visionId: String!
+  vote: Int
+}
+
+input VotesOnVisionCreateManyUserInput {
+  createdAt: DateTime
+  visionId: String!
+  vote: Int
+}
+
+input VotesOnVisionCreateManyUserInputEnvelope {
+  data: [VotesOnVisionCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input VotesOnVisionCreateManyVisionInput {
+  createdAt: DateTime
+  userId: String!
+  vote: Int
+}
+
+input VotesOnVisionCreateManyVisionInputEnvelope {
+  data: [VotesOnVisionCreateManyVisionInput!]!
+  skipDuplicates: Boolean
+}
+
+input VotesOnVisionCreateNestedManyWithoutUserInput {
+  connect: [VotesOnVisionWhereUniqueInput!]
+  connectOrCreate: [VotesOnVisionCreateOrConnectWithoutUserInput!]
+  create: [VotesOnVisionCreateWithoutUserInput!]
+  createMany: VotesOnVisionCreateManyUserInputEnvelope
+}
+
+input VotesOnVisionCreateNestedManyWithoutVisionInput {
+  connect: [VotesOnVisionWhereUniqueInput!]
+  connectOrCreate: [VotesOnVisionCreateOrConnectWithoutVisionInput!]
+  create: [VotesOnVisionCreateWithoutVisionInput!]
+  createMany: VotesOnVisionCreateManyVisionInputEnvelope
+}
+
+input VotesOnVisionCreateOrConnectWithoutUserInput {
+  create: VotesOnVisionCreateWithoutUserInput!
+  where: VotesOnVisionWhereUniqueInput!
+}
+
+input VotesOnVisionCreateOrConnectWithoutVisionInput {
+  create: VotesOnVisionCreateWithoutVisionInput!
+  where: VotesOnVisionWhereUniqueInput!
+}
+
+input VotesOnVisionCreateWithoutUserInput {
+  createdAt: DateTime
+  vision: VisionCreateNestedOneWithoutVotesOnVisionInput!
+  vote: Int
+}
+
+input VotesOnVisionCreateWithoutVisionInput {
+  createdAt: DateTime
+  user: UserCreateNestedOneWithoutVotesOnVisionInput!
+  vote: Int
+}
+
+type VotesOnVisionGroupBy {
+  _avg: VotesOnVisionAvgAggregate
+  _count: VotesOnVisionCountAggregate
+  _max: VotesOnVisionMaxAggregate
+  _min: VotesOnVisionMinAggregate
+  _sum: VotesOnVisionSumAggregate
+  createdAt: DateTime!
+  userId: String!
+  visionId: String!
+  vote: Int!
+}
+
+input VotesOnVisionListRelationFilter {
+  every: VotesOnVisionWhereInput
+  none: VotesOnVisionWhereInput
+  some: VotesOnVisionWhereInput
+}
+
+type VotesOnVisionMaxAggregate {
+  createdAt: DateTime
+  userId: String
+  visionId: String
+  vote: Int
+}
+
+input VotesOnVisionMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  userId: SortOrder
+  visionId: SortOrder
+  vote: SortOrder
+}
+
+type VotesOnVisionMinAggregate {
+  createdAt: DateTime
+  userId: String
+  visionId: String
+  vote: Int
+}
+
+input VotesOnVisionMinOrderByAggregateInput {
+  createdAt: SortOrder
+  userId: SortOrder
+  visionId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnVisionOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input VotesOnVisionOrderByWithAggregationInput {
+  _avg: VotesOnVisionAvgOrderByAggregateInput
+  _count: VotesOnVisionCountOrderByAggregateInput
+  _max: VotesOnVisionMaxOrderByAggregateInput
+  _min: VotesOnVisionMinOrderByAggregateInput
+  _sum: VotesOnVisionSumOrderByAggregateInput
+  createdAt: SortOrder
+  userId: SortOrder
+  visionId: SortOrder
+  vote: SortOrder
+}
+
+input VotesOnVisionOrderByWithRelationInput {
+  createdAt: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  vision: VisionOrderByWithRelationInput
+  visionId: SortOrder
+  vote: SortOrder
+}
+
+enum VotesOnVisionScalarFieldEnum {
+  createdAt
+  userId
+  visionId
+  vote
+}
+
+input VotesOnVisionScalarWhereInput {
+  AND: [VotesOnVisionScalarWhereInput!]
+  NOT: [VotesOnVisionScalarWhereInput!]
+  OR: [VotesOnVisionScalarWhereInput!]
+  createdAt: DateTimeFilter
+  userId: StringFilter
+  visionId: StringFilter
+  vote: IntFilter
+}
+
+input VotesOnVisionScalarWhereWithAggregatesInput {
+  AND: [VotesOnVisionScalarWhereWithAggregatesInput!]
+  NOT: [VotesOnVisionScalarWhereWithAggregatesInput!]
+  OR: [VotesOnVisionScalarWhereWithAggregatesInput!]
+  createdAt: DateTimeWithAggregatesFilter
+  userId: StringWithAggregatesFilter
+  visionId: StringWithAggregatesFilter
+  vote: IntWithAggregatesFilter
+}
+
+type VotesOnVisionSumAggregate {
+  vote: Int
+}
+
+input VotesOnVisionSumOrderByAggregateInput {
+  vote: SortOrder
+}
+
+input VotesOnVisionUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutVotesOnVisionInput
+  vision: VisionUpdateOneRequiredWithoutVotesOnVisionInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnVisionUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnVisionUpdateManyWithWhereWithoutUserInput {
+  data: VotesOnVisionUpdateManyMutationInput!
+  where: VotesOnVisionScalarWhereInput!
+}
+
+input VotesOnVisionUpdateManyWithWhereWithoutVisionInput {
+  data: VotesOnVisionUpdateManyMutationInput!
+  where: VotesOnVisionScalarWhereInput!
+}
+
+input VotesOnVisionUpdateManyWithoutUserInput {
+  connect: [VotesOnVisionWhereUniqueInput!]
+  connectOrCreate: [VotesOnVisionCreateOrConnectWithoutUserInput!]
+  create: [VotesOnVisionCreateWithoutUserInput!]
+  createMany: VotesOnVisionCreateManyUserInputEnvelope
+  delete: [VotesOnVisionWhereUniqueInput!]
+  deleteMany: [VotesOnVisionScalarWhereInput!]
+  disconnect: [VotesOnVisionWhereUniqueInput!]
+  set: [VotesOnVisionWhereUniqueInput!]
+  update: [VotesOnVisionUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [VotesOnVisionUpdateManyWithWhereWithoutUserInput!]
+  upsert: [VotesOnVisionUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input VotesOnVisionUpdateManyWithoutVisionInput {
+  connect: [VotesOnVisionWhereUniqueInput!]
+  connectOrCreate: [VotesOnVisionCreateOrConnectWithoutVisionInput!]
+  create: [VotesOnVisionCreateWithoutVisionInput!]
+  createMany: VotesOnVisionCreateManyVisionInputEnvelope
+  delete: [VotesOnVisionWhereUniqueInput!]
+  deleteMany: [VotesOnVisionScalarWhereInput!]
+  disconnect: [VotesOnVisionWhereUniqueInput!]
+  set: [VotesOnVisionWhereUniqueInput!]
+  update: [VotesOnVisionUpdateWithWhereUniqueWithoutVisionInput!]
+  updateMany: [VotesOnVisionUpdateManyWithWhereWithoutVisionInput!]
+  upsert: [VotesOnVisionUpsertWithWhereUniqueWithoutVisionInput!]
+}
+
+input VotesOnVisionUpdateWithWhereUniqueWithoutUserInput {
+  data: VotesOnVisionUpdateWithoutUserInput!
+  where: VotesOnVisionWhereUniqueInput!
+}
+
+input VotesOnVisionUpdateWithWhereUniqueWithoutVisionInput {
+  data: VotesOnVisionUpdateWithoutVisionInput!
+  where: VotesOnVisionWhereUniqueInput!
+}
+
+input VotesOnVisionUpdateWithoutUserInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  vision: VisionUpdateOneRequiredWithoutVotesOnVisionInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnVisionUpdateWithoutVisionInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutVotesOnVisionInput
+  vote: IntFieldUpdateOperationsInput
+}
+
+input VotesOnVisionUpsertWithWhereUniqueWithoutUserInput {
+  create: VotesOnVisionCreateWithoutUserInput!
+  update: VotesOnVisionUpdateWithoutUserInput!
+  where: VotesOnVisionWhereUniqueInput!
+}
+
+input VotesOnVisionUpsertWithWhereUniqueWithoutVisionInput {
+  create: VotesOnVisionCreateWithoutVisionInput!
+  update: VotesOnVisionUpdateWithoutVisionInput!
+  where: VotesOnVisionWhereUniqueInput!
+}
+
+input VotesOnVisionUserIdVisionIdCompoundUniqueInput {
+  userId: String!
+  visionId: String!
+}
+
+input VotesOnVisionWhereInput {
+  AND: [VotesOnVisionWhereInput!]
+  NOT: [VotesOnVisionWhereInput!]
+  OR: [VotesOnVisionWhereInput!]
+  createdAt: DateTimeFilter
+  user: UserRelationFilter
+  userId: StringFilter
+  vision: VisionRelationFilter
+  visionId: StringFilter
+  vote: IntFilter
+}
+
+input VotesOnVisionWhereUniqueInput {
+  userId_visionId: VotesOnVisionUserIdVisionIdCompoundUniqueInput
 }

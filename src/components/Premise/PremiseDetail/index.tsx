@@ -17,6 +17,8 @@ import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReact
 import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
 import dynamic from "next/dynamic";
+import VotingButton from "../../Voting";
+import {createVoteOnVisionMutation} from "../../../gql/mutation/createVoteOnVisionMutation";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const Comment = dynamic(() => import("../../Comment"));
@@ -49,6 +51,7 @@ export const PremiseDetailContainer = () => {
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
+    const [createVote] = useMutation(createVoteOnVisionMutation);
     const activeVision = premise.vision?.find(vision =>
                                                       vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
                                                       && !vision.draftMode);
@@ -145,6 +148,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     }>
                         Create new vision
                     </LoadingButton>
+                    <VotingButton createVote={createVote} type={ConnectType.VISION} id={activeVision?.id}/>
                 </Grid>
 
                 <Comment

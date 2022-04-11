@@ -17,19 +17,18 @@ export const config = {
 export default cors(async function handler(
         req: MicroRequest, res: ServerResponse
 ) {
-    console.info("0--000000000000000000");
-    if (req.method==="OPTIONS") {
+    if (req.method === "OPTIONS") {
         res.end();
         return false;
     }
     const apolloServer = new ApolloServer({
-        schema: await createSchema(),
-        context: createContext,
-    });
+                                              schema: await createSchema(),
+                                              context: createContext,
+                                          });
     const startServer = apolloServer.start();
 
     await startServer;
     await apolloServer.createHandler({
-        path: "/api/graphql",
-    })(req, res);
+                                         path: "/api/graphql",
+                                     })(req, res);
 });
