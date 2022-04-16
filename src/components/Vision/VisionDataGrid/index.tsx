@@ -9,6 +9,10 @@ const rows: GridRowsProp = [
     {id: 3, col1: "MUI", col2: "is Amazing"},
 ];
 
+export interface VisionRow extends Vision {
+    inTimeline: boolean;
+    votes: number;
+}
 
 const getColumns = (updatedSelectedStatus: (visionId: string, nextStatus: boolean) => void): GridColDef[] => [
     {
@@ -27,8 +31,6 @@ const getColumns = (updatedSelectedStatus: (visionId: string, nextStatus: boolea
         field: "inTimeline", headerName: "in Timeline", flex: 1,
 
         renderCell: (params) => {
-            console.info(params);
-            console.info("---------------------");
             return <Chip
                     label={params.value ? "Remove":"Add"}
                     color={params.value ? "error":"primary"}
@@ -40,31 +42,41 @@ const getColumns = (updatedSelectedStatus: (visionId: string, nextStatus: boolea
 export interface VisionDataGridProps {
     visions: Vision[];
     loading: boolean;
+    take: number;
+    setSkip: (skip: number) => void;
+    totalCount?: number;
     handleUpdateVisionStatus: (visionId: string, nextStatus: boolean) => void;
 }
 
 
 export const VisionDataGrid: FunctionComponent<VisionDataGridProps> = ({
-                                                                           visions, loading,
+                                                                           totalCount, setSkip,
+                                                                           take, visions, loading,
                                                                            handleUpdateVisionStatus
                                                                        }) => {
     return (
             <div style={{width: "100%"}}>
                 <DataGrid
+
                         onCellClick={(e) => console.log(e)}
                         components={{
                             Toolbar: GridToolbar,
                             LoadingOverlay: LinearProgress,
                         }}
-                        onStateChange={(state, event, details) => console.log(state, event, details)}
+                        // onStateChange={(state, event, details) => console.log(state, event, details)}
                         // onRowClick={(params, event, details) => console.log(params, event, details)}
+                        onPageChange={(page) => {
+                            console.info("handlePageChange",);
+                            setSkip(page);
+                        }}
                         loading={loading}
                         rows={visions}
                         columns={getColumns(handleUpdateVisionStatus)}
-                        pageSize={5}
-                        rowsPerPageOptions={[5]}
+                        pageSize={take}
+                        rowsPerPageOptions={[1]}
                         disableSelectionOnClick
                         autoHeight
+                        rowCount={totalCount}
                         autoPageSize/>
             </div>
     );

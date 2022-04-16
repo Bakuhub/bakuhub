@@ -12,6 +12,7 @@ import {ConnectType} from "../../../types";
 import {upsertReactionOnThreadsMutation} from "../../../gql/mutation/createReactionOnThreadsMutation";
 import dynamic from "next/dynamic";
 import {MaterialUIIcons} from "../../../constants/MaterialUIIcons";
+import VotingButton from "../../Voting";
 
 const ReactionButtons = dynamic(() => import("../../Reaction"));
 

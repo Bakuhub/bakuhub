@@ -33,11 +33,6 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                                                                                   threadConnectType: ConnectType.MERGE_REQUEST,
                                                                                   id: mergeRequest.id
                                                                               }));
-    console.info(threadsQueryData);
-    console.info(getThreadsQueryVariable({
-                                             threadConnectType: ConnectType.MERGE_REQUEST,
-                                             id: mergeRequest.id
-                                         }));
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
     const connectConfig = {
         type: ConnectType.MERGE_REQUEST,

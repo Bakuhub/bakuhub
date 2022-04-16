@@ -67,7 +67,6 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                                                                                        userId: getUserIdBySession(
                                                                                                session)
                                                                                    }));
-            console.info(result);
         }
     };
 

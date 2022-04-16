@@ -29,9 +29,6 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
         error: reactionError,
         refetch: refetchReaction
     } = useQuery(...getReactionByIdArgs(id || "", type));
-    console.info(reactionData);
-    console.info("====================");
-    console.info("====================");
     const {
         data: reactionByUserData, loading: loadingReactionByUser,
         refetch: refetchReactionByUser

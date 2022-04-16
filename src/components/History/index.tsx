@@ -15,7 +15,6 @@ export const History = () => {
     const {premiseId} = router.query;
     const {data, loading, error} = useQuery(visionHistoryQuery, getVisionHistoryQueryVariable(premiseId as string));
     const visions: Vision[] = get(data, "visions", []);
-    console.info(data);
     if (loading) return <CircularProgress/>;
     if (!premiseId || error) {
         return <ErrorPage>

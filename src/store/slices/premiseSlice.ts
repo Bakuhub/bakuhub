@@ -11,7 +11,6 @@ export const premiseSlice = createSlice({
                                                     state.premises = action.payload;
                                                 },
                                                 setActivePremiseId: (state, action) => {
-                                                    console.info(state, action);
                                                     state.activePremiseId = action.payload;
                                                 }
                                             },

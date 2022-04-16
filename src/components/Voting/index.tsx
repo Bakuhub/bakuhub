@@ -1,4 +1,3 @@
-import LoadingButton from "@mui/lab/LoadingButton";
 import * as React from "react";
 import {FunctionComponent} from "react";
 import get from "lodash/get";
@@ -12,6 +11,10 @@ import Icon from "@mui/material/Icon";
 import {getVotesByIdArgs} from "../../gql/helper/getVotesByIdArgs";
 import {voting} from "../../services/api/voting";
 import {getVoteByUserArgs} from "../../gql/helper/getVoteByUserArgs";
+import IconButton from "@mui/material/IconButton";
+import {Grid, Typography} from "@mui/material";
+import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
+import {getTableNameWithId} from "../../utils/getTableNameWithId";
 
 export enum VoteType {
     LIKE = 1,
@@ -31,8 +34,7 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
         data: votesData,
         error: reactionError,
         refetch: refetchReaction
-    } = useQuery(...getVotesByIdArgs(id || "", type));
-    console.info("VotingButton", votesData);
+    } = useQuery(...getVotesByIdArgs(id?[id]:[], type));
     const {
         data: voteByUserData, loading: loadingReactionByUser,
         refetch: refetchReactionByUser
@@ -41,8 +43,6 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
                                           id,
                                           userId: getUserIdBySession(session)
                                       }));
-    console.log("VotingButton", voteByUserData);
-    console.info("----------------------");
     const currentVote = get(voteByUserData, "votes.vote");
 
     const handleVoting = async (nextVote: number) => {
@@ -78,28 +78,31 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
     };
     const getVotingCount = (votesCountData: any) => {
         if (votesCountData) {
-            console.info("this is real");
-            console.info(votesCountData);
-            return get(votesCountData, "groupByVotesOnVision[0]._sum.vote", 0);
+            const tableName = getTableNameByConnectType(type);
+            const tableNameWithId = getTableNameWithId(tableName);
+            const groupByVotesOnVision =  get(votesCountData, "groupByVotesOnVision", []);
+            const selectedVision = groupByVotesOnVision.find((groupByVotesOnVision: { [x: string]: string | null | undefined; }) => groupByVotesOnVision[tableNameWithId] === id);
+            return get( selectedVision,"_sum.vote", 0);
         } else {
             return 0;
         }
     };
-    console.info("getReactionCount",);
-    return <LoadingButton
-            loading={vote !== null}
-            startIcon={
-                <Icon onClick={() => handleVoting(VoteType.LIKE)}>
-                    {currentVote === VoteType.LIKE ? MaterialUIIcons.thumb_up_alt
-                                                   :MaterialUIIcons.thumb_up_off_alt}
-                </Icon>
-            }
-            endIcon={<Icon onClick={() => handleVoting(VoteType.DISLIKE)}>{currentVote === VoteType.DISLIKE
-                                                                           ? MaterialUIIcons.thumb_down_alt
-                                                                           :MaterialUIIcons.thumb_down_off_alt}</Icon>}
-            variant={"outlined"}
-    >
-        {getVotingCount(votesData)}
-    </LoadingButton>;
+    return <Grid item container alignItems={"center"}>
+        <IconButton onClick={() => handleVoting(VoteType.LIKE)}>
+            <Icon>{currentVote === VoteType.LIKE ? MaterialUIIcons.thumb_up_alt
+                                                 :MaterialUIIcons.thumb_up_off_alt}</Icon>
+        </IconButton>
+        <Typography>
+                {getVotingCount(votesData)}
+        </Typography>
+        <IconButton onClick={() => handleVoting(VoteType.DISLIKE)}>
+            <Icon>
+                {currentVote === VoteType.DISLIKE
+                 ? MaterialUIIcons.thumb_down_alt
+                 :MaterialUIIcons.thumb_down_off_alt}
+            </Icon>
+        </IconButton>
+
+    </Grid>;
 };
 export default VotingButton;

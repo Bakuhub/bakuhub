@@ -1,4 +1,6 @@
-export const getSearchActiveVisionByKeywordVariable = (keyword: string) => (
+import {GetVisionsByKeywordArgs} from "../helper/getVisionsByKeywordArgs";
+
+export const getSearchActiveVisionByKeywordVariable = ({keyword, skip, take}: GetVisionsByKeywordArgs) => (
         {
             variables: {
                 "where": {
@@ -30,7 +32,9 @@ export const getSearchActiveVisionByKeywordVariable = (keyword: string) => (
                         }
                     ]
                 }
-
+                ,
+                take,
+                skip,
             }
         }
 );

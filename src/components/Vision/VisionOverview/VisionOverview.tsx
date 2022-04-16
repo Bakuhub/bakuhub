@@ -20,6 +20,8 @@ import {ReactionButtons} from "../../Reaction";
 import {useMutation} from "@apollo/client";
 import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import {ConnectType} from "../../../types";
+import {createVoteOnVisionMutation} from "../../../gql/mutation/createVoteOnVisionMutation";
+import VotingButton from "../../Voting";
 
 export interface VisionDetailProps {
     vision: Vision;
@@ -40,6 +42,7 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
             return description;
         }
     };
+        const [createVote] = useMutation(createVoteOnVisionMutation);
     const [createReaction] = useMutation(upsertReactionOnVisionsMutation);
     const redirectedUrl = getRedirectUrl();
     return <Card
@@ -93,7 +96,7 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
             </Typography>
         </CardContent>
         <CardActions disableSpacing>
-            <ReactionButtons createReaction={createReaction} type={ConnectType.VISION} id={vision.id}/>
+            <VotingButton createVote={createVote} type={ConnectType.VISION} id={vision.id}/>
             <IconButton onClick={() => router.push(`/create/vision/${premiseId}`)} aria-label="share">
                 <ShareIcon/>
             </IconButton>
