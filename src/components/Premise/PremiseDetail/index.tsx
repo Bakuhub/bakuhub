@@ -18,7 +18,6 @@ import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
 import dynamic from "next/dynamic";
 import VotingButton from "../../Voting";
-import {createVoteOnVisionMutation} from "../../../gql/mutation/createVoteOnVisionMutation";
 import {useSession} from "next-auth/react";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
@@ -53,8 +52,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
     const session = useSession();
-    console.log(session);
-    const [createVote] = useMutation(createVoteOnVisionMutation);
     const activeVision = premise.vision?.find(vision =>
                                                       vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
                                                       && !vision.draftMode);
@@ -142,8 +139,10 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     </Grid>
                     <ReferenceOverview snapshots={
                         get(activeVision, "reference.snapshots", [])}/>
-                    <ReactionButtons id={activeVision?.id} type={ConnectType.VISION}
-                                     createReaction={createReactionOnVision}/>
+                    <VotingButton type={ConnectType.VISION} id={activeVision?.id}/>
+
+                    {/*<ReactionButtons id={activeVision?.id} type={ConnectType.VISION}*/}
+                    {/*                 createReaction={createReactionOnVision}/>*/}
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {
                         setIsRedirecting(true);
                         router.push(`/create/vision/${premise.id}`);
@@ -151,7 +150,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     }>
                         Create new vision
                     </LoadingButton>
-                    <VotingButton createVote={createVote} type={ConnectType.VISION} id={activeVision?.id}/>
                 </Grid>
 
                 <Comment

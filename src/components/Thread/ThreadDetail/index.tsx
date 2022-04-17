@@ -35,6 +35,9 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
     const [createReaction] = useMutation(upsertReactionOnThreadsMutation, {
         errorPolicy: "all",
     });
+    const [createVote] = useMutation(upsertReactionOnThreadsMutation, {
+        errorPolicy: "all",
+    });
     const getAuthor = () => {
         if (thread.author) {
             return {
@@ -82,7 +85,7 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
                         {MaterialUIIcons.report}
                     </Icon>
                 </Button>
-                <ReactionButtons createReaction={createReaction} type={ConnectType.THREAD} id={thread.id}/>
+                <VotingButton type={ConnectType.THREAD} id={thread.id}/>
                 <Button variant="outlined" endIcon={<Icon>
                     {MaterialUIIcons.share}
                 </Icon>}>

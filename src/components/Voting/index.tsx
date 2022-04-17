@@ -1,7 +1,7 @@
 import * as React from "react";
 import {FunctionComponent} from "react";
 import get from "lodash/get";
-import {useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {ConnectConfig} from "../../types";
 import {getUserIdBySession} from "../../utils/getUserIdBySession";
 import {useSession} from "next-auth/react";
@@ -15,6 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import {capitalize, Grid, Typography} from "@mui/material";
 import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
 import {getTableNameWithId} from "../../utils/getTableNameWithId";
+import {getCreateVoteMutation} from "../../gql/mutation/createVoteOnVisionMutation";
 
 export enum VoteType {
     LIKE = 1,
@@ -23,10 +24,9 @@ export enum VoteType {
 }
 
 export interface ReactionButtonsProps extends ConnectConfig {
-    createVote: (variables: any) => Promise<any>;
 }
 
-export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id, createVote}) => {
+export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id}) => {
     const session = useSession();
     const [vote, setVote] = React.useState<number | null>(null);
     const {enqueueSnackbar} = useSnackbar();
@@ -35,6 +35,7 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
         error: reactionError,
         refetch: refetchReaction
     } = useQuery(...getVotesByIdArgs(id ? [id]:[], type));
+    const [createVote] = useMutation(getCreateVoteMutation(type));
     const {
         data: voteByUserData, loading: loadingReactionByUser,
         refetch: refetchReactionByUser
