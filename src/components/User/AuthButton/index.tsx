@@ -10,8 +10,6 @@ export const AuthButtonContainer = styled.div`
 `;
 export const AuthButton = () => {
     const session = useSession();
-    console.info("ffffffffffffffffffffffffffffffffffffffffffffff");
-    console.info(session);
     switch (true) {
         case session.status === "loading":
             return <CircularProgress/>;

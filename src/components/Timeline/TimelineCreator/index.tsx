@@ -10,7 +10,6 @@ import {ConnectType} from "../../../types";
 import get from "lodash/get";
 import {useSnackbar} from "notistack";
 import {VersionSearchQueryData} from "../../../gql/query/versionSearchQuery";
-import {getSearchActiveVisionByKeywordVariable} from "../../../gql/utils/getSearchActiveVisionByKeywordVariable";
 import {VisionRow} from "../../Vision/VisionDataGrid";
 
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
@@ -26,9 +25,10 @@ export const TimelineCreator = () => {
     const [description, setDescription] = useState("");
     // fetch visions based on props
     const [totalCount, setTotalCount] = useState();
+    const [loading, setLoading] = useState(false);
     const [take, setTake] = useState(1);
     const [skip, setSkip] = useState(0);
-    const [fetchVisions, {loading, fetchMore: fetchMoreVisions}] = useLazyQuery<VersionSearchQueryData>(
+    const [fetchVisions, {fetchMore: fetchMoreVisions}] = useLazyQuery<VersionSearchQueryData>(
             ...getVisionsByKeywordArgs({
                                            keyword,
                                            take, skip
@@ -45,55 +45,45 @@ export const TimelineCreator = () => {
                                                                              )
     );
 
-    const handlePageChange = async (nextSkip: number) => {
-        setSkip(nextSkip);
-        const {data: VisionData, error} = await fetchMoreVote({
-                                                                  ...getSearchActiveVisionByKeywordVariable({
-                                                                                                                keyword,
-                                                                                                                take,
-                                                                                                                skip: nextSkip
-                                                                                                            })
-                                                              }
-        );
-        if (error) {
-            enqueueSnackbar(error.message, {variant: "error"});
-            return;
+    const initVision = useCallback(async (isKeywordUpdated = false) => {
+        setLoading(true);
+        if (skip > visions.length - 1 || isKeywordUpdated) {
+            const {data: fetchVisionsData, error} = await fetchVisions();
+            if (error) {
+                enqueueSnackbar(error.message, {variant: "error"});
+                return;
+            }
+            const totalCount = get(fetchVisionsData, "aggregateVision._count._all", 0);
+            setTotalCount(totalCount);
+            const visionsData: Vision[] = get(fetchVisionsData, "visions", []);
+            const {data: fetchVotesData} = await fetchMoreVote(getVotesByIdArgs(
+                                                                       visionsData.map(vision => vision.id),
+                                                                       ConnectType.VISION
+                                                               )[1]
+            );
+            const votesData = get(fetchVotesData, "groupByVotesOnVision", []);
+            const newVisions: VisionRow[] = visionsData.map((vision: Vision) => {
+                const selectedVote = votesData.find(vote => vote.visionId === vision.id);
+                const votes = get(selectedVote, "_sum.vote", 0);
+
+                return {
+                    ...vision,
+                    inTimeline: timelineNodes.some(timelineVision => timelineVision.id === vision.id),
+                    votes
+                };
+            });
+            setVisions(prev => isKeywordUpdated ? newVisions:[...prev, ...newVisions]);
         }
-
-        setVisions((prevState) => [...prevState]);
-
-    };
-    const initVision = useCallback(async () => {
-        const {data: fetchVisionsData, error} = await fetchVisions();
-        if (error) {
-            enqueueSnackbar(error.message, {variant: "error"});
-            return;
-        }
-        const totalCount = get(fetchVisionsData, "aggregateVision._count._all", 0);
-        setTotalCount(totalCount);
-        const visionsData: Vision[] = get(fetchVisionsData, "visions", []);
-        const {data: fetchVotesData} = await fetchMoreVote(getVotesByIdArgs(
-                                                                   visionsData.map(vision => vision.id),
-                                                                   ConnectType.VISION
-                                                           )[1]
-        );
-        const votesData = get(fetchVotesData, "groupByVotesOnVision", []);
-        const newVisions: VisionRow[] = visionsData.map((vision: Vision) => {
-            const selectedVote = votesData.find(vote => vote.visionId === vision.id);
-            const votes = get(selectedVote, "_sum.vote", 0);
-
-            return {
-                ...vision,
-                inTimeline: timelineNodes.some(timelineVision => timelineVision.id === vision.id),
-                votes
-            };
-        });
-        setVisions(newVisions);
+        setLoading(false);
     }, [fetchVisions, fetchMoreVote, timelineNodes, skip]);
 
     useEffect(
             () => {
-                console.info("refetch");
+                initVision(true);
+            }, [keyword]
+    );
+    useEffect(
+            () => {
                 initVision();
             },
             [skip]
@@ -133,13 +123,17 @@ export const TimelineCreator = () => {
                     <VisionDataGrid take={take}
                                     totalCount={totalCount}
                                     setSkip={(number: number) => {
-                                        console.info(number);
                                         setSkip(number);
                                     }}
                                     handleUpdateVisionStatus={
                                         (visionId: string, nextStatus) => {
                                             const newTimelineNode = visions.find((vision: Vision) => vision.id ===
                                                                                                      visionId);
+                                            setVisions(prev => prev.map(vision => vision.id === visionId ? {
+                                                ...vision,
+                                                inTimeline: nextStatus
+                                            }:vision));
+
                                             if (newTimelineNode) {
                                                 if (nextStatus) {
                                                     setTimelineNodes([...timelineNodes, newTimelineNode]);

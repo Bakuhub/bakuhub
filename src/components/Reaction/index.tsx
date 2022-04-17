@@ -73,8 +73,6 @@ export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, 
     const getReactionCount = (reaction: string) => {
         if (reactionData) {
             const selectedReactionData = get(reactionData, reaction, []);
-            console.info(selectedReactionData);
-            console.info("this is the selected reaction data");
             if (selectedReactionData) return selectedReactionData._count.reaction;
         }
         return 0;

@@ -12,7 +12,7 @@ import {getVotesByIdArgs} from "../../gql/helper/getVotesByIdArgs";
 import {voting} from "../../services/api/voting";
 import {getVoteByUserArgs} from "../../gql/helper/getVoteByUserArgs";
 import IconButton from "@mui/material/IconButton";
-import {Grid, Typography} from "@mui/material";
+import {capitalize, Grid, Typography} from "@mui/material";
 import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
 import {getTableNameWithId} from "../../utils/getTableNameWithId";
 
@@ -34,7 +34,7 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
         data: votesData,
         error: reactionError,
         refetch: refetchReaction
-    } = useQuery(...getVotesByIdArgs(id?[id]:[], type));
+    } = useQuery(...getVotesByIdArgs(id ? [id]:[], type));
     const {
         data: voteByUserData, loading: loadingReactionByUser,
         refetch: refetchReactionByUser
@@ -80,9 +80,10 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
         if (votesCountData) {
             const tableName = getTableNameByConnectType(type);
             const tableNameWithId = getTableNameWithId(tableName);
-            const groupByVotesOnVision =  get(votesCountData, "groupByVotesOnVision", []);
-            const selectedVision = groupByVotesOnVision.find((groupByVotesOnVision: { [x: string]: string | null | undefined; }) => groupByVotesOnVision[tableNameWithId] === id);
-            return get( selectedVision,"_sum.vote", 0);
+            const groupByVotesOnVision = get(votesCountData, `groupByVotesOn${capitalize(tableName)}`, []);
+            const selectedVision = groupByVotesOnVision.find((groupByVotesOnVision: { [x: string]: string | null | undefined; }) =>
+                                                                     groupByVotesOnVision[tableNameWithId] === id);
+            return get(selectedVision, "_sum.vote", 0);
         } else {
             return 0;
         }
@@ -93,7 +94,7 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
                                                  :MaterialUIIcons.thumb_up_off_alt}</Icon>
         </IconButton>
         <Typography>
-                {getVotingCount(votesData)}
+            {getVotingCount(votesData)}
         </Typography>
         <IconButton onClick={() => handleVoting(VoteType.DISLIKE)}>
             <Icon>

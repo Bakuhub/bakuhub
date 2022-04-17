@@ -37,8 +37,6 @@ export function getVotesByIdArgs(
 ): [DocumentNode, { variables: { by: string; where: { [p: string]: {} } } }] {
     const tableName = getTableNameByConnectType(type);
     const tableNameWithId = getTableNameWithId(tableName);
-    console.info("ids");
-    console.info(ids);
     return [
         votesByIdQuery(tableName),
         {
