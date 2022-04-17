@@ -66,7 +66,7 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
                 await voting({
                                  id,
                                  type,
-                                 vote: nextVote,
+                                 vote: currentVote === nextVote ? VoteType.NEUTRAL:nextVote,
                                  createVote,
                                  userId: userId, enqueueSnackbar,
                              });
@@ -90,17 +90,22 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id,
     };
     return <Grid item container alignItems={"center"}>
         <IconButton onClick={() => handleVoting(VoteType.LIKE)}>
-            <Icon>{currentVote === VoteType.LIKE ? MaterialUIIcons.thumb_up_alt
-                                                 :MaterialUIIcons.thumb_up_off_alt}</Icon>
+            <Icon>{(
+                           currentVote
+                           === VoteType.LIKE
+                   ) ? MaterialUIIcons.thumb_up_alt
+                     :MaterialUIIcons.thumb_up_off_alt}</Icon>
         </IconButton>
         <Typography>
             {getVotingCount(votesData)}
         </Typography>
         <IconButton onClick={() => handleVoting(VoteType.DISLIKE)}>
             <Icon>
-                {currentVote === VoteType.DISLIKE
-                 ? MaterialUIIcons.thumb_down_alt
-                 :MaterialUIIcons.thumb_down_off_alt}
+                {(
+                         currentVote
+                         === VoteType.DISLIKE
+                 ) ? MaterialUIIcons.thumb_down_alt
+                   :MaterialUIIcons.thumb_down_off_alt}
             </Icon>
         </IconButton>
 
