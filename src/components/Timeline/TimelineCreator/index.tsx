@@ -46,7 +46,6 @@ export const TimelineCreator = () => {
     );
 
     const initVision = useCallback(async (isKeywordUpdated = false) => {
-        setLoading(true);
         if (skip > visions.length - 1 || isKeywordUpdated) {
             const {data: fetchVisionsData, error} = await fetchVisions();
             if (error) {
@@ -56,6 +55,7 @@ export const TimelineCreator = () => {
             const totalCount = get(fetchVisionsData, "aggregateVision._count._all", 0);
             setTotalCount(totalCount);
             const visionsData: Vision[] = get(fetchVisionsData, "visions", []);
+            console.info(visionsData);
             const {data: fetchVotesData} = await fetchMoreVote(getVotesByIdArgs(
                                                                        visionsData.map(vision => vision.id),
                                                                        ConnectType.VISION
@@ -74,17 +74,18 @@ export const TimelineCreator = () => {
             });
             setVisions(prev => isKeywordUpdated ? newVisions:[...prev, ...newVisions]);
         }
-        setLoading(false);
     }, [fetchVisions, fetchMoreVote, timelineNodes, skip]);
 
     useEffect(
             () => {
-                initVision(true);
+                setLoading(true);
+                initVision(true).finally(() => setLoading(false));
             }, [keyword]
     );
     useEffect(
             () => {
-                initVision();
+                setLoading(true);
+                initVision().finally(() => setLoading(false));
             },
             [skip]
     );
