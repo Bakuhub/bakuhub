@@ -72,6 +72,8 @@ export const TimelineCreator = () => {
                     votes
                 };
             });
+            console.info(newVisions);
+            console.info("this should be the new version");
             setVisions(prev => isKeywordUpdated ? newVisions:[...prev, ...newVisions]);
         }
     }, [fetchVisions, fetchMoreVote, timelineNodes, skip]);
