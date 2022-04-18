@@ -1,6 +1,6 @@
-import {FunctionComponent} from "react";
+import {FunctionComponent, PropsWithChildren} from "react";
 
-export const ErrorPage: FunctionComponent = ({children}) => {
+export const ErrorPage: FunctionComponent<PropsWithChildren<{}>> = ({children}) => {
     return (
             <div>
                 <h1>Error</h1>

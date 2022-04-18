@@ -33,7 +33,7 @@ export const History = () => {
                     <Button onClick={() => router.push(`/vision/${vision.id}`)}>
                         {vision.id}
                     </Button>
-                    <Tooltip title={vision.updatedAt || ""}>
+                    <Tooltip title={vision.updatedAt?.toDateString() || ""}>
                         <Typography>
                             {moment(vision.updatedAt).fromNow()}
                         </Typography>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import {FunctionComponent, PropsWithChildren} from "react";
 import {styled} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiAppBar, {AppBarProps as MuiAppBarProps} from "@mui/material/AppBar";
@@ -72,7 +73,7 @@ const AppBar = styled(
         ));
 
 
-export const Layout: React.FunctionComponent = ({children}) => {
+export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => {
     const router = useRouter();
     const [open, setOpen] = React.useState(false);
 
