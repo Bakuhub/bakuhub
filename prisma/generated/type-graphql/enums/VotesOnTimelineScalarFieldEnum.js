@@ -9,6 +9,7 @@ var VotesOnTimelineScalarFieldEnum;
     VotesOnTimelineScalarFieldEnum["timelineId"] = "timelineId";
     VotesOnTimelineScalarFieldEnum["vote"] = "vote";
     VotesOnTimelineScalarFieldEnum["createdAt"] = "createdAt";
+    VotesOnTimelineScalarFieldEnum["updatedAt"] = "updatedAt";
 })(VotesOnTimelineScalarFieldEnum = exports.VotesOnTimelineScalarFieldEnum || (exports.VotesOnTimelineScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(VotesOnTimelineScalarFieldEnum, {
     name: "VotesOnTimelineScalarFieldEnum",

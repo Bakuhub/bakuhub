@@ -5,4 +5,5 @@ export declare class VotesOnPremiseCreateInput {
     premise: PremiseCreateNestedOneWithoutVotesOnPremiseInput;
     vote?: number | undefined;
     createdAt?: Date | undefined;
+    updatedAt?: Date | undefined;
 }

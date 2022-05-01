@@ -9,4 +9,5 @@ export declare class VotesOnVisionScalarWhereInput {
     visionId?: StringFilter | undefined;
     vote?: IntFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
 }

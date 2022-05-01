@@ -7,5 +7,5 @@ export declare class FindManySnapshotArgs {
     cursor?: SnapshotWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"id" | "createdAt" | "versionId" | "s3Url" | "sourceUrl" | "caption"> | undefined;
+    distinct?: Array<"id" | "createdAt" | "updatedAt" | "versionId" | "s3Url" | "sourceUrl" | "caption"> | undefined;
 }

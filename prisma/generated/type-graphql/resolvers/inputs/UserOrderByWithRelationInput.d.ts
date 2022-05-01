@@ -4,6 +4,8 @@ import { ReactionOnThreadsOrderByRelationAggregateInput } from "../inputs/Reacti
 import { ReactionOnTimelinesOrderByRelationAggregateInput } from "../inputs/ReactionOnTimelinesOrderByRelationAggregateInput";
 import { ReactionOnVisionsOrderByRelationAggregateInput } from "../inputs/ReactionOnVisionsOrderByRelationAggregateInput";
 import { SessionOrderByRelationAggregateInput } from "../inputs/SessionOrderByRelationAggregateInput";
+import { SubscriptionsOnPremisesOrderByRelationAggregateInput } from "../inputs/SubscriptionsOnPremisesOrderByRelationAggregateInput";
+import { SupscriptionsOnTimelinesOrderByRelationAggregateInput } from "../inputs/SupscriptionsOnTimelinesOrderByRelationAggregateInput";
 import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
 import { TimelineOrderByRelationAggregateInput } from "../inputs/TimelineOrderByRelationAggregateInput";
 import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
@@ -31,4 +33,6 @@ export declare class UserOrderByWithRelationInput {
     votesOnTimeline?: VotesOnTimelineOrderByRelationAggregateInput | undefined;
     votesOnPremise?: VotesOnPremiseOrderByRelationAggregateInput | undefined;
     votesOnThread?: VotesOnThreadOrderByRelationAggregateInput | undefined;
+    SubscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
+    SupscriptionsOnTimelines?: SupscriptionsOnTimelinesOrderByRelationAggregateInput | undefined;
 }

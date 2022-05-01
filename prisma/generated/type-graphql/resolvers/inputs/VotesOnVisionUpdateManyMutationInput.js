@@ -19,6 +19,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
 ], VotesOnVisionUpdateManyMutationInput.prototype, "createdAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
+], VotesOnVisionUpdateManyMutationInput.prototype, "updatedAt", void 0);
 VotesOnVisionUpdateManyMutationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VotesOnVisionUpdateManyMutationInput", {
         isAbstract: true

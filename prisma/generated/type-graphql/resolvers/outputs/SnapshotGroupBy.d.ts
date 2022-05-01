@@ -4,6 +4,7 @@ import { SnapshotMinAggregate } from "../outputs/SnapshotMinAggregate";
 export declare class SnapshotGroupBy {
     id: string;
     createdAt: Date;
+    updatedAt: Date;
     versionId: string;
     s3Url: string;
     sourceUrl: string;

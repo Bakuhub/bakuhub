@@ -99,6 +99,7 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
                     </LoadingButton>
                 </Tooltip>
             </Grid>
+
         </Grid>
         {
             snapshots.map(({versionId, sourceUrl, createdAt, s3Url}: Snapshot) =>

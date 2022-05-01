@@ -12,6 +12,7 @@ export declare class ThreadOrderByWithRelationInput {
     activityDate?: "asc" | "desc" | undefined;
     description?: "asc" | "desc" | undefined;
     createdAt?: "asc" | "desc" | undefined;
+    updatedAt?: "asc" | "desc" | undefined;
     reference?: "asc" | "desc" | undefined;
     author?: UserOrderByWithRelationInput | undefined;
     authorId?: "asc" | "desc" | undefined;

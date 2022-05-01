@@ -3,4 +3,5 @@ export declare class VotesOnTimelineMaxOrderByAggregateInput {
     timelineId?: "asc" | "desc" | undefined;
     vote?: "asc" | "desc" | undefined;
     createdAt?: "asc" | "desc" | undefined;
+    updatedAt?: "asc" | "desc" | undefined;
 }

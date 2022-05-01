@@ -8,6 +8,7 @@ export declare class VotesOnThreadOrderByWithAggregationInput {
     threadId?: "asc" | "desc" | undefined;
     vote?: "asc" | "desc" | undefined;
     createdAt?: "asc" | "desc" | undefined;
+    updatedAt?: "asc" | "desc" | undefined;
     _count?: VotesOnThreadCountOrderByAggregateInput | undefined;
     _avg?: VotesOnThreadAvgOrderByAggregateInput | undefined;
     _max?: VotesOnThreadMaxOrderByAggregateInput | undefined;

@@ -1,0 +1,12 @@
+export { AggregateSupscriptionsOnTimelinesArgs } from "./AggregateSupscriptionsOnTimelinesArgs";
+export { CreateManySupscriptionsOnTimelinesArgs } from "./CreateManySupscriptionsOnTimelinesArgs";
+export { CreateSupscriptionsOnTimelinesArgs } from "./CreateSupscriptionsOnTimelinesArgs";
+export { DeleteManySupscriptionsOnTimelinesArgs } from "./DeleteManySupscriptionsOnTimelinesArgs";
+export { DeleteSupscriptionsOnTimelinesArgs } from "./DeleteSupscriptionsOnTimelinesArgs";
+export { FindFirstSupscriptionsOnTimelinesArgs } from "./FindFirstSupscriptionsOnTimelinesArgs";
+export { FindManySupscriptionsOnTimelinesArgs } from "./FindManySupscriptionsOnTimelinesArgs";
+export { FindUniqueSupscriptionsOnTimelinesArgs } from "./FindUniqueSupscriptionsOnTimelinesArgs";
+export { GroupBySupscriptionsOnTimelinesArgs } from "./GroupBySupscriptionsOnTimelinesArgs";
+export { UpdateManySupscriptionsOnTimelinesArgs } from "./UpdateManySupscriptionsOnTimelinesArgs";
+export { UpdateSupscriptionsOnTimelinesArgs } from "./UpdateSupscriptionsOnTimelinesArgs";
+export { UpsertSupscriptionsOnTimelinesArgs } from "./UpsertSupscriptionsOnTimelinesArgs";

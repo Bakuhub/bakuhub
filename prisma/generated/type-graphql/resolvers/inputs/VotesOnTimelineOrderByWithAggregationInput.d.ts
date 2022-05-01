@@ -8,6 +8,7 @@ export declare class VotesOnTimelineOrderByWithAggregationInput {
     timelineId?: "asc" | "desc" | undefined;
     vote?: "asc" | "desc" | undefined;
     createdAt?: "asc" | "desc" | undefined;
+    updatedAt?: "asc" | "desc" | undefined;
     _count?: VotesOnTimelineCountOrderByAggregateInput | undefined;
     _avg?: VotesOnTimelineAvgOrderByAggregateInput | undefined;
     _max?: VotesOnTimelineMaxOrderByAggregateInput | undefined;

@@ -6,6 +6,7 @@ export declare class SnapshotScalarWhereWithAggregatesInput {
     NOT?: SnapshotScalarWhereWithAggregatesInput[] | undefined;
     id?: StringWithAggregatesFilter | undefined;
     createdAt?: DateTimeWithAggregatesFilter | undefined;
+    updatedAt?: DateTimeWithAggregatesFilter | undefined;
     versionId?: StringWithAggregatesFilter | undefined;
     s3Url?: StringWithAggregatesFilter | undefined;
     sourceUrl?: StringWithAggregatesFilter | undefined;

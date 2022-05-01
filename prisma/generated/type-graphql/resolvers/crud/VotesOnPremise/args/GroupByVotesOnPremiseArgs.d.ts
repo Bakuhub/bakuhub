@@ -4,7 +4,7 @@ import { VotesOnPremiseWhereInput } from "../../../inputs/VotesOnPremiseWhereInp
 export declare class GroupByVotesOnPremiseArgs {
     where?: VotesOnPremiseWhereInput | undefined;
     orderBy?: VotesOnPremiseOrderByWithAggregationInput[] | undefined;
-    by: Array<"userId" | "premiseId" | "vote" | "createdAt">;
+    by: Array<"userId" | "premiseId" | "vote" | "createdAt" | "updatedAt">;
     having?: VotesOnPremiseScalarWhereWithAggregatesInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;

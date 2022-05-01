@@ -8,6 +8,8 @@ export * from "./ReactionOnVisions/args";
 export * from "./Reference/args";
 export * from "./Session/args";
 export * from "./Snapshot/args";
+export * from "./SubscriptionsOnPremises/args";
+export * from "./SupscriptionsOnTimelines/args";
 export * from "./Tag/args";
 export * from "./TagsOnPremises/args";
 export * from "./TagsOnTimelines/args";

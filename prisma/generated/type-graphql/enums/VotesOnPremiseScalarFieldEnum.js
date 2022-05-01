@@ -9,6 +9,7 @@ var VotesOnPremiseScalarFieldEnum;
     VotesOnPremiseScalarFieldEnum["premiseId"] = "premiseId";
     VotesOnPremiseScalarFieldEnum["vote"] = "vote";
     VotesOnPremiseScalarFieldEnum["createdAt"] = "createdAt";
+    VotesOnPremiseScalarFieldEnum["updatedAt"] = "updatedAt";
 })(VotesOnPremiseScalarFieldEnum = exports.VotesOnPremiseScalarFieldEnum || (exports.VotesOnPremiseScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(VotesOnPremiseScalarFieldEnum, {
     name: "VotesOnPremiseScalarFieldEnum",

@@ -4,6 +4,7 @@ import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOpe
 export declare class SnapshotUpdateInput {
     id?: StringFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
     versionId?: StringFieldUpdateOperationsInput | undefined;
     s3Url?: StringFieldUpdateOperationsInput | undefined;
     sourceUrl?: StringFieldUpdateOperationsInput | undefined;

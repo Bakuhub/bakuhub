@@ -1,0 +1,12 @@
+export { AggregateSubscriptionsOnPremisesArgs } from "./AggregateSubscriptionsOnPremisesArgs";
+export { CreateManySubscriptionsOnPremisesArgs } from "./CreateManySubscriptionsOnPremisesArgs";
+export { CreateSubscriptionsOnPremisesArgs } from "./CreateSubscriptionsOnPremisesArgs";
+export { DeleteManySubscriptionsOnPremisesArgs } from "./DeleteManySubscriptionsOnPremisesArgs";
+export { DeleteSubscriptionsOnPremisesArgs } from "./DeleteSubscriptionsOnPremisesArgs";
+export { FindFirstSubscriptionsOnPremisesArgs } from "./FindFirstSubscriptionsOnPremisesArgs";
+export { FindManySubscriptionsOnPremisesArgs } from "./FindManySubscriptionsOnPremisesArgs";
+export { FindUniqueSubscriptionsOnPremisesArgs } from "./FindUniqueSubscriptionsOnPremisesArgs";
+export { GroupBySubscriptionsOnPremisesArgs } from "./GroupBySubscriptionsOnPremisesArgs";
+export { UpdateManySubscriptionsOnPremisesArgs } from "./UpdateManySubscriptionsOnPremisesArgs";
+export { UpdateSubscriptionsOnPremisesArgs } from "./UpdateSubscriptionsOnPremisesArgs";
+export { UpsertSubscriptionsOnPremisesArgs } from "./UpsertSubscriptionsOnPremisesArgs";

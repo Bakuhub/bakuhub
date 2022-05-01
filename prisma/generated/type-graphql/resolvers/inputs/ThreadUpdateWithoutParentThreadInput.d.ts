@@ -16,6 +16,7 @@ export declare class ThreadUpdateWithoutParentThreadInput {
     activityDate?: NullableDateTimeFieldUpdateOperationsInput | undefined;
     description?: NullableStringFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
     reference?: NullableStringFieldUpdateOperationsInput | undefined;
     author?: UserUpdateOneWithoutThreadsInput | undefined;
     childThreads?: ThreadUpdateManyWithoutParentThreadInput | undefined;

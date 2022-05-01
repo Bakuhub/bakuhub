@@ -8,6 +8,7 @@ export declare class VotesOnVisionOrderByWithAggregationInput {
     visionId?: "asc" | "desc" | undefined;
     vote?: "asc" | "desc" | undefined;
     createdAt?: "asc" | "desc" | undefined;
+    updatedAt?: "asc" | "desc" | undefined;
     _count?: VotesOnVisionCountOrderByAggregateInput | undefined;
     _avg?: VotesOnVisionAvgOrderByAggregateInput | undefined;
     _max?: VotesOnVisionMaxOrderByAggregateInput | undefined;

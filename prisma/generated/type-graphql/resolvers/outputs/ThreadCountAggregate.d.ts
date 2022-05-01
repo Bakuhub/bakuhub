@@ -4,6 +4,7 @@ export declare class ThreadCountAggregate {
     activityDate: number;
     description: number;
     createdAt: number;
+    updatedAt: number;
     reference: number;
     authorId: number;
     parentThreadId: number;

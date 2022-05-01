@@ -26,6 +26,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
 ], VotesOnThreadUpdateWithoutUserInput.prototype, "createdAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
+], VotesOnThreadUpdateWithoutUserInput.prototype, "updatedAt", void 0);
 VotesOnThreadUpdateWithoutUserInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VotesOnThreadUpdateWithoutUserInput", {
         isAbstract: true

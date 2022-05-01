@@ -7,6 +7,7 @@ const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpd
 const EnumPremiseStatusFieldUpdateOperationsInput_1 = require("../inputs/EnumPremiseStatusFieldUpdateOperationsInput");
 const NullableDateTimeFieldUpdateOperationsInput_1 = require("../inputs/NullableDateTimeFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
+const SubscriptionsOnPremisesUpdateManyWithoutPremiseInput_1 = require("../inputs/SubscriptionsOnPremisesUpdateManyWithoutPremiseInput");
 const TagsOnPremisesUpdateManyWithoutPremiseInput_1 = require("../inputs/TagsOnPremisesUpdateManyWithoutPremiseInput");
 const ThreadsOnPremiseUpdateManyWithoutPremiseInput_1 = require("../inputs/ThreadsOnPremiseUpdateManyWithoutPremiseInput");
 const UserUpdateOneWithoutPremisesInput_1 = require("../inputs/UserUpdateOneWithoutPremisesInput");
@@ -74,6 +75,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnPremiseUpdateManyWithoutPremiseInput_1.VotesOnPremiseUpdateManyWithoutPremiseInput)
 ], PremiseUpdateWithoutPremisesOnTimelinesInput.prototype, "votesOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SubscriptionsOnPremisesUpdateManyWithoutPremiseInput_1.SubscriptionsOnPremisesUpdateManyWithoutPremiseInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SubscriptionsOnPremisesUpdateManyWithoutPremiseInput_1.SubscriptionsOnPremisesUpdateManyWithoutPremiseInput)
+], PremiseUpdateWithoutPremisesOnTimelinesInput.prototype, "SubscriptionsOnPremises", void 0);
 PremiseUpdateWithoutPremisesOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseUpdateWithoutPremisesOnTimelinesInput", {
         isAbstract: true

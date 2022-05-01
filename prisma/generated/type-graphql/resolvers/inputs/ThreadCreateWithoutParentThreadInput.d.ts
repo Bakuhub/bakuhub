@@ -12,6 +12,7 @@ export declare class ThreadCreateWithoutParentThreadInput {
     activityDate?: Date | undefined;
     description?: string | undefined;
     createdAt?: Date | undefined;
+    updatedAt?: Date | undefined;
     reference?: string | undefined;
     author?: UserCreateNestedOneWithoutThreadsInput | undefined;
     childThreads?: ThreadCreateNestedManyWithoutParentThreadInput | undefined;

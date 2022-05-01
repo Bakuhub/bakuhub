@@ -3,4 +3,5 @@ import { IntFieldUpdateOperationsInput } from "../inputs/IntFieldUpdateOperation
 export declare class VotesOnPremiseUpdateManyMutationInput {
     vote?: IntFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
 }

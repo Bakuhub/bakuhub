@@ -1,4 +1,5 @@
 import { PremisesOnTimelines } from "../models/PremisesOnTimelines";
+import { SubscriptionsOnPremises } from "../models/SubscriptionsOnPremises";
 import { TagsOnPremises } from "../models/TagsOnPremises";
 import { ThreadsOnPremise } from "../models/ThreadsOnPremise";
 import { User } from "../models/User";
@@ -18,5 +19,6 @@ export declare class Premise {
     tagsOnPremises?: TagsOnPremises[];
     threadsOnPremise?: ThreadsOnPremise[];
     votesOnPremise?: VotesOnPremise[];
+    SubscriptionsOnPremises?: SubscriptionsOnPremises[];
     _count?: PremiseCount | null;
 }

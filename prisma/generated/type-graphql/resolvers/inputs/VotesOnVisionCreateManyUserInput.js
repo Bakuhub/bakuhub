@@ -23,6 +23,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Date)
 ], VotesOnVisionCreateManyUserInput.prototype, "createdAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], VotesOnVisionCreateManyUserInput.prototype, "updatedAt", void 0);
 VotesOnVisionCreateManyUserInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VotesOnVisionCreateManyUserInput", {
         isAbstract: true

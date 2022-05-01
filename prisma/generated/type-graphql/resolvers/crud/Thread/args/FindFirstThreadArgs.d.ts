@@ -7,5 +7,5 @@ export declare class FindFirstThreadArgs {
     cursor?: ThreadWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "reference" | "authorId" | "parentThreadId"> | undefined;
+    distinct?: Array<"id" | "title" | "activityDate" | "description" | "createdAt" | "updatedAt" | "reference" | "authorId" | "parentThreadId"> | undefined;
 }

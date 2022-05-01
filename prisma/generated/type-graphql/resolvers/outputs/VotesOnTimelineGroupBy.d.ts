@@ -8,6 +8,7 @@ export declare class VotesOnTimelineGroupBy {
     timelineId: string;
     vote: number;
     createdAt: Date;
+    updatedAt: Date;
     _count: VotesOnTimelineCountAggregate | null;
     _avg: VotesOnTimelineAvgAggregate | null;
     _sum: VotesOnTimelineSumAggregate | null;

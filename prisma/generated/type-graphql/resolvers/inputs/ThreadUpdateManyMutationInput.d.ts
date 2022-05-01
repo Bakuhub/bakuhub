@@ -8,5 +8,6 @@ export declare class ThreadUpdateManyMutationInput {
     activityDate?: NullableDateTimeFieldUpdateOperationsInput | undefined;
     description?: NullableStringFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
     reference?: NullableStringFieldUpdateOperationsInput | undefined;
 }

@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateSupscriptionsOnTimelinesArgs } from "./args/AggregateSupscriptionsOnTimelinesArgs";
+import { CreateManySupscriptionsOnTimelinesArgs } from "./args/CreateManySupscriptionsOnTimelinesArgs";
+import { CreateSupscriptionsOnTimelinesArgs } from "./args/CreateSupscriptionsOnTimelinesArgs";
+import { DeleteManySupscriptionsOnTimelinesArgs } from "./args/DeleteManySupscriptionsOnTimelinesArgs";
+import { DeleteSupscriptionsOnTimelinesArgs } from "./args/DeleteSupscriptionsOnTimelinesArgs";
+import { FindFirstSupscriptionsOnTimelinesArgs } from "./args/FindFirstSupscriptionsOnTimelinesArgs";
+import { FindManySupscriptionsOnTimelinesArgs } from "./args/FindManySupscriptionsOnTimelinesArgs";
+import { FindUniqueSupscriptionsOnTimelinesArgs } from "./args/FindUniqueSupscriptionsOnTimelinesArgs";
+import { GroupBySupscriptionsOnTimelinesArgs } from "./args/GroupBySupscriptionsOnTimelinesArgs";
+import { UpdateManySupscriptionsOnTimelinesArgs } from "./args/UpdateManySupscriptionsOnTimelinesArgs";
+import { UpdateSupscriptionsOnTimelinesArgs } from "./args/UpdateSupscriptionsOnTimelinesArgs";
+import { UpsertSupscriptionsOnTimelinesArgs } from "./args/UpsertSupscriptionsOnTimelinesArgs";
+import { SupscriptionsOnTimelines } from "../../../models/SupscriptionsOnTimelines";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateSupscriptionsOnTimelines } from "../../outputs/AggregateSupscriptionsOnTimelines";
+import { SupscriptionsOnTimelinesGroupBy } from "../../outputs/SupscriptionsOnTimelinesGroupBy";
+export declare class SupscriptionsOnTimelinesCrudResolver {
+    findUniqueSupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: FindUniqueSupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines | null>;
+    findFirstSupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: FindFirstSupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines | null>;
+    findManySupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: FindManySupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines[]>;
+    createSupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: CreateSupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines>;
+    createManySupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: CreateManySupscriptionsOnTimelinesArgs): Promise<AffectedRowsOutput>;
+    deleteSupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: DeleteSupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines | null>;
+    updateSupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: UpdateSupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines | null>;
+    deleteManySupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: DeleteManySupscriptionsOnTimelinesArgs): Promise<AffectedRowsOutput>;
+    updateManySupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: UpdateManySupscriptionsOnTimelinesArgs): Promise<AffectedRowsOutput>;
+    upsertSupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: UpsertSupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines>;
+    aggregateSupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: AggregateSupscriptionsOnTimelinesArgs): Promise<AggregateSupscriptionsOnTimelines>;
+    groupBySupscriptionsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: GroupBySupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelinesGroupBy[]>;
+}

@@ -9,4 +9,5 @@ export declare class VotesOnTimelineScalarWhereInput {
     timelineId?: StringFilter | undefined;
     vote?: IntFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
 }

@@ -13,4 +13,5 @@ export declare class VotesOnTimelineWhereInput {
     timelineId?: StringFilter | undefined;
     vote?: IntFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
 }

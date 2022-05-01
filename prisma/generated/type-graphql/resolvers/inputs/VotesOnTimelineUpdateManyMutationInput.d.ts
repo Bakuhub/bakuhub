@@ -3,4 +3,5 @@ import { IntFieldUpdateOperationsInput } from "../inputs/IntFieldUpdateOperation
 export declare class VotesOnTimelineUpdateManyMutationInput {
     vote?: IntFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
 }

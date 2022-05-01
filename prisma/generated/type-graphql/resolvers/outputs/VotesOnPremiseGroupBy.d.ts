@@ -8,6 +8,7 @@ export declare class VotesOnPremiseGroupBy {
     premiseId: string;
     vote: number;
     createdAt: Date;
+    updatedAt: Date;
     _count: VotesOnPremiseCountAggregate | null;
     _avg: VotesOnPremiseAvgAggregate | null;
     _sum: VotesOnPremiseSumAggregate | null;

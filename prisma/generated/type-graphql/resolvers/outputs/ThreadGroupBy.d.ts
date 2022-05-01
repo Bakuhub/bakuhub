@@ -7,6 +7,7 @@ export declare class ThreadGroupBy {
     activityDate: Date | null;
     description: string | null;
     createdAt: Date;
+    updatedAt: Date;
     reference: string | null;
     authorId: string | null;
     parentThreadId: string | null;

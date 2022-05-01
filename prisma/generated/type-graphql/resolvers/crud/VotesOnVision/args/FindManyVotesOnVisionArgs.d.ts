@@ -7,5 +7,5 @@ export declare class FindManyVotesOnVisionArgs {
     cursor?: VotesOnVisionWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"userId" | "visionId" | "vote" | "createdAt"> | undefined;
+    distinct?: Array<"userId" | "visionId" | "vote" | "createdAt" | "updatedAt"> | undefined;
 }

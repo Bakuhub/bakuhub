@@ -24,6 +24,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Date)
 ], VotesOnPremiseCreateWithoutUserInput.prototype, "createdAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], VotesOnPremiseCreateWithoutUserInput.prototype, "updatedAt", void 0);
 VotesOnPremiseCreateWithoutUserInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VotesOnPremiseCreateWithoutUserInput", {
         isAbstract: true

@@ -9,6 +9,7 @@ var VotesOnThreadScalarFieldEnum;
     VotesOnThreadScalarFieldEnum["threadId"] = "threadId";
     VotesOnThreadScalarFieldEnum["vote"] = "vote";
     VotesOnThreadScalarFieldEnum["createdAt"] = "createdAt";
+    VotesOnThreadScalarFieldEnum["updatedAt"] = "updatedAt";
 })(VotesOnThreadScalarFieldEnum = exports.VotesOnThreadScalarFieldEnum || (exports.VotesOnThreadScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(VotesOnThreadScalarFieldEnum, {
     name: "VotesOnThreadScalarFieldEnum",

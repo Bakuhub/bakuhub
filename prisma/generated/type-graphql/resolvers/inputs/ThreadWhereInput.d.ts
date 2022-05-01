@@ -20,6 +20,7 @@ export declare class ThreadWhereInput {
     activityDate?: DateTimeNullableFilter | undefined;
     description?: StringNullableFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
     reference?: StringNullableFilter | undefined;
     author?: UserRelationFilter | undefined;
     authorId?: StringNullableFilter | undefined;

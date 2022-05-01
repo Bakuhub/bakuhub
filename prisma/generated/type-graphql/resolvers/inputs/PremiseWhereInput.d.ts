@@ -4,6 +4,7 @@ import { EnumPremiseStatusFilter } from "../inputs/EnumPremiseStatusFilter";
 import { PremisesOnTimelinesListRelationFilter } from "../inputs/PremisesOnTimelinesListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { SubscriptionsOnPremisesListRelationFilter } from "../inputs/SubscriptionsOnPremisesListRelationFilter";
 import { TagsOnPremisesListRelationFilter } from "../inputs/TagsOnPremisesListRelationFilter";
 import { ThreadsOnPremiseListRelationFilter } from "../inputs/ThreadsOnPremiseListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
@@ -25,4 +26,5 @@ export declare class PremiseWhereInput {
     tagsOnPremises?: TagsOnPremisesListRelationFilter | undefined;
     threadsOnPremise?: ThreadsOnPremiseListRelationFilter | undefined;
     votesOnPremise?: VotesOnPremiseListRelationFilter | undefined;
+    SubscriptionsOnPremises?: SubscriptionsOnPremisesListRelationFilter | undefined;
 }

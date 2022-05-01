@@ -3,4 +3,5 @@ export declare class VotesOnTimelineMaxAggregate {
     timelineId: string | null;
     vote: number | null;
     createdAt: Date | null;
+    updatedAt: Date | null;
 }

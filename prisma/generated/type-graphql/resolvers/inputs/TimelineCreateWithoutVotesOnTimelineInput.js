@@ -5,6 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const PremisesOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/PremisesOnTimelinesCreateNestedManyWithoutTimelineInput");
 const ReactionOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/ReactionOnTimelinesCreateNestedManyWithoutTimelineInput");
+const SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput");
 const TagsOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/TagsOnTimelinesCreateNestedManyWithoutTimelineInput");
 const ThreadsOnTimelineCreateNestedManyWithoutTimelineInput_1 = require("../inputs/ThreadsOnTimelineCreateNestedManyWithoutTimelineInput");
 const UserCreateNestedOneWithoutTimelinesInput_1 = require("../inputs/UserCreateNestedOneWithoutTimelinesInput");
@@ -64,6 +65,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesCreateNestedManyWithoutTimelineInput_1.ReactionOnTimelinesCreateNestedManyWithoutTimelineInput)
 ], TimelineCreateWithoutVotesOnTimelineInput.prototype, "ReactionOnTimelines", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1.SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1.SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput)
+], TimelineCreateWithoutVotesOnTimelineInput.prototype, "SupscriptionsOnTimelines", void 0);
 TimelineCreateWithoutVotesOnTimelineInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineCreateWithoutVotesOnTimelineInput", {
         isAbstract: true

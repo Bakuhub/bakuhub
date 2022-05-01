@@ -8,6 +8,7 @@ export declare class VotesOnThreadGroupBy {
     threadId: string;
     vote: number;
     createdAt: Date;
+    updatedAt: Date;
     _count: VotesOnThreadCountAggregate | null;
     _avg: VotesOnThreadAvgAggregate | null;
     _sum: VotesOnThreadSumAggregate | null;

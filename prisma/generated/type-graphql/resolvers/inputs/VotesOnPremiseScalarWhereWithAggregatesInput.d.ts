@@ -9,4 +9,5 @@ export declare class VotesOnPremiseScalarWhereWithAggregatesInput {
     premiseId?: StringWithAggregatesFilter | undefined;
     vote?: IntWithAggregatesFilter | undefined;
     createdAt?: DateTimeWithAggregatesFilter | undefined;
+    updatedAt?: DateTimeWithAggregatesFilter | undefined;
 }

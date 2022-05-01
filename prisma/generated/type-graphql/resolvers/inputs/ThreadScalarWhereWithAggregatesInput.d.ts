@@ -11,6 +11,7 @@ export declare class ThreadScalarWhereWithAggregatesInput {
     activityDate?: DateTimeNullableWithAggregatesFilter | undefined;
     description?: StringNullableWithAggregatesFilter | undefined;
     createdAt?: DateTimeWithAggregatesFilter | undefined;
+    updatedAt?: DateTimeWithAggregatesFilter | undefined;
     reference?: StringNullableWithAggregatesFilter | undefined;
     authorId?: StringNullableWithAggregatesFilter | undefined;
     parentThreadId?: StringNullableWithAggregatesFilter | undefined;

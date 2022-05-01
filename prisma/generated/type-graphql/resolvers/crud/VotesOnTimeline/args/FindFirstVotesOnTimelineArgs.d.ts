@@ -7,5 +7,5 @@ export declare class FindFirstVotesOnTimelineArgs {
     cursor?: VotesOnTimelineWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"userId" | "timelineId" | "vote" | "createdAt"> | undefined;
+    distinct?: Array<"userId" | "timelineId" | "vote" | "createdAt" | "updatedAt"> | undefined;
 }

@@ -4,6 +4,7 @@ export declare class ThreadCreateManyParentThreadInput {
     activityDate?: Date | undefined;
     description?: string | undefined;
     createdAt?: Date | undefined;
+    updatedAt?: Date | undefined;
     reference?: string | undefined;
     authorId?: string | undefined;
 }

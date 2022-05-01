@@ -4,4 +4,5 @@ export declare class PremiseCount {
     tagsOnPremises: number;
     threadsOnPremise: number;
     votesOnPremise: number;
+    SubscriptionsOnPremises: number;
 }

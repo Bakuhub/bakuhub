@@ -5,6 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const PremisesOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/PremisesOnTimelinesOrderByRelationAggregateInput");
 const ReactionOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/ReactionOnTimelinesOrderByRelationAggregateInput");
+const SupscriptionsOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/SupscriptionsOnTimelinesOrderByRelationAggregateInput");
 const TagsOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/TagsOnTimelinesOrderByRelationAggregateInput");
 const ThreadsOnTimelineOrderByRelationAggregateInput_1 = require("../inputs/ThreadsOnTimelineOrderByRelationAggregateInput");
 const UserOrderByWithRelationInput_1 = require("../inputs/UserOrderByWithRelationInput");
@@ -78,6 +79,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnTimelineOrderByRelationAggregateInput_1.VotesOnTimelineOrderByRelationAggregateInput)
 ], TimelineOrderByWithRelationInput.prototype, "votesOnTimeline", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesOrderByRelationAggregateInput_1.SupscriptionsOnTimelinesOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesOrderByRelationAggregateInput_1.SupscriptionsOnTimelinesOrderByRelationAggregateInput)
+], TimelineOrderByWithRelationInput.prototype, "SupscriptionsOnTimelines", void 0);
 TimelineOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineOrderByWithRelationInput", {
         isAbstract: true

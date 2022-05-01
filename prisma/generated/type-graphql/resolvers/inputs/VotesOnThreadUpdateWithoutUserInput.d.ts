@@ -5,4 +5,5 @@ export declare class VotesOnThreadUpdateWithoutUserInput {
     thread?: ThreadUpdateOneRequiredWithoutVotesOnThreadInput | undefined;
     vote?: IntFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
 }

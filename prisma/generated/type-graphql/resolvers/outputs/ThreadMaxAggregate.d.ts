@@ -4,6 +4,7 @@ export declare class ThreadMaxAggregate {
     activityDate: Date | null;
     description: string | null;
     createdAt: Date | null;
+    updatedAt: Date | null;
     reference: string | null;
     authorId: string | null;
     parentThreadId: string | null;

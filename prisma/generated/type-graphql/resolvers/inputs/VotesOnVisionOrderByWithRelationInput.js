@@ -44,6 +44,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], VotesOnVisionOrderByWithRelationInput.prototype, "createdAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], VotesOnVisionOrderByWithRelationInput.prototype, "updatedAt", void 0);
 VotesOnVisionOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VotesOnVisionOrderByWithRelationInput", {
         isAbstract: true

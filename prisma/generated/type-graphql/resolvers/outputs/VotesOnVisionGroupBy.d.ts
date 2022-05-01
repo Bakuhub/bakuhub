@@ -8,6 +8,7 @@ export declare class VotesOnVisionGroupBy {
     visionId: string;
     vote: number;
     createdAt: Date;
+    updatedAt: Date;
     _count: VotesOnVisionCountAggregate | null;
     _avg: VotesOnVisionAvgAggregate | null;
     _sum: VotesOnVisionSumAggregate | null;

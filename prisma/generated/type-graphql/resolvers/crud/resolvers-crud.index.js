@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VotesOnVisionCrudResolver = exports.VotesOnTimelineCrudResolver = exports.VotesOnThreadCrudResolver = exports.VotesOnPremiseCrudResolver = exports.VisionCrudResolver = exports.VerificationTokenCrudResolver = exports.UserCrudResolver = exports.TimelineCrudResolver = exports.ThreadsOnVisionCrudResolver = exports.ThreadsOnTimelineCrudResolver = exports.ThreadsOnPremiseCrudResolver = exports.ThreadsOnMergeRequestCrudResolver = exports.ThreadCrudResolver = exports.TagsOnTimelinesCrudResolver = exports.TagsOnPremisesCrudResolver = exports.TagCrudResolver = exports.SnapshotCrudResolver = exports.SessionCrudResolver = exports.ReferenceCrudResolver = exports.ReactionOnVisionsCrudResolver = exports.ReactionOnTimelinesCrudResolver = exports.ReactionOnThreadsCrudResolver = exports.PremisesOnTimelinesCrudResolver = exports.PremiseCrudResolver = exports.MergeRequestCrudResolver = exports.AccountCrudResolver = void 0;
+exports.VotesOnVisionCrudResolver = exports.VotesOnTimelineCrudResolver = exports.VotesOnThreadCrudResolver = exports.VotesOnPremiseCrudResolver = exports.VisionCrudResolver = exports.VerificationTokenCrudResolver = exports.UserCrudResolver = exports.TimelineCrudResolver = exports.ThreadsOnVisionCrudResolver = exports.ThreadsOnTimelineCrudResolver = exports.ThreadsOnPremiseCrudResolver = exports.ThreadsOnMergeRequestCrudResolver = exports.ThreadCrudResolver = exports.TagsOnTimelinesCrudResolver = exports.TagsOnPremisesCrudResolver = exports.TagCrudResolver = exports.SupscriptionsOnTimelinesCrudResolver = exports.SubscriptionsOnPremisesCrudResolver = exports.SnapshotCrudResolver = exports.SessionCrudResolver = exports.ReferenceCrudResolver = exports.ReactionOnVisionsCrudResolver = exports.ReactionOnTimelinesCrudResolver = exports.ReactionOnThreadsCrudResolver = exports.PremisesOnTimelinesCrudResolver = exports.PremiseCrudResolver = exports.MergeRequestCrudResolver = exports.AccountCrudResolver = void 0;
 var AccountCrudResolver_1 = require("./Account/AccountCrudResolver");
 Object.defineProperty(exports, "AccountCrudResolver", { enumerable: true, get: function () { return AccountCrudResolver_1.AccountCrudResolver; } });
 var MergeRequestCrudResolver_1 = require("./MergeRequest/MergeRequestCrudResolver");
@@ -21,6 +21,10 @@ var SessionCrudResolver_1 = require("./Session/SessionCrudResolver");
 Object.defineProperty(exports, "SessionCrudResolver", { enumerable: true, get: function () { return SessionCrudResolver_1.SessionCrudResolver; } });
 var SnapshotCrudResolver_1 = require("./Snapshot/SnapshotCrudResolver");
 Object.defineProperty(exports, "SnapshotCrudResolver", { enumerable: true, get: function () { return SnapshotCrudResolver_1.SnapshotCrudResolver; } });
+var SubscriptionsOnPremisesCrudResolver_1 = require("./SubscriptionsOnPremises/SubscriptionsOnPremisesCrudResolver");
+Object.defineProperty(exports, "SubscriptionsOnPremisesCrudResolver", { enumerable: true, get: function () { return SubscriptionsOnPremisesCrudResolver_1.SubscriptionsOnPremisesCrudResolver; } });
+var SupscriptionsOnTimelinesCrudResolver_1 = require("./SupscriptionsOnTimelines/SupscriptionsOnTimelinesCrudResolver");
+Object.defineProperty(exports, "SupscriptionsOnTimelinesCrudResolver", { enumerable: true, get: function () { return SupscriptionsOnTimelinesCrudResolver_1.SupscriptionsOnTimelinesCrudResolver; } });
 var TagCrudResolver_1 = require("./Tag/TagCrudResolver");
 Object.defineProperty(exports, "TagCrudResolver", { enumerable: true, get: function () { return TagCrudResolver_1.TagCrudResolver; } });
 var TagsOnPremisesCrudResolver_1 = require("./TagsOnPremises/TagsOnPremisesCrudResolver");

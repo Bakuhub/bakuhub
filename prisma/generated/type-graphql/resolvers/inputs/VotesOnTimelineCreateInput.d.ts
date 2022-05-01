@@ -5,4 +5,5 @@ export declare class VotesOnTimelineCreateInput {
     timeline: TimelineCreateNestedOneWithoutVotesOnTimelineInput;
     vote?: number | undefined;
     createdAt?: Date | undefined;
+    updatedAt?: Date | undefined;
 }

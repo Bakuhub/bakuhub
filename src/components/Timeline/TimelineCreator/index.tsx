@@ -28,7 +28,7 @@ export const TimelineCreator = () => {
     const [loading, setLoading] = useState(false);
     const [take, setTake] = useState(1);
     const [skip, setSkip] = useState(0);
-    const [fetchVisions, {fetchMore: fetchMoreVisions}] = useLazyQuery<VersionSearchQueryData>(
+    const [fetchVisions] = useLazyQuery<VersionSearchQueryData>(
             ...getVisionsByKeywordArgs({
                                            keyword,
                                            take, skip
@@ -39,10 +39,10 @@ export const TimelineCreator = () => {
     const [visions, setVisions] = useState<VisionRow[]>([]);
     // used for rendering timeline
     const [timelineNodes, setTimelineNodes] = useState<Vision[]>([]);
-    const [_, {fetchMore: fetchMoreVote}] = useLazyQuery<VotesByIdQueryData>(...getVotesByIdArgs(
-                                                                                     [],
-                                                                                     ConnectType.VISION,
-                                                                             )
+    const [, {fetchMore: fetchMoreVote}] = useLazyQuery<VotesByIdQueryData>(...getVotesByIdArgs(
+                                                                                    [],
+                                                                                    ConnectType.VISION,
+                                                                            )
     );
 
     const initVision = useCallback(async (isKeywordUpdated = false) => {
@@ -55,7 +55,6 @@ export const TimelineCreator = () => {
             const totalCount = get(fetchVisionsData, "aggregateVision._count._all", 0);
             setTotalCount(totalCount);
             const visionsData: Vision[] = get(fetchVisionsData, "visions", []);
-            console.info(visionsData);
             const {data: fetchVotesData} = await fetchMoreVote(getVotesByIdArgs(
                                                                        visionsData.map(vision => vision.id),
                                                                        ConnectType.VISION
@@ -63,7 +62,9 @@ export const TimelineCreator = () => {
             );
             const votesData = get(fetchVotesData, "groupByVotesOnVision", []);
             const newVisions: VisionRow[] = visionsData.map((vision: Vision) => {
-                const selectedVote = votesData.find(vote => vote.visionId === vision.id);
+                console.info(votesData);
+                console.info("-0----------------");
+                const selectedVote = votesData.find((vote) => vote.visionId === vision.id);
                 const votes = get(selectedVote, "_sum.vote", 0);
 
                 return {
@@ -76,20 +77,20 @@ export const TimelineCreator = () => {
             console.info("this should be the new version");
             setVisions(prev => isKeywordUpdated ? newVisions:[...prev, ...newVisions]);
         }
-    }, [fetchVisions, fetchMoreVote, timelineNodes, skip]);
+    }, [skip, visions.length, fetchVisions, fetchMoreVote, enqueueSnackbar, timelineNodes]);
 
     useEffect(
             () => {
                 setLoading(true);
                 initVision(true).finally(() => setLoading(false));
-            }, [keyword]
+            }, [initVision, keyword]
     );
     useEffect(
             () => {
                 setLoading(true);
                 initVision().finally(() => setLoading(false));
             },
-            [skip]
+            [initVision, skip]
     );
     return (
             <Grid container alignItems={"flex-start"}>

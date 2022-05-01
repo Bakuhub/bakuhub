@@ -31,6 +31,8 @@ declare const crudResolversMap: {
     VotesOnTimeline: typeof crudResolvers.VotesOnTimelineCrudResolver;
     VotesOnPremise: typeof crudResolvers.VotesOnPremiseCrudResolver;
     VotesOnThread: typeof crudResolvers.VotesOnThreadCrudResolver;
+    SubscriptionsOnPremises: typeof crudResolvers.SubscriptionsOnPremisesCrudResolver;
+    SupscriptionsOnTimelines: typeof crudResolvers.SupscriptionsOnTimelinesCrudResolver;
 };
 declare type ResolverModelNames = keyof typeof crudResolversMap;
 declare type ModelResolverActionNames<TModel extends ResolverModelNames> = keyof typeof crudResolversMap[TModel]["prototype"];
@@ -76,6 +78,8 @@ declare const relationResolversMap: {
     VotesOnTimeline: typeof relationResolvers.VotesOnTimelineRelationsResolver;
     VotesOnPremise: typeof relationResolvers.VotesOnPremiseRelationsResolver;
     VotesOnThread: typeof relationResolvers.VotesOnThreadRelationsResolver;
+    SubscriptionsOnPremises: typeof relationResolvers.SubscriptionsOnPremisesRelationsResolver;
+    SupscriptionsOnTimelines: typeof relationResolvers.SupscriptionsOnTimelinesRelationsResolver;
 };
 declare type RelationResolverModelNames = keyof typeof relationResolversMap;
 declare type RelationResolverActionNames<TModel extends RelationResolverModelNames> = keyof typeof relationResolversMap[TModel]["prototype"];

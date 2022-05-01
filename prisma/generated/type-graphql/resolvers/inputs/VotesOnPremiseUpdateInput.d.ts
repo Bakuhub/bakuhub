@@ -7,4 +7,5 @@ export declare class VotesOnPremiseUpdateInput {
     premise?: PremiseUpdateOneRequiredWithoutVotesOnPremiseInput | undefined;
     vote?: IntFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
 }

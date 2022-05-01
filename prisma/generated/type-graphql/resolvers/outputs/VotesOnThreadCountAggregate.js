@@ -34,6 +34,12 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
+], VotesOnThreadCountAggregate.prototype, "updatedAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
 ], VotesOnThreadCountAggregate.prototype, "_all", void 0);
 VotesOnThreadCountAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("VotesOnThreadCountAggregate", {

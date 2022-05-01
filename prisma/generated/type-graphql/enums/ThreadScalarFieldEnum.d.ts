@@ -4,6 +4,7 @@ export declare enum ThreadScalarFieldEnum {
     activityDate = "activityDate",
     description = "description",
     createdAt = "createdAt",
+    updatedAt = "updatedAt",
     reference = "reference",
     authorId = "authorId",
     parentThreadId = "parentThreadId"

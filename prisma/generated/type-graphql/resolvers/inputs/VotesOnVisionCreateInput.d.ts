@@ -5,4 +5,5 @@ export declare class VotesOnVisionCreateInput {
     vision: VisionCreateNestedOneWithoutVotesOnVisionInput;
     vote?: number | undefined;
     createdAt?: Date | undefined;
+    updatedAt?: Date | undefined;
 }

@@ -7,4 +7,5 @@ export declare class VotesOnPremise {
     premiseId: string;
     vote: number;
     createdAt: Date;
+    updatedAt: Date;
 }

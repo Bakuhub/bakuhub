@@ -11,7 +11,7 @@ import {Comment} from "../Comment";
 import {ConnectType} from "../../types";
 import {ThreadDetail} from "../Thread/ThreadDetail";
 import * as React from "react";
-import {FunctionComponent} from "react";
+import {FunctionComponent, useEffect} from "react";
 import {useRouter} from "next/router";
 import {Thread, Vision} from "../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
@@ -69,7 +69,10 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                                                                                    }));
         }
     };
+    useEffect(() => {
+        console.info("DetailPage: useEffect");
 
+    }, []);
     return (
             <Grid container>
                 <Grid item container xs={12}>

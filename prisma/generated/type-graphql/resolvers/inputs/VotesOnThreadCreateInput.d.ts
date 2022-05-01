@@ -5,4 +5,5 @@ export declare class VotesOnThreadCreateInput {
     thread: ThreadCreateNestedOneWithoutVotesOnThreadInput;
     vote?: number | undefined;
     createdAt?: Date | undefined;
+    updatedAt?: Date | undefined;
 }

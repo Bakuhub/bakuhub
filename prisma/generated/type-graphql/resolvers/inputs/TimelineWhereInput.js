@@ -7,6 +7,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const PremisesOnTimelinesListRelationFilter_1 = require("../inputs/PremisesOnTimelinesListRelationFilter");
 const ReactionOnTimelinesListRelationFilter_1 = require("../inputs/ReactionOnTimelinesListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
+const SupscriptionsOnTimelinesListRelationFilter_1 = require("../inputs/SupscriptionsOnTimelinesListRelationFilter");
 const TagsOnTimelinesListRelationFilter_1 = require("../inputs/TagsOnTimelinesListRelationFilter");
 const ThreadsOnTimelineListRelationFilter_1 = require("../inputs/ThreadsOnTimelineListRelationFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
@@ -97,6 +98,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnTimelineListRelationFilter_1.VotesOnTimelineListRelationFilter)
 ], TimelineWhereInput.prototype, "votesOnTimeline", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesListRelationFilter_1.SupscriptionsOnTimelinesListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesListRelationFilter_1.SupscriptionsOnTimelinesListRelationFilter)
+], TimelineWhereInput.prototype, "SupscriptionsOnTimelines", void 0);
 TimelineWhereInput = TimelineWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineWhereInput", {
         isAbstract: true

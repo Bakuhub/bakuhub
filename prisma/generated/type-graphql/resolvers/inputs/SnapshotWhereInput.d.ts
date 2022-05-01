@@ -7,6 +7,7 @@ export declare class SnapshotWhereInput {
     NOT?: SnapshotWhereInput[] | undefined;
     id?: StringFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
     versionId?: StringFilter | undefined;
     s3Url?: StringFilter | undefined;
     sourceUrl?: StringFilter | undefined;

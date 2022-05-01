@@ -1,5 +1,6 @@
 import { PremisesOnTimelinesOrderByRelationAggregateInput } from "../inputs/PremisesOnTimelinesOrderByRelationAggregateInput";
 import { ReactionOnTimelinesOrderByRelationAggregateInput } from "../inputs/ReactionOnTimelinesOrderByRelationAggregateInput";
+import { SupscriptionsOnTimelinesOrderByRelationAggregateInput } from "../inputs/SupscriptionsOnTimelinesOrderByRelationAggregateInput";
 import { TagsOnTimelinesOrderByRelationAggregateInput } from "../inputs/TagsOnTimelinesOrderByRelationAggregateInput";
 import { ThreadsOnTimelineOrderByRelationAggregateInput } from "../inputs/ThreadsOnTimelineOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
@@ -16,4 +17,5 @@ export declare class TimelineOrderByWithRelationInput {
     threadsOnTimeline?: ThreadsOnTimelineOrderByRelationAggregateInput | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
     votesOnTimeline?: VotesOnTimelineOrderByRelationAggregateInput | undefined;
+    SupscriptionsOnTimelines?: SupscriptionsOnTimelinesOrderByRelationAggregateInput | undefined;
 }

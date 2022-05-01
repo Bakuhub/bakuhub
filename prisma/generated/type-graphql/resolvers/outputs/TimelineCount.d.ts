@@ -4,4 +4,5 @@ export declare class TimelineCount {
     threadsOnTimeline: number;
     ReactionOnTimelines: number;
     votesOnTimeline: number;
+    SupscriptionsOnTimelines: number;
 }

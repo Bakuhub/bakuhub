@@ -13,4 +13,5 @@ export declare class VotesOnPremiseWhereInput {
     premiseId?: StringFilter | undefined;
     vote?: IntFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
 }

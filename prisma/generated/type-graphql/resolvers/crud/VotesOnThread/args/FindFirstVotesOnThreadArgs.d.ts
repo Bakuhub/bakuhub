@@ -7,5 +7,5 @@ export declare class FindFirstVotesOnThreadArgs {
     cursor?: VotesOnThreadWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"userId" | "threadId" | "vote" | "createdAt"> | undefined;
+    distinct?: Array<"userId" | "threadId" | "vote" | "createdAt" | "updatedAt"> | undefined;
 }

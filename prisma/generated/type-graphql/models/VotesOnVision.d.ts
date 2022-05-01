@@ -7,4 +7,5 @@ export declare class VotesOnVision {
     visionId: string;
     vote: number;
     createdAt: Date;
+    updatedAt: Date;
 }

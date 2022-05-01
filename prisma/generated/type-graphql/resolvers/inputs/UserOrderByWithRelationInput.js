@@ -9,6 +9,8 @@ const ReactionOnThreadsOrderByRelationAggregateInput_1 = require("../inputs/Reac
 const ReactionOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/ReactionOnTimelinesOrderByRelationAggregateInput");
 const ReactionOnVisionsOrderByRelationAggregateInput_1 = require("../inputs/ReactionOnVisionsOrderByRelationAggregateInput");
 const SessionOrderByRelationAggregateInput_1 = require("../inputs/SessionOrderByRelationAggregateInput");
+const SubscriptionsOnPremisesOrderByRelationAggregateInput_1 = require("../inputs/SubscriptionsOnPremisesOrderByRelationAggregateInput");
+const SupscriptionsOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/SupscriptionsOnTimelinesOrderByRelationAggregateInput");
 const ThreadOrderByRelationAggregateInput_1 = require("../inputs/ThreadOrderByRelationAggregateInput");
 const TimelineOrderByRelationAggregateInput_1 = require("../inputs/TimelineOrderByRelationAggregateInput");
 const VisionOrderByRelationAggregateInput_1 = require("../inputs/VisionOrderByRelationAggregateInput");
@@ -133,6 +135,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnThreadOrderByRelationAggregateInput_1.VotesOnThreadOrderByRelationAggregateInput)
 ], UserOrderByWithRelationInput.prototype, "votesOnThread", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SubscriptionsOnPremisesOrderByRelationAggregateInput_1.SubscriptionsOnPremisesOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SubscriptionsOnPremisesOrderByRelationAggregateInput_1.SubscriptionsOnPremisesOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "SubscriptionsOnPremises", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesOrderByRelationAggregateInput_1.SupscriptionsOnTimelinesOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesOrderByRelationAggregateInput_1.SupscriptionsOnTimelinesOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "SupscriptionsOnTimelines", void 0);
 UserOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserOrderByWithRelationInput", {
         isAbstract: true

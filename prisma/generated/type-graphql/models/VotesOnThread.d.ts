@@ -7,4 +7,5 @@ export declare class VotesOnThread {
     threadId: string;
     vote: number;
     createdAt: Date;
+    updatedAt: Date;
 }

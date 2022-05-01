@@ -8,6 +8,8 @@ export { ReactionOnVisionsRelationsResolver } from "./ReactionOnVisions/Reaction
 export { ReferenceRelationsResolver } from "./Reference/ReferenceRelationsResolver";
 export { SessionRelationsResolver } from "./Session/SessionRelationsResolver";
 export { SnapshotRelationsResolver } from "./Snapshot/SnapshotRelationsResolver";
+export { SubscriptionsOnPremisesRelationsResolver } from "./SubscriptionsOnPremises/SubscriptionsOnPremisesRelationsResolver";
+export { SupscriptionsOnTimelinesRelationsResolver } from "./SupscriptionsOnTimelines/SupscriptionsOnTimelinesRelationsResolver";
 export { TagRelationsResolver } from "./Tag/TagRelationsResolver";
 export { TagsOnPremisesRelationsResolver } from "./TagsOnPremises/TagsOnPremisesRelationsResolver";
 export { TagsOnTimelinesRelationsResolver } from "./TagsOnTimelines/TagsOnTimelinesRelationsResolver";

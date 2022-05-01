@@ -29,6 +29,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Date)
 ], VotesOnTimeline.prototype, "createdAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Date)
+], VotesOnTimeline.prototype, "updatedAt", void 0);
 VotesOnTimeline = tslib_1.__decorate([
     TypeGraphQL.ObjectType("VotesOnTimeline", {
         isAbstract: true

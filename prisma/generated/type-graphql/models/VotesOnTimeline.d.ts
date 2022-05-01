@@ -7,4 +7,5 @@ export declare class VotesOnTimeline {
     timelineId: string;
     vote: number;
     createdAt: Date;
+    updatedAt: Date;
 }

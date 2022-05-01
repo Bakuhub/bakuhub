@@ -1,11 +1,13 @@
 import { Premise } from "../../../models/Premise";
 import { PremisesOnTimelines } from "../../../models/PremisesOnTimelines";
+import { SubscriptionsOnPremises } from "../../../models/SubscriptionsOnPremises";
 import { TagsOnPremises } from "../../../models/TagsOnPremises";
 import { ThreadsOnPremise } from "../../../models/ThreadsOnPremise";
 import { User } from "../../../models/User";
 import { Vision } from "../../../models/Vision";
 import { VotesOnPremise } from "../../../models/VotesOnPremise";
 import { PremisePremisesOnTimelinesArgs } from "./args/PremisePremisesOnTimelinesArgs";
+import { PremiseSubscriptionsOnPremisesArgs } from "./args/PremiseSubscriptionsOnPremisesArgs";
 import { PremiseTagsOnPremisesArgs } from "./args/PremiseTagsOnPremisesArgs";
 import { PremiseThreadsOnPremiseArgs } from "./args/PremiseThreadsOnPremiseArgs";
 import { PremiseVisionArgs } from "./args/PremiseVisionArgs";
@@ -17,4 +19,5 @@ export declare class PremiseRelationsResolver {
     tagsOnPremises(premise: Premise, ctx: any, args: PremiseTagsOnPremisesArgs): Promise<TagsOnPremises[]>;
     threadsOnPremise(premise: Premise, ctx: any, args: PremiseThreadsOnPremiseArgs): Promise<ThreadsOnPremise[]>;
     votesOnPremise(premise: Premise, ctx: any, args: PremiseVotesOnPremiseArgs): Promise<VotesOnPremise[]>;
+    SubscriptionsOnPremises(premise: Premise, ctx: any, args: PremiseSubscriptionsOnPremisesArgs): Promise<SubscriptionsOnPremises[]>;
 }

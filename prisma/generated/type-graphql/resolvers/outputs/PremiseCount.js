@@ -35,6 +35,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Number)
 ], PremiseCount.prototype, "votesOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
+], PremiseCount.prototype, "SubscriptionsOnPremises", void 0);
 PremiseCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("PremiseCount", {
         isAbstract: true

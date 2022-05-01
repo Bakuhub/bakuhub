@@ -16,6 +16,7 @@ export declare class ThreadUpdateWithoutVotesOnThreadInput {
     activityDate?: NullableDateTimeFieldUpdateOperationsInput | undefined;
     description?: NullableStringFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
     reference?: NullableStringFieldUpdateOperationsInput | undefined;
     author?: UserUpdateOneWithoutThreadsInput | undefined;
     parentThread?: ThreadUpdateOneWithoutChildThreadsInput | undefined;

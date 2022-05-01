@@ -4,7 +4,7 @@ import { VotesOnThreadWhereInput } from "../../../inputs/VotesOnThreadWhereInput
 export declare class GroupByVotesOnThreadArgs {
     where?: VotesOnThreadWhereInput | undefined;
     orderBy?: VotesOnThreadOrderByWithAggregationInput[] | undefined;
-    by: Array<"userId" | "threadId" | "vote" | "createdAt">;
+    by: Array<"userId" | "threadId" | "vote" | "createdAt" | "updatedAt">;
     having?: VotesOnThreadScalarWhereWithAggregatesInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;

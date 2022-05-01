@@ -3,6 +3,7 @@ import { SnapshotCount } from "../resolvers/outputs/SnapshotCount";
 export declare class Snapshot {
     id: string;
     createdAt: Date;
+    updatedAt: Date;
     versionId: string;
     s3Url: string;
     sourceUrl: string;

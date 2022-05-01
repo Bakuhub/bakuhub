@@ -7,5 +7,5 @@ export declare class FindManyVotesOnPremiseArgs {
     cursor?: VotesOnPremiseWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"userId" | "premiseId" | "vote" | "createdAt"> | undefined;
+    distinct?: Array<"userId" | "premiseId" | "vote" | "createdAt" | "updatedAt"> | undefined;
 }

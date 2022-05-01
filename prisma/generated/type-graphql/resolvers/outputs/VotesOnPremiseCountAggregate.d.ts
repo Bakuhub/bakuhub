@@ -3,5 +3,6 @@ export declare class VotesOnPremiseCountAggregate {
     premiseId: number;
     vote: number;
     createdAt: number;
+    updatedAt: number;
     _all: number;
 }

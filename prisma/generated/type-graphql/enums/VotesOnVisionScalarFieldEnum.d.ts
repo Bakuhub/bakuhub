@@ -2,5 +2,6 @@ export declare enum VotesOnVisionScalarFieldEnum {
     userId = "userId",
     visionId = "visionId",
     vote = "vote",
-    createdAt = "createdAt"
+    createdAt = "createdAt",
+    updatedAt = "updatedAt"
 }

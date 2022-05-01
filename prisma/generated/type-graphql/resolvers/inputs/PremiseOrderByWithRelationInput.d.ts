@@ -1,4 +1,5 @@
 import { PremisesOnTimelinesOrderByRelationAggregateInput } from "../inputs/PremisesOnTimelinesOrderByRelationAggregateInput";
+import { SubscriptionsOnPremisesOrderByRelationAggregateInput } from "../inputs/SubscriptionsOnPremisesOrderByRelationAggregateInput";
 import { TagsOnPremisesOrderByRelationAggregateInput } from "../inputs/TagsOnPremisesOrderByRelationAggregateInput";
 import { ThreadsOnPremiseOrderByRelationAggregateInput } from "../inputs/ThreadsOnPremiseOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
@@ -17,4 +18,5 @@ export declare class PremiseOrderByWithRelationInput {
     tagsOnPremises?: TagsOnPremisesOrderByRelationAggregateInput | undefined;
     threadsOnPremise?: ThreadsOnPremiseOrderByRelationAggregateInput | undefined;
     votesOnPremise?: VotesOnPremiseOrderByRelationAggregateInput | undefined;
+    SubscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
 }

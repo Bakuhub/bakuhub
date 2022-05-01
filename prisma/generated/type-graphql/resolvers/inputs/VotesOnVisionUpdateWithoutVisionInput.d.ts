@@ -5,4 +5,5 @@ export declare class VotesOnVisionUpdateWithoutVisionInput {
     user?: UserUpdateOneRequiredWithoutVotesOnVisionInput | undefined;
     vote?: IntFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
 }

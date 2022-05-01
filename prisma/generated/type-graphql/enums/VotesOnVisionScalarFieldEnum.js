@@ -9,6 +9,7 @@ var VotesOnVisionScalarFieldEnum;
     VotesOnVisionScalarFieldEnum["visionId"] = "visionId";
     VotesOnVisionScalarFieldEnum["vote"] = "vote";
     VotesOnVisionScalarFieldEnum["createdAt"] = "createdAt";
+    VotesOnVisionScalarFieldEnum["updatedAt"] = "updatedAt";
 })(VotesOnVisionScalarFieldEnum = exports.VotesOnVisionScalarFieldEnum || (exports.VotesOnVisionScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(VotesOnVisionScalarFieldEnum, {
     name: "VotesOnVisionScalarFieldEnum",

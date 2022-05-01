@@ -12,7 +12,7 @@ query _sum($by: [VotesOn${capitalize(tableName)}ScalarFieldEnum!]!, $where: Vote
     _sum {
       vote
     }
-    visionId
+    ${tableName}Id
   }
 }
     `;
@@ -25,7 +25,10 @@ export interface VotesByIdQueryData {
             "vote": number,
             "__typename": "VotesOnVisionSumAggregate"
         },
-        "visionId": string
+        // todo(update it to dynamic type)
+        timelineId?: string
+        threadId?: string
+        visionId?: string
         "__typename": "VotesOnVisionGroupBy"
     }>;
 }
@@ -42,7 +45,7 @@ export function getVotesByIdArgs(
         {
             ...options,
             variables: {
-                by: "visionId",
+                by: tableNameWithId,
                 "where": {
                     [tableNameWithId]: {
                         ...ids.length === 1 ? {

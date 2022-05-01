@@ -35,6 +35,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Number)
 ], TimelineCount.prototype, "votesOnTimeline", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
+], TimelineCount.prototype, "SupscriptionsOnTimelines", void 0);
 TimelineCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("TimelineCount", {
         isAbstract: true

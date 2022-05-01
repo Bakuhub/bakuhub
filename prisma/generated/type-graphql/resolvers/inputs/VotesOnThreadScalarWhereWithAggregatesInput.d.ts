@@ -9,4 +9,5 @@ export declare class VotesOnThreadScalarWhereWithAggregatesInput {
     threadId?: StringWithAggregatesFilter | undefined;
     vote?: IntWithAggregatesFilter | undefined;
     createdAt?: DateTimeWithAggregatesFilter | undefined;
+    updatedAt?: DateTimeWithAggregatesFilter | undefined;
 }

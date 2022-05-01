@@ -12,6 +12,8 @@ const ReactionOnTimelinesUpdateManyWithoutUserInput_1 = require("../inputs/React
 const ReactionOnVisionsUpdateManyWithoutUserInput_1 = require("../inputs/ReactionOnVisionsUpdateManyWithoutUserInput");
 const SessionUpdateManyWithoutUserInput_1 = require("../inputs/SessionUpdateManyWithoutUserInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
+const SubscriptionsOnPremisesUpdateManyWithoutUserInput_1 = require("../inputs/SubscriptionsOnPremisesUpdateManyWithoutUserInput");
+const SupscriptionsOnTimelinesUpdateManyWithoutUserInput_1 = require("../inputs/SupscriptionsOnTimelinesUpdateManyWithoutUserInput");
 const ThreadUpdateManyWithoutAuthorInput_1 = require("../inputs/ThreadUpdateManyWithoutAuthorInput");
 const TimelineUpdateManyWithoutAuthorInput_1 = require("../inputs/TimelineUpdateManyWithoutAuthorInput");
 const VisionUpdateManyWithoutAuthorInput_1 = require("../inputs/VisionUpdateManyWithoutAuthorInput");
@@ -135,6 +137,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnThreadUpdateManyWithoutUserInput_1.VotesOnThreadUpdateManyWithoutUserInput)
 ], UserUpdateInput.prototype, "votesOnThread", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SubscriptionsOnPremisesUpdateManyWithoutUserInput_1.SubscriptionsOnPremisesUpdateManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SubscriptionsOnPremisesUpdateManyWithoutUserInput_1.SubscriptionsOnPremisesUpdateManyWithoutUserInput)
+], UserUpdateInput.prototype, "SubscriptionsOnPremises", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SupscriptionsOnTimelinesUpdateManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SupscriptionsOnTimelinesUpdateManyWithoutUserInput)
+], UserUpdateInput.prototype, "SupscriptionsOnTimelines", void 0);
 UserUpdateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateInput", {
         isAbstract: true

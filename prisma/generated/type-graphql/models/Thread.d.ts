@@ -12,6 +12,7 @@ export declare class Thread {
     activityDate?: Date | null;
     description?: string | null;
     createdAt: Date;
+    updatedAt: Date;
     reference?: string | null;
     author?: User | null;
     authorId?: string | null;

@@ -13,6 +13,8 @@ const ReactionOnVisionsListRelationFilter_1 = require("../inputs/ReactionOnVisio
 const SessionListRelationFilter_1 = require("../inputs/SessionListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
+const SubscriptionsOnPremisesListRelationFilter_1 = require("../inputs/SubscriptionsOnPremisesListRelationFilter");
+const SupscriptionsOnTimelinesListRelationFilter_1 = require("../inputs/SupscriptionsOnTimelinesListRelationFilter");
 const ThreadListRelationFilter_1 = require("../inputs/ThreadListRelationFilter");
 const TimelineListRelationFilter_1 = require("../inputs/TimelineListRelationFilter");
 const VisionListRelationFilter_1 = require("../inputs/VisionListRelationFilter");
@@ -154,6 +156,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnThreadListRelationFilter_1.VotesOnThreadListRelationFilter)
 ], UserWhereInput.prototype, "votesOnThread", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SubscriptionsOnPremisesListRelationFilter_1.SubscriptionsOnPremisesListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SubscriptionsOnPremisesListRelationFilter_1.SubscriptionsOnPremisesListRelationFilter)
+], UserWhereInput.prototype, "SubscriptionsOnPremises", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesListRelationFilter_1.SupscriptionsOnTimelinesListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesListRelationFilter_1.SupscriptionsOnTimelinesListRelationFilter)
+], UserWhereInput.prototype, "SupscriptionsOnTimelines", void 0);
 UserWhereInput = UserWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("UserWhereInput", {
         isAbstract: true

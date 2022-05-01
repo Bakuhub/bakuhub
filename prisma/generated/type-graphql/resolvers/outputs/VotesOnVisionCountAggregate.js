@@ -34,6 +34,12 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
+], VotesOnVisionCountAggregate.prototype, "updatedAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
 ], VotesOnVisionCountAggregate.prototype, "_all", void 0);
 VotesOnVisionCountAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("VotesOnVisionCountAggregate", {

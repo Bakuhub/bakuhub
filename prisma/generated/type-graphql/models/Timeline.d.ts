@@ -1,5 +1,6 @@
 import { PremisesOnTimelines } from "../models/PremisesOnTimelines";
 import { ReactionOnTimelines } from "../models/ReactionOnTimelines";
+import { SupscriptionsOnTimelines } from "../models/SupscriptionsOnTimelines";
 import { TagsOnTimelines } from "../models/TagsOnTimelines";
 import { ThreadsOnTimeline } from "../models/ThreadsOnTimeline";
 import { User } from "../models/User";
@@ -17,5 +18,6 @@ export declare class Timeline {
     threadsOnTimeline?: ThreadsOnTimeline[];
     ReactionOnTimelines?: ReactionOnTimelines[];
     votesOnTimeline?: VotesOnTimeline[];
+    SupscriptionsOnTimelines?: SupscriptionsOnTimelines[];
     _count?: TimelineCount | null;
 }

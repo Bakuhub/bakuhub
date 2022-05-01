@@ -51,6 +51,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter)
 ], VotesOnTimelineScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter)
+], VotesOnTimelineScalarWhereWithAggregatesInput.prototype, "updatedAt", void 0);
 VotesOnTimelineScalarWhereWithAggregatesInput = VotesOnTimelineScalarWhereWithAggregatesInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("VotesOnTimelineScalarWhereWithAggregatesInput", {
         isAbstract: true

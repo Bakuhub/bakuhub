@@ -10,6 +10,7 @@ var ThreadScalarFieldEnum;
     ThreadScalarFieldEnum["activityDate"] = "activityDate";
     ThreadScalarFieldEnum["description"] = "description";
     ThreadScalarFieldEnum["createdAt"] = "createdAt";
+    ThreadScalarFieldEnum["updatedAt"] = "updatedAt";
     ThreadScalarFieldEnum["reference"] = "reference";
     ThreadScalarFieldEnum["authorId"] = "authorId";
     ThreadScalarFieldEnum["parentThreadId"] = "parentThreadId";

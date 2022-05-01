@@ -10,6 +10,7 @@ const EnumPremiseStatusFilter_1 = require("../inputs/EnumPremiseStatusFilter");
 const PremisesOnTimelinesListRelationFilter_1 = require("../inputs/PremisesOnTimelinesListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
+const SubscriptionsOnPremisesListRelationFilter_1 = require("../inputs/SubscriptionsOnPremisesListRelationFilter");
 const TagsOnPremisesListRelationFilter_1 = require("../inputs/TagsOnPremisesListRelationFilter");
 const ThreadsOnPremiseListRelationFilter_1 = require("../inputs/ThreadsOnPremiseListRelationFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
@@ -107,6 +108,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnPremiseListRelationFilter_1.VotesOnPremiseListRelationFilter)
 ], PremiseWhereInput.prototype, "votesOnPremise", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SubscriptionsOnPremisesListRelationFilter_1.SubscriptionsOnPremisesListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SubscriptionsOnPremisesListRelationFilter_1.SubscriptionsOnPremisesListRelationFilter)
+], PremiseWhereInput.prototype, "SubscriptionsOnPremises", void 0);
 PremiseWhereInput = PremiseWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseWhereInput", {
         isAbstract: true

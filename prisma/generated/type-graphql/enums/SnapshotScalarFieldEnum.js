@@ -7,6 +7,7 @@ var SnapshotScalarFieldEnum;
 (function (SnapshotScalarFieldEnum) {
     SnapshotScalarFieldEnum["id"] = "id";
     SnapshotScalarFieldEnum["createdAt"] = "createdAt";
+    SnapshotScalarFieldEnum["updatedAt"] = "updatedAt";
     SnapshotScalarFieldEnum["versionId"] = "versionId";
     SnapshotScalarFieldEnum["s3Url"] = "s3Url";
     SnapshotScalarFieldEnum["sourceUrl"] = "sourceUrl";
