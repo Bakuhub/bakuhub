@@ -65,12 +65,12 @@ let ThreadRelationsResolver = class ThreadRelationsResolver {
             },
         }).threadsOnMergeRequest({});
     }
-    async ReactionOnThreads(thread, ctx, args) {
+    async reactionOnThreads(thread, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).thread.findUnique({
             where: {
                 id: thread.id,
             },
-        }).ReactionOnThreads(args);
+        }).reactionOnThreads(args);
     }
     async votesOnThread(thread, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).thread.findUnique({
@@ -161,7 +161,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Thread_1.Thread, Object, ThreadReactionOnThreadsArgs_1.ThreadReactionOnThreadsArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], ThreadRelationsResolver.prototype, "ReactionOnThreads", null);
+], ThreadRelationsResolver.prototype, "reactionOnThreads", null);
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => [VotesOnThread_1.VotesOnThread], {
         nullable: false

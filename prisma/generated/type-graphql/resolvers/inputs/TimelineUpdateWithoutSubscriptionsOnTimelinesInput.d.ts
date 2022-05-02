@@ -14,6 +14,6 @@ export declare class TimelineUpdateWithoutSubscriptionsOnTimelinesInput {
     premisesOnTimelines?: PremisesOnTimelinesUpdateManyWithoutTimelineInput | undefined;
     tagsOnTimelines?: TagsOnTimelinesUpdateManyWithoutTimelineInput | undefined;
     threadsOnTimeline?: ThreadsOnTimelineUpdateManyWithoutTimelineInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutTimelineInput | undefined;
     votesOnTimeline?: VotesOnTimelineUpdateManyWithoutTimelineInput | undefined;
 }

@@ -98,19 +98,19 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsOrderByRelationAggregateInput_1.ReactionOnThreadsOrderByRelationAggregateInput)
-], UserOrderByWithRelationInput.prototype, "ReactionOnThreads", void 0);
+], UserOrderByWithRelationInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnTimelinesOrderByRelationAggregateInput_1.ReactionOnTimelinesOrderByRelationAggregateInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesOrderByRelationAggregateInput_1.ReactionOnTimelinesOrderByRelationAggregateInput)
-], UserOrderByWithRelationInput.prototype, "ReactionOnTimelines", void 0);
+], UserOrderByWithRelationInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnVisionsOrderByRelationAggregateInput_1.ReactionOnVisionsOrderByRelationAggregateInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsOrderByRelationAggregateInput_1.ReactionOnVisionsOrderByRelationAggregateInput)
-], UserOrderByWithRelationInput.prototype, "ReactionOnVisions", void 0);
+], UserOrderByWithRelationInput.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnVisionOrderByRelationAggregateInput_1.VotesOnVisionOrderByRelationAggregateInput, {
         nullable: true
@@ -140,13 +140,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesOrderByRelationAggregateInput_1.SubscriptionsOnPremisesOrderByRelationAggregateInput)
-], UserOrderByWithRelationInput.prototype, "SubscriptionsOnPremises", void 0);
+], UserOrderByWithRelationInput.prototype, "subscriptionsOnPremises", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SubscriptionsOnTimelinesOrderByRelationAggregateInput_1.SubscriptionsOnTimelinesOrderByRelationAggregateInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesOrderByRelationAggregateInput_1.SubscriptionsOnTimelinesOrderByRelationAggregateInput)
-], UserOrderByWithRelationInput.prototype, "SubscriptionsOnTimelines", void 0);
+], UserOrderByWithRelationInput.prototype, "subscriptionsOnTimelines", void 0);
 UserOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserOrderByWithRelationInput", {
         isAbstract: true

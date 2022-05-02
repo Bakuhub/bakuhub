@@ -5,13 +5,13 @@ export declare class UserCount {
     threads: number;
     visions: number;
     timelines: number;
-    ReactionOnThreads: number;
-    ReactionOnTimelines: number;
-    ReactionOnVisions: number;
+    reactionOnThreads: number;
+    reactionOnTimelines: number;
+    reactionOnVisions: number;
     votesOnVision: number;
     votesOnTimeline: number;
     votesOnPremise: number;
     votesOnThread: number;
-    SubscriptionsOnPremises: number;
-    SubscriptionsOnTimelines: number;
+    subscriptionsOnPremises: number;
+    subscriptionsOnTimelines: number;
 }

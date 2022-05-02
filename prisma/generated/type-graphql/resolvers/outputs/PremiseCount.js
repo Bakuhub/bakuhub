@@ -40,7 +40,7 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], PremiseCount.prototype, "SubscriptionsOnPremises", void 0);
+], PremiseCount.prototype, "subscriptionsOnPremises", void 0);
 PremiseCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("PremiseCount", {
         isAbstract: true

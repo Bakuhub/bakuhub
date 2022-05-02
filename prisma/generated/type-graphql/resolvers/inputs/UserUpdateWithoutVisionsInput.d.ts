@@ -27,13 +27,13 @@ export declare class UserUpdateWithoutVisionsInput {
     premises?: PremiseUpdateManyWithoutAuthorInput | undefined;
     threads?: ThreadUpdateManyWithoutAuthorInput | undefined;
     timelines?: TimelineUpdateManyWithoutAuthorInput | undefined;
-    ReactionOnThreads?: ReactionOnThreadsUpdateManyWithoutUserInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutUserInput | undefined;
-    ReactionOnVisions?: ReactionOnVisionsUpdateManyWithoutUserInput | undefined;
+    reactionOnThreads?: ReactionOnThreadsUpdateManyWithoutUserInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutUserInput | undefined;
+    reactionOnVisions?: ReactionOnVisionsUpdateManyWithoutUserInput | undefined;
     votesOnVision?: VotesOnVisionUpdateManyWithoutUserInput | undefined;
     votesOnTimeline?: VotesOnTimelineUpdateManyWithoutUserInput | undefined;
     votesOnPremise?: VotesOnPremiseUpdateManyWithoutUserInput | undefined;
     votesOnThread?: VotesOnThreadUpdateManyWithoutUserInput | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesUpdateManyWithoutUserInput | undefined;
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesUpdateManyWithoutUserInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesUpdateManyWithoutUserInput | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesUpdateManyWithoutUserInput | undefined;
 }

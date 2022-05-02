@@ -96,7 +96,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsCreateNestedManyWithoutThreadInput_1.ReactionOnThreadsCreateNestedManyWithoutThreadInput)
-], ThreadCreateWithoutChildThreadsInput.prototype, "ReactionOnThreads", void 0);
+], ThreadCreateWithoutChildThreadsInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnThreadCreateNestedManyWithoutThreadInput_1.VotesOnThreadCreateNestedManyWithoutThreadInput, {
         nullable: true

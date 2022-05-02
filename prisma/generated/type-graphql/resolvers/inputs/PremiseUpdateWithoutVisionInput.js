@@ -79,7 +79,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesUpdateManyWithoutPremiseInput_1.SubscriptionsOnPremisesUpdateManyWithoutPremiseInput)
-], PremiseUpdateWithoutVisionInput.prototype, "SubscriptionsOnPremises", void 0);
+], PremiseUpdateWithoutVisionInput.prototype, "subscriptionsOnPremises", void 0);
 PremiseUpdateWithoutVisionInput = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseUpdateWithoutVisionInput", {
         isAbstract: true

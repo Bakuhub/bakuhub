@@ -25,5 +25,5 @@ export declare class PremiseWhereInput {
     tagsOnPremises?: TagsOnPremisesListRelationFilter | undefined;
     threadsOnPremise?: ThreadsOnPremiseListRelationFilter | undefined;
     votesOnPremise?: VotesOnPremiseListRelationFilter | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesListRelationFilter | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesListRelationFilter | undefined;
 }

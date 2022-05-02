@@ -22,5 +22,5 @@ export declare class VisionCreateWithoutVotesOnVisionInput {
     nextVisions?: VisionCreateNestedManyWithoutPrevVisionInput | undefined;
     threadsOnVision?: ThreadsOnVisionCreateNestedManyWithoutVisionInput | undefined;
     mergeRequest?: MergeRequestCreateNestedOneWithoutVisionInput | undefined;
-    ReactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutVisionInput | undefined;
+    reactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutVisionInput | undefined;
 }

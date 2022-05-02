@@ -70,7 +70,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1.SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput)
-], TimelineCreateWithoutReactionOnTimelinesInput.prototype, "SubscriptionsOnTimelines", void 0);
+], TimelineCreateWithoutReactionOnTimelinesInput.prototype, "subscriptionsOnTimelines", void 0);
 TimelineCreateWithoutReactionOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineCreateWithoutReactionOnTimelinesInput", {
         isAbstract: true

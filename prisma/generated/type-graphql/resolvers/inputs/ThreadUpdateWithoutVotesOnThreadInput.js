@@ -106,7 +106,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsUpdateManyWithoutThreadInput_1.ReactionOnThreadsUpdateManyWithoutThreadInput)
-], ThreadUpdateWithoutVotesOnThreadInput.prototype, "ReactionOnThreads", void 0);
+], ThreadUpdateWithoutVotesOnThreadInput.prototype, "reactionOnThreads", void 0);
 ThreadUpdateWithoutVotesOnThreadInput = tslib_1.__decorate([
     TypeGraphQL.InputType("ThreadUpdateWithoutVotesOnThreadInput", {
         isAbstract: true

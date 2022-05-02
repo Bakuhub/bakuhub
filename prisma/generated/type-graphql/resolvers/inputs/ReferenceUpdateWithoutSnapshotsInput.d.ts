@@ -2,5 +2,5 @@ import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOpe
 import { VisionUpdateManyWithoutReferenceInput } from "../inputs/VisionUpdateManyWithoutReferenceInput";
 export declare class ReferenceUpdateWithoutSnapshotsInput {
     id?: StringFieldUpdateOperationsInput | undefined;
-    Vision?: VisionUpdateManyWithoutReferenceInput | undefined;
+    vision?: VisionUpdateManyWithoutReferenceInput | undefined;
 }

@@ -77,7 +77,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput_1.SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput)
-], PremiseCreateWithoutThreadsOnPremiseInput.prototype, "SubscriptionsOnPremises", void 0);
+], PremiseCreateWithoutThreadsOnPremiseInput.prototype, "subscriptionsOnPremises", void 0);
 PremiseCreateWithoutThreadsOnPremiseInput = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseCreateWithoutThreadsOnPremiseInput", {
         isAbstract: true

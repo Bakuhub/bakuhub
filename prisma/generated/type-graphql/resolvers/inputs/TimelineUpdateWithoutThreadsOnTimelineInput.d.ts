@@ -13,7 +13,7 @@ export declare class TimelineUpdateWithoutThreadsOnTimelineInput {
     author?: UserUpdateOneRequiredWithoutTimelinesInput | undefined;
     premisesOnTimelines?: PremisesOnTimelinesUpdateManyWithoutTimelineInput | undefined;
     tagsOnTimelines?: TagsOnTimelinesUpdateManyWithoutTimelineInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutTimelineInput | undefined;
     votesOnTimeline?: VotesOnTimelineUpdateManyWithoutTimelineInput | undefined;
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput | undefined;
 }

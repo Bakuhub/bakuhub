@@ -15,5 +15,5 @@ export declare class PremiseCreateWithoutTagsOnPremisesInput {
     premisesOnTimelines?: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput | undefined;
     threadsOnPremise?: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput | undefined;
     votesOnPremise?: VotesOnPremiseCreateNestedManyWithoutPremiseInput | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput | undefined;
 }

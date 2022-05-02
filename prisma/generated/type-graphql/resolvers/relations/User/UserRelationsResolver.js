@@ -78,26 +78,26 @@ let UserRelationsResolver = class UserRelationsResolver {
             },
         }).timelines(args);
     }
-    async ReactionOnThreads(user, ctx, args) {
+    async reactionOnThreads(user, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
             where: {
                 id: user.id,
             },
-        }).ReactionOnThreads(args);
+        }).reactionOnThreads(args);
     }
-    async ReactionOnTimelines(user, ctx, args) {
+    async reactionOnTimelines(user, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
             where: {
                 id: user.id,
             },
-        }).ReactionOnTimelines(args);
+        }).reactionOnTimelines(args);
     }
-    async ReactionOnVisions(user, ctx, args) {
+    async reactionOnVisions(user, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
             where: {
                 id: user.id,
             },
-        }).ReactionOnVisions(args);
+        }).reactionOnVisions(args);
     }
     async votesOnVision(user, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
@@ -127,19 +127,19 @@ let UserRelationsResolver = class UserRelationsResolver {
             },
         }).votesOnThread(args);
     }
-    async SubscriptionsOnPremises(user, ctx, args) {
+    async subscriptionsOnPremises(user, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
             where: {
                 id: user.id,
             },
-        }).SubscriptionsOnPremises(args);
+        }).subscriptionsOnPremises(args);
     }
-    async SubscriptionsOnTimelines(user, ctx, args) {
+    async subscriptionsOnTimelines(user, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
             where: {
                 id: user.id,
             },
-        }).SubscriptionsOnTimelines(args);
+        }).subscriptionsOnTimelines(args);
     }
 };
 tslib_1.__decorate([
@@ -218,7 +218,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserReactionOnThreadsArgs_1.UserReactionOnThreadsArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserRelationsResolver.prototype, "ReactionOnThreads", null);
+], UserRelationsResolver.prototype, "reactionOnThreads", null);
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => [ReactionOnTimelines_1.ReactionOnTimelines], {
         nullable: false
@@ -229,7 +229,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserReactionOnTimelinesArgs_1.UserReactionOnTimelinesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserRelationsResolver.prototype, "ReactionOnTimelines", null);
+], UserRelationsResolver.prototype, "reactionOnTimelines", null);
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => [ReactionOnVisions_1.ReactionOnVisions], {
         nullable: false
@@ -240,7 +240,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserReactionOnVisionsArgs_1.UserReactionOnVisionsArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserRelationsResolver.prototype, "ReactionOnVisions", null);
+], UserRelationsResolver.prototype, "reactionOnVisions", null);
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => [VotesOnVision_1.VotesOnVision], {
         nullable: false
@@ -295,7 +295,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserSubscriptionsOnPremisesArgs_1.UserSubscriptionsOnPremisesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserRelationsResolver.prototype, "SubscriptionsOnPremises", null);
+], UserRelationsResolver.prototype, "subscriptionsOnPremises", null);
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => [SubscriptionsOnTimelines_1.SubscriptionsOnTimelines], {
         nullable: false
@@ -306,7 +306,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserSubscriptionsOnTimelinesArgs_1.UserSubscriptionsOnTimelinesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserRelationsResolver.prototype, "SubscriptionsOnTimelines", null);
+], UserRelationsResolver.prototype, "subscriptionsOnTimelines", null);
 UserRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => User_1.User)
 ], UserRelationsResolver);

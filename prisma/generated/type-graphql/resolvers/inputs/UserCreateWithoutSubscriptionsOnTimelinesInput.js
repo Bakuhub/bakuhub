@@ -96,19 +96,19 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsCreateNestedManyWithoutUserInput_1.ReactionOnThreadsCreateNestedManyWithoutUserInput)
-], UserCreateWithoutSubscriptionsOnTimelinesInput.prototype, "ReactionOnThreads", void 0);
+], UserCreateWithoutSubscriptionsOnTimelinesInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnTimelinesCreateNestedManyWithoutUserInput_1.ReactionOnTimelinesCreateNestedManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesCreateNestedManyWithoutUserInput_1.ReactionOnTimelinesCreateNestedManyWithoutUserInput)
-], UserCreateWithoutSubscriptionsOnTimelinesInput.prototype, "ReactionOnTimelines", void 0);
+], UserCreateWithoutSubscriptionsOnTimelinesInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnVisionsCreateNestedManyWithoutUserInput_1.ReactionOnVisionsCreateNestedManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsCreateNestedManyWithoutUserInput_1.ReactionOnVisionsCreateNestedManyWithoutUserInput)
-], UserCreateWithoutSubscriptionsOnTimelinesInput.prototype, "ReactionOnVisions", void 0);
+], UserCreateWithoutSubscriptionsOnTimelinesInput.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnVisionCreateNestedManyWithoutUserInput_1.VotesOnVisionCreateNestedManyWithoutUserInput, {
         nullable: true
@@ -138,7 +138,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesCreateNestedManyWithoutUserInput_1.SubscriptionsOnPremisesCreateNestedManyWithoutUserInput)
-], UserCreateWithoutSubscriptionsOnTimelinesInput.prototype, "SubscriptionsOnPremises", void 0);
+], UserCreateWithoutSubscriptionsOnTimelinesInput.prototype, "subscriptionsOnPremises", void 0);
 UserCreateWithoutSubscriptionsOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserCreateWithoutSubscriptionsOnTimelinesInput", {
         isAbstract: true

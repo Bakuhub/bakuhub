@@ -61,12 +61,12 @@ let PremiseRelationsResolver = class PremiseRelationsResolver {
             },
         }).votesOnPremise(args);
     }
-    async SubscriptionsOnPremises(premise, ctx, args) {
+    async subscriptionsOnPremises(premise, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).premise.findUnique({
             where: {
                 id: premise.id,
             },
-        }).SubscriptionsOnPremises(args);
+        }).subscriptionsOnPremises(args);
     }
 };
 tslib_1.__decorate([
@@ -144,7 +144,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Premise_1.Premise, Object, PremiseSubscriptionsOnPremisesArgs_1.PremiseSubscriptionsOnPremisesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], PremiseRelationsResolver.prototype, "SubscriptionsOnPremises", null);
+], PremiseRelationsResolver.prototype, "subscriptionsOnPremises", null);
 PremiseRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => Premise_1.Premise)
 ], PremiseRelationsResolver);

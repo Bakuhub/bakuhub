@@ -71,7 +71,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1.SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput)
-], TimelineUpdateWithoutReactionOnTimelinesInput.prototype, "SubscriptionsOnTimelines", void 0);
+], TimelineUpdateWithoutReactionOnTimelinesInput.prototype, "subscriptionsOnTimelines", void 0);
 TimelineUpdateWithoutReactionOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineUpdateWithoutReactionOnTimelinesInput", {
         isAbstract: true

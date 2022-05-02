@@ -24,6 +24,6 @@ export declare class ThreadUpdateWithoutThreadsOnTimelineInput {
     threadsOnPremise?: ThreadsOnPremiseUpdateOneWithoutThreadInput | undefined;
     threadsOnVision?: ThreadsOnVisionUpdateOneWithoutThreadInput | undefined;
     threadsOnMergeRequest?: ThreadsOnMergeRequestUpdateOneWithoutThreadInput | undefined;
-    ReactionOnThreads?: ReactionOnThreadsUpdateManyWithoutThreadInput | undefined;
+    reactionOnThreads?: ReactionOnThreadsUpdateManyWithoutThreadInput | undefined;
     votesOnThread?: VotesOnThreadUpdateManyWithoutThreadInput | undefined;
 }

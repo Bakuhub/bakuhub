@@ -12,7 +12,7 @@ export declare class TimelineCreateWithoutThreadsOnTimelineInput {
     author: UserCreateNestedOneWithoutTimelinesInput;
     premisesOnTimelines?: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     tagsOnTimelines?: TagsOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     votesOnTimeline?: VotesOnTimelineCreateNestedManyWithoutTimelineInput | undefined;
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
 }

@@ -46,19 +46,19 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], UserCount.prototype, "ReactionOnThreads", void 0);
+], UserCount.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], UserCount.prototype, "ReactionOnTimelines", void 0);
+], UserCount.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], UserCount.prototype, "ReactionOnVisions", void 0);
+], UserCount.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false
@@ -88,13 +88,13 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], UserCount.prototype, "SubscriptionsOnPremises", void 0);
+], UserCount.prototype, "subscriptionsOnPremises", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], UserCount.prototype, "SubscriptionsOnTimelines", void 0);
+], UserCount.prototype, "subscriptionsOnTimelines", void 0);
 UserCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("UserCount", {
         isAbstract: true

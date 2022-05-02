@@ -100,19 +100,19 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsUpdateManyWithoutUserInput_1.ReactionOnThreadsUpdateManyWithoutUserInput)
-], UserUpdateInput.prototype, "ReactionOnThreads", void 0);
+], UserUpdateInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnTimelinesUpdateManyWithoutUserInput_1.ReactionOnTimelinesUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesUpdateManyWithoutUserInput_1.ReactionOnTimelinesUpdateManyWithoutUserInput)
-], UserUpdateInput.prototype, "ReactionOnTimelines", void 0);
+], UserUpdateInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnVisionsUpdateManyWithoutUserInput_1.ReactionOnVisionsUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsUpdateManyWithoutUserInput_1.ReactionOnVisionsUpdateManyWithoutUserInput)
-], UserUpdateInput.prototype, "ReactionOnVisions", void 0);
+], UserUpdateInput.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnVisionUpdateManyWithoutUserInput_1.VotesOnVisionUpdateManyWithoutUserInput, {
         nullable: true
@@ -142,13 +142,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesUpdateManyWithoutUserInput_1.SubscriptionsOnPremisesUpdateManyWithoutUserInput)
-], UserUpdateInput.prototype, "SubscriptionsOnPremises", void 0);
+], UserUpdateInput.prototype, "subscriptionsOnPremises", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SubscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SubscriptionsOnTimelinesUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SubscriptionsOnTimelinesUpdateManyWithoutUserInput)
-], UserUpdateInput.prototype, "SubscriptionsOnTimelines", void 0);
+], UserUpdateInput.prototype, "subscriptionsOnTimelines", void 0);
 UserUpdateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateInput", {
         isAbstract: true

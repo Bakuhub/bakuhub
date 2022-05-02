@@ -28,12 +28,12 @@ export declare class UserUpdateWithoutReactionOnVisionsInput {
     threads?: ThreadUpdateManyWithoutAuthorInput | undefined;
     visions?: VisionUpdateManyWithoutAuthorInput | undefined;
     timelines?: TimelineUpdateManyWithoutAuthorInput | undefined;
-    ReactionOnThreads?: ReactionOnThreadsUpdateManyWithoutUserInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutUserInput | undefined;
+    reactionOnThreads?: ReactionOnThreadsUpdateManyWithoutUserInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesUpdateManyWithoutUserInput | undefined;
     votesOnVision?: VotesOnVisionUpdateManyWithoutUserInput | undefined;
     votesOnTimeline?: VotesOnTimelineUpdateManyWithoutUserInput | undefined;
     votesOnPremise?: VotesOnPremiseUpdateManyWithoutUserInput | undefined;
     votesOnThread?: VotesOnThreadUpdateManyWithoutUserInput | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesUpdateManyWithoutUserInput | undefined;
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesUpdateManyWithoutUserInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesUpdateManyWithoutUserInput | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesUpdateManyWithoutUserInput | undefined;
 }

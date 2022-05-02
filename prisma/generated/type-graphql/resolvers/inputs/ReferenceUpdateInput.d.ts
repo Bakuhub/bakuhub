@@ -4,5 +4,5 @@ import { VisionUpdateManyWithoutReferenceInput } from "../inputs/VisionUpdateMan
 export declare class ReferenceUpdateInput {
     id?: StringFieldUpdateOperationsInput | undefined;
     snapshots?: SnapshotUpdateManyWithoutReferencesInput | undefined;
-    Vision?: VisionUpdateManyWithoutReferenceInput | undefined;
+    vision?: VisionUpdateManyWithoutReferenceInput | undefined;
 }

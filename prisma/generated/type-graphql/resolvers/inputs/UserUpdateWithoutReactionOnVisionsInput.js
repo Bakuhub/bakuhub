@@ -99,13 +99,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsUpdateManyWithoutUserInput_1.ReactionOnThreadsUpdateManyWithoutUserInput)
-], UserUpdateWithoutReactionOnVisionsInput.prototype, "ReactionOnThreads", void 0);
+], UserUpdateWithoutReactionOnVisionsInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnTimelinesUpdateManyWithoutUserInput_1.ReactionOnTimelinesUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesUpdateManyWithoutUserInput_1.ReactionOnTimelinesUpdateManyWithoutUserInput)
-], UserUpdateWithoutReactionOnVisionsInput.prototype, "ReactionOnTimelines", void 0);
+], UserUpdateWithoutReactionOnVisionsInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnVisionUpdateManyWithoutUserInput_1.VotesOnVisionUpdateManyWithoutUserInput, {
         nullable: true
@@ -135,13 +135,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesUpdateManyWithoutUserInput_1.SubscriptionsOnPremisesUpdateManyWithoutUserInput)
-], UserUpdateWithoutReactionOnVisionsInput.prototype, "SubscriptionsOnPremises", void 0);
+], UserUpdateWithoutReactionOnVisionsInput.prototype, "subscriptionsOnPremises", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SubscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SubscriptionsOnTimelinesUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SubscriptionsOnTimelinesUpdateManyWithoutUserInput)
-], UserUpdateWithoutReactionOnVisionsInput.prototype, "SubscriptionsOnTimelines", void 0);
+], UserUpdateWithoutReactionOnVisionsInput.prototype, "subscriptionsOnTimelines", void 0);
 UserUpdateWithoutReactionOnVisionsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutReactionOnVisionsInput", {
         isAbstract: true

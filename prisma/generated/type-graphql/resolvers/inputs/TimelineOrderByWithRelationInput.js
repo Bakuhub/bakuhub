@@ -72,7 +72,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesOrderByRelationAggregateInput_1.ReactionOnTimelinesOrderByRelationAggregateInput)
-], TimelineOrderByWithRelationInput.prototype, "ReactionOnTimelines", void 0);
+], TimelineOrderByWithRelationInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnTimelineOrderByRelationAggregateInput_1.VotesOnTimelineOrderByRelationAggregateInput, {
         nullable: true
@@ -84,7 +84,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesOrderByRelationAggregateInput_1.SubscriptionsOnTimelinesOrderByRelationAggregateInput)
-], TimelineOrderByWithRelationInput.prototype, "SubscriptionsOnTimelines", void 0);
+], TimelineOrderByWithRelationInput.prototype, "subscriptionsOnTimelines", void 0);
 TimelineOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineOrderByWithRelationInput", {
         isAbstract: true

@@ -2,7 +2,7 @@ export declare class TimelineCount {
     premisesOnTimelines: number;
     tagsOnTimelines: number;
     threadsOnTimeline: number;
-    ReactionOnTimelines: number;
+    reactionOnTimelines: number;
     votesOnTimeline: number;
-    SubscriptionsOnTimelines: number;
+    subscriptionsOnTimelines: number;
 }

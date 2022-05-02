@@ -15,7 +15,7 @@ export declare class TimelineOrderByWithRelationInput {
     premisesOnTimelines?: PremisesOnTimelinesOrderByRelationAggregateInput | undefined;
     tagsOnTimelines?: TagsOnTimelinesOrderByRelationAggregateInput | undefined;
     threadsOnTimeline?: ThreadsOnTimelineOrderByRelationAggregateInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
     votesOnTimeline?: VotesOnTimelineOrderByRelationAggregateInput | undefined;
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesOrderByRelationAggregateInput | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesOrderByRelationAggregateInput | undefined;
 }

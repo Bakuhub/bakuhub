@@ -15,5 +15,5 @@ export declare class PremiseCreateWithoutVisionInput {
     tagsOnPremises?: TagsOnPremisesCreateNestedManyWithoutPremiseInput | undefined;
     threadsOnPremise?: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput | undefined;
     votesOnPremise?: VotesOnPremiseCreateNestedManyWithoutPremiseInput | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput | undefined;
 }

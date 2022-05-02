@@ -5,5 +5,5 @@ import { ReferenceSnapshotsArgs } from "./args/ReferenceSnapshotsArgs";
 import { ReferenceVisionArgs } from "./args/ReferenceVisionArgs";
 export declare class ReferenceRelationsResolver {
     snapshots(reference: Reference, ctx: any, args: ReferenceSnapshotsArgs): Promise<Snapshot[]>;
-    Vision(reference: Reference, ctx: any, args: ReferenceVisionArgs): Promise<Vision[]>;
+    vision(reference: Reference, ctx: any, args: ReferenceVisionArgs): Promise<Vision[]>;
 }

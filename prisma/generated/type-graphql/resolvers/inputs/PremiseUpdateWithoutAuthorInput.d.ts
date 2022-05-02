@@ -18,5 +18,5 @@ export declare class PremiseUpdateWithoutAuthorInput {
     tagsOnPremises?: TagsOnPremisesUpdateManyWithoutPremiseInput | undefined;
     threadsOnPremise?: ThreadsOnPremiseUpdateManyWithoutPremiseInput | undefined;
     votesOnPremise?: VotesOnPremiseUpdateManyWithoutPremiseInput | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput | undefined;
 }

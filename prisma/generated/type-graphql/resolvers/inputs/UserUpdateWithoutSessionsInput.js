@@ -93,19 +93,19 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsUpdateManyWithoutUserInput_1.ReactionOnThreadsUpdateManyWithoutUserInput)
-], UserUpdateWithoutSessionsInput.prototype, "ReactionOnThreads", void 0);
+], UserUpdateWithoutSessionsInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnTimelinesUpdateManyWithoutUserInput_1.ReactionOnTimelinesUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesUpdateManyWithoutUserInput_1.ReactionOnTimelinesUpdateManyWithoutUserInput)
-], UserUpdateWithoutSessionsInput.prototype, "ReactionOnTimelines", void 0);
+], UserUpdateWithoutSessionsInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnVisionsUpdateManyWithoutUserInput_1.ReactionOnVisionsUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsUpdateManyWithoutUserInput_1.ReactionOnVisionsUpdateManyWithoutUserInput)
-], UserUpdateWithoutSessionsInput.prototype, "ReactionOnVisions", void 0);
+], UserUpdateWithoutSessionsInput.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnVisionUpdateManyWithoutUserInput_1.VotesOnVisionUpdateManyWithoutUserInput, {
         nullable: true
@@ -135,13 +135,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesUpdateManyWithoutUserInput_1.SubscriptionsOnPremisesUpdateManyWithoutUserInput)
-], UserUpdateWithoutSessionsInput.prototype, "SubscriptionsOnPremises", void 0);
+], UserUpdateWithoutSessionsInput.prototype, "subscriptionsOnPremises", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SubscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SubscriptionsOnTimelinesUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SubscriptionsOnTimelinesUpdateManyWithoutUserInput)
-], UserUpdateWithoutSessionsInput.prototype, "SubscriptionsOnTimelines", void 0);
+], UserUpdateWithoutSessionsInput.prototype, "subscriptionsOnTimelines", void 0);
 UserUpdateWithoutSessionsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutSessionsInput", {
         isAbstract: true

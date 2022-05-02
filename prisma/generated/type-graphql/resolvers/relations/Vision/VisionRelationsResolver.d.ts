@@ -18,6 +18,6 @@ export declare class VisionRelationsResolver {
     nextVisions(vision: Vision, ctx: any, args: VisionNextVisionsArgs): Promise<Vision[]>;
     threadsOnVision(vision: Vision, ctx: any, args: VisionThreadsOnVisionArgs): Promise<ThreadsOnVision[]>;
     mergeRequest(vision: Vision, ctx: any): Promise<MergeRequest | null>;
-    ReactionOnVisions(vision: Vision, ctx: any, args: VisionReactionOnVisionsArgs): Promise<ReactionOnVisions[]>;
+    reactionOnVisions(vision: Vision, ctx: any, args: VisionReactionOnVisionsArgs): Promise<ReactionOnVisions[]>;
     votesOnVision(vision: Vision, ctx: any, args: VisionVotesOnVisionArgs): Promise<VotesOnVision[]>;
 }

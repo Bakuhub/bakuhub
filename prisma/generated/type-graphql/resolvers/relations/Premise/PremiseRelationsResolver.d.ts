@@ -19,5 +19,5 @@ export declare class PremiseRelationsResolver {
     tagsOnPremises(premise: Premise, ctx: any, args: PremiseTagsOnPremisesArgs): Promise<TagsOnPremises[]>;
     threadsOnPremise(premise: Premise, ctx: any, args: PremiseThreadsOnPremiseArgs): Promise<ThreadsOnPremise[]>;
     votesOnPremise(premise: Premise, ctx: any, args: PremiseVotesOnPremiseArgs): Promise<VotesOnPremise[]>;
-    SubscriptionsOnPremises(premise: Premise, ctx: any, args: PremiseSubscriptionsOnPremisesArgs): Promise<SubscriptionsOnPremises[]>;
+    subscriptionsOnPremises(premise: Premise, ctx: any, args: PremiseSubscriptionsOnPremisesArgs): Promise<SubscriptionsOnPremises[]>;
 }

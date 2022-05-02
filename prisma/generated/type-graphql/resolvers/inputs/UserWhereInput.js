@@ -119,19 +119,19 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsListRelationFilter_1.ReactionOnThreadsListRelationFilter)
-], UserWhereInput.prototype, "ReactionOnThreads", void 0);
+], UserWhereInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnTimelinesListRelationFilter_1.ReactionOnTimelinesListRelationFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesListRelationFilter_1.ReactionOnTimelinesListRelationFilter)
-], UserWhereInput.prototype, "ReactionOnTimelines", void 0);
+], UserWhereInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnVisionsListRelationFilter_1.ReactionOnVisionsListRelationFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsListRelationFilter_1.ReactionOnVisionsListRelationFilter)
-], UserWhereInput.prototype, "ReactionOnVisions", void 0);
+], UserWhereInput.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnVisionListRelationFilter_1.VotesOnVisionListRelationFilter, {
         nullable: true
@@ -161,13 +161,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesListRelationFilter_1.SubscriptionsOnPremisesListRelationFilter)
-], UserWhereInput.prototype, "SubscriptionsOnPremises", void 0);
+], UserWhereInput.prototype, "subscriptionsOnPremises", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SubscriptionsOnTimelinesListRelationFilter_1.SubscriptionsOnTimelinesListRelationFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesListRelationFilter_1.SubscriptionsOnTimelinesListRelationFilter)
-], UserWhereInput.prototype, "SubscriptionsOnTimelines", void 0);
+], UserWhereInput.prototype, "subscriptionsOnTimelines", void 0);
 UserWhereInput = UserWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("UserWhereInput", {
         isAbstract: true

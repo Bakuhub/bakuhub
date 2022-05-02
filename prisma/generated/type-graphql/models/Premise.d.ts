@@ -19,6 +19,6 @@ export declare class Premise {
     tagsOnPremises?: TagsOnPremises[];
     threadsOnPremise?: ThreadsOnPremise[];
     votesOnPremise?: VotesOnPremise[];
-    SubscriptionsOnPremises?: SubscriptionsOnPremises[];
+    subscriptionsOnPremises?: SubscriptionsOnPremises[];
     _count?: PremiseCount | null;
 }

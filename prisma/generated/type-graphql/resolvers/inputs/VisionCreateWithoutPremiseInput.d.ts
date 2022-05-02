@@ -21,6 +21,6 @@ export declare class VisionCreateWithoutPremiseInput {
     nextVisions?: VisionCreateNestedManyWithoutPrevVisionInput | undefined;
     threadsOnVision?: ThreadsOnVisionCreateNestedManyWithoutVisionInput | undefined;
     mergeRequest?: MergeRequestCreateNestedOneWithoutVisionInput | undefined;
-    ReactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutVisionInput | undefined;
+    reactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutVisionInput | undefined;
     votesOnVision?: VotesOnVisionCreateNestedManyWithoutVisionInput | undefined;
 }

@@ -27,14 +27,14 @@ export declare class User {
     threads?: Thread[];
     visions?: Vision[];
     timelines?: Timeline[];
-    ReactionOnThreads?: ReactionOnThreads[];
-    ReactionOnTimelines?: ReactionOnTimelines[];
-    ReactionOnVisions?: ReactionOnVisions[];
+    reactionOnThreads?: ReactionOnThreads[];
+    reactionOnTimelines?: ReactionOnTimelines[];
+    reactionOnVisions?: ReactionOnVisions[];
     votesOnVision?: VotesOnVision[];
     votesOnTimeline?: VotesOnTimeline[];
     votesOnPremise?: VotesOnPremise[];
     votesOnThread?: VotesOnThread[];
-    SubscriptionsOnPremises?: SubscriptionsOnPremises[];
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelines[];
+    subscriptionsOnPremises?: SubscriptionsOnPremises[];
+    subscriptionsOnTimelines?: SubscriptionsOnTimelines[];
     _count?: UserCount | null;
 }

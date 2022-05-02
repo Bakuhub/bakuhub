@@ -13,6 +13,6 @@ export declare class TimelineCreateWithoutSubscriptionsOnTimelinesInput {
     premisesOnTimelines?: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     tagsOnTimelines?: TagsOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     threadsOnTimeline?: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     votesOnTimeline?: VotesOnTimelineCreateNestedManyWithoutTimelineInput | undefined;
 }

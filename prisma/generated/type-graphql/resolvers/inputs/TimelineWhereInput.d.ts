@@ -19,7 +19,7 @@ export declare class TimelineWhereInput {
     premisesOnTimelines?: PremisesOnTimelinesListRelationFilter | undefined;
     tagsOnTimelines?: TagsOnTimelinesListRelationFilter | undefined;
     threadsOnTimeline?: ThreadsOnTimelineListRelationFilter | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
     votesOnTimeline?: VotesOnTimelineListRelationFilter | undefined;
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesListRelationFilter | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesListRelationFilter | undefined;
 }

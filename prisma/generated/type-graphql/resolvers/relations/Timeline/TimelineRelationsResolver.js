@@ -47,12 +47,12 @@ let TimelineRelationsResolver = class TimelineRelationsResolver {
             },
         }).threadsOnTimeline(args);
     }
-    async ReactionOnTimelines(timeline, ctx, args) {
+    async reactionOnTimelines(timeline, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).timeline.findUnique({
             where: {
                 id: timeline.id,
             },
-        }).ReactionOnTimelines(args);
+        }).reactionOnTimelines(args);
     }
     async votesOnTimeline(timeline, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).timeline.findUnique({
@@ -61,12 +61,12 @@ let TimelineRelationsResolver = class TimelineRelationsResolver {
             },
         }).votesOnTimeline(args);
     }
-    async SubscriptionsOnTimelines(timeline, ctx, args) {
+    async subscriptionsOnTimelines(timeline, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).timeline.findUnique({
             where: {
                 id: timeline.id,
             },
-        }).SubscriptionsOnTimelines(args);
+        }).subscriptionsOnTimelines(args);
     }
 };
 tslib_1.__decorate([
@@ -122,7 +122,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Timeline_1.Timeline, Object, TimelineReactionOnTimelinesArgs_1.TimelineReactionOnTimelinesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], TimelineRelationsResolver.prototype, "ReactionOnTimelines", null);
+], TimelineRelationsResolver.prototype, "reactionOnTimelines", null);
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => [VotesOnTimeline_1.VotesOnTimeline], {
         nullable: false
@@ -144,7 +144,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Timeline_1.Timeline, Object, TimelineSubscriptionsOnTimelinesArgs_1.TimelineSubscriptionsOnTimelinesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], TimelineRelationsResolver.prototype, "SubscriptionsOnTimelines", null);
+], TimelineRelationsResolver.prototype, "subscriptionsOnTimelines", null);
 TimelineRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => Timeline_1.Timeline)
 ], TimelineRelationsResolver);

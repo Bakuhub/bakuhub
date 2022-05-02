@@ -134,7 +134,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsOrderByRelationAggregateInput_1.ReactionOnVisionsOrderByRelationAggregateInput)
-], VisionOrderByWithRelationInput.prototype, "ReactionOnVisions", void 0);
+], VisionOrderByWithRelationInput.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnVisionOrderByRelationAggregateInput_1.VotesOnVisionOrderByRelationAggregateInput, {
         nullable: true

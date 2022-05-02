@@ -108,7 +108,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsCreateNestedManyWithoutVisionInput_1.ReactionOnVisionsCreateNestedManyWithoutVisionInput)
-], VisionCreateWithoutVotesOnVisionInput.prototype, "ReactionOnVisions", void 0);
+], VisionCreateWithoutVotesOnVisionInput.prototype, "reactionOnVisions", void 0);
 VisionCreateWithoutVotesOnVisionInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionCreateWithoutVotesOnVisionInput", {
         isAbstract: true

@@ -1,5 +1,5 @@
 export declare class ThreadCount {
     childThreads: number;
-    ReactionOnThreads: number;
+    reactionOnThreads: number;
     votesOnThread: number;
 }

@@ -138,7 +138,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsListRelationFilter_1.ReactionOnThreadsListRelationFilter)
-], ThreadWhereInput.prototype, "ReactionOnThreads", void 0);
+], ThreadWhereInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnThreadListRelationFilter_1.VotesOnThreadListRelationFilter, {
         nullable: true

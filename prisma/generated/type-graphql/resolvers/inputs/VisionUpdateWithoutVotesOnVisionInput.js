@@ -113,7 +113,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsUpdateManyWithoutVisionInput_1.ReactionOnVisionsUpdateManyWithoutVisionInput)
-], VisionUpdateWithoutVotesOnVisionInput.prototype, "ReactionOnVisions", void 0);
+], VisionUpdateWithoutVotesOnVisionInput.prototype, "reactionOnVisions", void 0);
 VisionUpdateWithoutVotesOnVisionInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionUpdateWithoutVotesOnVisionInput", {
         isAbstract: true

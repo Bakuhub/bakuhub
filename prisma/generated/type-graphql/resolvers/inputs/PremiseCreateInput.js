@@ -84,7 +84,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput_1.SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput)
-], PremiseCreateInput.prototype, "SubscriptionsOnPremises", void 0);
+], PremiseCreateInput.prototype, "subscriptionsOnPremises", void 0);
 PremiseCreateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseCreateInput", {
         isAbstract: true

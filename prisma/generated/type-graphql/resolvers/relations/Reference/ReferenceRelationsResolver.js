@@ -17,12 +17,12 @@ let ReferenceRelationsResolver = class ReferenceRelationsResolver {
             },
         }).snapshots(args);
     }
-    async Vision(reference, ctx, args) {
+    async vision(reference, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).reference.findUnique({
             where: {
                 id: reference.id,
             },
-        }).Vision(args);
+        }).vision(args);
     }
 };
 tslib_1.__decorate([
@@ -46,7 +46,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Reference_1.Reference, Object, ReferenceVisionArgs_1.ReferenceVisionArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], ReferenceRelationsResolver.prototype, "Vision", null);
+], ReferenceRelationsResolver.prototype, "vision", null);
 ReferenceRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => Reference_1.Reference)
 ], ReferenceRelationsResolver);

@@ -3,5 +3,5 @@ import { VisionCreateNestedManyWithoutReferenceInput } from "../inputs/VisionCre
 export declare class ReferenceCreateInput {
     id?: string | undefined;
     snapshots?: SnapshotCreateNestedManyWithoutReferencesInput | undefined;
-    Vision?: VisionCreateNestedManyWithoutReferenceInput | undefined;
+    vision?: VisionCreateNestedManyWithoutReferenceInput | undefined;
 }

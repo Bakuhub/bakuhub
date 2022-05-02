@@ -16,8 +16,8 @@ export declare class Timeline {
     premisesOnTimelines?: PremisesOnTimelines[];
     tagsOnTimelines?: TagsOnTimelines[];
     threadsOnTimeline?: ThreadsOnTimeline[];
-    ReactionOnTimelines?: ReactionOnTimelines[];
+    reactionOnTimelines?: ReactionOnTimelines[];
     votesOnTimeline?: VotesOnTimeline[];
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelines[];
+    subscriptionsOnTimelines?: SubscriptionsOnTimelines[];
     _count?: TimelineCount | null;
 }

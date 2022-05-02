@@ -17,7 +17,7 @@ export declare class TimelineRelationsResolver {
     premisesOnTimelines(timeline: Timeline, ctx: any, args: TimelinePremisesOnTimelinesArgs): Promise<PremisesOnTimelines[]>;
     tagsOnTimelines(timeline: Timeline, ctx: any, args: TimelineTagsOnTimelinesArgs): Promise<TagsOnTimelines[]>;
     threadsOnTimeline(timeline: Timeline, ctx: any, args: TimelineThreadsOnTimelineArgs): Promise<ThreadsOnTimeline[]>;
-    ReactionOnTimelines(timeline: Timeline, ctx: any, args: TimelineReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]>;
+    reactionOnTimelines(timeline: Timeline, ctx: any, args: TimelineReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]>;
     votesOnTimeline(timeline: Timeline, ctx: any, args: TimelineVotesOnTimelineArgs): Promise<VotesOnTimeline[]>;
-    SubscriptionsOnTimelines(timeline: Timeline, ctx: any, args: TimelineSubscriptionsOnTimelinesArgs): Promise<SubscriptionsOnTimelines[]>;
+    subscriptionsOnTimelines(timeline: Timeline, ctx: any, args: TimelineSubscriptionsOnTimelinesArgs): Promise<SubscriptionsOnTimelines[]>;
 }

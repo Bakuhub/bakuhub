@@ -44,7 +44,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", VisionListRelationFilter_1.VisionListRelationFilter)
-], ReferenceWhereInput.prototype, "Vision", void 0);
+], ReferenceWhereInput.prototype, "vision", void 0);
 ReferenceWhereInput = ReferenceWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("ReferenceWhereInput", {
         isAbstract: true

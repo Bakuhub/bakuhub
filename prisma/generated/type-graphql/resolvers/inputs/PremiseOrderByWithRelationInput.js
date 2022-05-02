@@ -90,7 +90,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesOrderByRelationAggregateInput_1.SubscriptionsOnPremisesOrderByRelationAggregateInput)
-], PremiseOrderByWithRelationInput.prototype, "SubscriptionsOnPremises", void 0);
+], PremiseOrderByWithRelationInput.prototype, "subscriptionsOnPremises", void 0);
 PremiseOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseOrderByWithRelationInput", {
         isAbstract: true

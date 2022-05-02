@@ -26,6 +26,6 @@ export declare class VisionOrderByWithRelationInput {
     nextVisions?: VisionOrderByRelationAggregateInput | undefined;
     threadsOnVision?: ThreadsOnVisionOrderByRelationAggregateInput | undefined;
     mergeRequest?: MergeRequestOrderByWithRelationInput | undefined;
-    ReactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
+    reactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
     votesOnVision?: VotesOnVisionOrderByRelationAggregateInput | undefined;
 }

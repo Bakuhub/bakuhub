@@ -31,6 +31,6 @@ export declare class ThreadWhereInput {
     threadsOnTimeline?: ThreadsOnTimelineRelationFilter | undefined;
     threadsOnVision?: ThreadsOnVisionRelationFilter | undefined;
     threadsOnMergeRequest?: ThreadsOnMergeRequestRelationFilter | undefined;
-    ReactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
+    reactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
     votesOnThread?: VotesOnThreadListRelationFilter | undefined;
 }

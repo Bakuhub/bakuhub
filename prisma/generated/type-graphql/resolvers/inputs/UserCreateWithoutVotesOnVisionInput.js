@@ -96,19 +96,19 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsCreateNestedManyWithoutUserInput_1.ReactionOnThreadsCreateNestedManyWithoutUserInput)
-], UserCreateWithoutVotesOnVisionInput.prototype, "ReactionOnThreads", void 0);
+], UserCreateWithoutVotesOnVisionInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnTimelinesCreateNestedManyWithoutUserInput_1.ReactionOnTimelinesCreateNestedManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesCreateNestedManyWithoutUserInput_1.ReactionOnTimelinesCreateNestedManyWithoutUserInput)
-], UserCreateWithoutVotesOnVisionInput.prototype, "ReactionOnTimelines", void 0);
+], UserCreateWithoutVotesOnVisionInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnVisionsCreateNestedManyWithoutUserInput_1.ReactionOnVisionsCreateNestedManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsCreateNestedManyWithoutUserInput_1.ReactionOnVisionsCreateNestedManyWithoutUserInput)
-], UserCreateWithoutVotesOnVisionInput.prototype, "ReactionOnVisions", void 0);
+], UserCreateWithoutVotesOnVisionInput.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnTimelineCreateNestedManyWithoutUserInput_1.VotesOnTimelineCreateNestedManyWithoutUserInput, {
         nullable: true
@@ -132,13 +132,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesCreateNestedManyWithoutUserInput_1.SubscriptionsOnPremisesCreateNestedManyWithoutUserInput)
-], UserCreateWithoutVotesOnVisionInput.prototype, "SubscriptionsOnPremises", void 0);
+], UserCreateWithoutVotesOnVisionInput.prototype, "subscriptionsOnPremises", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1.SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1.SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput)
-], UserCreateWithoutVotesOnVisionInput.prototype, "SubscriptionsOnTimelines", void 0);
+], UserCreateWithoutVotesOnVisionInput.prototype, "subscriptionsOnTimelines", void 0);
 UserCreateWithoutVotesOnVisionInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserCreateWithoutVotesOnVisionInput", {
         isAbstract: true

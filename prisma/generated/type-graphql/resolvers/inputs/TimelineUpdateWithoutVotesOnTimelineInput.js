@@ -65,13 +65,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesUpdateManyWithoutTimelineInput_1.ReactionOnTimelinesUpdateManyWithoutTimelineInput)
-], TimelineUpdateWithoutVotesOnTimelineInput.prototype, "ReactionOnTimelines", void 0);
+], TimelineUpdateWithoutVotesOnTimelineInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1.SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1.SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput)
-], TimelineUpdateWithoutVotesOnTimelineInput.prototype, "SubscriptionsOnTimelines", void 0);
+], TimelineUpdateWithoutVotesOnTimelineInput.prototype, "subscriptionsOnTimelines", void 0);
 TimelineUpdateWithoutVotesOnTimelineInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineUpdateWithoutVotesOnTimelineInput", {
         isAbstract: true

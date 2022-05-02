@@ -16,7 +16,7 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], ReferenceCount.prototype, "Vision", void 0);
+], ReferenceCount.prototype, "vision", void 0);
 ReferenceCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("ReferenceCount", {
         isAbstract: true

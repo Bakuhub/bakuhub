@@ -25,12 +25,12 @@ export declare class UserCreateWithoutSubscriptionsOnTimelinesInput {
     threads?: ThreadCreateNestedManyWithoutAuthorInput | undefined;
     visions?: VisionCreateNestedManyWithoutAuthorInput | undefined;
     timelines?: TimelineCreateNestedManyWithoutAuthorInput | undefined;
-    ReactionOnThreads?: ReactionOnThreadsCreateNestedManyWithoutUserInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutUserInput | undefined;
-    ReactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutUserInput | undefined;
+    reactionOnThreads?: ReactionOnThreadsCreateNestedManyWithoutUserInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesCreateNestedManyWithoutUserInput | undefined;
+    reactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutUserInput | undefined;
     votesOnVision?: VotesOnVisionCreateNestedManyWithoutUserInput | undefined;
     votesOnTimeline?: VotesOnTimelineCreateNestedManyWithoutUserInput | undefined;
     votesOnPremise?: VotesOnPremiseCreateNestedManyWithoutUserInput | undefined;
     votesOnThread?: VotesOnThreadCreateNestedManyWithoutUserInput | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesCreateNestedManyWithoutUserInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesCreateNestedManyWithoutUserInput | undefined;
 }

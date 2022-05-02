@@ -91,7 +91,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesListRelationFilter_1.ReactionOnTimelinesListRelationFilter)
-], TimelineWhereInput.prototype, "ReactionOnTimelines", void 0);
+], TimelineWhereInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnTimelineListRelationFilter_1.VotesOnTimelineListRelationFilter, {
         nullable: true
@@ -103,7 +103,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesListRelationFilter_1.SubscriptionsOnTimelinesListRelationFilter)
-], TimelineWhereInput.prototype, "SubscriptionsOnTimelines", void 0);
+], TimelineWhereInput.prototype, "subscriptionsOnTimelines", void 0);
 TimelineWhereInput = TimelineWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineWhereInput", {
         isAbstract: true

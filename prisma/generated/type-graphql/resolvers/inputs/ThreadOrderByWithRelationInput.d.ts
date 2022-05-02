@@ -23,6 +23,6 @@ export declare class ThreadOrderByWithRelationInput {
     threadsOnTimeline?: ThreadsOnTimelineOrderByWithRelationInput | undefined;
     threadsOnVision?: ThreadsOnVisionOrderByWithRelationInput | undefined;
     threadsOnMergeRequest?: ThreadsOnMergeRequestOrderByWithRelationInput | undefined;
-    ReactionOnThreads?: ReactionOnThreadsOrderByRelationAggregateInput | undefined;
+    reactionOnThreads?: ReactionOnThreadsOrderByRelationAggregateInput | undefined;
     votesOnThread?: VotesOnThreadOrderByRelationAggregateInput | undefined;
 }

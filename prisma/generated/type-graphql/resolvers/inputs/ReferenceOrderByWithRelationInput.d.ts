@@ -3,5 +3,5 @@ import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRela
 export declare class ReferenceOrderByWithRelationInput {
     id?: "asc" | "desc" | undefined;
     snapshots?: SnapshotOrderByRelationAggregateInput | undefined;
-    Vision?: VisionOrderByRelationAggregateInput | undefined;
+    vision?: VisionOrderByRelationAggregateInput | undefined;
 }

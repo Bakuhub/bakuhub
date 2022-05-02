@@ -66,12 +66,12 @@ let VisionRelationsResolver = class VisionRelationsResolver {
             },
         }).mergeRequest({});
     }
-    async ReactionOnVisions(vision, ctx, args) {
+    async reactionOnVisions(vision, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).vision.findUnique({
             where: {
                 id: vision.id,
             },
-        }).ReactionOnVisions(args);
+        }).reactionOnVisions(args);
     }
     async votesOnVision(vision, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).vision.findUnique({
@@ -163,7 +163,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Vision_1.Vision, Object, VisionReactionOnVisionsArgs_1.VisionReactionOnVisionsArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], VisionRelationsResolver.prototype, "ReactionOnVisions", null);
+], VisionRelationsResolver.prototype, "reactionOnVisions", null);
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => [VotesOnVision_1.VotesOnVision], {
         nullable: false

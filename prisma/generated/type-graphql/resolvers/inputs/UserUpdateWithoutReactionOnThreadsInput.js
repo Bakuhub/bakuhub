@@ -99,13 +99,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnTimelinesUpdateManyWithoutUserInput_1.ReactionOnTimelinesUpdateManyWithoutUserInput)
-], UserUpdateWithoutReactionOnThreadsInput.prototype, "ReactionOnTimelines", void 0);
+], UserUpdateWithoutReactionOnThreadsInput.prototype, "reactionOnTimelines", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ReactionOnVisionsUpdateManyWithoutUserInput_1.ReactionOnVisionsUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnVisionsUpdateManyWithoutUserInput_1.ReactionOnVisionsUpdateManyWithoutUserInput)
-], UserUpdateWithoutReactionOnThreadsInput.prototype, "ReactionOnVisions", void 0);
+], UserUpdateWithoutReactionOnThreadsInput.prototype, "reactionOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnVisionUpdateManyWithoutUserInput_1.VotesOnVisionUpdateManyWithoutUserInput, {
         nullable: true
@@ -135,13 +135,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesUpdateManyWithoutUserInput_1.SubscriptionsOnPremisesUpdateManyWithoutUserInput)
-], UserUpdateWithoutReactionOnThreadsInput.prototype, "SubscriptionsOnPremises", void 0);
+], UserUpdateWithoutReactionOnThreadsInput.prototype, "subscriptionsOnPremises", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SubscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SubscriptionsOnTimelinesUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesUpdateManyWithoutUserInput_1.SubscriptionsOnTimelinesUpdateManyWithoutUserInput)
-], UserUpdateWithoutReactionOnThreadsInput.prototype, "SubscriptionsOnTimelines", void 0);
+], UserUpdateWithoutReactionOnThreadsInput.prototype, "subscriptionsOnTimelines", void 0);
 UserUpdateWithoutReactionOnThreadsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutReactionOnThreadsInput", {
         isAbstract: true

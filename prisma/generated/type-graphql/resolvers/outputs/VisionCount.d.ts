@@ -1,6 +1,6 @@
 export declare class VisionCount {
     nextVisions: number;
     threadsOnVision: number;
-    ReactionOnVisions: number;
+    reactionOnVisions: number;
     votesOnVision: number;
 }

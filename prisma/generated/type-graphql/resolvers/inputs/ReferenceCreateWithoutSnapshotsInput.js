@@ -17,7 +17,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", VisionCreateNestedManyWithoutReferenceInput_1.VisionCreateNestedManyWithoutReferenceInput)
-], ReferenceCreateWithoutSnapshotsInput.prototype, "Vision", void 0);
+], ReferenceCreateWithoutSnapshotsInput.prototype, "vision", void 0);
 ReferenceCreateWithoutSnapshotsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("ReferenceCreateWithoutSnapshotsInput", {
         isAbstract: true

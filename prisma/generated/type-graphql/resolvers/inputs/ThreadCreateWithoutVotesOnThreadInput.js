@@ -102,7 +102,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsCreateNestedManyWithoutThreadInput_1.ReactionOnThreadsCreateNestedManyWithoutThreadInput)
-], ThreadCreateWithoutVotesOnThreadInput.prototype, "ReactionOnThreads", void 0);
+], ThreadCreateWithoutVotesOnThreadInput.prototype, "reactionOnThreads", void 0);
 ThreadCreateWithoutVotesOnThreadInput = tslib_1.__decorate([
     TypeGraphQL.InputType("ThreadCreateWithoutVotesOnThreadInput", {
         isAbstract: true

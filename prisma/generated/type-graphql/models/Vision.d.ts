@@ -26,7 +26,7 @@ export declare class Vision {
     nextVisions?: Vision[];
     threadsOnVision?: ThreadsOnVision[];
     mergeRequest?: MergeRequest | null;
-    ReactionOnVisions?: ReactionOnVisions[];
+    reactionOnVisions?: ReactionOnVisions[];
     votesOnVision?: VotesOnVision[];
     _count?: VisionCount | null;
 }

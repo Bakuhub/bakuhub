@@ -54,15 +54,15 @@ model User {
   threads                  Thread[]
   visions                  Vision[]
   timelines                Timeline[]
-  ReactionOnThreads        ReactionOnThreads[]
-  ReactionOnTimelines      ReactionOnTimelines[]
-  ReactionOnVisions        ReactionOnVisions[]
+  reactionOnThreads        ReactionOnThreads[]
+  reactionOnTimelines      ReactionOnTimelines[]
+  reactionOnVisions        ReactionOnVisions[]
   votesOnVision            VotesOnVision[]
   votesOnTimeline          VotesOnTimeline[]
   votesOnPremise           VotesOnPremise[]
   votesOnThread            VotesOnThread[]
-  SubscriptionsOnPremises  SubscriptionsOnPremises[]
-  SubscriptionsOnTimelines SubscriptionsOnTimelines[]
+  subscriptionsOnPremises  SubscriptionsOnPremises[]
+  subscriptionsOnTimelines SubscriptionsOnTimelines[]
 }
 
 model VerificationToken {
@@ -86,7 +86,7 @@ model Premise {
   tagsOnPremises          TagsOnPremises[]
   threadsOnPremise        ThreadsOnPremise[]
   votesOnPremise          VotesOnPremise[]
-  SubscriptionsOnPremises SubscriptionsOnPremises[]
+  subscriptionsOnPremises SubscriptionsOnPremises[]
 }
 
 model Vision {
@@ -109,14 +109,14 @@ model Vision {
   nextVisions       Vision[]            @relation("VisionHistory")
   threadsOnVision   ThreadsOnVision[]
   mergeRequest      MergeRequest?
-  ReactionOnVisions ReactionOnVisions[]
+  reactionOnVisions ReactionOnVisions[]
   votesOnVision     VotesOnVision[]
 }
 
 model Reference {
   id        String     @id @default(cuid())
   snapshots Snapshot[]
-  Vision    Vision[]
+  vision    Vision[]
 }
 
 model MergeRequest {
@@ -139,9 +139,9 @@ model Timeline {
   premisesOnTimelines      PremisesOnTimelines[]
   tagsOnTimelines          TagsOnTimelines[]
   threadsOnTimeline        ThreadsOnTimeline[]
-  ReactionOnTimelines      ReactionOnTimelines[]
+  reactionOnTimelines      ReactionOnTimelines[]
   votesOnTimeline          VotesOnTimeline[]
-  SubscriptionsOnTimelines SubscriptionsOnTimelines[]
+  subscriptionsOnTimelines SubscriptionsOnTimelines[]
 }
 
 model Tag {
@@ -210,7 +210,7 @@ model Thread {
   threadsOnTimeline     ThreadsOnTimeline?
   threadsOnVision       ThreadsOnVision?
   threadsOnMergeRequest ThreadsOnMergeRequest?
-  ReactionOnThreads     ReactionOnThreads[]
+  reactionOnThreads     ReactionOnThreads[]
   votesOnThread         VotesOnThread[]
 }
 

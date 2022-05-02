@@ -20,6 +20,6 @@ export declare class ThreadCreateWithoutThreadsOnVisionInput {
     threadsOnPremise?: ThreadsOnPremiseCreateNestedOneWithoutThreadInput | undefined;
     threadsOnTimeline?: ThreadsOnTimelineCreateNestedOneWithoutThreadInput | undefined;
     threadsOnMergeRequest?: ThreadsOnMergeRequestCreateNestedOneWithoutThreadInput | undefined;
-    ReactionOnThreads?: ReactionOnThreadsCreateNestedManyWithoutThreadInput | undefined;
+    reactionOnThreads?: ReactionOnThreadsCreateNestedManyWithoutThreadInput | undefined;
     votesOnThread?: VotesOnThreadCreateNestedManyWithoutThreadInput | undefined;
 }

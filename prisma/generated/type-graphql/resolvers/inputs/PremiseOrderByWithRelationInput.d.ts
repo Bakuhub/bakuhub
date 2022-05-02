@@ -18,5 +18,5 @@ export declare class PremiseOrderByWithRelationInput {
     tagsOnPremises?: TagsOnPremisesOrderByRelationAggregateInput | undefined;
     threadsOnPremise?: ThreadsOnPremiseOrderByRelationAggregateInput | undefined;
     votesOnPremise?: VotesOnPremiseOrderByRelationAggregateInput | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
 }

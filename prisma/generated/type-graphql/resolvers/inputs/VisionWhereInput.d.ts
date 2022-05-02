@@ -35,6 +35,6 @@ export declare class VisionWhereInput {
     nextVisions?: VisionListRelationFilter | undefined;
     threadsOnVision?: ThreadsOnVisionListRelationFilter | undefined;
     mergeRequest?: MergeRequestRelationFilter | undefined;
-    ReactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
+    reactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
     votesOnVision?: VotesOnVisionListRelationFilter | undefined;
 }

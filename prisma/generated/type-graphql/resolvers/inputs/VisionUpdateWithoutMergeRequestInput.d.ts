@@ -26,6 +26,6 @@ export declare class VisionUpdateWithoutMergeRequestInput {
     prevVision?: VisionUpdateOneWithoutNextVisionsInput | undefined;
     nextVisions?: VisionUpdateManyWithoutPrevVisionInput | undefined;
     threadsOnVision?: ThreadsOnVisionUpdateManyWithoutVisionInput | undefined;
-    ReactionOnVisions?: ReactionOnVisionsUpdateManyWithoutVisionInput | undefined;
+    reactionOnVisions?: ReactionOnVisionsUpdateManyWithoutVisionInput | undefined;
     votesOnVision?: VotesOnVisionUpdateManyWithoutVisionInput | undefined;
 }

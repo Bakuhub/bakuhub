@@ -4,6 +4,6 @@ import { ReferenceCount } from "../resolvers/outputs/ReferenceCount";
 export declare class Reference {
     id: string;
     snapshots?: Snapshot[];
-    Vision?: Vision[];
+    vision?: Vision[];
     _count?: ReferenceCount | null;
 }

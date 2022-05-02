@@ -26,13 +26,13 @@ export declare class UserOrderByWithRelationInput {
     threads?: ThreadOrderByRelationAggregateInput | undefined;
     visions?: VisionOrderByRelationAggregateInput | undefined;
     timelines?: TimelineOrderByRelationAggregateInput | undefined;
-    ReactionOnThreads?: ReactionOnThreadsOrderByRelationAggregateInput | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
-    ReactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
+    reactionOnThreads?: ReactionOnThreadsOrderByRelationAggregateInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
+    reactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
     votesOnVision?: VotesOnVisionOrderByRelationAggregateInput | undefined;
     votesOnTimeline?: VotesOnTimelineOrderByRelationAggregateInput | undefined;
     votesOnPremise?: VotesOnPremiseOrderByRelationAggregateInput | undefined;
     votesOnThread?: VotesOnThreadOrderByRelationAggregateInput | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesOrderByRelationAggregateInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesOrderByRelationAggregateInput | undefined;
 }

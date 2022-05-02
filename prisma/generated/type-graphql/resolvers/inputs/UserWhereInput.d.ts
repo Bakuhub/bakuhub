@@ -32,13 +32,13 @@ export declare class UserWhereInput {
     threads?: ThreadListRelationFilter | undefined;
     visions?: VisionListRelationFilter | undefined;
     timelines?: TimelineListRelationFilter | undefined;
-    ReactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
-    ReactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
-    ReactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
+    reactionOnThreads?: ReactionOnThreadsListRelationFilter | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
+    reactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
     votesOnVision?: VotesOnVisionListRelationFilter | undefined;
     votesOnTimeline?: VotesOnTimelineListRelationFilter | undefined;
     votesOnPremise?: VotesOnPremiseListRelationFilter | undefined;
     votesOnThread?: VotesOnThreadListRelationFilter | undefined;
-    SubscriptionsOnPremises?: SubscriptionsOnPremisesListRelationFilter | undefined;
-    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesListRelationFilter | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesListRelationFilter | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesListRelationFilter | undefined;
 }

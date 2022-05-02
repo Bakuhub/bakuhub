@@ -25,7 +25,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", VisionOrderByRelationAggregateInput_1.VisionOrderByRelationAggregateInput)
-], ReferenceOrderByWithRelationInput.prototype, "Vision", void 0);
+], ReferenceOrderByWithRelationInput.prototype, "vision", void 0);
 ReferenceOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("ReferenceOrderByWithRelationInput", {
         isAbstract: true

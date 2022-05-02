@@ -23,7 +23,7 @@ export declare class Thread {
     threadsOnTimeline?: ThreadsOnTimeline | null;
     threadsOnVision?: ThreadsOnVision | null;
     threadsOnMergeRequest?: ThreadsOnMergeRequest | null;
-    ReactionOnThreads?: ReactionOnThreads[];
+    reactionOnThreads?: ReactionOnThreads[];
     votesOnThread?: VotesOnThread[];
     _count?: ThreadCount | null;
 }

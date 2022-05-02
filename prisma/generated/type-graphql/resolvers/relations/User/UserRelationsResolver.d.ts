@@ -36,13 +36,13 @@ export declare class UserRelationsResolver {
     threads(user: User, ctx: any, args: UserThreadsArgs): Promise<Thread[]>;
     visions(user: User, ctx: any, args: UserVisionsArgs): Promise<Vision[]>;
     timelines(user: User, ctx: any, args: UserTimelinesArgs): Promise<Timeline[]>;
-    ReactionOnThreads(user: User, ctx: any, args: UserReactionOnThreadsArgs): Promise<ReactionOnThreads[]>;
-    ReactionOnTimelines(user: User, ctx: any, args: UserReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]>;
-    ReactionOnVisions(user: User, ctx: any, args: UserReactionOnVisionsArgs): Promise<ReactionOnVisions[]>;
+    reactionOnThreads(user: User, ctx: any, args: UserReactionOnThreadsArgs): Promise<ReactionOnThreads[]>;
+    reactionOnTimelines(user: User, ctx: any, args: UserReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]>;
+    reactionOnVisions(user: User, ctx: any, args: UserReactionOnVisionsArgs): Promise<ReactionOnVisions[]>;
     votesOnVision(user: User, ctx: any, args: UserVotesOnVisionArgs): Promise<VotesOnVision[]>;
     votesOnTimeline(user: User, ctx: any, args: UserVotesOnTimelineArgs): Promise<VotesOnTimeline[]>;
     votesOnPremise(user: User, ctx: any, args: UserVotesOnPremiseArgs): Promise<VotesOnPremise[]>;
     votesOnThread(user: User, ctx: any, args: UserVotesOnThreadArgs): Promise<VotesOnThread[]>;
-    SubscriptionsOnPremises(user: User, ctx: any, args: UserSubscriptionsOnPremisesArgs): Promise<SubscriptionsOnPremises[]>;
-    SubscriptionsOnTimelines(user: User, ctx: any, args: UserSubscriptionsOnTimelinesArgs): Promise<SubscriptionsOnTimelines[]>;
+    subscriptionsOnPremises(user: User, ctx: any, args: UserSubscriptionsOnPremisesArgs): Promise<SubscriptionsOnPremises[]>;
+    subscriptionsOnTimelines(user: User, ctx: any, args: UserSubscriptionsOnTimelinesArgs): Promise<SubscriptionsOnTimelines[]>;
 }

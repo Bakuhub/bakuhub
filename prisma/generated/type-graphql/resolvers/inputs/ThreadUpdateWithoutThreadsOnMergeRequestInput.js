@@ -100,7 +100,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", ReactionOnThreadsUpdateManyWithoutThreadInput_1.ReactionOnThreadsUpdateManyWithoutThreadInput)
-], ThreadUpdateWithoutThreadsOnMergeRequestInput.prototype, "ReactionOnThreads", void 0);
+], ThreadUpdateWithoutThreadsOnMergeRequestInput.prototype, "reactionOnThreads", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VotesOnThreadUpdateManyWithoutThreadInput_1.VotesOnThreadUpdateManyWithoutThreadInput, {
         nullable: true

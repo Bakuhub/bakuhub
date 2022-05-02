@@ -7,5 +7,5 @@ export declare class ReferenceWhereInput {
     NOT?: ReferenceWhereInput[] | undefined;
     id?: StringFilter | undefined;
     snapshots?: SnapshotListRelationFilter | undefined;
-    Vision?: VisionListRelationFilter | undefined;
+    vision?: VisionListRelationFilter | undefined;
 }

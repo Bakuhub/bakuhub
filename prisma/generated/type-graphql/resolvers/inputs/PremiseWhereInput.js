@@ -112,7 +112,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesListRelationFilter_1.SubscriptionsOnPremisesListRelationFilter)
-], PremiseWhereInput.prototype, "SubscriptionsOnPremises", void 0);
+], PremiseWhereInput.prototype, "subscriptionsOnPremises", void 0);
 PremiseWhereInput = PremiseWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("PremiseWhereInput", {
         isAbstract: true

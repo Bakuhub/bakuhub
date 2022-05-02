@@ -25,7 +25,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", VisionUpdateManyWithoutReferenceInput_1.VisionUpdateManyWithoutReferenceInput)
-], ReferenceUpdateInput.prototype, "Vision", void 0);
+], ReferenceUpdateInput.prototype, "vision", void 0);
 ReferenceUpdateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("ReferenceUpdateInput", {
         isAbstract: true
