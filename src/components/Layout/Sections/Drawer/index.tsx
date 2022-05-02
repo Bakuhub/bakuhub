@@ -9,6 +9,7 @@ import Icon from "@mui/material/Icon";
 import useTheme from "@mui/system/useTheme";
 import {MaterialUIIcons} from "../../../../constants/MaterialUIIcons";
 
+
 interface LayoutDrawerProps {
     open: boolean,
     handleDrawerClose: () => void

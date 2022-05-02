@@ -1,6 +1,5 @@
 import Avatar from "@mui/material/Avatar";
 import {getUserAvatar} from "../../../utils/getUserAvatar";
-import {red} from "@mui/material/colors";
 import * as React from "react";
 import {FunctionalComponent} from "preact";
 
@@ -13,7 +12,7 @@ export interface UserAvatarProps {
 export const UserAvatar: FunctionalComponent<UserAvatarProps> = (props) => {
     return <Avatar
             {...getUserAvatar(props || undefined)}
-            sx={{bgcolor: red[500]}}
+            sx={{width: 24, height: 24, margin: "0.5rem"}}
             aria-label="user avatar"
     />;
 };

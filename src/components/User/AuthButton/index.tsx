@@ -4,9 +4,11 @@ import React from "react";
 import {UserAvatar} from "../Avatar";
 import get from "lodash/get";
 import styled from "@emotion/styled";
+import {UserNotification} from "../Notification";
 
 export const AuthButtonContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 export const AuthButton = () => {
     const session = useSession();
@@ -15,8 +17,9 @@ export const AuthButton = () => {
             return <CircularProgress/>;
         case session.status === "authenticated":
             return <AuthButtonContainer>
+                <UserNotification/>
                 <UserAvatar {...get(session, "data.user", {})}/>
-                <Button variant={"outlined"} onClick={() => signOut()}>
+                <Button size={"small"} variant={"contained"} onClick={() => signOut()}>
                     Logout
                 </Button>
             </AuthButtonContainer>;
