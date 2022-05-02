@@ -8,7 +8,7 @@ import { SessionListRelationFilter } from "../inputs/SessionListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { SubscriptionsOnPremisesListRelationFilter } from "../inputs/SubscriptionsOnPremisesListRelationFilter";
-import { SupscriptionsOnTimelinesListRelationFilter } from "../inputs/SupscriptionsOnTimelinesListRelationFilter";
+import { SubscriptionsOnTimelinesListRelationFilter } from "../inputs/SubscriptionsOnTimelinesListRelationFilter";
 import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
 import { TimelineListRelationFilter } from "../inputs/TimelineListRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
@@ -40,5 +40,5 @@ export declare class UserWhereInput {
     votesOnPremise?: VotesOnPremiseListRelationFilter | undefined;
     votesOnThread?: VotesOnThreadListRelationFilter | undefined;
     SubscriptionsOnPremises?: SubscriptionsOnPremisesListRelationFilter | undefined;
-    SupscriptionsOnTimelines?: SupscriptionsOnTimelinesListRelationFilter | undefined;
+    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesListRelationFilter | undefined;
 }

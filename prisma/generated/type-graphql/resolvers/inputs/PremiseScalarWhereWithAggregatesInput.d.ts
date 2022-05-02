@@ -1,4 +1,3 @@
-import { DateTimeNullableWithAggregatesFilter } from "../inputs/DateTimeNullableWithAggregatesFilter";
 import { DateTimeWithAggregatesFilter } from "../inputs/DateTimeWithAggregatesFilter";
 import { EnumPremiseStatusWithAggregatesFilter } from "../inputs/EnumPremiseStatusWithAggregatesFilter";
 import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
@@ -10,7 +9,7 @@ export declare class PremiseScalarWhereWithAggregatesInput {
     id?: StringWithAggregatesFilter | undefined;
     title?: StringWithAggregatesFilter | undefined;
     createdAt?: DateTimeWithAggregatesFilter | undefined;
-    updatedAt?: DateTimeNullableWithAggregatesFilter | undefined;
+    updatedAt?: DateTimeWithAggregatesFilter | undefined;
     status?: EnumPremiseStatusWithAggregatesFilter | undefined;
     authorId?: StringNullableWithAggregatesFilter | undefined;
 }

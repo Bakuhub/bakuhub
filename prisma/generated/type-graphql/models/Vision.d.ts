@@ -11,7 +11,7 @@ export declare class Vision {
     title: string;
     activityDate?: Date | null;
     description?: string | null;
-    updatedAt?: Date | null;
+    updatedAt: Date;
     createdAt: Date;
     reference?: Reference | null;
     referenceId?: string | null;

@@ -27,7 +27,7 @@ tslib_1.__decorate([
 ], Premise.prototype, "createdAt", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
-        nullable: true
+        nullable: false
     }),
     tslib_1.__metadata("design:type", Date)
 ], Premise.prototype, "updatedAt", void 0);

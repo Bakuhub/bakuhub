@@ -1,6 +1,5 @@
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EnumPremiseStatusFieldUpdateOperationsInput } from "../inputs/EnumPremiseStatusFieldUpdateOperationsInput";
-import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { PremisesOnTimelinesUpdateManyWithoutPremiseInput } from "../inputs/PremisesOnTimelinesUpdateManyWithoutPremiseInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TagsOnPremisesUpdateManyWithoutPremiseInput } from "../inputs/TagsOnPremisesUpdateManyWithoutPremiseInput";
@@ -12,7 +11,7 @@ export declare class PremiseUpdateWithoutSubscriptionsOnPremisesInput {
     id?: StringFieldUpdateOperationsInput | undefined;
     title?: StringFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
     status?: EnumPremiseStatusFieldUpdateOperationsInput | undefined;
     author?: UserUpdateOneWithoutPremisesInput | undefined;
     vision?: VisionUpdateManyWithoutPremiseInput | undefined;

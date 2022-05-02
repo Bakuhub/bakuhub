@@ -9,7 +9,7 @@ const ReactionOnTimelinesCreateNestedManyWithoutUserInput_1 = require("../inputs
 const ReactionOnVisionsCreateNestedManyWithoutUserInput_1 = require("../inputs/ReactionOnVisionsCreateNestedManyWithoutUserInput");
 const SessionCreateNestedManyWithoutUserInput_1 = require("../inputs/SessionCreateNestedManyWithoutUserInput");
 const SubscriptionsOnPremisesCreateNestedManyWithoutUserInput_1 = require("../inputs/SubscriptionsOnPremisesCreateNestedManyWithoutUserInput");
-const SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1 = require("../inputs/SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput");
+const SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1 = require("../inputs/SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput");
 const ThreadCreateNestedManyWithoutAuthorInput_1 = require("../inputs/ThreadCreateNestedManyWithoutAuthorInput");
 const TimelineCreateNestedManyWithoutAuthorInput_1 = require("../inputs/TimelineCreateNestedManyWithoutAuthorInput");
 const VisionCreateNestedManyWithoutAuthorInput_1 = require("../inputs/VisionCreateNestedManyWithoutAuthorInput");
@@ -134,11 +134,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesCreateNestedManyWithoutUserInput_1.SubscriptionsOnPremisesCreateNestedManyWithoutUserInput)
 ], UserCreateWithoutAccountsInput.prototype, "SubscriptionsOnPremises", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1.SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput, {
+    TypeGraphQL.Field(_type => SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1.SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1.SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput)
-], UserCreateWithoutAccountsInput.prototype, "SupscriptionsOnTimelines", void 0);
+    tslib_1.__metadata("design:type", SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1.SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput)
+], UserCreateWithoutAccountsInput.prototype, "SubscriptionsOnTimelines", void 0);
 UserCreateWithoutAccountsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserCreateWithoutAccountsInput", {
         isAbstract: true

@@ -7,6 +7,7 @@ export declare class SubscriptionsOnPremisesScalarWhereWithAggregatesInput {
     NOT?: SubscriptionsOnPremisesScalarWhereWithAggregatesInput[] | undefined;
     userId?: StringWithAggregatesFilter | undefined;
     premiseId?: StringWithAggregatesFilter | undefined;
+    lastReadAt?: DateTimeWithAggregatesFilter | undefined;
     type?: EnumSubscriptionTypeWithAggregatesFilter | undefined;
     createdAt?: DateTimeWithAggregatesFilter | undefined;
     updatedAt?: DateTimeWithAggregatesFilter | undefined;

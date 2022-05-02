@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ReactionOnTimelinesUpdateManyWithoutTimelineInput_1 = require("../inputs/ReactionOnTimelinesUpdateManyWithoutTimelineInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-const SupscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1 = require("../inputs/SupscriptionsOnTimelinesUpdateManyWithoutTimelineInput");
+const SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1 = require("../inputs/SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput");
 const TagsOnTimelinesUpdateManyWithoutTimelineInput_1 = require("../inputs/TagsOnTimelinesUpdateManyWithoutTimelineInput");
 const ThreadsOnTimelineUpdateManyWithoutTimelineInput_1 = require("../inputs/ThreadsOnTimelineUpdateManyWithoutTimelineInput");
 const UserUpdateOneRequiredWithoutTimelinesInput_1 = require("../inputs/UserUpdateOneRequiredWithoutTimelinesInput");
@@ -67,11 +67,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", VotesOnTimelineUpdateManyWithoutTimelineInput_1.VotesOnTimelineUpdateManyWithoutTimelineInput)
 ], TimelineUpdateWithoutPremisesOnTimelinesInput.prototype, "votesOnTimeline", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1.SupscriptionsOnTimelinesUpdateManyWithoutTimelineInput, {
+    TypeGraphQL.Field(_type => SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1.SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1.SupscriptionsOnTimelinesUpdateManyWithoutTimelineInput)
-], TimelineUpdateWithoutPremisesOnTimelinesInput.prototype, "SupscriptionsOnTimelines", void 0);
+    tslib_1.__metadata("design:type", SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput_1.SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput)
+], TimelineUpdateWithoutPremisesOnTimelinesInput.prototype, "SubscriptionsOnTimelines", void 0);
 TimelineUpdateWithoutPremisesOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineUpdateWithoutPremisesOnTimelinesInput", {
         isAbstract: true

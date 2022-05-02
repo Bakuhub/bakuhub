@@ -9,7 +9,7 @@ export { Reference } from "./Reference";
 export { Session } from "./Session";
 export { Snapshot } from "./Snapshot";
 export { SubscriptionsOnPremises } from "./SubscriptionsOnPremises";
-export { SupscriptionsOnTimelines } from "./SupscriptionsOnTimelines";
+export { SubscriptionsOnTimelines } from "./SubscriptionsOnTimelines";
 export { Tag } from "./Tag";
 export { TagsOnPremises } from "./TagsOnPremises";
 export { TagsOnTimelines } from "./TagsOnTimelines";

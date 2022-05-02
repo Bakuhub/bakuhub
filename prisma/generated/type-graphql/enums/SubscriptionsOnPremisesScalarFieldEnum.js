@@ -7,6 +7,7 @@ var SubscriptionsOnPremisesScalarFieldEnum;
 (function (SubscriptionsOnPremisesScalarFieldEnum) {
     SubscriptionsOnPremisesScalarFieldEnum["userId"] = "userId";
     SubscriptionsOnPremisesScalarFieldEnum["premiseId"] = "premiseId";
+    SubscriptionsOnPremisesScalarFieldEnum["lastReadAt"] = "lastReadAt";
     SubscriptionsOnPremisesScalarFieldEnum["type"] = "type";
     SubscriptionsOnPremisesScalarFieldEnum["createdAt"] = "createdAt";
     SubscriptionsOnPremisesScalarFieldEnum["updatedAt"] = "updatedAt";

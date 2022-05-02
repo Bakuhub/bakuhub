@@ -17,7 +17,7 @@ export declare class VisionUpdateInput {
     title?: StringFieldUpdateOperationsInput | undefined;
     activityDate?: NullableDateTimeFieldUpdateOperationsInput | undefined;
     description?: NullableStringFieldUpdateOperationsInput | undefined;
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | undefined;
+    updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
     reference?: ReferenceUpdateOneWithoutVisionInput | undefined;
     author?: UserUpdateOneWithoutVisionsInput | undefined;

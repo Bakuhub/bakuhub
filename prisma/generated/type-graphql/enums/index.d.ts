@@ -15,7 +15,7 @@ export { SnapshotScalarFieldEnum } from "./SnapshotScalarFieldEnum";
 export { SortOrder } from "./SortOrder";
 export { SubscriptionType } from "./SubscriptionType";
 export { SubscriptionsOnPremisesScalarFieldEnum } from "./SubscriptionsOnPremisesScalarFieldEnum";
-export { SupscriptionsOnTimelinesScalarFieldEnum } from "./SupscriptionsOnTimelinesScalarFieldEnum";
+export { SubscriptionsOnTimelinesScalarFieldEnum } from "./SubscriptionsOnTimelinesScalarFieldEnum";
 export { TagScalarFieldEnum } from "./TagScalarFieldEnum";
 export { TagsOnPremisesScalarFieldEnum } from "./TagsOnPremisesScalarFieldEnum";
 export { TagsOnTimelinesScalarFieldEnum } from "./TagsOnTimelinesScalarFieldEnum";

@@ -5,6 +5,7 @@ import { UserUpdateOneRequiredWithoutSubscriptionsOnPremisesInput } from "../inp
 export declare class SubscriptionsOnPremisesUpdateInput {
     user?: UserUpdateOneRequiredWithoutSubscriptionsOnPremisesInput | undefined;
     premise?: PremiseUpdateOneRequiredWithoutSubscriptionsOnPremisesInput | undefined;
+    lastReadAt?: DateTimeFieldUpdateOperationsInput | undefined;
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
     updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;

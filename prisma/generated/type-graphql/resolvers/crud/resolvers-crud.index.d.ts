@@ -9,7 +9,7 @@ export { ReferenceCrudResolver } from "./Reference/ReferenceCrudResolver";
 export { SessionCrudResolver } from "./Session/SessionCrudResolver";
 export { SnapshotCrudResolver } from "./Snapshot/SnapshotCrudResolver";
 export { SubscriptionsOnPremisesCrudResolver } from "./SubscriptionsOnPremises/SubscriptionsOnPremisesCrudResolver";
-export { SupscriptionsOnTimelinesCrudResolver } from "./SupscriptionsOnTimelines/SupscriptionsOnTimelinesCrudResolver";
+export { SubscriptionsOnTimelinesCrudResolver } from "./SubscriptionsOnTimelines/SubscriptionsOnTimelinesCrudResolver";
 export { TagCrudResolver } from "./Tag/TagCrudResolver";
 export { TagsOnPremisesCrudResolver } from "./TagsOnPremises/TagsOnPremisesCrudResolver";
 export { TagsOnTimelinesCrudResolver } from "./TagsOnTimelines/TagsOnTimelinesCrudResolver";

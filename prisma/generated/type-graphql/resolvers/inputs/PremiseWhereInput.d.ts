@@ -1,5 +1,4 @@
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
-import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { EnumPremiseStatusFilter } from "../inputs/EnumPremiseStatusFilter";
 import { PremisesOnTimelinesListRelationFilter } from "../inputs/PremisesOnTimelinesListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
@@ -17,7 +16,7 @@ export declare class PremiseWhereInput {
     id?: StringFilter | undefined;
     title?: StringFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
-    updatedAt?: DateTimeNullableFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
     status?: EnumPremiseStatusFilter | undefined;
     author?: UserRelationFilter | undefined;
     authorId?: StringNullableFilter | undefined;

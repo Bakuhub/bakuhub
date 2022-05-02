@@ -5,7 +5,7 @@ import { ReactionOnTimelines } from "../models/ReactionOnTimelines";
 import { ReactionOnVisions } from "../models/ReactionOnVisions";
 import { Session } from "../models/Session";
 import { SubscriptionsOnPremises } from "../models/SubscriptionsOnPremises";
-import { SupscriptionsOnTimelines } from "../models/SupscriptionsOnTimelines";
+import { SubscriptionsOnTimelines } from "../models/SubscriptionsOnTimelines";
 import { Thread } from "../models/Thread";
 import { Timeline } from "../models/Timeline";
 import { Vision } from "../models/Vision";
@@ -35,6 +35,6 @@ export declare class User {
     votesOnPremise?: VotesOnPremise[];
     votesOnThread?: VotesOnThread[];
     SubscriptionsOnPremises?: SubscriptionsOnPremises[];
-    SupscriptionsOnTimelines?: SupscriptionsOnTimelines[];
+    SubscriptionsOnTimelines?: SubscriptionsOnTimelines[];
     _count?: UserCount | null;
 }

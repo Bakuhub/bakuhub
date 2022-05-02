@@ -5,7 +5,7 @@ import { ReactionOnTimelinesCreateNestedManyWithoutUserInput } from "../inputs/R
 import { ReactionOnVisionsCreateNestedManyWithoutUserInput } from "../inputs/ReactionOnVisionsCreateNestedManyWithoutUserInput";
 import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreateNestedManyWithoutUserInput";
 import { SubscriptionsOnPremisesCreateNestedManyWithoutUserInput } from "../inputs/SubscriptionsOnPremisesCreateNestedManyWithoutUserInput";
-import { SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput } from "../inputs/SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput";
+import { SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput } from "../inputs/SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput";
 import { ThreadCreateNestedManyWithoutAuthorInput } from "../inputs/ThreadCreateNestedManyWithoutAuthorInput";
 import { VisionCreateNestedManyWithoutAuthorInput } from "../inputs/VisionCreateNestedManyWithoutAuthorInput";
 import { VotesOnPremiseCreateNestedManyWithoutUserInput } from "../inputs/VotesOnPremiseCreateNestedManyWithoutUserInput";
@@ -32,5 +32,5 @@ export declare class UserCreateWithoutTimelinesInput {
     votesOnPremise?: VotesOnPremiseCreateNestedManyWithoutUserInput | undefined;
     votesOnThread?: VotesOnThreadCreateNestedManyWithoutUserInput | undefined;
     SubscriptionsOnPremises?: SubscriptionsOnPremisesCreateNestedManyWithoutUserInput | undefined;
-    SupscriptionsOnTimelines?: SupscriptionsOnTimelinesCreateNestedManyWithoutUserInput | undefined;
+    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput | undefined;
 }

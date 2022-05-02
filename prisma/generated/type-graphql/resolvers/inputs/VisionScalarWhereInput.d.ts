@@ -11,7 +11,7 @@ export declare class VisionScalarWhereInput {
     title?: StringFilter | undefined;
     activityDate?: DateTimeNullableFilter | undefined;
     description?: StringNullableFilter | undefined;
-    updatedAt?: DateTimeNullableFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
     referenceId?: StringNullableFilter | undefined;
     authorId?: StringNullableFilter | undefined;

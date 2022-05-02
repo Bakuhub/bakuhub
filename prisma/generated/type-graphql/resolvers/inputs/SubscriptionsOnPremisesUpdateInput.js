@@ -22,6 +22,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", PremiseUpdateOneRequiredWithoutSubscriptionsOnPremisesInput_1.PremiseUpdateOneRequiredWithoutSubscriptionsOnPremisesInput)
 ], SubscriptionsOnPremisesUpdateInput.prototype, "premise", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
+], SubscriptionsOnPremisesUpdateInput.prototype, "lastReadAt", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => EnumSubscriptionTypeFieldUpdateOperationsInput_1.EnumSubscriptionTypeFieldUpdateOperationsInput, {
         nullable: true
     }),

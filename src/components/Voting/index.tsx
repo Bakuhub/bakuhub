@@ -15,7 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import {capitalize, Grid, Typography} from "@mui/material";
 import {getTableNameByConnectType} from "../../utils/getTableNameByConnectType";
 import {getTableNameWithId} from "../../utils/getTableNameWithId";
-import {getCreateVoteMutation} from "../../gql/mutation/createVoteOnVisionMutation";
+import {getCreateVoteMutation} from "../../gql/mutation/createVoteMutation";
 
 export enum VoteType {
     LIKE = 1,

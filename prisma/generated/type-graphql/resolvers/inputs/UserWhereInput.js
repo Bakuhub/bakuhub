@@ -14,7 +14,7 @@ const SessionListRelationFilter_1 = require("../inputs/SessionListRelationFilter
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
 const SubscriptionsOnPremisesListRelationFilter_1 = require("../inputs/SubscriptionsOnPremisesListRelationFilter");
-const SupscriptionsOnTimelinesListRelationFilter_1 = require("../inputs/SupscriptionsOnTimelinesListRelationFilter");
+const SubscriptionsOnTimelinesListRelationFilter_1 = require("../inputs/SubscriptionsOnTimelinesListRelationFilter");
 const ThreadListRelationFilter_1 = require("../inputs/ThreadListRelationFilter");
 const TimelineListRelationFilter_1 = require("../inputs/TimelineListRelationFilter");
 const VisionListRelationFilter_1 = require("../inputs/VisionListRelationFilter");
@@ -163,11 +163,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesListRelationFilter_1.SubscriptionsOnPremisesListRelationFilter)
 ], UserWhereInput.prototype, "SubscriptionsOnPremises", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesListRelationFilter_1.SupscriptionsOnTimelinesListRelationFilter, {
+    TypeGraphQL.Field(_type => SubscriptionsOnTimelinesListRelationFilter_1.SubscriptionsOnTimelinesListRelationFilter, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesListRelationFilter_1.SupscriptionsOnTimelinesListRelationFilter)
-], UserWhereInput.prototype, "SupscriptionsOnTimelines", void 0);
+    tslib_1.__metadata("design:type", SubscriptionsOnTimelinesListRelationFilter_1.SubscriptionsOnTimelinesListRelationFilter)
+], UserWhereInput.prototype, "SubscriptionsOnTimelines", void 0);
 UserWhereInput = UserWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("UserWhereInput", {
         isAbstract: true

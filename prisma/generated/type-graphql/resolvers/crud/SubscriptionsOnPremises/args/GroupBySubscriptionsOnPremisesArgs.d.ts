@@ -4,7 +4,7 @@ import { SubscriptionsOnPremisesWhereInput } from "../../../inputs/Subscriptions
 export declare class GroupBySubscriptionsOnPremisesArgs {
     where?: SubscriptionsOnPremisesWhereInput | undefined;
     orderBy?: SubscriptionsOnPremisesOrderByWithAggregationInput[] | undefined;
-    by: Array<"userId" | "premiseId" | "type" | "createdAt" | "updatedAt">;
+    by: Array<"userId" | "premiseId" | "lastReadAt" | "type" | "createdAt" | "updatedAt">;
     having?: SubscriptionsOnPremisesScalarWhereWithAggregatesInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;

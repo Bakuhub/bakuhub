@@ -1,6 +1,6 @@
 import { PremisesOnTimelines } from "../../../models/PremisesOnTimelines";
 import { ReactionOnTimelines } from "../../../models/ReactionOnTimelines";
-import { SupscriptionsOnTimelines } from "../../../models/SupscriptionsOnTimelines";
+import { SubscriptionsOnTimelines } from "../../../models/SubscriptionsOnTimelines";
 import { TagsOnTimelines } from "../../../models/TagsOnTimelines";
 import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
 import { Timeline } from "../../../models/Timeline";
@@ -8,7 +8,7 @@ import { User } from "../../../models/User";
 import { VotesOnTimeline } from "../../../models/VotesOnTimeline";
 import { TimelinePremisesOnTimelinesArgs } from "./args/TimelinePremisesOnTimelinesArgs";
 import { TimelineReactionOnTimelinesArgs } from "./args/TimelineReactionOnTimelinesArgs";
-import { TimelineSupscriptionsOnTimelinesArgs } from "./args/TimelineSupscriptionsOnTimelinesArgs";
+import { TimelineSubscriptionsOnTimelinesArgs } from "./args/TimelineSubscriptionsOnTimelinesArgs";
 import { TimelineTagsOnTimelinesArgs } from "./args/TimelineTagsOnTimelinesArgs";
 import { TimelineThreadsOnTimelineArgs } from "./args/TimelineThreadsOnTimelineArgs";
 import { TimelineVotesOnTimelineArgs } from "./args/TimelineVotesOnTimelineArgs";
@@ -19,5 +19,5 @@ export declare class TimelineRelationsResolver {
     threadsOnTimeline(timeline: Timeline, ctx: any, args: TimelineThreadsOnTimelineArgs): Promise<ThreadsOnTimeline[]>;
     ReactionOnTimelines(timeline: Timeline, ctx: any, args: TimelineReactionOnTimelinesArgs): Promise<ReactionOnTimelines[]>;
     votesOnTimeline(timeline: Timeline, ctx: any, args: TimelineVotesOnTimelineArgs): Promise<VotesOnTimeline[]>;
-    SupscriptionsOnTimelines(timeline: Timeline, ctx: any, args: TimelineSupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines[]>;
+    SubscriptionsOnTimelines(timeline: Timeline, ctx: any, args: TimelineSubscriptionsOnTimelinesArgs): Promise<SubscriptionsOnTimelines[]>;
 }

@@ -5,7 +5,7 @@ import { ReactionOnTimelines } from "../../../models/ReactionOnTimelines";
 import { ReactionOnVisions } from "../../../models/ReactionOnVisions";
 import { Session } from "../../../models/Session";
 import { SubscriptionsOnPremises } from "../../../models/SubscriptionsOnPremises";
-import { SupscriptionsOnTimelines } from "../../../models/SupscriptionsOnTimelines";
+import { SubscriptionsOnTimelines } from "../../../models/SubscriptionsOnTimelines";
 import { Thread } from "../../../models/Thread";
 import { Timeline } from "../../../models/Timeline";
 import { User } from "../../../models/User";
@@ -21,7 +21,7 @@ import { UserReactionOnTimelinesArgs } from "./args/UserReactionOnTimelinesArgs"
 import { UserReactionOnVisionsArgs } from "./args/UserReactionOnVisionsArgs";
 import { UserSessionsArgs } from "./args/UserSessionsArgs";
 import { UserSubscriptionsOnPremisesArgs } from "./args/UserSubscriptionsOnPremisesArgs";
-import { UserSupscriptionsOnTimelinesArgs } from "./args/UserSupscriptionsOnTimelinesArgs";
+import { UserSubscriptionsOnTimelinesArgs } from "./args/UserSubscriptionsOnTimelinesArgs";
 import { UserThreadsArgs } from "./args/UserThreadsArgs";
 import { UserTimelinesArgs } from "./args/UserTimelinesArgs";
 import { UserVisionsArgs } from "./args/UserVisionsArgs";
@@ -44,5 +44,5 @@ export declare class UserRelationsResolver {
     votesOnPremise(user: User, ctx: any, args: UserVotesOnPremiseArgs): Promise<VotesOnPremise[]>;
     votesOnThread(user: User, ctx: any, args: UserVotesOnThreadArgs): Promise<VotesOnThread[]>;
     SubscriptionsOnPremises(user: User, ctx: any, args: UserSubscriptionsOnPremisesArgs): Promise<SubscriptionsOnPremises[]>;
-    SupscriptionsOnTimelines(user: User, ctx: any, args: UserSupscriptionsOnTimelinesArgs): Promise<SupscriptionsOnTimelines[]>;
+    SubscriptionsOnTimelines(user: User, ctx: any, args: UserSubscriptionsOnTimelinesArgs): Promise<SubscriptionsOnTimelines[]>;
 }

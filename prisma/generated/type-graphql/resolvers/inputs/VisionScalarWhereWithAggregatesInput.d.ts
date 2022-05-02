@@ -11,7 +11,7 @@ export declare class VisionScalarWhereWithAggregatesInput {
     title?: StringWithAggregatesFilter | undefined;
     activityDate?: DateTimeNullableWithAggregatesFilter | undefined;
     description?: StringNullableWithAggregatesFilter | undefined;
-    updatedAt?: DateTimeNullableWithAggregatesFilter | undefined;
+    updatedAt?: DateTimeWithAggregatesFilter | undefined;
     createdAt?: DateTimeWithAggregatesFilter | undefined;
     referenceId?: StringNullableWithAggregatesFilter | undefined;
     authorId?: StringNullableWithAggregatesFilter | undefined;

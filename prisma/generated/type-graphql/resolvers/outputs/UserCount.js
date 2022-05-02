@@ -94,7 +94,7 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], UserCount.prototype, "SupscriptionsOnTimelines", void 0);
+], UserCount.prototype, "SubscriptionsOnTimelines", void 0);
 UserCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("UserCount", {
         isAbstract: true

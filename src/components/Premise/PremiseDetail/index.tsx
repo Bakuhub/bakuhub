@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useEffect} from "react";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
@@ -19,6 +20,9 @@ import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuer
 import dynamic from "next/dynamic";
 import VotingButton from "../../Voting";
 import {useSession} from "next-auth/react";
+import {getUpsertSubscriptionVariables} from "../../../gql/utils/getUpsertSubscriptionVariables";
+import {getUserIdBySession} from "../../../utils/getUserIdBySession";
+import {getUpsertSubscriptionMutation} from "../../../gql/mutation/getUpsertSubscriptionMutation";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const Comment = dynamic(() => import("../../Comment"));
@@ -52,6 +56,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
     const session = useSession();
+    const [createSubscriptionMutation] = useMutation(getUpsertSubscriptionMutation(ConnectType.PREMISE));
     const activeVision = premise.vision?.find(vision =>
                                                       vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
                                                       && !vision.draftMode);
@@ -84,6 +89,25 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
         type: ConnectType.VISION,
         id: activeVision?.id || ""
     };
+    useEffect(() => {
+        const userId = getUserIdBySession(session);
+        console.info("userId", userId);
+
+        if (userId) {
+            console.info("creating subscription");
+            createSubscriptionMutation(getUpsertSubscriptionVariables(
+                    {
+                        type: ConnectType.PREMISE,
+                        id: premise.id,
+                        userId,
+                    })).then((res) => {
+                console.info("subscription created", res);
+            }).catch(err => {
+
+                console.error(err);
+            });
+        }
+    }, [createSubscriptionMutation, premise.id, session]);
     return (
             <Grid container>
                 <Grid item container xs={12}>

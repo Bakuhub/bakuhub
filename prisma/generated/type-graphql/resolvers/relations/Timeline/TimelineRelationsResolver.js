@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const PremisesOnTimelines_1 = require("../../../models/PremisesOnTimelines");
 const ReactionOnTimelines_1 = require("../../../models/ReactionOnTimelines");
-const SupscriptionsOnTimelines_1 = require("../../../models/SupscriptionsOnTimelines");
+const SubscriptionsOnTimelines_1 = require("../../../models/SubscriptionsOnTimelines");
 const TagsOnTimelines_1 = require("../../../models/TagsOnTimelines");
 const ThreadsOnTimeline_1 = require("../../../models/ThreadsOnTimeline");
 const Timeline_1 = require("../../../models/Timeline");
@@ -13,7 +13,7 @@ const User_1 = require("../../../models/User");
 const VotesOnTimeline_1 = require("../../../models/VotesOnTimeline");
 const TimelinePremisesOnTimelinesArgs_1 = require("./args/TimelinePremisesOnTimelinesArgs");
 const TimelineReactionOnTimelinesArgs_1 = require("./args/TimelineReactionOnTimelinesArgs");
-const TimelineSupscriptionsOnTimelinesArgs_1 = require("./args/TimelineSupscriptionsOnTimelinesArgs");
+const TimelineSubscriptionsOnTimelinesArgs_1 = require("./args/TimelineSubscriptionsOnTimelinesArgs");
 const TimelineTagsOnTimelinesArgs_1 = require("./args/TimelineTagsOnTimelinesArgs");
 const TimelineThreadsOnTimelineArgs_1 = require("./args/TimelineThreadsOnTimelineArgs");
 const TimelineVotesOnTimelineArgs_1 = require("./args/TimelineVotesOnTimelineArgs");
@@ -61,12 +61,12 @@ let TimelineRelationsResolver = class TimelineRelationsResolver {
             },
         }).votesOnTimeline(args);
     }
-    async SupscriptionsOnTimelines(timeline, ctx, args) {
+    async SubscriptionsOnTimelines(timeline, ctx, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).timeline.findUnique({
             where: {
                 id: timeline.id,
             },
-        }).SupscriptionsOnTimelines(args);
+        }).SubscriptionsOnTimelines(args);
     }
 };
 tslib_1.__decorate([
@@ -135,16 +135,16 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], TimelineRelationsResolver.prototype, "votesOnTimeline", null);
 tslib_1.__decorate([
-    TypeGraphQL.FieldResolver(_type => [SupscriptionsOnTimelines_1.SupscriptionsOnTimelines], {
+    TypeGraphQL.FieldResolver(_type => [SubscriptionsOnTimelines_1.SubscriptionsOnTimelines], {
         nullable: false
     }),
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Args()),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [Timeline_1.Timeline, Object, TimelineSupscriptionsOnTimelinesArgs_1.TimelineSupscriptionsOnTimelinesArgs]),
+    tslib_1.__metadata("design:paramtypes", [Timeline_1.Timeline, Object, TimelineSubscriptionsOnTimelinesArgs_1.TimelineSubscriptionsOnTimelinesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
-], TimelineRelationsResolver.prototype, "SupscriptionsOnTimelines", null);
+], TimelineRelationsResolver.prototype, "SubscriptionsOnTimelines", null);
 TimelineRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => Timeline_1.Timeline)
 ], TimelineRelationsResolver);

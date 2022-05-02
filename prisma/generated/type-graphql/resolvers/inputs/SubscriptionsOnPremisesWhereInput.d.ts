@@ -11,6 +11,7 @@ export declare class SubscriptionsOnPremisesWhereInput {
     userId?: StringFilter | undefined;
     premise?: PremiseRelationFilter | undefined;
     premiseId?: StringFilter | undefined;
+    lastReadAt?: DateTimeFilter | undefined;
     type?: EnumSubscriptionTypeFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
     updatedAt?: DateTimeFilter | undefined;

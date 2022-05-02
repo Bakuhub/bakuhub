@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserVotesOnVisionArgs = exports.UserVotesOnTimelineArgs = exports.UserVotesOnThreadArgs = exports.UserVotesOnPremiseArgs = exports.UserVisionsArgs = exports.UserTimelinesArgs = exports.UserThreadsArgs = exports.UserSupscriptionsOnTimelinesArgs = exports.UserSubscriptionsOnPremisesArgs = exports.UserSessionsArgs = exports.UserReactionOnVisionsArgs = exports.UserReactionOnTimelinesArgs = exports.UserReactionOnThreadsArgs = exports.UserPremisesArgs = exports.UserAccountsArgs = void 0;
+exports.UserVotesOnVisionArgs = exports.UserVotesOnTimelineArgs = exports.UserVotesOnThreadArgs = exports.UserVotesOnPremiseArgs = exports.UserVisionsArgs = exports.UserTimelinesArgs = exports.UserThreadsArgs = exports.UserSubscriptionsOnTimelinesArgs = exports.UserSubscriptionsOnPremisesArgs = exports.UserSessionsArgs = exports.UserReactionOnVisionsArgs = exports.UserReactionOnTimelinesArgs = exports.UserReactionOnThreadsArgs = exports.UserPremisesArgs = exports.UserAccountsArgs = void 0;
 var UserAccountsArgs_1 = require("./UserAccountsArgs");
 Object.defineProperty(exports, "UserAccountsArgs", { enumerable: true, get: function () { return UserAccountsArgs_1.UserAccountsArgs; } });
 var UserPremisesArgs_1 = require("./UserPremisesArgs");
@@ -15,8 +15,8 @@ var UserSessionsArgs_1 = require("./UserSessionsArgs");
 Object.defineProperty(exports, "UserSessionsArgs", { enumerable: true, get: function () { return UserSessionsArgs_1.UserSessionsArgs; } });
 var UserSubscriptionsOnPremisesArgs_1 = require("./UserSubscriptionsOnPremisesArgs");
 Object.defineProperty(exports, "UserSubscriptionsOnPremisesArgs", { enumerable: true, get: function () { return UserSubscriptionsOnPremisesArgs_1.UserSubscriptionsOnPremisesArgs; } });
-var UserSupscriptionsOnTimelinesArgs_1 = require("./UserSupscriptionsOnTimelinesArgs");
-Object.defineProperty(exports, "UserSupscriptionsOnTimelinesArgs", { enumerable: true, get: function () { return UserSupscriptionsOnTimelinesArgs_1.UserSupscriptionsOnTimelinesArgs; } });
+var UserSubscriptionsOnTimelinesArgs_1 = require("./UserSubscriptionsOnTimelinesArgs");
+Object.defineProperty(exports, "UserSubscriptionsOnTimelinesArgs", { enumerable: true, get: function () { return UserSubscriptionsOnTimelinesArgs_1.UserSubscriptionsOnTimelinesArgs; } });
 var UserThreadsArgs_1 = require("./UserThreadsArgs");
 Object.defineProperty(exports, "UserThreadsArgs", { enumerable: true, get: function () { return UserThreadsArgs_1.UserThreadsArgs; } });
 var UserTimelinesArgs_1 = require("./UserTimelinesArgs");

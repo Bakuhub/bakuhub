@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TimelineVotesOnTimelineArgs = exports.TimelineThreadsOnTimelineArgs = exports.TimelineTagsOnTimelinesArgs = exports.TimelineSupscriptionsOnTimelinesArgs = exports.TimelineReactionOnTimelinesArgs = exports.TimelinePremisesOnTimelinesArgs = void 0;
+exports.TimelineVotesOnTimelineArgs = exports.TimelineThreadsOnTimelineArgs = exports.TimelineTagsOnTimelinesArgs = exports.TimelineSubscriptionsOnTimelinesArgs = exports.TimelineReactionOnTimelinesArgs = exports.TimelinePremisesOnTimelinesArgs = void 0;
 var TimelinePremisesOnTimelinesArgs_1 = require("./TimelinePremisesOnTimelinesArgs");
 Object.defineProperty(exports, "TimelinePremisesOnTimelinesArgs", { enumerable: true, get: function () { return TimelinePremisesOnTimelinesArgs_1.TimelinePremisesOnTimelinesArgs; } });
 var TimelineReactionOnTimelinesArgs_1 = require("./TimelineReactionOnTimelinesArgs");
 Object.defineProperty(exports, "TimelineReactionOnTimelinesArgs", { enumerable: true, get: function () { return TimelineReactionOnTimelinesArgs_1.TimelineReactionOnTimelinesArgs; } });
-var TimelineSupscriptionsOnTimelinesArgs_1 = require("./TimelineSupscriptionsOnTimelinesArgs");
-Object.defineProperty(exports, "TimelineSupscriptionsOnTimelinesArgs", { enumerable: true, get: function () { return TimelineSupscriptionsOnTimelinesArgs_1.TimelineSupscriptionsOnTimelinesArgs; } });
+var TimelineSubscriptionsOnTimelinesArgs_1 = require("./TimelineSubscriptionsOnTimelinesArgs");
+Object.defineProperty(exports, "TimelineSubscriptionsOnTimelinesArgs", { enumerable: true, get: function () { return TimelineSubscriptionsOnTimelinesArgs_1.TimelineSubscriptionsOnTimelinesArgs; } });
 var TimelineTagsOnTimelinesArgs_1 = require("./TimelineTagsOnTimelinesArgs");
 Object.defineProperty(exports, "TimelineTagsOnTimelinesArgs", { enumerable: true, get: function () { return TimelineTagsOnTimelinesArgs_1.TimelineTagsOnTimelinesArgs; } });
 var TimelineThreadsOnTimelineArgs_1 = require("./TimelineThreadsOnTimelineArgs");

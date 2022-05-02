@@ -40,6 +40,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringWithAggregatesFilter_1.StringWithAggregatesFilter)
 ], SubscriptionsOnPremisesScalarWhereWithAggregatesInput.prototype, "premiseId", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter)
+], SubscriptionsOnPremisesScalarWhereWithAggregatesInput.prototype, "lastReadAt", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => EnumSubscriptionTypeWithAggregatesFilter_1.EnumSubscriptionTypeWithAggregatesFilter, {
         nullable: true
     }),

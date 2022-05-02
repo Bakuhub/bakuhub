@@ -54,10 +54,10 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringNullableFilter_1.StringNullableFilter)
 ], VisionScalarWhereInput.prototype, "description", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DateTimeNullableFilter_1.DateTimeNullableFilter, {
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", DateTimeNullableFilter_1.DateTimeNullableFilter)
+    tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
 ], VisionScalarWhereInput.prototype, "updatedAt", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, {

@@ -7,6 +7,7 @@ export declare class SubscriptionsOnPremisesScalarWhereInput {
     NOT?: SubscriptionsOnPremisesScalarWhereInput[] | undefined;
     userId?: StringFilter | undefined;
     premiseId?: StringFilter | undefined;
+    lastReadAt?: DateTimeFilter | undefined;
     type?: EnumSubscriptionTypeFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
     updatedAt?: DateTimeFilter | undefined;

@@ -9,7 +9,7 @@ export { ReferenceRelationsResolver } from "./Reference/ReferenceRelationsResolv
 export { SessionRelationsResolver } from "./Session/SessionRelationsResolver";
 export { SnapshotRelationsResolver } from "./Snapshot/SnapshotRelationsResolver";
 export { SubscriptionsOnPremisesRelationsResolver } from "./SubscriptionsOnPremises/SubscriptionsOnPremisesRelationsResolver";
-export { SupscriptionsOnTimelinesRelationsResolver } from "./SupscriptionsOnTimelines/SupscriptionsOnTimelinesRelationsResolver";
+export { SubscriptionsOnTimelinesRelationsResolver } from "./SubscriptionsOnTimelines/SubscriptionsOnTimelinesRelationsResolver";
 export { TagRelationsResolver } from "./Tag/TagRelationsResolver";
 export { TagsOnPremisesRelationsResolver } from "./TagsOnPremises/TagsOnPremisesRelationsResolver";
 export { TagsOnTimelinesRelationsResolver } from "./TagsOnTimelines/TagsOnTimelinesRelationsResolver";

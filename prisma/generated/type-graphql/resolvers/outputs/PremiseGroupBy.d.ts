@@ -5,7 +5,7 @@ export declare class PremiseGroupBy {
     id: string;
     title: string;
     createdAt: Date;
-    updatedAt: Date | null;
+    updatedAt: Date;
     status: "RUMOUR" | "UNVERIFIED" | "REFERENCE_PROVIDED" | "VERIFIED" | "MISINFORMATION";
     authorId: string | null;
     _count: PremiseCountAggregate | null;

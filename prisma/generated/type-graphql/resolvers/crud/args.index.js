@@ -12,7 +12,7 @@ tslib_1.__exportStar(require("./Reference/args"), exports);
 tslib_1.__exportStar(require("./Session/args"), exports);
 tslib_1.__exportStar(require("./Snapshot/args"), exports);
 tslib_1.__exportStar(require("./SubscriptionsOnPremises/args"), exports);
-tslib_1.__exportStar(require("./SupscriptionsOnTimelines/args"), exports);
+tslib_1.__exportStar(require("./SubscriptionsOnTimelines/args"), exports);
 tslib_1.__exportStar(require("./Tag/args"), exports);
 tslib_1.__exportStar(require("./TagsOnPremises/args"), exports);
 tslib_1.__exportStar(require("./TagsOnTimelines/args"), exports);

@@ -10,7 +10,7 @@ export declare class Premise {
     id: string;
     title: string;
     createdAt: Date;
-    updatedAt?: Date | null;
+    updatedAt: Date;
     status: "RUMOUR" | "UNVERIFIED" | "REFERENCE_PROVIDED" | "VERIFIED" | "MISINFORMATION";
     author?: User | null;
     authorId?: string | null;

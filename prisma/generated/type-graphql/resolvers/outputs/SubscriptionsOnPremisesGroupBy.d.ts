@@ -4,6 +4,7 @@ import { SubscriptionsOnPremisesMinAggregate } from "../outputs/SubscriptionsOnP
 export declare class SubscriptionsOnPremisesGroupBy {
     userId: string;
     premiseId: string;
+    lastReadAt: Date;
     type: "AUTO" | "MANUAL";
     createdAt: Date;
     updatedAt: Date;

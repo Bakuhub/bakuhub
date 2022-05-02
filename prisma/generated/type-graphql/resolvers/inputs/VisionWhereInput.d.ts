@@ -20,7 +20,7 @@ export declare class VisionWhereInput {
     title?: StringFilter | undefined;
     activityDate?: DateTimeNullableFilter | undefined;
     description?: StringNullableFilter | undefined;
-    updatedAt?: DateTimeNullableFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
     reference?: ReferenceRelationFilter | undefined;
     referenceId?: StringNullableFilter | undefined;

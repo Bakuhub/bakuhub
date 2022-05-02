@@ -6,7 +6,7 @@ export declare class VisionGroupBy {
     title: string;
     activityDate: Date | null;
     description: string | null;
-    updatedAt: Date | null;
+    updatedAt: Date;
     createdAt: Date;
     referenceId: string | null;
     authorId: string | null;

@@ -1,5 +1,4 @@
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
-import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { EnumPremiseStatusFilter } from "../inputs/EnumPremiseStatusFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -10,7 +9,7 @@ export declare class PremiseScalarWhereInput {
     id?: StringFilter | undefined;
     title?: StringFilter | undefined;
     createdAt?: DateTimeFilter | undefined;
-    updatedAt?: DateTimeNullableFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
     status?: EnumPremiseStatusFilter | undefined;
     authorId?: StringNullableFilter | undefined;
 }

@@ -13,5 +13,5 @@ export declare class UserCount {
     votesOnPremise: number;
     votesOnThread: number;
     SubscriptionsOnPremises: number;
-    SupscriptionsOnTimelines: number;
+    SubscriptionsOnTimelines: number;
 }

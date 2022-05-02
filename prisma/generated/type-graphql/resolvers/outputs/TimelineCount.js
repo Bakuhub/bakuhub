@@ -40,7 +40,7 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], TimelineCount.prototype, "SupscriptionsOnTimelines", void 0);
+], TimelineCount.prototype, "SubscriptionsOnTimelines", void 0);
 TimelineCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("TimelineCount", {
         isAbstract: true

@@ -3,6 +3,7 @@ import { EnumSubscriptionTypeFieldUpdateOperationsInput } from "../inputs/EnumSu
 import { UserUpdateOneRequiredWithoutSubscriptionsOnPremisesInput } from "../inputs/UserUpdateOneRequiredWithoutSubscriptionsOnPremisesInput";
 export declare class SubscriptionsOnPremisesUpdateWithoutPremiseInput {
     user?: UserUpdateOneRequiredWithoutSubscriptionsOnPremisesInput | undefined;
+    lastReadAt?: DateTimeFieldUpdateOperationsInput | undefined;
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
     updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;

@@ -7,5 +7,5 @@ export declare class PremiseSubscriptionsOnPremisesArgs {
     cursor?: SubscriptionsOnPremisesWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"userId" | "premiseId" | "type" | "createdAt" | "updatedAt"> | undefined;
+    distinct?: Array<"userId" | "premiseId" | "lastReadAt" | "type" | "createdAt" | "updatedAt"> | undefined;
 }

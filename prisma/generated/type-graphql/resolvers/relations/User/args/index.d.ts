@@ -5,7 +5,7 @@ export { UserReactionOnTimelinesArgs } from "./UserReactionOnTimelinesArgs";
 export { UserReactionOnVisionsArgs } from "./UserReactionOnVisionsArgs";
 export { UserSessionsArgs } from "./UserSessionsArgs";
 export { UserSubscriptionsOnPremisesArgs } from "./UserSubscriptionsOnPremisesArgs";
-export { UserSupscriptionsOnTimelinesArgs } from "./UserSupscriptionsOnTimelinesArgs";
+export { UserSubscriptionsOnTimelinesArgs } from "./UserSubscriptionsOnTimelinesArgs";
 export { UserThreadsArgs } from "./UserThreadsArgs";
 export { UserTimelinesArgs } from "./UserTimelinesArgs";
 export { UserVisionsArgs } from "./UserVisionsArgs";

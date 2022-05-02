@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VotesOnVision = exports.VotesOnTimeline = exports.VotesOnThread = exports.VotesOnPremise = exports.Vision = exports.VerificationToken = exports.User = exports.Timeline = exports.ThreadsOnVision = exports.ThreadsOnTimeline = exports.ThreadsOnPremise = exports.ThreadsOnMergeRequest = exports.Thread = exports.TagsOnTimelines = exports.TagsOnPremises = exports.Tag = exports.SupscriptionsOnTimelines = exports.SubscriptionsOnPremises = exports.Snapshot = exports.Session = exports.Reference = exports.ReactionOnVisions = exports.ReactionOnTimelines = exports.ReactionOnThreads = exports.PremisesOnTimelines = exports.Premise = exports.MergeRequest = exports.Account = void 0;
+exports.VotesOnVision = exports.VotesOnTimeline = exports.VotesOnThread = exports.VotesOnPremise = exports.Vision = exports.VerificationToken = exports.User = exports.Timeline = exports.ThreadsOnVision = exports.ThreadsOnTimeline = exports.ThreadsOnPremise = exports.ThreadsOnMergeRequest = exports.Thread = exports.TagsOnTimelines = exports.TagsOnPremises = exports.Tag = exports.SubscriptionsOnTimelines = exports.SubscriptionsOnPremises = exports.Snapshot = exports.Session = exports.Reference = exports.ReactionOnVisions = exports.ReactionOnTimelines = exports.ReactionOnThreads = exports.PremisesOnTimelines = exports.Premise = exports.MergeRequest = exports.Account = void 0;
 var Account_1 = require("./Account");
 Object.defineProperty(exports, "Account", { enumerable: true, get: function () { return Account_1.Account; } });
 var MergeRequest_1 = require("./MergeRequest");
@@ -23,8 +23,8 @@ var Snapshot_1 = require("./Snapshot");
 Object.defineProperty(exports, "Snapshot", { enumerable: true, get: function () { return Snapshot_1.Snapshot; } });
 var SubscriptionsOnPremises_1 = require("./SubscriptionsOnPremises");
 Object.defineProperty(exports, "SubscriptionsOnPremises", { enumerable: true, get: function () { return SubscriptionsOnPremises_1.SubscriptionsOnPremises; } });
-var SupscriptionsOnTimelines_1 = require("./SupscriptionsOnTimelines");
-Object.defineProperty(exports, "SupscriptionsOnTimelines", { enumerable: true, get: function () { return SupscriptionsOnTimelines_1.SupscriptionsOnTimelines; } });
+var SubscriptionsOnTimelines_1 = require("./SubscriptionsOnTimelines");
+Object.defineProperty(exports, "SubscriptionsOnTimelines", { enumerable: true, get: function () { return SubscriptionsOnTimelines_1.SubscriptionsOnTimelines; } });
 var Tag_1 = require("./Tag");
 Object.defineProperty(exports, "Tag", { enumerable: true, get: function () { return Tag_1.Tag; } });
 var TagsOnPremises_1 = require("./TagsOnPremises");

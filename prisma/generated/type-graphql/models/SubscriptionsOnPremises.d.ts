@@ -5,6 +5,7 @@ export declare class SubscriptionsOnPremises {
     userId: string;
     premise?: Premise;
     premiseId: string;
+    lastReadAt: Date;
     type: "AUTO" | "MANUAL";
     createdAt: Date;
     updatedAt: Date;

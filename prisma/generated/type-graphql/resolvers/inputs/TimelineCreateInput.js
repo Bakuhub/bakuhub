@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const PremisesOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/PremisesOnTimelinesCreateNestedManyWithoutTimelineInput");
 const ReactionOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/ReactionOnTimelinesCreateNestedManyWithoutTimelineInput");
-const SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput");
+const SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput");
 const TagsOnTimelinesCreateNestedManyWithoutTimelineInput_1 = require("../inputs/TagsOnTimelinesCreateNestedManyWithoutTimelineInput");
 const ThreadsOnTimelineCreateNestedManyWithoutTimelineInput_1 = require("../inputs/ThreadsOnTimelineCreateNestedManyWithoutTimelineInput");
 const UserCreateNestedOneWithoutTimelinesInput_1 = require("../inputs/UserCreateNestedOneWithoutTimelinesInput");
@@ -73,11 +73,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", VotesOnTimelineCreateNestedManyWithoutTimelineInput_1.VotesOnTimelineCreateNestedManyWithoutTimelineInput)
 ], TimelineCreateInput.prototype, "votesOnTimeline", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1.SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput, {
+    TypeGraphQL.Field(_type => SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1.SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1.SupscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput)
-], TimelineCreateInput.prototype, "SupscriptionsOnTimelines", void 0);
+    tslib_1.__metadata("design:type", SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput_1.SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput)
+], TimelineCreateInput.prototype, "SubscriptionsOnTimelines", void 0);
 TimelineCreateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TimelineCreateInput", {
         isAbstract: true

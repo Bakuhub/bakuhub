@@ -40,6 +40,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
 ], SubscriptionsOnPremisesScalarWhereInput.prototype, "premiseId", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
+], SubscriptionsOnPremisesScalarWhereInput.prototype, "lastReadAt", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => EnumSubscriptionTypeFilter_1.EnumSubscriptionTypeFilter, {
         nullable: true
     }),

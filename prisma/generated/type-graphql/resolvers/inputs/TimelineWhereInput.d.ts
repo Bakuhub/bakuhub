@@ -1,7 +1,7 @@
 import { PremisesOnTimelinesListRelationFilter } from "../inputs/PremisesOnTimelinesListRelationFilter";
 import { ReactionOnTimelinesListRelationFilter } from "../inputs/ReactionOnTimelinesListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
-import { SupscriptionsOnTimelinesListRelationFilter } from "../inputs/SupscriptionsOnTimelinesListRelationFilter";
+import { SubscriptionsOnTimelinesListRelationFilter } from "../inputs/SubscriptionsOnTimelinesListRelationFilter";
 import { TagsOnTimelinesListRelationFilter } from "../inputs/TagsOnTimelinesListRelationFilter";
 import { ThreadsOnTimelineListRelationFilter } from "../inputs/ThreadsOnTimelineListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
@@ -21,5 +21,5 @@ export declare class TimelineWhereInput {
     threadsOnTimeline?: ThreadsOnTimelineListRelationFilter | undefined;
     ReactionOnTimelines?: ReactionOnTimelinesListRelationFilter | undefined;
     votesOnTimeline?: VotesOnTimelineListRelationFilter | undefined;
-    SupscriptionsOnTimelines?: SupscriptionsOnTimelinesListRelationFilter | undefined;
+    SubscriptionsOnTimelines?: SubscriptionsOnTimelinesListRelationFilter | undefined;
 }

@@ -5,7 +5,6 @@ exports.PremiseWhereInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
-const DateTimeNullableFilter_1 = require("../inputs/DateTimeNullableFilter");
 const EnumPremiseStatusFilter_1 = require("../inputs/EnumPremiseStatusFilter");
 const PremisesOnTimelinesListRelationFilter_1 = require("../inputs/PremisesOnTimelinesListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
@@ -55,10 +54,10 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
 ], PremiseWhereInput.prototype, "createdAt", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DateTimeNullableFilter_1.DateTimeNullableFilter, {
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", DateTimeNullableFilter_1.DateTimeNullableFilter)
+    tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
 ], PremiseWhereInput.prototype, "updatedAt", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EnumPremiseStatusFilter_1.EnumPremiseStatusFilter, {
