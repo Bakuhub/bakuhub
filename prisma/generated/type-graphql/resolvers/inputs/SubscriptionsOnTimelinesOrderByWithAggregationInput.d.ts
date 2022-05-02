@@ -4,6 +4,7 @@ import { SubscriptionsOnTimelinesMinOrderByAggregateInput } from "../inputs/Subs
 export declare class SubscriptionsOnTimelinesOrderByWithAggregationInput {
     userId?: "asc" | "desc" | undefined;
     timelineId?: "asc" | "desc" | undefined;
+    hasUnreadNotifications?: "asc" | "desc" | undefined;
     lastReadAt?: "asc" | "desc" | undefined;
     type?: "asc" | "desc" | undefined;
     createdAt?: "asc" | "desc" | undefined;

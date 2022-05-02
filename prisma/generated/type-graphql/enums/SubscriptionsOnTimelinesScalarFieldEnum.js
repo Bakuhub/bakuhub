@@ -7,6 +7,7 @@ var SubscriptionsOnTimelinesScalarFieldEnum;
 (function (SubscriptionsOnTimelinesScalarFieldEnum) {
     SubscriptionsOnTimelinesScalarFieldEnum["userId"] = "userId";
     SubscriptionsOnTimelinesScalarFieldEnum["timelineId"] = "timelineId";
+    SubscriptionsOnTimelinesScalarFieldEnum["hasUnreadNotifications"] = "hasUnreadNotifications";
     SubscriptionsOnTimelinesScalarFieldEnum["lastReadAt"] = "lastReadAt";
     SubscriptionsOnTimelinesScalarFieldEnum["type"] = "type";
     SubscriptionsOnTimelinesScalarFieldEnum["createdAt"] = "createdAt";

@@ -4320,6 +4320,7 @@ enum SubscriptionType {
 
 type SubscriptionsOnPremises {
   createdAt: DateTime!
+  hasUnreadNotifications: Boolean!
   lastReadAt: DateTime!
   premise: Premise!
   premiseId: String!
@@ -4332,6 +4333,7 @@ type SubscriptionsOnPremises {
 type SubscriptionsOnPremisesCountAggregate {
   _all: Int!
   createdAt: Int!
+  hasUnreadNotifications: Int!
   lastReadAt: Int!
   premiseId: Int!
   type: Int!
@@ -4341,6 +4343,7 @@ type SubscriptionsOnPremisesCountAggregate {
 
 input SubscriptionsOnPremisesCountOrderByAggregateInput {
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premiseId: SortOrder
   type: SortOrder
@@ -4350,6 +4353,7 @@ input SubscriptionsOnPremisesCountOrderByAggregateInput {
 
 input SubscriptionsOnPremisesCreateInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premise: PremiseCreateNestedOneWithoutSubscriptionsOnPremisesInput!
   type: SubscriptionType
@@ -4359,6 +4363,7 @@ input SubscriptionsOnPremisesCreateInput {
 
 input SubscriptionsOnPremisesCreateManyInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premiseId: String!
   type: SubscriptionType
@@ -4368,6 +4373,7 @@ input SubscriptionsOnPremisesCreateManyInput {
 
 input SubscriptionsOnPremisesCreateManyPremiseInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   type: SubscriptionType
   updatedAt: DateTime
@@ -4381,6 +4387,7 @@ input SubscriptionsOnPremisesCreateManyPremiseInputEnvelope {
 
 input SubscriptionsOnPremisesCreateManyUserInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premiseId: String!
   type: SubscriptionType
@@ -4418,6 +4425,7 @@ input SubscriptionsOnPremisesCreateOrConnectWithoutUserInput {
 
 input SubscriptionsOnPremisesCreateWithoutPremiseInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   type: SubscriptionType
   updatedAt: DateTime
@@ -4426,6 +4434,7 @@ input SubscriptionsOnPremisesCreateWithoutPremiseInput {
 
 input SubscriptionsOnPremisesCreateWithoutUserInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premise: PremiseCreateNestedOneWithoutSubscriptionsOnPremisesInput!
   type: SubscriptionType
@@ -4437,6 +4446,7 @@ type SubscriptionsOnPremisesGroupBy {
   _max: SubscriptionsOnPremisesMaxAggregate
   _min: SubscriptionsOnPremisesMinAggregate
   createdAt: DateTime!
+  hasUnreadNotifications: Boolean!
   lastReadAt: DateTime!
   premiseId: String!
   type: SubscriptionType!
@@ -4452,6 +4462,7 @@ input SubscriptionsOnPremisesListRelationFilter {
 
 type SubscriptionsOnPremisesMaxAggregate {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premiseId: String
   type: SubscriptionType
@@ -4461,6 +4472,7 @@ type SubscriptionsOnPremisesMaxAggregate {
 
 input SubscriptionsOnPremisesMaxOrderByAggregateInput {
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premiseId: SortOrder
   type: SortOrder
@@ -4470,6 +4482,7 @@ input SubscriptionsOnPremisesMaxOrderByAggregateInput {
 
 type SubscriptionsOnPremisesMinAggregate {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premiseId: String
   type: SubscriptionType
@@ -4479,6 +4492,7 @@ type SubscriptionsOnPremisesMinAggregate {
 
 input SubscriptionsOnPremisesMinOrderByAggregateInput {
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premiseId: SortOrder
   type: SortOrder
@@ -4495,6 +4509,7 @@ input SubscriptionsOnPremisesOrderByWithAggregationInput {
   _max: SubscriptionsOnPremisesMaxOrderByAggregateInput
   _min: SubscriptionsOnPremisesMinOrderByAggregateInput
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premiseId: SortOrder
   type: SortOrder
@@ -4504,6 +4519,7 @@ input SubscriptionsOnPremisesOrderByWithAggregationInput {
 
 input SubscriptionsOnPremisesOrderByWithRelationInput {
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premise: PremiseOrderByWithRelationInput
   premiseId: SortOrder
@@ -4515,6 +4531,7 @@ input SubscriptionsOnPremisesOrderByWithRelationInput {
 
 enum SubscriptionsOnPremisesScalarFieldEnum {
   createdAt
+  hasUnreadNotifications
   lastReadAt
   premiseId
   type
@@ -4527,6 +4544,7 @@ input SubscriptionsOnPremisesScalarWhereInput {
   NOT: [SubscriptionsOnPremisesScalarWhereInput!]
   OR: [SubscriptionsOnPremisesScalarWhereInput!]
   createdAt: DateTimeFilter
+  hasUnreadNotifications: BoolFilter
   lastReadAt: DateTimeFilter
   premiseId: StringFilter
   type: EnumSubscriptionTypeFilter
@@ -4539,6 +4557,7 @@ input SubscriptionsOnPremisesScalarWhereWithAggregatesInput {
   NOT: [SubscriptionsOnPremisesScalarWhereWithAggregatesInput!]
   OR: [SubscriptionsOnPremisesScalarWhereWithAggregatesInput!]
   createdAt: DateTimeWithAggregatesFilter
+  hasUnreadNotifications: BoolWithAggregatesFilter
   lastReadAt: DateTimeWithAggregatesFilter
   premiseId: StringWithAggregatesFilter
   type: EnumSubscriptionTypeWithAggregatesFilter
@@ -4548,6 +4567,7 @@ input SubscriptionsOnPremisesScalarWhereWithAggregatesInput {
 
 input SubscriptionsOnPremisesUpdateInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   premise: PremiseUpdateOneRequiredWithoutSubscriptionsOnPremisesInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
@@ -4557,6 +4577,7 @@ input SubscriptionsOnPremisesUpdateInput {
 
 input SubscriptionsOnPremisesUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -4612,6 +4633,7 @@ input SubscriptionsOnPremisesUpdateWithWhereUniqueWithoutUserInput {
 
 input SubscriptionsOnPremisesUpdateWithoutPremiseInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -4620,6 +4642,7 @@ input SubscriptionsOnPremisesUpdateWithoutPremiseInput {
 
 input SubscriptionsOnPremisesUpdateWithoutUserInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   premise: PremiseUpdateOneRequiredWithoutSubscriptionsOnPremisesInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
@@ -4648,6 +4671,7 @@ input SubscriptionsOnPremisesWhereInput {
   NOT: [SubscriptionsOnPremisesWhereInput!]
   OR: [SubscriptionsOnPremisesWhereInput!]
   createdAt: DateTimeFilter
+  hasUnreadNotifications: BoolFilter
   lastReadAt: DateTimeFilter
   premise: PremiseRelationFilter
   premiseId: StringFilter
@@ -4663,6 +4687,7 @@ input SubscriptionsOnPremisesWhereUniqueInput {
 
 type SubscriptionsOnTimelines {
   createdAt: DateTime!
+  hasUnreadNotifications: Boolean!
   lastReadAt: DateTime!
   timeline: Timeline!
   timelineId: String!
@@ -4675,6 +4700,7 @@ type SubscriptionsOnTimelines {
 type SubscriptionsOnTimelinesCountAggregate {
   _all: Int!
   createdAt: Int!
+  hasUnreadNotifications: Int!
   lastReadAt: Int!
   timelineId: Int!
   type: Int!
@@ -4684,6 +4710,7 @@ type SubscriptionsOnTimelinesCountAggregate {
 
 input SubscriptionsOnTimelinesCountOrderByAggregateInput {
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   timelineId: SortOrder
   type: SortOrder
@@ -4693,6 +4720,7 @@ input SubscriptionsOnTimelinesCountOrderByAggregateInput {
 
 input SubscriptionsOnTimelinesCreateInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   timeline: TimelineCreateNestedOneWithoutSubscriptionsOnTimelinesInput!
   type: SubscriptionType
@@ -4702,6 +4730,7 @@ input SubscriptionsOnTimelinesCreateInput {
 
 input SubscriptionsOnTimelinesCreateManyInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   timelineId: String!
   type: SubscriptionType
@@ -4711,6 +4740,7 @@ input SubscriptionsOnTimelinesCreateManyInput {
 
 input SubscriptionsOnTimelinesCreateManyTimelineInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   type: SubscriptionType
   updatedAt: DateTime
@@ -4724,6 +4754,7 @@ input SubscriptionsOnTimelinesCreateManyTimelineInputEnvelope {
 
 input SubscriptionsOnTimelinesCreateManyUserInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   timelineId: String!
   type: SubscriptionType
@@ -4761,6 +4792,7 @@ input SubscriptionsOnTimelinesCreateOrConnectWithoutUserInput {
 
 input SubscriptionsOnTimelinesCreateWithoutTimelineInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   type: SubscriptionType
   updatedAt: DateTime
@@ -4769,6 +4801,7 @@ input SubscriptionsOnTimelinesCreateWithoutTimelineInput {
 
 input SubscriptionsOnTimelinesCreateWithoutUserInput {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   timeline: TimelineCreateNestedOneWithoutSubscriptionsOnTimelinesInput!
   type: SubscriptionType
@@ -4780,6 +4813,7 @@ type SubscriptionsOnTimelinesGroupBy {
   _max: SubscriptionsOnTimelinesMaxAggregate
   _min: SubscriptionsOnTimelinesMinAggregate
   createdAt: DateTime!
+  hasUnreadNotifications: Boolean!
   lastReadAt: DateTime!
   timelineId: String!
   type: SubscriptionType!
@@ -4795,6 +4829,7 @@ input SubscriptionsOnTimelinesListRelationFilter {
 
 type SubscriptionsOnTimelinesMaxAggregate {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   timelineId: String
   type: SubscriptionType
@@ -4804,6 +4839,7 @@ type SubscriptionsOnTimelinesMaxAggregate {
 
 input SubscriptionsOnTimelinesMaxOrderByAggregateInput {
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   timelineId: SortOrder
   type: SortOrder
@@ -4813,6 +4849,7 @@ input SubscriptionsOnTimelinesMaxOrderByAggregateInput {
 
 type SubscriptionsOnTimelinesMinAggregate {
   createdAt: DateTime
+  hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   timelineId: String
   type: SubscriptionType
@@ -4822,6 +4859,7 @@ type SubscriptionsOnTimelinesMinAggregate {
 
 input SubscriptionsOnTimelinesMinOrderByAggregateInput {
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   timelineId: SortOrder
   type: SortOrder
@@ -4838,6 +4876,7 @@ input SubscriptionsOnTimelinesOrderByWithAggregationInput {
   _max: SubscriptionsOnTimelinesMaxOrderByAggregateInput
   _min: SubscriptionsOnTimelinesMinOrderByAggregateInput
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   timelineId: SortOrder
   type: SortOrder
@@ -4847,6 +4886,7 @@ input SubscriptionsOnTimelinesOrderByWithAggregationInput {
 
 input SubscriptionsOnTimelinesOrderByWithRelationInput {
   createdAt: SortOrder
+  hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   timeline: TimelineOrderByWithRelationInput
   timelineId: SortOrder
@@ -4858,6 +4898,7 @@ input SubscriptionsOnTimelinesOrderByWithRelationInput {
 
 enum SubscriptionsOnTimelinesScalarFieldEnum {
   createdAt
+  hasUnreadNotifications
   lastReadAt
   timelineId
   type
@@ -4870,6 +4911,7 @@ input SubscriptionsOnTimelinesScalarWhereInput {
   NOT: [SubscriptionsOnTimelinesScalarWhereInput!]
   OR: [SubscriptionsOnTimelinesScalarWhereInput!]
   createdAt: DateTimeFilter
+  hasUnreadNotifications: BoolFilter
   lastReadAt: DateTimeFilter
   timelineId: StringFilter
   type: EnumSubscriptionTypeFilter
@@ -4882,6 +4924,7 @@ input SubscriptionsOnTimelinesScalarWhereWithAggregatesInput {
   NOT: [SubscriptionsOnTimelinesScalarWhereWithAggregatesInput!]
   OR: [SubscriptionsOnTimelinesScalarWhereWithAggregatesInput!]
   createdAt: DateTimeWithAggregatesFilter
+  hasUnreadNotifications: BoolWithAggregatesFilter
   lastReadAt: DateTimeWithAggregatesFilter
   timelineId: StringWithAggregatesFilter
   type: EnumSubscriptionTypeWithAggregatesFilter
@@ -4891,6 +4934,7 @@ input SubscriptionsOnTimelinesScalarWhereWithAggregatesInput {
 
 input SubscriptionsOnTimelinesUpdateInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   timeline: TimelineUpdateOneRequiredWithoutSubscriptionsOnTimelinesInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
@@ -4900,6 +4944,7 @@ input SubscriptionsOnTimelinesUpdateInput {
 
 input SubscriptionsOnTimelinesUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -4955,6 +5000,7 @@ input SubscriptionsOnTimelinesUpdateWithWhereUniqueWithoutUserInput {
 
 input SubscriptionsOnTimelinesUpdateWithoutTimelineInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -4963,6 +5009,7 @@ input SubscriptionsOnTimelinesUpdateWithoutTimelineInput {
 
 input SubscriptionsOnTimelinesUpdateWithoutUserInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   timeline: TimelineUpdateOneRequiredWithoutSubscriptionsOnTimelinesInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
@@ -4991,6 +5038,7 @@ input SubscriptionsOnTimelinesWhereInput {
   NOT: [SubscriptionsOnTimelinesWhereInput!]
   OR: [SubscriptionsOnTimelinesWhereInput!]
   createdAt: DateTimeFilter
+  hasUnreadNotifications: BoolFilter
   lastReadAt: DateTimeFilter
   timeline: TimelineRelationFilter
   timelineId: StringFilter

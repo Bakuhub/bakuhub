@@ -18,7 +18,7 @@ export const premiseQuery = gql`
                 activityDate
                 description
                 createdAt
-                ReactionOnVisions {
+                reactionOnVisions {
                     visionId
                     userId
                     reaction

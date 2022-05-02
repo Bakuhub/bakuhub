@@ -5,6 +5,9 @@ export const mergeRequestQuery = gql`
         mergeRequest(where: $where) {
             vision {
                 id
+                premise {
+                    id
+                }
                 title
                 activityDate
                 description

@@ -5,6 +5,7 @@ export declare class SubscriptionsOnPremises {
     userId: string;
     premise?: Premise;
     premiseId: string;
+    hasUnreadNotifications: boolean;
     lastReadAt: Date;
     type: "AUTO" | "MANUAL";
     createdAt: Date;

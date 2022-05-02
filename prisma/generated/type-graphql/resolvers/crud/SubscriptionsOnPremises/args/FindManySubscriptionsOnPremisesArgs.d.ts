@@ -7,5 +7,5 @@ export declare class FindManySubscriptionsOnPremisesArgs {
     cursor?: SubscriptionsOnPremisesWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"userId" | "premiseId" | "lastReadAt" | "type" | "createdAt" | "updatedAt"> | undefined;
+    distinct?: Array<"userId" | "premiseId" | "hasUnreadNotifications" | "lastReadAt" | "type" | "createdAt" | "updatedAt"> | undefined;
 }

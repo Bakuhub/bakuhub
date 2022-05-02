@@ -7,5 +7,5 @@ export declare class UserSubscriptionsOnTimelinesArgs {
     cursor?: SubscriptionsOnTimelinesWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"userId" | "timelineId" | "lastReadAt" | "type" | "createdAt" | "updatedAt"> | undefined;
+    distinct?: Array<"userId" | "timelineId" | "hasUnreadNotifications" | "lastReadAt" | "type" | "createdAt" | "updatedAt"> | undefined;
 }

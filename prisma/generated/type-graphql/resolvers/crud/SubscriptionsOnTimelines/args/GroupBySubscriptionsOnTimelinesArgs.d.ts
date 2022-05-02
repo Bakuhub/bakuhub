@@ -4,7 +4,7 @@ import { SubscriptionsOnTimelinesWhereInput } from "../../../inputs/Subscription
 export declare class GroupBySubscriptionsOnTimelinesArgs {
     where?: SubscriptionsOnTimelinesWhereInput | undefined;
     orderBy?: SubscriptionsOnTimelinesOrderByWithAggregationInput[] | undefined;
-    by: Array<"userId" | "timelineId" | "lastReadAt" | "type" | "createdAt" | "updatedAt">;
+    by: Array<"userId" | "timelineId" | "hasUnreadNotifications" | "lastReadAt" | "type" | "createdAt" | "updatedAt">;
     having?: SubscriptionsOnTimelinesScalarWhereWithAggregatesInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;

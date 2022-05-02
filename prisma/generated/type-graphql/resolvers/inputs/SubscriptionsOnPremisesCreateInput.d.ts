@@ -3,6 +3,7 @@ import { UserCreateNestedOneWithoutSubscriptionsOnPremisesInput } from "../input
 export declare class SubscriptionsOnPremisesCreateInput {
     user: UserCreateNestedOneWithoutSubscriptionsOnPremisesInput;
     premise: PremiseCreateNestedOneWithoutSubscriptionsOnPremisesInput;
+    hasUnreadNotifications?: boolean | undefined;
     lastReadAt?: Date | undefined;
     type?: "AUTO" | "MANUAL" | undefined;
     createdAt?: Date | undefined;

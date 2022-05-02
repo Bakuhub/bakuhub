@@ -5,6 +5,7 @@ export declare class SubscriptionsOnTimelines {
     userId: string;
     timeline?: Timeline;
     timelineId: string;
+    hasUnreadNotifications: boolean;
     lastReadAt: Date;
     type: "AUTO" | "MANUAL";
     createdAt: Date;

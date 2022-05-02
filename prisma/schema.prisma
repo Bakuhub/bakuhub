@@ -346,10 +346,11 @@ model SubscriptionsOnPremises {
   premise   Premise @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   premiseId String
 
-  lastReadAt DateTime         @default(now())
-  type       SubscriptionType @default(AUTO)
-  createdAt  DateTime         @default(now())
-  updatedAt  DateTime         @default(now()) @updatedAt
+  hasUnreadNotifications Boolean          @default(false)
+  lastReadAt             DateTime         @default(now())
+  type                   SubscriptionType @default(AUTO)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @default(now()) @updatedAt
 
   @@id([userId, premiseId])
 }
@@ -360,10 +361,11 @@ model SubscriptionsOnTimelines {
   timeline   Timeline @relation(fields: [timelineId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   timelineId String
 
-  lastReadAt DateTime         @default(now())
-  type       SubscriptionType @default(AUTO)
-  createdAt  DateTime         @default(now())
-  updatedAt  DateTime         @default(now()) @updatedAt
+  hasUnreadNotifications Boolean          @default(false)
+  lastReadAt             DateTime         @default(now())
+  type                   SubscriptionType @default(AUTO)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @default(now()) @updatedAt
 
   @@id([userId, timelineId])
 }

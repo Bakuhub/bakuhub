@@ -19,6 +19,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], SubscriptionsOnPremisesCreateManyInput.prototype, "premiseId", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Boolean)
+], SubscriptionsOnPremisesCreateManyInput.prototype, "hasUnreadNotifications", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: true
     }),

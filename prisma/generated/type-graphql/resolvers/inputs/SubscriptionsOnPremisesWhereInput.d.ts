@@ -1,3 +1,4 @@
+import { BoolFilter } from "../inputs/BoolFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { EnumSubscriptionTypeFilter } from "../inputs/EnumSubscriptionTypeFilter";
 import { PremiseRelationFilter } from "../inputs/PremiseRelationFilter";
@@ -11,6 +12,7 @@ export declare class SubscriptionsOnPremisesWhereInput {
     userId?: StringFilter | undefined;
     premise?: PremiseRelationFilter | undefined;
     premiseId?: StringFilter | undefined;
+    hasUnreadNotifications?: BoolFilter | undefined;
     lastReadAt?: DateTimeFilter | undefined;
     type?: EnumSubscriptionTypeFilter | undefined;
     createdAt?: DateTimeFilter | undefined;

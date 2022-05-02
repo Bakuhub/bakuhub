@@ -1,5 +1,5 @@
 import {MergeRequest, Thread} from "../../../../prisma/generated/type-graphql";
-import React from "react";
+import React, {useEffect} from "react";
 import {Grid, Typography} from "@mui/material";
 import {useMutation, useQuery} from "@apollo/client";
 import {mergeVisionIntoPremiseMutation} from "../../../gql/mutation/mergeVisionIntoPremiseMutation";
@@ -38,6 +38,11 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
         type: ConnectType.MERGE_REQUEST,
         id: mergeRequest.id
     };
+    useEffect(() => {
+        console.info("refetching threads");
+        console.info(vision);
+        console.info(get(vision, "premise.id",));
+    }, [vision]);
     if (!vision) return <div>no vision</div>;
     return <Grid container>
         <Grid item container md={6} xs={12}>
@@ -47,12 +52,12 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
             <VisionOverview vision={vision}/>
         </Grid>
         {
-            vision.prevVision && <Grid item container md={6} xs={12}>
-                <Typography>
-                    this is the old version {vision.prevVision.id}
-                </Typography>
-                <VisionOverview vision={vision.prevVision}/>
-            </Grid>}
+                vision.prevVision && <Grid item container md={6} xs={12}>
+                                      <Typography>
+                                          this is the old version {vision.prevVision.id}
+                                      </Typography>
+                                      <VisionOverview vision={vision.prevVision}/>
+                                  </Grid>}
 
         <Grid item xs={12}>
             <LoadingButton loading={loading} onClick={async () => {
@@ -77,6 +82,7 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                                                                         }
                                                                     }
                                                                 });
+
                     if (result.data) {
                         enqueueSnackbar("Merge request has been successfully merged", {variant: "success"});
                     }

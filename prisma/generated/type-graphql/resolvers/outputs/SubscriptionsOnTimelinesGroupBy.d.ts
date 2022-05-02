@@ -4,6 +4,7 @@ import { SubscriptionsOnTimelinesMinAggregate } from "../outputs/SubscriptionsOn
 export declare class SubscriptionsOnTimelinesGroupBy {
     userId: string;
     timelineId: string;
+    hasUnreadNotifications: boolean;
     lastReadAt: Date;
     type: "AUTO" | "MANUAL";
     createdAt: Date;
