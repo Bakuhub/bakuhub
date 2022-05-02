@@ -10,6 +10,8 @@ import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
 import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
 import dynamic from "next/dynamic";
+import {createUpdateManySubscriptionsMutation} from "../../../gql/mutation/createUpdateManySubscriptionsMutation";
+import {getUpdateManySubscriptionsVariables} from "../../../gql/utils/getUpdateManySubscriptionsVariables";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
@@ -25,6 +27,7 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
     const vision = get(mergeRequest, "vision");
     const [loading, setLoading] = React.useState(false);
     const [mergeVisionIntoPremise] = useMutation(mergeVisionIntoPremiseMutation);
+    const [updateManySubscriptions] = useMutation(createUpdateManySubscriptionsMutation(ConnectType.PREMISE));
     const {enqueueSnackbar} = useSnackbar();
     const {
         data: threadsQueryData,
@@ -85,6 +88,15 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
 
                     if (result.data) {
                         enqueueSnackbar("Merge request has been successfully merged", {variant: "success"});
+                        const res = await updateManySubscriptions(getUpdateManySubscriptionsVariables(
+                                                                          {
+                                                                              type: ConnectType.PREMISE,
+                                                                              id: get(vision, "premise.id", "")
+                                                                          }
+                                                                  )
+                        );
+                        console.info(res);
+                        console.info("-------------");
                     }
                     if (result.errors) {
                         enqueueSnackbar(result.errors[0].message, {variant: "error"});

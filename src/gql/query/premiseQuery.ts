@@ -52,5 +52,4 @@ export const premiseQuery = gql`
             }
         }
     }
-
 `;
