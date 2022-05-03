@@ -7,12 +7,13 @@ export interface UserAvatarProps {
     name?: string | null | undefined;
     email?: string | null | undefined;
     image?: string | null | undefined;
+    size?: "small" | "medium" | "large" | "xlarge";
 }
 
 export const UserAvatar: FunctionalComponent<UserAvatarProps> = (props) => {
     return <Avatar
             {...getUserAvatar(props || undefined)}
-            sx={{width: 24, height: 24, margin: "0.5rem"}}
+            sx={props.size === "small" ? {width: 24, height: 24, margin: "0.5rem"}:{}}
             aria-label="user avatar"
     />;
 };

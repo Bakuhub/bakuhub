@@ -18,7 +18,7 @@ export const AuthButton = () => {
         case session.status === "authenticated":
             return <AuthButtonContainer>
                 <UserNotification/>
-                <UserAvatar {...get(session, "data.user", {})}/>
+                <UserAvatar size={"small"} {...get(session, "data.user", {})}/>
                 <Button size={"small"} variant={"contained"} onClick={() => signOut()}>
                     Logout
                 </Button>

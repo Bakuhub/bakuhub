@@ -1,7 +1,7 @@
 import {Grid, TextField} from "@mui/material";
 import {useCallback, useEffect, useState} from "react";
 import {getVisionsByKeywordArgs} from "../../../gql/helper/getVisionsByKeywordArgs";
-import {useLazyQuery} from "@apollo/client";
+import {useLazyQuery, useMutation} from "@apollo/client";
 import {Vision} from "../../../../prisma/generated/type-graphql";
 import dynamic from "next/dynamic";
 import TimelineContainer from "../index";
@@ -11,11 +11,16 @@ import get from "lodash/get";
 import {useSnackbar} from "notistack";
 import {VersionSearchQueryData} from "../../../gql/query/versionSearchQuery";
 import {VisionRow} from "../../Vision/VisionDataGrid";
+import {createTimelineMutation} from "../../../gql/mutation/createTimelineMutation";
+import {getCreateTimelineVariables} from "../../../gql/utils/getCreateTimelineVariables";
+import {getUserIdBySession} from "../../../utils/getUserIdBySession";
+import {useSession} from "next-auth/react";
 
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
 const VisionDataGrid = dynamic(() => import("../../Vision/VisionDataGrid"));
 
 export const TimelineCreator = () => {
+    const session = useSession();
     const {enqueueSnackbar} = useSnackbar();
     // search keyword
     const [keyword, setKeyword] = useState("");
@@ -28,6 +33,8 @@ export const TimelineCreator = () => {
     const [loading, setLoading] = useState(false);
     const [take, setTake] = useState(1);
     const [skip, setSkip] = useState(0);
+
+    const [createTimelineWithTitleAndDescription] = useMutation(createTimelineMutation);
     const [fetchVisions] = useLazyQuery<VersionSearchQueryData>(
             ...getVisionsByKeywordArgs({
                                            keyword,
@@ -62,8 +69,6 @@ export const TimelineCreator = () => {
             );
             const votesData = get(fetchVotesData, "groupByVotesOnVision", []);
             const newVisions: VisionRow[] = visionsData.map((vision: Vision) => {
-                console.info(votesData);
-                console.info("-0----------------");
                 const selectedVote = votesData.find((vote) => vote.visionId === vision.id);
                 const votes = get(selectedVote, "_sum.vote", 0);
 
@@ -73,12 +78,24 @@ export const TimelineCreator = () => {
                     votes
                 };
             });
-            console.info(newVisions);
-            console.info("this should be the new version");
             setVisions(prev => isKeywordUpdated ? newVisions:[...prev, ...newVisions]);
         }
     }, [skip, visions.length, fetchVisions, fetchMoreVote, enqueueSnackbar, timelineNodes]);
-
+    useEffect(
+            () => {
+                console.info(timelineNodes);
+            }, [timelineNodes]
+    );
+    const createTimeline = async () => {
+        const timeline = await createTimelineWithTitleAndDescription(getCreateTimelineVariables({
+                                                                                                    title, description,
+                                                                                                    premiseIds: timelineNodes.map(
+                                                                                                            (vision: Vision) => vision.premiseId
+                                                                                                    ),
+                                                                                                    userId: getUserIdBySession(
+                                                                                                            session)
+                                                                                                }));
+    };
     useEffect(
             () => {
                 setLoading(true);

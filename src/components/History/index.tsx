@@ -21,6 +21,7 @@ export const History = () => {
             <div>{error?.message}</div>
         </ErrorPage>;
     }
+    console.info(visions);
 
     return (
             <>
@@ -33,7 +34,7 @@ export const History = () => {
                     <Button onClick={() => router.push(`/vision/${vision.id}`)}>
                         {vision.id}
                     </Button>
-                    <Tooltip title={vision.updatedAt?.toDateString() || ""}>
+                    <Tooltip title={new Date(get(vision, "updatedAt")).toDateString() || ""}>
                         <Typography>
                             {moment(vision.updatedAt).fromNow()}
                         </Typography>

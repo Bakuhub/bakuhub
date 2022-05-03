@@ -41,6 +41,9 @@ export const getUpsertSubscriptionVariables = ({
                                 set: subscriptionMode
                             }
                         }:{},
+                        hasUnreadNotifications: {
+                            set: false
+                        },
                         lastReadAt: {
                             set: new Date()
                         }

@@ -1,36 +1,33 @@
-export interface CreateTimelineVariablesProps {
+export interface GetCreateTimelineVariables {
     title: string;
     description: string;
+    userId: string;
+    premiseIds: string[];
 
-    userId?: string;
-    premisesOnTimeline: Array<string>;
 }
 
 export const getCreateTimelineVariables = ({
-                                               title, userId, description, premisesOnTimeline
-                                           }: CreateTimelineVariablesProps) => {
+                                               title, description, userId, premiseIds
+                                           }: GetCreateTimelineVariables
+) => {
     return {
         variables: {
-            "data": {
-                title,
-                description,
-                ...userId ? {
-                    "author": {
-                        "connect": {
-                            "id": userId
-                        }
+            data: {
+                description, title,
+                status: null,
+                author: {
+                    connect: {
+                        id: userId
                     }
-                }:{}
-                ,
+                },
                 "premisesOnTimelines": {
-                    "premise": {
-                        "connect": {
-                            "id": premisesOnTimeline
-                        }
+                    "createMany": {
+                        "data": premiseIds.map(premiseId => (
+                                {premiseId}
+                        ))
                     }
                 }
             }
         }
     };
-
 };
