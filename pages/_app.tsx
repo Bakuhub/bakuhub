@@ -1,13 +1,10 @@
 import type {AppProps} from "next/app";
-import {ApolloProvider} from "@apollo/client";
-import apolloClient from "../src/lib/apollo";
-import {SessionProvider} from "next-auth/react";
-import {ThemeProvider} from "@mui/material/styles";
-import {theme} from "../src/theme";
 import dynamic from "next/dynamic";
-import {SnackbarProvider} from "notistack";
-import {Collapse} from "@mui/material";
 
+const ThemeProvider = dynamic(() => import("../src/dynamicImports/ThemeProvider"));
+const SessionProvider = dynamic(() => import("../src/dynamicImports/SessionProvider"));
+const ApolloProvider = dynamic(() => import("../src/dynamicImports/ApolloProvider"));
+const SnackbarProvider = dynamic(() => import("../src/dynamicImports/SnackbarProvider"));
 const CssBaseline = dynamic(() => import("@mui/material/CssBaseline"));
 const Layout = dynamic(() => import("../src/components/Layout"));
 
@@ -17,25 +14,12 @@ function MyApp({
     // useSession with next-auth
     return <SessionProvider session={session}>
         {/* this is MUI theme*/}
-        <ThemeProvider theme={theme}>
+        <ThemeProvider>
             {/* for apollo provide for useQuery and useMutation */}
-            <ApolloProvider client={apolloClient}>
+            <ApolloProvider>
                 {/* for redux store */}
                 {/*<Provider store={store}>*/}
-                <SnackbarProvider
-                        maxSnack={3}
-                        anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "left",
-                        }}
-                        TransitionComponent={Collapse}
-                        iconVariant={{
-                            success: "✅ ",
-                            error: "✖️",
-                            warning: "⚠️",
-                            info: "ℹ️",
-                        }}
-                >
+                <SnackbarProvider>
                     {/* for Dark theme */}
                     <CssBaseline/>
                     {/*get MUI dynamic fonts*/}
