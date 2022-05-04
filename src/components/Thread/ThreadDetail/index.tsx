@@ -85,7 +85,9 @@ export const ThreadDetail: FunctionComponent<ThreadDetailProps> = ({
                         {MaterialUIIcons.report}
                     </Icon>
                 </Button>
-                <VotingButton type={ConnectType.THREAD} id={thread.id}/>
+                <Grid item>
+                    <VotingButton type={ConnectType.THREAD} id={thread.id}/>
+                </Grid>
                 <Button variant="outlined" endIcon={<Icon>
                     {MaterialUIIcons.share}
                 </Icon>}>
