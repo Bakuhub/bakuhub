@@ -2,7 +2,7 @@ import {MainPage} from "../src/components/MainPage";
 import apolloClient from "../src/lib/apollo";
 import {premisesQuery} from "../src/gql/query/premisesQuery";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const {data} = await apolloClient.query({
                                                 query: premisesQuery,
                                                 variables: {
