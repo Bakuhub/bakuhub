@@ -86,7 +86,7 @@ export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => 
     };
 
     return (
-            <Box sx={{display: "flex"}}>
+            <Box sx={{display: "flex",}}>
                 <AppBar position="fixed" open={open}>
                     <Toolbar>
                         <IconButton

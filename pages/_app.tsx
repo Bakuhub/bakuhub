@@ -1,5 +1,9 @@
 import type {AppProps} from "next/app";
 import dynamic from "next/dynamic";
+import "../public/nprogress.css";
+import {useEffect} from "react";
+import {useRouter} from "next/router";
+import NProgress from "nprogress";
 
 const ThemeProvider = dynamic(() => import("../src/dynamicImports/ThemeProvider"));
 const SessionProvider = dynamic(() => import("../src/dynamicImports/SessionProvider"));
@@ -11,6 +15,29 @@ const Layout = dynamic(() => import("../src/components/Layout"));
 function MyApp({
                    Component, pageProps: {session, ...pageProps},
                }: AppProps) {
+    const router = useRouter();
+
+    useEffect(() => {
+        const handleStart = (url: string) => {
+            if (url !== router.pathname) {
+                NProgress.start();
+            }
+        };
+        const handleStop = () => {
+            NProgress.done();
+        };
+
+        router.events.on("routeChangeStart", handleStart);
+        router.events.on("routeChangeComplete", handleStop);
+        router.events.on("routeChangeError", handleStop);
+
+        return () => {
+            router.events.off("routeChangeStart", handleStart);
+            router.events.off("routeChangeComplete", handleStop);
+            router.events.off("routeChangeError", handleStop);
+        };
+    }, [router]);
+
     // useSession with next-auth
     return <SessionProvider session={session}>
         {/* this is MUI theme*/}
