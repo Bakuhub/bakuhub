@@ -1,28 +1,15 @@
-import {useRouter} from "next/router";
-import {ErrorPage} from "../Error";
-import {Button, CircularProgress, Grid, Tooltip} from "@mui/material";
+import {Button, Grid, Tooltip} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
 import * as React from "react";
-import {useQuery} from "@apollo/client";
-import {getVisionHistoryQueryVariable, visionHistoryQuery} from "../../gql/query/visionHistoryQuery";
+import {FunctionComponent} from "react";
 import {Vision} from "../../../prisma/generated/type-graphql";
 import {TimelineContainer} from "../Timeline";
 import get from "lodash/get";
+import {useRouter} from "next/router";
 
-export const History = () => {
+export const History: FunctionComponent<{ visions: Vision[] }> = ({visions}) => {
     const router = useRouter();
-    const {premiseId} = router.query;
-    const {data, loading, error} = useQuery(visionHistoryQuery, getVisionHistoryQueryVariable(premiseId as string));
-    const visions: Vision[] = get(data, "visions", []);
-    if (loading) return <CircularProgress/>;
-    if (!premiseId || error) {
-        return <ErrorPage>
-            <div>{error?.message}</div>
-        </ErrorPage>;
-    }
-    console.info(visions);
-
     return (
             <>
                 <TimelineContainer visions={visions}

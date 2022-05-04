@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
-import {Button, CircularProgress, Grid, Tooltip, Typography} from "@mui/material";
+import {Button, Grid, Tooltip, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import get from "lodash/get";
@@ -11,8 +11,6 @@ import {ReferenceOverview} from "../../Reference/ReferenceOverview";
 import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
 import {ConnectType} from "../../../types";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
-import {premiseQuery} from "../../../gql/query/premiseQuery";
-import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
 import {getVisionHistoryQueryVariable} from "../../../gql/query/visionHistoryQuery";
 import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
@@ -39,19 +37,6 @@ interface PremiseDetailProps {
     premise: Premise;
 }
 
-export const PremiseDetailContainer = () => {
-    const router = useRouter();
-    const premiseId = router.query.id;
-    const {data, loading, error} = useQuery(premiseQuery, getPremiseDetailQueryVariable(premiseId as string));
-    if (loading && !data) {
-        return <CircularProgress/>;
-    } else {
-        if (error) {
-            return <Typography>{error.message}</Typography>;
-        }
-        return <PremiseDetail premise={data.premise}/>;
-    }
-};
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
