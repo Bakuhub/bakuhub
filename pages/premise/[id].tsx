@@ -7,12 +7,13 @@ import {premiseQuery} from "../../src/gql/query/premiseQuery";
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const premiseId = context.query.id;
     const apollo = getSsrApollo(context.req);
+    console.info("premiseId=======================", premiseId);
     const {data} = await apollo.query({
                                           query: premiseQuery,
                                           ...getPremiseDetailQueryVariable(premiseId as string)
 
                                       });
-
+    console.info("data=======================", data);
     return {
         props: {
             premise: data.premise
