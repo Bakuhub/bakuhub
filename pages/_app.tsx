@@ -7,8 +7,8 @@ import NProgress from "nprogress";
 import ThemeProvider from "../src/dynamicImports/ThemeProvider";
 import SessionProvider from "../src/dynamicImports/SessionProvider";
 import ApolloProvider from "../src/dynamicImports/ApolloProvider";
+import SnackbarProvider from "../src/dynamicImports/SnackbarProvider";
 
-const SnackbarProvider = dynamic(() => import("../src/dynamicImports/SnackbarProvider"));
 const CssBaseline = dynamic(() => import("@mui/material/CssBaseline"));
 const Layout = dynamic(() => import("../src/components/Layout"));
 
