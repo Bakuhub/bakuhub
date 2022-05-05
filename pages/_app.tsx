@@ -6,8 +6,8 @@ import {useRouter} from "next/router";
 import NProgress from "nprogress";
 import ThemeProvider from "../src/dynamicImports/ThemeProvider";
 import SessionProvider from "../src/dynamicImports/SessionProvider";
+import ApolloProvider from "../src/dynamicImports/ApolloProvider";
 
-const ApolloProvider = dynamic(() => import("../src/dynamicImports/ApolloProvider"),);
 const SnackbarProvider = dynamic(() => import("../src/dynamicImports/SnackbarProvider"));
 const CssBaseline = dynamic(() => import("@mui/material/CssBaseline"));
 const Layout = dynamic(() => import("../src/components/Layout"));
