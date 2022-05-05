@@ -21,6 +21,8 @@ import {useSession} from "next-auth/react";
 import {getUpsertSubscriptionVariables} from "../../../gql/utils/getUpsertSubscriptionVariables";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
 import {getUpsertSubscriptionMutation} from "../../../gql/mutation/getUpsertSubscriptionMutation";
+import {premiseQuery} from "../../../gql/query/premiseQuery";
+import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const Comment = dynamic(() => import("../../Comment"));
@@ -36,6 +38,16 @@ export enum Reaction {
 interface PremiseDetailProps {
     premise: Premise;
 }
+
+export const PremiseDetailContainer = ({premiseId}: { premiseId: string }) => {
+    const {data, loading, error} = useQuery(
+            premiseQuery,
+            getPremiseDetailQueryVariable(premiseId)
+    );
+    if (loading) return <div>Loading...</div>;
+
+    return <PremiseDetail premise={data?.premise}/>;
+};
 
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const [isRedirecting, setIsRedirecting] = React.useState(false);

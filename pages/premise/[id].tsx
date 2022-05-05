@@ -1,22 +1,27 @@
-import {PremiseDetail} from "../../src/components/Premise/PremiseDetail";
+import {PremiseDetailContainer} from "../../src/components/Premise/PremiseDetail";
 import {GetServerSideProps} from "next";
-import {getSsrApollo} from "../../src/lib/apollo";
-import {getPremiseDetailQueryVariable} from "../../src/gql/utils/getPremiseDetailQueryVariable";
-import {premiseQuery} from "../../src/gql/query/premiseQuery";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const premiseId = context.query.id;
-    const apollo = getSsrApollo(context.req);
-    console.info("premiseId=======================", premiseId);
-    const {data} = await apollo.query({
-                                          query: premiseQuery,
-                                          ...getPremiseDetailQueryVariable(premiseId as string)
-
-                                      });
-    console.info("data=======================", data);
+    // const apollo = getSsrApollo(context.req);
+    // console.time("apollo");
+    // const {data} = await apollo.query({
+    //                                       query: premiseQuery,
+    //                                       ...getPremiseDetailQueryVariable(premiseId as string)
+    //
+    //                                   });
+    // console.timeEnd("apollo");
+    // console.time("prisma");
+    // const g = await prisma.premise.findFirst({
+    //                                              where: {
+    //                                                  id: premiseId as string
+    //                                              }
+    //                                          });
+    // console.timeEnd("prisma");
     return {
         props: {
-            premise: data.premise
+            premiseId: premiseId as string,
+            // premise: data.premise
         }
     };
 };
@@ -28,4 +33,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 //     if (res.data) return <PremiseDetail premise={res.data.premise}/>;
 // };
 
-export default PremiseDetail;
+export default PremiseDetailContainer;

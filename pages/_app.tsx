@@ -18,7 +18,6 @@ function MyApp({
                    Component, pageProps: {session, ...pageProps},
                }: AppProps) {
     const router = useRouter();
-
     useEffect(() => {
         const handleStart = (url: string) => {
             if (url !== router.pathname) {
