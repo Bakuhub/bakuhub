@@ -1,7 +1,7 @@
 import Avatar from "@mui/material/Avatar";
 import {getUserAvatar} from "../../../utils/getUserAvatar";
 import * as React from "react";
-import {FunctionalComponent} from "preact";
+import {FunctionComponent} from "react";
 
 export interface UserAvatarProps {
     name?: string | null | undefined;
@@ -10,7 +10,7 @@ export interface UserAvatarProps {
     size?: "small" | "medium" | "large" | "xlarge";
 }
 
-export const UserAvatar: FunctionalComponent<UserAvatarProps> = (props) => {
+export const UserAvatar: FunctionComponent<UserAvatarProps> = (props) => {
     return <Avatar
             {...getUserAvatar(props || undefined)}
             sx={props.size === "small" ? {width: 24, height: 24, margin: "0.5rem"}:{}}

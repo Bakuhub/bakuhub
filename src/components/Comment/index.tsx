@@ -1,6 +1,5 @@
 import {Avatar, Button, Grid, TextField} from "@mui/material";
-import {useState} from "react";
-import {FunctionalComponent} from "preact";
+import {FunctionComponent, useState} from "react";
 import {useSession} from "next-auth/react";
 import {getUserAvatar} from "../../utils/getUserAvatar";
 import {ThreadConnectConfig} from "../../store/slices/threadSlice";
@@ -20,10 +19,10 @@ export interface CommentProps {
     handleSubmitCallback?: () => void;
 }
 
-export const Comment: FunctionalComponent<CommentProps> = ({
-                                                               handleSubmitCallback,
-                                                               connectConfig, handleCancel
-                                                           }) => {
+export const Comment: FunctionComponent<CommentProps> = ({
+                                                             handleSubmitCallback,
+                                                             connectConfig, handleCancel
+                                                         }) => {
     const session = useSession();
     const {enqueueSnackbar} = useSnackbar();
     const avatarProps = getUserAvatar(session.data?.user);
