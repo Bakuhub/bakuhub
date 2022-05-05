@@ -1,15 +1,17 @@
-import {ssrApolloClient} from "../../../src/lib/apollo";
+import {getSsrApollo} from "../../../src/lib/apollo";
 import {VisionMergeRequest} from "../../../src/components/Vision/MergeRequest";
 import {mergeRequestQuery} from "../../../src/gql/query/mergeRequestQuery";
+import {GetServerSideProps} from "next";
 
-export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
-    const {data} = await ssrApolloClient.query({
-                                                   query: mergeRequestQuery, variables: {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const apollo = getSsrApollo(context.req);
+    const {data} = await apollo.query({
+                                          query: mergeRequestQuery, variables: {
             "where": {
                 "id": context.query.id
             }
         }
-                                               });
+                                      });
 
     return {
         props: {
@@ -17,7 +19,7 @@ export async function getServerSideProps<GetServerSideProps>(context: { query: {
         }, // will be passed to the page component as props
     };
 
-}
+};
 
 
 export default VisionMergeRequest;

@@ -1,14 +1,21 @@
-import {getPremiseById} from "../../../src/services/getServerSideProps/getPremiseById";
 import {CreatePremise} from "../../../src/components/Premise/CreatePremise";
+import {getSsrApollo} from "../../../src/lib/apollo";
+import {GetServerSideProps} from "next";
+import {premiseQuery} from "../../../src/gql/query/premiseQuery";
+import {getPremiseDetailQueryVariable} from "../../../src/gql/utils/getPremiseDetailQueryVariable";
 
-export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
-    const premise = await getPremiseById(context.query.id);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const apollo = getSsrApollo(context.req);
+    const {data: {premise}} = await apollo.query({
+                                                     query: premiseQuery,
+                                                     ...getPremiseDetailQueryVariable(context.query.id as string)
+                                                 });
     return {
         props: {
             premise
         }, // will be passed to the page component as props
     };
-}
+};
 
 
 export default CreatePremise;

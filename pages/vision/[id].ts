@@ -1,11 +1,12 @@
 import {getVisionQueryArgs} from "../../src/gql/helper/getVisionQueryArgs";
-import {ssrApolloClient} from "../../src/lib/apollo";
+import {getSsrApollo} from "../../src/lib/apollo";
 import DetailPage from "../../src/components/Detail";
+import {GetServerSideProps} from "next";
 
-export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
-
-    const [query, variables] = getVisionQueryArgs(context.query.id);
-    const {data} = await ssrApolloClient.query(
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const apollo = getSsrApollo(context.req);
+    const [query, variables] = getVisionQueryArgs(context.query.id as string);
+    const {data} = await apollo.query(
             {
                 query,
                 variables
@@ -18,7 +19,7 @@ export async function getServerSideProps<GetServerSideProps>(context: { query: {
         }, // will be passed to the page component as props
     };
 
-}
+};
 
 
 export default DetailPage;
