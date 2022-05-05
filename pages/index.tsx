@@ -3,7 +3,8 @@ import apolloClient from "../src/lib/apollo";
 import {premisesQuery} from "../src/gql/query/premisesQuery";
 
 export async function getServerSideProps() {
-    const {data} = await apolloClient.query({
+    console.info("start");
+    const result = await apolloClient.query({
                                                 query: premisesQuery,
                                                 variables: {
                                                     "where": {
@@ -28,9 +29,11 @@ export async function getServerSideProps() {
                                                     }
                                                 }
                                             });
+    console.info(result);
+
     return {
         props: {
-            premises: data.premises
+            premises: result.data.premises || []
         }, // will be passed to the page component as props
     };
 }
