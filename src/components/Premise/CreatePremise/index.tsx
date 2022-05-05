@@ -175,12 +175,12 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
 
             return <Grid container spacing={1}>
                 {
-                    premise && <MergeRequest
-                        mergeRequestTitle={mergeRequestTitle}
-                        setMergeRequestTitle={setMergeRequestTitle}
-                        mergeRequestDescription={mergeRequestDescription}
-                        setMergeRequestDescription={setMergeRequestDescription}
-                    />
+                        premise && <MergeRequest
+                                    mergeRequestTitle={mergeRequestTitle}
+                                    setMergeRequestTitle={setMergeRequestTitle}
+                                    mergeRequestDescription={mergeRequestDescription}
+                                    setMergeRequestDescription={setMergeRequestDescription}
+                                />
                 }
                 <Grid xs={12} md={6} component={"form"} item
                       container spacing={1}>
@@ -268,6 +268,7 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                                      "nextVisions": [],
                                      "author": user,
                                      id: "",
+                                     "updatedAt": new Date(),
                                      premiseId: "",
                                      thumbnail: attachment
                                  }
