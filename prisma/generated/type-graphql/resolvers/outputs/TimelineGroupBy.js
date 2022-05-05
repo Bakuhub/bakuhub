@@ -28,7 +28,7 @@ tslib_1.__decorate([
 ], TimelineGroupBy.prototype, "description", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], TimelineGroupBy.prototype, "status", void 0);

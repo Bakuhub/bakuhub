@@ -1,3 +1,4 @@
+import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 export declare class TimelineScalarWhereWithAggregatesInput {
     AND?: TimelineScalarWhereWithAggregatesInput[] | undefined;
@@ -6,6 +7,6 @@ export declare class TimelineScalarWhereWithAggregatesInput {
     id?: StringWithAggregatesFilter | undefined;
     title?: StringWithAggregatesFilter | undefined;
     description?: StringWithAggregatesFilter | undefined;
-    status?: StringWithAggregatesFilter | undefined;
+    status?: StringNullableWithAggregatesFilter | undefined;
     authorId?: StringWithAggregatesFilter | undefined;
 }

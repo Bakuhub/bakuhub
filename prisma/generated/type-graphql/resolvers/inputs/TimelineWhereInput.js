@@ -7,6 +7,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const PremisesOnTimelinesListRelationFilter_1 = require("../inputs/PremisesOnTimelinesListRelationFilter");
 const ReactionOnTimelinesListRelationFilter_1 = require("../inputs/ReactionOnTimelinesListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
+const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
 const SubscriptionsOnTimelinesListRelationFilter_1 = require("../inputs/SubscriptionsOnTimelinesListRelationFilter");
 const TagsOnTimelinesListRelationFilter_1 = require("../inputs/TagsOnTimelinesListRelationFilter");
 const ThreadsOnTimelineListRelationFilter_1 = require("../inputs/ThreadsOnTimelineListRelationFilter");
@@ -51,10 +52,10 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
 ], TimelineWhereInput.prototype, "description", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, {
+    TypeGraphQL.Field(_type => StringNullableFilter_1.StringNullableFilter, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
+    tslib_1.__metadata("design:type", StringNullableFilter_1.StringNullableFilter)
 ], TimelineWhereInput.prototype, "status", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserRelationFilter_1.UserRelationFilter, {

@@ -9,7 +9,7 @@ export declare class TimelineCreateInput {
     id?: string | undefined;
     title: string;
     description: string;
-    status: string;
+    status?: string | undefined;
     author: UserCreateNestedOneWithoutTimelinesInput;
     premisesOnTimelines?: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     tagsOnTimelines?: TagsOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;

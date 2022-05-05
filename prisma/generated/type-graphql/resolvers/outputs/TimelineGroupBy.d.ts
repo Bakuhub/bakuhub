@@ -5,7 +5,7 @@ export declare class TimelineGroupBy {
     id: string;
     title: string;
     description: string;
-    status: string;
+    status: string | null;
     authorId: string;
     _count: TimelineCountAggregate | null;
     _min: TimelineMinAggregate | null;

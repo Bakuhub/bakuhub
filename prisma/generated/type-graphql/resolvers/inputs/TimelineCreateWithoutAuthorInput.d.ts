@@ -8,7 +8,7 @@ export declare class TimelineCreateWithoutAuthorInput {
     id?: string | undefined;
     title: string;
     description: string;
-    status: string;
+    status?: string | undefined;
     premisesOnTimelines?: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     tagsOnTimelines?: TagsOnTimelinesCreateNestedManyWithoutTimelineInput | undefined;
     threadsOnTimeline?: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput | undefined;

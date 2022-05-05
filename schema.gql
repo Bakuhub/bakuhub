@@ -7762,7 +7762,7 @@ type Timeline {
   id: String!
   premisesOnTimelines(cursor: PremisesOnTimelinesWhereUniqueInput, distinct: [PremisesOnTimelinesScalarFieldEnum!], orderBy: [PremisesOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: PremisesOnTimelinesWhereInput): [PremisesOnTimelines!]!
   reactionOnTimelines(cursor: ReactionOnTimelinesWhereUniqueInput, distinct: [ReactionOnTimelinesScalarFieldEnum!], orderBy: [ReactionOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnTimelinesWhereInput): [ReactionOnTimelines!]!
-  status: String!
+  status: String
   subscriptionsOnTimelines(cursor: SubscriptionsOnTimelinesWhereUniqueInput, distinct: [SubscriptionsOnTimelinesScalarFieldEnum!], orderBy: [SubscriptionsOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: SubscriptionsOnTimelinesWhereInput): [SubscriptionsOnTimelines!]!
   tagsOnTimelines(cursor: TagsOnTimelinesWhereUniqueInput, distinct: [TagsOnTimelinesScalarFieldEnum!], orderBy: [TagsOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnTimelinesWhereInput): [TagsOnTimelines!]!
   threadsOnTimeline(cursor: ThreadsOnTimelineWhereUniqueInput, distinct: [ThreadsOnTimelineScalarFieldEnum!], orderBy: [ThreadsOnTimelineOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnTimelineWhereInput): [ThreadsOnTimeline!]!
@@ -7802,7 +7802,7 @@ input TimelineCreateInput {
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
-  status: String!
+  status: String
   subscriptionsOnTimelines: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
@@ -7813,7 +7813,7 @@ input TimelineCreateInput {
 input TimelineCreateManyAuthorInput {
   description: String!
   id: String
-  status: String!
+  status: String
   title: String!
 }
 
@@ -7826,7 +7826,7 @@ input TimelineCreateManyInput {
   authorId: String!
   description: String!
   id: String
-  status: String!
+  status: String
   title: String!
 }
 
@@ -7913,7 +7913,7 @@ input TimelineCreateWithoutAuthorInput {
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
-  status: String!
+  status: String
   subscriptionsOnTimelines: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
@@ -7926,7 +7926,7 @@ input TimelineCreateWithoutPremisesOnTimelinesInput {
   description: String!
   id: String
   reactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
-  status: String!
+  status: String
   subscriptionsOnTimelines: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
@@ -7939,7 +7939,7 @@ input TimelineCreateWithoutReactionOnTimelinesInput {
   description: String!
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
-  status: String!
+  status: String
   subscriptionsOnTimelines: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
@@ -7953,7 +7953,7 @@ input TimelineCreateWithoutSubscriptionsOnTimelinesInput {
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
-  status: String!
+  status: String
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
@@ -7966,7 +7966,7 @@ input TimelineCreateWithoutTagsOnTimelinesInput {
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
-  status: String!
+  status: String
   subscriptionsOnTimelines: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
   title: String!
@@ -7979,7 +7979,7 @@ input TimelineCreateWithoutThreadsOnTimelineInput {
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
-  status: String!
+  status: String
   subscriptionsOnTimelines: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   title: String!
@@ -7992,7 +7992,7 @@ input TimelineCreateWithoutVotesOnTimelineInput {
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesCreateNestedManyWithoutTimelineInput
-  status: String!
+  status: String
   subscriptionsOnTimelines: SubscriptionsOnTimelinesCreateNestedManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesCreateNestedManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineCreateNestedManyWithoutTimelineInput
@@ -8006,7 +8006,7 @@ type TimelineGroupBy {
   authorId: String!
   description: String!
   id: String!
-  status: String!
+  status: String
   title: String!
 }
 
@@ -8098,7 +8098,7 @@ input TimelineScalarWhereInput {
   authorId: StringFilter
   description: StringFilter
   id: StringFilter
-  status: StringFilter
+  status: StringNullableFilter
   title: StringFilter
 }
 
@@ -8109,7 +8109,7 @@ input TimelineScalarWhereWithAggregatesInput {
   authorId: StringWithAggregatesFilter
   description: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
-  status: StringWithAggregatesFilter
+  status: StringNullableWithAggregatesFilter
   title: StringWithAggregatesFilter
 }
 
@@ -8119,7 +8119,7 @@ input TimelineUpdateInput {
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutTimelineInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   subscriptionsOnTimelines: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
@@ -8130,7 +8130,7 @@ input TimelineUpdateInput {
 input TimelineUpdateManyMutationInput {
   description: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -8211,7 +8211,7 @@ input TimelineUpdateWithoutAuthorInput {
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutTimelineInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   subscriptionsOnTimelines: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
@@ -8224,7 +8224,7 @@ input TimelineUpdateWithoutPremisesOnTimelinesInput {
   description: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   reactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutTimelineInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   subscriptionsOnTimelines: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
@@ -8237,7 +8237,7 @@ input TimelineUpdateWithoutReactionOnTimelinesInput {
   description: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   subscriptionsOnTimelines: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
@@ -8251,7 +8251,7 @@ input TimelineUpdateWithoutSubscriptionsOnTimelinesInput {
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutTimelineInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
@@ -8264,7 +8264,7 @@ input TimelineUpdateWithoutTagsOnTimelinesInput {
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutTimelineInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   subscriptionsOnTimelines: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
@@ -8277,7 +8277,7 @@ input TimelineUpdateWithoutThreadsOnTimelineInput {
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutTimelineInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   subscriptionsOnTimelines: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   title: StringFieldUpdateOperationsInput
@@ -8290,7 +8290,7 @@ input TimelineUpdateWithoutVotesOnTimelineInput {
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutTimelineInput
   reactionOnTimelines: ReactionOnTimelinesUpdateManyWithoutTimelineInput
-  status: StringFieldUpdateOperationsInput
+  status: NullableStringFieldUpdateOperationsInput
   subscriptionsOnTimelines: SubscriptionsOnTimelinesUpdateManyWithoutTimelineInput
   tagsOnTimelines: TagsOnTimelinesUpdateManyWithoutTimelineInput
   threadsOnTimeline: ThreadsOnTimelineUpdateManyWithoutTimelineInput
@@ -8343,7 +8343,7 @@ input TimelineWhereInput {
   id: StringFilter
   premisesOnTimelines: PremisesOnTimelinesListRelationFilter
   reactionOnTimelines: ReactionOnTimelinesListRelationFilter
-  status: StringFilter
+  status: StringNullableFilter
   subscriptionsOnTimelines: SubscriptionsOnTimelinesListRelationFilter
   tagsOnTimelines: TagsOnTimelinesListRelationFilter
   threadsOnTimeline: ThreadsOnTimelineListRelationFilter

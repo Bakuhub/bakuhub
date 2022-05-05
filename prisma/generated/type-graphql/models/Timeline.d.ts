@@ -10,7 +10,7 @@ export declare class Timeline {
     id: string;
     title: string;
     description: string;
-    status: string;
+    status?: string | null;
     author?: User;
     authorId: string;
     premisesOnTimelines?: PremisesOnTimelines[];

@@ -31,7 +31,7 @@ tslib_1.__decorate([
 ], TimelineCreateWithoutAuthorInput.prototype, "description", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], TimelineCreateWithoutAuthorInput.prototype, "status", void 0);

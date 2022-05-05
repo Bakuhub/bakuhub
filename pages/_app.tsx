@@ -4,10 +4,10 @@ import "../public/nprogress.css";
 import {useEffect} from "react";
 import {useRouter} from "next/router";
 import NProgress from "nprogress";
+import ThemeProvider from "../src/dynamicImports/ThemeProvider";
+import SessionProvider from "../src/dynamicImports/SessionProvider";
 
-const ThemeProvider = dynamic(() => import("../src/dynamicImports/ThemeProvider"));
-const SessionProvider = dynamic(() => import("../src/dynamicImports/SessionProvider"));
-const ApolloProvider = dynamic(() => import("../src/dynamicImports/ApolloProvider"));
+const ApolloProvider = dynamic(() => import("../src/dynamicImports/ApolloProvider"),);
 const SnackbarProvider = dynamic(() => import("../src/dynamicImports/SnackbarProvider"));
 const CssBaseline = dynamic(() => import("@mui/material/CssBaseline"));
 const Layout = dynamic(() => import("../src/components/Layout"));

@@ -133,7 +133,7 @@ model Timeline {
   id                       String                     @id @default(cuid())
   title                    String                     @db.VarChar(255)
   description              String
-  status                   String
+  status                   String?
   author                   User                       @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId                 String
   premisesOnTimelines      PremisesOnTimelines[]
