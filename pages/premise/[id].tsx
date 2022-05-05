@@ -2,6 +2,10 @@ import {PremiseDetailContainer} from "../../src/components/Premise/PremiseDetail
 import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    context.res.setHeader(
+            "Cache-Control",
+            "public, s-maxage=10, stale-while-revalidate=59"
+    );
     const premiseId = context.query.id;
     // const apollo = getSsrApollo(context.req);
     // console.time("apollo");

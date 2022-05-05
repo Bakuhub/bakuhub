@@ -4,6 +4,10 @@ import {premisesQuery} from "../src/gql/query/premisesQuery";
 import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    context.res.setHeader(
+            "Cache-Control",
+            "public, s-maxage=10, stale-while-revalidate=59"
+    );
     console.info("start==,");
     console.time("getApollo");
     const apollo = getSsrApollo(context.req);

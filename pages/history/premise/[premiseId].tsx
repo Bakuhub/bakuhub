@@ -5,6 +5,10 @@ import {getSsrApollo} from "../../../src/lib/apollo";
 import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    context.res.setHeader(
+            "Cache-Control",
+            "public, s-maxage=10, stale-while-revalidate=59"
+    );
     const {premiseId} = context.query;
     const apollo = getSsrApollo(context.req);
     const {data} = await apollo.query(
