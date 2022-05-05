@@ -1,11 +1,11 @@
 import {getVisionQueryArgs} from "../../src/gql/helper/getVisionQueryArgs";
-import apollo from "../../src/lib/apollo";
+import {ssrApolloClient} from "../../src/lib/apollo";
 import DetailPage from "../../src/components/Detail";
 
 export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
 
     const [query, variables] = getVisionQueryArgs(context.query.id);
-    const {data} = await apollo.query(
+    const {data} = await ssrApolloClient.query(
             {
                 query,
                 variables

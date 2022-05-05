@@ -1,10 +1,10 @@
 import {premiseQuery} from "../../../src/gql/query/premiseQuery";
-import apollo from "../../../src/lib/apollo";
+import {ssrApolloClient} from "../../../src/lib/apollo";
 import {PremiseDetail} from "../../../src/components/Premise/PremiseDetail";
 
 export async function getServerSideProps<GetServerSideProps>(context: { query: { id: any; }; }) {
-    const {data: {premise}} = await apollo.query({
-        query: premiseQuery, variables: {
+    const {data: {premise}} = await ssrApolloClient.query({
+                                                              query: premiseQuery, variables: {
             "where": {
                 "id": context.query.id
             },
@@ -14,7 +14,7 @@ export async function getServerSideProps<GetServerSideProps>(context: { query: {
                 }
             }
         }
-    },);
+                                                          },);
     return {
         props: {
             premise
