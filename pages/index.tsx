@@ -9,9 +9,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             "Cache-Control",
             "public, s-maxage=10, stale-while-revalidate=59"
     );
-    console.info("start==,");
+    console.info("start======>");
     const apollo = getSsrApollo(context.req);
-    // console.timeEnd("getApollo");
     console.time("apollo");
     const result = await apollo.query({
                                           query: premisesQuery,

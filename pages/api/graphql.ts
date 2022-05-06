@@ -12,8 +12,17 @@ export const config = {
         bodyParser: false
     }
 };
+console.time("schema");
+const schema = createSchema();
+console.timeEnd("schema");
+console.time("start apollo");
+const apolloServer = new ApolloServer({
+                                          schema,
+                                          context: createContext,
+                                      });
+console.timeEnd("start apollo");
 
-
+const startServer = apolloServer.start();
 export default cors(async function handler(
         req: MicroRequest, res: ServerResponse
 ) {
@@ -22,24 +31,7 @@ export default cors(async function handler(
         return false;
     }
 
-// use the toString() method to convert
-// Buffer into String
-
-    console.info("start graphql");
-    console.time("schema");
-    const schema = createSchema();
-    console.timeEnd("schema");
-    console.time("start apollo");
-    const apolloServer = new ApolloServer({
-                                              schema,
-                                              context: createContext,
-                                          });
-    console.timeEnd("start apollo");
-    console.time("graphql1");
-
-    const startServer = apolloServer.start();
     await startServer;
-    console.timeEnd("graphql1");
     await apolloServer.createHandler({
                                          path: "/api/graphql",
                                      })(req, res);

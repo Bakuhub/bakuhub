@@ -6,10 +6,10 @@ import {useRouter} from "next/router";
 import NProgress from "nprogress";
 
 const ThemeProvider = dynamic(() => import("../src/dynamicImports/ThemeProvider"));
-const SessionProvider = dynamic(() => import("../src/dynamicImports/SessionProvider"), {
+const SessionProvider = dynamic(() => import("../src/dynamicImports/SessionProvider"));
+const ApolloProvider = dynamic(() => import("../src/dynamicImports/ApolloProvider"), {
     ssr: true
 });
-const ApolloProvider = dynamic(() => import("../src/dynamicImports/ApolloProvider"));
 const SnackbarProvider = dynamic(() => import("../src/dynamicImports/SnackbarProvider"));
 const CssBaseline = dynamic(() => import("@mui/material/CssBaseline"));
 const Layout = dynamic(() => import("../src/components/Layout"));
