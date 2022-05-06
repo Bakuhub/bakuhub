@@ -1,0 +1,11 @@
+import * as TypeGraphQL from "type-graphql";
+import * as GraphQLScalars from "graphql-scalars";
+import { VotesOnThreadWhereUniqueInput } from "../../../inputs/VotesOnThreadWhereUniqueInput";
+
+@TypeGraphQL.ArgsType()
+export class DeleteVotesOnThreadArgs {
+  @TypeGraphQL.Field(_type => VotesOnThreadWhereUniqueInput, {
+    nullable: false
+  })
+  where!: VotesOnThreadWhereUniqueInput;
+}

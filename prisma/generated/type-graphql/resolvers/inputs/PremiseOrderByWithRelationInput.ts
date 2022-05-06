@@ -1,0 +1,82 @@
+import * as TypeGraphQL from "type-graphql";
+import * as GraphQLScalars from "graphql-scalars";
+import { Prisma } from "@prisma/client";
+import { DecimalJSScalar } from "../../scalars";
+import { PremisesOnTimelinesOrderByRelationAggregateInput } from "../inputs/PremisesOnTimelinesOrderByRelationAggregateInput";
+import { SubscriptionsOnPremisesOrderByRelationAggregateInput } from "../inputs/SubscriptionsOnPremisesOrderByRelationAggregateInput";
+import { TagsOnPremisesOrderByRelationAggregateInput } from "../inputs/TagsOnPremisesOrderByRelationAggregateInput";
+import { ThreadsOnPremiseOrderByRelationAggregateInput } from "../inputs/ThreadsOnPremiseOrderByRelationAggregateInput";
+import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
+import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
+import { VotesOnPremiseOrderByRelationAggregateInput } from "../inputs/VotesOnPremiseOrderByRelationAggregateInput";
+import { SortOrder } from "../../enums/SortOrder";
+
+@TypeGraphQL.InputType("PremiseOrderByWithRelationInput", {
+  isAbstract: true
+})
+export class PremiseOrderByWithRelationInput {
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  id?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  title?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  createdAt?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  updatedAt?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  status?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => UserOrderByWithRelationInput, {
+    nullable: true
+  })
+  author?: UserOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  authorId?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => VisionOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  vision?: VisionOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => PremisesOnTimelinesOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  premisesOnTimelines?: PremisesOnTimelinesOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => TagsOnPremisesOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  tagsOnPremises?: TagsOnPremisesOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ThreadsOnPremiseOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  threadsOnPremise?: ThreadsOnPremiseOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => VotesOnPremiseOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  votesOnPremise?: VotesOnPremiseOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => SubscriptionsOnPremisesOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  subscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
+}
