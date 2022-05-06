@@ -21,9 +21,13 @@ export default cors(async function handler(
         res.end();
         return false;
     }
+    console.info("start graphql");
+    console.time("schema");
+    const schema = await createSchema();
+    console.timeEnd("schema");
     console.time("start apollo");
     const apolloServer = new ApolloServer({
-                                              schema: await createSchema(),
+                                              schema,
                                               context: createContext,
                                           });
     console.timeEnd("start apollo");
