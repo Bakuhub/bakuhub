@@ -1,0 +1,38 @@
+import { AccountOrderByRelationAggregateInput } from "../inputs/AccountOrderByRelationAggregateInput";
+import { PremiseOrderByRelationAggregateInput } from "../inputs/PremiseOrderByRelationAggregateInput";
+import { ReactionOnThreadsOrderByRelationAggregateInput } from "../inputs/ReactionOnThreadsOrderByRelationAggregateInput";
+import { ReactionOnTimelinesOrderByRelationAggregateInput } from "../inputs/ReactionOnTimelinesOrderByRelationAggregateInput";
+import { ReactionOnVisionsOrderByRelationAggregateInput } from "../inputs/ReactionOnVisionsOrderByRelationAggregateInput";
+import { SessionOrderByRelationAggregateInput } from "../inputs/SessionOrderByRelationAggregateInput";
+import { SubscriptionsOnPremisesOrderByRelationAggregateInput } from "../inputs/SubscriptionsOnPremisesOrderByRelationAggregateInput";
+import { SubscriptionsOnTimelinesOrderByRelationAggregateInput } from "../inputs/SubscriptionsOnTimelinesOrderByRelationAggregateInput";
+import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
+import { TimelineOrderByRelationAggregateInput } from "../inputs/TimelineOrderByRelationAggregateInput";
+import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
+import { VotesOnPremiseOrderByRelationAggregateInput } from "../inputs/VotesOnPremiseOrderByRelationAggregateInput";
+import { VotesOnThreadOrderByRelationAggregateInput } from "../inputs/VotesOnThreadOrderByRelationAggregateInput";
+import { VotesOnTimelineOrderByRelationAggregateInput } from "../inputs/VotesOnTimelineOrderByRelationAggregateInput";
+import { VotesOnVisionOrderByRelationAggregateInput } from "../inputs/VotesOnVisionOrderByRelationAggregateInput";
+export declare class UserOrderByWithRelationInput {
+    id?: "asc" | "desc" | undefined;
+    name?: "asc" | "desc" | undefined;
+    email?: "asc" | "desc" | undefined;
+    emailVerified?: "asc" | "desc" | undefined;
+    updatedAt?: "asc" | "desc" | undefined;
+    image?: "asc" | "desc" | undefined;
+    accounts?: AccountOrderByRelationAggregateInput | undefined;
+    sessions?: SessionOrderByRelationAggregateInput | undefined;
+    premises?: PremiseOrderByRelationAggregateInput | undefined;
+    threads?: ThreadOrderByRelationAggregateInput | undefined;
+    visions?: VisionOrderByRelationAggregateInput | undefined;
+    timelines?: TimelineOrderByRelationAggregateInput | undefined;
+    reactionOnThreads?: ReactionOnThreadsOrderByRelationAggregateInput | undefined;
+    reactionOnTimelines?: ReactionOnTimelinesOrderByRelationAggregateInput | undefined;
+    reactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
+    votesOnVision?: VotesOnVisionOrderByRelationAggregateInput | undefined;
+    votesOnTimeline?: VotesOnTimelineOrderByRelationAggregateInput | undefined;
+    votesOnPremise?: VotesOnPremiseOrderByRelationAggregateInput | undefined;
+    votesOnThread?: VotesOnThreadOrderByRelationAggregateInput | undefined;
+    subscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
+    subscriptionsOnTimelines?: SubscriptionsOnTimelinesOrderByRelationAggregateInput | undefined;
+}

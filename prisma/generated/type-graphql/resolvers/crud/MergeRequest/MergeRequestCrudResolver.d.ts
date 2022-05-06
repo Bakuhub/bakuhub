@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateMergeRequestArgs } from "./args/AggregateMergeRequestArgs";
+import { CreateManyMergeRequestArgs } from "./args/CreateManyMergeRequestArgs";
+import { CreateMergeRequestArgs } from "./args/CreateMergeRequestArgs";
+import { DeleteManyMergeRequestArgs } from "./args/DeleteManyMergeRequestArgs";
+import { DeleteMergeRequestArgs } from "./args/DeleteMergeRequestArgs";
+import { FindFirstMergeRequestArgs } from "./args/FindFirstMergeRequestArgs";
+import { FindManyMergeRequestArgs } from "./args/FindManyMergeRequestArgs";
+import { FindUniqueMergeRequestArgs } from "./args/FindUniqueMergeRequestArgs";
+import { GroupByMergeRequestArgs } from "./args/GroupByMergeRequestArgs";
+import { UpdateManyMergeRequestArgs } from "./args/UpdateManyMergeRequestArgs";
+import { UpdateMergeRequestArgs } from "./args/UpdateMergeRequestArgs";
+import { UpsertMergeRequestArgs } from "./args/UpsertMergeRequestArgs";
+import { MergeRequest } from "../../../models/MergeRequest";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateMergeRequest } from "../../outputs/AggregateMergeRequest";
+import { MergeRequestGroupBy } from "../../outputs/MergeRequestGroupBy";
+export declare class MergeRequestCrudResolver {
+    mergeRequest(ctx: any, info: GraphQLResolveInfo, args: FindUniqueMergeRequestArgs): Promise<MergeRequest | null>;
+    findFirstMergeRequest(ctx: any, info: GraphQLResolveInfo, args: FindFirstMergeRequestArgs): Promise<MergeRequest | null>;
+    mergeRequests(ctx: any, info: GraphQLResolveInfo, args: FindManyMergeRequestArgs): Promise<MergeRequest[]>;
+    createMergeRequest(ctx: any, info: GraphQLResolveInfo, args: CreateMergeRequestArgs): Promise<MergeRequest>;
+    createManyMergeRequest(ctx: any, info: GraphQLResolveInfo, args: CreateManyMergeRequestArgs): Promise<AffectedRowsOutput>;
+    deleteMergeRequest(ctx: any, info: GraphQLResolveInfo, args: DeleteMergeRequestArgs): Promise<MergeRequest | null>;
+    updateMergeRequest(ctx: any, info: GraphQLResolveInfo, args: UpdateMergeRequestArgs): Promise<MergeRequest | null>;
+    deleteManyMergeRequest(ctx: any, info: GraphQLResolveInfo, args: DeleteManyMergeRequestArgs): Promise<AffectedRowsOutput>;
+    updateManyMergeRequest(ctx: any, info: GraphQLResolveInfo, args: UpdateManyMergeRequestArgs): Promise<AffectedRowsOutput>;
+    upsertMergeRequest(ctx: any, info: GraphQLResolveInfo, args: UpsertMergeRequestArgs): Promise<MergeRequest>;
+    aggregateMergeRequest(ctx: any, info: GraphQLResolveInfo, args: AggregateMergeRequestArgs): Promise<AggregateMergeRequest>;
+    groupByMergeRequest(ctx: any, info: GraphQLResolveInfo, args: GroupByMergeRequestArgs): Promise<MergeRequestGroupBy[]>;
+}

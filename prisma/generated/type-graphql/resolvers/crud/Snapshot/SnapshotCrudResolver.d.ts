@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateSnapshotArgs } from "./args/AggregateSnapshotArgs";
+import { CreateManySnapshotArgs } from "./args/CreateManySnapshotArgs";
+import { CreateSnapshotArgs } from "./args/CreateSnapshotArgs";
+import { DeleteManySnapshotArgs } from "./args/DeleteManySnapshotArgs";
+import { DeleteSnapshotArgs } from "./args/DeleteSnapshotArgs";
+import { FindFirstSnapshotArgs } from "./args/FindFirstSnapshotArgs";
+import { FindManySnapshotArgs } from "./args/FindManySnapshotArgs";
+import { FindUniqueSnapshotArgs } from "./args/FindUniqueSnapshotArgs";
+import { GroupBySnapshotArgs } from "./args/GroupBySnapshotArgs";
+import { UpdateManySnapshotArgs } from "./args/UpdateManySnapshotArgs";
+import { UpdateSnapshotArgs } from "./args/UpdateSnapshotArgs";
+import { UpsertSnapshotArgs } from "./args/UpsertSnapshotArgs";
+import { Snapshot } from "../../../models/Snapshot";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateSnapshot } from "../../outputs/AggregateSnapshot";
+import { SnapshotGroupBy } from "../../outputs/SnapshotGroupBy";
+export declare class SnapshotCrudResolver {
+    snapshot(ctx: any, info: GraphQLResolveInfo, args: FindUniqueSnapshotArgs): Promise<Snapshot | null>;
+    findFirstSnapshot(ctx: any, info: GraphQLResolveInfo, args: FindFirstSnapshotArgs): Promise<Snapshot | null>;
+    snapshots(ctx: any, info: GraphQLResolveInfo, args: FindManySnapshotArgs): Promise<Snapshot[]>;
+    createSnapshot(ctx: any, info: GraphQLResolveInfo, args: CreateSnapshotArgs): Promise<Snapshot>;
+    createManySnapshot(ctx: any, info: GraphQLResolveInfo, args: CreateManySnapshotArgs): Promise<AffectedRowsOutput>;
+    deleteSnapshot(ctx: any, info: GraphQLResolveInfo, args: DeleteSnapshotArgs): Promise<Snapshot | null>;
+    updateSnapshot(ctx: any, info: GraphQLResolveInfo, args: UpdateSnapshotArgs): Promise<Snapshot | null>;
+    deleteManySnapshot(ctx: any, info: GraphQLResolveInfo, args: DeleteManySnapshotArgs): Promise<AffectedRowsOutput>;
+    updateManySnapshot(ctx: any, info: GraphQLResolveInfo, args: UpdateManySnapshotArgs): Promise<AffectedRowsOutput>;
+    upsertSnapshot(ctx: any, info: GraphQLResolveInfo, args: UpsertSnapshotArgs): Promise<Snapshot>;
+    aggregateSnapshot(ctx: any, info: GraphQLResolveInfo, args: AggregateSnapshotArgs): Promise<AggregateSnapshot>;
+    groupBySnapshot(ctx: any, info: GraphQLResolveInfo, args: GroupBySnapshotArgs): Promise<SnapshotGroupBy[]>;
+}

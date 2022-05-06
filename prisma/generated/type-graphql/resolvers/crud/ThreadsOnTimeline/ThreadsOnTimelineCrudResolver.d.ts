@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateThreadsOnTimelineArgs } from "./args/AggregateThreadsOnTimelineArgs";
+import { CreateManyThreadsOnTimelineArgs } from "./args/CreateManyThreadsOnTimelineArgs";
+import { CreateThreadsOnTimelineArgs } from "./args/CreateThreadsOnTimelineArgs";
+import { DeleteManyThreadsOnTimelineArgs } from "./args/DeleteManyThreadsOnTimelineArgs";
+import { DeleteThreadsOnTimelineArgs } from "./args/DeleteThreadsOnTimelineArgs";
+import { FindFirstThreadsOnTimelineArgs } from "./args/FindFirstThreadsOnTimelineArgs";
+import { FindManyThreadsOnTimelineArgs } from "./args/FindManyThreadsOnTimelineArgs";
+import { FindUniqueThreadsOnTimelineArgs } from "./args/FindUniqueThreadsOnTimelineArgs";
+import { GroupByThreadsOnTimelineArgs } from "./args/GroupByThreadsOnTimelineArgs";
+import { UpdateManyThreadsOnTimelineArgs } from "./args/UpdateManyThreadsOnTimelineArgs";
+import { UpdateThreadsOnTimelineArgs } from "./args/UpdateThreadsOnTimelineArgs";
+import { UpsertThreadsOnTimelineArgs } from "./args/UpsertThreadsOnTimelineArgs";
+import { ThreadsOnTimeline } from "../../../models/ThreadsOnTimeline";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateThreadsOnTimeline } from "../../outputs/AggregateThreadsOnTimeline";
+import { ThreadsOnTimelineGroupBy } from "../../outputs/ThreadsOnTimelineGroupBy";
+export declare class ThreadsOnTimelineCrudResolver {
+    threadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: FindUniqueThreadsOnTimelineArgs): Promise<ThreadsOnTimeline | null>;
+    findFirstThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: FindFirstThreadsOnTimelineArgs): Promise<ThreadsOnTimeline | null>;
+    threadsOnTimelines(ctx: any, info: GraphQLResolveInfo, args: FindManyThreadsOnTimelineArgs): Promise<ThreadsOnTimeline[]>;
+    createThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: CreateThreadsOnTimelineArgs): Promise<ThreadsOnTimeline>;
+    createManyThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: CreateManyThreadsOnTimelineArgs): Promise<AffectedRowsOutput>;
+    deleteThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: DeleteThreadsOnTimelineArgs): Promise<ThreadsOnTimeline | null>;
+    updateThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: UpdateThreadsOnTimelineArgs): Promise<ThreadsOnTimeline | null>;
+    deleteManyThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: DeleteManyThreadsOnTimelineArgs): Promise<AffectedRowsOutput>;
+    updateManyThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: UpdateManyThreadsOnTimelineArgs): Promise<AffectedRowsOutput>;
+    upsertThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: UpsertThreadsOnTimelineArgs): Promise<ThreadsOnTimeline>;
+    aggregateThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: AggregateThreadsOnTimelineArgs): Promise<AggregateThreadsOnTimeline>;
+    groupByThreadsOnTimeline(ctx: any, info: GraphQLResolveInfo, args: GroupByThreadsOnTimelineArgs): Promise<ThreadsOnTimelineGroupBy[]>;
+}
