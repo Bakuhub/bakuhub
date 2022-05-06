@@ -21,9 +21,13 @@ export default cors(async function handler(
         res.end();
         return false;
     }
+
+// use the toString() method to convert
+// Buffer into String
+
     console.info("start graphql");
     console.time("schema");
-    const schema = await createSchema();
+    const schema = createSchema();
     console.timeEnd("schema");
     console.time("start apollo");
     const apolloServer = new ApolloServer({

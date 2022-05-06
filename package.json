@@ -34,6 +34,8 @@
     "@date-io/moment": "^2.13.1",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
+    "@graphql-tools/graphql-file-loader": "^7.3.11",
+    "@graphql-tools/load": "^7.5.10",
     "@mui/icons-material": "^5.5.1",
     "@mui/lab": "^5.0.0-alpha.72",
     "@mui/material": "^5.5.0",
