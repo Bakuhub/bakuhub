@@ -1,8 +1,6 @@
 import {MainPage} from "../src/components/MainPage";
 import {GetServerSideProps} from "next";
 import prisma from "../src/lib/prisma";
-import {premisesQuery} from "../src/gql/query/premisesQuery";
-import {getSsrApollo} from "../src/lib/apollo";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(
@@ -10,34 +8,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             "public, s-maxage=10, stale-while-revalidate=59"
     );
     console.info("start======>");
-    const apollo = getSsrApollo(context.req);
-    console.time("apollo");
-    const result = await apollo.query({
-                                          query: premisesQuery,
-                                          variables: {
-                                              "where": {
-                                                  "OR": [
-                                                      {
-                                                          "draftMode": {
-                                                              "equals": false
-                                                          },
-                                                          "AND": [
-                                                              {
-                                                                  "nextVisions": {
-                                                                      "every": {
-                                                                          "draftMode": {
-                                                                              "equals": true
-                                                                          }
-                                                                      }
-                                                                  }
-                                                              }
-                                                          ]
-                                                      }
-                                                  ]
-                                              }
-                                          }
-                                      });
-    console.timeEnd("apollo");
+    //  const apollo = getSsrApollo(context.req);
+    // console.time("apollo");
+    // const result = await apollo.query({
+    //                                       query: premisesQuery,
+    //                                       variables: {
+    //                                           "where": {
+    //                                               "OR": [
+    //                                                   {
+    //                                                       "draftMode": {
+    //                                                           "equals": false
+    //                                                       },
+    //                                                       "AND": [
+    //                                                           {
+    //                                                               "nextVisions": {
+    //                                                                   "every": {
+    //                                                                       "draftMode": {
+    //                                                                           "equals": true
+    //                                                                       }
+    //                                                                   }
+    //                                                               }
+    //                                                           }
+    //                                                       ]
+    //                                                   }
+    //                                               ]
+    //                                           }
+    //                                       }
+    //                                   });
+    // console.timeEnd("apollo");
     console.time("prisma");
     const premises = await prisma.premise.findMany({
                                                        include: {
@@ -51,8 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     console.timeEnd("prisma");
     return {
         props: {
-            premises: result.data.premises
-            // premises: JSON.parse(JSON.stringify(premises))
+            premises: JSON.parse(JSON.stringify(premises))
         }, // will be passed to the page component as props
     };
 };
