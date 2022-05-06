@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
         props: {
             vision: data.vision
-        }, // will be passed to the page component as props
+        },
     };
 
 };

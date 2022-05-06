@@ -5,7 +5,6 @@ import {getUserIdBySession} from "../src/utils/getUserIdBySession";
 const Home: NextPage = () => {
     const session = useSession();
     const userId = getUserIdBySession(session);
-    console.info(userId);
     return (
             <div>
                 <h1>Hello Next.js</h1>
