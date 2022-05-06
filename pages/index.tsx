@@ -1,7 +1,6 @@
 import {MainPage} from "../src/components/MainPage";
-import {getSsrApollo} from "../src/lib/apollo";
-import {premisesQuery} from "../src/gql/query/premisesQuery";
 import {GetServerSideProps} from "next";
+import prisma from "../src/lib/prisma";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(
@@ -9,40 +8,50 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             "public, s-maxage=10, stale-while-revalidate=59"
     );
     console.info("start==,");
-    console.time("getApollo");
-    const apollo = getSsrApollo(context.req);
-    console.timeEnd("getApollo");
+    // const apollo = getSsrApollo(context.req);
+    // console.timeEnd("getApollo");
+    // console.time("apollo");
+    // const result = await apollo.query({
+    //                                       query: premisesQuery,
+    //                                       variables: {
+    //                                           "where": {
+    //                                               "OR": [
+    //                                                   {
+    //                                                       "draftMode": {
+    //                                                           "equals": false
+    //                                                       },
+    //                                                       "AND": [
+    //                                                           {
+    //                                                               "nextVisions": {
+    //                                                                   "every": {
+    //                                                                       "draftMode": {
+    //                                                                           "equals": true
+    //                                                                       }
+    //                                                                   }
+    //                                                               }
+    //                                                           }
+    //                                                       ]
+    //                                                   }
+    //                                               ]
+    //                                           }
+    //                                       }
+    //                                   });
     console.time("apollo");
-    const result = await apollo.query({
-                                          query: premisesQuery,
-                                          variables: {
-                                              "where": {
-                                                  "OR": [
-                                                      {
-                                                          "draftMode": {
-                                                              "equals": false
-                                                          },
-                                                          "AND": [
-                                                              {
-                                                                  "nextVisions": {
-                                                                      "every": {
-                                                                          "draftMode": {
-                                                                              "equals": true
-                                                                          }
-                                                                      }
-                                                                  }
-                                                              }
-                                                          ]
-                                                      }
-                                                  ]
-                                              }
-                                          }
-                                      });
+
+    const premises = await prisma.premise.findMany({
+                                                       include: {
+                                                           vision: {
+                                                               include: {
+                                                                   nextVisions: true
+                                                               }
+                                                           },
+                                                       }
+                                                   });
     console.timeEnd("apollo");
 
     return {
         props: {
-            premises: result.data.premises || []
+            premises: JSON.parse(JSON.stringify(premises))
         }, // will be passed to the page component as props
     };
 };

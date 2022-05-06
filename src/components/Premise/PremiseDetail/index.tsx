@@ -55,8 +55,13 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const session = useSession();
     const [createSubscriptionMutation] = useMutation(getUpsertSubscriptionMutation(ConnectType.PREMISE));
     const activeVision = premise.vision?.find(vision =>
-                                                      vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
+                                                      !!vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
                                                       && !vision.draftMode);
+    console.info(activeVision);
+    console.info("-----------");
+    console.info(premise.vision);
+    // @ts-ignore
+    console.info(!!premise.vision[0].nextVisions?.every(nextVision => !!nextVision.draftMode));
 
     const {
         data: threadsQueryData,

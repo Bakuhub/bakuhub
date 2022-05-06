@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 
 const PremiseOverview = dynamic(() => import("../Premise/PremiseOverview"));
 export const MainPage = ({premises}: { premises: Premise[] }) => {
-    console.info(premises);
     return <Grid container spacing={1}>
         {
             premises.map(
