@@ -7,7 +7,8 @@ import {NextApiRequestCookies} from "next/dist/server/api-utils";
 const getApolloClient = (ssrMode: boolean = false) => new ApolloClient({
                                                                            uri: `${getUrl(process.env.NODE_ENV ===
                                                                                           "development"
-                                                                                          ? "http://localhost:4000":
+                                                                                          ? `http://localhost:3000${process.env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL}`
+                                                                                          :
                                                                                           `${process.env.NEXT_PUBLIC_BASE_URL}${process.env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL}`)}`,
                                                                            cache: new InMemoryCache({
                                                                                                         typePolicies: {
@@ -28,7 +29,8 @@ export const getSsrApollo = (req: IncomingMessage & { cookies: NextApiRequestCoo
                              link: createHttpLink({
                                                       uri: `${getUrl(process.env.NODE_ENV ===
                                                                      "development"
-                                                                     ? "http://localhost:4000":
+                                                                     ? `http://localhost:3000${process.env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL}`
+                                                                     :
                                                                      `${process.env.NEXT_PUBLIC_BASE_URL}${process.env.NEXT_PUBLIC_VERCEL_GRAPHQL_URL}`)}`,
                                                       credentials: "same-origin",
                                                       headers: {
