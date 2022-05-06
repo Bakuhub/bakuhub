@@ -1,6 +1,6 @@
 import type {NextPage} from "next";
 import {useSession} from "next-auth/react";
-import {getUserIdBySession} from "../src/utils/getUserIdBySession";
+import {getUserIdBySession} from "src/utils/getUserIdBySession";
 
 const Home: NextPage = () => {
     const session = useSession();

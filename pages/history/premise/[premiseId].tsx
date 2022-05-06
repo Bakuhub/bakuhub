@@ -1,7 +1,7 @@
-import {History} from "../../../src/components/History";
-import {getVisionHistoryQueryVariable, visionHistoryQuery} from "../../../src/gql/query/visionHistoryQuery";
+import {History} from "src/components/History";
+import {getVisionHistoryQueryVariable, visionHistoryQuery} from "src/gql/query/visionHistoryQuery";
 import * as React from "react";
-import {getSsrApollo} from "../../../src/lib/apollo";
+import {getSsrApollo} from "src/lib/apollo";
 import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

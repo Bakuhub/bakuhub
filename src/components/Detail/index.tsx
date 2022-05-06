@@ -1,12 +1,8 @@
-import {Button, Grid, LinearProgress, Tooltip} from "@mui/material";
-import Image from "next/image";
-import Typography from "@mui/material/Typography";
+import {Button, Grid, Icon, LinearProgress, Tooltip} from "@mui/material";
 import get from "lodash/get";
 import {ReferenceOverview} from "../Reference/ReferenceOverview";
 import IconButton from "@mui/material/IconButton";
-import ReplyIcon from "@mui/icons-material/Reply";
 import {LoadingButton} from "@mui/lab";
-import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {Comment} from "../Comment";
 import {ConnectType} from "../../types";
 import {ThreadDetail} from "../Thread/ThreadDetail";
@@ -24,10 +20,16 @@ import {getCreateReactionVariables} from "../../gql/utils/getCreateReactionVaria
 import {getUserIdBySession} from "../../utils/getUserIdBySession";
 import {useSession} from "next-auth/react";
 import {preprocessThreads} from "../../utils/preprocess/threads";
-import {Reaction} from "../Premise/PremiseDetail";
 import {addReaction} from "../../services/api/addReaction";
 import {upsertReactionOnVisionsMutation} from "../../gql/mutation/createReactionOnVisionMutation";
 import {useSnackbar} from "notistack";
+import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
+import {Reaction} from "../Premise/PremiseDetail";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+
+const Typography = dynamic(() => import( "@mui/material/Typography"));
+
 
 export interface DetailPageProps {
     vision: Vision;
@@ -119,13 +121,12 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                                         );
                                     }
                                 }}>
-
-                        <ReplyIcon/>
+                        <Icon>{MaterialUIIcons.reply}</Icon>
                     </IconButton>
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {
                         setIsRedirecting(true);
                         router.push(`/create/vision/${vision.premiseId}`);
-                    }} aria-label="share" startIcon={<AccountTreeTwoToneIcon/>
+                    }} aria-label="share" startIcon={<Icon>{MaterialUIIcons.account_tree_two_tone}</Icon>
                     }>
                         Create new vision
                     </LoadingButton>

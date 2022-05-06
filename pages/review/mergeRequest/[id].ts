@@ -1,6 +1,6 @@
-import {getSsrApollo} from "../../../src/lib/apollo";
-import {VisionMergeRequest} from "../../../src/components/Vision/MergeRequest";
-import {mergeRequestQuery} from "../../../src/gql/query/mergeRequestQuery";
+import {getSsrApollo} from "src/lib/apollo";
+import {VisionMergeRequest} from "src/components/Vision/MergeRequest";
+import {mergeRequestQuery} from "src/gql/query/mergeRequestQuery";
 import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

@@ -4,7 +4,7 @@ import {PrismaAdapter} from "@next-auth/prisma-adapter";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
-import prisma from "../../../src/lib/prisma";
+import prisma from "src/lib/prisma";
 
 
 // For more information on each option (and a full list of options) go to

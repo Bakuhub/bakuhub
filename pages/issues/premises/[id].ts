@@ -1,6 +1,6 @@
-import {premiseQuery} from "../../../src/gql/query/premiseQuery";
-import {getSsrApollo} from "../../../src/lib/apollo";
-import {PremiseDetail} from "../../../src/components/Premise/PremiseDetail";
+import {premiseQuery} from "src/gql/query/premiseQuery";
+import {getSsrApollo} from "src/lib/apollo";
+import {PremiseDetail} from "src/components/Premise/PremiseDetail";
 import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

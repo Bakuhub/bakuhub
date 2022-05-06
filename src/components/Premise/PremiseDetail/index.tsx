@@ -23,10 +23,10 @@ import {getUserIdBySession} from "../../../utils/getUserIdBySession";
 import {getUpsertSubscriptionMutation} from "../../../gql/mutation/getUpsertSubscriptionMutation";
 import {premiseQuery} from "../../../gql/query/premiseQuery";
 import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
+import Image from "next/image";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const Comment = dynamic(() => import("../../Comment"));
-const Image = dynamic(() => import("next/image"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
 const ReactionButtons = dynamic(() => import("../../Reaction"));
 

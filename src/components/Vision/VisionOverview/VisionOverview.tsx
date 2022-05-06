@@ -61,7 +61,17 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
                         <MoreVertIcon/>
                     </IconButton>
                 }
-                title={vision.title}
+                title={<Typography sx={
+                    {
+                        wordBreak: "break-all",
+
+                        display: "-webkit-box",
+                        boxOrient: "vertical",
+                        lineClamp: 1,
+                        overflow: "hidden",
+                    }
+                }>{vision.title}</Typography>}
+                disableTypography
                 subheader={
                     <Tooltip
                             title={vision.activityDate

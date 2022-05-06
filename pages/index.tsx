@@ -1,6 +1,6 @@
-import {MainPage} from "../src/components/MainPage";
+import {MainPage} from "src/components/MainPage";
 import {GetServerSideProps} from "next";
-import prisma from "../src/lib/prisma";
+import prisma from "src/lib/prisma";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(

@@ -1,8 +1,8 @@
-import {CreatePremise} from "../../../src/components/Premise/CreatePremise";
-import {getSsrApollo} from "../../../src/lib/apollo";
+import {CreatePremise} from "src/components/Premise/CreatePremise";
+import {getSsrApollo} from "src/lib/apollo";
 import {GetServerSideProps} from "next";
-import {premiseQuery} from "../../../src/gql/query/premiseQuery";
-import {getPremiseDetailQueryVariable} from "../../../src/gql/utils/getPremiseDetailQueryVariable";
+import {premiseQuery} from "src/gql/query/premiseQuery";
+import {getPremiseDetailQueryVariable} from "src/gql/utils/getPremiseDetailQueryVariable";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(

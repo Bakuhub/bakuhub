@@ -1,5 +1,5 @@
 import {PrismaClient} from "@prisma/client";
-import prisma from "../src/lib/prisma";
+import prisma from "src/lib/prisma";
 import {IncomingMessage, ServerResponse} from "http";
 import {NextApiRequest, NextApiResponse} from "next";
 import {getSession} from "next-auth/react";

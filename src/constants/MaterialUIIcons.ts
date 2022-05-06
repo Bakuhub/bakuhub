@@ -16,5 +16,6 @@ export enum MaterialUIIcons {
     delete = "delete",
     add_to_photos = "add_to_photos",
     add_a_photo = "add_a_photo",
+    account_tree_two_tone='account_tree_two_tone'
 }
 

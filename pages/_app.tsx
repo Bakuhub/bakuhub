@@ -5,14 +5,14 @@ import {useEffect} from "react";
 import {useRouter} from "next/router";
 import NProgress from "nprogress";
 
-const ThemeProvider = dynamic(() => import("../src/dynamicImports/ThemeProvider"));
-const SessionProvider = dynamic(() => import("../src/dynamicImports/SessionProvider"));
-const ApolloProvider = dynamic(() => import("../src/dynamicImports/ApolloProvider"), {
+const ThemeProvider = dynamic(() => import("src/dynamicImports/ThemeProvider"));
+const SessionProvider = dynamic(() => import("src/dynamicImports/SessionProvider"));
+const ApolloProvider = dynamic(() => import("src/dynamicImports/ApolloProvider"), {
     ssr: true
 });
-const SnackbarProvider = dynamic(() => import("../src/dynamicImports/SnackbarProvider"));
+const SnackbarProvider = dynamic(() => import("src/dynamicImports/SnackbarProvider"));
 const CssBaseline = dynamic(() => import("@mui/material/CssBaseline"));
-const Layout = dynamic(() => import("../src/components/Layout"));
+const Layout = dynamic(() => import("src/components/Layout"));
 
 function MyApp({
                    Component, pageProps: {session, ...pageProps},

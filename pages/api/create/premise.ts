@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type {NextApiRequest, NextApiResponse} from "next";
-import {uploadUrlToS3} from "../../../src/services/uploadUrlToS3";
+import {uploadUrlToS3} from "src/services/uploadUrlToS3";
 
 
 export default async function handler(
