@@ -30,7 +30,7 @@ export default cors(async function handler(
         await buildSchema({
                               resolvers,
                               validate: false,
-                              emitSchemaFile: "schema.graphql"
+                              emitSchemaFile: true
                           });
     }
     console.time("start apollo");
