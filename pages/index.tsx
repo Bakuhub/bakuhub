@@ -1,6 +1,7 @@
 import {MainPage} from "src/components/MainPage";
 import {GetServerSideProps} from "next";
 import prisma from "src/lib/prisma";
+import {getJson} from "../src/utils/getJson";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(
@@ -39,8 +40,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     console.time("prisma");
     const premises = await prisma.premise.findMany({
                                                        include: {
+                                                           author: true,
                                                            vision: {
                                                                include: {
+                                                                   author: true,
                                                                    nextVisions: true
                                                                }
                                                            },
@@ -49,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     console.timeEnd("prisma");
     return {
         props: {
-            premises: JSON.parse(JSON.stringify(premises))
+            premises: getJson(premises)
         }, // will be passed to the page component as props
     };
 };

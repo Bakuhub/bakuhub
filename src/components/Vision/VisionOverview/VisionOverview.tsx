@@ -20,6 +20,7 @@ import {useMutation} from "@apollo/client";
 import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import {ConnectType} from "../../../types";
 import VotingButton from "../../Voting";
+import {getSubStr} from "../../../utils/getSubStr";
 
 export interface VisionDetailProps {
     vision: Vision;
@@ -33,21 +34,24 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
     const thumbnail = getThumbnail(vision);
     const getRedirectUrl = () => premiseId ? `/premise/${premiseId}`:`/vision/${vision.id}`;
     const getDescription = () => {
-        const description = get(vision, "description", "");
-        if (description && description.length > 100) {
-            return description.substring(0, 100) + "...";
-        } else {
-            return description;
-        }
+        return getSubStr(get(vision, "description", "") || "", 100);
     };
+    const getTitle = () => getSubStr(get(vision, "title", "") || "", 60);
+
+
     const [createReaction] = useMutation(upsertReactionOnVisionsMutation);
     const redirectedUrl = getRedirectUrl();
     return <Card
             onMouseEnter={() => setExpanded(true)}
             onMouseLeave={() => setExpanded(false)}
-            sx={{maxWidth: 345}}
+            sx={{maxWidth: 345, height: "100%"}}
     >
         <CardHeader
+                sx={
+                    {
+                        cursor: "pointer",
+                    }
+                }
                 onClick={() => {
                     if (premiseId || vision.id) {
                         router.push(redirectedUrl);
@@ -61,17 +65,7 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
                         <MoreVertIcon/>
                     </IconButton>
                 }
-                title={<Typography sx={
-                    {
-                        wordBreak: "break-all",
-
-                        display: "-webkit-box",
-                        boxOrient: "vertical",
-                        lineClamp: 1,
-                        overflow: "hidden",
-                    }
-                }>{vision.title}</Typography>}
-                disableTypography
+                title={getTitle()}
                 subheader={
                     <Tooltip
                             title={vision.activityDate
@@ -102,7 +96,7 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
                 {getDescription()}
             </Typography>
         </CardContent>
-        <CardActions disableSpacing>
+        <CardActions>
             <VotingButton type={ConnectType.VISION} id={vision.id}/>
             <IconButton onClick={() => router.push(`/create/vision/${premiseId}`)} aria-label="share">
                 <ShareIcon/>
