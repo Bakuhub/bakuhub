@@ -22,9 +22,6 @@ export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({setTagLabels
             refetchTags();
         }
     }, [input, refetchTags]);
-    useEffect(() => {
-        console.log(tagOptionsData);
-    }, [tagOptionsData]);
     return (
             <Autocomplete
                     multiple
@@ -58,8 +55,8 @@ export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({setTagLabels
                                         }
                                         }
                                         variant="outlined"
-                                        label="freeSolo"
-                                        placeholder="Favorites"
+                                        label="Tags"
+                                        placeholder="tags that best describe project"
                                 />
                         );
                     }}

@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
-import {Button, Chip, Grid, Tooltip, Typography} from "@mui/material";
+import {Button, Grid, Tooltip, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import get from "lodash/get";
@@ -23,6 +23,7 @@ import {getUserIdBySession} from "../../../utils/getUserIdBySession";
 import {getUpsertSubscriptionMutation} from "../../../gql/mutation/getUpsertSubscriptionMutation";
 import Image from "next/image";
 import ThreadContainer from "../../Thread/ThreadContainer";
+import TagChip from "../../Tag/TagChip";
 
 const Comment = dynamic(() => import("../../Comment"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
@@ -106,11 +107,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                                                              const label = get(tagsOnVision, "tag.label", "");
                                                              return <Grid
                                                                      key={label}
-                                                                     item><Chip
-                                                                     clickable
-                                                                     color={"primary"}
-                                                                     variant={"filled"}
-                                                                     label={label}/>
+                                                                     item><TagChip tag={tag}/>;
                                                              </Grid>;
                                                          }
                                                  )
