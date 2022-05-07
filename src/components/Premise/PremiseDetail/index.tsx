@@ -21,11 +21,9 @@ import {useSession} from "next-auth/react";
 import {getUpsertSubscriptionVariables} from "../../../gql/utils/getUpsertSubscriptionVariables";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
 import {getUpsertSubscriptionMutation} from "../../../gql/mutation/getUpsertSubscriptionMutation";
-import {premiseQuery} from "../../../gql/query/premiseQuery";
-import {getPremiseDetailQueryVariable} from "../../../gql/utils/getPremiseDetailQueryVariable";
 import Image from "next/image";
+import ThreadContainer from "../../Thread/ThreadContainer";
 
-const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const Comment = dynamic(() => import("../../Comment"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
 const ReactionButtons = dynamic(() => import("../../Reaction"));
@@ -38,16 +36,6 @@ export enum Reaction {
 interface PremiseDetailProps {
     premise: Premise;
 }
-
-export const PremiseDetailContainer = ({premiseId}: { premiseId: string }) => {
-    const {data, loading, error} = useQuery(
-            premiseQuery,
-            getPremiseDetailQueryVariable(premiseId)
-    );
-    if (loading) return <div>Loading...</div>;
-
-    return <PremiseDetail premise={data?.premise}/>;
-};
 
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
     const [isRedirecting, setIsRedirecting] = React.useState(false);
@@ -96,7 +84,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
         console.info("userId", userId);
 
         if (userId) {
-            console.info("creating subscription");
             createSubscriptionMutation(getUpsertSubscriptionVariables(
                     {
                         type: ConnectType.PREMISE,
@@ -105,7 +92,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     })).then((res) => {
                 console.info("subscription created", res);
             }).catch(err => {
-
                 console.error(err);
             });
         }
