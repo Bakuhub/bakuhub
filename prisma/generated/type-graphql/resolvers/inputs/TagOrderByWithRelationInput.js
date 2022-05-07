@@ -5,6 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const TagsOnPremisesOrderByRelationAggregateInput_1 = require("../inputs/TagsOnPremisesOrderByRelationAggregateInput");
 const TagsOnTimelinesOrderByRelationAggregateInput_1 = require("../inputs/TagsOnTimelinesOrderByRelationAggregateInput");
+const TagsOnVisionsOrderByRelationAggregateInput_1 = require("../inputs/TagsOnVisionsOrderByRelationAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
 let TagOrderByWithRelationInput = class TagOrderByWithRelationInput {
 };
@@ -26,6 +27,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", TagsOnPremisesOrderByRelationAggregateInput_1.TagsOnPremisesOrderByRelationAggregateInput)
 ], TagOrderByWithRelationInput.prototype, "tagsOnPremises", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TagsOnVisionsOrderByRelationAggregateInput_1.TagsOnVisionsOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", TagsOnVisionsOrderByRelationAggregateInput_1.TagsOnVisionsOrderByRelationAggregateInput)
+], TagOrderByWithRelationInput.prototype, "tagsOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TagsOnTimelinesOrderByRelationAggregateInput_1.TagsOnTimelinesOrderByRelationAggregateInput, {
         nullable: true

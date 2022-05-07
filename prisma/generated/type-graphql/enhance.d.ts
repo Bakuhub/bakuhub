@@ -17,6 +17,7 @@ declare const crudResolversMap: {
     Tag: typeof crudResolvers.TagCrudResolver;
     TagsOnPremises: typeof crudResolvers.TagsOnPremisesCrudResolver;
     TagsOnTimelines: typeof crudResolvers.TagsOnTimelinesCrudResolver;
+    TagsOnVisions: typeof crudResolvers.TagsOnVisionsCrudResolver;
     PremisesOnTimelines: typeof crudResolvers.PremisesOnTimelinesCrudResolver;
     Snapshot: typeof crudResolvers.SnapshotCrudResolver;
     Thread: typeof crudResolvers.ThreadCrudResolver;
@@ -64,6 +65,7 @@ declare const relationResolversMap: {
     Tag: typeof relationResolvers.TagRelationsResolver;
     TagsOnPremises: typeof relationResolvers.TagsOnPremisesRelationsResolver;
     TagsOnTimelines: typeof relationResolvers.TagsOnTimelinesRelationsResolver;
+    TagsOnVisions: typeof relationResolvers.TagsOnVisionsRelationsResolver;
     PremisesOnTimelines: typeof relationResolvers.PremisesOnTimelinesRelationsResolver;
     Snapshot: typeof relationResolvers.SnapshotRelationsResolver;
     Thread: typeof relationResolvers.ThreadRelationsResolver;

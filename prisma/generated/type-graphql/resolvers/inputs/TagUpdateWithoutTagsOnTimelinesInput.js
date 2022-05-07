@@ -5,6 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 const TagsOnPremisesUpdateManyWithoutTagInput_1 = require("../inputs/TagsOnPremisesUpdateManyWithoutTagInput");
+const TagsOnVisionsUpdateManyWithoutTagInput_1 = require("../inputs/TagsOnVisionsUpdateManyWithoutTagInput");
 let TagUpdateWithoutTagsOnTimelinesInput = class TagUpdateWithoutTagsOnTimelinesInput {
 };
 tslib_1.__decorate([
@@ -19,6 +20,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", TagsOnPremisesUpdateManyWithoutTagInput_1.TagsOnPremisesUpdateManyWithoutTagInput)
 ], TagUpdateWithoutTagsOnTimelinesInput.prototype, "tagsOnPremises", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TagsOnVisionsUpdateManyWithoutTagInput_1.TagsOnVisionsUpdateManyWithoutTagInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", TagsOnVisionsUpdateManyWithoutTagInput_1.TagsOnVisionsUpdateManyWithoutTagInput)
+], TagUpdateWithoutTagsOnTimelinesInput.prototype, "tagsOnVisions", void 0);
 TagUpdateWithoutTagsOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("TagUpdateWithoutTagsOnTimelinesInput", {
         isAbstract: true

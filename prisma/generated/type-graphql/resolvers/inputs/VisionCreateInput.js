@@ -7,6 +7,7 @@ const MergeRequestCreateNestedOneWithoutVisionInput_1 = require("../inputs/Merge
 const PremiseCreateNestedOneWithoutVisionInput_1 = require("../inputs/PremiseCreateNestedOneWithoutVisionInput");
 const ReactionOnVisionsCreateNestedManyWithoutVisionInput_1 = require("../inputs/ReactionOnVisionsCreateNestedManyWithoutVisionInput");
 const ReferenceCreateNestedOneWithoutVisionInput_1 = require("../inputs/ReferenceCreateNestedOneWithoutVisionInput");
+const TagsOnVisionsCreateNestedManyWithoutVisionInput_1 = require("../inputs/TagsOnVisionsCreateNestedManyWithoutVisionInput");
 const ThreadsOnVisionCreateNestedManyWithoutVisionInput_1 = require("../inputs/ThreadsOnVisionCreateNestedManyWithoutVisionInput");
 const UserCreateNestedOneWithoutVisionsInput_1 = require("../inputs/UserCreateNestedOneWithoutVisionsInput");
 const VisionCreateNestedManyWithoutPrevVisionInput_1 = require("../inputs/VisionCreateNestedManyWithoutPrevVisionInput");
@@ -116,6 +117,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnVisionCreateNestedManyWithoutVisionInput_1.VotesOnVisionCreateNestedManyWithoutVisionInput)
 ], VisionCreateInput.prototype, "votesOnVision", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TagsOnVisionsCreateNestedManyWithoutVisionInput_1.TagsOnVisionsCreateNestedManyWithoutVisionInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", TagsOnVisionsCreateNestedManyWithoutVisionInput_1.TagsOnVisionsCreateNestedManyWithoutVisionInput)
+], VisionCreateInput.prototype, "tagsOnVisions", void 0);
 VisionCreateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionCreateInput", {
         isAbstract: true

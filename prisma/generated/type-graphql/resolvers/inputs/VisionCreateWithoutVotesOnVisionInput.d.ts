@@ -2,6 +2,7 @@ import { MergeRequestCreateNestedOneWithoutVisionInput } from "../inputs/MergeRe
 import { PremiseCreateNestedOneWithoutVisionInput } from "../inputs/PremiseCreateNestedOneWithoutVisionInput";
 import { ReactionOnVisionsCreateNestedManyWithoutVisionInput } from "../inputs/ReactionOnVisionsCreateNestedManyWithoutVisionInput";
 import { ReferenceCreateNestedOneWithoutVisionInput } from "../inputs/ReferenceCreateNestedOneWithoutVisionInput";
+import { TagsOnVisionsCreateNestedManyWithoutVisionInput } from "../inputs/TagsOnVisionsCreateNestedManyWithoutVisionInput";
 import { ThreadsOnVisionCreateNestedManyWithoutVisionInput } from "../inputs/ThreadsOnVisionCreateNestedManyWithoutVisionInput";
 import { UserCreateNestedOneWithoutVisionsInput } from "../inputs/UserCreateNestedOneWithoutVisionsInput";
 import { VisionCreateNestedManyWithoutPrevVisionInput } from "../inputs/VisionCreateNestedManyWithoutPrevVisionInput";
@@ -23,4 +24,5 @@ export declare class VisionCreateWithoutVotesOnVisionInput {
     threadsOnVision?: ThreadsOnVisionCreateNestedManyWithoutVisionInput | undefined;
     mergeRequest?: MergeRequestCreateNestedOneWithoutVisionInput | undefined;
     reactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutVisionInput | undefined;
+    tagsOnVisions?: TagsOnVisionsCreateNestedManyWithoutVisionInput | undefined;
 }

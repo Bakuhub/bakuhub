@@ -13,6 +13,7 @@ export { SubscriptionsOnTimelines } from "./SubscriptionsOnTimelines";
 export { Tag } from "./Tag";
 export { TagsOnPremises } from "./TagsOnPremises";
 export { TagsOnTimelines } from "./TagsOnTimelines";
+export { TagsOnVisions } from "./TagsOnVisions";
 export { Thread } from "./Thread";
 export { ThreadsOnMergeRequest } from "./ThreadsOnMergeRequest";
 export { ThreadsOnPremise } from "./ThreadsOnPremise";

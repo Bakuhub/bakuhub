@@ -2,6 +2,7 @@ import { MergeRequest } from "../models/MergeRequest";
 import { Premise } from "../models/Premise";
 import { ReactionOnVisions } from "../models/ReactionOnVisions";
 import { Reference } from "../models/Reference";
+import { TagsOnVisions } from "../models/TagsOnVisions";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
 import { User } from "../models/User";
 import { VotesOnVision } from "../models/VotesOnVision";
@@ -28,5 +29,6 @@ export declare class Vision {
     mergeRequest?: MergeRequest | null;
     reactionOnVisions?: ReactionOnVisions[];
     votesOnVision?: VotesOnVision[];
+    tagsOnVisions?: TagsOnVisions[];
     _count?: VisionCount | null;
 }

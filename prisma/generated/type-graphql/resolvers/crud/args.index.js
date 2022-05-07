@@ -16,6 +16,7 @@ tslib_1.__exportStar(require("./SubscriptionsOnTimelines/args"), exports);
 tslib_1.__exportStar(require("./Tag/args"), exports);
 tslib_1.__exportStar(require("./TagsOnPremises/args"), exports);
 tslib_1.__exportStar(require("./TagsOnTimelines/args"), exports);
+tslib_1.__exportStar(require("./TagsOnVisions/args"), exports);
 tslib_1.__exportStar(require("./Thread/args"), exports);
 tslib_1.__exportStar(require("./ThreadsOnMergeRequest/args"), exports);
 tslib_1.__exportStar(require("./ThreadsOnPremise/args"), exports);

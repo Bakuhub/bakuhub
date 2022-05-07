@@ -3,4 +3,5 @@ export declare class VisionCount {
     threadsOnVision: number;
     reactionOnVisions: number;
     votesOnVision: number;
+    tagsOnVisions: number;
 }

@@ -101,26 +101,27 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                             {vision?.description}
                         </Typography>
                     </Grid>
-
                     <ReferenceOverview snapshots={
                         get(vision, "reference.snapshots", [])}/>
-                    <IconButton aria-label="add to favorites"
-                                color={"primary"}
-                                onClick={() => {
-                                    const userId = getUserIdBySession(session);
-                                    if (userId) {
-                                        addReaction(
-                                                {
-                                                    id: vision.id,
-                                                    reaction: Reaction.UPVOTE,
-                                                    type: ConnectType.VISION,
-                                                    userId,
-                                                    createReaction: createReactionOnVision,
-                                                    enqueueSnackbar
-                                                }
-                                        );
-                                    }
-                                }}>
+                    <IconButton
+                            aria-label="add to favorites"
+                            color={"primary"}
+                            onClick={() => {
+                                const userId = getUserIdBySession(session);
+                                if (userId) {
+                                    addReaction(
+                                            {
+                                                id: vision.id,
+                                                reaction: Reaction.UPVOTE,
+                                                type: ConnectType.VISION,
+                                                userId,
+                                                createReaction: createReactionOnVision,
+                                                enqueueSnackbar
+                                            }
+                                    );
+                                }
+                            }}
+                    >
                         <Icon>{MaterialUIIcons.reply}</Icon>
                     </IconButton>
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {FunctionComponent, PropsWithChildren} from "react";
 import {styled} from "@mui/material/styles";
-import Box from "@mui/material/Box";
+import {Box, Grid, Icon, Link} from "@mui/material";
 import MuiAppBar, {AppBarProps as MuiAppBarProps} from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,7 +11,6 @@ import {LayoutDrawer} from "./Sections/Drawer";
 import {DrawerHeader} from "./Sections/Drawer/styled";
 import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
-import {Grid, Icon} from "@mui/material";
 import SpeedDialContainer from "./Sections/SpeedDialContainer";
 import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
 
@@ -103,10 +102,11 @@ export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => 
                             <Icon>{MaterialUIIcons.menu}</Icon>
                         </IconButton>
                         <Grid item container xs={12} justifyContent={"space-between"} alignItems={"center"}>
-
-                            <Typography variant="h6" onClick={() => router.push("/")} noWrap component="div">
-                                Bakuhub
-                            </Typography>
+                            <Link href="/">
+                                <Typography variant="h6" noWrap component="div">
+                                    Bakuhub
+                                </Typography>
+                            </Link>
                             <AuthButton/>
                         </Grid>
                     </Toolbar>

@@ -13,6 +13,7 @@ export { SubscriptionsOnTimelinesRelationsResolver } from "./SubscriptionsOnTime
 export { TagRelationsResolver } from "./Tag/TagRelationsResolver";
 export { TagsOnPremisesRelationsResolver } from "./TagsOnPremises/TagsOnPremisesRelationsResolver";
 export { TagsOnTimelinesRelationsResolver } from "./TagsOnTimelines/TagsOnTimelinesRelationsResolver";
+export { TagsOnVisionsRelationsResolver } from "./TagsOnVisions/TagsOnVisionsRelationsResolver";
 export { ThreadRelationsResolver } from "./Thread/ThreadRelationsResolver";
 export { ThreadsOnMergeRequestRelationsResolver } from "./ThreadsOnMergeRequest/ThreadsOnMergeRequestRelationsResolver";
 export { ThreadsOnPremiseRelationsResolver } from "./ThreadsOnPremise/ThreadsOnPremiseRelationsResolver";

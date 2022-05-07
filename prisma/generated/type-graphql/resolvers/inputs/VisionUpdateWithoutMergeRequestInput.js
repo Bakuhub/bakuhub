@@ -11,6 +11,7 @@ const PremiseUpdateOneRequiredWithoutVisionInput_1 = require("../inputs/PremiseU
 const ReactionOnVisionsUpdateManyWithoutVisionInput_1 = require("../inputs/ReactionOnVisionsUpdateManyWithoutVisionInput");
 const ReferenceUpdateOneWithoutVisionInput_1 = require("../inputs/ReferenceUpdateOneWithoutVisionInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
+const TagsOnVisionsUpdateManyWithoutVisionInput_1 = require("../inputs/TagsOnVisionsUpdateManyWithoutVisionInput");
 const ThreadsOnVisionUpdateManyWithoutVisionInput_1 = require("../inputs/ThreadsOnVisionUpdateManyWithoutVisionInput");
 const UserUpdateOneWithoutVisionsInput_1 = require("../inputs/UserUpdateOneWithoutVisionsInput");
 const VisionUpdateManyWithoutPrevVisionInput_1 = require("../inputs/VisionUpdateManyWithoutPrevVisionInput");
@@ -114,6 +115,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnVisionUpdateManyWithoutVisionInput_1.VotesOnVisionUpdateManyWithoutVisionInput)
 ], VisionUpdateWithoutMergeRequestInput.prototype, "votesOnVision", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TagsOnVisionsUpdateManyWithoutVisionInput_1.TagsOnVisionsUpdateManyWithoutVisionInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", TagsOnVisionsUpdateManyWithoutVisionInput_1.TagsOnVisionsUpdateManyWithoutVisionInput)
+], VisionUpdateWithoutMergeRequestInput.prototype, "tagsOnVisions", void 0);
 VisionUpdateWithoutMergeRequestInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionUpdateWithoutMergeRequestInput", {
         isAbstract: true

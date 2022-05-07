@@ -111,6 +111,8 @@ model Vision {
   mergeRequest      MergeRequest?
   reactionOnVisions ReactionOnVisions[]
   votesOnVision     VotesOnVision[]
+  tagsOnVisions     TagsOnVisions[]
+
 }
 
 model Reference {
@@ -148,6 +150,7 @@ model Tag {
   id              Int               @id @default(autoincrement())
   label           String            @unique @db.VarChar(255)
   tagsOnPremises  TagsOnPremises[]
+  tagsOnVisions   TagsOnVisions[]
   tagsOnTimelines TagsOnTimelines[]
 }
 
@@ -169,6 +172,16 @@ model TagsOnTimelines {
   assignedAt DateTime @default(now())
 
   @@id([tagId, timelineId])
+}
+
+model TagsOnVisions {
+  tag        Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  tagId      Int
+  vision     Vision   @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  visionId   String
+  assignedAt DateTime @default(now())
+
+  @@id([tagId, visionId])
 }
 
 model PremisesOnTimelines {

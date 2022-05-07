@@ -36,7 +36,7 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
     const getDescription = () => {
         return getSubStr(get(vision, "description", "") || "", 100);
     };
-    const getTitle = () => getSubStr(get(vision, "title", "") || "", 60);
+    const getTitle = () => getSubStr(get(vision, "title", "") || "", 50);
 
 
     const [createReaction] = useMutation(upsertReactionOnVisionsMutation);
@@ -52,11 +52,6 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
                         cursor: "pointer",
                     }
                 }
-                onClick={() => {
-                    if (premiseId || vision.id) {
-                        router.push(redirectedUrl);
-                    }
-                }}
                 avatar={
                     <UserAvatar {...vision.author}/>
                 }
@@ -65,16 +60,18 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
                         <MoreVertIcon/>
                     </IconButton>
                 }
-                title={getTitle()}
-                subheader={
-                    <Tooltip
-                            title={vision.activityDate
-                                   ?
-                                   moment(vision.activityDate).format("yyyy-MMM-DD HH:mm")
-                                   :""}>
-                        <Typography>{fromNow(vision.activityDate)}</Typography>
-                    </Tooltip>
-                }
+                title={<Typography onClick={() => router.push(getRedirectUrl())}>
+                    {getTitle()}
+                </Typography>
+                } subheader={
+            <Tooltip
+                    title={vision.activityDate
+                           ?
+                           moment(vision.activityDate).format("yyyy-MMM-DD HH:mm")
+                           :""}>
+                <Typography>{fromNow(vision.activityDate)}</Typography>
+            </Tooltip>
+        }
         />
         <Collapse
                 in={expanded || !hideImage}

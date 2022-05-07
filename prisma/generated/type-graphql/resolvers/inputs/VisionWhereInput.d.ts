@@ -7,6 +7,7 @@ import { ReactionOnVisionsListRelationFilter } from "../inputs/ReactionOnVisions
 import { ReferenceRelationFilter } from "../inputs/ReferenceRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { TagsOnVisionsListRelationFilter } from "../inputs/TagsOnVisionsListRelationFilter";
 import { ThreadsOnVisionListRelationFilter } from "../inputs/ThreadsOnVisionListRelationFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
@@ -37,4 +38,5 @@ export declare class VisionWhereInput {
     mergeRequest?: MergeRequestRelationFilter | undefined;
     reactionOnVisions?: ReactionOnVisionsListRelationFilter | undefined;
     votesOnVision?: VotesOnVisionListRelationFilter | undefined;
+    tagsOnVisions?: TagsOnVisionsListRelationFilter | undefined;
 }

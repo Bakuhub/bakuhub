@@ -13,6 +13,7 @@ const ReactionOnVisionsListRelationFilter_1 = require("../inputs/ReactionOnVisio
 const ReferenceRelationFilter_1 = require("../inputs/ReferenceRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
+const TagsOnVisionsListRelationFilter_1 = require("../inputs/TagsOnVisionsListRelationFilter");
 const ThreadsOnVisionListRelationFilter_1 = require("../inputs/ThreadsOnVisionListRelationFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
 const VisionListRelationFilter_1 = require("../inputs/VisionListRelationFilter");
@@ -164,6 +165,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", VotesOnVisionListRelationFilter_1.VotesOnVisionListRelationFilter)
 ], VisionWhereInput.prototype, "votesOnVision", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TagsOnVisionsListRelationFilter_1.TagsOnVisionsListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", TagsOnVisionsListRelationFilter_1.TagsOnVisionsListRelationFilter)
+], VisionWhereInput.prototype, "tagsOnVisions", void 0);
 VisionWhereInput = VisionWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionWhereInput", {
         isAbstract: true

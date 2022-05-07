@@ -2,6 +2,8 @@ import Avatar from "@mui/material/Avatar";
 import {getUserAvatar} from "../../../utils/getUserAvatar";
 import * as React from "react";
 import {FunctionComponent} from "react";
+import {useRouter} from "next/router";
+import Link from "@mui/material/Link";
 
 export interface UserAvatarProps {
     name?: string | null | undefined;
@@ -11,9 +13,28 @@ export interface UserAvatarProps {
 }
 
 export const UserAvatar: FunctionComponent<UserAvatarProps> = (props) => {
-    return <Avatar
-            {...getUserAvatar(props || undefined)}
-            sx={props.size === "small" ? {width: 24, height: 24, margin: "0.5rem"}:{}}
-            aria-label="user avatar"
-    />;
+    const router = useRouter();
+    const getStyle = () => {
+        const defaultStyle = {
+            cursor: "pointer",
+        };
+        if (props.size === "small") {
+            return {
+                ...defaultStyle,
+                width: "24px",
+                height: "24px",
+                margin: ".5rem"
+            };
+        }
+        return defaultStyle;
+    };
+    return <Link
+            href="/user/profile"
+    >
+        <Avatar
+                {...getUserAvatar(props || undefined)}
+                sx={getStyle()}
+                aria-label="user avatar"
+        />
+    </Link>;
 };

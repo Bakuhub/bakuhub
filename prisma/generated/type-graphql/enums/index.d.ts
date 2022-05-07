@@ -19,6 +19,7 @@ export { SubscriptionsOnTimelinesScalarFieldEnum } from "./SubscriptionsOnTimeli
 export { TagScalarFieldEnum } from "./TagScalarFieldEnum";
 export { TagsOnPremisesScalarFieldEnum } from "./TagsOnPremisesScalarFieldEnum";
 export { TagsOnTimelinesScalarFieldEnum } from "./TagsOnTimelinesScalarFieldEnum";
+export { TagsOnVisionsScalarFieldEnum } from "./TagsOnVisionsScalarFieldEnum";
 export { ThreadScalarFieldEnum } from "./ThreadScalarFieldEnum";
 export { ThreadsOnMergeRequestScalarFieldEnum } from "./ThreadsOnMergeRequestScalarFieldEnum";
 export { ThreadsOnPremiseScalarFieldEnum } from "./ThreadsOnPremiseScalarFieldEnum";

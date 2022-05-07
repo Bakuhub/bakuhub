@@ -16,6 +16,12 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
+], TagCount.prototype, "tagsOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
 ], TagCount.prototype, "tagsOnTimelines", void 0);
 TagCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("TagCount", {

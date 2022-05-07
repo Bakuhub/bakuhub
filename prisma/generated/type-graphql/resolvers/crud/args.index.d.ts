@@ -13,6 +13,7 @@ export * from "./SubscriptionsOnTimelines/args";
 export * from "./Tag/args";
 export * from "./TagsOnPremises/args";
 export * from "./TagsOnTimelines/args";
+export * from "./TagsOnVisions/args";
 export * from "./Thread/args";
 export * from "./ThreadsOnMergeRequest/args";
 export * from "./ThreadsOnPremise/args";

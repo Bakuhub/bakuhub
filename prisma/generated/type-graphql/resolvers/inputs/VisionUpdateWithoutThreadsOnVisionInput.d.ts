@@ -7,6 +7,7 @@ import { PremiseUpdateOneRequiredWithoutVisionInput } from "../inputs/PremiseUpd
 import { ReactionOnVisionsUpdateManyWithoutVisionInput } from "../inputs/ReactionOnVisionsUpdateManyWithoutVisionInput";
 import { ReferenceUpdateOneWithoutVisionInput } from "../inputs/ReferenceUpdateOneWithoutVisionInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
+import { TagsOnVisionsUpdateManyWithoutVisionInput } from "../inputs/TagsOnVisionsUpdateManyWithoutVisionInput";
 import { UserUpdateOneWithoutVisionsInput } from "../inputs/UserUpdateOneWithoutVisionsInput";
 import { VisionUpdateManyWithoutPrevVisionInput } from "../inputs/VisionUpdateManyWithoutPrevVisionInput";
 import { VisionUpdateOneWithoutNextVisionsInput } from "../inputs/VisionUpdateOneWithoutNextVisionsInput";
@@ -28,4 +29,5 @@ export declare class VisionUpdateWithoutThreadsOnVisionInput {
     mergeRequest?: MergeRequestUpdateOneWithoutVisionInput | undefined;
     reactionOnVisions?: ReactionOnVisionsUpdateManyWithoutVisionInput | undefined;
     votesOnVision?: VotesOnVisionUpdateManyWithoutVisionInput | undefined;
+    tagsOnVisions?: TagsOnVisionsUpdateManyWithoutVisionInput | undefined;
 }

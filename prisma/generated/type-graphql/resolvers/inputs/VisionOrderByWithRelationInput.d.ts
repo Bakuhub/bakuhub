@@ -2,6 +2,7 @@ import { MergeRequestOrderByWithRelationInput } from "../inputs/MergeRequestOrde
 import { PremiseOrderByWithRelationInput } from "../inputs/PremiseOrderByWithRelationInput";
 import { ReactionOnVisionsOrderByRelationAggregateInput } from "../inputs/ReactionOnVisionsOrderByRelationAggregateInput";
 import { ReferenceOrderByWithRelationInput } from "../inputs/ReferenceOrderByWithRelationInput";
+import { TagsOnVisionsOrderByRelationAggregateInput } from "../inputs/TagsOnVisionsOrderByRelationAggregateInput";
 import { ThreadsOnVisionOrderByRelationAggregateInput } from "../inputs/ThreadsOnVisionOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
@@ -28,4 +29,5 @@ export declare class VisionOrderByWithRelationInput {
     mergeRequest?: MergeRequestOrderByWithRelationInput | undefined;
     reactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
     votesOnVision?: VotesOnVisionOrderByRelationAggregateInput | undefined;
+    tagsOnVisions?: TagsOnVisionsOrderByRelationAggregateInput | undefined;
 }

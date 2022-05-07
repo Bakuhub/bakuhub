@@ -8,6 +8,7 @@ const IntFilter_1 = require("../inputs/IntFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const TagsOnPremisesListRelationFilter_1 = require("../inputs/TagsOnPremisesListRelationFilter");
 const TagsOnTimelinesListRelationFilter_1 = require("../inputs/TagsOnTimelinesListRelationFilter");
+const TagsOnVisionsListRelationFilter_1 = require("../inputs/TagsOnVisionsListRelationFilter");
 let TagWhereInput = TagWhereInput_1 = class TagWhereInput {
 };
 tslib_1.__decorate([
@@ -46,6 +47,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", TagsOnPremisesListRelationFilter_1.TagsOnPremisesListRelationFilter)
 ], TagWhereInput.prototype, "tagsOnPremises", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TagsOnVisionsListRelationFilter_1.TagsOnVisionsListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", TagsOnVisionsListRelationFilter_1.TagsOnVisionsListRelationFilter)
+], TagWhereInput.prototype, "tagsOnVisions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TagsOnTimelinesListRelationFilter_1.TagsOnTimelinesListRelationFilter, {
         nullable: true
