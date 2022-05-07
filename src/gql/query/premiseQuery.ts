@@ -15,6 +15,11 @@ export const premiseQuery = gql`
             vision(where: $visionWhere2) {
                 id
                 title
+                tagsOnVisions {
+                    tag {
+                        label
+                    }
+                }
                 activityDate
                 description
                 createdAt

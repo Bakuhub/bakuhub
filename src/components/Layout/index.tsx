@@ -1,7 +1,7 @@
 import * as React from "react";
 import {FunctionComponent, PropsWithChildren} from "react";
 import {styled} from "@mui/material/styles";
-import {Box, Grid, Icon, Link} from "@mui/material";
+import {Box, Grid, Icon} from "@mui/material";
 import MuiAppBar, {AppBarProps as MuiAppBarProps} from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -102,11 +102,9 @@ export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => 
                             <Icon>{MaterialUIIcons.menu}</Icon>
                         </IconButton>
                         <Grid item container xs={12} justifyContent={"space-between"} alignItems={"center"}>
-                            <Link href="/">
-                                <Typography variant="h6" noWrap component="div">
-                                    Bakuhub
-                                </Typography>
-                            </Link>
+                            <Typography onClick={() => router.push("/")} variant="h6" noWrap component="div">
+                                Bakuhub
+                            </Typography>
                             <AuthButton/>
                         </Grid>
                     </Toolbar>

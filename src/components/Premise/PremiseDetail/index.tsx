@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
-import {Button, Grid, Tooltip, Typography} from "@mui/material";
+import {Button, Chip, Grid, Tooltip, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import get from "lodash/get";
@@ -45,9 +45,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
     const activeVision = premise.vision?.find(vision =>
                                                       !!vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
                                                       && !vision.draftMode);
-    console.info(activeVision);
     console.info("-----------");
-    console.info(premise.vision);
+    console.info(premise);
     // @ts-ignore
     console.info(!!premise.vision[0].nextVisions?.every(nextVision => !!nextVision.draftMode));
 
@@ -100,6 +99,23 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
             <Grid container>
                 <Grid item container xs={12}>
                     <Grid item xs={4}>
+                        <Grid item container spacing={1}>
+                            {
+                                    activeVision && activeVision.tagsOnVisions?.map(
+                                                         (tagsOnVision) => {
+                                                             const label = get(tagsOnVision, "tag.label", "");
+                                                             return <Grid
+                                                                     key={label}
+                                                                     item><Chip
+                                                                     clickable
+                                                                     color={"primary"}
+                                                                     variant={"filled"}
+                                                                     label={label}/>
+                                                             </Grid>;
+                                                         }
+                                                 )
+                            }
+                        </Grid>
                         <Grid item>
                             <Tooltip title={"view log"}>
                                 <Button variant={"outlined"}

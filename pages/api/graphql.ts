@@ -5,6 +5,8 @@ import {ServerResponse} from "http";
 import Cors from "micro-cors";
 import {createContext} from "../../graphql/context";
 import {createSchema} from "../../graphql/schema";
+import {buildSchema} from "type-graphql";
+import {resolvers} from "../../prisma/generated/type-graphql";
 
 const cors = Cors();
 export const config = {
@@ -23,6 +25,13 @@ export default cors(async function handler(
     if (req.method === "OPTIONS") {
         res.end();
         return false;
+    }
+    if (process.env.NODE_ENV === "development") {
+        await buildSchema({
+                              resolvers,
+                              validate: false,
+                              emitSchemaFile: "schema.graphql"
+                          });
     }
     console.time("start apollo");
     const apolloServer = new ApolloServer({

@@ -15,6 +15,7 @@ import DateAdapter from "@mui/lab/AdapterMoment";
 import moment from "moment";
 import dynamic from "next/dynamic";
 import TagSearchBar from "../../Tag/TagSearchBar";
+import {getCreateTagVariable} from "../../../gql/utils/getCreateTagVariable";
 
 const LocalizationProvider = dynamic(() => import("@mui/lab/LocalizationProvider"));
 const SnapshotCreator = dynamic(() => import("../../Snapshot"));
@@ -63,28 +64,15 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                         ...getAuthorVariableByUserId(session.data?.userId),
                         title,
                         status: "REFERENCE_PROVIDED",
-                        tagsOnPremises: {
-                            create: [
-                                {
-                                    tag: {
-                                        connectOrCreate: {
-                                            create: {
-                                                label: "ukraine",
-                                            },
-                                            where: {
-                                                label: "ukraine",
-                                            },
-                                        },
-                                    }
-                                }
-                            ]
-                        },
                         vision: {
                             create: [
                                 {
                                     title,
                                     description,
                                     activityDate,
+                                    tagsOnVisions: {
+                                        create: tagLabels.map(label => getCreateTagVariable(label))
+                                    },
                                     "reference": {
                                         "create": {
                                             "snapshots": {
@@ -187,10 +175,12 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
         }
         <Grid xs={12} md={6} component={"form"} item
               container spacing={1}>
-            <Grid item xs={12}><TextField required fullWidth
-                                          onChange={({target: {value}}) => setTitle(value)}
-                                          value={title}
-                                          label="Title" variant="outlined"/>
+            <Grid item xs={12}>
+                <TextField
+                        required fullWidth
+                        onChange={({target: {value}}) => setTitle(value)}
+                        value={title}
+                        label="Title" variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
                 <TagSearchBar setTagLabels={setTagLabels}/>
