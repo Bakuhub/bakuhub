@@ -107,7 +107,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                                                              const label = get(tagsOnVision, "tag.label", "");
                                                              return <Grid
                                                                      key={label}
-                                                                     item><TagChip tag={tag}/>;
+                                                                     item><TagChip tag={tagsOnVision.tag}/>;
                                                              </Grid>;
                                                          }
                                                  )

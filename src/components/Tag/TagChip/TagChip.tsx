@@ -1,21 +1,20 @@
-import {Tag as TagType} from "../../../../prisma/generated/type-graphql";
 import {FunctionComponent} from "react";
 import {useRouter} from "next/router";
 import {Chip} from "@mui/material";
 
 interface TagChipProps {
-    tag: TagType;
+    tagLabel: string;
 }
 
-export const TagChip: FunctionComponent<TagChipProps> = ({tag,}) => {
+export const TagChip: FunctionComponent<TagChipProps> = ({tagLabel}) => {
     const router = useRouter();
     return <Chip
             clickable
             color={"primary"}
             variant={"filled"}
-            label={tag.label}
+            label={tagLabel}
             onClick={() => {
-                router.push(`/tags/${tag.label}`);
+                router.push(`/tags/${tagLabel}`);
             }}
     />;
 };
