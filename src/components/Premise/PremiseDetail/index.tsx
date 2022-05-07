@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
-import {Button, Grid, Tooltip, Typography} from "@mui/material";
+import {Button, Grid, Icon, Tooltip, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import get from "lodash/get";
@@ -13,10 +13,8 @@ import {ConnectType} from "../../../types";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {getVisionHistoryQueryVariable} from "../../../gql/query/visionHistoryQuery";
 import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
-import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
 import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
 import dynamic from "next/dynamic";
-import VotingButton from "../../Voting";
 import {useSession} from "next-auth/react";
 import {getUpsertSubscriptionVariables} from "../../../gql/utils/getUpsertSubscriptionVariables";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
@@ -24,7 +22,9 @@ import {getUpsertSubscriptionMutation} from "../../../gql/mutation/getUpsertSubs
 import Image from "next/image";
 import ThreadContainer from "../../Thread/ThreadContainer";
 import TagChip from "../../Tag/TagChip";
+import {MaterialUIIcons} from "../../../constants/MaterialUIIcons";
 
+const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
 const Comment = dynamic(() => import("../../Comment"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
 const ReactionButtons = dynamic(() => import("../../Reaction"));
@@ -171,7 +171,10 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {
                         setIsRedirecting(true);
                         router.push(`/create/vision/${premise.id}`);
-                    }} aria-label="share" startIcon={<AccountTreeTwoToneIcon/>
+                    }} aria-label="share" startIcon={
+                        <Icon>
+                            {MaterialUIIcons.account_tree_two_tone}
+                        </Icon>
                     }>
                         Create new vision
                     </LoadingButton>
