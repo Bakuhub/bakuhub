@@ -17,8 +17,14 @@ export const config = {
 console.time("schema");
 const schema = createSchema();
 console.timeEnd("schema");
+console.time("start apollo");
 
-
+const apolloServer = new ApolloServer({
+                                          schema,
+                                          context: createContext,
+                                      });
+console.timeEnd("start apollo");
+const startServer = apolloServer.start();
 export default cors(async function handler(
         req: MicroRequest, res: ServerResponse
 ) {
@@ -33,13 +39,7 @@ export default cors(async function handler(
                               emitSchemaFile: true
                           });
     }
-    console.time("start apollo");
-    const apolloServer = new ApolloServer({
-                                              schema,
-                                              context: createContext,
-                                          });
-    console.timeEnd("start apollo");
-    const startServer = apolloServer.start();
+
 
     await startServer;
     await apolloServer.createHandler({
