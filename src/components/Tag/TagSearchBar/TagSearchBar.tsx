@@ -21,7 +21,7 @@ export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({setTagLabels
         if (input) {
             refetchTags();
         }
-    }, [input]);
+    }, [input, refetchTags]);
     useEffect(() => {
         console.log(tagOptionsData);
     }, [tagOptionsData]);
@@ -36,12 +36,18 @@ export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({setTagLabels
                     options={tagOptions.map((option) => option.label)}
                     freeSolo
                     renderTags={(value: readonly string[], getTagProps) =>
-                            value.map((option: string, index: number) => (
-                                    <Chip
-                                            color={"primary"}
-                                            variant={"filled"}
-                                            label={option} {...getTagProps({index})} />
-                            ))
+                            value.map((option: string, index: number) => {
+                                const props = getTagProps({index});
+                                return (
+                                        <Chip
+                                                color={"primary"}
+                                                variant={"filled"}
+                                                label={option}
+                                                {...props}
+                                                key={option}
+                                        />
+                                );
+                            })
                     }
                     renderInput={(params) => {
                         return (
