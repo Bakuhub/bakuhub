@@ -10,7 +10,7 @@ import * as React from "react";
 import {FunctionComponent, useEffect} from "react";
 import {useRouter} from "next/router";
 import {Thread, Vision} from "../../../prisma/generated/type-graphql";
-import {useMutation} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../gql/query/threadsQuery";
 import {getThreadsQueryVariable} from "../../gql/utils/getThreadsQueryVariable";
 import {visionHistoryCountQuery} from "../../gql/query/visionHistoryCountQuery";
