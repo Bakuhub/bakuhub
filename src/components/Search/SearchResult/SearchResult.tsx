@@ -1,6 +1,7 @@
 import {FunctionComponent} from "react";
-import VisionOverview from "src/components/Vision/VisionOverview";
 import {Vision} from "../../../../prisma/generated/type-graphql";
+import {VisionLists} from "../../Vision/VisionLists/VisionLists";
+import {NoSearchResult} from "./NoSearchResult";
 
 export interface SearchResultProps {
     visions: Vision[];
@@ -9,10 +10,7 @@ export interface SearchResultProps {
 
 export const SearchResult: FunctionComponent<SearchResultProps> = ({visions}) => {
     if (visions.length === 0) {
-        return <div>No results found</div>;
+        return <NoSearchResult/>;
     }
-    return <div>
-        {visions.map(
-                (vision) => <VisionOverview key={vision.id} vision={vision}/>)}
-    </div>;
+    return <VisionLists visions={visions}/>;
 };
