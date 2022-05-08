@@ -16,7 +16,7 @@ import {getUpdateManySubscriptionsVariables} from "../../../gql/utils/getUpdateM
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
 const Comment = dynamic(() => import("../../Comment"));
-const VisionOverview = dynamic(() => import("../VisionOverview/VisionOverview"));
+const VisionOverview = dynamic(() => import("../VisionOverview"));
 
 
 export interface CreateVisionProps {

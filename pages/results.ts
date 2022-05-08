@@ -29,8 +29,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             }
         };
     };
-    console.info("this is variables");
-    console.info(getVariables());
     context.res.setHeader(
             "Cache-Control",
             "public, s-maxage=10, stale-while-revalidate=59"
