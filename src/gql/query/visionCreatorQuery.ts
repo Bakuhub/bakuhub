@@ -5,8 +5,21 @@ export const visionCreatorQuery = gql`
         vision(where: $where) {
             title
             activityDate
+            id
             description
             referenceId
+            premiseId
+            thumbnail
+            reference {
+                snapshots {
+                    id
+                    s3Url
+                    sourceUrl
+                    versionId
+                    createdAt
+                    updatedAt
+                }
+            }
             tagsOnVisions {
                 tag {
                     label

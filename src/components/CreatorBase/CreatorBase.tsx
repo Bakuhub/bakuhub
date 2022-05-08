@@ -1,5 +1,5 @@
 import {Button, Grid, TextField, Typography} from "@mui/material";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useRouter} from "next/router";
 import get from "lodash/get";
 import {useSession} from "next-auth/react";
@@ -51,7 +51,7 @@ export const CreatorBase = <T, >({
     const user = get(session, "data.user");
     const userId = getUserIdBySession(session);
     const router = useRouter();
-    const [tagLabels, setTagLabels] = useState<string[]>([]);
+    const [tagLabels, setTagLabels] = useState<string[]>(() => initialValue.tagLabels);
     const [description, setDescription] = useState(() => initialValue.description);
     const [activityDate, setActivityDate] = useState(() => initialValue.activityDate);
     const [loading, setLoading] = useState(false);
@@ -61,10 +61,6 @@ export const CreatorBase = <T, >({
     const [mergeRequestDescription, setMergeRequestDescription] = useState("");
     const [snapshots, setSnapshots] = useState<Snapshot[]>(() => initialValue.snapshots);
 
-
-    useEffect(() => {
-        console.info(attachment);
-    }, [attachment]);
     const submit = async () => {
         setLoading(true);
         const variable = getCreatorMutationVariables({
@@ -114,7 +110,7 @@ export const CreatorBase = <T, >({
                         label="Title" variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-                <TagSearchBar setTagLabels={setTagLabels}/>
+                <TagSearchBar tagLabels={tagLabels} setTagLabels={setTagLabels}/>
             </Grid>
             <Grid item xs={12}>
                 <LocalizationProvider dateAdapter={DateAdapter}>

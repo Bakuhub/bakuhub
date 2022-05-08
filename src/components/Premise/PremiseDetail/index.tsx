@@ -170,7 +170,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                     {/*                 createReaction={createReactionOnVision}/>*/}
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {
                         setIsRedirecting(true);
-                        router.push(`/create/vision/${premise.id}`);
+                        router.push(`/create/vision/${activeVision?.id}`);
                     }} aria-label="share" startIcon={
                         <Icon>
                             {MaterialUIIcons.account_tree_two_tone}

@@ -10,11 +10,13 @@ import get from "lodash/get";
 import {Tag} from "../../../../prisma/generated/type-graphql";
 
 export interface TagSearchBarProps {
+    tagLabels: string[];
     setTagLabels: (tag: string[]) => void;
 }
 
-export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({setTagLabels}) => {
+export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({tagLabels, setTagLabels}) => {
     const [input, setInput] = React.useState("");
+    console.info(tagLabels);
     const {data: tagOptionsData, refetch: refetchTags} = useQuery(tagQuery, getTagByLabelVariables(input));
     const tagOptions: Tag[] = get(tagOptionsData, "tags", []);
     useEffect(() => {
@@ -29,6 +31,7 @@ export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({setTagLabels
                         setTagLabels(value);
                     }
                     }
+                    value={tagLabels}
                     id="tags-outlined"
                     options={tagOptions.map((option) => option.label)}
                     freeSolo

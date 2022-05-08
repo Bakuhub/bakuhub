@@ -1,8 +1,7 @@
-import {PremiseCreator} from "src/components/Premise/PremiseCreator";
 import {getSsrApollo} from "src/lib/apollo";
 import {GetServerSideProps} from "next";
-import {getPremiseDetailQueryVariable} from "src/gql/utils/getPremiseDetailQueryVariable";
 import {visionCreatorQuery} from "../../../src/gql/query/visionCreatorQuery";
+import VisionCreator from "../../../src/components/Vision/VisionCreator";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(
@@ -10,12 +9,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             "public, s-maxage=10, stale-while-revalidate=59"
     );
     const apollo = getSsrApollo(context.req);
-    console.time("getPremiseDetail");
+    console.time("get visionCreatorQuery");
     const {data: {vision}} = await apollo.query({
                                                     query: visionCreatorQuery,
-                                                    ...getPremiseDetailQueryVariable(context.query.id as string)
+                                                    variables: {
+                                                        where: {
+                                                            id: context.query.id
+                                                        }
+                                                    }
                                                 });
-    console.timeEnd("getPremiseDetail");
+    console.timeEnd("get visionCreatorQuery");
     return {
         props: {
             vision
@@ -24,4 +27,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 
-export default PremiseCreator;
+export default VisionCreator;

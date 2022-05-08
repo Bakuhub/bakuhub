@@ -38,6 +38,9 @@ export const getCreatorMutationVariables = ({
                         title,
                         activityDate,
                         description,
+                        tagsOnVisions: {
+                            create: tagLabels.map(label => getCreateTagVariable(label))
+                        },
                         "reference": {
                             "create": {
                                 "snapshots": {

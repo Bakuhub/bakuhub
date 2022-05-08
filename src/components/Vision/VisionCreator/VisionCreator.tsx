@@ -15,7 +15,17 @@ export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) =
     const router = useRouter();
     const [createNewVision] = useMutation(createVisionMutation);
     const handleSubmitCallback = () => router.push(`/premise/${vision.premiseId}`);
-
+    console.info(vision);
+    const getTagLabels = (): string[] => {
+        if (vision.tagsOnVisions) {
+            return vision.tagsOnVisions.reduce((acc: string[], tagsOnVision) =>
+                                                       tagsOnVision.tag ?
+                                                               [...acc, tagsOnVision.tag.label]:acc, []);
+        }
+        return [];
+    };
+    console.info(vision.tagsOnVisions);
+    console.info(getTagLabels());
     return <CreatorBase
             premiseId={vision.premiseId}
             currentVisionId={vision.id}
@@ -27,17 +37,12 @@ export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) =
                     activityDate: vision.activityDate || undefined,
                     thumbnail: vision.thumbnail || "",
                     snapshots: get(vision, "reference.snapshots", []),
-                    tagLabels: []
-                    // vision.tagsOnVisions?.reduce((acc, tagsOnVision) => {
-                    //                                     const tag: Tag | undefined = tagsOnVision.tag;
-                    //                                     return tag ? [
-                    //                                                 ...acc, tag.label
-                    //                                             ]
-                    //                                                :acc;
-                    //                                 }
-                    // , [])
+                    tagLabels: getTagLabels()
                 }
-            } handleSubmit={createNewVision} handleSubmitCallback={
-        handleSubmitCallback
-    }/>;
+            } handleSubmit={createNewVision}
+            isMergeRequest
+            handleSubmitCallback={
+                handleSubmitCallback
+            }
+    />;
 };

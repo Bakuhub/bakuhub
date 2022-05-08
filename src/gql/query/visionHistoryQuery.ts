@@ -25,15 +25,11 @@ export const getVisionHistoryQueryVariable = (premiseId: string) => (
         {
             variables: {
                 "where": {
-                    "premise": {
-                        "is": {
-                            "id": {
-                                "equals": premiseId
-                            }
-                        }
-                    },
                     "AND": [
                         {
+                            "premiseId": {
+                                "equals": premiseId
+                            },
                             "draftMode": {
                                 "equals": false
                             }
@@ -42,7 +38,7 @@ export const getVisionHistoryQueryVariable = (premiseId: string) => (
                 },
                 "orderBy": [
                     {
-                        "updatedAt": "desc"
+                        "createdAt": "asc"
                     }
                 ]
             }
