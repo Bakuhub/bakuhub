@@ -13,6 +13,7 @@ import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
 import SpeedDialContainer from "./Sections/SpeedDialContainer";
 import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
+import SearchBar from "./Sections/SearchBar";
 
 
 const Main = styled(
@@ -102,9 +103,14 @@ export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => 
                             <Icon>{MaterialUIIcons.menu}</Icon>
                         </IconButton>
                         <Grid item container xs={12} justifyContent={"space-between"} alignItems={"center"}>
-                            <Typography onClick={() => router.push("/")} variant="h6" noWrap component="div">
-                                Bakuhub
-                            </Typography>
+                            <Grid item>
+                                <Grid item container>
+                                    <Typography onClick={() => router.push("/")} variant="h6" noWrap component="div">
+                                        Bakuhub
+                                    </Typography>
+                                    <SearchBar/>
+                                </Grid>
+                            </Grid>
                             <AuthButton/>
                         </Grid>
                     </Toolbar>

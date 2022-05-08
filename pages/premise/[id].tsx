@@ -38,12 +38,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
 };
 
-//
-// const Wrapper = ({res}: { res: ApolloQueryResult<Premise> }) => {
-//     console.info(res);
-//     if (!res || res.loading) return <div>Loading...</div>;
-//     if (res.error) return <div>Error</div>;
-//     if (res.data) return <PremiseDetail premise={res.data.premise}/>;
-// };
-
 export default PremiseDetail;
