@@ -1,3 +1,3 @@
-import {CreatePremise} from "src/components/Premise/PremiseCreator";
+import {PremiseCreator} from "src/components/Premise/PremiseCreator";
 
-export default CreatePremise;
+export default PremiseCreator;

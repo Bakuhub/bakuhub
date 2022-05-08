@@ -1,4 +1,4 @@
-import {Avatar, Button,Grid} from "@mui/material";
+import {Avatar, Button, Grid} from "@mui/material";
 import React, {ChangeEvent} from "react";
 import get from "lodash/get";
 import {fetchApi} from "../../services/fetchApi";
@@ -20,7 +20,7 @@ export const FileInput: React.FunctionComponent<FileInputProps> = (
             const reader = new FileReader();
             reader.onload = async function (e) {
                 const arrayBuffer = get(e, "target.result", "");
-                const res = await fetchApi("/api/test", {
+                const res = await fetchApi("/api/snapshot", {
                     method: "POST",
                     body: arrayBuffer
                 });

@@ -11,23 +11,18 @@ export const getPremiseDetailQueryVariable = (premiseId: string) => (
                                 "equals": true
                             }
                         }, {
-
-                            "OR": [
+                            "AND": [
                                 {
                                     "draftMode": {
                                         "equals": false
                                     },
-                                    "AND": [
-                                        {
-                                            "nextVisions": {
-                                                "every": {
-                                                    "draftMode": {
-                                                        "equals": true
-                                                    }
-                                                }
+                                    "nextVisions": {
+                                        "every": {
+                                            "draftMode": {
+                                                "equals": true
                                             }
                                         }
-                                    ]
+                                    }
                                 }
                             ]
                         }

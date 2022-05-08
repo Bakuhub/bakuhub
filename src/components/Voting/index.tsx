@@ -30,6 +30,8 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id}
     const session = useSession();
     const [vote, setVote] = React.useState<number | null>(null);
     const {enqueueSnackbar} = useSnackbar();
+    const userId = getUserIdBySession(session);
+
     const {
         data: votesData,
         error: reactionError,
@@ -38,17 +40,16 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id}
     const [createVote] = useMutation(getCreateVoteMutation(type));
     const {
         data: voteByUserData, loading: loadingReactionByUser,
-        refetch: refetchReactionByUser
+        refetch: refetchReactionByUser,
     } = useQuery(...getVoteByUserArgs({
                                           type,
                                           id,
-                                          userId: getUserIdBySession(session)
+                                          userId
                                       }));
     const currentVote = get(voteByUserData, "votes.vote");
 
     const handleVoting = async (nextVote: number) => {
         setVote(nextVote);
-        const userId = getUserIdBySession(session);
         switch (true) {
             case (
                     !userId
