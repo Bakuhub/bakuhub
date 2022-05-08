@@ -30,7 +30,6 @@ export interface CreatePremiseProps {
 
 export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) => {
     const session = useSession();
-
     const {enqueueSnackbar} = useSnackbar();
     const user = get(session, "data.user");
     const userId = get(session, "data.userId");
@@ -241,32 +240,31 @@ export const CreatePremise: FunctionComponent<CreatePremiseProps> = ({premise}) 
                 Preview:
             </Typography>
             {user !== "" &&
-             <PremiseOverview
-                 premise={{
-                     title,
-                     "id": "",
-                     "createdAt": new Date(),
-                     updatedAt: new Date(),
-                     "status": snapshots.length ? "REFERENCE_PROVIDED":"RUMOUR",
-                     "author": user,
-                     "vision": [
-                         {
-                             activityDate: activityDate ? activityDate:Date.now(),
-                             description,
-                             title,
-                             draftMode: false,
-                             "createdAt": new Date(),
-                             reference: {id: "", snapshots},
-                             "authorId": userId,
-                             "nextVisions": [],
-                             "author": user,
-                             id: "",
-                             "updatedAt": new Date(),
-                             premiseId: "",
-                             thumbnail: attachment
-                         }
-                     ]
-                 }}/>}
+             <PremiseOverview premise={{
+                 title,
+                 "id": "",
+                 "createdAt": new Date(),
+                 updatedAt: new Date(),
+                 "status": snapshots.length ? "REFERENCE_PROVIDED":"RUMOUR",
+                 "author": user,
+                 "vision": [
+                     {
+                         activityDate: activityDate ? activityDate:Date.now(),
+                         description,
+                         title,
+                         draftMode: false,
+                         "createdAt": new Date(),
+                         reference: {id: "", snapshots},
+                         "authorId": userId,
+                         "nextVisions": [],
+                         "author": user,
+                         id: "",
+                         "updatedAt": new Date(),
+                         premiseId: "",
+                         thumbnail: attachment
+                     }
+                 ]
+             }}/>}
         </Grid>
     </Grid>;
 

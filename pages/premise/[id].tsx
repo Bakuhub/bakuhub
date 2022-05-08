@@ -11,13 +11,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     );
     const premiseId = context.query.id;
     const apollo = getSsrApollo(context.req);
-    console.time("apollo");
+    console.time("apollo getPremiseDetailQueryVariable");
     const {data} = await apollo.query({
                                           query: premiseQuery,
                                           ...getPremiseDetailQueryVariable(premiseId as string)
 
                                       });
-    console.timeEnd("apollo");
+    console.timeEnd("apollo getPremiseDetailQueryVariable");
     // const premise = await prisma.premise.findFirst({
     //                                                    where: {
     //                                                        id: context.query.id as string

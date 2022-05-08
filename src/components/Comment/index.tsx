@@ -78,7 +78,7 @@ export const Comment: FunctionComponent<CommentProps> = ({
         </Grid>
         <Grid item container xs={11} md={11.5}>
             <TextField
-                    onKeyPress={(e) => {
+                    onKeyDown={(e) => {
                         if (e.key === "Enter" && e.ctrlKey) {
                             handleSubmit();
                         }

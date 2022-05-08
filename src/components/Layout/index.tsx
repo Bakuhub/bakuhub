@@ -11,10 +11,11 @@ import {LayoutDrawer} from "./Sections/Drawer";
 import {DrawerHeader} from "./Sections/Drawer/styled";
 import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
-import SpeedDialContainer from "./Sections/SpeedDialContainer";
 import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
 import SearchBar from "./Sections/SearchBar";
+import dynamic from "next/dynamic";
 
+const SpeedDialContainer = dynamic(() => import("./Sections/SpeedDialContainer"), {ssr: false});
 
 const Main = styled(
         "main",
@@ -104,7 +105,7 @@ export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => 
                         </IconButton>
                         <Grid item container xs={12} justifyContent={"space-between"} alignItems={"center"}>
                             <Grid item>
-                                <Grid item container>
+                                <Grid item container alignItems={"center"}>
                                     <Typography onClick={() => router.push("/")} variant="h6" noWrap component="div">
                                         Bakuhub
                                     </Typography>
