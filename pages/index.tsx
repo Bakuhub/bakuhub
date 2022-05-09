@@ -16,6 +16,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const {data} = await apollo.query({
                                           query: visionsOverviewQuery, variables: {
             limit: 10,
+            where: {
+                draftMode: false
+            }
         }
                                       });
 

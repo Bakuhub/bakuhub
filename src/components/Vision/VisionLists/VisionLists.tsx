@@ -12,7 +12,7 @@ export const VisionLists: FunctionComponent<VisionListsProps> = ({visions}) => {
         {
             visions.map(
                     vision => <Grid key={vision.id} item
-                    ><VisionOverview vision={vision}/></Grid>
+                    ><VisionOverview vision={vision} premiseId={vision.premiseId}/></Grid>
             )
         }
     </Grid>;
