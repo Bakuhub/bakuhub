@@ -1,8 +1,8 @@
-import {PremiseDetail} from "../../src/components/Premise/PremiseDetail";
+import {PremiseDetail} from "../../../src/components/Premise/PremiseDetail";
 import {GetServerSideProps} from "next";
-import {getPremiseDetailQueryVariable} from "../../src/gql/utils/getPremiseDetailQueryVariable";
-import {premiseQuery} from "../../src/gql/query/premiseQuery";
-import {getSsrApollo} from "../../src/lib/apollo";
+import {getPremiseDetailQueryVariable} from "../../../src/gql/utils/getPremiseDetailQueryVariable";
+import {getSsrApollo} from "../../../src/lib/apollo";
+import {visionCreatorQuery} from "../../../src/gql/query/visionCreatorQuery";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(
@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const apollo = getSsrApollo(context.req);
     console.time("apollo getPremiseDetailQueryVariable");
     const {data} = await apollo.query({
-                                          query: premiseQuery,
+                                          query: visionCreatorQuery,
                                           ...getPremiseDetailQueryVariable(premiseId as string)
 
                                       });

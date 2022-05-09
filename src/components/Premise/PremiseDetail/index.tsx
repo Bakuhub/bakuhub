@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useEffect} from "react";
-import {Premise, Thread} from "../../../../prisma/generated/type-graphql";
+import {Thread, Vision} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
 import {Button, Grid, Icon, Tooltip, Typography} from "@mui/material";
@@ -12,7 +12,6 @@ import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariabl
 import {ConnectType} from "../../../types";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {getVisionHistoryQueryVariable} from "../../../gql/query/visionHistoryQuery";
-import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
 import dynamic from "next/dynamic";
 import {useSession} from "next-auth/react";
@@ -23,11 +22,14 @@ import Image from "next/image";
 import ThreadContainer from "../../Thread/ThreadContainer";
 import TagChip from "../../Tag/TagChip";
 import {MaterialUIIcons} from "../../../constants/MaterialUIIcons";
+import {
+    getVisionWithMergeRequestByPremiseIdVariables
+} from "../../../gql/utils/getVisionWithMergeRequestByPremiseIdVariables";
+import {visionWithMergeRequestQuery} from "../../../gql/query/visionWithMergeRequestQuery";
 
 const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
 const Comment = dynamic(() => import("../../Comment"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
-const ReactionButtons = dynamic(() => import("../../Reaction"));
 
 export enum Reaction {
     UPVOTE = "UPVOTE",
@@ -35,22 +37,15 @@ export enum Reaction {
 }
 
 interface PremiseDetailProps {
-    premise: Premise;
+    activeVision: Vision;
 }
 
-export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({premise}) => {
+export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({activeVision}) => {
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
     const session = useSession();
+    const premiseId = activeVision.premiseId;
     const [createSubscriptionMutation] = useMutation(getUpsertSubscriptionMutation(ConnectType.PREMISE));
-    const activeVision = premise.vision?.find(vision =>
-                                                      !!vision.nextVisions?.every(nextVision => !!nextVision.draftMode)
-                                                      && !vision.draftMode);
-    console.info("-----------");
-    console.info(premise);
-    // @ts-ignore
-    console.info(!!premise.vision[0].nextVisions?.every(nextVision => !!nextVision.draftMode));
-
     const {
         data: threadsQueryData,
         refetch: refetchThreads,
@@ -58,21 +53,20 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                                                                                   threadConnectType: ConnectType.VISION,
                                                                                   id: activeVision?.id || ""
                                                                               }));
-    const [createReactionOnVision] = useMutation(upsertReactionOnVisionsMutation, {
-        errorPolicy: "all",
-    });
-
     const {
         data: visionHistoryData,
-        loading: visionHistoryLoading,
-        error: visionHistoryError
-    } = useQuery(visionHistoryCountQuery, getVisionHistoryQueryVariable(premise.id));
+    } = useQuery(visionHistoryCountQuery, getVisionHistoryQueryVariable(premiseId));
 
 
     const visionHistoryCount: number = get(visionHistoryData, "visions.length", 1);
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
-    const allOtherVisions = premise.vision?.filter(vision => vision.id !== activeVision?.id
-                                                             && get(vision, "mergeRequest.status") === "OPEN");
+    const {data: {visions: allOtherVisions}} = useQuery(
+            visionWithMergeRequestQuery,
+            getVisionWithMergeRequestByPremiseIdVariables(premiseId)
+    );
+    // todo add all other visions
+    // premise.vision?.filter(vision => vision.id !== activeVision?.id
+    //                                                  && get(vision, "mergeRequest.status") === "OPEN");
     const thumbnail = getThumbnail(activeVision);
 
     const connectConfig = {
@@ -87,7 +81,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
             createSubscriptionMutation(getUpsertSubscriptionVariables(
                     {
                         type: ConnectType.PREMISE,
-                        id: premise.id,
+                        id: premiseId,
                         userId,
                     })).then((res) => {
                 console.info("subscription created", res);
@@ -95,7 +89,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                 console.error(err);
             });
         }
-    }, [createSubscriptionMutation, premise.id, session]);
+    }, [createSubscriptionMutation, premiseId, session]);
     return (
             <Grid container>
                 <Grid item container xs={12}>
@@ -116,7 +110,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({prem
                         <Grid item>
                             <Tooltip title={"view log"}>
                                 <Button variant={"outlined"}
-                                        onClick={() => router.push(`/history/premise/${premise.id}`)}>
+                                        onClick={() => router.push(`/history/premise/${premiseId}`)}>
                                     visions: {visionHistoryCount}</Button>
                             </Tooltip>
                         </Grid>

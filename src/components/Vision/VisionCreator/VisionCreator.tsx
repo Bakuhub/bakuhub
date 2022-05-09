@@ -14,7 +14,7 @@ export interface CreatePremiseProps {
 export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) => {
     const router = useRouter();
     const [createNewVision] = useMutation(createVisionMutation);
-    const handleSubmitCallback = () => router.push(`/premise/${vision.premiseId}`);
+    const handleSubmitCallback = () => router.push(`/premise/${vision.premiseId}/vision/${vision.id}`);
     console.info(vision);
     const getTagLabels = (): string[] => {
         if (vision.tagsOnVisions) {

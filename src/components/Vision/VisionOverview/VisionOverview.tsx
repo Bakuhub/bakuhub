@@ -32,7 +32,7 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
     const router = useRouter();
     const [expanded, setExpanded] = React.useState(false);
     const thumbnail = getThumbnail(vision);
-    const getRedirectUrl = () => premiseId ? `/premise/${premiseId}`:`/vision/${vision.id}`;
+    const getRedirectUrl = () => premiseId ? `/premise/${premiseId}/vision/${vision.id}`:`/vision/${vision.id}`;
     const getDescription = () => {
         return getSubStr(get(vision, "description", "") || "", 100);
     };

@@ -14,7 +14,7 @@ import {FetchResult} from "@apollo/client";
 import {getCreatorMutationVariables} from "./utils/getCreatorMutationVariables";
 import {ConnectType} from "../../types";
 
-const TagSearchBar = dynamic(() => import("src/components/Tag/TagSearchBar"), {ssr: false});
+const TagSearchBar = dynamic(() => import("src/components/Tag/TagSearchBar"));
 const LocalizationProvider = dynamic(() => import("@mui/lab/LocalizationProvider"));
 const SnapshotCreator = dynamic(() => import("src/components/Snapshot"));
 const MergeRequest = dynamic(() => import("src/components/MergeRequest"));
