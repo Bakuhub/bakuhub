@@ -17,7 +17,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                                           query: visionsOverviewQuery, variables: {
             limit: 10,
             where: {
-                draftMode: false
+                draftMode: {
+                    equals: false
+                }
             }
         }
                                       });
