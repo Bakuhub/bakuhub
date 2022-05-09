@@ -1,7 +1,8 @@
-import {Premise} from "../../../prisma/generated/type-graphql";
 import dynamic from "next/dynamic";
+import {Vision} from "../../../prisma/generated/type-graphql";
 
-const PremiseLists = dynamic(() => import("src/components/Premise/PremiseLists"));
-export const MainPage = ({premises}: { premises: Premise[] }) => {
-    return <PremiseLists premises={premises}/>;
+const VisionLists = dynamic(() => import("src/components/Vision/VisionLists"));
+
+export const MainPage = ({visions}: { visions: Vision[] }) => {
+    return <VisionLists visions={visions}/>;
 };

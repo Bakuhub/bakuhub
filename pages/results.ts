@@ -4,8 +4,8 @@ import get from "lodash/get";
 import {getWhereEqualTagVision} from "../src/gql/variables/getWhereEqualTagVision";
 import {getWhereContainKeywordVision} from "../src/gql/variables/getWhereContainKeywordVision";
 import {getWhereActiveVision} from "../src/gql/variables/getWhereActiveVision";
-import {visionsQuery} from "../src/gql/query/visionsQuery";
 import SearchResult from "src/components/Search/SearchResult";
+import {visionsOverviewQuery} from "../src/gql/query/visionsOverviewQuery";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
@@ -35,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     );
     const apollo = getSsrApollo(context.req);
     const {data} = await apollo.query({
-                                          query: visionsQuery, ...getVariables()
+                                          query: visionsOverviewQuery, ...getVariables()
                                       });
     return {
         props: {
