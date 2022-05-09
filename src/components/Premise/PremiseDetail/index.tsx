@@ -60,13 +60,11 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
 
     const visionHistoryCount: number = get(visionHistoryData, "visions.length", 1);
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
-    const {data: {visions: allOtherVisions}} = useQuery(
+    const {data: visionWithMergeRequestData} = useQuery<{ visions: Vision[] }>(
             visionWithMergeRequestQuery,
             getVisionWithMergeRequestByPremiseIdVariables(premiseId)
     );
-    // todo add all other visions
-    // premise.vision?.filter(vision => vision.id !== activeVision?.id
-    //                                                  && get(vision, "mergeRequest.status") === "OPEN");
+    const visionsWithMergeRequest = get(visionWithMergeRequestData, "visions", []);
     const thumbnail = getThumbnail(activeVision);
 
     const connectConfig = {
@@ -96,15 +94,15 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
                     <Grid item xs={4}>
                         <Grid item container spacing={1}>
                             {
-                                    activeVision && activeVision.tagsOnVisions?.map(
-                                                         (tagsOnVision) => {
-                                                             const label = get(tagsOnVision, "tag.label", "");
-                                                             return <Grid
-                                                                     key={label}
-                                                                     item><TagChip tagLabel={label}/>
-                                                             </Grid>;
-                                                         }
-                                                 )
+                                activeVision.tagsOnVisions?.map(
+                                        (tagsOnVision) => {
+                                            const label = get(tagsOnVision, "tag.label", "");
+                                            return <Grid
+                                                    key={label}
+                                                    item><TagChip tagLabel={label}/>
+                                            </Grid>;
+                                        }
+                                )
                             }
                         </Grid>
                         <Grid item>
@@ -134,26 +132,26 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
                             <Typography variant={"h5"}>Merge requests opened:</Typography>
                         </Grid>
                         {
-                            allOtherVisions?.map(vision =>
-                                                         <Grid key={vision.id} item container xs={12}>
-                                                             <Tooltip title={get(
-                                                                     vision,
-                                                                     "mergeRequest.description",
-                                                                     ""
-                                                             )}>
-                                                                 <Typography
-                                                                         variant={"h6"}
-                                                                         key={vision.id}
-                                                                         onClick={() => router.push(`/review/mergeRequest/${get(
-                                                                                 vision,
-                                                                                 "mergeRequest.id",
-                                                                                 false
-                                                                         )}`)}
-                                                                 >
-                                                                     {get(vision, "mergeRequest.title", "")}
-                                                                 </Typography>
-                                                             </Tooltip>
-                                                         </Grid>)
+                            visionsWithMergeRequest.map(vision =>
+                                                                <Grid key={vision.id} item container xs={12}>
+                                                                    <Tooltip title={get(
+                                                                            vision,
+                                                                            "mergeRequest.description",
+                                                                            ""
+                                                                    )}>
+                                                                        <Typography
+                                                                                variant={"h6"}
+                                                                                key={vision.id}
+                                                                                onClick={() => router.push(`/review/mergeRequest/${get(
+                                                                                        vision,
+                                                                                        "mergeRequest.id",
+                                                                                        false
+                                                                                )}`)}
+                                                                        >
+                                                                            {get(vision, "mergeRequest.title", "")}
+                                                                        </Typography>
+                                                                    </Tooltip>
+                                                                </Grid>)
                         }
                     </Grid>
                     <ReferenceOverview snapshots={
