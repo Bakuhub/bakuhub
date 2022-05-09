@@ -14,13 +14,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const params = context.query;
     const getVariables = () => {
         const keyword = get(params, "keyword", "");
-        const tags = get(params, "tags");
+        const tag = get(params, "tag");
         return {
             variables: {
                 where: {
                     "AND": [
                         {
-                            ...getWhereEqualTagVision(tags),
+                            ...getWhereEqualTagVision(tag),
                             ...getWhereContainKeywordVision(keyword.toString()),
                             ...getWhereActiveVision()
                         }
