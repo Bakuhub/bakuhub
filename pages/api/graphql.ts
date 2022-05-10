@@ -13,7 +13,11 @@ export const config = {
     }
 };
 console.time("schema");
-const schema = createSchema();
+// @ts-ignore
+global.schema = global.schema || createSchema();
+// @ts-ignore
+const schema = global.schema;
+// const schema = createSchema();
 console.timeEnd("schema");
 console.time("start apollo");
 
