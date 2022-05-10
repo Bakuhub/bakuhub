@@ -51,7 +51,7 @@ const startServer = apolloServer.start();
 export default cors(async function handler(
         req: MicroRequest, res: ServerResponse
 ) {
-    console.info("req", req);
+    console.info("req started==========================");
     if (req.method === "OPTIONS") {
         res.end();
         return false;
@@ -69,8 +69,7 @@ export default cors(async function handler(
     console.timeEnd("graphql startServer");
     console.time("graphql handler");
     await apolloServer.createHandler({
-                                         path: "/api/graphql",
-
+                                         path: "/api/graphql", disableHealthCheck: true
                                      })(req, res);
     console.timeEnd("graphql handler");
 });
