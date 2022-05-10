@@ -10,7 +10,7 @@ export const SearchBar = () => {
     const handleKeyDown: React.KeyboardEventHandler<HTMLTextAreaElement | HTMLInputElement>
             = (event) => {
         if (event.code === "Enter") {
-            router.push(`/results?keyword=${value}`);
+            router.push(`/results?keyword=${Buffer.from(value).toString("base64")}`);
         }
     };
     return (

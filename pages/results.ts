@@ -13,8 +13,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     console.info(context.query);
     const params = context.query;
     const getVariables = () => {
-        const keyword = get(params, "keyword", "");
-        const tag = get(params, "tag");
+        const keyword = Buffer.from(get(params, "keyword", "") as string, "base64").toString();
+        const tag = Buffer.from(get(params, "tag", "") as string, "base64").toString();
         return {
             variables: {
                 where: {

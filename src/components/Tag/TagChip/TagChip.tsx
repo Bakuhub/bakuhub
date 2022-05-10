@@ -14,7 +14,7 @@ export const TagChip: FunctionComponent<TagChipProps> = ({tagLabel}) => {
             variant={"filled"}
             label={tagLabel}
             onClick={() => {
-                router.push(`/results?tag=${tagLabel}`);
+                router.push(`/results?tag=${Buffer.from(tagLabel).toString("base64")}`);
             }}
     />;
 };
