@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import {ApolloServer} from "apollo-server-micro";
+import {ApolloServerPluginLandingPageGraphQLPlayground} from "apollo-server-core";
 import {MicroRequest} from "apollo-server-micro/dist/types";
 import {ServerResponse} from "http";
 import Cors from "micro-cors";
@@ -12,24 +13,45 @@ export const config = {
         bodyParser: false
     }
 };
-console.time("schema");
-// @ts-ignore
-global.schema = global.schema || createSchema();
-// @ts-ignore
-const schema = global.schema;
+console.time("create schema");
+(
+        global as any
+).schema = (
+                   global as any
+           ).schema || createSchema();
+const schema = (
+        global as any
+).schema;
 // const schema = createSchema();
-console.timeEnd("schema");
+console.timeEnd("create schema");
+
 console.time("start apollo");
 
 const apolloServer = new ApolloServer({
                                           schema,
                                           context: createContext,
+                                          plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+                                          csrfPrevention: true,
+                                          logger: {
+                                              debug(message?: any) {
+                                                  console.info("debug", message);
+                                              },
+                                              error(message?: any) {
+                                                  console.info("error", message);
+                                              },
+                                              warn(message?: any) {
+                                                  console.info("warn", message);
+                                              }, info(message?: any) {
+                                                  console.info("info", message);
+                                              }
+                                          }
                                       });
 console.timeEnd("start apollo");
 const startServer = apolloServer.start();
 export default cors(async function handler(
         req: MicroRequest, res: ServerResponse
 ) {
+    console.info("req", req);
     if (req.method === "OPTIONS") {
         res.end();
         return false;
@@ -48,6 +70,7 @@ export default cors(async function handler(
     console.time("graphql handler");
     await apolloServer.createHandler({
                                          path: "/api/graphql",
+
                                      })(req, res);
     console.timeEnd("graphql handler");
 });
