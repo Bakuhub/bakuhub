@@ -4,8 +4,8 @@ import {relayStylePagination} from "@apollo/client/utilities";
 import {IncomingMessage} from "http";
 import {NextApiRequestCookies} from "next/dist/server/api-utils";
 
-// const devGraphqlUrl = "http://localhost:3000/api/graphql";
-const devGraphqlUrl = "http://localhost:4000";
+const devGraphqlUrl = "http://localhost:3000/api/graphql";
+// const devGraphqlUrl = "http://localhost:4000";
 
 export const apolloClient = new ApolloClient({
                                                  uri: `${getUrl(process.env.NODE_ENV ===
