@@ -1,8 +1,6 @@
 import "reflect-metadata";
 import {ApolloServer} from "apollo-server-micro";
 import {ApolloServerPluginLandingPageGraphQLPlayground} from "apollo-server-core";
-import {MicroRequest} from "apollo-server-micro/dist/types";
-import {ServerResponse} from "http";
 import Cors from "micro-cors";
 import {createContext} from "../../graphql/context";
 import {createSchema} from "../../graphql/schema";
@@ -47,29 +45,32 @@ const apolloServer = new ApolloServer({
                                           }
                                       });
 console.timeEnd("start apollo");
-const startServer = apolloServer.start();
-export default cors(async function handler(
-        req: MicroRequest, res: ServerResponse
-) {
-    console.info("req started==========================");
-    if (req.method === "OPTIONS") {
-        res.end();
-        return false;
-    }
-    // if (process.env.NODE_ENV === "development") {
-    //     await buildSchema({
-    //                           resolvers,
-    //                           validate: false,
-    //                           emitSchemaFile: true
-    //                       });
-    // }
-    console.time("graphql startServer");
-
-    await startServer;
-    console.timeEnd("graphql startServer");
-    console.time("graphql handler");
-    await apolloServer.createHandler({
-                                         path: "/api/graphql", disableHealthCheck: true
-                                     })(req, res);
-    console.timeEnd("graphql handler");
-});
+// const startServer = apolloServer.start();
+export default apolloServer.createHandler({
+                                              path: "/api/graphql",
+                                          });
+// export default cors(async function handler(
+//         req: MicroRequest, res: ServerResponse
+// ) {
+//     console.info("req started==========================");
+//     if (req.method === "OPTIONS") {
+//         res.end();
+//         return false;
+//     }
+//     // if (process.env.NODE_ENV === "development") {
+//     //     await buildSchema({
+//     //                           resolvers,
+//     //                           validate: false,
+//     //                           emitSchemaFile: true
+//     //                       });
+//     // }
+//     console.time("graphql startServer");
+//
+//     await startServer;
+//     console.timeEnd("graphql startServer");
+//     console.time("graphql handler");
+//     await apolloServer.createHandler({
+//                                          path: "/api/graphql", disableHealthCheck: true
+//                                      })(req, res);
+//     console.timeEnd("graphql handler");
+// });
