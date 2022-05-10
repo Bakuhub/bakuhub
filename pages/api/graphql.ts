@@ -1,10 +1,9 @@
 import "reflect-metadata";
-import {ApolloServer} from "apollo-server-micro";
+// import {ApolloServer} from "apollo-server-micro";
 import Cors from "micro-cors";
 import {createContext} from "../../graphql/context";
 import {createSchema} from "../../graphql/schema";
-import {MicroRequest} from "apollo-server-micro/dist/types";
-import {ServerResponse} from "http";
+import {ApolloServer} from "apollo-server-nextjs";
 
 const cors = Cors();
 export const config = {
@@ -31,22 +30,11 @@ const apolloServer = new ApolloServer({
                                           csrfPrevention: true,
                                       });
 console.timeEnd("start apollo");
-const startServer = apolloServer.start();
-export default cors(async function handler(
-        req: MicroRequest, res: ServerResponse
-) {
-    console.info("req started==========================");
-    if (req.method === "OPTIONS") {
-        res.end();
-        return false;
-    }
-    console.time("graphql startServer");
-    await startServer;
-    console.timeEnd("graphql startServer");
-    console.log("graphql handler start", new Date());
-    await apolloServer.createHandler({
-                                         path: "/api/graphql",
-                                         disableHealthCheck: true
-                                     })(req, res);
-    console.log("graphql handler end ", new Date());
-});
+export default apolloServer.createHandler({
+                                              expressGetMiddlewareOptions: {
+                                                  cors: {
+                                                      origin: "*",
+                                                      credentials: true,
+                                                  },
+                                              },
+                                          });
