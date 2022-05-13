@@ -129,7 +129,10 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
                     </Grid>
                     <Grid item container xs={2} alignContent={"flex-start"}>
                         <Grid item xs={12}>
-                            <Typography variant={"h5"}>Merge requests opened:</Typography>
+                            <Typography
+                                    onClick={() => router.push(`/vision/${activeVision.id}/mergeRequests`)}
+
+                                    variant={"h5"}>Merge requests opened:</Typography>
                         </Grid>
                         {
                             visionsWithMergeRequest.map(vision =>

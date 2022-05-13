@@ -3,7 +3,7 @@ import {getUrl} from "../utils/getUrl";
 import {relayStylePagination} from "@apollo/client/utilities";
 import {IncomingMessage} from "http";
 import {NextApiRequestCookies} from "next/dist/server/api-utils";
-
+//const devGraphqlUrl = "http://bakuhub-graphql-prod-env.eba-wzj6ss6h.eu-west-2.elasticbeanstalk.com/api/graphql";
 const devGraphqlUrl = "http://localhost:3000/api/graphql";
 // const devGraphqlUrl = "http://localhost:4000";
 

@@ -2,8 +2,7 @@ import Avatar from "@mui/material/Avatar";
 import {getUserAvatar} from "../../../utils/getUserAvatar";
 import * as React from "react";
 import {FunctionComponent} from "react";
-import {useRouter} from "next/router";
-import Link from "@mui/material/Link";
+import Link from "next/link";
 
 export interface UserAvatarProps {
     name?: string | null | undefined;
@@ -13,7 +12,6 @@ export interface UserAvatarProps {
 }
 
 export const UserAvatar: FunctionComponent<UserAvatarProps> = (props) => {
-    const router = useRouter();
     const getStyle = () => {
         const defaultStyle = {
             cursor: "pointer",
