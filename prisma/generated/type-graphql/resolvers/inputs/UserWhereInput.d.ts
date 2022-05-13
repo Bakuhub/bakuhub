@@ -12,6 +12,7 @@ import { SubscriptionsOnTimelinesListRelationFilter } from "../inputs/Subscripti
 import { ThreadListRelationFilter } from "../inputs/ThreadListRelationFilter";
 import { TimelineListRelationFilter } from "../inputs/TimelineListRelationFilter";
 import { VisionListRelationFilter } from "../inputs/VisionListRelationFilter";
+import { VisionViewsHistoryListRelationFilter } from "../inputs/VisionViewsHistoryListRelationFilter";
 import { VotesOnPremiseListRelationFilter } from "../inputs/VotesOnPremiseListRelationFilter";
 import { VotesOnThreadListRelationFilter } from "../inputs/VotesOnThreadListRelationFilter";
 import { VotesOnTimelineListRelationFilter } from "../inputs/VotesOnTimelineListRelationFilter";
@@ -41,4 +42,5 @@ export declare class UserWhereInput {
     votesOnThread?: VotesOnThreadListRelationFilter | undefined;
     subscriptionsOnPremises?: SubscriptionsOnPremisesListRelationFilter | undefined;
     subscriptionsOnTimelines?: SubscriptionsOnTimelinesListRelationFilter | undefined;
+    visionViewsHistory?: VisionViewsHistoryListRelationFilter | undefined;
 }

@@ -18,18 +18,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
                                       });
     console.timeEnd("apollo getPremiseDetailQueryVariable");
-    // const premise = await prisma.premise.findFirst({
-    //                                                    where: {
-    //                                                        id: context.query.id as string
-    //                                                    },
-    //                                                    include: {
-    //                                                        vision: {
-    //                                                            include: {
-    //                                                                nextVisions: true
-    //                                                            }
-    //                                                        },
-    //                                                    }
-    //                                                });
 
     return {
         props: {

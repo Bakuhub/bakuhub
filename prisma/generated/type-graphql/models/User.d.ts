@@ -9,6 +9,7 @@ import { SubscriptionsOnTimelines } from "../models/SubscriptionsOnTimelines";
 import { Thread } from "../models/Thread";
 import { Timeline } from "../models/Timeline";
 import { Vision } from "../models/Vision";
+import { VisionViewsHistory } from "../models/VisionViewsHistory";
 import { VotesOnPremise } from "../models/VotesOnPremise";
 import { VotesOnThread } from "../models/VotesOnThread";
 import { VotesOnTimeline } from "../models/VotesOnTimeline";
@@ -36,5 +37,6 @@ export declare class User {
     votesOnThread?: VotesOnThread[];
     subscriptionsOnPremises?: SubscriptionsOnPremises[];
     subscriptionsOnTimelines?: SubscriptionsOnTimelines[];
+    visionViewsHistory?: VisionViewsHistory[];
     _count?: UserCount | null;
 }

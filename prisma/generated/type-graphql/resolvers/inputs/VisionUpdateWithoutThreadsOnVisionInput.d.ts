@@ -11,6 +11,7 @@ import { TagsOnVisionsUpdateManyWithoutVisionInput } from "../inputs/TagsOnVisio
 import { UserUpdateOneWithoutVisionsInput } from "../inputs/UserUpdateOneWithoutVisionsInput";
 import { VisionUpdateManyWithoutPrevVisionInput } from "../inputs/VisionUpdateManyWithoutPrevVisionInput";
 import { VisionUpdateOneWithoutNextVisionsInput } from "../inputs/VisionUpdateOneWithoutNextVisionsInput";
+import { VisionViewsHistoryUpdateManyWithoutVisionInput } from "../inputs/VisionViewsHistoryUpdateManyWithoutVisionInput";
 import { VotesOnVisionUpdateManyWithoutVisionInput } from "../inputs/VotesOnVisionUpdateManyWithoutVisionInput";
 export declare class VisionUpdateWithoutThreadsOnVisionInput {
     id?: StringFieldUpdateOperationsInput | undefined;
@@ -30,4 +31,5 @@ export declare class VisionUpdateWithoutThreadsOnVisionInput {
     reactionOnVisions?: ReactionOnVisionsUpdateManyWithoutVisionInput | undefined;
     votesOnVision?: VotesOnVisionUpdateManyWithoutVisionInput | undefined;
     tagsOnVisions?: TagsOnVisionsUpdateManyWithoutVisionInput | undefined;
+    visionViewsHistory?: VisionViewsHistoryUpdateManyWithoutVisionInput | undefined;
 }

@@ -29,6 +29,7 @@ export { TimelineScalarFieldEnum } from "./TimelineScalarFieldEnum";
 export { UserScalarFieldEnum } from "./UserScalarFieldEnum";
 export { VerificationTokenScalarFieldEnum } from "./VerificationTokenScalarFieldEnum";
 export { VisionScalarFieldEnum } from "./VisionScalarFieldEnum";
+export { VisionViewsHistoryScalarFieldEnum } from "./VisionViewsHistoryScalarFieldEnum";
 export { VotesOnPremiseScalarFieldEnum } from "./VotesOnPremiseScalarFieldEnum";
 export { VotesOnThreadScalarFieldEnum } from "./VotesOnThreadScalarFieldEnum";
 export { VotesOnTimelineScalarFieldEnum } from "./VotesOnTimelineScalarFieldEnum";

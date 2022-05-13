@@ -12,6 +12,7 @@ import { SubscriptionsOnTimelinesUpdateManyWithoutUserInput } from "../inputs/Su
 import { ThreadUpdateManyWithoutAuthorInput } from "../inputs/ThreadUpdateManyWithoutAuthorInput";
 import { TimelineUpdateManyWithoutAuthorInput } from "../inputs/TimelineUpdateManyWithoutAuthorInput";
 import { VisionUpdateManyWithoutAuthorInput } from "../inputs/VisionUpdateManyWithoutAuthorInput";
+import { VisionViewsHistoryUpdateManyWithoutUserInput } from "../inputs/VisionViewsHistoryUpdateManyWithoutUserInput";
 import { VotesOnPremiseUpdateManyWithoutUserInput } from "../inputs/VotesOnPremiseUpdateManyWithoutUserInput";
 import { VotesOnTimelineUpdateManyWithoutUserInput } from "../inputs/VotesOnTimelineUpdateManyWithoutUserInput";
 import { VotesOnVisionUpdateManyWithoutUserInput } from "../inputs/VotesOnVisionUpdateManyWithoutUserInput";
@@ -36,4 +37,5 @@ export declare class UserUpdateWithoutVotesOnThreadInput {
     votesOnPremise?: VotesOnPremiseUpdateManyWithoutUserInput | undefined;
     subscriptionsOnPremises?: SubscriptionsOnPremisesUpdateManyWithoutUserInput | undefined;
     subscriptionsOnTimelines?: SubscriptionsOnTimelinesUpdateManyWithoutUserInput | undefined;
+    visionViewsHistory?: VisionViewsHistoryUpdateManyWithoutUserInput | undefined;
 }

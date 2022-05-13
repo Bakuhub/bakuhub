@@ -14,4 +14,5 @@ export declare class UserCount {
     votesOnThread: number;
     subscriptionsOnPremises: number;
     subscriptionsOnTimelines: number;
+    visionViewsHistory: number;
 }

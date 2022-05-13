@@ -13,6 +13,7 @@ const SubscriptionsOnPremisesCreateNestedManyWithoutUserInput_1 = require("../in
 const SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1 = require("../inputs/SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput");
 const ThreadCreateNestedManyWithoutAuthorInput_1 = require("../inputs/ThreadCreateNestedManyWithoutAuthorInput");
 const TimelineCreateNestedManyWithoutAuthorInput_1 = require("../inputs/TimelineCreateNestedManyWithoutAuthorInput");
+const VisionViewsHistoryCreateNestedManyWithoutUserInput_1 = require("../inputs/VisionViewsHistoryCreateNestedManyWithoutUserInput");
 const VotesOnPremiseCreateNestedManyWithoutUserInput_1 = require("../inputs/VotesOnPremiseCreateNestedManyWithoutUserInput");
 const VotesOnThreadCreateNestedManyWithoutUserInput_1 = require("../inputs/VotesOnThreadCreateNestedManyWithoutUserInput");
 const VotesOnTimelineCreateNestedManyWithoutUserInput_1 = require("../inputs/VotesOnTimelineCreateNestedManyWithoutUserInput");
@@ -139,6 +140,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput_1.SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput)
 ], UserCreateWithoutVisionsInput.prototype, "subscriptionsOnTimelines", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VisionViewsHistoryCreateNestedManyWithoutUserInput_1.VisionViewsHistoryCreateNestedManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VisionViewsHistoryCreateNestedManyWithoutUserInput_1.VisionViewsHistoryCreateNestedManyWithoutUserInput)
+], UserCreateWithoutVisionsInput.prototype, "visionViewsHistory", void 0);
 UserCreateWithoutVisionsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserCreateWithoutVisionsInput", {
         isAbstract: true

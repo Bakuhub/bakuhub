@@ -1,0 +1,32 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.VisionViewsHistoryCreateWithoutVisionInput = void 0;
+const tslib_1 = require("tslib");
+const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
+const UserCreateNestedOneWithoutVisionViewsHistoryInput_1 = require("../inputs/UserCreateNestedOneWithoutVisionViewsHistoryInput");
+let VisionViewsHistoryCreateWithoutVisionInput = class VisionViewsHistoryCreateWithoutVisionInput {
+};
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], VisionViewsHistoryCreateWithoutVisionInput.prototype, "id", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserCreateNestedOneWithoutVisionViewsHistoryInput_1.UserCreateNestedOneWithoutVisionViewsHistoryInput, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", UserCreateNestedOneWithoutVisionViewsHistoryInput_1.UserCreateNestedOneWithoutVisionViewsHistoryInput)
+], VisionViewsHistoryCreateWithoutVisionInput.prototype, "user", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], VisionViewsHistoryCreateWithoutVisionInput.prototype, "createdAt", void 0);
+VisionViewsHistoryCreateWithoutVisionInput = tslib_1.__decorate([
+    TypeGraphQL.InputType("VisionViewsHistoryCreateWithoutVisionInput", {
+        isAbstract: true
+    })
+], VisionViewsHistoryCreateWithoutVisionInput);
+exports.VisionViewsHistoryCreateWithoutVisionInput = VisionViewsHistoryCreateWithoutVisionInput;

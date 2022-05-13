@@ -9,6 +9,7 @@ import { SubscriptionsOnTimelinesOrderByRelationAggregateInput } from "../inputs
 import { ThreadOrderByRelationAggregateInput } from "../inputs/ThreadOrderByRelationAggregateInput";
 import { TimelineOrderByRelationAggregateInput } from "../inputs/TimelineOrderByRelationAggregateInput";
 import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
+import { VisionViewsHistoryOrderByRelationAggregateInput } from "../inputs/VisionViewsHistoryOrderByRelationAggregateInput";
 import { VotesOnPremiseOrderByRelationAggregateInput } from "../inputs/VotesOnPremiseOrderByRelationAggregateInput";
 import { VotesOnThreadOrderByRelationAggregateInput } from "../inputs/VotesOnThreadOrderByRelationAggregateInput";
 import { VotesOnTimelineOrderByRelationAggregateInput } from "../inputs/VotesOnTimelineOrderByRelationAggregateInput";
@@ -35,4 +36,5 @@ export declare class UserOrderByWithRelationInput {
     votesOnThread?: VotesOnThreadOrderByRelationAggregateInput | undefined;
     subscriptionsOnPremises?: SubscriptionsOnPremisesOrderByRelationAggregateInput | undefined;
     subscriptionsOnTimelines?: SubscriptionsOnTimelinesOrderByRelationAggregateInput | undefined;
+    visionViewsHistory?: VisionViewsHistoryOrderByRelationAggregateInput | undefined;
 }

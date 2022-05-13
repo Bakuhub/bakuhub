@@ -9,6 +9,7 @@ import { SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput } from "../inp
 import { ThreadCreateNestedManyWithoutAuthorInput } from "../inputs/ThreadCreateNestedManyWithoutAuthorInput";
 import { TimelineCreateNestedManyWithoutAuthorInput } from "../inputs/TimelineCreateNestedManyWithoutAuthorInput";
 import { VisionCreateNestedManyWithoutAuthorInput } from "../inputs/VisionCreateNestedManyWithoutAuthorInput";
+import { VisionViewsHistoryCreateNestedManyWithoutUserInput } from "../inputs/VisionViewsHistoryCreateNestedManyWithoutUserInput";
 import { VotesOnPremiseCreateNestedManyWithoutUserInput } from "../inputs/VotesOnPremiseCreateNestedManyWithoutUserInput";
 import { VotesOnThreadCreateNestedManyWithoutUserInput } from "../inputs/VotesOnThreadCreateNestedManyWithoutUserInput";
 import { VotesOnVisionCreateNestedManyWithoutUserInput } from "../inputs/VotesOnVisionCreateNestedManyWithoutUserInput";
@@ -33,4 +34,5 @@ export declare class UserCreateWithoutVotesOnTimelineInput {
     votesOnThread?: VotesOnThreadCreateNestedManyWithoutUserInput | undefined;
     subscriptionsOnPremises?: SubscriptionsOnPremisesCreateNestedManyWithoutUserInput | undefined;
     subscriptionsOnTimelines?: SubscriptionsOnTimelinesCreateNestedManyWithoutUserInput | undefined;
+    visionViewsHistory?: VisionViewsHistoryCreateNestedManyWithoutUserInput | undefined;
 }

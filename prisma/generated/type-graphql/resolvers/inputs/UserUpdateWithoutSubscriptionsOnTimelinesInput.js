@@ -16,6 +16,7 @@ const SubscriptionsOnPremisesUpdateManyWithoutUserInput_1 = require("../inputs/S
 const ThreadUpdateManyWithoutAuthorInput_1 = require("../inputs/ThreadUpdateManyWithoutAuthorInput");
 const TimelineUpdateManyWithoutAuthorInput_1 = require("../inputs/TimelineUpdateManyWithoutAuthorInput");
 const VisionUpdateManyWithoutAuthorInput_1 = require("../inputs/VisionUpdateManyWithoutAuthorInput");
+const VisionViewsHistoryUpdateManyWithoutUserInput_1 = require("../inputs/VisionViewsHistoryUpdateManyWithoutUserInput");
 const VotesOnPremiseUpdateManyWithoutUserInput_1 = require("../inputs/VotesOnPremiseUpdateManyWithoutUserInput");
 const VotesOnThreadUpdateManyWithoutUserInput_1 = require("../inputs/VotesOnThreadUpdateManyWithoutUserInput");
 const VotesOnTimelineUpdateManyWithoutUserInput_1 = require("../inputs/VotesOnTimelineUpdateManyWithoutUserInput");
@@ -142,6 +143,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnPremisesUpdateManyWithoutUserInput_1.SubscriptionsOnPremisesUpdateManyWithoutUserInput)
 ], UserUpdateWithoutSubscriptionsOnTimelinesInput.prototype, "subscriptionsOnPremises", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VisionViewsHistoryUpdateManyWithoutUserInput_1.VisionViewsHistoryUpdateManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VisionViewsHistoryUpdateManyWithoutUserInput_1.VisionViewsHistoryUpdateManyWithoutUserInput)
+], UserUpdateWithoutSubscriptionsOnTimelinesInput.prototype, "visionViewsHistory", void 0);
 UserUpdateWithoutSubscriptionsOnTimelinesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutSubscriptionsOnTimelinesInput", {
         isAbstract: true

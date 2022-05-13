@@ -5,6 +5,7 @@ import { Reference } from "../models/Reference";
 import { TagsOnVisions } from "../models/TagsOnVisions";
 import { ThreadsOnVision } from "../models/ThreadsOnVision";
 import { User } from "../models/User";
+import { VisionViewsHistory } from "../models/VisionViewsHistory";
 import { VotesOnVision } from "../models/VotesOnVision";
 import { VisionCount } from "../resolvers/outputs/VisionCount";
 export declare class Vision {
@@ -30,5 +31,6 @@ export declare class Vision {
     reactionOnVisions?: ReactionOnVisions[];
     votesOnVision?: VotesOnVision[];
     tagsOnVisions?: TagsOnVisions[];
+    visionViewsHistory?: VisionViewsHistory[];
     _count?: VisionCount | null;
 }

@@ -16,6 +16,7 @@ const TagsOnVisionsUpdateManyWithoutVisionInput_1 = require("../inputs/TagsOnVis
 const UserUpdateOneWithoutVisionsInput_1 = require("../inputs/UserUpdateOneWithoutVisionsInput");
 const VisionUpdateManyWithoutPrevVisionInput_1 = require("../inputs/VisionUpdateManyWithoutPrevVisionInput");
 const VisionUpdateOneWithoutNextVisionsInput_1 = require("../inputs/VisionUpdateOneWithoutNextVisionsInput");
+const VisionViewsHistoryUpdateManyWithoutVisionInput_1 = require("../inputs/VisionViewsHistoryUpdateManyWithoutVisionInput");
 const VotesOnVisionUpdateManyWithoutVisionInput_1 = require("../inputs/VotesOnVisionUpdateManyWithoutVisionInput");
 let VisionUpdateWithoutThreadsOnVisionInput = class VisionUpdateWithoutThreadsOnVisionInput {
 };
@@ -121,6 +122,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", TagsOnVisionsUpdateManyWithoutVisionInput_1.TagsOnVisionsUpdateManyWithoutVisionInput)
 ], VisionUpdateWithoutThreadsOnVisionInput.prototype, "tagsOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VisionViewsHistoryUpdateManyWithoutVisionInput_1.VisionViewsHistoryUpdateManyWithoutVisionInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VisionViewsHistoryUpdateManyWithoutVisionInput_1.VisionViewsHistoryUpdateManyWithoutVisionInput)
+], VisionUpdateWithoutThreadsOnVisionInput.prototype, "visionViewsHistory", void 0);
 VisionUpdateWithoutThreadsOnVisionInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionUpdateWithoutThreadsOnVisionInput", {
         isAbstract: true

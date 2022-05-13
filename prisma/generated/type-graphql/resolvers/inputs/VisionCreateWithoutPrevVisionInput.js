@@ -11,6 +11,7 @@ const TagsOnVisionsCreateNestedManyWithoutVisionInput_1 = require("../inputs/Tag
 const ThreadsOnVisionCreateNestedManyWithoutVisionInput_1 = require("../inputs/ThreadsOnVisionCreateNestedManyWithoutVisionInput");
 const UserCreateNestedOneWithoutVisionsInput_1 = require("../inputs/UserCreateNestedOneWithoutVisionsInput");
 const VisionCreateNestedManyWithoutPrevVisionInput_1 = require("../inputs/VisionCreateNestedManyWithoutPrevVisionInput");
+const VisionViewsHistoryCreateNestedManyWithoutVisionInput_1 = require("../inputs/VisionViewsHistoryCreateNestedManyWithoutVisionInput");
 const VotesOnVisionCreateNestedManyWithoutVisionInput_1 = require("../inputs/VotesOnVisionCreateNestedManyWithoutVisionInput");
 let VisionCreateWithoutPrevVisionInput = class VisionCreateWithoutPrevVisionInput {
 };
@@ -116,6 +117,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", TagsOnVisionsCreateNestedManyWithoutVisionInput_1.TagsOnVisionsCreateNestedManyWithoutVisionInput)
 ], VisionCreateWithoutPrevVisionInput.prototype, "tagsOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VisionViewsHistoryCreateNestedManyWithoutVisionInput_1.VisionViewsHistoryCreateNestedManyWithoutVisionInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VisionViewsHistoryCreateNestedManyWithoutVisionInput_1.VisionViewsHistoryCreateNestedManyWithoutVisionInput)
+], VisionCreateWithoutPrevVisionInput.prototype, "visionViewsHistory", void 0);
 VisionCreateWithoutPrevVisionInput = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionCreateWithoutPrevVisionInput", {
         isAbstract: true

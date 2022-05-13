@@ -32,6 +32,7 @@ declare const crudResolversMap: {
     VotesOnTimeline: typeof crudResolvers.VotesOnTimelineCrudResolver;
     VotesOnPremise: typeof crudResolvers.VotesOnPremiseCrudResolver;
     VotesOnThread: typeof crudResolvers.VotesOnThreadCrudResolver;
+    VisionViewsHistory: typeof crudResolvers.VisionViewsHistoryCrudResolver;
     SubscriptionsOnPremises: typeof crudResolvers.SubscriptionsOnPremisesCrudResolver;
     SubscriptionsOnTimelines: typeof crudResolvers.SubscriptionsOnTimelinesCrudResolver;
 };
@@ -80,6 +81,7 @@ declare const relationResolversMap: {
     VotesOnTimeline: typeof relationResolvers.VotesOnTimelineRelationsResolver;
     VotesOnPremise: typeof relationResolvers.VotesOnPremiseRelationsResolver;
     VotesOnThread: typeof relationResolvers.VotesOnThreadRelationsResolver;
+    VisionViewsHistory: typeof relationResolvers.VisionViewsHistoryRelationsResolver;
     SubscriptionsOnPremises: typeof relationResolvers.SubscriptionsOnPremisesRelationsResolver;
     SubscriptionsOnTimelines: typeof relationResolvers.SubscriptionsOnTimelinesRelationsResolver;
 };

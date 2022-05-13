@@ -28,6 +28,7 @@ export const createPremiseMutation = gql`
                 authorId
                 premiseId
                 title
+                id
                 prevVisionId
                 author {
                     name

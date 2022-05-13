@@ -15,6 +15,7 @@ const Thread_1 = require("../../../models/Thread");
 const Timeline_1 = require("../../../models/Timeline");
 const User_1 = require("../../../models/User");
 const Vision_1 = require("../../../models/Vision");
+const VisionViewsHistory_1 = require("../../../models/VisionViewsHistory");
 const VotesOnPremise_1 = require("../../../models/VotesOnPremise");
 const VotesOnThread_1 = require("../../../models/VotesOnThread");
 const VotesOnTimeline_1 = require("../../../models/VotesOnTimeline");
@@ -29,6 +30,7 @@ const UserSubscriptionsOnPremisesArgs_1 = require("./args/UserSubscriptionsOnPre
 const UserSubscriptionsOnTimelinesArgs_1 = require("./args/UserSubscriptionsOnTimelinesArgs");
 const UserThreadsArgs_1 = require("./args/UserThreadsArgs");
 const UserTimelinesArgs_1 = require("./args/UserTimelinesArgs");
+const UserVisionViewsHistoryArgs_1 = require("./args/UserVisionViewsHistoryArgs");
 const UserVisionsArgs_1 = require("./args/UserVisionsArgs");
 const UserVotesOnPremiseArgs_1 = require("./args/UserVotesOnPremiseArgs");
 const UserVotesOnThreadArgs_1 = require("./args/UserVotesOnThreadArgs");
@@ -140,6 +142,13 @@ let UserRelationsResolver = class UserRelationsResolver {
                 id: user.id,
             },
         }).subscriptionsOnTimelines(args);
+    }
+    async visionViewsHistory(user, ctx, args) {
+        return (0, helpers_1.getPrismaFromContext)(ctx).user.findUnique({
+            where: {
+                id: user.id,
+            },
+        }).visionViewsHistory(args);
     }
 };
 tslib_1.__decorate([
@@ -307,6 +316,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserSubscriptionsOnTimelinesArgs_1.UserSubscriptionsOnTimelinesArgs]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserRelationsResolver.prototype, "subscriptionsOnTimelines", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [VisionViewsHistory_1.VisionViewsHistory], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [User_1.User, Object, UserVisionViewsHistoryArgs_1.UserVisionViewsHistoryArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], UserRelationsResolver.prototype, "visionViewsHistory", null);
 UserRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => User_1.User)
 ], UserRelationsResolver);

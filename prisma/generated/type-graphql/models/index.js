@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VotesOnVision = exports.VotesOnTimeline = exports.VotesOnThread = exports.VotesOnPremise = exports.Vision = exports.VerificationToken = exports.User = exports.Timeline = exports.ThreadsOnVision = exports.ThreadsOnTimeline = exports.ThreadsOnPremise = exports.ThreadsOnMergeRequest = exports.Thread = exports.TagsOnVisions = exports.TagsOnTimelines = exports.TagsOnPremises = exports.Tag = exports.SubscriptionsOnTimelines = exports.SubscriptionsOnPremises = exports.Snapshot = exports.Session = exports.Reference = exports.ReactionOnVisions = exports.ReactionOnTimelines = exports.ReactionOnThreads = exports.PremisesOnTimelines = exports.Premise = exports.MergeRequest = exports.Account = void 0;
+exports.VotesOnVision = exports.VotesOnTimeline = exports.VotesOnThread = exports.VotesOnPremise = exports.VisionViewsHistory = exports.Vision = exports.VerificationToken = exports.User = exports.Timeline = exports.ThreadsOnVision = exports.ThreadsOnTimeline = exports.ThreadsOnPremise = exports.ThreadsOnMergeRequest = exports.Thread = exports.TagsOnVisions = exports.TagsOnTimelines = exports.TagsOnPremises = exports.Tag = exports.SubscriptionsOnTimelines = exports.SubscriptionsOnPremises = exports.Snapshot = exports.Session = exports.Reference = exports.ReactionOnVisions = exports.ReactionOnTimelines = exports.ReactionOnThreads = exports.PremisesOnTimelines = exports.Premise = exports.MergeRequest = exports.Account = void 0;
 var Account_1 = require("./Account");
 Object.defineProperty(exports, "Account", { enumerable: true, get: function () { return Account_1.Account; } });
 var MergeRequest_1 = require("./MergeRequest");
@@ -51,6 +51,8 @@ var VerificationToken_1 = require("./VerificationToken");
 Object.defineProperty(exports, "VerificationToken", { enumerable: true, get: function () { return VerificationToken_1.VerificationToken; } });
 var Vision_1 = require("./Vision");
 Object.defineProperty(exports, "Vision", { enumerable: true, get: function () { return Vision_1.Vision; } });
+var VisionViewsHistory_1 = require("./VisionViewsHistory");
+Object.defineProperty(exports, "VisionViewsHistory", { enumerable: true, get: function () { return VisionViewsHistory_1.VisionViewsHistory; } });
 var VotesOnPremise_1 = require("./VotesOnPremise");
 Object.defineProperty(exports, "VotesOnPremise", { enumerable: true, get: function () { return VotesOnPremise_1.VotesOnPremise; } });
 var VotesOnThread_1 = require("./VotesOnThread");

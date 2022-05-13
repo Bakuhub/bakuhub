@@ -12,6 +12,7 @@ const TagsOnVisionsOrderByRelationAggregateInput_1 = require("../inputs/TagsOnVi
 const ThreadsOnVisionOrderByRelationAggregateInput_1 = require("../inputs/ThreadsOnVisionOrderByRelationAggregateInput");
 const UserOrderByWithRelationInput_1 = require("../inputs/UserOrderByWithRelationInput");
 const VisionOrderByRelationAggregateInput_1 = require("../inputs/VisionOrderByRelationAggregateInput");
+const VisionViewsHistoryOrderByRelationAggregateInput_1 = require("../inputs/VisionViewsHistoryOrderByRelationAggregateInput");
 const VotesOnVisionOrderByRelationAggregateInput_1 = require("../inputs/VotesOnVisionOrderByRelationAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
 let VisionOrderByWithRelationInput = VisionOrderByWithRelationInput_1 = class VisionOrderByWithRelationInput {
@@ -148,6 +149,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", TagsOnVisionsOrderByRelationAggregateInput_1.TagsOnVisionsOrderByRelationAggregateInput)
 ], VisionOrderByWithRelationInput.prototype, "tagsOnVisions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VisionViewsHistoryOrderByRelationAggregateInput_1.VisionViewsHistoryOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VisionViewsHistoryOrderByRelationAggregateInput_1.VisionViewsHistoryOrderByRelationAggregateInput)
+], VisionOrderByWithRelationInput.prototype, "visionViewsHistory", void 0);
 VisionOrderByWithRelationInput = VisionOrderByWithRelationInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("VisionOrderByWithRelationInput", {
         isAbstract: true

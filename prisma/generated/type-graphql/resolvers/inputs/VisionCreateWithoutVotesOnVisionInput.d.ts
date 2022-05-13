@@ -7,6 +7,7 @@ import { ThreadsOnVisionCreateNestedManyWithoutVisionInput } from "../inputs/Thr
 import { UserCreateNestedOneWithoutVisionsInput } from "../inputs/UserCreateNestedOneWithoutVisionsInput";
 import { VisionCreateNestedManyWithoutPrevVisionInput } from "../inputs/VisionCreateNestedManyWithoutPrevVisionInput";
 import { VisionCreateNestedOneWithoutNextVisionsInput } from "../inputs/VisionCreateNestedOneWithoutNextVisionsInput";
+import { VisionViewsHistoryCreateNestedManyWithoutVisionInput } from "../inputs/VisionViewsHistoryCreateNestedManyWithoutVisionInput";
 export declare class VisionCreateWithoutVotesOnVisionInput {
     id?: string | undefined;
     title: string;
@@ -25,4 +26,5 @@ export declare class VisionCreateWithoutVotesOnVisionInput {
     mergeRequest?: MergeRequestCreateNestedOneWithoutVisionInput | undefined;
     reactionOnVisions?: ReactionOnVisionsCreateNestedManyWithoutVisionInput | undefined;
     tagsOnVisions?: TagsOnVisionsCreateNestedManyWithoutVisionInput | undefined;
+    visionViewsHistory?: VisionViewsHistoryCreateNestedManyWithoutVisionInput | undefined;
 }

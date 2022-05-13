@@ -8,6 +8,7 @@ export { UserSubscriptionsOnPremisesArgs } from "./UserSubscriptionsOnPremisesAr
 export { UserSubscriptionsOnTimelinesArgs } from "./UserSubscriptionsOnTimelinesArgs";
 export { UserThreadsArgs } from "./UserThreadsArgs";
 export { UserTimelinesArgs } from "./UserTimelinesArgs";
+export { UserVisionViewsHistoryArgs } from "./UserVisionViewsHistoryArgs";
 export { UserVisionsArgs } from "./UserVisionsArgs";
 export { UserVotesOnPremiseArgs } from "./UserVotesOnPremiseArgs";
 export { UserVotesOnThreadArgs } from "./UserVotesOnThreadArgs";

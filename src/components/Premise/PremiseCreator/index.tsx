@@ -5,6 +5,7 @@ import CreatorBase from "../../CreatorBase";
 import {createPremiseMutation} from "../../../gql/mutation/createPremiseMutation";
 import {useRouter} from "next/router";
 import {ConnectType} from "../../../types";
+import get from "lodash/get";
 
 export enum Reaction {
     UPVOTE = "UPVOTE",
@@ -29,7 +30,11 @@ export const PremiseCreator: React.FunctionComponent<PremiseDetailProps> = ({pre
     const [createPremise,] = useMutation(createPremiseMutation);
     const handleSubmitCallback = (result: FetchResult<{ createPremise: { id: string } }>) => {
         if (result.data && result.data.createPremise) {
-            return router.push(`/premise/${result.data.createPremise.id}`);
+            console.info("created premise", result.data);
+            return router.push(`/premise/${result.data.createPremise.id}/vision/${get(
+                    result,
+                    "data.createPremise.vision[0].id"
+            )}`);
         }
     };
     return <CreatorBase

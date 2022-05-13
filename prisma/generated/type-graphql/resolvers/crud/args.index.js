@@ -26,6 +26,7 @@ tslib_1.__exportStar(require("./Timeline/args"), exports);
 tslib_1.__exportStar(require("./User/args"), exports);
 tslib_1.__exportStar(require("./VerificationToken/args"), exports);
 tslib_1.__exportStar(require("./Vision/args"), exports);
+tslib_1.__exportStar(require("./VisionViewsHistory/args"), exports);
 tslib_1.__exportStar(require("./VotesOnPremise/args"), exports);
 tslib_1.__exportStar(require("./VotesOnThread/args"), exports);
 tslib_1.__exportStar(require("./VotesOnTimeline/args"), exports);

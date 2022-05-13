@@ -6,6 +6,7 @@ import { TagsOnVisionsOrderByRelationAggregateInput } from "../inputs/TagsOnVisi
 import { ThreadsOnVisionOrderByRelationAggregateInput } from "../inputs/ThreadsOnVisionOrderByRelationAggregateInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 import { VisionOrderByRelationAggregateInput } from "../inputs/VisionOrderByRelationAggregateInput";
+import { VisionViewsHistoryOrderByRelationAggregateInput } from "../inputs/VisionViewsHistoryOrderByRelationAggregateInput";
 import { VotesOnVisionOrderByRelationAggregateInput } from "../inputs/VotesOnVisionOrderByRelationAggregateInput";
 export declare class VisionOrderByWithRelationInput {
     id?: "asc" | "desc" | undefined;
@@ -30,4 +31,5 @@ export declare class VisionOrderByWithRelationInput {
     reactionOnVisions?: ReactionOnVisionsOrderByRelationAggregateInput | undefined;
     votesOnVision?: VotesOnVisionOrderByRelationAggregateInput | undefined;
     tagsOnVisions?: TagsOnVisionsOrderByRelationAggregateInput | undefined;
+    visionViewsHistory?: VisionViewsHistoryOrderByRelationAggregateInput | undefined;
 }

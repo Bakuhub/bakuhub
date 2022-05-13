@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateVisionViewsHistoryArgs } from "./args/AggregateVisionViewsHistoryArgs";
+import { CreateManyVisionViewsHistoryArgs } from "./args/CreateManyVisionViewsHistoryArgs";
+import { CreateVisionViewsHistoryArgs } from "./args/CreateVisionViewsHistoryArgs";
+import { DeleteManyVisionViewsHistoryArgs } from "./args/DeleteManyVisionViewsHistoryArgs";
+import { DeleteVisionViewsHistoryArgs } from "./args/DeleteVisionViewsHistoryArgs";
+import { FindFirstVisionViewsHistoryArgs } from "./args/FindFirstVisionViewsHistoryArgs";
+import { FindManyVisionViewsHistoryArgs } from "./args/FindManyVisionViewsHistoryArgs";
+import { FindUniqueVisionViewsHistoryArgs } from "./args/FindUniqueVisionViewsHistoryArgs";
+import { GroupByVisionViewsHistoryArgs } from "./args/GroupByVisionViewsHistoryArgs";
+import { UpdateManyVisionViewsHistoryArgs } from "./args/UpdateManyVisionViewsHistoryArgs";
+import { UpdateVisionViewsHistoryArgs } from "./args/UpdateVisionViewsHistoryArgs";
+import { UpsertVisionViewsHistoryArgs } from "./args/UpsertVisionViewsHistoryArgs";
+import { VisionViewsHistory } from "../../../models/VisionViewsHistory";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateVisionViewsHistory } from "../../outputs/AggregateVisionViewsHistory";
+import { VisionViewsHistoryGroupBy } from "../../outputs/VisionViewsHistoryGroupBy";
+export declare class VisionViewsHistoryCrudResolver {
+    visionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: FindUniqueVisionViewsHistoryArgs): Promise<VisionViewsHistory | null>;
+    findFirstVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: FindFirstVisionViewsHistoryArgs): Promise<VisionViewsHistory | null>;
+    visionViewsHistories(ctx: any, info: GraphQLResolveInfo, args: FindManyVisionViewsHistoryArgs): Promise<VisionViewsHistory[]>;
+    createVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: CreateVisionViewsHistoryArgs): Promise<VisionViewsHistory>;
+    createManyVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: CreateManyVisionViewsHistoryArgs): Promise<AffectedRowsOutput>;
+    deleteVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: DeleteVisionViewsHistoryArgs): Promise<VisionViewsHistory | null>;
+    updateVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: UpdateVisionViewsHistoryArgs): Promise<VisionViewsHistory | null>;
+    deleteManyVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: DeleteManyVisionViewsHistoryArgs): Promise<AffectedRowsOutput>;
+    updateManyVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: UpdateManyVisionViewsHistoryArgs): Promise<AffectedRowsOutput>;
+    upsertVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: UpsertVisionViewsHistoryArgs): Promise<VisionViewsHistory>;
+    aggregateVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: AggregateVisionViewsHistoryArgs): Promise<AggregateVisionViewsHistory>;
+    groupByVisionViewsHistory(ctx: any, info: GraphQLResolveInfo, args: GroupByVisionViewsHistoryArgs): Promise<VisionViewsHistoryGroupBy[]>;
+}

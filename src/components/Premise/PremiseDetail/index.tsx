@@ -26,6 +26,9 @@ import {
     getVisionWithMergeRequestByPremiseIdVariables
 } from "../../../gql/utils/getVisionWithMergeRequestByPremiseIdVariables";
 import {visionWithMergeRequestQuery} from "../../../gql/query/visionWithMergeRequestQuery";
+import Link from "next/link";
+import {createVisionViewsHistoryMutation} from "src/gql/mutation/createVisionViewsHistoryMutation";
+import {getCreateVisionViewsHistoryVariable} from "../../../gql/utils/getCreateVisionViewsHistoryVariable";
 
 const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
 const Comment = dynamic(() => import("../../Comment"));
@@ -44,8 +47,10 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
     const session = useSession();
+    const userId = getUserIdBySession(session);
     const premiseId = activeVision.premiseId;
     const [createSubscriptionMutation] = useMutation(getUpsertSubscriptionMutation(ConnectType.PREMISE));
+    const [createVisionViewsHistory] = useMutation(createVisionViewsHistoryMutation);
     const {
         data: threadsQueryData,
         refetch: refetchThreads,
@@ -72,10 +77,9 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
         id: activeVision?.id || ""
     };
     useEffect(() => {
-        const userId = getUserIdBySession(session);
         console.info("userId", userId);
-
         if (userId) {
+
             createSubscriptionMutation(getUpsertSubscriptionVariables(
                     {
                         type: ConnectType.PREMISE,
@@ -88,6 +92,22 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
             });
         }
     }, [createSubscriptionMutation, premiseId, session]);
+    useEffect(
+            () => {
+                if (activeVision?.id) {
+                    createVisionViewsHistory(getCreateVisionViewsHistoryVariable(activeVision.id, userId)).then(
+                            res => {
+                                console.info("createVisionViewsHistory", res);
+                            }
+                    ).catch(
+                            err => {
+                                console.error(err);
+                            }
+                    );
+                }
+            },
+            [activeVision?.id, createVisionViewsHistory]
+    );
     return (
             <Grid container>
                 <Grid item container xs={12}>
@@ -107,9 +127,12 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
                         </Grid>
                         <Grid item>
                             <Tooltip title={"view log"}>
-                                <Button variant={"outlined"}
-                                        onClick={() => router.push(`/history/premise/${premiseId}`)}>
-                                    visions: {visionHistoryCount}</Button>
+                                <Link href={`/history/premise/${premiseId}`} passHref>
+                                    <Button variant={"outlined"}
+                                    >
+                                        visions: {visionHistoryCount}
+                                    </Button>
+                                </Link>
                             </Tooltip>
                         </Grid>
                         <Image
@@ -129,8 +152,12 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
                     </Grid>
                     <Grid item container xs={2} alignContent={"flex-start"}>
                         <Grid item xs={12}>
+                            <Link href={`/vision/${activeVision.id}/mergeRequests`} passHref>
+                                <Button variant={"outlined"}>
+                                    merge requests: {visionsWithMergeRequest.length}
+                                </Button>
+                            </Link>
                             <Typography
-                                    onClick={() => router.push(`/vision/${activeVision.id}/mergeRequests`)}
 
                                     variant={"h5"}>Merge requests opened:</Typography>
                         </Grid>

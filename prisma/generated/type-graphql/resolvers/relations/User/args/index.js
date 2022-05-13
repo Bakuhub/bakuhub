@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserVotesOnVisionArgs = exports.UserVotesOnTimelineArgs = exports.UserVotesOnThreadArgs = exports.UserVotesOnPremiseArgs = exports.UserVisionsArgs = exports.UserTimelinesArgs = exports.UserThreadsArgs = exports.UserSubscriptionsOnTimelinesArgs = exports.UserSubscriptionsOnPremisesArgs = exports.UserSessionsArgs = exports.UserReactionOnVisionsArgs = exports.UserReactionOnTimelinesArgs = exports.UserReactionOnThreadsArgs = exports.UserPremisesArgs = exports.UserAccountsArgs = void 0;
+exports.UserVotesOnVisionArgs = exports.UserVotesOnTimelineArgs = exports.UserVotesOnThreadArgs = exports.UserVotesOnPremiseArgs = exports.UserVisionsArgs = exports.UserVisionViewsHistoryArgs = exports.UserTimelinesArgs = exports.UserThreadsArgs = exports.UserSubscriptionsOnTimelinesArgs = exports.UserSubscriptionsOnPremisesArgs = exports.UserSessionsArgs = exports.UserReactionOnVisionsArgs = exports.UserReactionOnTimelinesArgs = exports.UserReactionOnThreadsArgs = exports.UserPremisesArgs = exports.UserAccountsArgs = void 0;
 var UserAccountsArgs_1 = require("./UserAccountsArgs");
 Object.defineProperty(exports, "UserAccountsArgs", { enumerable: true, get: function () { return UserAccountsArgs_1.UserAccountsArgs; } });
 var UserPremisesArgs_1 = require("./UserPremisesArgs");
@@ -21,6 +21,8 @@ var UserThreadsArgs_1 = require("./UserThreadsArgs");
 Object.defineProperty(exports, "UserThreadsArgs", { enumerable: true, get: function () { return UserThreadsArgs_1.UserThreadsArgs; } });
 var UserTimelinesArgs_1 = require("./UserTimelinesArgs");
 Object.defineProperty(exports, "UserTimelinesArgs", { enumerable: true, get: function () { return UserTimelinesArgs_1.UserTimelinesArgs; } });
+var UserVisionViewsHistoryArgs_1 = require("./UserVisionViewsHistoryArgs");
+Object.defineProperty(exports, "UserVisionViewsHistoryArgs", { enumerable: true, get: function () { return UserVisionViewsHistoryArgs_1.UserVisionViewsHistoryArgs; } });
 var UserVisionsArgs_1 = require("./UserVisionsArgs");
 Object.defineProperty(exports, "UserVisionsArgs", { enumerable: true, get: function () { return UserVisionsArgs_1.UserVisionsArgs; } });
 var UserVotesOnPremiseArgs_1 = require("./UserVotesOnPremiseArgs");

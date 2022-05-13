@@ -14,6 +14,7 @@ const SubscriptionsOnTimelinesOrderByRelationAggregateInput_1 = require("../inpu
 const ThreadOrderByRelationAggregateInput_1 = require("../inputs/ThreadOrderByRelationAggregateInput");
 const TimelineOrderByRelationAggregateInput_1 = require("../inputs/TimelineOrderByRelationAggregateInput");
 const VisionOrderByRelationAggregateInput_1 = require("../inputs/VisionOrderByRelationAggregateInput");
+const VisionViewsHistoryOrderByRelationAggregateInput_1 = require("../inputs/VisionViewsHistoryOrderByRelationAggregateInput");
 const VotesOnPremiseOrderByRelationAggregateInput_1 = require("../inputs/VotesOnPremiseOrderByRelationAggregateInput");
 const VotesOnThreadOrderByRelationAggregateInput_1 = require("../inputs/VotesOnThreadOrderByRelationAggregateInput");
 const VotesOnTimelineOrderByRelationAggregateInput_1 = require("../inputs/VotesOnTimelineOrderByRelationAggregateInput");
@@ -147,6 +148,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SubscriptionsOnTimelinesOrderByRelationAggregateInput_1.SubscriptionsOnTimelinesOrderByRelationAggregateInput)
 ], UserOrderByWithRelationInput.prototype, "subscriptionsOnTimelines", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => VisionViewsHistoryOrderByRelationAggregateInput_1.VisionViewsHistoryOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", VisionViewsHistoryOrderByRelationAggregateInput_1.VisionViewsHistoryOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "visionViewsHistory", void 0);
 UserOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserOrderByWithRelationInput", {
         isAbstract: true
