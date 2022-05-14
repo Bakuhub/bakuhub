@@ -91,10 +91,10 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
                 console.error(err);
             });
         }
-    }, [createSubscriptionMutation, premiseId, session]);
+    }, [createSubscriptionMutation, premiseId, userId]);
     useEffect(
             () => {
-                if (activeVision?.id) {
+                if (activeVision?.id && userId) {
                     createVisionViewsHistory(getCreateVisionViewsHistoryVariable(activeVision.id, userId)).then(
                             res => {
                                 console.info("createVisionViewsHistory", res);
@@ -106,7 +106,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
                     );
                 }
             },
-            [activeVision?.id, createVisionViewsHistory]
+            [activeVision?.id, createVisionViewsHistory, userId]
     );
     return (
             <Grid container>

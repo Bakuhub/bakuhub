@@ -1,1 +1,0 @@
-export { MergeRequestThreadsOnMergeRequestArgs } from "./MergeRequestThreadsOnMergeRequestArgs";
