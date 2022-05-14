@@ -24,8 +24,6 @@ export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) =
         }
         return [];
     };
-    console.info(vision.tagsOnVisions);
-    console.info(getTagLabels());
     return <CreatorBase
             premiseId={vision.premiseId}
             currentVisionId={vision.id}

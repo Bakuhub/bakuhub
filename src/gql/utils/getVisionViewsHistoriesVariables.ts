@@ -2,11 +2,12 @@ export const getVisionViewsHistoriesVariables = (userId: string) => (
         {
             variables:
                     {
-                        "where": {
-                            "userId": {
-                                "equals": userId
+                        "where": {},
+                        "orderBy": [
+                            {
+                                "createdAt": "desc"
                             }
-                        }
+                        ]
                     }
         }
 );

@@ -28,7 +28,7 @@ import {
 import {visionWithMergeRequestQuery} from "../../../gql/query/visionWithMergeRequestQuery";
 import Link from "next/link";
 import {createVisionViewsHistoryMutation} from "src/gql/mutation/createVisionViewsHistoryMutation";
-import {getCreateVisionViewsHistoryVariable} from "../../../gql/utils/getCreateVisionViewsHistoryVariable";
+import {getCreateVisionViewsHistoryVariable} from "@gql/utils/getCreateVisionViewsHistoryVariable";
 
 const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
 const Comment = dynamic(() => import("../../Comment"));
@@ -50,7 +50,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
     const userId = getUserIdBySession(session);
     const premiseId = activeVision.premiseId;
     const [createSubscriptionMutation] = useMutation(getUpsertSubscriptionMutation(ConnectType.PREMISE));
-    const [createVisionViewsHistory] = useMutation(createVisionViewsHistoryMutation);
+    const [createVisionViewsHistory, {called: isHistoryCreated}] = useMutation(createVisionViewsHistoryMutation);
     const {
         data: threadsQueryData,
         refetch: refetchThreads,
@@ -78,7 +78,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
     };
     useEffect(() => {
         console.info("userId", userId);
-        if (userId) {
+        if (userId && premiseId) {
 
             createSubscriptionMutation(getUpsertSubscriptionVariables(
                     {
@@ -94,7 +94,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
     }, [createSubscriptionMutation, premiseId, userId]);
     useEffect(
             () => {
-                if (activeVision?.id && userId) {
+                if (activeVision?.id && userId && !isHistoryCreated) {
+                    console.info("createVisionViewsHistory", activeVision?.id, userId);
                     createVisionViewsHistory(getCreateVisionViewsHistoryVariable(activeVision.id, userId)).then(
                             res => {
                                 console.info("createVisionViewsHistory", res);
@@ -106,7 +107,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
                     );
                 }
             },
-            [activeVision?.id, createVisionViewsHistory, userId]
+            [activeVision?.id, createVisionViewsHistory, isHistoryCreated, userId]
     );
     return (
             <Grid container>

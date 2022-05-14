@@ -4,9 +4,9 @@ import {FunctionComponent} from "react";
 import {useQuery} from "@apollo/client";
 import {visionViewsHistoriesQuery} from "@gql/query/visionViewsHistoriesQuery";
 import {getVisionViewsHistoriesVariables} from "@gql/utils/getVisionViewsHistoriesVariables";
-import {VisionViewsHistory} from "../../../../prisma/generated/type-graphql";
-import {Typography} from "@mui/material";
-import Link from "next/link";
+import {VisionViewsHistory} from "prisma/generated/type-graphql";
+import {Grid} from "@mui/material";
+import VisionViewsHistoryItem from "../VisionViewsHistoryItem";
 
 export const VisionViewsHistoryPage: FunctionComponent = (props) => {
     console.info(props);
@@ -14,16 +14,16 @@ export const VisionViewsHistoryPage: FunctionComponent = (props) => {
     const userId = getUserIdBySession(session);
     const {data} = useQuery(visionViewsHistoriesQuery, getVisionViewsHistoriesVariables(userId));
     const visionViewsHistories: VisionViewsHistory[] = data?.visionViewsHistories || [];
-
+    console.info(data);
     return <div>
         {
             visionViewsHistories.map(
                     (visionViewsHistory: VisionViewsHistory) =>
-                            <Link key={visionViewsHistory.id} passHref href={`/vision/${visionViewsHistory.visionId}`}>
-                                <Typography>
-                                    {visionViewsHistory.visionId}
-                                </Typography>
-                            </Link>
+
+                            visionViewsHistory.vision ? <Grid item key={visionViewsHistory.id}>
+                                <VisionViewsHistoryItem
+                                        visionViewsHistory={visionViewsHistory}/>
+                            </Grid>:null
             )
         }
 

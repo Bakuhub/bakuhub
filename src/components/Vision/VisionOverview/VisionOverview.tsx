@@ -16,8 +16,6 @@ import {UserAvatar} from "../../User/Avatar";
 import {Collapse, Tooltip} from "@mui/material";
 import {fromNow} from "../../../utils/fromNow";
 import moment from "moment";
-import {useMutation} from "@apollo/client";
-import {upsertReactionOnVisionsMutation} from "../../../gql/mutation/createReactionOnVisionMutation";
 import {ConnectType} from "../../../types";
 import VotingButton from "../../Voting";
 import {getSubStr} from "../../../utils/getSubStr";
@@ -39,8 +37,6 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
     const getTitle = () => getSubStr(get(vision, "title", "") || "", 50);
 
 
-    const [createReaction] = useMutation(upsertReactionOnVisionsMutation);
-    const redirectedUrl = getRedirectUrl();
     return <Card
             onMouseEnter={() => setExpanded(true)}
             onMouseLeave={() => setExpanded(false)}
