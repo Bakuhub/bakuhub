@@ -17,7 +17,7 @@
     "prisma-schema-reformat": "npx prisma format",
     "prisma-schema-update": "npx prisma generate",
     "db": "npx prisma studio",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "vercel-build": "prisma generate && next build",
     "update-schema-gql": "curl --request POST \\\n  --header 'content-type: application/json' \\\n  --url http://localhost:3000/api/graphql \\\n  --data '{\"query\":\"query { __typename }\"}'",
     "analyze": "cross-env ANALYZE=true npm run build",
     "validate-type-graphql-schema": "npm run prisma-schema-update && npm run restart",
