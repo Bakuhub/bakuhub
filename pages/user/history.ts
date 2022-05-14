@@ -1,3 +1,4 @@
-import UserProfile from "src/components/User/Profile";
+import VisionViewsHistory from "src/components/History/VisionViewsHistory";
 
-export default UserProfile;
+
+export default VisionViewsHistory;

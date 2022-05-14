@@ -8,6 +8,11 @@
       "dom.iterable",
       "esnext"
     ],
+    "paths": {
+      "@gql/*": [
+        "src/gql/*"
+      ]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,

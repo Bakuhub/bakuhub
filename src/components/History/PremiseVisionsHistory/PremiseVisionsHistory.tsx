@@ -3,12 +3,12 @@ import Typography from "@mui/material/Typography";
 import moment from "moment";
 import * as React from "react";
 import {FunctionComponent} from "react";
-import {Vision} from "../../../prisma/generated/type-graphql";
-import {TimelineContainer} from "../Timeline";
+import {Vision} from "../../../../prisma/generated/type-graphql";
+import {TimelineContainer} from "../../Timeline";
 import get from "lodash/get";
 import {useRouter} from "next/router";
 
-export const History: FunctionComponent<{ visions: Vision[] }> = ({visions}) => {
+const PremiseVisionsHistory: FunctionComponent<{ visions: Vision[] }> = ({visions}) => {
     const router = useRouter();
     return (
             <>
@@ -39,3 +39,5 @@ export const History: FunctionComponent<{ visions: Vision[] }> = ({visions}) => 
             </>
     );
 };
+
+export default PremiseVisionsHistory;
