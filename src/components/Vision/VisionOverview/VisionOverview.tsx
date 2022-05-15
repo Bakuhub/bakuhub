@@ -19,6 +19,7 @@ import moment from "moment";
 import {ConnectType} from "../../../types";
 import VotingButton from "../../Voting";
 import {getSubStr} from "../../../utils/getSubStr";
+import Link from "next/link";
 
 export interface VisionDetailProps {
     vision: Vision;
@@ -56,9 +57,11 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({visi
                         <MoreVertIcon/>
                     </IconButton>
                 }
-                title={<Typography onClick={() => router.push(getRedirectUrl())}>
-                    {getTitle()}
-                </Typography>
+                title={<Link href={getRedirectUrl()} passHref>
+                    <Typography onClick={() => router.push(getRedirectUrl())}>
+                        {getTitle()}
+                    </Typography>
+                </Link>
                 } subheader={
             <Tooltip
                     title={vision.activityDate

@@ -90,27 +90,33 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id}
             return 0;
         }
     };
-    return <Grid item container alignItems={"center"}>
-        <IconButton onClick={() => handleVoting(VoteType.LIKE)}>
-            <Icon>{(
-                           currentVote
-                           === VoteType.LIKE
-                   ) ? MaterialUIIcons.thumb_up_alt
-                     :MaterialUIIcons.thumb_up_off_alt}</Icon>
-        </IconButton>
-        <Typography>
-            {getVotingCount(votesData)}
-        </Typography>
-        <IconButton onClick={() => handleVoting(VoteType.DISLIKE)}>
-            <Icon>
-                {(
-                         currentVote
-                         === VoteType.DISLIKE
-                 ) ? MaterialUIIcons.thumb_down_alt
-                   :MaterialUIIcons.thumb_down_off_alt}
-            </Icon>
-        </IconButton>
+    if (votesData) {
+        return <Grid item container alignItems={"center"}>
 
-    </Grid>;
+            <IconButton onClick={() => handleVoting(VoteType.LIKE)}>
+                <Icon>{(
+                               currentVote
+                               === VoteType.LIKE
+                       ) ? MaterialUIIcons.thumb_up_alt
+                         :MaterialUIIcons.thumb_up_off_alt}</Icon>
+            </IconButton>
+            <Typography>
+                {getVotingCount(votesData)}
+            </Typography>
+            <IconButton onClick={() => handleVoting(VoteType.DISLIKE)}>
+                <Icon>
+                    {(
+                             currentVote
+                             === VoteType.DISLIKE
+                     ) ? MaterialUIIcons.thumb_down_alt
+                       :MaterialUIIcons.thumb_down_off_alt}
+                </Icon>
+            </IconButton>
+
+        </Grid>;
+    } else {
+        return <></>;
+
+    }
 };
 export default VotingButton;

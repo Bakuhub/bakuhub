@@ -6,7 +6,9 @@ import {visionViewsHistoriesQuery} from "@gql/query/visionViewsHistoriesQuery";
 import {getVisionViewsHistoriesVariables} from "@gql/utils/getVisionViewsHistoriesVariables";
 import {VisionViewsHistory} from "prisma/generated/type-graphql";
 import {Grid} from "@mui/material";
-import VisionViewsHistoryItem from "../VisionViewsHistoryItem";
+import dynamic from "next/dynamic";
+
+const VisionViewsHistoryItem = dynamic(() => import("../VisionViewsHistoryItem"));
 
 export const VisionViewsHistoryPage: FunctionComponent = (props) => {
     console.info(props);

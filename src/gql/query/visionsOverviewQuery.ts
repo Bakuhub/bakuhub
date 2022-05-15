@@ -6,6 +6,13 @@ export const visionsOverviewQuery = gql`
             id
             title
             activityDate
+            thumbnail
+            author {
+                id
+                name
+                email
+                image
+            }
             description
             createdAt
             premiseId

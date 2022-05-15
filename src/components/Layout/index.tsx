@@ -14,6 +14,7 @@ import {AuthButton} from "../User/AuthButton";
 import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
 import SearchBar from "./Sections/SearchBar";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const SpeedDialContainer = dynamic(() => import("./Sections/SpeedDialContainer"), {ssr: false});
 
@@ -106,9 +107,11 @@ export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => 
                         <Grid item container xs={12} justifyContent={"space-between"} alignItems={"center"}>
                             <Grid item>
                                 <Grid item container alignItems={"center"}>
-                                    <Typography onClick={() => router.push("/")} variant="h6" noWrap component="div">
-                                        Bakuhub
-                                    </Typography>
+                                    <Link href="/" passHref>
+                                        <Typography variant="h6" noWrap>
+                                            Bakuhub
+                                        </Typography>
+                                    </Link>
                                     <SearchBar/>
                                 </Grid>
                             </Grid>

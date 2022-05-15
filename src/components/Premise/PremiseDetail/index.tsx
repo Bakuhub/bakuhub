@@ -43,8 +43,6 @@ interface PremiseDetailProps {
 
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props) => {
     const activeVision = props.activeVision;
-    console.info("-000000000");
-    console.info(props);
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
     const session = useSession();
@@ -71,7 +69,11 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
     );
     const visionsWithMergeRequest = get(visionWithMergeRequestData, "visions", []);
     const thumbnail = getThumbnail(activeVision);
-
+    console.info("-----------------");
+    console.info(activeVision);
+    console.info(thumbnail);
+    console.info("-----------------" +
+                 "");
     const connectConfig = {
         type: ConnectType.VISION,
         id: activeVision?.id || ""

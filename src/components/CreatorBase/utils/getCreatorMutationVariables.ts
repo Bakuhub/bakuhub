@@ -89,6 +89,7 @@ export const getCreatorMutationVariables = ({
                         vision: {
                             create: [
                                 {
+                                    "thumbnail": attachment,
                                     title,
                                     description,
                                     activityDate,
