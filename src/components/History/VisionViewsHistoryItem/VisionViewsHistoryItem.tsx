@@ -10,10 +10,14 @@ interface VisionViewsHistoryItemProps {
 
 export const VisionViewsHistoryItem: FunctionComponent<VisionViewsHistoryItemProps>
         = ({visionViewsHistory}) => {
-    return <ListItem alignItems="flex-start">
-
+    return <ListItem alignItems="center">
         <UserAvatar {...visionViewsHistory.vision?.author}/>
         <ListItemText
+                sx={
+                    {
+                        marginLeft: "1rem",
+                    }
+                }
                 primary={visionViewsHistory.vision?.title}
                 secondary={
                     <>

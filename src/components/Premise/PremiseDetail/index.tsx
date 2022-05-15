@@ -27,8 +27,6 @@ import {
 } from "../../../gql/utils/getVisionWithMergeRequestByPremiseIdVariables";
 import {visionWithMergeRequestQuery} from "../../../gql/query/visionWithMergeRequestQuery";
 import Link from "next/link";
-import {createVisionViewsHistoryMutation} from "src/gql/mutation/createVisionViewsHistoryMutation";
-import {getCreateVisionViewsHistoryVariable} from "@gql/utils/getCreateVisionViewsHistoryVariable";
 
 const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
 const Comment = dynamic(() => import("../../Comment"));
@@ -43,14 +41,16 @@ interface PremiseDetailProps {
     activeVision: Vision;
 }
 
-export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({activeVision}) => {
+export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props) => {
+    const activeVision = props.activeVision;
+    console.info("-000000000");
+    console.info(props);
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
     const session = useSession();
     const userId = getUserIdBySession(session);
     const premiseId = activeVision.premiseId;
     const [createSubscriptionMutation] = useMutation(getUpsertSubscriptionMutation(ConnectType.PREMISE));
-    const [createVisionViewsHistory, {called: isHistoryCreated}] = useMutation(createVisionViewsHistoryMutation);
     const {
         data: threadsQueryData,
         refetch: refetchThreads,
@@ -92,23 +92,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = ({acti
             });
         }
     }, [createSubscriptionMutation, premiseId, userId]);
-    useEffect(
-            () => {
-                if (activeVision?.id && userId && !isHistoryCreated) {
-                    console.info("createVisionViewsHistory", activeVision?.id, userId);
-                    createVisionViewsHistory(getCreateVisionViewsHistoryVariable(activeVision.id, userId)).then(
-                            res => {
-                                console.info("createVisionViewsHistory", res);
-                            }
-                    ).catch(
-                            err => {
-                                console.error(err);
-                            }
-                    );
-                }
-            },
-            [activeVision?.id, createVisionViewsHistory, isHistoryCreated, userId]
-    );
     return (
             <Grid container>
                 <Grid item container xs={12}>

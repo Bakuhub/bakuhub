@@ -17,6 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                 ...getVisionHistoryQueryVariable(premiseId as string)
             },);
 
+
     return {
         props: {...data}, // will be passed to the page component as props
     };

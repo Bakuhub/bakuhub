@@ -42,12 +42,10 @@ export default cors(async function handler(
     }
     await startServer;
 
-    console.log("graphql handler start", new Date());
     await apolloServer.createHandler({
                                          path: "/api/graphql",
                                          disableHealthCheck: true
                                      })(req, res);
-    console.log("graphql handler end ", new Date());
 });
 
 // import "reflect-metadata";

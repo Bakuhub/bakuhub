@@ -7,6 +7,7 @@ import {Vision} from "../../../../prisma/generated/type-graphql";
 import {TimelineContainer} from "../../Timeline";
 import get from "lodash/get";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 const PremiseVisionsHistory: FunctionComponent<{ visions: Vision[] }> = ({visions}) => {
     const router = useRouter();
@@ -18,9 +19,11 @@ const PremiseVisionsHistory: FunctionComponent<{ visions: Vision[] }> = ({vision
                                    getTitle={(vision) => vision.title}/>
                 {visions.map(vision => <Grid key={vision.id} item container xs={12}>
 
-                    <Button onClick={() => router.push(`/vision/${vision.id}`)}>
-                        {vision.id}
-                    </Button>
+                    <Link passHref href={`/visions/${vision.id}`}>
+                        <Button>
+                            {vision.id}
+                        </Button>
+                    </Link>
                     <Tooltip title={new Date(get(vision, "updatedAt")).toDateString() || ""}>
                         <Typography>
                             {moment(vision.updatedAt).fromNow()}
