@@ -9,7 +9,6 @@ import IconButton from "@mui/material/IconButton";
 import {drawerWidth} from "../../constants/style";
 import {LayoutDrawer} from "./Sections/Drawer";
 import {DrawerHeader} from "./Sections/Drawer/styled";
-import {useRouter} from "next/router";
 import {AuthButton} from "../User/AuthButton";
 import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
 import SearchBar from "./Sections/SearchBar";
@@ -76,7 +75,6 @@ const AppBar = styled(
 
 
 export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => {
-    const router = useRouter();
     const [open, setOpen] = React.useState(false);
 
     const handleDrawerOpen = () => {

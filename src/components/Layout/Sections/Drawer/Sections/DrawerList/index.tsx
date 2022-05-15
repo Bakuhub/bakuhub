@@ -7,6 +7,7 @@ import AddTaskIcon from "@mui/icons-material/AddTask";
 import Icon from "@mui/material/Icon";
 import {useRouter} from "next/router";
 import HistoryIcon from "@mui/icons-material/History";
+import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 
 export const DrawerList = () => {
     const DrawerListOptions = [
@@ -24,9 +25,13 @@ export const DrawerList = () => {
             url: "/create/timeline",
             icon: AddTaskIcon
         }, {
-            text: "create new task",
+            text: "history",
             url: "/user/history",
             icon: HistoryIcon
+        }, {
+            text: "subscriptions",
+            url: "/user/subscriptions",
+            icon: SubscriptionsIcon
         }
     ];
     const router = useRouter();

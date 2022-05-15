@@ -11,6 +11,9 @@
     "paths": {
       "@gql/*": [
         "src/gql/*"
+      ],
+      "@components/*": [
+        "src/components/*"
       ]
     },
     "allowJs": true,

@@ -761,6 +761,27 @@ input EnumReactionWithAggregatesFilter {
   notIn: [Reaction!]
 }
 
+input EnumSubscriptionStatusFieldUpdateOperationsInput {
+  set: SubscriptionStatus
+}
+
+input EnumSubscriptionStatusFilter {
+  equals: SubscriptionStatus
+  in: [SubscriptionStatus!]
+  not: NestedEnumSubscriptionStatusFilter
+  notIn: [SubscriptionStatus!]
+}
+
+input EnumSubscriptionStatusWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumSubscriptionStatusFilter
+  _min: NestedEnumSubscriptionStatusFilter
+  equals: SubscriptionStatus
+  in: [SubscriptionStatus!]
+  not: NestedEnumSubscriptionStatusWithAggregatesFilter
+  notIn: [SubscriptionStatus!]
+}
+
 input EnumSubscriptionTypeFieldUpdateOperationsInput {
   set: SubscriptionType
 }
@@ -1428,6 +1449,23 @@ input NestedEnumReactionWithAggregatesFilter {
   in: [Reaction!]
   not: NestedEnumReactionWithAggregatesFilter
   notIn: [Reaction!]
+}
+
+input NestedEnumSubscriptionStatusFilter {
+  equals: SubscriptionStatus
+  in: [SubscriptionStatus!]
+  not: NestedEnumSubscriptionStatusFilter
+  notIn: [SubscriptionStatus!]
+}
+
+input NestedEnumSubscriptionStatusWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumSubscriptionStatusFilter
+  _min: NestedEnumSubscriptionStatusFilter
+  equals: SubscriptionStatus
+  in: [SubscriptionStatus!]
+  not: NestedEnumSubscriptionStatusWithAggregatesFilter
+  notIn: [SubscriptionStatus!]
 }
 
 input NestedEnumSubscriptionTypeFilter {
@@ -4351,9 +4389,15 @@ input StringWithAggregatesFilter {
   startsWith: String
 }
 
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
+}
+
 enum SubscriptionType {
   AUTO
   MANUAL
+  OFF
 }
 
 type SubscriptionsOnPremises {
@@ -4362,6 +4406,7 @@ type SubscriptionsOnPremises {
   lastReadAt: DateTime!
   premise: Premise!
   premiseId: String!
+  status: SubscriptionStatus!
   type: SubscriptionType!
   updatedAt: DateTime!
   user: User!
@@ -4374,6 +4419,7 @@ type SubscriptionsOnPremisesCountAggregate {
   hasUnreadNotifications: Int!
   lastReadAt: Int!
   premiseId: Int!
+  status: Int!
   type: Int!
   updatedAt: Int!
   userId: Int!
@@ -4384,6 +4430,7 @@ input SubscriptionsOnPremisesCountOrderByAggregateInput {
   hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premiseId: SortOrder
+  status: SortOrder
   type: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
@@ -4394,6 +4441,7 @@ input SubscriptionsOnPremisesCreateInput {
   hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premise: PremiseCreateNestedOneWithoutSubscriptionsOnPremisesInput!
+  status: SubscriptionStatus
   type: SubscriptionType
   updatedAt: DateTime
   user: UserCreateNestedOneWithoutSubscriptionsOnPremisesInput!
@@ -4404,6 +4452,7 @@ input SubscriptionsOnPremisesCreateManyInput {
   hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premiseId: String!
+  status: SubscriptionStatus
   type: SubscriptionType
   updatedAt: DateTime
   userId: String!
@@ -4413,6 +4462,7 @@ input SubscriptionsOnPremisesCreateManyPremiseInput {
   createdAt: DateTime
   hasUnreadNotifications: Boolean
   lastReadAt: DateTime
+  status: SubscriptionStatus
   type: SubscriptionType
   updatedAt: DateTime
   userId: String!
@@ -4428,6 +4478,7 @@ input SubscriptionsOnPremisesCreateManyUserInput {
   hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premiseId: String!
+  status: SubscriptionStatus
   type: SubscriptionType
   updatedAt: DateTime
 }
@@ -4465,6 +4516,7 @@ input SubscriptionsOnPremisesCreateWithoutPremiseInput {
   createdAt: DateTime
   hasUnreadNotifications: Boolean
   lastReadAt: DateTime
+  status: SubscriptionStatus
   type: SubscriptionType
   updatedAt: DateTime
   user: UserCreateNestedOneWithoutSubscriptionsOnPremisesInput!
@@ -4475,6 +4527,7 @@ input SubscriptionsOnPremisesCreateWithoutUserInput {
   hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premise: PremiseCreateNestedOneWithoutSubscriptionsOnPremisesInput!
+  status: SubscriptionStatus
   type: SubscriptionType
   updatedAt: DateTime
 }
@@ -4487,6 +4540,7 @@ type SubscriptionsOnPremisesGroupBy {
   hasUnreadNotifications: Boolean!
   lastReadAt: DateTime!
   premiseId: String!
+  status: SubscriptionStatus!
   type: SubscriptionType!
   updatedAt: DateTime!
   userId: String!
@@ -4503,6 +4557,7 @@ type SubscriptionsOnPremisesMaxAggregate {
   hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premiseId: String
+  status: SubscriptionStatus
   type: SubscriptionType
   updatedAt: DateTime
   userId: String
@@ -4513,6 +4568,7 @@ input SubscriptionsOnPremisesMaxOrderByAggregateInput {
   hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premiseId: SortOrder
+  status: SortOrder
   type: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
@@ -4523,6 +4579,7 @@ type SubscriptionsOnPremisesMinAggregate {
   hasUnreadNotifications: Boolean
   lastReadAt: DateTime
   premiseId: String
+  status: SubscriptionStatus
   type: SubscriptionType
   updatedAt: DateTime
   userId: String
@@ -4533,6 +4590,7 @@ input SubscriptionsOnPremisesMinOrderByAggregateInput {
   hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premiseId: SortOrder
+  status: SortOrder
   type: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
@@ -4550,6 +4608,7 @@ input SubscriptionsOnPremisesOrderByWithAggregationInput {
   hasUnreadNotifications: SortOrder
   lastReadAt: SortOrder
   premiseId: SortOrder
+  status: SortOrder
   type: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
@@ -4561,6 +4620,7 @@ input SubscriptionsOnPremisesOrderByWithRelationInput {
   lastReadAt: SortOrder
   premise: PremiseOrderByWithRelationInput
   premiseId: SortOrder
+  status: SortOrder
   type: SortOrder
   updatedAt: SortOrder
   user: UserOrderByWithRelationInput
@@ -4572,6 +4632,7 @@ enum SubscriptionsOnPremisesScalarFieldEnum {
   hasUnreadNotifications
   lastReadAt
   premiseId
+  status
   type
   updatedAt
   userId
@@ -4585,6 +4646,7 @@ input SubscriptionsOnPremisesScalarWhereInput {
   hasUnreadNotifications: BoolFilter
   lastReadAt: DateTimeFilter
   premiseId: StringFilter
+  status: EnumSubscriptionStatusFilter
   type: EnumSubscriptionTypeFilter
   updatedAt: DateTimeFilter
   userId: StringFilter
@@ -4598,6 +4660,7 @@ input SubscriptionsOnPremisesScalarWhereWithAggregatesInput {
   hasUnreadNotifications: BoolWithAggregatesFilter
   lastReadAt: DateTimeWithAggregatesFilter
   premiseId: StringWithAggregatesFilter
+  status: EnumSubscriptionStatusWithAggregatesFilter
   type: EnumSubscriptionTypeWithAggregatesFilter
   updatedAt: DateTimeWithAggregatesFilter
   userId: StringWithAggregatesFilter
@@ -4608,6 +4671,7 @@ input SubscriptionsOnPremisesUpdateInput {
   hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   premise: PremiseUpdateOneRequiredWithoutSubscriptionsOnPremisesInput
+  status: EnumSubscriptionStatusFieldUpdateOperationsInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   user: UserUpdateOneRequiredWithoutSubscriptionsOnPremisesInput
@@ -4617,6 +4681,7 @@ input SubscriptionsOnPremisesUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
+  status: EnumSubscriptionStatusFieldUpdateOperationsInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -4673,6 +4738,7 @@ input SubscriptionsOnPremisesUpdateWithoutPremiseInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
+  status: EnumSubscriptionStatusFieldUpdateOperationsInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   user: UserUpdateOneRequiredWithoutSubscriptionsOnPremisesInput
@@ -4683,6 +4749,7 @@ input SubscriptionsOnPremisesUpdateWithoutUserInput {
   hasUnreadNotifications: BoolFieldUpdateOperationsInput
   lastReadAt: DateTimeFieldUpdateOperationsInput
   premise: PremiseUpdateOneRequiredWithoutSubscriptionsOnPremisesInput
+  status: EnumSubscriptionStatusFieldUpdateOperationsInput
   type: EnumSubscriptionTypeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -4713,6 +4780,7 @@ input SubscriptionsOnPremisesWhereInput {
   lastReadAt: DateTimeFilter
   premise: PremiseRelationFilter
   premiseId: StringFilter
+  status: EnumSubscriptionStatusFilter
   type: EnumSubscriptionTypeFilter
   updatedAt: DateTimeFilter
   user: UserRelationFilter

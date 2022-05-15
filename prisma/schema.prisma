@@ -351,6 +351,7 @@ model VotesOnThread {
 
 enum SubscriptionType {
   AUTO
+  OFF
   MANUAL
 }
 
@@ -365,15 +366,16 @@ model VisionViewsHistory {
 }
 
 model SubscriptionsOnPremises {
-  user                   User             @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user                   User               @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId                 String
-  premise                Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premise                Premise            @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   premiseId              String
-  hasUnreadNotifications Boolean          @default(false)
-  lastReadAt             DateTime         @default(now())
-  type                   SubscriptionType @default(AUTO)
-  createdAt              DateTime         @default(now())
-  updatedAt              DateTime         @default(now()) @updatedAt
+  hasUnreadNotifications Boolean            @default(false)
+  lastReadAt             DateTime           @default(now())
+  type                   SubscriptionType   @default(AUTO)
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @default(now()) @updatedAt
+  status                 SubscriptionStatus @default(ACTIVE)
 
   @@id([userId, premiseId])
 }
@@ -391,6 +393,11 @@ model SubscriptionsOnTimelines {
   updatedAt              DateTime         @default(now()) @updatedAt
 
   @@id([userId, timelineId])
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
 }
 
 enum PremiseStatus {

@@ -12,7 +12,7 @@ import {useRouter} from "next/router";
 import {Thread, Vision} from "../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../gql/query/threadsQuery";
-import {getThreadsQueryVariable} from "../../gql/utils/getThreadsQueryVariable";
+import {getThreadsQueryVariable} from "@gql/utils/getThreadsQueryVariable";
 import {visionHistoryCountQuery} from "../../gql/query/visionHistoryCountQuery";
 import {getVisionHistoryQueryVariable} from "../../gql/query/visionHistoryQuery";
 import {getThumbnail} from "../../utils/getThumbnail";
