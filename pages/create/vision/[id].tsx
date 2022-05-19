@@ -1,6 +1,6 @@
 import {getSsrApollo} from "src/lib/apollo";
 import {GetServerSideProps} from "next";
-import {visionCreatorQuery} from "../../../src/gql/query/visionCreatorQuery";
+import {visionCreatorQuery} from "@gql/query/visionCreatorQuery";
 import VisionCreator from "../../../src/components/Vision/VisionCreator";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

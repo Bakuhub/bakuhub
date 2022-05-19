@@ -14,6 +14,9 @@
       ],
       "@components/*": [
         "src/components/*"
+      ],
+      "@constants/*": [
+        "src/constants/*"
       ]
     },
     "allowJs": true,

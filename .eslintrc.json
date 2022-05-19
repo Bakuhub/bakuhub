@@ -10,6 +10,13 @@
     "quotes": [
       "error",
       "double"
+    ],
+    "max-len": [
+      2,
+      {
+        "code": 80,
+        "ignorePattern": "^import\\W.*|"
+      }
     ]
   },
   "env": {

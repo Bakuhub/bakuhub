@@ -63,6 +63,7 @@ model User {
   subscriptionsOnPremises  SubscriptionsOnPremises[]
   subscriptionsOnTimelines SubscriptionsOnTimelines[]
   visionViewsHistory       VisionViewsHistory[]
+  reputationRecords         ReputationRecord[]
 }
 
 model VerificationToken {
@@ -110,6 +111,7 @@ model Vision {
   threadsOnVision    ThreadsOnVision[]
   mergeRequest       MergeRequest?
   reactionOnVisions  ReactionOnVisions[]
+  reputationRecords  ReputationRecord[]
   votesOnVision      VotesOnVision[]
   tagsOnVisions      TagsOnVisions[]
   visionViewsHistory VisionViewsHistory[]
@@ -360,7 +362,7 @@ model VisionViewsHistory {
   visionId  String
   vision    Vision   @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+ user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   createdAt DateTime @default(now())
 
 }
@@ -379,6 +381,18 @@ model SubscriptionsOnPremises {
 
   @@id([userId, premiseId])
 }
+
+model ReputationRecord {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  visionId  String
+  vision    Vision   @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  difference     Int      @default(0) @db.SmallInt
+  reason        String
+  createdAt DateTime @default(now())
+}
+
 
 model SubscriptionsOnTimelines {
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)

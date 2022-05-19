@@ -2,30 +2,28 @@ import * as React from "react";
 import {useEffect} from "react";
 import {Thread, Vision} from "../../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
-import {threadsQuery} from "../../../gql/query/threadsQuery";
+import {threadsQuery} from "@gql/query/threadsQuery";
 import {Button, Grid, Icon, Tooltip, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import {getThumbnail} from "../../../utils/getThumbnail";
 import get from "lodash/get";
 import {ReferenceOverview} from "../../Reference/ReferenceOverview";
-import {getThreadsQueryVariable} from "../../../gql/utils/getThreadsQueryVariable";
+import {getThreadsQueryVariable} from "@gql/utils/getThreadsQueryVariable";
 import {ConnectType} from "../../../types";
 import {preprocessThreads} from "../../../utils/preprocess/threads";
-import {getVisionHistoryQueryVariable} from "../../../gql/query/visionHistoryQuery";
-import {visionHistoryCountQuery} from "../../../gql/query/visionHistoryCountQuery";
+import {getVisionHistoryQueryVariable} from "@gql/query/visionHistoryQuery";
+import {visionHistoryCountQuery} from "@gql/query/visionHistoryCountQuery";
 import dynamic from "next/dynamic";
 import {useSession} from "next-auth/react";
-import {getUpsertSubscriptionVariables} from "../../../gql/utils/getUpsertSubscriptionVariables";
+import {getUpsertSubscriptionVariables} from "@gql/utils/getUpsertSubscriptionVariables";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
-import {getUpsertSubscriptionMutation} from "../../../gql/mutation/getUpsertSubscriptionMutation";
+import {getUpsertSubscriptionMutation} from "@gql/mutation/getUpsertSubscriptionMutation";
 import Image from "next/image";
 import ThreadContainer from "../../Thread/ThreadContainer";
 import TagChip from "../../Tag/TagChip";
 import {MaterialUIIcons} from "../../../constants/MaterialUIIcons";
-import {
-    getVisionWithMergeRequestByPremiseIdVariables
-} from "../../../gql/utils/getVisionWithMergeRequestByPremiseIdVariables";
-import {visionWithMergeRequestQuery} from "../../../gql/query/visionWithMergeRequestQuery";
+import {getVisionWithMergeRequestByPremiseIdVariables} from "@gql/utils/getVisionWithMergeRequestByPremiseIdVariables";
+import {visionWithMergeRequestQuery} from "@gql/query/visionWithMergeRequestQuery";
 import Link from "next/link";
 
 const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
@@ -69,11 +67,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
     );
     const visionsWithMergeRequest = get(visionWithMergeRequestData, "visions", []);
     const thumbnail = getThumbnail(activeVision);
-    console.info("-----------------");
-    console.info(activeVision);
-    console.info(thumbnail);
-    console.info("-----------------" +
-                 "");
     const connectConfig = {
         type: ConnectType.VISION,
         id: activeVision?.id || ""

@@ -1,5 +1,6 @@
 export enum MaterialUIIcons {
     reply = "reply",
+    folder = "folder",
     report = "report",
     share = "share",
     chevron_right = "chevron_right",
@@ -10,12 +11,14 @@ export enum MaterialUIIcons {
     thumb_down_off_alt = "thumb_down_off_alt",
     menu = "menu",
     edit = "edit",
+    update = "update",
+    add_circle_outline = "add_circle_outline",
     timeline = "timeline",
     post_add = "post_add",
     insert_photo = "insert_photo",
     delete = "delete",
     add_to_photos = "add_to_photos",
     add_a_photo = "add_a_photo",
-    account_tree_two_tone='account_tree_two_tone'
+    account_tree_two_tone = "account_tree_two_tone",
 }
 

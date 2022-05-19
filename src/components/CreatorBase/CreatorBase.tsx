@@ -1,5 +1,5 @@
-import {Button, Grid, TextField, Typography} from "@mui/material";
-import {useState} from "react";
+import {BottomNavigation, BottomNavigationAction, Button, Grid, Icon, TextField, Typography} from "@mui/material";
+import {useCallback, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import get from "lodash/get";
 import {useSession} from "next-auth/react";
@@ -13,6 +13,7 @@ import {getUserIdBySession} from "src/utils/getUserIdBySession";
 import {FetchResult} from "@apollo/client";
 import {getCreatorMutationVariables} from "./utils/getCreatorMutationVariables";
 import {ConnectType} from "../../types";
+import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
 
 const TagSearchBar = dynamic(() => import("src/components/Tag/TagSearchBar"));
 const LocalizationProvider = dynamic(() => import("@mui/lab/LocalizationProvider"));
@@ -32,13 +33,17 @@ export interface CreatorProps<T> {
         tagLabels: string[];
     };
     isMergeRequest?: boolean;
-    handleSubmit: (data: any) => Promise<FetchResult<T>>;
+    handleSubmit: (data: any, mergeRequestType?: MergeRequestType) => Promise<FetchResult<T>>;
     handleSubmitCallback: (result: FetchResult<T>) => void;
     connectType: ConnectType;
     currentVisionId?: string;
     premiseId?: string;
 }
 
+export enum MergeRequestType {
+    update = "update",
+    create = "create"
+}
 
 export const CreatorBase = <T, >({
                                      premiseId, currentVisionId,
@@ -51,16 +56,49 @@ export const CreatorBase = <T, >({
     const user = get(session, "data.user");
     const userId = getUserIdBySession(session);
     const router = useRouter();
-    const [tagLabels, setTagLabels] = useState<string[]>(() => initialValue.tagLabels);
-    const [description, setDescription] = useState(() => initialValue.description);
-    const [activityDate, setActivityDate] = useState(() => initialValue.activityDate);
+    const [mergeRequestType, setMergeRequestType] = useState(MergeRequestType.update);
+    const [tagLabels, setTagLabels] = useState<string[]>([]);
+    const [description, setDescription] = useState("");
+    const [activityDate, setActivityDate] = useState<Date>();
     const [loading, setLoading] = useState(false);
-    const [title, setTitle] = useState(() => initialValue.title);
-    const [attachment, setAttachment] = useState(() => initialValue.thumbnail);
+    const [title, setTitle] = useState("");
+    const [attachment, setAttachment] = useState("");
     const [mergeRequestTitle, setMergeRequestTitle] = useState("");
     const [mergeRequestDescription, setMergeRequestDescription] = useState("");
-    const [snapshots, setSnapshots] = useState<Snapshot[]>(() => initialValue.snapshots);
-
+    const [snapshots, setSnapshots] = useState<Snapshot[]>([]);
+    const setFormByExistingVision = useCallback(() => {
+        setTagLabels(initialValue.tagLabels);
+        setDescription(initialValue.description);
+        setActivityDate(initialValue.activityDate);
+        setTitle(initialValue.title);
+        setAttachment(initialValue.thumbnail);
+        setSnapshots(initialValue.snapshots);
+    }, [initialValue]);
+    const cleanVisionForm = () => {
+        setTagLabels([]);
+        setDescription("");
+        setTitle("");
+        setAttachment("");
+        setSnapshots([]);
+    };
+    useEffect(
+            () => {
+                switch (mergeRequestType) {
+                    case MergeRequestType.create:
+                        // save the change to initialChange
+                        cleanVisionForm();
+                        break;
+                    case MergeRequestType.update:
+                    default:
+                        setFormByExistingVision();
+                }
+            }, [mergeRequestType]
+    );
+    useEffect(
+            () => {
+                // should only trigger once
+            }, [setFormByExistingVision]
+    );
     const submit = async () => {
         setLoading(true);
         const variable = getCreatorMutationVariables({
@@ -76,7 +114,7 @@ export const CreatorBase = <T, >({
                                                          tagLabels, mergeRequestTitle, mergeRequestDescription
                                                      });
         try {
-            const result = await handleSubmit(variable);
+            const result = await handleSubmit(variable, mergeRequestType);
             if (result.errors?.length) {
                 result.errors?.map(({message}) => enqueueSnackbar(message, {variant: "error"}));
             }
@@ -100,8 +138,36 @@ export const CreatorBase = <T, >({
                                    setMergeRequestDescription={setMergeRequestDescription}
                                />
         }
+
         <Grid xs={12} md={6} component={"form"} item
               container spacing={1}>
+            <Grid item xs={12}>
+                {
+                        isMergeRequest &&
+                        <>
+                            <BottomNavigation
+                                showLabels
+                                value={mergeRequestType}
+                                onChange={(event, newValue) => {
+                                    setMergeRequestType(newValue);
+                                }}
+                            >
+                                <BottomNavigationAction
+                                    value={MergeRequestType.update}
+                                    label="update"
+                                    icon={<Icon>{MaterialUIIcons.update}</Icon>}
+                                />
+                                <BottomNavigationAction
+                                    value={MergeRequestType.create}
+                                    label="create"
+                                    icon={<Icon>{MaterialUIIcons.add_circle_outline}</Icon>}/>
+                            </BottomNavigation>
+                            <Typography variant={"subtitle2"}>
+                                Strongly recommended if you tries to deny this premise
+                            </Typography>
+                        </>
+                }
+            </Grid>
             <Grid item xs={12}>
                 <TextField
                         required fullWidth

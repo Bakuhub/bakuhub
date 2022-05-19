@@ -1,11 +1,12 @@
 import {FunctionComponent} from "react";
-import {useMutation} from "@apollo/client";
+import {ApolloCache, DefaultContext, MutationFunctionOptions, OperationVariables, useMutation} from "@apollo/client";
 import {Vision} from "prisma/generated/type-graphql";
 import {createVisionMutation} from "src/gql/mutation/createVisionMutation";
 import CreatorBase from "src/components/CreatorBase";
 import {ConnectType} from "../../../types";
 import {useRouter} from "next/router";
 import get from "lodash/get";
+import {MergeRequestType} from "@components/CreatorBase/CreatorBase";
 
 export interface CreatePremiseProps {
     vision: Vision;
@@ -24,6 +25,18 @@ export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) =
         }
         return [];
     };
+    const handleSubmit = (
+            data: MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>> | undefined,
+            mergeRequestType?: MergeRequestType
+    ) => {
+        if (mergeRequestType === MergeRequestType.update) {
+            return createNewVision(data);
+        } else {
+            return createNewVision(data);
+
+
+        }
+    };
     return <CreatorBase
             premiseId={vision.premiseId}
             currentVisionId={vision.id}
@@ -37,7 +50,7 @@ export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) =
                     snapshots: get(vision, "reference.snapshots", []),
                     tagLabels: getTagLabels()
                 }
-            } handleSubmit={createNewVision}
+            } handleSubmit={handleSubmit}
             isMergeRequest
             handleSubmitCallback={
                 handleSubmitCallback
