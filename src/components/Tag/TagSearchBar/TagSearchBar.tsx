@@ -17,7 +17,10 @@ export interface TagSearchBarProps {
 export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({tagLabels, setTagLabels}) => {
     const [input, setInput] = React.useState("");
     console.info(tagLabels);
-    const {data: tagOptionsData, refetch: refetchTags} = useQuery(tagQuery, getTagByLabelVariables(input));
+    const {data: tagOptionsData, refetch: refetchTags} = useQuery(
+            tagQuery,
+            getTagByLabelVariables(input)
+    );
     const tagOptions: Tag[] = get(tagOptionsData, "tags", []);
     useEffect(() => {
         if (input) {

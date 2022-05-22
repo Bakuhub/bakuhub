@@ -74,7 +74,8 @@ export const TimelineCreator = () => {
 
                 return {
                     ...vision,
-                    inTimeline: timelineNodes.some(timelineVision => timelineVision.id === vision.id),
+                    inTimeline: timelineNodes.some(timelineVision => timelineVision.id ===
+                                                                     vision.id),
                     votes
                 };
             });
@@ -88,7 +89,8 @@ export const TimelineCreator = () => {
     );
     const createTimeline = async () => {
         const timeline = await createTimelineWithTitleAndDescription(getCreateTimelineVariables({
-                                                                                                    title, description,
+                                                                                                    title,
+                                                                                                    description,
                                                                                                     premiseIds: timelineNodes.map(
                                                                                                             (vision: Vision) => vision.premiseId
                                                                                                     ),
@@ -150,14 +152,18 @@ export const TimelineCreator = () => {
                                         (visionId: string, nextStatus) => {
                                             const newTimelineNode = visions.find((vision: Vision) => vision.id ===
                                                                                                      visionId);
-                                            setVisions(prev => prev.map(vision => vision.id === visionId ? {
+                                            setVisions(prev => prev.map(vision => vision.id ===
+                                                                                  visionId ? {
                                                 ...vision,
                                                 inTimeline: nextStatus
                                             }:vision));
 
                                             if (newTimelineNode) {
                                                 if (nextStatus) {
-                                                    setTimelineNodes([...timelineNodes, newTimelineNode]);
+                                                    setTimelineNodes([
+                                                                         ...timelineNodes,
+                                                                         newTimelineNode
+                                                                     ]);
                                                 } else {
                                                     setTimelineNodes(timelineNodes.filter((timelineNode: Vision) => timelineNode.id !==
                                                                                                                     visionId));

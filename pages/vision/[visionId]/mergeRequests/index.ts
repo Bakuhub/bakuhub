@@ -1,7 +1,7 @@
 import {getSsrApollo} from "src/lib/apollo";
 import {GetServerSideProps} from "next";
-import {getMergeRequestsQuery} from "../../../../src/gql/query/mergeRequestsQuery";
-import {MergeRequestsList} from "../../../../src/components/MergeRequest/MergeRequestsList/MergeRequestsList";
+import {getMergeRequestsQuery} from "@gql/query/mergeRequestsQuery";
+import {MergeRequestsList} from "@components/MergeRequest/MergeRequestsList/MergeRequestsList";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(
@@ -29,7 +29,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                                                   status: {
                                                       equals: "OPEN"
                                                   }
-                                              }
+                                              },
+                                              orderBy: [
+                                                  {
+                                                      vision: {
+                                                          createdAt: "desc"
+                                                      }
+                                                  }
+                                              ]
                                           }
                                       });
     return {

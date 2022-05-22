@@ -22,9 +22,13 @@ import Image from "next/image";
 import ThreadContainer from "../../Thread/ThreadContainer";
 import TagChip from "../../Tag/TagChip";
 import {MaterialUIIcons} from "../../../constants/MaterialUIIcons";
-import {getVisionWithMergeRequestByPremiseIdVariables} from "@gql/utils/getVisionWithMergeRequestByPremiseIdVariables";
-import {visionWithMergeRequestQuery} from "@gql/query/visionWithMergeRequestQuery";
 import Link from "next/link";
+import {
+    premiseWIthOpenedMergeRequestVisionQuery
+} from "@gql/query/premiseWIthOpenedMergeRequestVisionQuery";
+import {
+    getPremiseWIthOpenedMergeRequestVisionVariables
+} from "@gql/utils/getPremiseWIthOpenedMergeRequestVisionVariables";
 
 const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
 const Comment = dynamic(() => import("../../Comment"));
@@ -52,7 +56,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
         refetch: refetchThreads,
     } = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
                                                                                   threadConnectType: ConnectType.VISION,
-                                                                                  id: activeVision?.id || ""
+                                                                                  id: activeVision?.id ||
+                                                                                      ""
                                                                               }));
     const {
         data: visionHistoryData,
@@ -61,11 +66,13 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
 
     const visionHistoryCount: number = get(visionHistoryData, "visions.length", 1);
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
-    const {data: visionWithMergeRequestData} = useQuery<{ visions: Vision[] }>(
-            visionWithMergeRequestQuery,
-            getVisionWithMergeRequestByPremiseIdVariables(premiseId)
+    const {data: premiseData} = useQuery(
+            premiseWIthOpenedMergeRequestVisionQuery,
+            getPremiseWIthOpenedMergeRequestVisionVariables(premiseId)
     );
-    const visionsWithMergeRequest = get(visionWithMergeRequestData, "visions", []);
+    console.info("premiseData");
+    console.info(get(premiseData, "premise.vision", []));
+    const visionsWithMergeRequest: Vision[] = get(premiseData, "premise.vision", []);
     const thumbnail = getThumbnail(activeVision);
     const connectConfig = {
         type: ConnectType.VISION,
@@ -142,7 +149,8 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
                         </Grid>
                         {
                             visionsWithMergeRequest.map(vision =>
-                                                                <Grid key={vision.id} item container xs={12}>
+                                                                <Grid key={vision.id} item container
+                                                                      xs={12}>
                                                                     <Tooltip title={get(
                                                                             vision,
                                                                             "mergeRequest.description",
@@ -151,13 +159,18 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
                                                                         <Typography
                                                                                 variant={"h6"}
                                                                                 key={vision.id}
-                                                                                onClick={() => router.push(`/review/mergeRequest/${get(
-                                                                                        vision,
-                                                                                        "mergeRequest.id",
-                                                                                        false
-                                                                                )}`)}
+                                                                                onClick={() => router.push(
+                                                                                        `/review/mergeRequest/${get(
+                                                                                                vision,
+                                                                                                "mergeRequest.id",
+                                                                                                false
+                                                                                        )}`)}
                                                                         >
-                                                                            {get(vision, "mergeRequest.title", "")}
+                                                                            {get(
+                                                                                    vision,
+                                                                                    "mergeRequest.title",
+                                                                                    ""
+                                                                            )}
                                                                         </Typography>
                                                                     </Tooltip>
                                                                 </Grid>)

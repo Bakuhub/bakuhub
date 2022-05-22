@@ -20,6 +20,10 @@ export const themeOptions: ThemeOptions = {
         h6: {
             cursor: "pointer"
         },
+        h5: {
+            fontWeight: "bold",
+            fontSize: "1.5rem"
+        },
         // user name
         h4: {
             fontWeight: 700,
@@ -29,9 +33,8 @@ export const themeOptions: ThemeOptions = {
         subtitle2: {
             cursor: "pointer",
             color: "grey",
-            paddingLeft: "20px"
         }
-    }
+    },
 };
 
 export const theme = createTheme(themeOptions);

@@ -15,7 +15,10 @@ export const threadSlice = createSlice({
                                                parentThreadId: null
                                            },
                                            reducers: {
-                                               setConnector: (state, action: PayloadAction<ThreadConnectConfig>) => {
+                                               setConnector: (
+                                                       state,
+                                                       action: PayloadAction<ThreadConnectConfig>
+                                               ) => {
                                                    state.connector = action.payload;
                                                },
                                                setParentThreadId: (state, action) => {

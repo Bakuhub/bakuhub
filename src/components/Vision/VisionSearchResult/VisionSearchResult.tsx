@@ -18,7 +18,10 @@ export interface VisionSearchResultProps {
     handleClickAdd: () => void;
 }
 
-export const VisionSearchResult: FunctionComponent<VisionSearchResultProps> = ({vision, handleClickAdd}) => {
+export const VisionSearchResult: FunctionComponent<VisionSearchResultProps> = ({
+                                                                                   vision,
+                                                                                   handleClickAdd
+                                                                               }) => {
     const router = useRouter();
     const [loading, setLoading] = React.useState(false);
     const [expanded, setExpanded] = React.useState(false);
@@ -33,7 +36,8 @@ export const VisionSearchResult: FunctionComponent<VisionSearchResultProps> = ({
                 Word of the Day
             </Typography>
             <Tooltip
-                    title={vision.activityDate ? moment(vision.activityDate).format("yyyy-MMM-DD HH:mm"):""}>
+                    title={vision.activityDate ? moment(vision.activityDate).format(
+                            "yyyy-MMM-DD HH:mm"):""}>
                 <Typography variant="h5" component="div">
                     {fromNow(vision.activityDate)}
                 </Typography>

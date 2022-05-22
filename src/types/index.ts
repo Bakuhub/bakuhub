@@ -6,6 +6,12 @@ export enum ConnectType {
     THREAD = "THREAD"
 }
 
+export interface LabelType {
+    name: string;
+    color: string;
+    description?: string;
+}
+
 export interface ConnectConfig {
     type: ConnectType;
     id: string | null | undefined;

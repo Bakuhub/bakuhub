@@ -1,7 +1,10 @@
 import {ConnectType} from "../types";
 import {capitalize} from "@mui/material";
 
-export const getTableNameByConnectType = (threadConnectType: ConnectType, isCapital: boolean = false): string => {
+export const getTableNameByConnectType = (
+        threadConnectType: ConnectType,
+        isCapital: boolean = false
+): string => {
     const getTableName = () => {
         switch (threadConnectType) {
             case ConnectType.VISION:

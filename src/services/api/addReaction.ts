@@ -1,5 +1,7 @@
 import {handlePromise} from "../handlePromise";
-import {CreateReactionVariables, getCreateReactionVariables} from "../../gql/utils/getCreateReactionVariables";
+import {
+    CreateReactionVariables, getCreateReactionVariables
+} from "../../gql/utils/getCreateReactionVariables";
 import {ConnectConfig} from "../../types";
 import get from "lodash/get";
 import {Reaction} from "../../components/Premise/PremiseDetail";
@@ -25,7 +27,10 @@ export const addReaction = async ({
                                                                                      })));
         const errors = get(result, "networkError.result.errors", []);
         if (errors.length > 0) {
-            errors.forEach((error: { message: string }) => enqueueSnackbar(error.message, {variant: "error"}));
+            errors.forEach((error: { message: string }) => enqueueSnackbar(
+                    error.message,
+                    {variant: "error"}
+            ));
         } else {
             return result;
         }

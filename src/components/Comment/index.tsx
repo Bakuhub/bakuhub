@@ -55,7 +55,10 @@ export const Comment: FunctionComponent<CommentProps> = ({
             await createThread({variables: getVariables()});
             enqueueSnackbar("submitting comment success", {variant: "success"});
         } catch (e) {
-            enqueueSnackbar(get(e, "message", "something went wrong, you can not post comment"), {variant: "error"});
+            enqueueSnackbar(
+                    get(e, "message", "something went wrong, you can not post comment"),
+                    {variant: "error"}
+            );
         }
         if (handleSubmitCallback) {
             handleSubmitCallback();

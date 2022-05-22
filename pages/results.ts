@@ -1,16 +1,13 @@
 import {getSsrApollo} from "src/lib/apollo";
 import {GetServerSideProps} from "next";
 import get from "lodash/get";
-import {getWhereEqualTagVision} from "../src/gql/variables/getWhereEqualTagVision";
-import {getWhereContainKeywordVision} from "../src/gql/variables/getWhereContainKeywordVision";
-import {getWhereActiveVision} from "../src/gql/variables/getWhereActiveVision";
+import {getWhereEqualTagVision} from "@gql/variables/getWhereEqualTagVision";
+import {getWhereContainKeywordVision} from "@gql/variables/getWhereContainKeywordVision";
+import {getWhereActiveVision} from "@gql/variables/getWhereActiveVision";
 import SearchResult from "src/components/Search/SearchResult";
-import {visionsOverviewQuery} from "../src/gql/query/visionsOverviewQuery";
+import {visionsOverviewQuery} from "@gql/query/visionsOverviewQuery";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-
-    console.info("getServerSideProps");
-    console.info(context.query);
     const params = context.query;
     const getVariables = () => {
         const keyword = Buffer.from(get(params, "keyword", "") as string, "base64").toString();

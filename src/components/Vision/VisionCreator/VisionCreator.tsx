@@ -1,5 +1,7 @@
 import {FunctionComponent} from "react";
-import {ApolloCache, DefaultContext, MutationFunctionOptions, OperationVariables, useMutation} from "@apollo/client";
+import {
+    ApolloCache, DefaultContext, MutationFunctionOptions, OperationVariables, useMutation
+} from "@apollo/client";
 import {Vision} from "prisma/generated/type-graphql";
 import {createVisionMutation} from "src/gql/mutation/createVisionMutation";
 import CreatorBase from "src/components/CreatorBase";
@@ -19,9 +21,12 @@ export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) =
     console.info(vision);
     const getTagLabels = (): string[] => {
         if (vision.tagsOnVisions) {
-            return vision.tagsOnVisions.reduce((acc: string[], tagsOnVision) =>
-                                                       tagsOnVision.tag ?
-                                                               [...acc, tagsOnVision.tag.label]:acc, []);
+            return vision.tagsOnVisions.reduce(
+                    (acc: string[], tagsOnVision) =>
+                            tagsOnVision.tag ?
+                                    [...acc, tagsOnVision.tag.label]:acc,
+                    []
+            );
         }
         return [];
     };

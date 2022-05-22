@@ -102,7 +102,8 @@ export const Layout: FunctionComponent<PropsWithChildren<{}>> = ({children}) => 
                         >
                             <Icon>{MaterialUIIcons.menu}</Icon>
                         </IconButton>
-                        <Grid item container xs={12} justifyContent={"space-between"} alignItems={"center"}>
+                        <Grid item container xs={12} justifyContent={"space-between"}
+                              alignItems={"center"}>
                             <Grid item>
                                 <Grid item container alignItems={"center"}>
                                     <Link href="/" passHref>

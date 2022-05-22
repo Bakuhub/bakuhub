@@ -8,8 +8,10 @@ const PremiseVisionsHistory: FunctionComponent<{ visions: Vision[] }> = ({vision
     return (
             <>
                 <TimelineContainer visions={visions}
-                                   getDate={(vision) => vision.activityDate?.toISOString() || "no date"}
-                                   getDescription={(vision) => vision.description || "no description"}
+                                   getDate={(vision) => vision.activityDate?.toISOString() ||
+                                                        "no date"}
+                                   getDescription={(vision) => vision.description ||
+                                                               "no description"}
                                    getTitle={(vision) => vision.title}/>
                 {visions.map(vision => <MergedVisionListItem vision={vision} key={vision.id}/>)}
 

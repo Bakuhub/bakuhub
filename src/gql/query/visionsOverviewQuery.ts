@@ -1,22 +1,9 @@
 import {gql} from "@apollo/client";
+import gqlTemplate from "@gql/constants";
 
 export const visionsOverviewQuery = gql`
     query Visions($where: VisionWhereInput) {
         visions(where: $where) {
-            id
-            title
-            activityDate
-            thumbnail
-            author {
-                id
-                name
-                email
-                image
-            }
-            description
-            createdAt
-            premiseId
-            authorId
-            prevVisionId
+            ${gqlTemplate.vision.overview}
         }
     }`;

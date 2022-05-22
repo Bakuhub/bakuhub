@@ -33,7 +33,8 @@ export const LayoutDrawer = ({open, handleDrawerClose}: LayoutDrawerProps) => {
         <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
                 <Icon>
-                    {theme.direction === "ltr" ? MaterialUIIcons.chevron_left:MaterialUIIcons.chevron_right}
+                    {theme.direction === "ltr" ? MaterialUIIcons.chevron_left
+                                               :MaterialUIIcons.chevron_right}
                 </Icon>
             </IconButton>
         </DrawerHeader>

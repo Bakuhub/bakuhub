@@ -1,6 +1,10 @@
 import {useQuery} from "@apollo/client";
-import {findManySubscriptionsOnPremisesQuery} from "@gql/query/findManySubscriptionsOnPremisesQuery";
-import {getFindManySubscriptionsOnPremisesVariables} from "@gql/utils/getFindManySubscriptionsOnPremisesVariables";
+import {
+    findManySubscriptionsOnPremisesQuery
+} from "@gql/query/findManySubscriptionsOnPremisesQuery";
+import {
+    getFindManySubscriptionsOnPremisesVariables
+} from "@gql/utils/getFindManySubscriptionsOnPremisesVariables";
 import {useSession} from "next-auth/react";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
 import {SubscriptionsOnPremises} from "../../../../prisma/generated/type-graphql";
@@ -12,13 +16,17 @@ export const UserSubscriptions = () => {
     const userId = getUserIdBySession(session);
     const {
         data
-    } = useQuery(findManySubscriptionsOnPremisesQuery, getFindManySubscriptionsOnPremisesVariables({userId}));
+    } = useQuery(
+            findManySubscriptionsOnPremisesQuery,
+            getFindManySubscriptionsOnPremisesVariables({userId})
+    );
     const subscriptions: SubscriptionsOnPremises[] = data?.findManySubscriptionsOnPremises;
     return (
             <div>
                 {
                     subscriptions?.map(
-                            subscription => <UserSubscriptionItem userId={userId} subscription={subscription} key={
+                            subscription => <UserSubscriptionItem userId={userId}
+                                                                  subscription={subscription} key={
                                 subscription.premiseId
                             }/>
                     )

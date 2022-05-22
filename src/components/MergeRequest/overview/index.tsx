@@ -13,7 +13,11 @@ export const MergeRequestOverview = () => {
         {
             allOtherVisions?.map(vision =>
                                          <Grid key={vision.id} item container xs={12}>
-                                             <Tooltip title={get(vision, "mergeRequest.description", "")}>
+                                             <Tooltip title={get(
+                                                     vision,
+                                                     "mergeRequest.description",
+                                                     ""
+                                             )}>
                                                  <Typography
                                                          variant={"h6"}
                                                          key={vision.id}

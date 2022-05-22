@@ -20,7 +20,10 @@ export interface ReactionButtonsProps extends ConnectConfig {
 
 }
 
-export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({type, id, createReaction}) => {
+export const ReactionButtons: FunctionComponent<ReactionButtonsProps> = ({
+                                                                             type, id,
+                                                                             createReaction
+                                                                         }) => {
     const session = useSession();
     const [voting, setVoting] = React.useState<Reaction | null>();
     const {enqueueSnackbar} = useSnackbar();

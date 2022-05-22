@@ -9,7 +9,9 @@ import {useMutation, useQuery} from "@apollo/client";
 import {threadsQuery} from "../../../gql/query/threadsQuery";
 import {getChildThreadsQueryVariable} from "../../../gql/utils/getChildThreadsQueryVariable";
 import {ConnectType} from "../../../types";
-import {upsertReactionOnThreadsMutation} from "../../../gql/mutation/createReactionOnThreadsMutation";
+import {
+    upsertReactionOnThreadsMutation
+} from "../../../gql/mutation/createReactionOnThreadsMutation";
 import dynamic from "next/dynamic";
 import {MaterialUIIcons} from "../../../constants/MaterialUIIcons";
 import VotingButton from "../../Voting";

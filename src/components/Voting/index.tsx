@@ -82,9 +82,14 @@ export const VotingButton: FunctionComponent<ReactionButtonsProps> = ({type, id}
         if (votesCountData) {
             const tableName = getTableNameByConnectType(type);
             const tableNameWithId = getTableNameWithId(tableName);
-            const groupByVotesOnVision = get(votesCountData, `groupByVotesOn${capitalize(tableName)}`, []);
+            const groupByVotesOnVision = get(
+                    votesCountData,
+                    `groupByVotesOn${capitalize(tableName)}`,
+                    []
+            );
             const selectedVision = groupByVotesOnVision.find((groupByVotesOnVision: { [x: string]: string | null | undefined; }) =>
-                                                                     groupByVotesOnVision[tableNameWithId] === id);
+                                                                     groupByVotesOnVision[tableNameWithId] ===
+                                                                     id);
             return get(selectedVision, "_sum.vote", 0);
         } else {
             return 0;

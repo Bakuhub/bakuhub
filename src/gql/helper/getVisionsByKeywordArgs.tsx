@@ -1,4 +1,6 @@
-import {getSearchActiveVisionByKeywordVariable} from "../utils/getSearchActiveVisionByKeywordVariable";
+import {
+    getSearchActiveVisionByKeywordVariable
+} from "../utils/getSearchActiveVisionByKeywordVariable";
 import {versionSearchQuery} from "../query/versionSearchQuery";
 import {DocumentNode} from "graphql";
 

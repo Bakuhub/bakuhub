@@ -10,7 +10,9 @@ import {preprocessThreads} from "../../../utils/preprocess/threads";
 import {threadsQuery} from "@gql/query/threadsQuery";
 import {getThreadsQueryVariable} from "@gql/utils/getThreadsQueryVariable";
 import dynamic from "next/dynamic";
-import {createUpdateManySubscriptionsMutation} from "@gql/mutation/createUpdateManySubscriptionsMutation";
+import {
+    createUpdateManySubscriptionsMutation
+} from "@gql/mutation/createUpdateManySubscriptionsMutation";
 import {getUpdateManySubscriptionsVariables} from "@gql/utils/getUpdateManySubscriptionsVariables";
 import {activeVisionIdByPremiseQuery} from "@gql/query/activeVisionIdByPremiseQuery";
 import {getActiveVisionByPremiseIdVariables} from "@gql/utils/getActiveVisionByPremiseIdVariables";
@@ -68,9 +70,12 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                            onClick={async () => {
                                setLoading(true);
                                if (activeVisionId !== mergeRequest.vision?.prevVision?.id) {
-                                   enqueueSnackbar("the version does not match, please confirm the change again", {
-                                       variant: "error"
-                                   });
+                                   enqueueSnackbar(
+                                           "the version does not match, please confirm the change again",
+                                           {
+                                               variant: "error"
+                                           }
+                                   );
                                } else {
                                    try {
                                        const result = await mergeVisionIntoPremise({
@@ -98,16 +103,20 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                                                    "Merge request has been successfully merged",
                                                    {variant: "success"}
                                            );
-                                           const res = await updateManySubscriptions(getUpdateManySubscriptionsVariables(
-                                                                                             {
-                                                                                                 type: ConnectType.PREMISE,
-                                                                                                 id: get(vision, "premise.id", "")
-                                                                                             }
-                                                                                     )
+                                           const res = await updateManySubscriptions(
+                                                   getUpdateManySubscriptionsVariables(
+                                                           {
+                                                               type: ConnectType.PREMISE,
+                                                               id: get(vision, "premise.id", "")
+                                                           }
+                                                   )
                                            );
                                        }
                                        if (result.errors) {
-                                           enqueueSnackbar(result.errors[0].message, {variant: "error"});
+                                           enqueueSnackbar(
+                                                   result.errors[0].message,
+                                                   {variant: "error"}
+                                           );
                                        }
                                    } catch (e) {
                                        enqueueSnackbar(get(e, "message", ""), {variant: "error"});

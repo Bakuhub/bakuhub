@@ -4,10 +4,10 @@ import {ReferenceOverview} from "../Reference/ReferenceOverview";
 import IconButton from "@mui/material/IconButton";
 import {LoadingButton} from "@mui/lab";
 import {Comment} from "../Comment";
-import {ConnectType} from "../../types";
+import {ConnectType} from "src/types";
 import {ThreadDetail} from "../Thread/ThreadDetail";
 import * as React from "react";
-import {FunctionComponent, useEffect} from "react";
+import {FunctionComponent} from "react";
 import {useRouter} from "next/router";
 import {Thread, Vision} from "../../../prisma/generated/type-graphql";
 import {useMutation, useQuery} from "@apollo/client";
@@ -21,9 +21,9 @@ import {getUserIdBySession} from "../../utils/getUserIdBySession";
 import {useSession} from "next-auth/react";
 import {preprocessThreads} from "../../utils/preprocess/threads";
 import {addReaction} from "../../services/api/addReaction";
-import {upsertReactionOnVisionsMutation} from "../../gql/mutation/createReactionOnVisionMutation";
+import {upsertReactionOnVisionsMutation} from "@gql/mutation/createReactionOnVisionMutation";
 import {useSnackbar} from "notistack";
-import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
+import {MaterialUIIcons} from "@constants/MaterialUIIcons";
 import {Reaction} from "../Premise/PremiseDetail";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -40,12 +40,14 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
     const session = useSession();
     const {enqueueSnackbar} = useSnackbar();
     const [isRedirecting, setIsRedirecting] = React.useState(false);
+    
     const {
         data: threadsQueryData,
         refetch: refetchThreads
     } = useQuery<{ threads: Thread[] }>(threadsQuery, getThreadsQueryVariable({
                                                                                   threadConnectType: ConnectType.VISION,
-                                                                                  id: vision?.id || ""
+                                                                                  id: vision?.id ||
+                                                                                      ""
                                                                               }));
     const mainThreads = preprocessThreads(threadsQueryData?.threads || []);
 
@@ -71,10 +73,6 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                                                                                    }));
         }
     };
-    useEffect(() => {
-        console.info("DetailPage: useEffect");
-
-    }, []);
     return (
             <Grid container>
                 <Grid item container xs={12}>
@@ -127,8 +125,9 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                     <LoadingButton variant={"outlined"} loading={isRedirecting} onClick={() => {
                         setIsRedirecting(true);
                         router.push(`/create/vision/${vision.premiseId}`);
-                    }} aria-label="share" startIcon={<Icon>{MaterialUIIcons.account_tree_two_tone}</Icon>
-                    }>
+                    }} aria-label="share"
+                                   startIcon={<Icon>{MaterialUIIcons.account_tree_two_tone}</Icon>
+                                   }>
                         Create new vision
                     </LoadingButton>
                 </Grid>
@@ -145,7 +144,8 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                     {
                         mainThreads ? mainThreads.map((thread, index) =>
                                                               <ThreadDetail
-                                                                      key={thread.id ? thread.id:index}
+                                                                      key={thread.id ? thread.id
+                                                                                     :index}
                                                                       thread={thread}
                                                                       connectConfig={
                                                                           {

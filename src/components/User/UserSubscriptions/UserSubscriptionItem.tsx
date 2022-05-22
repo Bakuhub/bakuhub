@@ -4,15 +4,22 @@ import * as React from "react";
 import {FunctionComponent} from "react";
 import moment from "moment";
 import {useMutation} from "@apollo/client";
-import {createUpdateSubscriptionStatusMutation} from "@gql/mutation/createUpdateSubscriptionStatusMutation";
-import {getUpdateSubscriptionStatusVariables} from "@gql/utils/getUpdateSubscriptionStatusVariables";
+import {
+    createUpdateSubscriptionStatusMutation
+} from "@gql/mutation/createUpdateSubscriptionStatusMutation";
+import {
+    getUpdateSubscriptionStatusVariables
+} from "@gql/utils/getUpdateSubscriptionStatusVariables";
 
 interface UserSubscriptionItemProps {
     subscription: SubscriptionsOnPremises;
     userId: string;
 }
 
-export const UserSubscriptionItem: FunctionComponent<UserSubscriptionItemProps> = ({subscription, userId}) => {
+export const UserSubscriptionItem: FunctionComponent<UserSubscriptionItemProps> = ({
+                                                                                       subscription,
+                                                                                       userId
+                                                                                   }) => {
     const [updateSubscriptionStatus] = useMutation(createUpdateSubscriptionStatusMutation);
     const [isActive, setIsActive] = React.useState(() => subscription.status === "ACTIVE");
     const updateSubscription = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {

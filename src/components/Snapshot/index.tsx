@@ -68,7 +68,10 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
                 });
             }
         } else {
-            const errorMsg = get(res, "errorMessage.message", "something went wrong, the snapshot can't be granted"
+            const errorMsg = get(
+                    res,
+                    "errorMessage.message",
+                    "something went wrong, the snapshot can't be granted"
             );
             enqueueSnackbar(errorMsg, {
                 variant: "error",
@@ -102,10 +105,12 @@ export const SnapshotCreator: React.FunctionComponent<SnapshotCreatorProps> = ({
         </Grid>
         {
             snapshots.map(({versionId, sourceUrl, createdAt, s3Url}: Snapshot) =>
-                                  <Grid justifyContent={"space-between"} key={versionId} item container
+                                  <Grid justifyContent={"space-between"} key={versionId} item
+                                        container
                                         alignItems={"center"} xs={12}>
                                       <Tooltip key={versionId} title={sourceUrl}>
-                                          <Typography variant={"h6"} onClick={() => window.open(sourceUrl)}>
+                                          <Typography variant={"h6"}
+                                                      onClick={() => window.open(sourceUrl)}>
                                               {new URL(sourceUrl).host}...
                                           </Typography>
                                       </Tooltip>

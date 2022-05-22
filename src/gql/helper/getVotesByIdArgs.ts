@@ -7,7 +7,8 @@ import {capitalize} from "@mui/material";
 
 const votesByIdQuery = (tableName: string) => {
     const queryString = `
-query _sum($by: [VotesOn${capitalize(tableName)}ScalarFieldEnum!]!, $where: VotesOn${capitalize(tableName)}WhereInput) {
+query _sum($by: [VotesOn${capitalize(tableName)}ScalarFieldEnum!]!, $where: VotesOn${capitalize(
+            tableName)}WhereInput) {
   groupByVotesOn${capitalize(tableName)}(by: $by, where: $where) {
     _sum {
       vote

@@ -9,7 +9,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             "public, s-maxage=10, stale-while-revalidate=59"
     );
     const apollo = getSsrApollo(context.req);
-    console.time("get visionCreatorQuery");
     const {data: {vision}} = await apollo.query({
                                                     query: visionCreatorQuery,
                                                     variables: {
@@ -18,7 +17,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                                                         }
                                                     }
                                                 });
-    console.timeEnd("get visionCreatorQuery");
     return {
         props: {
             vision

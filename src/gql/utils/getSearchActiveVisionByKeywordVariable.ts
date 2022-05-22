@@ -1,6 +1,8 @@
 import {GetVisionsByKeywordArgs} from "../helper/getVisionsByKeywordArgs";
 
-export const getSearchActiveVisionByKeywordVariable = ({keyword, skip, take}: GetVisionsByKeywordArgs) => (
+export const getSearchActiveVisionByKeywordVariable = ({
+                                                           keyword, skip, take
+                                                       }: GetVisionsByKeywordArgs) => (
         {
             variables: {
                 "where": {

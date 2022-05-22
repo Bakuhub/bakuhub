@@ -8,7 +8,10 @@ export interface VisionRow extends Vision {
     votes: number;
 }
 
-const getColumns = (updatedSelectedStatus: (visionId: string, nextStatus: boolean) => void): GridColDef[] => [
+const getColumns = (updatedSelectedStatus: (
+        visionId: string,
+        nextStatus: boolean
+) => void): GridColDef[] => [
     {
         field: "title", headerName: "title", flex: 1,
     },

@@ -1,4 +1,6 @@
-import {BottomNavigation, BottomNavigationAction, Button, Grid, Icon, TextField, Typography} from "@mui/material";
+import {
+    BottomNavigation, BottomNavigationAction, Button, Grid, Icon, TextField, Typography
+} from "@mui/material";
 import {useCallback, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import get from "lodash/get";
@@ -12,13 +14,13 @@ import dynamic from "next/dynamic";
 import {getUserIdBySession} from "src/utils/getUserIdBySession";
 import {FetchResult} from "@apollo/client";
 import {getCreatorMutationVariables} from "./utils/getCreatorMutationVariables";
-import {ConnectType} from "../../types";
-import {MaterialUIIcons} from "../../constants/MaterialUIIcons";
+import {ConnectType, LabelType} from "src/types";
+import {MaterialUIIcons} from "src/constants/MaterialUIIcons";
+import MergeRequestCreator from "@components/MergeRequest/MergeRequestCreator";
 
 const TagSearchBar = dynamic(() => import("src/components/Tag/TagSearchBar"));
 const LocalizationProvider = dynamic(() => import("@mui/lab/LocalizationProvider"));
 const SnapshotCreator = dynamic(() => import("src/components/Snapshot"));
-const MergeRequest = dynamic(() => import("src/components/MergeRequest"));
 const PremiseOverview = dynamic(() => import("src/components/Premise/PremiseOverview"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
 const DateTimePicker = dynamic(() => import("@mui/lab/DateTimePicker"));
@@ -56,6 +58,7 @@ export const CreatorBase = <T, >({
     const user = get(session, "data.user");
     const userId = getUserIdBySession(session);
     const router = useRouter();
+    const [mergeRequestLabels, setMergeRequestLabels] = useState<LabelType[]>([]);
     const [mergeRequestType, setMergeRequestType] = useState(MergeRequestType.update);
     const [tagLabels, setTagLabels] = useState<string[]>([]);
     const [description, setDescription] = useState("");
@@ -92,18 +95,14 @@ export const CreatorBase = <T, >({
                     default:
                         setFormByExistingVision();
                 }
-            }, [mergeRequestType]
-    );
-    useEffect(
-            () => {
-                // should only trigger once
-            }, [setFormByExistingVision]
+            }, [mergeRequestType, setFormByExistingVision]
     );
     const submit = async () => {
         setLoading(true);
         const variable = getCreatorMutationVariables({
                                                          attachment,
                                                          connectType,
+                                                         mergeRequestLabels,
                                                          currentVisionId,
                                                          premiseId,
                                                          snapshots,
@@ -111,7 +110,8 @@ export const CreatorBase = <T, >({
                                                          title,
                                                          activityDate: activityDate || new Date(),
                                                          userId,
-                                                         tagLabels, mergeRequestTitle, mergeRequestDescription
+                                                         tagLabels, mergeRequestTitle,
+                                                         mergeRequestDescription
                                                      });
         try {
             const result = await handleSubmit(variable, mergeRequestType);
@@ -131,7 +131,9 @@ export const CreatorBase = <T, >({
 
     return <Grid container spacing={1}>
         {
-                isMergeRequest && <MergeRequest
+                isMergeRequest && <MergeRequestCreator
+                                   mergeRequestLabels={mergeRequestLabels}
+                                   setMergeRequestLabels={setMergeRequestLabels}
                                    mergeRequestTitle={mergeRequestTitle}
                                    setMergeRequestTitle={setMergeRequestTitle}
                                    mergeRequestDescription={mergeRequestDescription}
@@ -208,7 +210,8 @@ export const CreatorBase = <T, >({
                 />
             </Grid>
             <Grid item xs={12}>
-                <SnapshotCreator initialSnapshots={snapshots} updateSnapshotsCallback={setSnapshots}/>
+                <SnapshotCreator initialSnapshots={snapshots}
+                                 updateSnapshotsCallback={setSnapshots}/>
             </Grid>
             <Grid item xs={12}>
                 <FileInput attachment={attachment} setAttachment={setAttachment}/>

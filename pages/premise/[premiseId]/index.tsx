@@ -1,8 +1,8 @@
-import {PremiseDetail} from "../../../src/components/Premise/PremiseDetail";
+import {PremiseDetail} from "@components/Premise/PremiseDetail";
 import {GetServerSideProps} from "next";
-import {getPremiseDetailQueryVariable} from "../../../src/gql/utils/getPremiseDetailQueryVariable";
-import {getSsrApollo} from "../../../src/lib/apollo";
-import {visionCreatorQuery} from "../../../src/gql/query/visionCreatorQuery";
+import {getPremiseDetailQueryVariable} from "@gql/utils/getPremiseDetailQueryVariable";
+import {getSsrApollo} from "src/lib/apollo";
+import {visionCreatorQuery} from "@gql/query/visionCreatorQuery";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(

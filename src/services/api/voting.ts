@@ -25,7 +25,10 @@ export const voting = async ({
                                                                              })));
         const errors = get(result, "networkError.result.errors", []);
         if (errors.length > 0) {
-            errors.forEach((error: { message: string }) => enqueueSnackbar(error.message, {variant: "error"}));
+            errors.forEach((error: { message: string }) => enqueueSnackbar(
+                    error.message,
+                    {variant: "error"}
+            ));
         } else {
             return result;
         }

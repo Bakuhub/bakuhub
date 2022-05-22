@@ -1,7 +1,7 @@
 import {getAuthorVariableByUserId} from "../../../gql/utils/getAuthorVariableByUserId";
 import {getCreateTagVariable} from "../../../gql/utils/getCreateTagVariable";
 import {Snapshot} from "../../../../prisma/generated/type-graphql";
-import {ConnectType} from "../../../types";
+import {ConnectType, LabelType} from "../../../types";
 
 interface IGetCreatorMutationVariables {
     userId: string;
@@ -12,7 +12,7 @@ interface IGetCreatorMutationVariables {
     attachment: string;
     connectType: ConnectType;
     snapshots: Snapshot[];
-
+    mergeRequestLabels: LabelType[];
     currentVisionId?: string;
     premiseId?: string;
     mergeRequestTitle: string;
@@ -20,6 +20,7 @@ interface IGetCreatorMutationVariables {
 }
 
 export const getCreatorMutationVariables = ({
+                                                mergeRequestLabels,
                                                 premiseId, currentVisionId,
                                                 mergeRequestTitle, mergeRequestDescription,
                                                 connectType,

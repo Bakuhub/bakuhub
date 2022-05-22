@@ -4,7 +4,9 @@ import * as React from "react";
 import {useSession} from "next-auth/react";
 import {Badge} from "@mui/material";
 import {getUserIdBySession} from "../../../utils/getUserIdBySession";
-import {getSubscriptionNotificationsByUserArgs} from "../../../gql/helper/getSubscriptionNotificationsByUserArgs";
+import {
+    getSubscriptionNotificationsByUserArgs
+} from "../../../gql/helper/getSubscriptionNotificationsByUserArgs";
 import {useQuery} from "@apollo/client";
 import get from "lodash/get";
 

@@ -1,6 +1,6 @@
-import {getVisionQueryArgs} from "../../../src/gql/helper/getVisionQueryArgs";
-import {getSsrApollo} from "../../../src/lib/apollo";
-import DetailPage from "../../../src/components/Detail";
+import {getVisionQueryArgs} from "@gql/helper/getVisionQueryArgs";
+import {getSsrApollo} from "src/lib/apollo";
+import DetailPage from "@components/Detail";
 import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

@@ -2,7 +2,9 @@ import {Vision} from "prisma/generated/type-graphql";
 import * as React from "react";
 import {FunctionComponent} from "react";
 import Link from "next/link";
-import {Avatar, Button, Grid, Icon, IconButton, ListItem, ListItemAvatar, ListItemText, Tooltip} from "@mui/material";
+import {
+    Avatar, Button, Grid, Icon, IconButton, ListItem, ListItemAvatar, ListItemText, Tooltip
+} from "@mui/material";
 import get from "lodash/get";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
@@ -39,7 +41,8 @@ export const MergedVisionListItem: FunctionComponent<MergedVisionListItemProps> 
             result.map(
                     (
                             {added, removed, value}, index
-                    ) => <Typography key={index} color={getColor({added, removed})}>{value}</Typography>
+                    ) => <Typography key={index}
+                                     color={getColor({added, removed})}>{value}</Typography>
             )
         }
         <Tooltip title={new Date(get(vision, "updatedAt")).toDateString() || ""}>
