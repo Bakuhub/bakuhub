@@ -147,34 +147,34 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
 
                                     variant={"h5"}>Merge requests opened:</Typography>
                         </Grid>
-                        {
-                            visionsWithMergeRequest.map(vision =>
-                                                                <Grid key={vision.id} item container
-                                                                      xs={12}>
-                                                                    <Tooltip title={get(
-                                                                            vision,
-                                                                            "mergeRequest.description",
-                                                                            ""
-                                                                    )}>
-                                                                        <Typography
-                                                                                variant={"h6"}
-                                                                                key={vision.id}
-                                                                                onClick={() => router.push(
-                                                                                        `/review/mergeRequest/${get(
-                                                                                                vision,
-                                                                                                "mergeRequest.id",
-                                                                                                false
-                                                                                        )}`)}
-                                                                        >
-                                                                            {get(
-                                                                                    vision,
-                                                                                    "mergeRequest.title",
-                                                                                    ""
-                                                                            )}
-                                                                        </Typography>
-                                                                    </Tooltip>
-                                                                </Grid>)
-                        }
+                        {/*{*/}
+                        {/*    visionsWithMergeRequest.map(vision =>*/}
+                        {/*                                        <Grid key={vision.id} item container*/}
+                        {/*                                              xs={12}>*/}
+                        {/*                                            <Tooltip title={get(*/}
+                        {/*                                                    vision,*/}
+                        {/*                                                    "mergeRequest.description",*/}
+                        {/*                                                    ""*/}
+                        {/*                                            )}>*/}
+                        {/*                                                <Typography*/}
+                        {/*                                                        variant={"h6"}*/}
+                        {/*                                                        key={vision.id}*/}
+                        {/*                                                        onClick={() => router.push(*/}
+                        {/*                                                                `/review/mergeRequest/${get(*/}
+                        {/*                                                                        vision,*/}
+                        {/*                                                                        "mergeRequest.id",*/}
+                        {/*                                                                        false*/}
+                        {/*                                                                )}`)}*/}
+                        {/*                                                >*/}
+                        {/*                                                    {get(*/}
+                        {/*                                                            vision,*/}
+                        {/*                                                            "mergeRequest.title",*/}
+                        {/*                                                            ""*/}
+                        {/*                                                    )}*/}
+                        {/*                                                </Typography>*/}
+                        {/*                                            </Tooltip>*/}
+                        {/*                                        </Grid>)*/}
+                        {/*}*/}
                     </Grid>
                     <ReferenceOverview snapshots={
                         get(activeVision, "reference.snapshots", [])}/>

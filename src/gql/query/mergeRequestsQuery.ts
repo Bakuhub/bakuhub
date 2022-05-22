@@ -7,10 +7,18 @@ export const getMergeRequestsQuery = () => {
         query MergeRequests($where: MergeRequestWhereInput,$orderBy: [MergeRequestOrderByWithRelationInput!]) {
             mergeRequests(where: $where,orderBy: $orderBy) {
                 title
+                id
                 vision {
                     createdAt
                     author {
                         ${gqlTemplate.user.avatar}
+                    }
+                }
+                labelsOnMergeRequest {
+                    label {
+                        name
+                        color
+                        description
                     }
                 }
                 description

@@ -2,6 +2,7 @@ import {getAuthorVariableByUserId} from "../../../gql/utils/getAuthorVariableByU
 import {getCreateTagVariable} from "../../../gql/utils/getCreateTagVariable";
 import {Snapshot} from "../../../../prisma/generated/type-graphql";
 import {ConnectType, LabelType} from "../../../types";
+import {getCreateOrConnectLabelVariables} from "@gql/utils/getCreateOrConnectLabelVariables";
 
 interface IGetCreatorMutationVariables {
     userId: string;
@@ -57,7 +58,11 @@ export const getCreatorMutationVariables = ({
                         "mergeRequest": {
                             "create": {
                                 "title": mergeRequestTitle,
-                                "description": mergeRequestDescription
+                                "description": mergeRequestDescription,
+                                labelsOnMergeRequest: {
+                                    create: mergeRequestLabels.map(label => getCreateOrConnectLabelVariables(
+                                            label))
+                                }
                             }
                         },
                         "author": {

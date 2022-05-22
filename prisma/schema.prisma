@@ -150,7 +150,7 @@ model LabelOnMergeRequest {
 
 model Label {
   id                   String                @id @default(cuid())
-  name                 String                @db.VarChar(255)
+  name                 String                @unique @db.VarChar(255)
   color                String                @db.VarChar(255)
   description          String?               @db.VarChar(255)
   labelOnMergeRequests LabelOnMergeRequest[]

@@ -1338,6 +1338,7 @@ input LabelWhereInput {
 
 input LabelWhereUniqueInput {
   id: String
+  name: String
 }
 
 type MergeRequest {
