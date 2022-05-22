@@ -7,11 +7,10 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
-import ShareIcon from "@mui/icons-material/Share";
 import * as React from "react";
 import {useRouter} from "next/router";
-import {Vision} from "../../../../prisma/generated/type-graphql";
-import {getThumbnail} from "../../../utils/getThumbnail";
+import {Vision} from "prisma/generated/type-graphql";
+import {getThumbnail} from "src/utils/getThumbnail";
 import {UserAvatar} from "../../User/Avatar";
 import {Collapse, Tooltip} from "@mui/material";
 import {fromNow} from "../../../utils/fromNow";
@@ -20,6 +19,7 @@ import {ConnectType} from "../../../types";
 import VotingButton from "../../Voting";
 import {getSubStr} from "../../../utils/getSubStr";
 import Link from "next/link";
+import {VisionStatus} from "@constants/VisionStatus";
 
 export interface VisionDetailProps {
     vision: Vision;
@@ -41,7 +41,22 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({
     };
     const getTitle = () => getSubStr(get(vision, "title", "") || "", 50);
 
+    const getDuration = () => {
+        const now = moment(new Date()); //todays date
+        const end = moment("2015-12-1"); // another date
+        const duration = moment.duration(now.diff(end));
+        const days = duration.asDays();
+        return days;
+    };
 
+    const getVisionStatus = (vision: Vision) => {
+        const isVisionJustCreated = moment(vision.createdAt).isAfter(moment().subtract(1, "days"));
+        switch (true) {
+            case isVisionJustCreated:
+                return VisionStatus.justCreated;
+
+        }
+    };
     return <Card
             onMouseEnter={() => setExpanded(true)}
             onMouseLeave={() => setExpanded(false)}
@@ -98,10 +113,6 @@ export const VisionOverview: React.FunctionComponent<VisionDetailProps> = ({
         </CardContent>
         <CardActions>
             <VotingButton type={ConnectType.VISION} id={vision.id}/>
-            <IconButton onClick={() => router.push(`/create/vision/${premiseId}`)}
-                        aria-label="share">
-                <ShareIcon/>
-            </IconButton>
         </CardActions>
     </Card>;
 };

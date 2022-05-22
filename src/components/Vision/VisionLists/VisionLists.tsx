@@ -1,6 +1,7 @@
 import {Vision} from "prisma/generated/type-graphql";
 import {Grid} from "@mui/material";
 import VisionOverview from "../VisionOverview";
+import * as React from "react";
 import {FunctionComponent} from "react";
 
 export interface VisionListsProps {

@@ -1,5 +1,5 @@
 import {Grid, TextField} from "@mui/material";
-import {FunctionComponent, useEffect} from "react";
+import {FunctionComponent} from "react";
 import MergeRequestLabelSelect
     from "@components/MergeRequest/MergeRequestCreator/MergeRequestLabelSelect";
 import {LabelType} from "src/types";
@@ -21,11 +21,6 @@ export const MergeRequestCreator: FunctionComponent<MergeRequestProps> = ({
                                                                               setMergeRequestDescription,
                                                                               setMergeRequestTitle
                                                                           }) => {
-    useEffect(
-            () => {
-                console.info(mergeRequestLabels);
-            }, [mergeRequestLabels]
-    );
     return <Grid spacing={1} item container xs={12}>
         <Grid item md={8} lg={10} xs={6}>
             <TextField

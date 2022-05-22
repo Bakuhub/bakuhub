@@ -299,7 +299,25 @@ const MergeRequestLabelSelect: FunctionComponent<MergeRequestLabelSelectProps> =
 
 
 // From https://github.com/abdonrd/github-labels
-const options = [
+const options: LabelType[] = [
+    {
+        name: "refactor",
+        color: "#fbca04",
+        description: "some wording is not clear or needs a rework",
+    }, {
+        name: "misInformation",
+        color: "#b60205",
+        description: "the information is not correct",
+    }, {
+        name: "improvement",
+        color: "#006b75",
+        description: "add more reference or anything related to title",
+    }
+
+];
+
+
+const usedOptions = [
     {
         name: "good first issue",
         color: "#7057ff",

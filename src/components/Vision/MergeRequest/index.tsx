@@ -78,25 +78,38 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                                    );
                                } else {
                                    try {
-                                       const result = await mergeVisionIntoPremise({
-                                                                                       variables: {
-                                                                                           "where": {
-                                                                                               "id": vision.id
-                                                                                           },
-                                                                                           "data": {
-                                                                                               "draftMode": {
-                                                                                                   "set": false
-                                                                                               },
-                                                                                               "mergeRequest": {
-                                                                                                   "update": {
-                                                                                                       "status": {
-                                                                                                           "set": "MERGED"
-                                                                                                       }
-                                                                                                   }
-                                                                                               }
-                                                                                           }
-                                                                                       }
-                                                                                   });
+                                       const result = await mergeVisionIntoPremise(
+                                               {
+                                                   variables: {
+                                                       "where": {
+                                                           "id": vision.id
+                                                       },
+                                                       "data": {
+                                                           "draftMode": {
+                                                               "set": false
+                                                           },
+
+                                                           labelsOnMergeRequest: {
+                                                               create: []
+                                                               // mergeRequest.labelsOnMergeRequest.map(
+                                                               //        ({label}) => label
+                                                               //                     ? getCreateOrConnectLabelVariables(
+                                                               //                        {
+                                                               //                            name: label.name,
+                                                               //                            color: label.color,
+                                                               //                            description: label.description
+                                                               //                        }):null)
+                                                           },
+                                                           "mergeRequest": {
+                                                               "update": {
+                                                                   "status": {
+                                                                       "set": "MERGED"
+                                                                   }
+                                                               }
+                                                           }
+                                                       }
+                                                   }
+                                               });
 
                                        if (result.data) {
                                            enqueueSnackbar(
