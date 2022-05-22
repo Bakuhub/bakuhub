@@ -2,12 +2,13 @@ import {
     MergeRequestListItemProps
 } from "@components/MergeRequest/MergeRequestsList/MergeRequestListItem/MergeRequestListItem";
 import {FunctionComponent} from "react";
-import {Chip, Grid, Typography} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 import Link from "next/link";
+import MergeRequestLabels from "@components/MergeRequest/MergeRequestLabels";
 
 export const MergeRequestListItemPrimary: FunctionComponent<MergeRequestListItemProps> = (
         {mergeRequest}) => {
-    return <Link href={"review/mergeRequest/[id]"} as={`/review/mergeRequest/${mergeRequest.id}`}
+    return <Link href={`/review/mergeRequest/${mergeRequest.id}`}
                  passHref>
         <Grid container spacing={2}>
             <Grid item>
@@ -15,18 +16,11 @@ export const MergeRequestListItemPrimary: FunctionComponent<MergeRequestListItem
                     {mergeRequest.title || "commit "}
                 </Typography>
             </Grid>
-            {
-                mergeRequest.labelsOnMergeRequest?.map(({label}, index) =>
-                                                               label ? <Grid item>
-                                                                   <Chip
-                                                                           key={index}
-                                                                           label={label.name}
-                                                                           size={"small"}
-                                                                           variant={"filled"}
-                                                                           color={"warning"}
-                                                                   /></Grid>:null)
-            }
-        </Grid></Link>;
+            <Grid item>
+                <MergeRequestLabels labelsOnConnectType={mergeRequest.labelsOnMergeRequest}/>
+            </Grid>
+        </Grid>
+    </Link>;
 
 
 };

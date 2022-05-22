@@ -9,7 +9,7 @@ export enum ConnectType {
 export interface LabelType {
     name: string;
     color: string;
-    description?: string;
+    description?: string | null;
 }
 
 export interface ConnectConfig {

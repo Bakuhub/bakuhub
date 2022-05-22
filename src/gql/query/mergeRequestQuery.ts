@@ -38,6 +38,13 @@ export const mergeRequestQuery = gql`
                 }
             }
             title
+            labelsOnMergeRequest{
+                label {
+                    name
+                    color
+                    description
+                }
+            }
             description
             id
         }

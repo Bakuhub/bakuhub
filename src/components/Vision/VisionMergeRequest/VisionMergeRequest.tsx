@@ -16,6 +16,7 @@ import {
 import {getUpdateManySubscriptionsVariables} from "@gql/utils/getUpdateManySubscriptionsVariables";
 import {activeVisionIdByPremiseQuery} from "@gql/query/activeVisionIdByPremiseQuery";
 import {getActiveVisionByPremiseIdVariables} from "@gql/utils/getActiveVisionByPremiseIdVariables";
+import {getCreateOrConnectLabelVariables} from "@gql/utils/getCreateOrConnectLabelVariables";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
@@ -29,6 +30,7 @@ export interface CreateVisionProps {
 
 export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({mergeRequest}) => {
     const vision = get(mergeRequest, "vision");
+    console.info("mergeRequest", mergeRequest);
     const [loading, setLoading] = React.useState(false);
     const [mergeVisionIntoPremise] = useMutation(mergeVisionIntoPremiseMutation);
     const [updateManySubscriptions] = useMutation(createUpdateManySubscriptionsMutation(ConnectType.PREMISE));
@@ -52,6 +54,16 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
     };
     if (!vision) return <div>no vision</div>;
     return <Grid container>
+        <Grid item xs={12}>
+            <Typography>
+                {mergeRequest.title}
+            </Typography>
+            <Typography>
+                {mergeRequest.description}
+            </Typography>
+
+
+        </Grid>
         <Grid item container md={6} xs={12}>
             <Typography>
                 Merge request: {vision.id}
@@ -90,15 +102,17 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                                                            },
 
                                                            labelsOnMergeRequest: {
-                                                               create: []
-                                                               // mergeRequest.labelsOnMergeRequest.map(
-                                                               //        ({label}) => label
-                                                               //                     ? getCreateOrConnectLabelVariables(
-                                                               //                        {
-                                                               //                            name: label.name,
-                                                               //                            color: label.color,
-                                                               //                            description: label.description
-                                                               //                        }):null)
+                                                               create:
+                                                                       mergeRequest.labelsOnMergeRequest?.map(
+                                                                               ({label}) => label
+                                                                                            ? getCreateOrConnectLabelVariables(
+                                                                                               {
+                                                                                                   name: label.name,
+                                                                                                   color: label.color,
+                                                                                                   description: label.description ||
+                                                                                                                undefined
+                                                                                               })
+                                                                                            :null)
                                                            },
                                                            "mergeRequest": {
                                                                "update": {
