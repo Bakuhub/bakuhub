@@ -27,6 +27,7 @@ import {MaterialUIIcons} from "@constants/MaterialUIIcons";
 import {Reaction} from "../Premise/PremiseDetail";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import MergeRequestLabels from "@components/MergeRequest/MergeRequestLabels";
 
 const Typography = dynamic(() => import( "@mui/material/Typography"));
 
@@ -37,10 +38,11 @@ export interface DetailPageProps {
 
 export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
     const router = useRouter();
+
     const session = useSession();
     const {enqueueSnackbar} = useSnackbar();
     const [isRedirecting, setIsRedirecting] = React.useState(false);
-    
+
     const {
         data: threadsQueryData,
         refetch: refetchThreads
@@ -95,6 +97,7 @@ export const DetailPage: FunctionComponent<DetailPageProps> = ({vision}) => {
                         <Typography variant="h3" color="text.secondary">
                             {vision?.title}
                         </Typography>
+                        <MergeRequestLabels labelsOnConnectType={vision?.labelsOnVision}/>
                         <Typography variant="h5" color="text.secondary">
                             {vision?.description}
                         </Typography>

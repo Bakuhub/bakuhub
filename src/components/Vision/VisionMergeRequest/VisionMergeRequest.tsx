@@ -17,6 +17,7 @@ import {getUpdateManySubscriptionsVariables} from "@gql/utils/getUpdateManySubsc
 import {activeVisionIdByPremiseQuery} from "@gql/query/activeVisionIdByPremiseQuery";
 import {getActiveVisionByPremiseIdVariables} from "@gql/utils/getActiveVisionByPremiseIdVariables";
 import {getCreateOrConnectLabelVariables} from "@gql/utils/getCreateOrConnectLabelVariables";
+import MergeRequestLabels from "@components/MergeRequest/MergeRequestLabels";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
@@ -54,14 +55,17 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
     };
     if (!vision) return <div>no vision</div>;
     return <Grid container>
-        <Grid item xs={12}>
-            <Typography>
+        <Grid item container xs={12}>
+            <Typography variant={"h3"}>
                 {mergeRequest.title}
             </Typography>
-            <Typography>
+
+            <MergeRequestLabels
+                    labelsOnConnectType={mergeRequest.labelsOnMergeRequest}/>
+
+            <Typography variant={"subtitle2"}>
                 {mergeRequest.description}
             </Typography>
-
 
         </Grid>
         <Grid item container md={6} xs={12}>
@@ -101,7 +105,7 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
                                                                "set": false
                                                            },
 
-                                                           labelsOnMergeRequest: {
+                                                           labelsOnVision: {
                                                                create:
                                                                        mergeRequest.labelsOnMergeRequest?.map(
                                                                                ({label}) => label

@@ -29,6 +29,7 @@ import {
 import {
     getPremiseWIthOpenedMergeRequestVisionVariables
 } from "@gql/utils/getPremiseWIthOpenedMergeRequestVisionVariables";
+import MergeRequestLabels from "@components/MergeRequest/MergeRequestLabels";
 
 const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
 const Comment = dynamic(() => import("../../Comment"));
@@ -45,6 +46,8 @@ interface PremiseDetailProps {
 
 export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props) => {
     const activeVision = props.activeVision;
+    console.info(activeVision);
+    console.info("-----------");
     const [isRedirecting, setIsRedirecting] = React.useState(false);
     const router = useRouter();
     const session = useSession();
@@ -132,20 +135,23 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
                         <Typography variant="h3" color="text.secondary">
                             {activeVision?.title}
                         </Typography>
+                        <MergeRequestLabels labelsOnConnectType={activeVision?.labelsOnVision}/>
                         <Typography variant="h5" color="text.secondary">
                             {activeVision?.description}
                         </Typography>
                     </Grid>
                     <Grid item container xs={2} alignContent={"flex-start"}>
                         <Grid item xs={12}>
-                            <Link href={`/vision/${activeVision.id}/mergeRequests`} passHref>
-                                <Button variant={"outlined"}>
+                            <Link href={`/premise/${activeVision.premiseId}/mergeRequests`}
+                                  passHref>
+                                <Button disabled={visionsWithMergeRequest.length === 0}
+                                        variant={"outlined"}>
                                     merge requests: {visionsWithMergeRequest.length}
                                 </Button>
                             </Link>
-                            <Typography
+                            {/*<Typography*/}
 
-                                    variant={"h5"}>Merge requests opened:</Typography>
+                            {/*        variant={"h5"}>Merge requests opened:</Typography>*/}
                         </Grid>
                         {/*{*/}
                         {/*    visionsWithMergeRequest.map(vision =>*/}

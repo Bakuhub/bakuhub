@@ -8,6 +8,7 @@ import Icon from "@mui/material/Icon";
 import {useRouter} from "next/router";
 import HistoryIcon from "@mui/icons-material/History";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
+import AbcIcon from "@mui/icons-material/Abc";
 
 export const DrawerList = () => {
     const DrawerListOptions = [
@@ -32,6 +33,10 @@ export const DrawerList = () => {
             text: "subscriptions",
             url: "/user/subscriptions",
             icon: SubscriptionsIcon
+        }, {
+            text: "theme",
+            url: "/theme",
+            icon: AbcIcon
         }
     ];
     const router = useRouter();

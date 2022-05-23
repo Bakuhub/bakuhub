@@ -10,6 +10,13 @@ export const visionCreatorQuery = gql`
             referenceId
             premiseId
             thumbnail
+            labelsOnVision{
+                label{
+                    name
+                    color
+                    description
+                }
+            }
             reference {
                 snapshots {
                     id

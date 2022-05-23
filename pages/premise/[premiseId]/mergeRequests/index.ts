@@ -8,7 +8,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             "Cache-Control",
             "public, s-maxage=10, stale-while-revalidate=59"
     );
-    const visionId = context.query.visionId;
+    const premiseId = context.query.premiseId;
     console.info(context.query);
     const apollo = getSsrApollo(context.req);
     const {data} = await apollo.query({
@@ -17,12 +17,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                                               where: {
                                                   vision: {
                                                       is: {
-                                                          prevVision: {
-                                                              is: {
-                                                                  id: {
-                                                                      equals: visionId
-                                                                  }
-                                                              }
+                                                          premiseId: {
+                                                              equals: premiseId
                                                           }
                                                       }
                                                   },
