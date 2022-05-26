@@ -12,37 +12,44 @@ export const CompareVisionSplitMode: FunctionComponent<CompareVisionUnifiedModeP
                                                                                              title,
                                                                                              description
                                                                                          }) => {
+    console.info("---------------------------------------");
+    console.info(title);
+    console.info(description);
+    console.info("---------------------------------------");
     return <Grid item container>
         <Grid item container xs={6} data-testid={"source vision"}>
-            <Grid item xs={12}>{
-                title.map((change, index) => {
-                    if (!change.added) {
-                        const colorScheme = getCompareDiffColorSchema(change);
-                        return <Typography sx={
-                            {
-                                display: "inline-block",
-                            }
-                        } {...colorScheme} variant={"h3"} key={change.value}>
-                            {change.value}
-                        </Typography>;
-                    }
-                })
-            }</Grid>
+            <Grid item xs={12}>
+                {
+                    title.map((change, index) => {
+                        if (!change.added) {
+                            const colorScheme = getCompareDiffColorSchema(change);
+                            return <Typography sx={
+                                {
+                                    display: "inline-block",
+                                }
+                            } {...colorScheme} variant={"h3"} key={index}>
+                                {change.value}
+                            </Typography>;
+                        }
+                        return null;
+
+                    })
+                }</Grid>
             <Grid item xs={12}>
                 {
                     description.map((change, index) => {
                         if (!change.added) {
-
                             const colorScheme = getCompareDiffColorSchema(change);
                             return <Typography sx={
                                 {
                                     display: "inline"
                                 }
-                            } {...colorScheme} variant={"subtitle1"}
-                                               key={change.value}>
+                            } {...colorScheme}
+                                               key={index}>
                                 {change.value}
                             </Typography>;
                         }
+                        return null;
                     })
                 }
             </Grid>
@@ -56,10 +63,12 @@ export const CompareVisionSplitMode: FunctionComponent<CompareVisionUnifiedModeP
                             {
                                 display: "inline-block",
                             }
-                        } {...colorScheme} variant={"h3"} key={change.value}>
+                        } {...colorScheme} variant={"h3"} key={index}>
                             {change.value}
                         </Typography>;
+
                     }
+                    return null;
                 })
             }</Grid>
             <Grid item xs={12}>
@@ -71,10 +80,11 @@ export const CompareVisionSplitMode: FunctionComponent<CompareVisionUnifiedModeP
                                 {
                                     display: "inline"
                                 }
-                            } {...colorScheme} variant={"subtitle1"} key={change.value}>
+                            } {...colorScheme} key={index}>
                                 {change.value}
                             </Typography>;
                         }
+                        return;
                     })
                 }
             </Grid>
