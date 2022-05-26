@@ -12,7 +12,14 @@ export const MergeRequestListItemPrimary: FunctionComponent<MergeRequestListItem
                  passHref>
         <Grid container spacing={2}>
             <Grid item>
-                <Typography noWrap variant={"body1"}>
+                <Typography
+                        sx={
+                            {
+                                cursor: "pointer"
+                            }
+                        }
+
+                        noWrap variant={"body1"}>
                     {mergeRequest.title || "commit "}
                 </Typography>
             </Grid>

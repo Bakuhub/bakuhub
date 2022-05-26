@@ -18,6 +18,7 @@ import {activeVisionIdByPremiseQuery} from "@gql/query/activeVisionIdByPremiseQu
 import {getActiveVisionByPremiseIdVariables} from "@gql/utils/getActiveVisionByPremiseIdVariables";
 import {getCreateOrConnectLabelVariables} from "@gql/utils/getCreateOrConnectLabelVariables";
 import MergeRequestLabels from "@components/MergeRequest/MergeRequestLabels";
+import {CompareVision} from "@components/CompareVision/CompareVision";
 
 const ThreadContainer = dynamic(() => import("../../Thread/ThreadContainer"));
 const LoadingButton = dynamic(() => import("@mui/lab/LoadingButton"));
@@ -55,6 +56,10 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
     };
     if (!vision) return <div>no vision</div>;
     return <Grid container>
+        <Grid item container xs={12}>
+            {vision.prevVision &&
+             <CompareVision sourceVision={vision.prevVision} targetVision={vision}/>}
+        </Grid>
         <Grid item container xs={12}>
             <Typography variant={"h3"}>
                 {mergeRequest.title}

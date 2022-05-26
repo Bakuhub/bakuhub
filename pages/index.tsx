@@ -1,7 +1,7 @@
 import {MainPage} from "src/components/MainPage";
 import {GetServerSideProps} from "next";
 import {visionsOverviewQuery} from "@gql/query/visionsOverviewQuery";
-import {getSsrApollo} from "../src/lib/apollo";
+import {getSsrApollo} from "src/lib/apollo";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader(
