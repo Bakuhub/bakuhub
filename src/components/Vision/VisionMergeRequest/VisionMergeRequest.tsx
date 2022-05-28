@@ -165,6 +165,7 @@ export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({
             </LoadingButton>
         </Grid>
         <Comment
+                disableAutoFocus={true}
                 connectConfig={connectConfig}
                 handleSubmitCallback={refetchThreads}
         />

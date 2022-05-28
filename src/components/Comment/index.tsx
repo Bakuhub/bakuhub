@@ -17,9 +17,11 @@ export interface CommentProps {
     handleCancel?: () => void;
     connectConfig: ThreadConnectConfig;
     handleSubmitCallback?: () => void;
+    disableAutoFocus?: boolean;
 }
 
 export const Comment: FunctionComponent<CommentProps> = ({
+                                                             disableAutoFocus,
                                                              handleSubmitCallback,
                                                              connectConfig, handleCancel
                                                          }) => {
@@ -93,7 +95,7 @@ export const Comment: FunctionComponent<CommentProps> = ({
                     multiline
                     maxRows={5}
                     variant={"standard"}
-                    autoFocus
+                    autoFocus={!disableAutoFocus}
             />
         </Grid>
         <Grid item container justifyContent={"flex-end"}>

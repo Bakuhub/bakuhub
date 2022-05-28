@@ -101,6 +101,7 @@ export const CreatorBase = <T, >({
         setLoading(true);
         const variable = getCreatorMutationVariables({
                                                          attachment,
+                                                         mergeRequestType,
                                                          connectType,
                                                          mergeRequestLabels,
                                                          currentVisionId,

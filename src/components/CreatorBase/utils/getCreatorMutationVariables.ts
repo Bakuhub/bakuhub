@@ -3,6 +3,7 @@ import {getCreateTagVariable} from "../../../gql/utils/getCreateTagVariable";
 import {Snapshot} from "../../../../prisma/generated/type-graphql";
 import {ConnectType, LabelType} from "../../../types";
 import {getCreateOrConnectLabelVariables} from "@gql/utils/getCreateOrConnectLabelVariables";
+import {MergeRequestType} from "@components/CreatorBase/CreatorBase";
 
 interface IGetCreatorMutationVariables {
     userId: string;
@@ -17,10 +18,12 @@ interface IGetCreatorMutationVariables {
     currentVisionId?: string;
     premiseId?: string;
     mergeRequestTitle: string;
+    mergeRequestType: MergeRequestType;
     mergeRequestDescription: string;
 }
 
 export const getCreatorMutationVariables = ({
+                                                mergeRequestType,
                                                 mergeRequestLabels,
                                                 premiseId, currentVisionId,
                                                 mergeRequestTitle, mergeRequestDescription,
@@ -32,8 +35,8 @@ export const getCreatorMutationVariables = ({
                                                 tagLabels,
                                                 snapshots
                                             }: IGetCreatorMutationVariables) => {
-    switch (connectType) {
-        case ConnectType.VISION:
+    switch (true) {
+        case connectType === ConnectType.VISION && mergeRequestType === MergeRequestType.update:
             return {
                 variables: {
                     "data": {
@@ -55,6 +58,11 @@ export const getCreatorMutationVariables = ({
                             }
                         }, "thumbnail": attachment,
                         "draftMode": true,
+                        "author": {
+                            "connect": {
+                                "id": userId
+                            }
+                        },
                         "mergeRequest": {
                             "create": {
                                 "title": mergeRequestTitle,
@@ -63,11 +71,6 @@ export const getCreatorMutationVariables = ({
                                     create: mergeRequestLabels.map(label => getCreateOrConnectLabelVariables(
                                             label))
                                 }
-                            }
-                        },
-                        "author": {
-                            "connect": {
-                                "id": userId
                             }
                         },
                         "premise": {
@@ -83,8 +86,54 @@ export const getCreatorMutationVariables = ({
                     }
                 }
             };
-
-        case ConnectType.PREMISE:
+        case connectType === ConnectType.VISION && mergeRequestType === MergeRequestType.create:
+            return {
+                variables: {
+                    data: {
+                        ...getAuthorVariableByUserId(userId),
+                        title,
+                        status: "REFERENCE_PROVIDED",
+                        vision: {
+                            create: [
+                                {
+                                    thumbnail: attachment,
+                                    title,
+                                    description,
+                                    activityDate,
+                                    tagsOnVisions: {
+                                        create: tagLabels.map(label => getCreateTagVariable(label))
+                                    },
+                                    "targeting": {
+                                        "create": [
+                                            {
+                                                "targetedBy": {
+                                                    "connect": {
+                                                        "id": currentVisionId
+                                                    }
+                                                },
+                                                "relation": "Refutation"
+                                            }
+                                        ]
+                                    },
+                                    "reference": {
+                                        "create": {
+                                            "snapshots": {
+                                                connect: snapshots.map(({id}) => (
+                                                        {
+                                                            id
+                                                        }
+                                                ))
+                                            }
+                                        }
+                                    },
+                                    ...getAuthorVariableByUserId(userId),
+                                }
+                            ]
+                        }
+                    }
+                }
+            };
+        case connectType === ConnectType.PREMISE:
         default:
             return {
                 variables: {

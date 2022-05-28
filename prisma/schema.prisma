@@ -64,6 +64,8 @@ model User {
   subscriptionsOnTimelines SubscriptionsOnTimelines[]
   visionViewsHistory       VisionViewsHistory[]
   reputationRecords        ReputationRecord[]
+  relationsBetweenVisions  RelationBetweenVisions[]
+  mergedRequests           MergeRequest[]
 }
 
 model VerificationToken {
@@ -79,7 +81,6 @@ model Premise {
   title                   String                    @db.VarChar(255)
   createdAt               DateTime                  @default(now())
   updatedAt               DateTime                  @default(now()) @updatedAt
-  status                  PremiseStatus
   author                  User?                     @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId                String?
   vision                  Vision[]
@@ -91,23 +92,23 @@ model Premise {
 }
 
 model Vision {
-  id                 String               @id @default(cuid())
-  title              String               @db.VarChar(255)
+  id                 String                   @id @default(cuid())
+  title              String                   @db.VarChar(255)
   activityDate       DateTime?
   description        String?
-  updatedAt          DateTime             @default(now()) @updatedAt
-  createdAt          DateTime             @default(now())
-  reference          Reference?           @relation(fields: [referenceId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  updatedAt          DateTime                 @default(now()) @updatedAt
+  createdAt          DateTime                 @default(now())
+  reference          Reference?               @relation(fields: [referenceId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   referenceId        String?
-  author             User?                @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  author             User?                    @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   authorId           String?
-  premise            Premise              @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  premise            Premise                  @relation(fields: [premiseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   thumbnail          String?
   premiseId          String
-  draftMode          Boolean              @default(false)
+  draftMode          Boolean                  @default(false)
   prevVisionId       String?
-  prevVision         Vision?              @relation("VisionHistory", fields: [prevVisionId], references: [id])
-  nextVisions        Vision[]             @relation("VisionHistory")
+  prevVision         Vision?                  @relation("VisionHistory", fields: [prevVisionId], references: [id])
+  nextVisions        Vision[]                 @relation("VisionHistory")
   threadsOnVision    ThreadsOnVision[]
   mergeRequest       MergeRequest?
   reactionOnVisions  ReactionOnVisions[]
@@ -116,6 +117,37 @@ model Vision {
   tagsOnVisions      TagsOnVisions[]
   visionViewsHistory VisionViewsHistory[]
   labelsOnVision     LabelOnVision[]
+  /// source visions
+  targetedBy         RelationBetweenVisions[] @relation("targetedBy")
+  /// target visions
+  targeting          RelationBetweenVisions[] @relation("targeting")
+}
+
+model RelationBetweenVisions {
+  id             String                        @id @default(cuid())
+  draftMode      Boolean                       @default(false)
+  author         User                          @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId       String
+  sourceVisionId String
+  targetVisionId String
+  sourceVision   Vision                        @relation("targetedBy", fields: [sourceVisionId], references: [id])
+  targetVision   Vision                        @relation("targeting", fields: [targetVisionId], references: [id])
+  relation       String                        @db.VarChar(255)
+  createdAt      DateTime                      @default(now())
+  from           DateTime?
+  to             DateTime?
+  updatedAt      DateTime                      @default(now()) @updatedAt
+  mergeRequest   MergeRequest?                 @relation(fields: [mergeRequestId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  mergeRequestId String?
+  status         RelationBetweenVisionsStatus?
+}
+
+model RelationBetweenVisionsStatus {
+  relationBetweenVisionsId String                 @id @unique
+  relationBetweenVisions   RelationBetweenVisions @relation(fields: [relationBetweenVisionsId], references: [id])
+  status                   String                 @db.VarChar(255)
+  createdAt                DateTime               @default(now())
+  updatedAt                DateTime               @default(now()) @updatedAt
 }
 
 model Reference {
@@ -130,22 +162,26 @@ model LabelOnVision {
   label    Label  @relation(fields: [labelId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   visionId String
   vision   Vision @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
 }
 
 model MergeRequest {
-  id                    String                  @id @default(cuid())
+  id                    String                   @id @default(cuid())
+  author                User?                    @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId              String?
   ///  short, imperative mood description of the change
-  title                 String                  @db.VarChar(255)
+  title                 String                   @db.VarChar(255)
   ///  long, descriptive mood description of the change
   description           String?
-  status                MergeRequestStatus      @default(OPEN)
+  status                MergeRequestStatus       @default(OPEN)
   ///  the vision attached to the merge request
-  vision                Vision                  @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  visionId              String                  @unique
+  vision                Vision?                  @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  visionId              String?                  @unique
   /// threads related to the merge request
   threadsOnMergeRequest ThreadsOnMergeRequest[]
+  /// labels shows the merge request type
   labelsOnMergeRequest  LabelOnMergeRequest[]
+  /// the relation need to be change to the target vision
+  relationChanges       RelationBetweenVisions[]
 }
 
 model LabelOnMergeRequest {
@@ -154,7 +190,6 @@ model LabelOnMergeRequest {
   label          Label        @relation(fields: [labelId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   mergeRequestId String
   mergeRequest   MergeRequest @relation(fields: [mergeRequestId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
 }
 
 model Label {
@@ -315,12 +350,12 @@ model ReactionOnTimelines {
 }
 
 model ReactionOnVisions {
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId    String
   vision    Vision   @relation(fields: [visionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   visionId  String
   reaction  Reaction
   createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@id([userId, visionId])
 }
@@ -457,6 +492,12 @@ enum MergeRequestStatus {
   OPEN
   CLOSE
   MERGED
+}
+
+enum ArchiveRequestStatus {
+  OPEN
+  CLOSE
+  ARCHIVED
 }
 
 enum Reaction {

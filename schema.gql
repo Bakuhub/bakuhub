@@ -492,6 +492,12 @@ type AggregateReference {
   _min: ReferenceMinAggregate
 }
 
+type AggregateRelationBetweenVisions {
+  _count: RelationBetweenVisionsCountAggregate
+  _max: RelationBetweenVisionsMaxAggregate
+  _min: RelationBetweenVisionsMinAggregate
+}
+
 type AggregateReputationRecord {
   _avg: ReputationRecordAvgAggregate
   _count: ReputationRecordCountAggregate
@@ -743,27 +749,6 @@ input EnumMergeRequestStatusWithAggregatesFilter {
   in: [MergeRequestStatus!]
   not: NestedEnumMergeRequestStatusWithAggregatesFilter
   notIn: [MergeRequestStatus!]
-}
-
-input EnumPremiseStatusFieldUpdateOperationsInput {
-  set: PremiseStatus
-}
-
-input EnumPremiseStatusFilter {
-  equals: PremiseStatus
-  in: [PremiseStatus!]
-  not: NestedEnumPremiseStatusFilter
-  notIn: [PremiseStatus!]
-}
-
-input EnumPremiseStatusWithAggregatesFilter {
-  _count: NestedIntFilter
-  _max: NestedEnumPremiseStatusFilter
-  _min: NestedEnumPremiseStatusFilter
-  equals: PremiseStatus
-  in: [PremiseStatus!]
-  not: NestedEnumPremiseStatusWithAggregatesFilter
-  notIn: [PremiseStatus!]
 }
 
 input EnumReactionFieldUpdateOperationsInput {
@@ -1667,7 +1652,10 @@ type MergeRequest {
   """long, descriptive mood description of the change"""
   description: String
   id: String!
+
+  """labels shows the merge request type"""
   labelsOnMergeRequest(cursor: LabelOnMergeRequestWhereUniqueInput, distinct: [LabelOnMergeRequestScalarFieldEnum!], orderBy: [LabelOnMergeRequestOrderByWithRelationInput!], skip: Int, take: Int, where: LabelOnMergeRequestWhereInput): [LabelOnMergeRequest!]!
+  relationChanges(cursor: RelationBetweenVisionsWhereUniqueInput, distinct: [RelationBetweenVisionsScalarFieldEnum!], orderBy: [RelationBetweenVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: RelationBetweenVisionsWhereInput): [RelationBetweenVisions!]!
   status: MergeRequestStatus!
 
   """threads related to the merge request"""
@@ -1677,12 +1665,13 @@ type MergeRequest {
   title: String!
 
   """the vision attached to the merge request"""
-  vision: Vision!
-  visionId: String!
+  vision: Vision
+  visionId: String
 }
 
 type MergeRequestCount {
   labelsOnMergeRequest: Int!
+  relationChanges: Int!
   threadsOnMergeRequest: Int!
 }
 
@@ -1707,10 +1696,11 @@ input MergeRequestCreateInput {
   description: String
   id: String
   labelsOnMergeRequest: LabelOnMergeRequestCreateNestedManyWithoutMergeRequestInput
+  relationChanges: RelationBetweenVisionsCreateNestedManyWithoutMergeRequestInput
   status: MergeRequestStatus
   threadsOnMergeRequest: ThreadsOnMergeRequestCreateNestedManyWithoutMergeRequestInput
   title: String!
-  vision: VisionCreateNestedOneWithoutMergeRequestInput!
+  vision: VisionCreateNestedOneWithoutMergeRequestInput
 }
 
 input MergeRequestCreateManyInput {
@@ -1718,13 +1708,19 @@ input MergeRequestCreateManyInput {
   id: String
   status: MergeRequestStatus
   title: String!
-  visionId: String!
+  visionId: String
 }
 
 input MergeRequestCreateNestedOneWithoutLabelsOnMergeRequestInput {
   connect: MergeRequestWhereUniqueInput
   connectOrCreate: MergeRequestCreateOrConnectWithoutLabelsOnMergeRequestInput
   create: MergeRequestCreateWithoutLabelsOnMergeRequestInput
+}
+
+input MergeRequestCreateNestedOneWithoutRelationChangesInput {
+  connect: MergeRequestWhereUniqueInput
+  connectOrCreate: MergeRequestCreateOrConnectWithoutRelationChangesInput
+  create: MergeRequestCreateWithoutRelationChangesInput
 }
 
 input MergeRequestCreateNestedOneWithoutThreadsOnMergeRequestInput {
@@ -1744,6 +1740,11 @@ input MergeRequestCreateOrConnectWithoutLabelsOnMergeRequestInput {
   where: MergeRequestWhereUniqueInput!
 }
 
+input MergeRequestCreateOrConnectWithoutRelationChangesInput {
+  create: MergeRequestCreateWithoutRelationChangesInput!
+  where: MergeRequestWhereUniqueInput!
+}
+
 input MergeRequestCreateOrConnectWithoutThreadsOnMergeRequestInput {
   create: MergeRequestCreateWithoutThreadsOnMergeRequestInput!
   where: MergeRequestWhereUniqueInput!
@@ -1757,25 +1758,38 @@ input MergeRequestCreateOrConnectWithoutVisionInput {
 input MergeRequestCreateWithoutLabelsOnMergeRequestInput {
   description: String
   id: String
+  relationChanges: RelationBetweenVisionsCreateNestedManyWithoutMergeRequestInput
   status: MergeRequestStatus
   threadsOnMergeRequest: ThreadsOnMergeRequestCreateNestedManyWithoutMergeRequestInput
   title: String!
-  vision: VisionCreateNestedOneWithoutMergeRequestInput!
+  vision: VisionCreateNestedOneWithoutMergeRequestInput
+}
+
+input MergeRequestCreateWithoutRelationChangesInput {
+  description: String
+  id: String
+  labelsOnMergeRequest: LabelOnMergeRequestCreateNestedManyWithoutMergeRequestInput
+  status: MergeRequestStatus
+  threadsOnMergeRequest: ThreadsOnMergeRequestCreateNestedManyWithoutMergeRequestInput
+  title: String!
+  vision: VisionCreateNestedOneWithoutMergeRequestInput
 }
 
 input MergeRequestCreateWithoutThreadsOnMergeRequestInput {
   description: String
   id: String
   labelsOnMergeRequest: LabelOnMergeRequestCreateNestedManyWithoutMergeRequestInput
+  relationChanges: RelationBetweenVisionsCreateNestedManyWithoutMergeRequestInput
   status: MergeRequestStatus
   title: String!
-  vision: VisionCreateNestedOneWithoutMergeRequestInput!
+  vision: VisionCreateNestedOneWithoutMergeRequestInput
 }
 
 input MergeRequestCreateWithoutVisionInput {
   description: String
   id: String
   labelsOnMergeRequest: LabelOnMergeRequestCreateNestedManyWithoutMergeRequestInput
+  relationChanges: RelationBetweenVisionsCreateNestedManyWithoutMergeRequestInput
   status: MergeRequestStatus
   threadsOnMergeRequest: ThreadsOnMergeRequestCreateNestedManyWithoutMergeRequestInput
   title: String!
@@ -1789,7 +1803,7 @@ type MergeRequestGroupBy {
   id: String!
   status: MergeRequestStatus!
   title: String!
-  visionId: String!
+  visionId: String
 }
 
 type MergeRequestMaxAggregate {
@@ -1839,6 +1853,7 @@ input MergeRequestOrderByWithRelationInput {
   description: SortOrder
   id: SortOrder
   labelsOnMergeRequest: LabelOnMergeRequestOrderByRelationAggregateInput
+  relationChanges: RelationBetweenVisionsOrderByRelationAggregateInput
   status: SortOrder
   threadsOnMergeRequest: ThreadsOnMergeRequestOrderByRelationAggregateInput
   title: SortOrder
@@ -1867,7 +1882,7 @@ input MergeRequestScalarWhereWithAggregatesInput {
   id: StringWithAggregatesFilter
   status: EnumMergeRequestStatusWithAggregatesFilter
   title: StringWithAggregatesFilter
-  visionId: StringWithAggregatesFilter
+  visionId: StringNullableWithAggregatesFilter
 }
 
 enum MergeRequestStatus {
@@ -1880,10 +1895,11 @@ input MergeRequestUpdateInput {
   description: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   labelsOnMergeRequest: LabelOnMergeRequestUpdateManyWithoutMergeRequestInput
+  relationChanges: RelationBetweenVisionsUpdateManyWithoutMergeRequestInput
   status: EnumMergeRequestStatusFieldUpdateOperationsInput
   threadsOnMergeRequest: ThreadsOnMergeRequestUpdateManyWithoutMergeRequestInput
   title: StringFieldUpdateOperationsInput
-  vision: VisionUpdateOneRequiredWithoutMergeRequestInput
+  vision: VisionUpdateOneWithoutMergeRequestInput
 }
 
 input MergeRequestUpdateManyMutationInput {
@@ -1909,6 +1925,16 @@ input MergeRequestUpdateOneRequiredWithoutThreadsOnMergeRequestInput {
   upsert: MergeRequestUpsertWithoutThreadsOnMergeRequestInput
 }
 
+input MergeRequestUpdateOneWithoutRelationChangesInput {
+  connect: MergeRequestWhereUniqueInput
+  connectOrCreate: MergeRequestCreateOrConnectWithoutRelationChangesInput
+  create: MergeRequestCreateWithoutRelationChangesInput
+  delete: Boolean
+  disconnect: Boolean
+  update: MergeRequestUpdateWithoutRelationChangesInput
+  upsert: MergeRequestUpsertWithoutRelationChangesInput
+}
+
 input MergeRequestUpdateOneWithoutVisionInput {
   connect: MergeRequestWhereUniqueInput
   connectOrCreate: MergeRequestCreateOrConnectWithoutVisionInput
@@ -1922,25 +1948,38 @@ input MergeRequestUpdateOneWithoutVisionInput {
 input MergeRequestUpdateWithoutLabelsOnMergeRequestInput {
   description: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  relationChanges: RelationBetweenVisionsUpdateManyWithoutMergeRequestInput
   status: EnumMergeRequestStatusFieldUpdateOperationsInput
   threadsOnMergeRequest: ThreadsOnMergeRequestUpdateManyWithoutMergeRequestInput
   title: StringFieldUpdateOperationsInput
-  vision: VisionUpdateOneRequiredWithoutMergeRequestInput
+  vision: VisionUpdateOneWithoutMergeRequestInput
+}
+
+input MergeRequestUpdateWithoutRelationChangesInput {
+  description: NullableStringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  labelsOnMergeRequest: LabelOnMergeRequestUpdateManyWithoutMergeRequestInput
+  status: EnumMergeRequestStatusFieldUpdateOperationsInput
+  threadsOnMergeRequest: ThreadsOnMergeRequestUpdateManyWithoutMergeRequestInput
+  title: StringFieldUpdateOperationsInput
+  vision: VisionUpdateOneWithoutMergeRequestInput
 }
 
 input MergeRequestUpdateWithoutThreadsOnMergeRequestInput {
   description: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   labelsOnMergeRequest: LabelOnMergeRequestUpdateManyWithoutMergeRequestInput
+  relationChanges: RelationBetweenVisionsUpdateManyWithoutMergeRequestInput
   status: EnumMergeRequestStatusFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
-  vision: VisionUpdateOneRequiredWithoutMergeRequestInput
+  vision: VisionUpdateOneWithoutMergeRequestInput
 }
 
 input MergeRequestUpdateWithoutVisionInput {
   description: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   labelsOnMergeRequest: LabelOnMergeRequestUpdateManyWithoutMergeRequestInput
+  relationChanges: RelationBetweenVisionsUpdateManyWithoutMergeRequestInput
   status: EnumMergeRequestStatusFieldUpdateOperationsInput
   threadsOnMergeRequest: ThreadsOnMergeRequestUpdateManyWithoutMergeRequestInput
   title: StringFieldUpdateOperationsInput
@@ -1949,6 +1988,11 @@ input MergeRequestUpdateWithoutVisionInput {
 input MergeRequestUpsertWithoutLabelsOnMergeRequestInput {
   create: MergeRequestCreateWithoutLabelsOnMergeRequestInput!
   update: MergeRequestUpdateWithoutLabelsOnMergeRequestInput!
+}
+
+input MergeRequestUpsertWithoutRelationChangesInput {
+  create: MergeRequestCreateWithoutRelationChangesInput!
+  update: MergeRequestUpdateWithoutRelationChangesInput!
 }
 
 input MergeRequestUpsertWithoutThreadsOnMergeRequestInput {
@@ -1968,11 +2012,12 @@ input MergeRequestWhereInput {
   description: StringNullableFilter
   id: StringFilter
   labelsOnMergeRequest: LabelOnMergeRequestListRelationFilter
+  relationChanges: RelationBetweenVisionsListRelationFilter
   status: EnumMergeRequestStatusFilter
   threadsOnMergeRequest: ThreadsOnMergeRequestListRelationFilter
   title: StringFilter
   vision: VisionRelationFilter
-  visionId: StringFilter
+  visionId: StringNullableFilter
 }
 
 input MergeRequestWhereUniqueInput {
@@ -1996,6 +2041,7 @@ type Mutation {
   createManyReactionOnTimelines(data: [ReactionOnTimelinesCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyReactionOnVisions(data: [ReactionOnVisionsCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyReference(data: [ReferenceCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyRelationBetweenVisions(data: [RelationBetweenVisionsCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyReputationRecord(data: [ReputationRecordCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManySession(data: [SessionCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManySnapshot(data: [SnapshotCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
@@ -2026,6 +2072,7 @@ type Mutation {
   createReactionOnTimelines(data: ReactionOnTimelinesCreateInput!): ReactionOnTimelines!
   createReactionOnVisions(data: ReactionOnVisionsCreateInput!): ReactionOnVisions!
   createReference(data: ReferenceCreateInput!): Reference!
+  createRelationBetweenVisions(data: RelationBetweenVisionsCreateInput!): RelationBetweenVisions!
   createReputationRecord(data: ReputationRecordCreateInput!): ReputationRecord!
   createSession(data: SessionCreateInput!): Session!
   createSnapshot(data: SnapshotCreateInput!): Snapshot!
@@ -2064,6 +2111,7 @@ type Mutation {
   deleteManyReactionOnTimelines(where: ReactionOnTimelinesWhereInput): AffectedRowsOutput!
   deleteManyReactionOnVisions(where: ReactionOnVisionsWhereInput): AffectedRowsOutput!
   deleteManyReference(where: ReferenceWhereInput): AffectedRowsOutput!
+  deleteManyRelationBetweenVisions(where: RelationBetweenVisionsWhereInput): AffectedRowsOutput!
   deleteManyReputationRecord(where: ReputationRecordWhereInput): AffectedRowsOutput!
   deleteManySession(where: SessionWhereInput): AffectedRowsOutput!
   deleteManySnapshot(where: SnapshotWhereInput): AffectedRowsOutput!
@@ -2094,6 +2142,7 @@ type Mutation {
   deleteReactionOnTimelines(where: ReactionOnTimelinesWhereUniqueInput!): ReactionOnTimelines
   deleteReactionOnVisions(where: ReactionOnVisionsWhereUniqueInput!): ReactionOnVisions
   deleteReference(where: ReferenceWhereUniqueInput!): Reference
+  deleteRelationBetweenVisions(where: RelationBetweenVisionsWhereUniqueInput!): RelationBetweenVisions
   deleteReputationRecord(where: ReputationRecordWhereUniqueInput!): ReputationRecord
   deleteSession(where: SessionWhereUniqueInput!): Session
   deleteSnapshot(where: SnapshotWhereUniqueInput!): Snapshot
@@ -2132,6 +2181,7 @@ type Mutation {
   updateManyReactionOnTimelines(data: ReactionOnTimelinesUpdateManyMutationInput!, where: ReactionOnTimelinesWhereInput): AffectedRowsOutput!
   updateManyReactionOnVisions(data: ReactionOnVisionsUpdateManyMutationInput!, where: ReactionOnVisionsWhereInput): AffectedRowsOutput!
   updateManyReference(data: ReferenceUpdateManyMutationInput!, where: ReferenceWhereInput): AffectedRowsOutput!
+  updateManyRelationBetweenVisions(data: RelationBetweenVisionsUpdateManyMutationInput!, where: RelationBetweenVisionsWhereInput): AffectedRowsOutput!
   updateManyReputationRecord(data: ReputationRecordUpdateManyMutationInput!, where: ReputationRecordWhereInput): AffectedRowsOutput!
   updateManySession(data: SessionUpdateManyMutationInput!, where: SessionWhereInput): AffectedRowsOutput!
   updateManySnapshot(data: SnapshotUpdateManyMutationInput!, where: SnapshotWhereInput): AffectedRowsOutput!
@@ -2162,6 +2212,7 @@ type Mutation {
   updateReactionOnTimelines(data: ReactionOnTimelinesUpdateInput!, where: ReactionOnTimelinesWhereUniqueInput!): ReactionOnTimelines
   updateReactionOnVisions(data: ReactionOnVisionsUpdateInput!, where: ReactionOnVisionsWhereUniqueInput!): ReactionOnVisions
   updateReference(data: ReferenceUpdateInput!, where: ReferenceWhereUniqueInput!): Reference
+  updateRelationBetweenVisions(data: RelationBetweenVisionsUpdateInput!, where: RelationBetweenVisionsWhereUniqueInput!): RelationBetweenVisions
   updateReputationRecord(data: ReputationRecordUpdateInput!, where: ReputationRecordWhereUniqueInput!): ReputationRecord
   updateSession(data: SessionUpdateInput!, where: SessionWhereUniqueInput!): Session
   updateSnapshot(data: SnapshotUpdateInput!, where: SnapshotWhereUniqueInput!): Snapshot
@@ -2196,6 +2247,7 @@ type Mutation {
   upsertReactionOnTimelines(create: ReactionOnTimelinesCreateInput!, update: ReactionOnTimelinesUpdateInput!, where: ReactionOnTimelinesWhereUniqueInput!): ReactionOnTimelines!
   upsertReactionOnVisions(create: ReactionOnVisionsCreateInput!, update: ReactionOnVisionsUpdateInput!, where: ReactionOnVisionsWhereUniqueInput!): ReactionOnVisions!
   upsertReference(create: ReferenceCreateInput!, update: ReferenceUpdateInput!, where: ReferenceWhereUniqueInput!): Reference!
+  upsertRelationBetweenVisions(create: RelationBetweenVisionsCreateInput!, update: RelationBetweenVisionsUpdateInput!, where: RelationBetweenVisionsWhereUniqueInput!): RelationBetweenVisions!
   upsertReputationRecord(create: ReputationRecordCreateInput!, update: ReputationRecordUpdateInput!, where: ReputationRecordWhereUniqueInput!): ReputationRecord!
   upsertSession(create: SessionCreateInput!, update: SessionUpdateInput!, where: SessionWhereUniqueInput!): Session!
   upsertSnapshot(create: SnapshotCreateInput!, update: SnapshotUpdateInput!, where: SnapshotWhereUniqueInput!): Snapshot!
@@ -2299,23 +2351,6 @@ input NestedEnumMergeRequestStatusWithAggregatesFilter {
   in: [MergeRequestStatus!]
   not: NestedEnumMergeRequestStatusWithAggregatesFilter
   notIn: [MergeRequestStatus!]
-}
-
-input NestedEnumPremiseStatusFilter {
-  equals: PremiseStatus
-  in: [PremiseStatus!]
-  not: NestedEnumPremiseStatusFilter
-  notIn: [PremiseStatus!]
-}
-
-input NestedEnumPremiseStatusWithAggregatesFilter {
-  _count: NestedIntFilter
-  _max: NestedEnumPremiseStatusFilter
-  _min: NestedEnumPremiseStatusFilter
-  equals: PremiseStatus
-  in: [PremiseStatus!]
-  not: NestedEnumPremiseStatusWithAggregatesFilter
-  notIn: [PremiseStatus!]
 }
 
 input NestedEnumReactionFilter {
@@ -2530,7 +2565,6 @@ type Premise {
   createdAt: DateTime!
   id: String!
   premisesOnTimelines(cursor: PremisesOnTimelinesWhereUniqueInput, distinct: [PremisesOnTimelinesScalarFieldEnum!], orderBy: [PremisesOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: PremisesOnTimelinesWhereInput): [PremisesOnTimelines!]!
-  status: PremiseStatus!
   subscriptionsOnPremises(cursor: SubscriptionsOnPremisesWhereUniqueInput, distinct: [SubscriptionsOnPremisesScalarFieldEnum!], orderBy: [SubscriptionsOnPremisesOrderByWithRelationInput!], skip: Int, take: Int, where: SubscriptionsOnPremisesWhereInput): [SubscriptionsOnPremises!]!
   tagsOnPremises(cursor: TagsOnPremisesWhereUniqueInput, distinct: [TagsOnPremisesScalarFieldEnum!], orderBy: [TagsOnPremisesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnPremisesWhereInput): [TagsOnPremises!]!
   threadsOnPremise(cursor: ThreadsOnPremiseWhereUniqueInput, distinct: [ThreadsOnPremiseScalarFieldEnum!], orderBy: [ThreadsOnPremiseOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnPremiseWhereInput): [ThreadsOnPremise!]!
@@ -2554,7 +2588,6 @@ type PremiseCountAggregate {
   authorId: Int!
   createdAt: Int!
   id: Int!
-  status: Int!
   title: Int!
   updatedAt: Int!
 }
@@ -2563,7 +2596,6 @@ input PremiseCountOrderByAggregateInput {
   authorId: SortOrder
   createdAt: SortOrder
   id: SortOrder
-  status: SortOrder
   title: SortOrder
   updatedAt: SortOrder
 }
@@ -2573,7 +2605,6 @@ input PremiseCreateInput {
   createdAt: DateTime
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
-  status: PremiseStatus!
   subscriptionsOnPremises: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
@@ -2586,7 +2617,6 @@ input PremiseCreateInput {
 input PremiseCreateManyAuthorInput {
   createdAt: DateTime
   id: String
-  status: PremiseStatus!
   title: String!
   updatedAt: DateTime
 }
@@ -2600,7 +2630,6 @@ input PremiseCreateManyInput {
   authorId: String
   createdAt: DateTime
   id: String
-  status: PremiseStatus!
   title: String!
   updatedAt: DateTime
 }
@@ -2687,7 +2716,6 @@ input PremiseCreateWithoutAuthorInput {
   createdAt: DateTime
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
-  status: PremiseStatus!
   subscriptionsOnPremises: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
@@ -2701,7 +2729,6 @@ input PremiseCreateWithoutPremisesOnTimelinesInput {
   author: UserCreateNestedOneWithoutPremisesInput
   createdAt: DateTime
   id: String
-  status: PremiseStatus!
   subscriptionsOnPremises: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
@@ -2716,7 +2743,6 @@ input PremiseCreateWithoutSubscriptionsOnPremisesInput {
   createdAt: DateTime
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
-  status: PremiseStatus!
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
   title: String!
@@ -2730,7 +2756,6 @@ input PremiseCreateWithoutTagsOnPremisesInput {
   createdAt: DateTime
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
-  status: PremiseStatus!
   subscriptionsOnPremises: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
   title: String!
@@ -2744,7 +2769,6 @@ input PremiseCreateWithoutThreadsOnPremiseInput {
   createdAt: DateTime
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
-  status: PremiseStatus!
   subscriptionsOnPremises: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
   title: String!
@@ -2758,7 +2782,6 @@ input PremiseCreateWithoutVisionInput {
   createdAt: DateTime
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
-  status: PremiseStatus!
   subscriptionsOnPremises: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
@@ -2772,7 +2795,6 @@ input PremiseCreateWithoutVotesOnPremiseInput {
   createdAt: DateTime
   id: String
   premisesOnTimelines: PremisesOnTimelinesCreateNestedManyWithoutPremiseInput
-  status: PremiseStatus!
   subscriptionsOnPremises: SubscriptionsOnPremisesCreateNestedManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesCreateNestedManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseCreateNestedManyWithoutPremiseInput
@@ -2788,7 +2810,6 @@ type PremiseGroupBy {
   authorId: String
   createdAt: DateTime!
   id: String!
-  status: PremiseStatus!
   title: String!
   updatedAt: DateTime!
 }
@@ -2803,7 +2824,6 @@ type PremiseMaxAggregate {
   authorId: String
   createdAt: DateTime
   id: String
-  status: PremiseStatus
   title: String
   updatedAt: DateTime
 }
@@ -2812,7 +2832,6 @@ input PremiseMaxOrderByAggregateInput {
   authorId: SortOrder
   createdAt: SortOrder
   id: SortOrder
-  status: SortOrder
   title: SortOrder
   updatedAt: SortOrder
 }
@@ -2821,7 +2840,6 @@ type PremiseMinAggregate {
   authorId: String
   createdAt: DateTime
   id: String
-  status: PremiseStatus
   title: String
   updatedAt: DateTime
 }
@@ -2830,7 +2848,6 @@ input PremiseMinOrderByAggregateInput {
   authorId: SortOrder
   createdAt: SortOrder
   id: SortOrder
-  status: SortOrder
   title: SortOrder
   updatedAt: SortOrder
 }
@@ -2846,7 +2863,6 @@ input PremiseOrderByWithAggregationInput {
   authorId: SortOrder
   createdAt: SortOrder
   id: SortOrder
-  status: SortOrder
   title: SortOrder
   updatedAt: SortOrder
 }
@@ -2857,7 +2873,6 @@ input PremiseOrderByWithRelationInput {
   createdAt: SortOrder
   id: SortOrder
   premisesOnTimelines: PremisesOnTimelinesOrderByRelationAggregateInput
-  status: SortOrder
   subscriptionsOnPremises: SubscriptionsOnPremisesOrderByRelationAggregateInput
   tagsOnPremises: TagsOnPremisesOrderByRelationAggregateInput
   threadsOnPremise: ThreadsOnPremiseOrderByRelationAggregateInput
@@ -2876,7 +2891,6 @@ enum PremiseScalarFieldEnum {
   authorId
   createdAt
   id
-  status
   title
   updatedAt
 }
@@ -2888,7 +2902,6 @@ input PremiseScalarWhereInput {
   authorId: StringNullableFilter
   createdAt: DateTimeFilter
   id: StringFilter
-  status: EnumPremiseStatusFilter
   title: StringFilter
   updatedAt: DateTimeFilter
 }
@@ -2900,17 +2913,8 @@ input PremiseScalarWhereWithAggregatesInput {
   authorId: StringNullableWithAggregatesFilter
   createdAt: DateTimeWithAggregatesFilter
   id: StringWithAggregatesFilter
-  status: EnumPremiseStatusWithAggregatesFilter
   title: StringWithAggregatesFilter
   updatedAt: DateTimeWithAggregatesFilter
-}
-
-enum PremiseStatus {
-  MISINFORMATION
-  REFERENCE_PROVIDED
-  RUMOUR
-  UNVERIFIED
-  VERIFIED
 }
 
 input PremiseUpdateInput {
@@ -2918,7 +2922,6 @@ input PremiseUpdateInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   subscriptionsOnPremises: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
@@ -2931,7 +2934,6 @@ input PremiseUpdateInput {
 input PremiseUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -3012,7 +3014,6 @@ input PremiseUpdateWithoutAuthorInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   subscriptionsOnPremises: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
@@ -3026,7 +3027,6 @@ input PremiseUpdateWithoutPremisesOnTimelinesInput {
   author: UserUpdateOneWithoutPremisesInput
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   subscriptionsOnPremises: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
@@ -3041,7 +3041,6 @@ input PremiseUpdateWithoutSubscriptionsOnPremisesInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
@@ -3055,7 +3054,6 @@ input PremiseUpdateWithoutTagsOnPremisesInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   subscriptionsOnPremises: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
@@ -3069,7 +3067,6 @@ input PremiseUpdateWithoutThreadsOnPremiseInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   subscriptionsOnPremises: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
   title: StringFieldUpdateOperationsInput
@@ -3083,7 +3080,6 @@ input PremiseUpdateWithoutVisionInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   subscriptionsOnPremises: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
@@ -3097,7 +3093,6 @@ input PremiseUpdateWithoutVotesOnPremiseInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   premisesOnTimelines: PremisesOnTimelinesUpdateManyWithoutPremiseInput
-  status: EnumPremiseStatusFieldUpdateOperationsInput
   subscriptionsOnPremises: SubscriptionsOnPremisesUpdateManyWithoutPremiseInput
   tagsOnPremises: TagsOnPremisesUpdateManyWithoutPremiseInput
   threadsOnPremise: ThreadsOnPremiseUpdateManyWithoutPremiseInput
@@ -3151,7 +3146,6 @@ input PremiseWhereInput {
   createdAt: DateTimeFilter
   id: StringFilter
   premisesOnTimelines: PremisesOnTimelinesListRelationFilter
-  status: EnumPremiseStatusFilter
   subscriptionsOnPremises: SubscriptionsOnPremisesListRelationFilter
   tagsOnPremises: TagsOnPremisesListRelationFilter
   threadsOnPremise: ThreadsOnPremiseListRelationFilter
@@ -3450,6 +3444,7 @@ type Query {
   aggregateReactionOnTimelines(cursor: ReactionOnTimelinesWhereUniqueInput, orderBy: [ReactionOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnTimelinesWhereInput): AggregateReactionOnTimelines!
   aggregateReactionOnVisions(cursor: ReactionOnVisionsWhereUniqueInput, orderBy: [ReactionOnVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnVisionsWhereInput): AggregateReactionOnVisions!
   aggregateReference(cursor: ReferenceWhereUniqueInput, orderBy: [ReferenceOrderByWithRelationInput!], skip: Int, take: Int, where: ReferenceWhereInput): AggregateReference!
+  aggregateRelationBetweenVisions(cursor: RelationBetweenVisionsWhereUniqueInput, orderBy: [RelationBetweenVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: RelationBetweenVisionsWhereInput): AggregateRelationBetweenVisions!
   aggregateReputationRecord(cursor: ReputationRecordWhereUniqueInput, orderBy: [ReputationRecordOrderByWithRelationInput!], skip: Int, take: Int, where: ReputationRecordWhereInput): AggregateReputationRecord!
   aggregateSession(cursor: SessionWhereUniqueInput, orderBy: [SessionOrderByWithRelationInput!], skip: Int, take: Int, where: SessionWhereInput): AggregateSession!
   aggregateSnapshot(cursor: SnapshotWhereUniqueInput, orderBy: [SnapshotOrderByWithRelationInput!], skip: Int, take: Int, where: SnapshotWhereInput): AggregateSnapshot!
@@ -3484,6 +3479,7 @@ type Query {
   findFirstReactionOnTimelines(cursor: ReactionOnTimelinesWhereUniqueInput, distinct: [ReactionOnTimelinesScalarFieldEnum!], orderBy: [ReactionOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnTimelinesWhereInput): ReactionOnTimelines
   findFirstReactionOnVisions(cursor: ReactionOnVisionsWhereUniqueInput, distinct: [ReactionOnVisionsScalarFieldEnum!], orderBy: [ReactionOnVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnVisionsWhereInput): ReactionOnVisions
   findFirstReference(cursor: ReferenceWhereUniqueInput, distinct: [ReferenceScalarFieldEnum!], orderBy: [ReferenceOrderByWithRelationInput!], skip: Int, take: Int, where: ReferenceWhereInput): Reference
+  findFirstRelationBetweenVisions(cursor: RelationBetweenVisionsWhereUniqueInput, distinct: [RelationBetweenVisionsScalarFieldEnum!], orderBy: [RelationBetweenVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: RelationBetweenVisionsWhereInput): RelationBetweenVisions
   findFirstReputationRecord(cursor: ReputationRecordWhereUniqueInput, distinct: [ReputationRecordScalarFieldEnum!], orderBy: [ReputationRecordOrderByWithRelationInput!], skip: Int, take: Int, where: ReputationRecordWhereInput): ReputationRecord
   findFirstSession(cursor: SessionWhereUniqueInput, distinct: [SessionScalarFieldEnum!], orderBy: [SessionOrderByWithRelationInput!], skip: Int, take: Int, where: SessionWhereInput): Session
   findFirstSnapshot(cursor: SnapshotWhereUniqueInput, distinct: [SnapshotScalarFieldEnum!], orderBy: [SnapshotOrderByWithRelationInput!], skip: Int, take: Int, where: SnapshotWhereInput): Snapshot
@@ -3511,6 +3507,7 @@ type Query {
   findManyReactionOnThreads(cursor: ReactionOnThreadsWhereUniqueInput, distinct: [ReactionOnThreadsScalarFieldEnum!], orderBy: [ReactionOnThreadsOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnThreadsWhereInput): [ReactionOnThreads!]!
   findManyReactionOnTimelines(cursor: ReactionOnTimelinesWhereUniqueInput, distinct: [ReactionOnTimelinesScalarFieldEnum!], orderBy: [ReactionOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnTimelinesWhereInput): [ReactionOnTimelines!]!
   findManyReactionOnVisions(cursor: ReactionOnVisionsWhereUniqueInput, distinct: [ReactionOnVisionsScalarFieldEnum!], orderBy: [ReactionOnVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: ReactionOnVisionsWhereInput): [ReactionOnVisions!]!
+  findManyRelationBetweenVisions(cursor: RelationBetweenVisionsWhereUniqueInput, distinct: [RelationBetweenVisionsScalarFieldEnum!], orderBy: [RelationBetweenVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: RelationBetweenVisionsWhereInput): [RelationBetweenVisions!]!
   findManySubscriptionsOnPremises(cursor: SubscriptionsOnPremisesWhereUniqueInput, distinct: [SubscriptionsOnPremisesScalarFieldEnum!], orderBy: [SubscriptionsOnPremisesOrderByWithRelationInput!], skip: Int, take: Int, where: SubscriptionsOnPremisesWhereInput): [SubscriptionsOnPremises!]!
   findManySubscriptionsOnTimelines(cursor: SubscriptionsOnTimelinesWhereUniqueInput, distinct: [SubscriptionsOnTimelinesScalarFieldEnum!], orderBy: [SubscriptionsOnTimelinesOrderByWithRelationInput!], skip: Int, take: Int, where: SubscriptionsOnTimelinesWhereInput): [SubscriptionsOnTimelines!]!
   findManyTagsOnPremises(cursor: TagsOnPremisesWhereUniqueInput, distinct: [TagsOnPremisesScalarFieldEnum!], orderBy: [TagsOnPremisesOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnPremisesWhereInput): [TagsOnPremises!]!
@@ -3520,6 +3517,7 @@ type Query {
   findUniqueReactionOnThreads(where: ReactionOnThreadsWhereUniqueInput!): ReactionOnThreads
   findUniqueReactionOnTimelines(where: ReactionOnTimelinesWhereUniqueInput!): ReactionOnTimelines
   findUniqueReactionOnVisions(where: ReactionOnVisionsWhereUniqueInput!): ReactionOnVisions
+  findUniqueRelationBetweenVisions(where: RelationBetweenVisionsWhereUniqueInput!): RelationBetweenVisions
   findUniqueSubscriptionsOnPremises(where: SubscriptionsOnPremisesWhereUniqueInput!): SubscriptionsOnPremises
   findUniqueSubscriptionsOnTimelines(where: SubscriptionsOnTimelinesWhereUniqueInput!): SubscriptionsOnTimelines
   findUniqueTagsOnPremises(where: TagsOnPremisesWhereUniqueInput!): TagsOnPremises
@@ -3536,6 +3534,7 @@ type Query {
   groupByReactionOnTimelines(by: [ReactionOnTimelinesScalarFieldEnum!]!, having: ReactionOnTimelinesScalarWhereWithAggregatesInput, orderBy: [ReactionOnTimelinesOrderByWithAggregationInput!], skip: Int, take: Int, where: ReactionOnTimelinesWhereInput): [ReactionOnTimelinesGroupBy!]!
   groupByReactionOnVisions(by: [ReactionOnVisionsScalarFieldEnum!]!, having: ReactionOnVisionsScalarWhereWithAggregatesInput, orderBy: [ReactionOnVisionsOrderByWithAggregationInput!], skip: Int, take: Int, where: ReactionOnVisionsWhereInput): [ReactionOnVisionsGroupBy!]!
   groupByReference(by: [ReferenceScalarFieldEnum!]!, having: ReferenceScalarWhereWithAggregatesInput, orderBy: [ReferenceOrderByWithAggregationInput!], skip: Int, take: Int, where: ReferenceWhereInput): [ReferenceGroupBy!]!
+  groupByRelationBetweenVisions(by: [RelationBetweenVisionsScalarFieldEnum!]!, having: RelationBetweenVisionsScalarWhereWithAggregatesInput, orderBy: [RelationBetweenVisionsOrderByWithAggregationInput!], skip: Int, take: Int, where: RelationBetweenVisionsWhereInput): [RelationBetweenVisionsGroupBy!]!
   groupByReputationRecord(by: [ReputationRecordScalarFieldEnum!]!, having: ReputationRecordScalarWhereWithAggregatesInput, orderBy: [ReputationRecordOrderByWithAggregationInput!], skip: Int, take: Int, where: ReputationRecordWhereInput): [ReputationRecordGroupBy!]!
   groupBySession(by: [SessionScalarFieldEnum!]!, having: SessionScalarWhereWithAggregatesInput, orderBy: [SessionOrderByWithAggregationInput!], skip: Int, take: Int, where: SessionWhereInput): [SessionGroupBy!]!
   groupBySnapshot(by: [SnapshotScalarFieldEnum!]!, having: SnapshotScalarWhereWithAggregatesInput, orderBy: [SnapshotOrderByWithAggregationInput!], skip: Int, take: Int, where: SnapshotWhereInput): [SnapshotGroupBy!]!
@@ -4711,6 +4710,525 @@ input ReferenceWhereInput {
 }
 
 input ReferenceWhereUniqueInput {
+  id: String
+}
+
+type RelationBetweenVisions {
+  createdAt: DateTime!
+  draftMode: Boolean!
+  from: DateTime!
+  id: String!
+  mergeRequest: MergeRequest
+  mergeRequestId: String
+  relation: String!
+  sourceVision: Vision!
+  sourceVisionId: String!
+  targetVision: Vision!
+  targetVisionId: String!
+  to: DateTime
+  updatedAt: DateTime!
+}
+
+type RelationBetweenVisionsCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  draftMode: Int!
+  from: Int!
+  id: Int!
+  mergeRequestId: Int!
+  relation: Int!
+  sourceVisionId: Int!
+  targetVisionId: Int!
+  to: Int!
+  updatedAt: Int!
+}
+
+input RelationBetweenVisionsCountOrderByAggregateInput {
+  createdAt: SortOrder
+  draftMode: SortOrder
+  from: SortOrder
+  id: SortOrder
+  mergeRequestId: SortOrder
+  relation: SortOrder
+  sourceVisionId: SortOrder
+  targetVisionId: SortOrder
+  to: SortOrder
+  updatedAt: SortOrder
+}
+
+input RelationBetweenVisionsCreateInput {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  mergeRequest: MergeRequestCreateNestedOneWithoutRelationChangesInput
+  relation: String!
+  sourceVision: VisionCreateNestedOneWithoutTargetedByInput!
+  targetVision: VisionCreateNestedOneWithoutTargetingInput!
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsCreateManyInput {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  mergeRequestId: String
+  relation: String!
+  sourceVisionId: String!
+  targetVisionId: String!
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsCreateManyMergeRequestInput {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  relation: String!
+  sourceVisionId: String!
+  targetVisionId: String!
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsCreateManyMergeRequestInputEnvelope {
+  data: [RelationBetweenVisionsCreateManyMergeRequestInput!]!
+  skipDuplicates: Boolean
+}
+
+input RelationBetweenVisionsCreateManySourceVisionInput {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  mergeRequestId: String
+  relation: String!
+  targetVisionId: String!
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsCreateManySourceVisionInputEnvelope {
+  data: [RelationBetweenVisionsCreateManySourceVisionInput!]!
+  skipDuplicates: Boolean
+}
+
+input RelationBetweenVisionsCreateManyTargetVisionInput {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  mergeRequestId: String
+  relation: String!
+  sourceVisionId: String!
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsCreateManyTargetVisionInputEnvelope {
+  data: [RelationBetweenVisionsCreateManyTargetVisionInput!]!
+  skipDuplicates: Boolean
+}
+
+input RelationBetweenVisionsCreateNestedManyWithoutMergeRequestInput {
+  connect: [RelationBetweenVisionsWhereUniqueInput!]
+  connectOrCreate: [RelationBetweenVisionsCreateOrConnectWithoutMergeRequestInput!]
+  create: [RelationBetweenVisionsCreateWithoutMergeRequestInput!]
+  createMany: RelationBetweenVisionsCreateManyMergeRequestInputEnvelope
+}
+
+input RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput {
+  connect: [RelationBetweenVisionsWhereUniqueInput!]
+  connectOrCreate: [RelationBetweenVisionsCreateOrConnectWithoutSourceVisionInput!]
+  create: [RelationBetweenVisionsCreateWithoutSourceVisionInput!]
+  createMany: RelationBetweenVisionsCreateManySourceVisionInputEnvelope
+}
+
+input RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput {
+  connect: [RelationBetweenVisionsWhereUniqueInput!]
+  connectOrCreate: [RelationBetweenVisionsCreateOrConnectWithoutTargetVisionInput!]
+  create: [RelationBetweenVisionsCreateWithoutTargetVisionInput!]
+  createMany: RelationBetweenVisionsCreateManyTargetVisionInputEnvelope
+}
+
+input RelationBetweenVisionsCreateOrConnectWithoutMergeRequestInput {
+  create: RelationBetweenVisionsCreateWithoutMergeRequestInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsCreateOrConnectWithoutSourceVisionInput {
+  create: RelationBetweenVisionsCreateWithoutSourceVisionInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsCreateOrConnectWithoutTargetVisionInput {
+  create: RelationBetweenVisionsCreateWithoutTargetVisionInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsCreateWithoutMergeRequestInput {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  relation: String!
+  sourceVision: VisionCreateNestedOneWithoutTargetedByInput!
+  targetVision: VisionCreateNestedOneWithoutTargetingInput!
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsCreateWithoutSourceVisionInput {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  mergeRequest: MergeRequestCreateNestedOneWithoutRelationChangesInput
+  relation: String!
+  targetVision: VisionCreateNestedOneWithoutTargetingInput!
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsCreateWithoutTargetVisionInput {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  mergeRequest: MergeRequestCreateNestedOneWithoutRelationChangesInput
+  relation: String!
+  sourceVision: VisionCreateNestedOneWithoutTargetedByInput!
+  to: DateTime
+  updatedAt: DateTime
+}
+
+type RelationBetweenVisionsGroupBy {
+  _count: RelationBetweenVisionsCountAggregate
+  _max: RelationBetweenVisionsMaxAggregate
+  _min: RelationBetweenVisionsMinAggregate
+  createdAt: DateTime!
+  draftMode: Boolean!
+  from: DateTime!
+  id: String!
+  mergeRequestId: String
+  relation: String!
+  sourceVisionId: String!
+  targetVisionId: String!
+  to: DateTime
+  updatedAt: DateTime!
+}
+
+input RelationBetweenVisionsListRelationFilter {
+  every: RelationBetweenVisionsWhereInput
+  none: RelationBetweenVisionsWhereInput
+  some: RelationBetweenVisionsWhereInput
+}
+
+type RelationBetweenVisionsMaxAggregate {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  mergeRequestId: String
+  relation: String
+  sourceVisionId: String
+  targetVisionId: String
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  draftMode: SortOrder
+  from: SortOrder
+  id: SortOrder
+  mergeRequestId: SortOrder
+  relation: SortOrder
+  sourceVisionId: SortOrder
+  targetVisionId: SortOrder
+  to: SortOrder
+  updatedAt: SortOrder
+}
+
+type RelationBetweenVisionsMinAggregate {
+  createdAt: DateTime
+  draftMode: Boolean
+  from: DateTime
+  id: String
+  mergeRequestId: String
+  relation: String
+  sourceVisionId: String
+  targetVisionId: String
+  to: DateTime
+  updatedAt: DateTime
+}
+
+input RelationBetweenVisionsMinOrderByAggregateInput {
+  createdAt: SortOrder
+  draftMode: SortOrder
+  from: SortOrder
+  id: SortOrder
+  mergeRequestId: SortOrder
+  relation: SortOrder
+  sourceVisionId: SortOrder
+  targetVisionId: SortOrder
+  to: SortOrder
+  updatedAt: SortOrder
+}
+
+input RelationBetweenVisionsOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input RelationBetweenVisionsOrderByWithAggregationInput {
+  _count: RelationBetweenVisionsCountOrderByAggregateInput
+  _max: RelationBetweenVisionsMaxOrderByAggregateInput
+  _min: RelationBetweenVisionsMinOrderByAggregateInput
+  createdAt: SortOrder
+  draftMode: SortOrder
+  from: SortOrder
+  id: SortOrder
+  mergeRequestId: SortOrder
+  relation: SortOrder
+  sourceVisionId: SortOrder
+  targetVisionId: SortOrder
+  to: SortOrder
+  updatedAt: SortOrder
+}
+
+input RelationBetweenVisionsOrderByWithRelationInput {
+  createdAt: SortOrder
+  draftMode: SortOrder
+  from: SortOrder
+  id: SortOrder
+  mergeRequest: MergeRequestOrderByWithRelationInput
+  mergeRequestId: SortOrder
+  relation: SortOrder
+  sourceVision: VisionOrderByWithRelationInput
+  sourceVisionId: SortOrder
+  targetVision: VisionOrderByWithRelationInput
+  targetVisionId: SortOrder
+  to: SortOrder
+  updatedAt: SortOrder
+}
+
+enum RelationBetweenVisionsScalarFieldEnum {
+  createdAt
+  draftMode
+  from
+  id
+  mergeRequestId
+  relation
+  sourceVisionId
+  targetVisionId
+  to
+  updatedAt
+}
+
+input RelationBetweenVisionsScalarWhereInput {
+  AND: [RelationBetweenVisionsScalarWhereInput!]
+  NOT: [RelationBetweenVisionsScalarWhereInput!]
+  OR: [RelationBetweenVisionsScalarWhereInput!]
+  createdAt: DateTimeFilter
+  draftMode: BoolFilter
+  from: DateTimeFilter
+  id: StringFilter
+  mergeRequestId: StringNullableFilter
+  relation: StringFilter
+  sourceVisionId: StringFilter
+  targetVisionId: StringFilter
+  to: DateTimeNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input RelationBetweenVisionsScalarWhereWithAggregatesInput {
+  AND: [RelationBetweenVisionsScalarWhereWithAggregatesInput!]
+  NOT: [RelationBetweenVisionsScalarWhereWithAggregatesInput!]
+  OR: [RelationBetweenVisionsScalarWhereWithAggregatesInput!]
+  createdAt: DateTimeWithAggregatesFilter
+  draftMode: BoolWithAggregatesFilter
+  from: DateTimeWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  mergeRequestId: StringNullableWithAggregatesFilter
+  relation: StringWithAggregatesFilter
+  sourceVisionId: StringWithAggregatesFilter
+  targetVisionId: StringWithAggregatesFilter
+  to: DateTimeNullableWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+}
+
+input RelationBetweenVisionsUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  draftMode: BoolFieldUpdateOperationsInput
+  from: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  mergeRequest: MergeRequestUpdateOneWithoutRelationChangesInput
+  relation: StringFieldUpdateOperationsInput
+  sourceVision: VisionUpdateOneRequiredWithoutTargetedByInput
+  targetVision: VisionUpdateOneRequiredWithoutTargetingInput
+  to: NullableDateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input RelationBetweenVisionsUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  draftMode: BoolFieldUpdateOperationsInput
+  from: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  relation: StringFieldUpdateOperationsInput
+  to: NullableDateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input RelationBetweenVisionsUpdateManyWithWhereWithoutMergeRequestInput {
+  data: RelationBetweenVisionsUpdateManyMutationInput!
+  where: RelationBetweenVisionsScalarWhereInput!
+}
+
+input RelationBetweenVisionsUpdateManyWithWhereWithoutSourceVisionInput {
+  data: RelationBetweenVisionsUpdateManyMutationInput!
+  where: RelationBetweenVisionsScalarWhereInput!
+}
+
+input RelationBetweenVisionsUpdateManyWithWhereWithoutTargetVisionInput {
+  data: RelationBetweenVisionsUpdateManyMutationInput!
+  where: RelationBetweenVisionsScalarWhereInput!
+}
+
+input RelationBetweenVisionsUpdateManyWithoutMergeRequestInput {
+  connect: [RelationBetweenVisionsWhereUniqueInput!]
+  connectOrCreate: [RelationBetweenVisionsCreateOrConnectWithoutMergeRequestInput!]
+  create: [RelationBetweenVisionsCreateWithoutMergeRequestInput!]
+  createMany: RelationBetweenVisionsCreateManyMergeRequestInputEnvelope
+  delete: [RelationBetweenVisionsWhereUniqueInput!]
+  deleteMany: [RelationBetweenVisionsScalarWhereInput!]
+  disconnect: [RelationBetweenVisionsWhereUniqueInput!]
+  set: [RelationBetweenVisionsWhereUniqueInput!]
+  update: [RelationBetweenVisionsUpdateWithWhereUniqueWithoutMergeRequestInput!]
+  updateMany: [RelationBetweenVisionsUpdateManyWithWhereWithoutMergeRequestInput!]
+  upsert: [RelationBetweenVisionsUpsertWithWhereUniqueWithoutMergeRequestInput!]
+}
+
+input RelationBetweenVisionsUpdateManyWithoutSourceVisionInput {
+  connect: [RelationBetweenVisionsWhereUniqueInput!]
+  connectOrCreate: [RelationBetweenVisionsCreateOrConnectWithoutSourceVisionInput!]
+  create: [RelationBetweenVisionsCreateWithoutSourceVisionInput!]
+  createMany: RelationBetweenVisionsCreateManySourceVisionInputEnvelope
+  delete: [RelationBetweenVisionsWhereUniqueInput!]
+  deleteMany: [RelationBetweenVisionsScalarWhereInput!]
+  disconnect: [RelationBetweenVisionsWhereUniqueInput!]
+  set: [RelationBetweenVisionsWhereUniqueInput!]
+  update: [RelationBetweenVisionsUpdateWithWhereUniqueWithoutSourceVisionInput!]
+  updateMany: [RelationBetweenVisionsUpdateManyWithWhereWithoutSourceVisionInput!]
+  upsert: [RelationBetweenVisionsUpsertWithWhereUniqueWithoutSourceVisionInput!]
+}
+
+input RelationBetweenVisionsUpdateManyWithoutTargetVisionInput {
+  connect: [RelationBetweenVisionsWhereUniqueInput!]
+  connectOrCreate: [RelationBetweenVisionsCreateOrConnectWithoutTargetVisionInput!]
+  create: [RelationBetweenVisionsCreateWithoutTargetVisionInput!]
+  createMany: RelationBetweenVisionsCreateManyTargetVisionInputEnvelope
+  delete: [RelationBetweenVisionsWhereUniqueInput!]
+  deleteMany: [RelationBetweenVisionsScalarWhereInput!]
+  disconnect: [RelationBetweenVisionsWhereUniqueInput!]
+  set: [RelationBetweenVisionsWhereUniqueInput!]
+  update: [RelationBetweenVisionsUpdateWithWhereUniqueWithoutTargetVisionInput!]
+  updateMany: [RelationBetweenVisionsUpdateManyWithWhereWithoutTargetVisionInput!]
+  upsert: [RelationBetweenVisionsUpsertWithWhereUniqueWithoutTargetVisionInput!]
+}
+
+input RelationBetweenVisionsUpdateWithWhereUniqueWithoutMergeRequestInput {
+  data: RelationBetweenVisionsUpdateWithoutMergeRequestInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsUpdateWithWhereUniqueWithoutSourceVisionInput {
+  data: RelationBetweenVisionsUpdateWithoutSourceVisionInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsUpdateWithWhereUniqueWithoutTargetVisionInput {
+  data: RelationBetweenVisionsUpdateWithoutTargetVisionInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsUpdateWithoutMergeRequestInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  draftMode: BoolFieldUpdateOperationsInput
+  from: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  relation: StringFieldUpdateOperationsInput
+  sourceVision: VisionUpdateOneRequiredWithoutTargetedByInput
+  targetVision: VisionUpdateOneRequiredWithoutTargetingInput
+  to: NullableDateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input RelationBetweenVisionsUpdateWithoutSourceVisionInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  draftMode: BoolFieldUpdateOperationsInput
+  from: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  mergeRequest: MergeRequestUpdateOneWithoutRelationChangesInput
+  relation: StringFieldUpdateOperationsInput
+  targetVision: VisionUpdateOneRequiredWithoutTargetingInput
+  to: NullableDateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input RelationBetweenVisionsUpdateWithoutTargetVisionInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  draftMode: BoolFieldUpdateOperationsInput
+  from: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  mergeRequest: MergeRequestUpdateOneWithoutRelationChangesInput
+  relation: StringFieldUpdateOperationsInput
+  sourceVision: VisionUpdateOneRequiredWithoutTargetedByInput
+  to: NullableDateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input RelationBetweenVisionsUpsertWithWhereUniqueWithoutMergeRequestInput {
+  create: RelationBetweenVisionsCreateWithoutMergeRequestInput!
+  update: RelationBetweenVisionsUpdateWithoutMergeRequestInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsUpsertWithWhereUniqueWithoutSourceVisionInput {
+  create: RelationBetweenVisionsCreateWithoutSourceVisionInput!
+  update: RelationBetweenVisionsUpdateWithoutSourceVisionInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsUpsertWithWhereUniqueWithoutTargetVisionInput {
+  create: RelationBetweenVisionsCreateWithoutTargetVisionInput!
+  update: RelationBetweenVisionsUpdateWithoutTargetVisionInput!
+  where: RelationBetweenVisionsWhereUniqueInput!
+}
+
+input RelationBetweenVisionsWhereInput {
+  AND: [RelationBetweenVisionsWhereInput!]
+  NOT: [RelationBetweenVisionsWhereInput!]
+  OR: [RelationBetweenVisionsWhereInput!]
+  createdAt: DateTimeFilter
+  draftMode: BoolFilter
+  from: DateTimeFilter
+  id: StringFilter
+  mergeRequest: MergeRequestRelationFilter
+  mergeRequestId: StringNullableFilter
+  relation: StringFilter
+  sourceVision: VisionRelationFilter
+  sourceVisionId: StringFilter
+  targetVision: VisionRelationFilter
+  targetVisionId: StringFilter
+  to: DateTimeNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input RelationBetweenVisionsWhereUniqueInput {
   id: String
 }
 
@@ -11752,6 +12270,12 @@ type Vision {
   referenceId: String
   reputationRecords(cursor: ReputationRecordWhereUniqueInput, distinct: [ReputationRecordScalarFieldEnum!], orderBy: [ReputationRecordOrderByWithRelationInput!], skip: Int, take: Int, where: ReputationRecordWhereInput): [ReputationRecord!]!
   tagsOnVisions(cursor: TagsOnVisionsWhereUniqueInput, distinct: [TagsOnVisionsScalarFieldEnum!], orderBy: [TagsOnVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: TagsOnVisionsWhereInput): [TagsOnVisions!]!
+
+  """source visions"""
+  targetedBy(cursor: RelationBetweenVisionsWhereUniqueInput, distinct: [RelationBetweenVisionsScalarFieldEnum!], orderBy: [RelationBetweenVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: RelationBetweenVisionsWhereInput): [RelationBetweenVisions!]!
+
+  """target visions"""
+  targeting(cursor: RelationBetweenVisionsWhereUniqueInput, distinct: [RelationBetweenVisionsScalarFieldEnum!], orderBy: [RelationBetweenVisionsOrderByWithRelationInput!], skip: Int, take: Int, where: RelationBetweenVisionsWhereInput): [RelationBetweenVisions!]!
   threadsOnVision(cursor: ThreadsOnVisionWhereUniqueInput, distinct: [ThreadsOnVisionScalarFieldEnum!], orderBy: [ThreadsOnVisionOrderByWithRelationInput!], skip: Int, take: Int, where: ThreadsOnVisionWhereInput): [ThreadsOnVision!]!
   thumbnail: String
   title: String!
@@ -11766,6 +12290,8 @@ type VisionCount {
   reactionOnVisions: Int!
   reputationRecords: Int!
   tagsOnVisions: Int!
+  targetedBy: Int!
+  targeting: Int!
   threadsOnVision: Int!
   visionViewsHistory: Int!
   votesOnVision: Int!
@@ -11818,6 +12344,8 @@ input VisionCreateInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -11981,6 +12509,18 @@ input VisionCreateNestedOneWithoutTagsOnVisionsInput {
   create: VisionCreateWithoutTagsOnVisionsInput
 }
 
+input VisionCreateNestedOneWithoutTargetedByInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutTargetedByInput
+  create: VisionCreateWithoutTargetedByInput
+}
+
+input VisionCreateNestedOneWithoutTargetingInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutTargetingInput
+  create: VisionCreateWithoutTargetingInput
+}
+
 input VisionCreateNestedOneWithoutThreadsOnVisionInput {
   connect: VisionWhereUniqueInput
   connectOrCreate: VisionCreateOrConnectWithoutThreadsOnVisionInput
@@ -12049,6 +12589,16 @@ input VisionCreateOrConnectWithoutTagsOnVisionsInput {
   where: VisionWhereUniqueInput!
 }
 
+input VisionCreateOrConnectWithoutTargetedByInput {
+  create: VisionCreateWithoutTargetedByInput!
+  where: VisionWhereUniqueInput!
+}
+
+input VisionCreateOrConnectWithoutTargetingInput {
+  create: VisionCreateWithoutTargetingInput!
+  where: VisionWhereUniqueInput!
+}
+
 input VisionCreateOrConnectWithoutThreadsOnVisionInput {
   create: VisionCreateWithoutThreadsOnVisionInput!
   where: VisionWhereUniqueInput!
@@ -12079,6 +12629,8 @@ input VisionCreateWithoutAuthorInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12102,6 +12654,8 @@ input VisionCreateWithoutLabelsOnVisionInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12125,6 +12679,8 @@ input VisionCreateWithoutMergeRequestInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12148,6 +12704,8 @@ input VisionCreateWithoutNextVisionsInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12171,6 +12729,8 @@ input VisionCreateWithoutPremiseInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12194,6 +12754,8 @@ input VisionCreateWithoutPrevVisionInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12217,6 +12779,8 @@ input VisionCreateWithoutReactionOnVisionsInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12240,6 +12804,8 @@ input VisionCreateWithoutReferenceInput {
   reactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12263,6 +12829,8 @@ input VisionCreateWithoutReputationRecordsInput {
   reactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutVisionInput
   reference: ReferenceCreateNestedOneWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12286,6 +12854,58 @@ input VisionCreateWithoutTagsOnVisionsInput {
   reactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutVisionInput
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
+  threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
+  thumbnail: String
+  title: String!
+  updatedAt: DateTime
+  visionViewsHistory: VisionViewsHistoryCreateNestedManyWithoutVisionInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
+}
+
+input VisionCreateWithoutTargetedByInput {
+  activityDate: DateTime
+  author: UserCreateNestedOneWithoutVisionsInput
+  createdAt: DateTime
+  description: String
+  draftMode: Boolean
+  id: String
+  labelsOnVision: LabelOnVisionCreateNestedManyWithoutVisionInput
+  mergeRequest: MergeRequestCreateNestedOneWithoutVisionInput
+  nextVisions: VisionCreateNestedManyWithoutPrevVisionInput
+  premise: PremiseCreateNestedOneWithoutVisionInput!
+  prevVision: VisionCreateNestedOneWithoutNextVisionsInput
+  reactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutVisionInput
+  reference: ReferenceCreateNestedOneWithoutVisionInput
+  reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
+  tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
+  threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
+  thumbnail: String
+  title: String!
+  updatedAt: DateTime
+  visionViewsHistory: VisionViewsHistoryCreateNestedManyWithoutVisionInput
+  votesOnVision: VotesOnVisionCreateNestedManyWithoutVisionInput
+}
+
+input VisionCreateWithoutTargetingInput {
+  activityDate: DateTime
+  author: UserCreateNestedOneWithoutVisionsInput
+  createdAt: DateTime
+  description: String
+  draftMode: Boolean
+  id: String
+  labelsOnVision: LabelOnVisionCreateNestedManyWithoutVisionInput
+  mergeRequest: MergeRequestCreateNestedOneWithoutVisionInput
+  nextVisions: VisionCreateNestedManyWithoutPrevVisionInput
+  premise: PremiseCreateNestedOneWithoutVisionInput!
+  prevVision: VisionCreateNestedOneWithoutNextVisionsInput
+  reactionOnVisions: ReactionOnVisionsCreateNestedManyWithoutVisionInput
+  reference: ReferenceCreateNestedOneWithoutVisionInput
+  reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
+  tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12310,6 +12930,8 @@ input VisionCreateWithoutThreadsOnVisionInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   thumbnail: String
   title: String!
   updatedAt: DateTime
@@ -12333,6 +12955,8 @@ input VisionCreateWithoutVisionViewsHistoryInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12356,6 +12980,8 @@ input VisionCreateWithoutVotesOnVisionInput {
   reference: ReferenceCreateNestedOneWithoutVisionInput
   reputationRecords: ReputationRecordCreateNestedManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsCreateNestedManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsCreateNestedManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsCreateNestedManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionCreateNestedManyWithoutVisionInput
   thumbnail: String
   title: String!
@@ -12489,6 +13115,8 @@ input VisionOrderByWithRelationInput {
   referenceId: SortOrder
   reputationRecords: ReputationRecordOrderByRelationAggregateInput
   tagsOnVisions: TagsOnVisionsOrderByRelationAggregateInput
+  targetedBy: RelationBetweenVisionsOrderByRelationAggregateInput
+  targeting: RelationBetweenVisionsOrderByRelationAggregateInput
   threadsOnVision: ThreadsOnVisionOrderByRelationAggregateInput
   thumbnail: SortOrder
   title: SortOrder
@@ -12569,6 +13197,8 @@ input VisionUpdateInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12672,14 +13302,6 @@ input VisionUpdateOneRequiredWithoutLabelsOnVisionInput {
   upsert: VisionUpsertWithoutLabelsOnVisionInput
 }
 
-input VisionUpdateOneRequiredWithoutMergeRequestInput {
-  connect: VisionWhereUniqueInput
-  connectOrCreate: VisionCreateOrConnectWithoutMergeRequestInput
-  create: VisionCreateWithoutMergeRequestInput
-  update: VisionUpdateWithoutMergeRequestInput
-  upsert: VisionUpsertWithoutMergeRequestInput
-}
-
 input VisionUpdateOneRequiredWithoutReactionOnVisionsInput {
   connect: VisionWhereUniqueInput
   connectOrCreate: VisionCreateOrConnectWithoutReactionOnVisionsInput
@@ -12704,6 +13326,22 @@ input VisionUpdateOneRequiredWithoutTagsOnVisionsInput {
   upsert: VisionUpsertWithoutTagsOnVisionsInput
 }
 
+input VisionUpdateOneRequiredWithoutTargetedByInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutTargetedByInput
+  create: VisionCreateWithoutTargetedByInput
+  update: VisionUpdateWithoutTargetedByInput
+  upsert: VisionUpsertWithoutTargetedByInput
+}
+
+input VisionUpdateOneRequiredWithoutTargetingInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutTargetingInput
+  create: VisionCreateWithoutTargetingInput
+  update: VisionUpdateWithoutTargetingInput
+  upsert: VisionUpsertWithoutTargetingInput
+}
+
 input VisionUpdateOneRequiredWithoutThreadsOnVisionInput {
   connect: VisionWhereUniqueInput
   connectOrCreate: VisionCreateOrConnectWithoutThreadsOnVisionInput
@@ -12726,6 +13364,16 @@ input VisionUpdateOneRequiredWithoutVotesOnVisionInput {
   create: VisionCreateWithoutVotesOnVisionInput
   update: VisionUpdateWithoutVotesOnVisionInput
   upsert: VisionUpsertWithoutVotesOnVisionInput
+}
+
+input VisionUpdateOneWithoutMergeRequestInput {
+  connect: VisionWhereUniqueInput
+  connectOrCreate: VisionCreateOrConnectWithoutMergeRequestInput
+  create: VisionCreateWithoutMergeRequestInput
+  delete: Boolean
+  disconnect: Boolean
+  update: VisionUpdateWithoutMergeRequestInput
+  upsert: VisionUpsertWithoutMergeRequestInput
 }
 
 input VisionUpdateOneWithoutNextVisionsInput {
@@ -12773,6 +13421,8 @@ input VisionUpdateWithoutAuthorInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12796,6 +13446,8 @@ input VisionUpdateWithoutLabelsOnVisionInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12819,6 +13471,8 @@ input VisionUpdateWithoutMergeRequestInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12842,6 +13496,8 @@ input VisionUpdateWithoutNextVisionsInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12865,6 +13521,8 @@ input VisionUpdateWithoutPremiseInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12888,6 +13546,8 @@ input VisionUpdateWithoutPrevVisionInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12911,6 +13571,8 @@ input VisionUpdateWithoutReactionOnVisionsInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12934,6 +13596,8 @@ input VisionUpdateWithoutReferenceInput {
   reactionOnVisions: ReactionOnVisionsUpdateManyWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12957,6 +13621,8 @@ input VisionUpdateWithoutReputationRecordsInput {
   reactionOnVisions: ReactionOnVisionsUpdateManyWithoutVisionInput
   reference: ReferenceUpdateOneWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -12980,6 +13646,58 @@ input VisionUpdateWithoutTagsOnVisionsInput {
   reactionOnVisions: ReactionOnVisionsUpdateManyWithoutVisionInput
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
+  threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
+  thumbnail: NullableStringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  visionViewsHistory: VisionViewsHistoryUpdateManyWithoutVisionInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
+}
+
+input VisionUpdateWithoutTargetedByInput {
+  activityDate: NullableDateTimeFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutVisionsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  draftMode: BoolFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  labelsOnVision: LabelOnVisionUpdateManyWithoutVisionInput
+  mergeRequest: MergeRequestUpdateOneWithoutVisionInput
+  nextVisions: VisionUpdateManyWithoutPrevVisionInput
+  premise: PremiseUpdateOneRequiredWithoutVisionInput
+  prevVision: VisionUpdateOneWithoutNextVisionsInput
+  reactionOnVisions: ReactionOnVisionsUpdateManyWithoutVisionInput
+  reference: ReferenceUpdateOneWithoutVisionInput
+  reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
+  tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
+  threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
+  thumbnail: NullableStringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  visionViewsHistory: VisionViewsHistoryUpdateManyWithoutVisionInput
+  votesOnVision: VotesOnVisionUpdateManyWithoutVisionInput
+}
+
+input VisionUpdateWithoutTargetingInput {
+  activityDate: NullableDateTimeFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutVisionsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  draftMode: BoolFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  labelsOnVision: LabelOnVisionUpdateManyWithoutVisionInput
+  mergeRequest: MergeRequestUpdateOneWithoutVisionInput
+  nextVisions: VisionUpdateManyWithoutPrevVisionInput
+  premise: PremiseUpdateOneRequiredWithoutVisionInput
+  prevVision: VisionUpdateOneWithoutNextVisionsInput
+  reactionOnVisions: ReactionOnVisionsUpdateManyWithoutVisionInput
+  reference: ReferenceUpdateOneWithoutVisionInput
+  reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
+  tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -13004,6 +13722,8 @@ input VisionUpdateWithoutThreadsOnVisionInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -13027,6 +13747,8 @@ input VisionUpdateWithoutVisionViewsHistoryInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -13050,6 +13772,8 @@ input VisionUpdateWithoutVotesOnVisionInput {
   reference: ReferenceUpdateOneWithoutVisionInput
   reputationRecords: ReputationRecordUpdateManyWithoutVisionInput
   tagsOnVisions: TagsOnVisionsUpdateManyWithoutVisionInput
+  targetedBy: RelationBetweenVisionsUpdateManyWithoutSourceVisionInput
+  targeting: RelationBetweenVisionsUpdateManyWithoutTargetVisionInput
   threadsOnVision: ThreadsOnVisionUpdateManyWithoutVisionInput
   thumbnail: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -13109,6 +13833,16 @@ input VisionUpsertWithoutReputationRecordsInput {
 input VisionUpsertWithoutTagsOnVisionsInput {
   create: VisionCreateWithoutTagsOnVisionsInput!
   update: VisionUpdateWithoutTagsOnVisionsInput!
+}
+
+input VisionUpsertWithoutTargetedByInput {
+  create: VisionCreateWithoutTargetedByInput!
+  update: VisionUpdateWithoutTargetedByInput!
+}
+
+input VisionUpsertWithoutTargetingInput {
+  create: VisionCreateWithoutTargetingInput!
+  update: VisionUpdateWithoutTargetingInput!
 }
 
 input VisionUpsertWithoutThreadsOnVisionInput {
@@ -13439,6 +14173,8 @@ input VisionWhereInput {
   referenceId: StringNullableFilter
   reputationRecords: ReputationRecordListRelationFilter
   tagsOnVisions: TagsOnVisionsListRelationFilter
+  targetedBy: RelationBetweenVisionsListRelationFilter
+  targeting: RelationBetweenVisionsListRelationFilter
   threadsOnVision: ThreadsOnVisionListRelationFilter
   thumbnail: StringNullableFilter
   title: StringFilter

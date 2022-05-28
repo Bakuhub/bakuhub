@@ -26,6 +26,11 @@ function MyApp({
         };
         const handleStop = () => {
             NProgress.done();
+            window.scroll({
+                              top: 0,
+                              left: 0,
+                              behavior: "smooth"
+                          });
         };
 
         router.events.on("routeChangeStart", handleStart);
