@@ -8,8 +8,6 @@ export default async function handler(
         res: NextApiResponse
 ) {
     const session = await getSession({req});
-    console.info(req.body);
-    console.info(session);
 
     try {
         res.status(200).json({snapshot: "ss"});

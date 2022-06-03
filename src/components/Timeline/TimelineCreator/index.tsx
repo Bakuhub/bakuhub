@@ -82,11 +82,6 @@ export const TimelineCreator = () => {
             setVisions(prev => isKeywordUpdated ? newVisions:[...prev, ...newVisions]);
         }
     }, [skip, visions.length, fetchVisions, fetchMoreVote, enqueueSnackbar, timelineNodes]);
-    useEffect(
-            () => {
-                console.info(timelineNodes);
-            }, [timelineNodes]
-    );
     const createTimeline = async () => {
         const timeline = await createTimelineWithTitleAndDescription(getCreateTimelineVariables({
                                                                                                     title,

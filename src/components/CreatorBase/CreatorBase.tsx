@@ -242,7 +242,6 @@ export const CreatorBase = <T, >({
                  "id": "",
                  "createdAt": new Date(),
                  updatedAt: new Date(),
-                 "status": snapshots.length ? "REFERENCE_PROVIDED":"RUMOUR",
                  "author": user,
                  "vision": [
                      {

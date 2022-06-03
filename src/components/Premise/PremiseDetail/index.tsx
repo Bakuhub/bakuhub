@@ -30,6 +30,7 @@ import {
     getPremiseWIthOpenedMergeRequestVisionVariables
 } from "@gql/utils/getPremiseWIthOpenedMergeRequestVisionVariables";
 import MergeRequestLabels from "@components/MergeRequest/MergeRequestLabels";
+import {BaseRelationButton} from "@components/Relation/BaseRelationButton/BaseRelationButton";
 
 const VotingButton = dynamic(() => import("src/components/Voting"), {ssr: false});
 const Comment = dynamic(() => import("../../Comment"));
@@ -82,7 +83,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
         id: activeVision?.id || ""
     };
     useEffect(() => {
-        console.info("userId", userId);
         if (userId && premiseId) {
 
             createSubscriptionMutation(getUpsertSubscriptionVariables(
@@ -99,6 +99,12 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
     }, [createSubscriptionMutation, premiseId, userId]);
     return (
             <Grid container>
+                <Grid item xs={12}>
+                    <BaseRelationButton searchMode={"OR"}
+                                        sourceVisionId={activeVision.id}
+                                        targetVisionId={activeVision.id}
+                                        draftMode={true}/>
+                </Grid>
                 <Grid item container xs={12}>
                     <Grid item xs={4}>
                         <Grid item container spacing={1}>

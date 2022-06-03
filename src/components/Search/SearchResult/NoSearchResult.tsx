@@ -7,7 +7,6 @@ interface NoSearchResultProps {
 
 export const NoSearchResult: FunctionComponent<NoSearchResultProps> = ({}) => {
     const router = useRouter();
-    console.info(router.query);
     const getKeyword = () => Object.entries(router.query).map(
             ([key, value]) => `${key}: ${value}`
     ).join(" and ");

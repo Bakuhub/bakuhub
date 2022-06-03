@@ -19,7 +19,6 @@ export const MergedVisionListItem: FunctionComponent<MergedVisionListItemProps> 
     const result = Diff.diffChars(
             "fjfsdaiof fsdijofisda ijfsdaoifjsad", "fjfof fsofisda ijfjsadfffffffffff",
     );
-    console.info(result);
     const getColor = ({added, removed}: { added?: boolean, removed?: boolean }) => {
         switch (true) {
             case added:

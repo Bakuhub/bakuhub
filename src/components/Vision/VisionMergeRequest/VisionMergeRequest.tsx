@@ -32,7 +32,6 @@ export interface CreateVisionProps {
 
 export const VisionMergeRequest: React.FunctionComponent<CreateVisionProps> = ({mergeRequest}) => {
     const vision = get(mergeRequest, "vision");
-    console.info("mergeRequest", mergeRequest);
     const [loading, setLoading] = React.useState(false);
     const [mergeVisionIntoPremise] = useMutation(mergeVisionIntoPremiseMutation);
     const [updateManySubscriptions] = useMutation(createUpdateManySubscriptionsMutation(ConnectType.PREMISE));

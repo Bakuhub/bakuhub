@@ -12,8 +12,6 @@ export default async function handler(
                                          emitSchemaFile: process.env.NODE_ENV === "development",
                                          validate: false,
                                      });
-    console.info("schema built==========================");
-    console.info(schema);
     res.status(200).json({snapshot: "ok"});
 }
 // import "reflect-metadata";

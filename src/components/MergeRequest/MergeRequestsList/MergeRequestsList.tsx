@@ -12,7 +12,6 @@ interface MergeRequestsListProps {
 export const MergeRequestsList: FunctionComponent<MergeRequestsListProps> = ({
                                                                                  mergeRequests,
                                                                              }) => {
-    console.info("MergeRequestsList", mergeRequests);
     return <List
             sx={{width: "100%", bgcolor: "background.paper"}}>
         {mergeRequests.map((mergeRequest) =>

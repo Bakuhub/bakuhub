@@ -30,7 +30,6 @@ export const PremiseCreator: React.FunctionComponent<PremiseDetailProps> = ({pre
     const [createPremise,] = useMutation(createPremiseMutation);
     const handleSubmitCallback = (result: FetchResult<{ createPremise: { id: string } }>) => {
         if (result.data && result.data.createPremise) {
-            console.info("created premise", result.data);
             return router.push(`/premise/${result.data.createPremise.id}/vision/${get(
                     result,
                     "data.createPremise.vision[0].id"

@@ -9,6 +9,7 @@ import {ConnectType} from "../../../types";
 import {useRouter} from "next/router";
 import get from "lodash/get";
 import {MergeRequestType} from "@components/CreatorBase/CreatorBase";
+import {createMergeRequestMutation} from "@gql/mutation/createMergeRequestMutation";
 
 export interface CreatePremiseProps {
     vision: Vision;
@@ -17,8 +18,8 @@ export interface CreatePremiseProps {
 export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) => {
     const router = useRouter();
     const [createNewVision] = useMutation(createVisionMutation);
+    const [createMergeRequest] = useMutation(createMergeRequestMutation);
     const handleSubmitCallback = () => router.push(`/premise/${vision.premiseId}/vision/${vision.id}`);
-    console.info(vision);
     const getTagLabels = (): string[] => {
         if (vision.tagsOnVisions) {
             return vision.tagsOnVisions.reduce(
@@ -37,7 +38,7 @@ export const VisionCreator: FunctionComponent<CreatePremiseProps> = ({vision}) =
         if (mergeRequestType === MergeRequestType.update) {
             return createNewVision(data);
         } else {
-            return createNewVision(data);
+            return createMergeRequest(data);
 
 
         }

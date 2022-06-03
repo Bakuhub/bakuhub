@@ -35,7 +35,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         );
     }
 
-    console.timeEnd("apollo visionCreatorQuery");
     return {
         props: {
             session,

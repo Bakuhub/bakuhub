@@ -12,10 +12,6 @@ export const CompareVisionSplitMode: FunctionComponent<CompareVisionUnifiedModeP
                                                                                              title,
                                                                                              description
                                                                                          }) => {
-    console.info("---------------------------------------");
-    console.info(title);
-    console.info(description);
-    console.info("---------------------------------------");
     return <Grid item container>
         <Grid item container xs={6} data-testid={"source vision"}>
             <Grid item xs={12}>

@@ -11,12 +11,10 @@ import dynamic from "next/dynamic";
 const VisionViewsHistoryItem = dynamic(() => import("../VisionViewsHistoryItem"));
 
 export const VisionViewsHistoryPage: FunctionComponent = (props) => {
-    console.info(props);
     const session = useSession();
     const userId = getUserIdBySession(session);
     const {data} = useQuery(visionViewsHistoriesQuery, getVisionViewsHistoriesVariables(userId));
     const visionViewsHistories: VisionViewsHistory[] = data?.visionViewsHistories || [];
-    console.info(data);
     return <div>
         {
             visionViewsHistories.map(

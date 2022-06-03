@@ -35,7 +35,6 @@ const startServer = apolloServer.start();
 export default cors(async function handler(
         req: MicroRequest, res: ServerResponse
 ) {
-    console.info("req started==========================");
     if (req.method === "OPTIONS") {
         res.end();
         return false;
