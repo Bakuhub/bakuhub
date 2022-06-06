@@ -159,6 +159,30 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
 
                             {/*        variant={"h5"}>Merge requests opened:</Typography>*/}
                         </Grid>
+                        <Grid item xs={12}>
+                            <BaseRelationButton
+                                    label={"pending relation with other visions"}
+                                    searchMode={"OR"} draftMode
+                                    targetVisionId={activeVision.id}
+                                    sourceVisionId={activeVision.id}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <BaseRelationButton
+                                    searchMode={"AND"}
+                                    sourceVisionId={activeVision.id}
+                                    label={"pending relation with other visions"}
+                            />
+                        </Grid>
+
+                        <Grid item xs={12}>
+                            <BaseRelationButton
+                                    searchMode={"AND"}
+                                    sourceVisionId={activeVision.id}
+                                    label={"pending relation with other visions"}
+                            />
+                        </Grid>
+
                         {/*{*/}
                         {/*    visionsWithMergeRequest.map(vision =>*/}
                         {/*                                        <Grid key={vision.id} item container*/}

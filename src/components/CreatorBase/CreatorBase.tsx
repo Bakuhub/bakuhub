@@ -17,6 +17,7 @@ import {getCreatorMutationVariables} from "./utils/getCreatorMutationVariables";
 import {ConnectType, LabelType} from "src/types";
 import {MaterialUIIcons} from "src/constants/MaterialUIIcons";
 import MergeRequestCreator from "@components/MergeRequest/MergeRequestCreator";
+import RelationCreator from "@components/Relation/RelationCreator";
 
 const TagSearchBar = dynamic(() => import("src/components/Tag/TagSearchBar"));
 const LocalizationProvider = dynamic(() => import("@mui/lab/LocalizationProvider"));
@@ -177,6 +178,9 @@ export const CreatorBase = <T, >({
                         onChange={({target: {value}}) => setTitle(value)}
                         value={title}
                         label="Title" variant="outlined"/>
+            </Grid>
+            <Grid item xs={12}>
+                <RelationCreator/>
             </Grid>
             <Grid item xs={12}>
                 <TagSearchBar tagLabels={tagLabels} setTagLabels={setTagLabels}/>
