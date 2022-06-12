@@ -74,8 +74,6 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
             premiseWIthOpenedMergeRequestVisionQuery,
             getPremiseWIthOpenedMergeRequestVisionVariables(premiseId)
     );
-    console.info("premiseData");
-    console.info(get(premiseData, "premise.vision", []));
     const visionsWithMergeRequest: Vision[] = get(premiseData, "premise.vision", []);
     const thumbnail = getThumbnail(activeVision);
     const connectConfig = {
@@ -99,12 +97,7 @@ export const PremiseDetail: React.FunctionComponent<PremiseDetailProps> = (props
     }, [createSubscriptionMutation, premiseId, userId]);
     return (
             <Grid container>
-                <Grid item xs={12}>
-                    <BaseRelationButton searchMode={"OR"}
-                                        sourceVisionId={activeVision.id}
-                                        targetVisionId={activeVision.id}
-                                        draftMode={true}/>
-                </Grid>
+
                 <Grid item container xs={12}>
                     <Grid item xs={4}>
                         <Grid item container spacing={1}>

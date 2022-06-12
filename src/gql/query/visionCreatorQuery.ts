@@ -17,16 +17,6 @@ export const visionCreatorQuery = gql`
                     description
                 }
             }
-            targeting {
-                targetVisionId
-            }
-            targetedBy{
-                sourceVisionId
-            }
-            _count {
-                targetedBy
-                targeting
-            }
             reference {
                 snapshots {
                     id

@@ -18,6 +18,7 @@ import {ConnectType, LabelType} from "src/types";
 import {MaterialUIIcons} from "src/constants/MaterialUIIcons";
 import MergeRequestCreator from "@components/MergeRequest/MergeRequestCreator";
 import RelationCreator from "@components/Relation/RelationCreator";
+import {Relation} from "@components/Relation/RelationCreator/RelationCreator";
 
 const TagSearchBar = dynamic(() => import("src/components/Tag/TagSearchBar"));
 const LocalizationProvider = dynamic(() => import("@mui/lab/LocalizationProvider"));
@@ -55,6 +56,8 @@ export const CreatorBase = <T, >({
                                      handleSubmitCallback, isMergeRequest
                                  }: CreatorProps<T>): JSX.Element => {
     const session = useSession();
+    const [relations, setRelations] = useState<Relation[]>(
+            []);
     const {enqueueSnackbar} = useSnackbar();
     const user = get(session, "data.user");
     const userId = getUserIdBySession(session);
@@ -70,6 +73,7 @@ export const CreatorBase = <T, >({
     const [mergeRequestTitle, setMergeRequestTitle] = useState("");
     const [mergeRequestDescription, setMergeRequestDescription] = useState("");
     const [snapshots, setSnapshots] = useState<Snapshot[]>([]);
+
     const setFormByExistingVision = useCallback(() => {
         setTagLabels(initialValue.tagLabels);
         setDescription(initialValue.description);
@@ -180,7 +184,10 @@ export const CreatorBase = <T, >({
                         label="Title" variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-                <RelationCreator/>
+                <RelationCreator
+                        relations={relations}
+                        setRelations={setRelations}
+                />
             </Grid>
             <Grid item xs={12}>
                 <TagSearchBar tagLabels={tagLabels} setTagLabels={setTagLabels}/>

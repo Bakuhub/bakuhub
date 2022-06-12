@@ -51,20 +51,18 @@ export const TagSearchBar: FunctionComponent<TagSearchBarProps> = ({tagLabels, s
                                 );
                             })
                     }
-                    renderInput={(params) => {
-                        return (
-                                <TextField
-                                        {...params}
-                                        onChange={(event) => {
-                                            setInput(event.target.value);
-                                        }
-                                        }
-                                        variant="outlined"
-                                        label="Tags"
-                                        placeholder="tags that best describe project"
-                                />
-                        );
-                    }}
+                    renderInput={(params) => (
+                            <TextField
+                                    {...params}
+                                    onChange={(event) => {
+                                        setInput(event.target.value);
+                                    }}
+                                    variant="outlined"
+                                    label="Tags"
+                                    placeholder="tags that best describe project"
+                            />
+                    )
+                    }
             />
     );
 };

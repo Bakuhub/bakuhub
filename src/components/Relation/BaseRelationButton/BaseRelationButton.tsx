@@ -1,13 +1,5 @@
 import {Button} from "@mui/material";
-import {useQuery} from "@apollo/client";
-import {
-    aggregateRelationBetweenVisionsQuery
-} from "@gql/query/aggregateRelationBetweenVisionsQuery";
-import {
-    getAggregateRelationBetweenVisionsQueryVariable
-} from "@gql/utils/getAggregateRelationBetweenVisionsQueryVariable";
-import {FunctionComponent, useEffect} from "react";
-import get from "lodash/get";
+import {FunctionComponent} from "react";
 import Link from "next/link";
 
 export interface BaseRelationButtonProps {
@@ -28,30 +20,29 @@ export const BaseRelationButton: FunctionComponent<BaseRelationButtonProps> = (
         draftMode,
         searchMode
     } = props;
-    const {data} = useQuery(
-            aggregateRelationBetweenVisionsQuery,
-            getAggregateRelationBetweenVisionsQueryVariable(
-                    {
-                        sourceVisionId,
-                        targetVisionId,
-                        draftMode,
-                        searchMode
-                    }
-            )
-    );
-    useEffect(() => {
-        console.info("data=>>>OPO");
-    }, [data]);
-
-    const getLink = () => {
-        console.log(new URLSearchParams(
-                JSON.parse(JSON.stringify(props))).toString());
-    };
-    const link = getLink();
+    // const {data} = useQuery(
+    //         aggregateRelationBetweenVisionsQuery,
+    //         getAggregateRelationBetweenVisionsQueryVariable(
+    //                 {
+    //                     sourceVisionId,
+    //                     targetVisionId,
+    //                     draftMode,
+    //                     searchMode
+    //                 }
+    //         )
+    // );
+    // useEffect(() => {
+    //     console.info("data=>>>OPO");
+    // }, [data]);
+    //
+    // const getLink = () => {
+    //     console.log(new URLSearchParams(
+    //             JSON.parse(JSON.stringify(props))).toString());
+    // };
     return <Link passHref href={`/relation/pending?${new URLSearchParams(
             JSON.parse(JSON.stringify(props))).toString()}`}>
         <Button>
-            {label} {get(data, "aggregateRelationBetweenVisions._count._all")}
+            {label}
         </Button>
     </Link>;
 };
