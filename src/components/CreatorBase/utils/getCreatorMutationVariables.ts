@@ -4,10 +4,12 @@ import {Snapshot} from "prisma/generated/type-graphql";
 import {ConnectType, LabelType} from "src/types";
 import {getCreateOrConnectLabelVariables} from "@gql/utils/getCreateOrConnectLabelVariables";
 import {MergeRequestType} from "@components/CreatorBase/CreatorBase";
+import {Relation} from "@components/Relation/RelationCreator/RelationCreator";
 
 interface IGetCreatorMutationVariables {
     userId: string;
     title: string;
+    relations: Relation[];
     description: string;
     activityDate: Date;
     tagLabels: string[];

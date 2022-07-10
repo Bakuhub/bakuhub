@@ -10,6 +10,9 @@ export const LabelChip: FunctionComponent<LabelChipProps> = ({
                                                                  label: {
                                                                      name, color, description
                                                                  }
-                                                             }) => {
-    return <StyledChip label={name} size={"small"} labelColor={color} aria-details={description}/>;
-};
+                                                             }) => <StyledChip label={name}
+                                                                               size={"small"}
+                                                                               labelColor={color}
+                                                                               aria-details={description ||
+                                                                                             ""}
+/>;

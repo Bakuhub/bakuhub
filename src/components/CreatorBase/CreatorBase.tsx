@@ -56,8 +56,7 @@ export const CreatorBase = <T, >({
                                      handleSubmitCallback, isMergeRequest
                                  }: CreatorProps<T>): JSX.Element => {
     const session = useSession();
-    const [relations, setRelations] = useState<Relation[]>(
-            []);
+    const [relations, setRelations] = useState<Relation[]>([]);
     const {enqueueSnackbar} = useSnackbar();
     const user = get(session, "data.user");
     const userId = getUserIdBySession(session);
@@ -106,6 +105,7 @@ export const CreatorBase = <T, >({
         setLoading(true);
         const variable = getCreatorMutationVariables({
                                                          attachment,
+                                                         relations,
                                                          mergeRequestType,
                                                          connectType,
                                                          mergeRequestLabels,
@@ -116,7 +116,8 @@ export const CreatorBase = <T, >({
                                                          title,
                                                          activityDate: activityDate || new Date(),
                                                          userId,
-                                                         tagLabels, mergeRequestTitle,
+                                                         tagLabels,
+                                                         mergeRequestTitle,
                                                          mergeRequestDescription
                                                      });
         try {
@@ -156,7 +157,7 @@ export const CreatorBase = <T, >({
                             <BottomNavigation
                                 showLabels
                                 value={mergeRequestType}
-                                onChange={(event, newValue) => {
+                                onChange={(_, newValue) => {
                                     setMergeRequestType(newValue);
                                 }}
                             >
@@ -185,6 +186,7 @@ export const CreatorBase = <T, >({
             </Grid>
             <Grid item xs={12}>
                 <RelationCreator
+                        currentVisionId={currentVisionId}
                         relations={relations}
                         setRelations={setRelations}
                 />
@@ -200,12 +202,11 @@ export const CreatorBase = <T, >({
                                 setActivityDate(value as Date);
                             }}
                             value={moment(activityDate ? activityDate:Date.now())}
-                            renderInput={(params) => <TextField fullWidth
-                                                                required
-                                                                {...params}
-
-                                                                helperText={"please enter the date it happened"}
-
+                            renderInput={(params) => <TextField
+                                    fullWidth
+                                    required
+                                    {...params}
+                                    helperText={"please enter the date it happened"}
                             />}
                     />
                 </LocalizationProvider>
@@ -229,9 +230,13 @@ export const CreatorBase = <T, >({
                 <FileInput attachment={attachment} setAttachment={setAttachment}/>
             </Grid>
             <Grid item container xs={6}>
-                <LoadingButton loading={loading} fullWidth type={"submit"}
-                               onClick={submit}
-                               variant={"contained"}>
+                <LoadingButton
+                        loading={loading}
+                        fullWidth
+                        type={"submit"}
+                        onClick={submit}
+                        variant={"contained"}
+                >
                     Create
                 </LoadingButton>
             </Grid>

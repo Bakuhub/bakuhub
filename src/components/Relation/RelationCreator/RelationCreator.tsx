@@ -3,6 +3,8 @@ import {FunctionComponent, useState} from "react";
 import {MaterialUIIcons} from "@constants/MaterialUIIcons";
 import {LoadingButton} from "@mui/lab";
 import {useSnackbar} from "notistack";
+import PremiseIdAutoComplete from "@components/Premise/PremiseIdAutoComplete";
+import {Vision} from "prisma/generated/type-graphql";
 
 export interface Relation {
     sourceId: string;
@@ -12,30 +14,40 @@ export interface Relation {
 
 interface RelationCreatorProps {
     relations: Relation[];
+    currentVisionId: string;
     setRelations: (relations: Relation[]) => void;
 }
 
 
 export const RelationCreator: FunctionComponent<RelationCreatorProps> = (
         {
+            currentVisionId,
             relations, setRelations
         }
 ) => {
     const {enqueueSnackbar} = useSnackbar();
     const [isAddButtonLoading, setIsAddButtonLoading] = useState(false);
-    const [sourceId, setSourceId] = useState("");
-    const [targetId, setTargetId] = useState("");
+    const [sourceVision, setSourceVision] = useState<Vision | null>();
+    const [targetVision, setTargetVision] = useState<Vision | null>();
     const [relation, setRelation] = useState("");
     const resetInput = () => {
-        setSourceId("");
-        setTargetId("");
+        setTargetVision(null);
+        setSourceVision(null);
         setRelation("");
     };
     const addRelationBetweenPremises = () => {
-        if (sourceId && targetId && relation) {
+        const sourceId = sourceVision?.premise?.id;
+        const targetId = targetVision?.premise?.id;
+        if (targetId && sourceId && relation) {
             setIsAddButtonLoading(true);
             setRelations(
-                    [...relations, {sourceId, targetId, relation}]);
+                    [
+                        ...relations, {
+                        sourceId,
+                        targetId,
+                        relation
+                    }
+                    ]);
             resetInput();
             setIsAddButtonLoading(false);
         } else {
@@ -51,17 +63,14 @@ export const RelationCreator: FunctionComponent<RelationCreatorProps> = (
                 ));
     };
     return <Grid item container>
-        <TextField
-                required
-                value={sourceId}
-                onChange={(e) => setSourceId(e.target.value)}
-                label="Source Premise Id"
-        />
-        <TextField
-                required
-                value={targetId}
-                onChange={(e) => setTargetId(e.target.value)}
-                label="Target Premise Id"
+        <PremiseIdAutoComplete
+                currentVisionId={currentVisionId}
+                value={targetVision}
+                handleChange={setTargetVision}/>
+        <PremiseIdAutoComplete
+                currentVisionId={currentVisionId}
+                value={sourceVision}
+                handleChange={setSourceVision}
         />
 
         <TextField
@@ -80,7 +89,6 @@ export const RelationCreator: FunctionComponent<RelationCreatorProps> = (
                             <Grid xs={12} key={`${sourceId}-${targetId}`}>
                                 <Typography>
                                     {sourceId}{targetId}{relation}
-
                                 </Typography>
                                 <LoadingButton onClick={() => removeRelationBetweenPremises(index)}>
                                     <Icon>{MaterialUIIcons.delete}</Icon>
